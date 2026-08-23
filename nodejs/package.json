@@ -4,6 +4,9 @@
     "description": "TypeScript client SDK for the Pulumi Cloud REST API",
     "license": "Apache-2.0",
     "author": "Pulumi Corporation",
+    "publishConfig": {
+        "access": "public"
+    },
     "keywords": [
         "pulumi",
         "cloud",

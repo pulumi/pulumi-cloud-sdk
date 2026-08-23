@@ -31,8 +31,8 @@
     <Company>Pulumi</Company>
     <Description>C# client SDK for the Pulumi Cloud REST API.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/pulumi/pulumi-service</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/pulumi/pulumi-service</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/pulumi/pulumi-cloud-sdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pulumi/pulumi-cloud-sdk</RepositoryUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

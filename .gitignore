@@ -1,6 +1,10 @@
 /vendor/
 **/bin/
 **/venv/
+**/.venv/
+**/__pycache__/
+**/*.egg-info/
+**/dist/
 **/obj/
 **/node_modules/
 **/.vs

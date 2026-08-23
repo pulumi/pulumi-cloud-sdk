@@ -83,12 +83,12 @@ publishing {
                 name = 'pulumi-cloud-sdk'
                 packaging = 'jar'
                 description = 'Java client SDK for the Pulumi Cloud REST API.'
-                url = 'https://github.com/pulumi/pulumi-service'
+                url = 'https://github.com/pulumi/pulumi-cloud-sdk'
 
                 scm {
-                    connection = 'scm:git:git@github.com:pulumi/pulumi-service.git'
-                    developerConnection = 'scm:git:git@github.com:pulumi/pulumi-service.git'
-                    url = 'https://github.com/pulumi/pulumi-service'
+                    connection = 'scm:git:git@github.com:pulumi/pulumi-cloud-sdk.git'
+                    developerConnection = 'scm:git:git@github.com:pulumi/pulumi-cloud-sdk.git'
+                    url = 'https://github.com/pulumi/pulumi-cloud-sdk'
                 }
 
                 licenses {

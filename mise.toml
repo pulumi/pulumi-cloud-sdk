@@ -1,0 +1,10 @@
+[tools]
+go = '1.25.11'      # matches go/go.mod `go 1.25.11`
+node = '22.23.2'    # satisfies nodejs/package.json engines.node >=22
+python = '3.12.12'  # satisfies python/pyproject.toml requires-python >=3.10
+# Runs Gradle; build.gradle's toolchain block auto-provisions JDK 11 via foojay
+# for actual compilation. Gradle 8.10 (java/gradle/wrapper) can only launch on
+# JVM 17-23 (Java 26 daemon support requires Gradle 9.4+), so pin the launcher
+# JDK to an LTS release within that range rather than the newest available.
+java = 'temurin-21'
+dotnet = '8.0.423'  # builds dotnet/*.csproj (netstandard2.0 lib + net8.0 xUnit tests)
