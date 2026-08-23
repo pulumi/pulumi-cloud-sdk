@@ -1,0 +1,51 @@
+<!-- Copyright 2026, Pulumi Corporation.  All rights reserved. -->
+<!--
+  Build for the Pulumi Cloud C# client SDK (Pulumi.Cloud.Sdk).
+
+  The generated Models/ and Api/ sources are produced by `make openapi_dotnet`;
+  the hand-written runtime lives beside them at the project root. Only the build
+  config and runtime are hand-maintained here.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- netstandard2.0 maximizes reach (works on .NET Framework 4.6.1+, .NET Core
+         2.0+, and .NET 5-9), the C# analog of the Java SDK's Java 11 target. -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <!-- No nullable reference annotations (matching the Java SDK's no-annotation
+         approach); value-type nullability is still expressed with `?`. Generated
+         files also carry a defensive `#nullable disable`. -->
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- 1591: generated model/api types are lightly documented. -->
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Pulumi.Cloud.Sdk</PackageId>
+    <Version Condition="'$(PACKAGE_VERSION)' != ''">$(PACKAGE_VERSION)</Version>
+    <Version Condition="'$(PACKAGE_VERSION)' == ''">0.1.0</Version>
+    <Authors>Pulumi</Authors>
+    <Company>Pulumi</Company>
+    <Description>C# client SDK for the Pulumi Cloud REST API.</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/pulumi/pulumi-service</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pulumi/pulumi-service</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <!-- The hand-written test project lives in a nested directory; keep its sources
+       out of the library assembly (the SDK-style default glob is recursive). -->
+  <ItemGroup>
+    <Compile Remove="Pulumi.Cloud.Sdk.Tests/**" />
+    <EmbeddedResource Remove="Pulumi.Cloud.Sdk.Tests/**" />
+    <None Remove="Pulumi.Cloud.Sdk.Tests/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

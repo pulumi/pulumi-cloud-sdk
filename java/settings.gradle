@@ -1,0 +1,8 @@
+// Copyright 2026, Pulumi Corporation.  All rights reserved.
+
+plugins {
+    // Auto-provisions the Java 11 toolchain when no matching JDK is installed.
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+}
+
+rootProject.name = 'pulumi-cloud-sdk'

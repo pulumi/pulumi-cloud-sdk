@@ -1,0 +1,131 @@
+// Copyright 2026, Pulumi Corporation.  All rights reserved.
+//
+// Build for the Pulumi Cloud Java client SDK (com.pulumi:pulumi-cloud-sdk).
+//
+// The generated model/ and api/ sources under src/main/java are produced by
+// `make openapi_java`; the hand-written runtime lives beside them. Only the
+// build config and runtime are hand-maintained here.
+
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+    id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
+}
+
+group = 'com.pulumi'
+
+def resolvedVersion = System.getenv('PACKAGE_VERSION') ?:
+    (project.version == 'unspecified' ? '0.1.0-SNAPSHOT' : project.version)
+version = resolvedVersion
+
+def signingKey = System.getenv('SIGNING_KEY')
+def signingPassword = System.getenv('SIGNING_PASSWORD')
+def publishRepoURL = System.getenv('PUBLISH_REPO_URL') ?: 'https://central.sonatype.com/repository/maven-snapshots/'
+def publishStagingURL = System.getenv('PUBLISH_STAGING_URL') ?: 'https://ossrh-staging-api.central.sonatype.com/service/local/'
+def publishRepoUsername = System.getenv('PUBLISH_REPO_USERNAME')
+def publishRepoPassword = System.getenv('PUBLISH_REPO_PASSWORD')
+
+ext {
+    jacksonVersion = '2.17.2'
+    junitVersion = '5.10.2'
+}
+
+// Target the Java 11 runtime. The toolchain is auto-provisioned by the
+// foojay resolver configured in settings.gradle when no JDK 11 is installed.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
+
+    testImplementation platform("org.junit:junit-bom:${junitVersion}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('compileJava') {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('javadoc') {
+    options.encoding = 'UTF-8'
+    // The generated sources are large and lightly documented; don't fail the
+    // build on missing/incomplete Javadoc.
+    if (options instanceof StandardJavadocDocletOptions) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mainPublication(MavenPublication) {
+            groupId = 'com.pulumi'
+            artifactId = 'pulumi-cloud-sdk'
+            version = resolvedVersion
+            from components.java
+
+            pom {
+                name = 'pulumi-cloud-sdk'
+                packaging = 'jar'
+                description = 'Java client SDK for the Pulumi Cloud REST API.'
+                url = 'https://github.com/pulumi/pulumi-service'
+
+                scm {
+                    connection = 'scm:git:git@github.com:pulumi/pulumi-service.git'
+                    developerConnection = 'scm:git:git@github.com:pulumi/pulumi-service.git'
+                    url = 'https://github.com/pulumi/pulumi-service'
+                }
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'pulumi'
+                        name = 'Pulumi'
+                        email = 'support@pulumi.com'
+                    }
+                }
+            }
+        }
+    }
+}
+
+if (publishRepoUsername) {
+    nexusPublishing {
+        repositories {
+            sonatype {
+                nexusUrl.set(uri(publishStagingURL))
+                snapshotRepositoryUrl.set(uri(publishRepoURL))
+                username = publishRepoUsername
+                password = publishRepoPassword
+            }
+        }
+    }
+}
+
+if (signingKey) {
+    signing {
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign publishing.publications.mainPublication
+    }
+}

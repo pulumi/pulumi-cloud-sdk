@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": ["ES2023"],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "types": ["node"],
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "strict": true,
+        // Generated model DTOs declare fields without initializers (populated via
+        // Object.assign / fixupPrototype), and subclasses re-declare inherited
+        // fields — both require the classic (non-"define") class-field semantics.
+        "strictPropertyInitialization": false,
+        "useDefineForClassFields": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+    },
+    "include": ["src"]
+}

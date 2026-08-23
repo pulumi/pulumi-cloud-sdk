@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pulumi-cloud-sdk"
+version = "0.1.0"
+description = "Python client SDK for the Pulumi Cloud REST API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Pulumi Corporation" }]
+keywords = ["pulumi", "cloud", "sdk", "api"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+
+# Intentionally zero runtime dependencies: the generated models and the
+# PulumiModelEncoder runtime rely only on the Python standard library.
+dependencies = []
+
+[project.optional-dependencies]
+# Only needed to run the test suite; the package itself needs nothing.
+test = []
+
+[tool.hatch.build.targets.wheel]
+packages = ["pulumi_cloud_sdk"]
+
+[tool.hatch.build.targets.sdist]
+include = ["pulumi_cloud_sdk", "README.md"]

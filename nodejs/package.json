@@ -1,0 +1,32 @@
+{
+    "name": "@pulumi/cloud-sdk",
+    "version": "0.1.0",
+    "description": "TypeScript client SDK for the Pulumi Cloud REST API",
+    "license": "Apache-2.0",
+    "author": "Pulumi Corporation",
+    "keywords": [
+        "pulumi",
+        "cloud",
+        "sdk",
+        "api"
+    ],
+    "type": "commonjs",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "test": "tsc -p tsconfig.json && node --test tests/*.test.js"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^22.13.0",
+        "typescript": "^5.9.0"
+    }
+}

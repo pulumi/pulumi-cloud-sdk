@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pulumi.Cloud.Sdk", "Pulumi.Cloud.Sdk.csproj", "{F39D5120-84C4-480C-AE09-1083B06F281B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pulumi.Cloud.Sdk.Tests", "Pulumi.Cloud.Sdk.Tests\Pulumi.Cloud.Sdk.Tests.csproj", "{8E3F88E2-4D3B-4B4E-87E5-74E4951E582C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F39D5120-84C4-480C-AE09-1083B06F281B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39D5120-84C4-480C-AE09-1083B06F281B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39D5120-84C4-480C-AE09-1083B06F281B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39D5120-84C4-480C-AE09-1083B06F281B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3F88E2-4D3B-4B4E-87E5-74E4951E582C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3F88E2-4D3B-4B4E-87E5-74E4951E582C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3F88E2-4D3B-4B4E-87E5-74E4951E582C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3F88E2-4D3B-4B4E-87E5-74E4951E582C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
