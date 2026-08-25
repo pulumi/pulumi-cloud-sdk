@@ -70,3 +70,4 @@ Or to your `pom.xml` file:
     <version>%Fill in latest version from the badge up top%</version>
 </dependency>
 ```
+
