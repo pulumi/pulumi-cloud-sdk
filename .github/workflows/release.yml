@@ -14,7 +14,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Compute version from tag
@@ -55,7 +55,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Tag the Go submodule
         run: |
           git config user.name "pulumi-bot"
@@ -72,8 +72,8 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v4
       - name: Ensure npm meets the trusted-publishing floor
         # mise installs a Node LTS with an older bundled npm; trusted
         # publishing requires npm >= 11.5.1.
@@ -92,8 +92,8 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v4
       - name: Build distribution
         run: make build_dist_python VERSION=${{ needs.prepare.outputs.version }}
       - uses: pypa/gh-action-pypi-publish@release/v1
@@ -112,8 +112,8 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v4
       # Fetch NUGET_USER (the nuget.org policy-owner profile slug; not
       # secret but kept in ESC for consistency with the rest of the
       # publishing config).
@@ -149,8 +149,8 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v4
       - env:
           ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
           ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
@@ -174,7 +174,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
