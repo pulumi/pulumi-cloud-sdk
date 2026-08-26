@@ -71,6 +71,7 @@ export class OrganizationFeatures {
     agentIntegrationCatalogEnabled: boolean;
     agentScheduledTasksEnabled: boolean;
     neoCustomAgentsEnabled: boolean;
+    neoSecurityEnabled: boolean;
     aiReviewCodeAccessEnabled?: boolean;
     neoCodeReviewsEnabled?: boolean;
     customVCSEnabled: boolean;

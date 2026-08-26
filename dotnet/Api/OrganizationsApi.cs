@@ -1397,6 +1397,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             this.client.Call(request);
         }
 
+        public ListAuditLogEventTypesResponse ListAuditLogEventTypes(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListAuditLogEventTypes");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/auditlogs/event-types");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<ListAuditLogEventTypesResponse>(request);
+        }
+
         public ResponseAuditLogs ListAuditLogEventsHandlerV1(string orgName, string continuationToken, long? endTime, string eventFilter, string format, long? startTime, string userFilter) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListAuditLogEventsHandlerV1");

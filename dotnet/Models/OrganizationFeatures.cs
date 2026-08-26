@@ -348,6 +348,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool NeoCustomAgentsEnabled { get; set; }
 
         /// <summary>
+        /// Whether Neo Security (cloud security posture scanning) is enabled.
+        /// </summary>
+        [JsonProperty("neoSecurityEnabled")]
+        public bool NeoSecurityEnabled { get; set; }
+
+        /// <summary>
         /// Deprecated. The legacy per-stack code-access-for-AI-reviews setting has been removed; no longer populated (always false).
         /// </summary>
         [JsonProperty("aiReviewCodeAccessEnabled")]

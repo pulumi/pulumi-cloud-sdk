@@ -73,6 +73,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var agent_integration_catalog_enabled: bool - declared
     :var agent_scheduled_tasks_enabled: bool - declared
     :var neo_custom_agents_enabled: bool - declared
+    :var neo_security_enabled: bool - declared
     :var ai_review_code_access_enabled: bool - declared
     :var neo_code_reviews_enabled: bool - declared
     :var custom_v_c_s_enabled: bool - declared
@@ -156,6 +157,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'agent_integration_catalog_enabled': 'bool',
         'agent_scheduled_tasks_enabled': 'bool',
         'neo_custom_agents_enabled': 'bool',
+        'neo_security_enabled': 'bool',
         'ai_review_code_access_enabled': 'bool',
         'neo_code_reviews_enabled': 'bool',
         'custom_v_c_s_enabled': 'bool',
@@ -240,6 +242,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'agent_integration_catalog_enabled': 'agentIntegrationCatalogEnabled',
         'agent_scheduled_tasks_enabled': 'agentScheduledTasksEnabled',
         'neo_custom_agents_enabled': 'neoCustomAgentsEnabled',
+        'neo_security_enabled': 'neoSecurityEnabled',
         'ai_review_code_access_enabled': 'aiReviewCodeAccessEnabled',
         'neo_code_reviews_enabled': 'neoCodeReviewsEnabled',
         'custom_v_c_s_enabled': 'customVCSEnabled',
@@ -323,6 +326,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_agent_integration_catalog_enabled = 'agentIntegrationCatalogEnabled'
     FIELDS_agent_scheduled_tasks_enabled = 'agentScheduledTasksEnabled'
     FIELDS_neo_custom_agents_enabled = 'neoCustomAgentsEnabled'
+    FIELDS_neo_security_enabled = 'neoSecurityEnabled'
     FIELDS_ai_review_code_access_enabled = 'aiReviewCodeAccessEnabled'
     FIELDS_neo_code_reviews_enabled = 'neoCodeReviewsEnabled'
     FIELDS_custom_v_c_s_enabled = 'customVCSEnabled'
@@ -405,6 +409,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _agent_integration_catalog_enabled: 'bool'
     _agent_scheduled_tasks_enabled: 'bool'
     _neo_custom_agents_enabled: 'bool'
+    _neo_security_enabled: 'bool'
     _ai_review_code_access_enabled: 'bool'
     _neo_code_reviews_enabled: 'bool'
     _custom_v_c_s_enabled: 'bool'
@@ -480,6 +485,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         agent_integration_catalog_enabled: 'bool',
         agent_scheduled_tasks_enabled: 'bool',
         neo_custom_agents_enabled: 'bool',
+        neo_security_enabled: 'bool',
         custom_v_c_s_enabled: 'bool',
         bitbucket_v_c_s_enabled: 'bool',
         insights_auto_policy_packs_enabled: 'bool',
@@ -573,6 +579,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.agent_integration_catalog_enabled = agent_integration_catalog_enabled
         self.agent_scheduled_tasks_enabled = agent_scheduled_tasks_enabled
         self.neo_custom_agents_enabled = neo_custom_agents_enabled
+        self.neo_security_enabled = neo_security_enabled
         self.ai_review_code_access_enabled = ai_review_code_access_enabled
         self.neo_code_reviews_enabled = neo_code_reviews_enabled
         self.custom_v_c_s_enabled = custom_v_c_s_enabled
@@ -657,6 +664,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._agent_integration_catalog_enabled = source._agent_integration_catalog_enabled
             self._agent_scheduled_tasks_enabled = source._agent_scheduled_tasks_enabled
             self._neo_custom_agents_enabled = source._neo_custom_agents_enabled
+            self._neo_security_enabled = source._neo_security_enabled
             self._ai_review_code_access_enabled = source._ai_review_code_access_enabled
             self._neo_code_reviews_enabled = source._neo_code_reviews_enabled
             self._custom_v_c_s_enabled = source._custom_v_c_s_enabled
@@ -1271,6 +1279,17 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `neo_custom_agents_enabled`, must not be `None`")
 
         self._neo_custom_agents_enabled = neo_custom_agents_enabled
+
+    @property
+    def neo_security_enabled(self) -> 'bool':
+        return self._neo_security_enabled
+
+    @neo_security_enabled.setter
+    def neo_security_enabled(self, neo_security_enabled: 'bool'):
+        if neo_security_enabled is None:
+            raise ValueError("Invalid value for `neo_security_enabled`, must not be `None`")
+
+        self._neo_security_enabled = neo_security_enabled
 
     @property
     def ai_review_code_access_enabled(self) -> 'bool':

@@ -5284,6 +5284,58 @@ func (p *CloudClient) HeadService(
 	return nil
 }
 
+type InterceptorForListAuditLogEventTypes struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListAuditLogEventTypes(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*ext1.ListAuditLogEventTypesResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListAuditLogEventTypes{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAuditLogEventTypesResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAuditLogEventTypes: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/auditlogs/event-types",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result ext1.ListAuditLogEventTypesResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListAuditLogEventsHandlerV1 struct {
 	OrgName           string
 	ContinuationToken *string

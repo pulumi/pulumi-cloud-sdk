@@ -68,6 +68,7 @@ import { GetServiceResponse } from "../model/GetServiceResponse";
 import { GetTemplateConfigurationResponse } from "../model/GetTemplateConfigurationResponse";
 import { KeyEncryptionKeyMigration } from "../model/KeyEncryptionKeyMigration";
 import { ListAccessTokensResponse } from "../model/ListAccessTokensResponse";
+import { ListAuditLogEventTypesResponse } from "../model/ListAuditLogEventTypesResponse";
 import { ListChangeGatesResponse } from "../model/ListChangeGatesResponse";
 import { ListChangeRequestEventsResponse } from "../model/ListChangeRequestEventsResponse";
 import { ListChangeRequestsResponse } from "../model/ListChangeRequestsResponse";
@@ -4317,6 +4318,40 @@ export class Organizations {
         __requestOptions.method = "HEAD";
 
         return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public ListAuditLogEventTypes__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/auditlogs/event-types";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListAuditLogEventTypes(
+        params: {
+            orgName: string,
+        },
+    ): Promise<ListAuditLogEventTypesResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListAuditLogEventTypes.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListAuditLogEventTypes.");
+        }
+
+        const __path = this.ListAuditLogEventTypes__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListAuditLogEventTypesResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListAuditLogEventTypesResponse.fixupPrototype(__res0);
+            }
+        });
     }
 
     public ListAuditLogEventsHandlerV1__generateUrl(orgName: string): string {

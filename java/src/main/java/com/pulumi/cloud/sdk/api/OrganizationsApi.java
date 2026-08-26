@@ -1412,6 +1412,16 @@ public final class OrganizationsApi {
         this.client.call($request);
     }
 
+    public ListAuditLogEventTypesResponse listAuditLogEventTypes(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listAuditLogEventTypes");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/auditlogs/event-types");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListAuditLogEventTypesResponse>() {});
+    }
+
     public ResponseAuditLogs listAuditLogEventsHandlerV1(String orgName, String continuationToken, Long endTime, String eventFilter, String format, Long startTime, String userFilter) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listAuditLogEventsHandlerV1");

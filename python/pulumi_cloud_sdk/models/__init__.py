@@ -210,6 +210,7 @@ from .approval_rule_eligibility_output_user_ import ApprovalRuleEligibilityOutpu
 from .approve_change_request_request_ import ApproveChangeRequestRequest
 from .artifact_version_name_spec_ import ArtifactVersionNameSpec
 from .audit_log_event_ import AuditLogEvent
+from .audit_log_event_type_catalog_entry_ import AuditLogEventTypeCatalogEntry
 from .audit_log_export_result_ import AuditLogExportResult
 from .audit_logs_export_s3_config_ import AuditLogsExportS3Config
 from .auth_policy_ import AuthPolicy
@@ -522,6 +523,7 @@ from .list_access_tokens_response_ import ListAccessTokensResponse
 from .list_agent_pools_response_ import ListAgentPoolsResponse
 from .list_agent_task_events_response_ import ListAgentTaskEventsResponse
 from .list_agent_tasks_response_ import ListAgentTasksResponse
+from .list_audit_log_event_types_response_ import ListAuditLogEventTypesResponse
 from .list_azure_dev_ops_integrations_response_ import ListAzureDevOpsIntegrationsResponse
 from .list_bit_bucket_integrations_response_ import ListBitBucketIntegrationsResponse
 from .list_change_gates_response_ import ListChangeGatesResponse

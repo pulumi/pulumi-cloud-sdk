@@ -179,6 +179,9 @@ public class OrganizationFeatures {
     // Whether Custom Agents are enabled.
     public boolean neoCustomAgentsEnabled;
 
+    // Whether Neo Security (cloud security posture scanning) is enabled.
+    public boolean neoSecurityEnabled;
+
     // Deprecated. The legacy per-stack code-access-for-AI-reviews setting has been removed; no longer populated (always false).
     public boolean aiReviewCodeAccessEnabled;
 
