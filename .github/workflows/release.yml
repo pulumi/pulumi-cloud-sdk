@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
+      version_go: ${{ steps.version.outputs.version_go }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -33,21 +34,32 @@ jobs:
           # hyphenated suffix as prerelease and would need --prerelease for
           # these same-day extra releases, but that only affects the rare
           # multi-release-per-day case, not the common path above.
+          #
+          # Go needs a different scheme: the go/ submodule has no /vN
+          # suffix in its import path, which Go's semantic import
+          # versioning requires once the major version reaches 2+. So the
+          # major version stays pinned at 1 forever, the date is packed
+          # into the minor version instead (e.g. 1.20260824.0), and a
+          # same-day re-release bumps the patch rather than adding
+          # prerelease metadata.
           raw="${GITHUB_REF_NAME#v}"
           date_part="${raw%%--*}"
           time_part="${raw#*--}"
-          IFS='-' read -r y m d <<< "$date_part"
-          m=$((10#$m))
-          d=$((10#$d))
+          IFS='-' read -r y m_padded d_padded <<< "$date_part"
+          m=$((10#$m_padded))
+          d=$((10#$d_padded))
 
           other_same_day="$(git tag -l "v${date_part}--*" | grep -v -x "${GITHUB_REF_NAME}" || true)"
 
           if [ -z "$other_same_day" ]; then
             version="${y}.${m}.${d}"
+            version_go="1.${y}${m_padded}${d_padded}.0"
           else
             version="${y}.${m}.${d}-post${time_part}"
+            version_go="1.${y}${m_padded}${d_padded}.$((10#$time_part))"
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "version_go=$version_go" >> "$GITHUB_OUTPUT"
 
   publish_go:
     needs: prepare
@@ -60,8 +72,8 @@ jobs:
         run: |
           git config user.name "pulumi-bot"
           git config user.email "bot@pulumi.com"
-          git tag "go/v${{ needs.prepare.outputs.version }}"
-          git push origin "go/v${{ needs.prepare.outputs.version }}"
+          git tag "go/v${{ needs.prepare.outputs.version_go }}"
+          git push origin "go/v${{ needs.prepare.outputs.version_go }}"
 
   publish_nodejs:
     name: publish to npm
