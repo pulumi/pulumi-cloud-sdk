@@ -38,7 +38,8 @@ build_java:
 test_java:
 	cd java && ./gradlew --console=plain test
 publish_java:
-	cd java && PACKAGE_VERSION=$(VERSION) ./gradlew --console=plain publish
+	cd java && PACKAGE_VERSION=$(VERSION) ./gradlew --console=plain \
+		publishToSonatype closeAndReleaseSonatypeStagingRepository
 
 build_dotnet:
 	cd dotnet && dotnet build
