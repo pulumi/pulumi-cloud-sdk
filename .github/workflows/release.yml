@@ -166,7 +166,7 @@ jobs:
           SIGNING_KEY: ${{ steps.esc-secrets.outputs.MAVEN_CENTRAL_SIGNING_KEY }}
           SIGNING_PASSWORD: ${{ steps.esc-secrets.outputs.MAVEN_CENTRAL_SIGNING_PASSWORD }}
           PUBLISH_REPO_USERNAME: ${{ steps.esc-secrets.outputs.MAVEN_CENTRAL_OSSRH_USERNAME }}
-          PUBLISH_REPO_PASSWORD: ${{ steps.esc-secrets.outputs.MAVEN_CENTRAL_SIGNING_PASSWORD }}
+          PUBLISH_REPO_PASSWORD: ${{ steps.esc-secrets.outputs.MAVEN_CENTRAL_OSSRH_PASSWORD }}
 
   github_release:
     needs: [prepare, publish_go, publish_nodejs, publish_python, publish_dotnet, publish_java]
