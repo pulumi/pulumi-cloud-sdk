@@ -14,15 +14,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
-export enum SaasOffer {
-    TeamPerStack = "team-per-stack",
-    Community = "community",
-    Individual = "individual",
-    TeamStarter = "team-starter",
-    TeamPro = "team-pro",
-    Enterprise = "enterprise",
-    TeamGrowth = "team-growth",
-    EnterpriseGrowth = "enterprise-growth",
-    BusinessCritical = "business-critical",
-    Free = "free",
+export enum GraphEdgeBasis {
+    Declared = "declared",
+    Inferred = "inferred",
 }

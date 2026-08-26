@@ -14,6 +14,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { GraphEdgeBasis } from "./GraphEdgeBasis";
 import type { GraphNodeType } from "./GraphNodeType";
 import type { GraphTraverseDirection } from "./GraphTraverseDirection";
 
@@ -25,6 +26,7 @@ export class GraphSchemaEdgeType {
     asserts: string;
     singleHop: boolean;
     directions: GraphTraverseDirection[];
+    basis: GraphEdgeBasis;
 
     getFixupPrototypeFunction() {
         return GraphSchemaEdgeType.fixupPrototype;

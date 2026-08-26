@@ -14,7 +14,7 @@ public class GraphQueryScope {
     // Insights account names to select anchors from. Naming an account also selects every account beneath it in the '/'-separated hierarchy. Omitted means all accounts visible to the caller.
     public List<String> accounts;
 
-    // Stack selectors in 'project/stack' form. The stack segment may be the literal '*' to select every stack in the project. Omitted means all stacks visible to the caller.
+    // Stack selectors in 'project/stack' form. The stack segment may be the literal '*' to select every stack in the project. Never org-qualified: a query already runs inside one organization, so the 'org/project/stack' form used elsewhere in the API — and reported as a stack node's id — is rejected here with a 400. Omitted means all stacks visible to the caller.
     public List<String> stacks;
 
     // Whether discovered (non-IaC) resources are included in anchor selection. Defaults to true.

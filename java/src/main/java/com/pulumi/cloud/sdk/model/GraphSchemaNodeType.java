@@ -23,6 +23,9 @@ public class GraphSchemaNodeType {
     // Field names usable in aggregate.groupBy for this node type. Naming a field outside this list returns a 400. Empty for node types that cannot be aggregated.
     public List<String> groupByFields;
 
+    // How a node of this type is identified in a response and how a selector names one. For stacks the two spellings differ, and the field lists cannot say so: they name fields, never formats.
+    public String identity;
+
     // For the subset of selectableFields whose values are a fixed, closed set defined in code, the values themselves, keyed by field name. Absence from this map means no fixed set is advertised, not that the field has none; where such a field also appears in groupByFields, aggregate on it to discover its values.
     public Map<String, List<String>> fieldValues;
 }

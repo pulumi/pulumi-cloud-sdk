@@ -122,7 +122,7 @@ public class OrganizationFeatures {
     // Whether ESC onboarding v2 is enabled.
     public boolean escOnboardingV2Enabled;
 
-    // Whether the ESC editor revamp is enabled.
+    // Deprecated. Always true.
     public boolean escEditorRevampEnabled;
 
     // Whether the Azure OAuth client for ESC onboarding is enabled.

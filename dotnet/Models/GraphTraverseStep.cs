@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class GraphTraverseStep {
         /// <summary>
-        /// The edge type to follow, as listed in the graph schema. Name one: a step naming two different ones is rejected with a 400.
+        /// The edge type(s) to follow, as listed in the graph schema. Multiple types may be named together only when they share the same backing store (for example reference and inferred_reference); naming the same type twice, or types that span different backing stores, is rejected with a 400.
         /// </summary>
         [JsonProperty("edgeTypes")]
         public System.Collections.Generic.List<string> EdgeTypes { get; set; }

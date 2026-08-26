@@ -23,6 +23,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
     :var asserts: str - declared
     :var single_hop: bool - declared
     :var directions: list[GraphTraverseDirection] - declared
+    :var basis: GraphEdgeBasis - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
@@ -31,6 +32,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
         'asserts': 'str',
         'single_hop': 'bool',
         'directions': 'list[GraphTraverseDirection]',
+        'basis': 'GraphEdgeBasis',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -40,6 +42,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
         'asserts': 'asserts',
         'single_hop': 'singleHop',
         'directions': 'directions',
+        'basis': 'basis',
     }
 
     FIELDS_name = 'name'
@@ -48,6 +51,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
     FIELDS_asserts = 'asserts'
     FIELDS_single_hop = 'singleHop'
     FIELDS_directions = 'directions'
+    FIELDS_basis = 'basis'
 
     _name: 'str'
     _from_: 'GraphNodeType'
@@ -55,6 +59,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
     _asserts: 'str'
     _single_hop: 'bool'
     _directions: 'list[GraphTraverseDirection]'
+    _basis: 'GraphEdgeBasis'
 
     def __init__(
         self,
@@ -64,6 +69,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
         asserts: 'str',
         single_hop: 'bool',
         directions: 'list[GraphTraverseDirection]',
+        basis: 'GraphEdgeBasis',
     ) -> None:
         super().__init__()
 
@@ -73,6 +79,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
         self.asserts = asserts
         self.single_hop = single_hop
         self.directions = directions
+        self.basis = basis
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, GraphSchemaEdgeType):
@@ -82,6 +89,7 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
             self._asserts = source._asserts
             self._single_hop = source._single_hop
             self._directions = source._directions
+            self._basis = source._basis
 
     @property
     def name(self) -> 'str':
@@ -174,6 +182,17 @@ class GraphSchemaEdgeType(PulumiAutoModelEncoder):
             return []
 
         return self._directions
+
+    @property
+    def basis(self) -> 'GraphEdgeBasis':
+        return self._basis
+
+    @basis.setter
+    def basis(self, basis: 'GraphEdgeBasis'):
+        if basis is None:
+            raise ValueError("Invalid value for `basis`, must not be `None`")
+
+        self._basis = basis
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, GraphSchemaEdgeType):

@@ -21,6 +21,7 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
     :var selectable_fields: list[str] - declared
     :var projectable_fields: list[str] - declared
     :var group_by_fields: list[str] - declared
+    :var identity: str - declared
     :var field_values: dict[str, list[str]] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
@@ -28,6 +29,7 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
         'selectable_fields': 'list[str]',
         'projectable_fields': 'list[str]',
         'group_by_fields': 'list[str]',
+        'identity': 'str',
         'field_values': 'dict[str, list[str]]',
     }
 
@@ -36,6 +38,7 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
         'selectable_fields': 'selectableFields',
         'projectable_fields': 'projectableFields',
         'group_by_fields': 'groupByFields',
+        'identity': 'identity',
         'field_values': 'fieldValues',
     }
 
@@ -43,12 +46,14 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
     FIELDS_selectable_fields = 'selectableFields'
     FIELDS_projectable_fields = 'projectableFields'
     FIELDS_group_by_fields = 'groupByFields'
+    FIELDS_identity = 'identity'
     FIELDS_field_values = 'fieldValues'
 
     _name: 'GraphNodeType'
     _selectable_fields: 'list[str]'
     _projectable_fields: 'list[str]'
     _group_by_fields: 'list[str]'
+    _identity: 'str'
     _field_values: 'dict[str, list[str]]'
 
     def __init__(
@@ -57,6 +62,7 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
         selectable_fields: 'list[str]',
         projectable_fields: 'list[str]',
         group_by_fields: 'list[str]',
+        identity: 'str',
         field_values: 'dict[str, list[str]]',
     ) -> None:
         super().__init__()
@@ -65,6 +71,7 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
         self.selectable_fields = selectable_fields
         self.projectable_fields = projectable_fields
         self.group_by_fields = group_by_fields
+        self.identity = identity
         self.field_values = field_values
 
     def copy_common_fields(self, source: Any, /) -> None:
@@ -73,6 +80,7 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
             self._selectable_fields = source._selectable_fields
             self._projectable_fields = source._projectable_fields
             self._group_by_fields = source._group_by_fields
+            self._identity = source._identity
             self._field_values = source._field_values
 
     @property
@@ -196,6 +204,17 @@ class GraphSchemaNodeType(PulumiAutoModelEncoder):
             return []
 
         return self._group_by_fields
+
+    @property
+    def identity(self) -> 'str':
+        return self._identity
+
+    @identity.setter
+    def identity(self, identity: 'str'):
+        if identity is None:
+            raise ValueError("Invalid value for `identity`, must not be `None`")
+
+        self._identity = identity
 
     @property
     def field_values(self) -> 'dict[str, list[str]]':

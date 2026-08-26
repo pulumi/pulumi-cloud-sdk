@@ -13,6 +13,6 @@ type GraphEdge struct {
 	From string `json:"from" yaml:"from"`
 	// The destination node id.
 	To string `json:"to" yaml:"to"`
-	// The edge type, for example 'provided_by' or 'pulumi:reference'.
+	// The edge type, for example 'provided_by' or 'inferred_reference'.
 	Type string `json:"type" yaml:"type"`
 }

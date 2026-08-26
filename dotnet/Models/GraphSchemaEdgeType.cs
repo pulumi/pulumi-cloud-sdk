@@ -46,5 +46,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("directions")]
         public System.Collections.Generic.List<GraphTraverseDirection> Directions { get; set; }
+
+        /// <summary>
+        /// How edges of this type are produced.
+        /// </summary>
+        [JsonProperty("basis")]
+        public GraphEdgeBasis Basis { get; set; }
     }
 }

@@ -234,7 +234,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool EscOnboardingV2Enabled { get; set; }
 
         /// <summary>
-        /// Whether the ESC editor revamp is enabled.
+        /// Deprecated. Always true.
         /// </summary>
         [JsonProperty("escEditorRevampEnabled")]
         public bool EscEditorRevampEnabled { get; set; }

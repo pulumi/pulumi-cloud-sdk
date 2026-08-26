@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class GraphNode {
         /// <summary>
-        /// Stable node identifier: the Pulumi URN for IaC resources, the Insights URN for discovered resources, or 'stack:&lt;org&gt;/&lt;project&gt;/&lt;stack&gt;' for stacks.
+        /// Stable node identifier: the Pulumi URN for IaC resources, the Insights URN for discovered resources, or 'stack:&lt;org&gt;/&lt;project&gt;/&lt;stack&gt;' for stacks. A stack's id is not the spelling a selector uses: scope.stacks and a stack anchor's name predicate both take the org-free 'project/stack' form, and both reject the org-qualified form.
         /// </summary>
         [JsonProperty("id")]
         public string ID { get; set; }

@@ -466,7 +466,6 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         approvals_enabled: 'bool',
         esc_onboarding_enabled: 'bool',
         esc_onboarding_v2_enabled: 'bool',
-        esc_editor_revamp_enabled: 'bool',
         esc_onboarding_azure_o_auth_client_enabled: 'bool',
         esc_onboarding_gcp_o_auth_client_enabled: 'bool',
         policy_management_v2_enabled: 'bool',
@@ -492,6 +491,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         git_hub_enterprise_individual_auth_enabled: 'bool' = False,
         dashboard_onboarding_u_i_enabled: 'bool' = False,
         users_custom_roles_enabled: 'bool' = False,
+        esc_editor_revamp_enabled: 'bool' = False,
         neo_server_side_approvals_enabled: 'bool' = False,
         neo_plan_mode_enabled: 'bool' = False,
         get_started_onboard_enabled: 'bool' = False,
@@ -1084,9 +1084,6 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
 
     @esc_editor_revamp_enabled.setter
     def esc_editor_revamp_enabled(self, esc_editor_revamp_enabled: 'bool'):
-        if esc_editor_revamp_enabled is None:
-            raise ValueError("Invalid value for `esc_editor_revamp_enabled`, must not be `None`")
-
         self._esc_editor_revamp_enabled = esc_editor_revamp_enabled
 
     @property

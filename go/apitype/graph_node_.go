@@ -8,7 +8,8 @@ package apitype
 // One node in a returned subgraph.
 type GraphNode struct {
 	// Stable node identifier: the Pulumi URN for IaC resources, the Insights URN for discovered resources, or 'stack:<org>/<project>/<stack>'
-	// for stacks.
+	// for stacks. A stack's id is not the spelling a selector uses: scope.stacks and a stack anchor's name predicate both take the org-free
+	// 'project/stack' form, and both reject the org-qualified form.
 	ID string `json:"id" yaml:"id"`
 	// The node type.
 	NodeType GraphNodeType `json:"nodeType" yaml:"nodeType"`

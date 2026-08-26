@@ -20,6 +20,7 @@ class SaasOffer(AutoEnumEncoder):
     TeamGrowth = "team-growth"
     EnterpriseGrowth = "enterprise-growth"
     BusinessCritical = "business-critical"
+    Free = "free"
 
     @staticmethod
     def keys() -> list['SaasOffer']:
@@ -32,7 +33,8 @@ class SaasOffer(AutoEnumEncoder):
             SaasOffer.Enterprise,
             SaasOffer.TeamGrowth,
             SaasOffer.EnterpriseGrowth,
-            SaasOffer.BusinessCritical
+            SaasOffer.BusinessCritical,
+            SaasOffer.Free
         ]
 
     @staticmethod
@@ -46,7 +48,8 @@ class SaasOffer(AutoEnumEncoder):
             SaasOffer.Enterprise.value,
             SaasOffer.TeamGrowth.value,
             SaasOffer.EnterpriseGrowth.value,
-            SaasOffer.BusinessCritical.value
+            SaasOffer.BusinessCritical.value,
+            SaasOffer.Free.value
         ]
 
     @staticmethod

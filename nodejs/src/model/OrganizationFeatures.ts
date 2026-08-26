@@ -52,7 +52,7 @@ export class OrganizationFeatures {
     approvalsEnabled: boolean;
     escOnboardingEnabled: boolean;
     escOnboardingV2Enabled: boolean;
-    escEditorRevampEnabled: boolean;
+    escEditorRevampEnabled?: boolean;
     escOnboardingAzureOAuthClientEnabled: boolean;
     escOnboardingGcpOAuthClientEnabled: boolean;
     policyManagementV2Enabled: boolean;

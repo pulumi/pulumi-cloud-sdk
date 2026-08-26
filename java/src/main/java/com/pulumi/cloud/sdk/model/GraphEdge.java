@@ -20,7 +20,7 @@ public class GraphEdge {
     // The destination node id.
     public String to;
 
-    // The edge type, for example 'provided_by' or 'pulumi:reference'.
+    // The edge type, for example 'provided_by' or 'inferred_reference'.
     @JsonProperty("type")
     public String type_;
 }

@@ -462,6 +462,7 @@ from .graph_aggregation_bucket_ import GraphAggregationBucket
 from .graph_aggregations_ import GraphAggregations
 from .graph_depth_range_ import GraphDepthRange
 from .graph_edge_ import GraphEdge
+from .graph_edge_basis_ import GraphEdgeBasis
 from .graph_field_predicate_ import GraphFieldPredicate
 from .graph_field_predicate_absent_ import GraphFieldPredicateAbsent
 from .graph_field_predicate_eq_ import GraphFieldPredicateEq

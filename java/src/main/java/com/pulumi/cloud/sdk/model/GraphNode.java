@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class GraphNode {
-    // Stable node identifier: the Pulumi URN for IaC resources, the Insights URN for discovered resources, or 'stack:<org>/<project>/<stack>' for stacks.
+    // Stable node identifier: the Pulumi URN for IaC resources, the Insights URN for discovered resources, or 'stack:<org>/<project>/<stack>' for stacks. A stack's id is not the spelling a selector uses: scope.stacks and a stack anchor's name predicate both take the org-free 'project/stack' form, and both reject the org-qualified form.
     public String id;
 
     // The node type.

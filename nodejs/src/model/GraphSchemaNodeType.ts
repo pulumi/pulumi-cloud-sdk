@@ -22,6 +22,7 @@ export class GraphSchemaNodeType {
     selectableFields: string[];
     projectableFields: string[];
     groupByFields: string[];
+    identity: string;
     fieldValues: { [key: string]: string[] };
 
     getFixupPrototypeFunction() {

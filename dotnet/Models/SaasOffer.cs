@@ -64,5 +64,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "business-critical")]
         BusinessCritical,
+
+        /// <summary>
+        /// The Pulumi Free tier for individual organizations with access to core features.
+        /// </summary>
+        [EnumMember(Value = "free")]
+        Free,
     }
 }

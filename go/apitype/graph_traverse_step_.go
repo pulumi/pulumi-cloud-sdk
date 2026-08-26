@@ -8,7 +8,9 @@ package apitype
 // One typed, bounded traversal step. Starting from the previous frontier, follows edges of the given type in the given direction up to the
 // depth bound.
 type GraphTraverseStep struct {
-	// The edge type to follow, as listed in the graph schema. Name one: a step naming two different ones is rejected with a 400.
+	// The edge type(s) to follow, as listed in the graph schema. Multiple types may be named together only when they share the same backing
+	// store (for example reference and inferred_reference); naming the same type twice, or types that span different backing stores, is
+	// rejected with a 400.
 	EdgeTypes []string `json:"edgeTypes" yaml:"edgeTypes"`
 	// Direction to walk edges relative to the current frontier.
 	Direction GraphTraverseDirection `json:"direction" yaml:"direction"`

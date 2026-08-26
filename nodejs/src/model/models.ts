@@ -475,6 +475,7 @@ export * from "./GraphAggregationBucket";
 export * from "./GraphAggregations";
 export * from "./GraphDepthRange";
 export * from "./GraphEdge";
+export * from "./GraphEdgeBasis";
 export * from "./GraphFieldPredicate";
 export * from "./GraphFieldPredicateAbsent";
 export * from "./GraphFieldPredicateEq";

@@ -82,8 +82,8 @@ type OrganizationFeatures struct {
 	EscOnboardingEnabled bool `json:"escOnboardingEnabled" yaml:"escOnboardingEnabled"`
 	// Whether ESC onboarding v2 is enabled.
 	EscOnboardingV2Enabled bool `json:"escOnboardingV2Enabled" yaml:"escOnboardingV2Enabled"`
-	// Whether the ESC editor revamp is enabled.
-	EscEditorRevampEnabled bool `json:"escEditorRevampEnabled" yaml:"escEditorRevampEnabled"`
+	// Deprecated. Always true.
+	EscEditorRevampEnabled bool `json:"escEditorRevampEnabled,omitzero" yaml:"escEditorRevampEnabled,omitempty"`
 	// Whether the Azure OAuth client for ESC onboarding is enabled.
 	EscOnboardingAzureOAuthClientEnabled bool `json:"escOnboardingAzureOAuthClientEnabled" yaml:"escOnboardingAzureOAuthClientEnabled"`
 	// Whether the GCP OAuth client for ESC onboarding is enabled.

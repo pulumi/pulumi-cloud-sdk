@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/cloud-sdk",
-    "version": "2026.8.24",
+    "version": "0.1.0",
     "description": "TypeScript client SDK for the Pulumi Cloud REST API",
     "license": "Apache-2.0",
     "author": "Pulumi Corporation",

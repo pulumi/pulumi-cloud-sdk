@@ -18,7 +18,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Type { get; set; }
 
         /// <summary>
-        /// Typed comparisons over queryable node fields, keyed by field name as listed in the graph schema (for example 'provider_version' or 'name').
+        /// Typed comparisons over queryable node fields, keyed by field name as listed in the graph schema (for example 'provider_version' or 'name'). A stack anchor's 'name' takes the org-free 'project/stack' spelling; the 'stack:&lt;org&gt;/&lt;project&gt;/&lt;stack&gt;' form reported as a stack node's id, and the 'org/project/stack' form used elsewhere in the API, are both rejected.
         /// </summary>
         [JsonProperty("fields")]
         public System.Collections.Generic.Dictionary<string, GraphFieldPredicate> Fields { get; set; }

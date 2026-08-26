@@ -30,7 +30,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string To { get; set; }
 
         /// <summary>
-        /// The edge type, for example 'provided_by' or 'pulumi:reference'.
+        /// The edge type, for example 'provided_by' or 'inferred_reference'.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

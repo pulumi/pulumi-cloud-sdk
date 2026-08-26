@@ -21,4 +21,6 @@ type GraphSchemaEdgeType struct {
 	// The traversal directions this edge type can be walked in, listed in the order 'in', 'out', 'both'. A traverse step naming a direction
 	// absent from this list is rejected.
 	Directions []GraphTraverseDirection `json:"directions" yaml:"directions"`
+	// How edges of this type are produced.
+	Basis GraphEdgeBasis `json:"basis" yaml:"basis"`
 }

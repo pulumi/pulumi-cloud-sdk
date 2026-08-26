@@ -17,7 +17,8 @@ type GraphNodeMatch struct {
 	// Resource nodes only: setting match.type on a stack selection is rejected.
 	Type string `json:"type,omitempty" yaml:"type,omitempty"`
 	// Typed comparisons over queryable node fields, keyed by field name as listed in the graph schema (for example 'provider_version' or
-	// 'name').
+	// 'name'). A stack anchor's 'name' takes the org-free 'project/stack' spelling; the 'stack:<org>/<project>/<stack>' form reported as a
+	// stack node's id, and the 'org/project/stack' form used elsewhere in the API, are both rejected.
 	Fields map[string]GraphFieldPredicate `json:"fields,omitempty" yaml:"fields,omitempty"`
 }
 

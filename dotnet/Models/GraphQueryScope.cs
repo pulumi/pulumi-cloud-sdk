@@ -18,7 +18,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public System.Collections.Generic.List<string> Accounts { get; set; }
 
         /// <summary>
-        /// Stack selectors in 'project/stack' form. The stack segment may be the literal '*' to select every stack in the project. Omitted means all stacks visible to the caller.
+        /// Stack selectors in 'project/stack' form. The stack segment may be the literal '*' to select every stack in the project. Never org-qualified: a query already runs inside one organization, so the 'org/project/stack' form used elsewhere in the API — and reported as a stack node's id — is rejected here with a 400. Omitted means all stacks visible to the caller.
         /// </summary>
         [JsonProperty("stacks")]
         public System.Collections.Generic.List<string> Stacks { get; set; }
