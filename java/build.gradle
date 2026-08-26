@@ -110,12 +110,15 @@ publishing {
     }
 }
 
-if (publishRepoUsername) {
-    nexusPublishing {
-        repositories {
-            sonatype {
-                nexusUrl.set(uri(publishStagingURL))
-                snapshotRepositoryUrl.set(uri(publishRepoURL))
+// Registered unconditionally so the Sonatype tasks exist even when the
+// credentials are absent. Refusing the release is the job of the task-graph
+// check below, which can say which variable is missing.
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri(publishStagingURL))
+            snapshotRepositoryUrl.set(uri(publishRepoURL))
+            if (publishRepoUsername) {
                 username = publishRepoUsername
                 password = publishRepoPassword
             }
@@ -127,5 +130,24 @@ if (signingKey) {
     signing {
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications.mainPublication
+    }
+}
+
+// Without this, absent credentials degrade a release into a silent success:
+// the signing block above is skipped, the publish tasks have nothing to push,
+// and the build still reports BUILD SUCCESSFUL having released nothing.
+gradle.taskGraph.whenReady { graph ->
+    if (!graph.allTasks.any { it.name.toLowerCase().contains('sonatype') }) {
+        return
+    }
+    def missing = [
+        SIGNING_KEY: signingKey,
+        SIGNING_PASSWORD: signingPassword,
+        PUBLISH_REPO_USERNAME: publishRepoUsername,
+        PUBLISH_REPO_PASSWORD: publishRepoPassword,
+    ].findAll { !it.value }.keySet()
+    if (missing) {
+        throw new GradleException(
+            "Refusing to publish: ${missing.join(', ')} not set in the environment")
     }
 }
