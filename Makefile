@@ -18,8 +18,11 @@ build_nodejs:
 	cd nodejs && npm ci && npm run build
 test_nodejs:
 	cd nodejs && npm test
+# --tag latest is explicit because the same-day release scheme produces a
+# hyphenated version (<y>.<m>.<d>-post<HHMM>), which semver reads as a
+# prerelease; npm then refuses to apply the latest tag implicitly.
 publish_nodejs:
-	cd nodejs && npm ci && npm run build && npm pkg set version=$(VERSION) && npm publish
+	cd nodejs && npm ci && npm run build && npm pkg set version=$(VERSION) && npm publish --tag latest
 
 build_python:
 	cd python && python3 -m venv .venv && .venv/bin/pip install --upgrade pip build && .venv/bin/python -m build .
