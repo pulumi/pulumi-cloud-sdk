@@ -43,9 +43,9 @@ class EscRange(PulumiAutoModelEncoder):
 
     def __init__(
         self,
+        environment: 'str',
         begin: 'EscPos',
         end: 'EscPos',
-        environment: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -65,6 +65,9 @@ class EscRange(PulumiAutoModelEncoder):
 
     @environment.setter
     def environment(self, environment: 'str'):
+        if environment is None:
+            raise ValueError("Invalid value for `environment`, must not be `None`")
+
         self._environment = environment
 
     @property

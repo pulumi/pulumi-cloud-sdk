@@ -10,7 +10,7 @@ type EnvironmentDiagnostic struct {
 	// The source range where the diagnostic occurred.
 	Range *EscRange `json:"range,omitempty" yaml:"range,omitempty"`
 	// A summary of the diagnostic message.
-	Summary string `json:"summary,omitempty" yaml:"summary,omitempty"`
+	Summary string `json:"summary" yaml:"summary"`
 	// The path within the environment definition where the diagnostic occurred.
 	Path string `json:"path,omitempty" yaml:"path,omitempty"`
 	// The severity of the diagnostic: "error" or "warning".

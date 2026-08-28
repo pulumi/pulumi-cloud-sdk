@@ -48,8 +48,8 @@ class EnvironmentDiagnostic(PulumiAutoModelEncoder):
 
     def __init__(
         self,
+        summary: 'str',
         range: 'EscRange' = None,
-        summary: 'str' = None,
         path: 'str' = None,
         severity: 'str' = None,
     ) -> None:
@@ -108,6 +108,9 @@ class EnvironmentDiagnostic(PulumiAutoModelEncoder):
 
     @summary.setter
     def summary(self, summary: 'str'):
+        if summary is None:
+            raise ValueError("Invalid value for `summary`, must not be `None`")
+
         self._summary = summary
 
     @property

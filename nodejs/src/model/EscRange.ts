@@ -18,7 +18,7 @@ import type { EscPos } from "./EscPos";
 
 
 export class EscRange {
-    environment?: string;
+    environment: string;
     begin: EscPos;
     end: EscPos;
 

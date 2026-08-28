@@ -18,7 +18,7 @@ import type { EscTrace } from "./EscTrace";
 
 
 export class EscValue {
-    value?: any;
+    value: any;
     secret?: boolean;
     unknown?: boolean;
     trace: EscTrace;

@@ -19,7 +19,7 @@ import type { EscRange } from "./EscRange";
 
 export class EnvironmentDiagnostic {
     range?: EscRange;
-    summary?: string;
+    summary: string;
     path?: string;
     severity?: string;
 

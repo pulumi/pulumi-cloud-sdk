@@ -9,7 +9,7 @@ package apitype
 type EscValue struct {
 	// Value holds the concrete representation of the value. May be nil, bool, json.Number, string, []Value, or
 	// map[string]Value.
-	Value any `json:"value,omitempty" yaml:"value,omitempty"`
+	Value any `json:"value" yaml:"value"`
 	// Secret is true if this value is secret.
 	Secret bool `json:"secret,omitzero" yaml:"secret,omitempty"`
 	// Unknown is true if this value is unknown.

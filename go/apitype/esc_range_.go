@@ -8,7 +8,7 @@ package apitype
 // A Range defines a range within an environment definition.
 type EscRange struct {
 	// The name of the environment.
-	Environment string `json:"environment,omitempty" yaml:"environment,omitempty"`
+	Environment string `json:"environment" yaml:"environment"`
 	// The beginning of the range.
 	Begin EscPos `json:"begin" yaml:"begin"`
 	// The end of the range.

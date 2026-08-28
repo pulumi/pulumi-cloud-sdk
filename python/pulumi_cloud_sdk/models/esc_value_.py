@@ -48,8 +48,8 @@ class EscValue(PulumiAutoModelEncoder):
 
     def __init__(
         self,
+        value: 'Any',
         trace: 'EscTrace',
-        value: 'Any' = None,
         secret: 'bool' = False,
         unknown: 'bool' = False,
     ) -> None:
@@ -73,6 +73,9 @@ class EscValue(PulumiAutoModelEncoder):
 
     @value.setter
     def value(self, value: 'Any'):
+        if value is None:
+            raise ValueError("Invalid value for `value`, must not be `None`")
+
         self._value = value
 
     @property
