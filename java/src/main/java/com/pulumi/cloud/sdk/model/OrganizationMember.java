@@ -34,4 +34,7 @@ public class OrganizationMember {
 
     // Deprecated. Use GetOrganizationMemberTeams to list teams.
     public List<String> teams;
+
+    // Suspended indicates that the membership is suspended: the member keeps their place in the organization but has no access until an administrator restores them. Suspended members are only included in responses when explicitly requested.
+    public boolean suspended;
 }

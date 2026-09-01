@@ -629,6 +629,7 @@ from .organization_invite_role_ import OrganizationInviteRole
 from .organization_kind_ import OrganizationKind
 from .organization_locked_status_ import OrganizationLockedStatus
 from .organization_member_ import OrganizationMember
+from .organization_member_kind_ import OrganizationMemberKind
 from .organization_metadata_ import OrganizationMetadata
 from .organization_role_ import OrganizationRole
 from .organization_summary_ import OrganizationSummary

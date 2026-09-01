@@ -93,6 +93,7 @@ import { OidcIssuerUpdateRequest } from "../model/OidcIssuerUpdateRequest";
 import { Organization } from "../model/Organization";
 import { OrganizationAuditLogExportSettings } from "../model/OrganizationAuditLogExportSettings";
 import { OrganizationMember } from "../model/OrganizationMember";
+import { OrganizationMemberKind } from "../model/OrganizationMemberKind";
 import { OrganizationMetadata } from "../model/OrganizationMetadata";
 import { OrganizationSummaryWithRole } from "../model/OrganizationSummaryWithRole";
 import { PackageUsageResponse } from "../model/PackageUsageResponse";
@@ -4851,7 +4852,8 @@ export class Organizations {
         params: {
             orgName: string,
             continuationToken?: string,
-            type?: string,
+            includeSuspended?: boolean,
+            type?: OrganizationMemberKind,
         },
     ): Promise<ListOrganizationMembersResponse> {
         if (params === undefined) {
@@ -4869,6 +4871,9 @@ export class Organizations {
 
         if (params.continuationToken !== undefined) {
             __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.includeSuspended !== undefined) {
+            __requestOptions.setQueryParam("includeSuspended", params.includeSuspended);
         }
         if (params.type !== undefined) {
             __requestOptions.setQueryParam("type", params.type);

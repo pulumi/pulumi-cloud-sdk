@@ -58,5 +58,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("teams")]
         public System.Collections.Generic.List<string> Teams { get; set; }
+
+        /// <summary>
+        /// Suspended indicates that the membership is suspended: the member keeps their place in the organization but has no access until an administrator restores them. Suspended members are only included in responses when explicitly requested.
+        /// </summary>
+        [JsonProperty("suspended")]
+        public bool Suspended { get; set; }
     }
 }

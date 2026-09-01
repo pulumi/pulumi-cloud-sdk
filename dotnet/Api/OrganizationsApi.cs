@@ -1544,13 +1544,14 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<System.Collections.Generic.List<CustomerManagedKey>>(request);
         }
 
-        public ListOrganizationMembersResponse ListOrganizationMembers(string orgName, string continuationToken, string type) {
+        public ListOrganizationMembersResponse ListOrganizationMembers(string orgName, string continuationToken, bool? includeSuspended, OrganizationMemberKind? type) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListOrganizationMembers");
             }
             var request = new ApiRequest("GET", "/api/orgs/{orgName}/members");
             request.PathParam("orgName", orgName);
             request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("includeSuspended", includeSuspended);
             request.QueryParam("type", type);
             request.Produces("application/json");
             return this.client.Call<ListOrganizationMembersResponse>(request);

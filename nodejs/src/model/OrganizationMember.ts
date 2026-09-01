@@ -29,6 +29,7 @@ export class OrganizationMember {
     links?: MemberLinks;
     fgaRole: FGARole;
     teams?: string[];
+    suspended?: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationMember.fixupPrototype;

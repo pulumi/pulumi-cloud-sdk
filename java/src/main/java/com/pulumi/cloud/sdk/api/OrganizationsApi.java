@@ -1559,13 +1559,14 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<List<CustomerManagedKey>>() {});
     }
 
-    public ListOrganizationMembersResponse listOrganizationMembers(String orgName, String continuationToken, String type_) {
+    public ListOrganizationMembersResponse listOrganizationMembers(String orgName, String continuationToken, Boolean includeSuspended, OrganizationMemberKind type_) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listOrganizationMembers");
         }
         ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/members");
         $request.pathParam("orgName", orgName);
         $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("includeSuspended", includeSuspended);
         $request.queryParam("type", type_);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<ListOrganizationMembersResponse>() {});

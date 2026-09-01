@@ -5615,7 +5615,8 @@ class OrganizationsApi(object):
         self,
         org_name: 'str',
         continuation_token: 'str' = None,
-        type: 'str' = None,
+        include_suspended: 'bool' = None,
+        type: 'OrganizationMemberKind' = None,
         _request_timeout: int = None,
     ) -> 'ListOrganizationMembersResponse':
         # verify the required parameter 'org_name' is set
@@ -5631,6 +5632,8 @@ class OrganizationsApi(object):
         query_params = {}
         if continuation_token is not None:
             query_params['continuationToken'] = continuation_token
+        if include_suspended is not None:
+            query_params['includeSuspended'] = include_suspended
         if type is not None:
             query_params['type'] = type
 

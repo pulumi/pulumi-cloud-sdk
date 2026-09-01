@@ -30,4 +30,8 @@ type OrganizationMember struct {
 	FGARole FGARole `json:"fgaRole" yaml:"fgaRole"`
 	// Deprecated. Use GetOrganizationMemberTeams to list teams.
 	Teams []string `json:"teams,omitempty" yaml:"teams,omitempty"`
+	// Suspended indicates that the membership is suspended: the member keeps their
+	// place in the organization but has no access until an administrator restores them.
+	// Suspended members are only included in responses when explicitly requested.
+	Suspended bool `json:"suspended,omitzero" yaml:"suspended,omitempty"`
 }

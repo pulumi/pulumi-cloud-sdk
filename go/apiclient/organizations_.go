@@ -6000,7 +6000,8 @@ func (p *CloudClient) ListOrganizationKeys(
 type InterceptorForListOrganizationMembers struct {
 	OrgName           string
 	ContinuationToken *string
-	Type              *string
+	IncludeSuspended  *bool
+	Type              *ext1.OrganizationMemberKind
 	ExtraHeaders      []http.Header
 }
 
@@ -6008,13 +6009,15 @@ func (p *CloudClient) ListOrganizationMembers(
 	ctx context.Context,
 	orgName string,
 	continuationToken *string,
-	type_ *string,
+	includeSuspended *bool,
+	type_ *ext1.OrganizationMemberKind,
 	extraHeaders ...http.Header,
 ) (*ext1.ListOrganizationMembersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrganizationMembers{
 			OrgName:           orgName,
 			ContinuationToken: continuationToken,
+			IncludeSuspended:  includeSuspended,
 			Type:              type_,
 			ExtraHeaders:      extraHeaders,
 		}
@@ -6040,6 +6043,7 @@ func (p *CloudClient) ListOrganizationMembers(
 		},
 		map[string]any{
 			"continuationToken": continuationToken,
+			"includeSuspended":  includeSuspended,
 			"type":              type_,
 		},
 	)

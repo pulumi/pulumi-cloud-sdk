@@ -642,6 +642,7 @@ export * from "./OrganizationInviteRole";
 export * from "./OrganizationKind";
 export * from "./OrganizationLockedStatus";
 export * from "./OrganizationMember";
+export * from "./OrganizationMemberKind";
 export * from "./OrganizationMetadata";
 export * from "./OrganizationRole";
 export * from "./OrganizationSummary";

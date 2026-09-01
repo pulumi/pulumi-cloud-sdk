@@ -39,7 +39,7 @@ func TestErrorResponseWithJSONBody(t *testing.T) {
 
 	client := errorClient(http.StatusNotFound, `{"code":404,"message":"organization not found"}`)
 
-	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil)
+	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil, nil)
 	if err == nil {
 		t.Fatal("expected an error for a 404 response, got nil")
 	}
@@ -69,7 +69,7 @@ func TestErrorResponseWithNonJSONBody(t *testing.T) {
 
 	client := errorClient(http.StatusBadGateway, "upstream exploded")
 
-	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil)
+	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil, nil)
 	if err == nil {
 		t.Fatal("expected an error for a 502 response, got nil")
 	}
@@ -91,7 +91,7 @@ func TestConflictIsRecognised(t *testing.T) {
 
 	client := errorClient(http.StatusConflict, `{"code":409,"message":"already exists"}`)
 
-	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil)
+	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil, nil)
 
 	var apiErr *apiclient.APIError
 	if !errors.As(err, &apiErr) {
@@ -118,7 +118,7 @@ func TestTransportFailureIsWrappedNotAnAPIError(t *testing.T) {
 		},
 	}
 
-	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil)
+	_, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil, nil)
 	if err == nil {
 		t.Fatal("expected an error when the executor fails, got nil")
 	}

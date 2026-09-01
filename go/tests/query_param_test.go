@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"github.com/pulumi/pulumi-cloud-sdk/go/apiclient"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 // captureExecutor records the request it is handed and replies with a canned
@@ -50,8 +51,8 @@ func TestQueryParamsAreRendered(t *testing.T) {
 	client, request := captureExecutor(t, http.StatusOK, `{"members":[]}`)
 
 	token := "next-page"
-	memberType := "backend"
-	if _, err := client.ListOrganizationMembers(context.Background(), "acme", &token, &memberType); err != nil {
+	memberType := apitype.OrganizationMemberKindBackend
+	if _, err := client.ListOrganizationMembers(context.Background(), "acme", &token, nil, &memberType); err != nil {
 		t.Fatalf("ListOrganizationMembers: %v", err)
 	}
 
@@ -64,7 +65,7 @@ func TestQueryParamsAreRendered(t *testing.T) {
 	if got := query.Get("continuationToken"); got != token {
 		t.Errorf("continuationToken: got %q, want %q", got, token)
 	}
-	if got := query.Get("type"); got != memberType {
+	if got := query.Get("type"); got != string(memberType) {
 		t.Errorf("type: got %q, want %q", got, memberType)
 	}
 }
@@ -76,12 +77,12 @@ func TestNilQueryParamsAreDropped(t *testing.T) {
 
 	client, request := captureExecutor(t, http.StatusOK, `{"members":[]}`)
 
-	if _, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil); err != nil {
+	if _, err := client.ListOrganizationMembers(context.Background(), "acme", nil, nil, nil); err != nil {
 		t.Fatalf("ListOrganizationMembers: %v", err)
 	}
 
 	query := request().URL.Query()
-	for _, key := range []string{"continuationToken", "type"} {
+	for _, key := range []string{"continuationToken", "includeSuspended", "type"} {
 		if _, present := query[key]; present {
 			t.Errorf("%s should be absent when nil, got %q", key, query.Get(key))
 		}
@@ -95,7 +96,7 @@ func TestPathParamsAreEscaped(t *testing.T) {
 
 	client, request := captureExecutor(t, http.StatusOK, `{"members":[]}`)
 
-	if _, err := client.ListOrganizationMembers(context.Background(), "acme/evil", nil, nil); err != nil {
+	if _, err := client.ListOrganizationMembers(context.Background(), "acme/evil", nil, nil, nil); err != nil {
 		t.Fatalf("ListOrganizationMembers: %v", err)
 	}
 
