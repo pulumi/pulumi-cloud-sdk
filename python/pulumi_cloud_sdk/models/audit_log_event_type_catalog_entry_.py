@@ -23,6 +23,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
     :var requires_org_admin: bool - declared
     :var requires_stack_admin: bool - declared
     :var authentication_failure: bool - declared
+    :var deprecated: bool - declared
+    :var replaced_by: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'event': 'str',
@@ -31,6 +33,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
         'requires_org_admin': 'bool',
         'requires_stack_admin': 'bool',
         'authentication_failure': 'bool',
+        'deprecated': 'bool',
+        'replaced_by': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -40,6 +44,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
         'requires_org_admin': 'requiresOrgAdmin',
         'requires_stack_admin': 'requiresStackAdmin',
         'authentication_failure': 'authenticationFailure',
+        'deprecated': 'deprecated',
+        'replaced_by': 'replacedBy',
     }
 
     FIELDS_event = 'event'
@@ -48,6 +54,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
     FIELDS_requires_org_admin = 'requiresOrgAdmin'
     FIELDS_requires_stack_admin = 'requiresStackAdmin'
     FIELDS_authentication_failure = 'authenticationFailure'
+    FIELDS_deprecated = 'deprecated'
+    FIELDS_replaced_by = 'replacedBy'
 
     _event: 'str'
     _display_name: 'str'
@@ -55,6 +63,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
     _requires_org_admin: 'bool'
     _requires_stack_admin: 'bool'
     _authentication_failure: 'bool'
+    _deprecated: 'bool'
+    _replaced_by: 'str'
 
     def __init__(
         self,
@@ -64,6 +74,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
         requires_org_admin: 'bool',
         requires_stack_admin: 'bool',
         authentication_failure: 'bool',
+        deprecated: 'bool',
+        replaced_by: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -73,6 +85,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
         self.requires_org_admin = requires_org_admin
         self.requires_stack_admin = requires_stack_admin
         self.authentication_failure = authentication_failure
+        self.deprecated = deprecated
+        self.replaced_by = replaced_by
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AuditLogEventTypeCatalogEntry):
@@ -82,6 +96,8 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
             self._requires_org_admin = source._requires_org_admin
             self._requires_stack_admin = source._requires_stack_admin
             self._authentication_failure = source._authentication_failure
+            self._deprecated = source._deprecated
+            self._replaced_by = source._replaced_by
 
     @property
     def event(self) -> 'str':
@@ -148,6 +164,25 @@ class AuditLogEventTypeCatalogEntry(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `authentication_failure`, must not be `None`")
 
         self._authentication_failure = authentication_failure
+
+    @property
+    def deprecated(self) -> 'bool':
+        return self._deprecated
+
+    @deprecated.setter
+    def deprecated(self, deprecated: 'bool'):
+        if deprecated is None:
+            raise ValueError("Invalid value for `deprecated`, must not be `None`")
+
+        self._deprecated = deprecated
+
+    @property
+    def replaced_by(self) -> 'str':
+        return self._replaced_by
+
+    @replaced_by.setter
+    def replaced_by(self, replaced_by: 'str'):
+        self._replaced_by = replaced_by
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AuditLogEventTypeCatalogEntry):

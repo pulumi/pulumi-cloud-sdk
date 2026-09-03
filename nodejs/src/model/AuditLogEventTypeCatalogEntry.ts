@@ -21,6 +21,8 @@ export class AuditLogEventTypeCatalogEntry {
     requiresOrgAdmin: boolean;
     requiresStackAdmin: boolean;
     authenticationFailure: boolean;
+    deprecated: boolean;
+    replacedBy?: string;
 
     getFixupPrototypeFunction() {
         return AuditLogEventTypeCatalogEntry.fixupPrototype;

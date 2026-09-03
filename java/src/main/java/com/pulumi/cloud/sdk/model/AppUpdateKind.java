@@ -20,6 +20,8 @@ public enum AppUpdateKind {
     Destroy("destroy"),
     // An update that entails importing a raw checkpoint file.
     Import("import"),
+    // An update that entails importing one or more resources.
+    ResourceImport("resource-import"),
     // A preview of an update operation.
     PreviewUpdate("Pupdate"),
     // A preview of a refresh operation.

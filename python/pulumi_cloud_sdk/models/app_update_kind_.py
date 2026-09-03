@@ -17,6 +17,7 @@ class AppUpdateKind(AutoEnumEncoder):
     Rename = "rename"
     Destroy = "destroy"
     Import = "import"
+    ResourceImport = "resource-import"
     PreviewUpdate = "Pupdate"
     PreviewRefresh = "Prefresh"
     PreviewDestroy = "Pdestroy"
@@ -32,6 +33,7 @@ class AppUpdateKind(AutoEnumEncoder):
             AppUpdateKind.Rename,
             AppUpdateKind.Destroy,
             AppUpdateKind.Import,
+            AppUpdateKind.ResourceImport,
             AppUpdateKind.PreviewUpdate,
             AppUpdateKind.PreviewRefresh,
             AppUpdateKind.PreviewDestroy,
@@ -48,6 +50,7 @@ class AppUpdateKind(AutoEnumEncoder):
             AppUpdateKind.Rename.value,
             AppUpdateKind.Destroy.value,
             AppUpdateKind.Import.value,
+            AppUpdateKind.ResourceImport.value,
             AppUpdateKind.PreviewUpdate.value,
             AppUpdateKind.PreviewRefresh.value,
             AppUpdateKind.PreviewDestroy.value,

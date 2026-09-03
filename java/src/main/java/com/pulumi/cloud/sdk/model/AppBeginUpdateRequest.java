@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class AppBeginUpdateRequest {
-    // UpdateKind specifies the type of update (update, preview, refresh, destroy).
+    // UpdateKind specifies the type of update (update, preview, refresh, destroy, resource-import).
     public AppUpdateKind updateKind;
 
     // Program contains the program metadata and configuration.

@@ -48,6 +48,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         Import,
 
         /// <summary>
+        /// An update that entails importing one or more resources.
+        /// </summary>
+        [EnumMember(Value = "resource-import")]
+        ResourceImport,
+
+        /// <summary>
         /// A preview of an update operation.
         /// </summary>
         [EnumMember(Value = "Pupdate")]

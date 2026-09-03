@@ -8,7 +8,7 @@ package apitype
 // BeginUpdateRequest is the combined request for creating and starting an update. This endpoint combines the functionality of CreateUpdate
 // and StartUpdate into a single API call to reduce latency during startup.
 type AppBeginUpdateRequest struct {
-	// UpdateKind specifies the type of update (update, preview, refresh, destroy).
+	// UpdateKind specifies the type of update (update, preview, refresh, destroy, resource-import).
 	UpdateKind AppUpdateKind `json:"updateKind" yaml:"updateKind"`
 	// Program contains the program metadata and configuration.
 	Program AppUpdateProgramRequest `json:"program" yaml:"program"`

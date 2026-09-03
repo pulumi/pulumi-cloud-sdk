@@ -31,6 +31,9 @@ const (
 	// An update that entails importing a raw checkpoint file.
 	AppUpdateKindImport AppUpdateKind = "import"
 
+	// An update that entails importing one or more resources.
+	AppUpdateKindResourceImport AppUpdateKind = "resource-import"
+
 	// A preview of an update operation.
 	AppUpdateKindPreviewUpdate AppUpdateKind = "Pupdate"
 
@@ -55,6 +58,7 @@ func (v AppUpdateKind) AllValues() []AppUpdateKind {
 		AppUpdateKindRename,
 		AppUpdateKindDestroy,
 		AppUpdateKindImport,
+		AppUpdateKindResourceImport,
 		AppUpdateKindPreviewUpdate,
 		AppUpdateKindPreviewRefresh,
 		AppUpdateKindPreviewDestroy,
@@ -76,6 +80,8 @@ func (v AppUpdateKind) IsValid() bool {
 	case AppUpdateKindDestroy:
 		return true
 	case AppUpdateKindImport:
+		return true
+	case AppUpdateKindResourceImport:
 		return true
 	case AppUpdateKindPreviewUpdate:
 		return true
@@ -106,6 +112,8 @@ func (v AppUpdateKind) openapiName() string {
 		return "Destroy"
 	case AppUpdateKindImport:
 		return "Import"
+	case AppUpdateKindResourceImport:
+		return "ResourceImport"
 	case AppUpdateKindPreviewUpdate:
 		return "PreviewUpdate"
 	case AppUpdateKindPreviewRefresh:

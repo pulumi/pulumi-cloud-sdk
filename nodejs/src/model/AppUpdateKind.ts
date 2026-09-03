@@ -21,6 +21,7 @@ export enum AppUpdateKind {
     Rename = "rename",
     Destroy = "destroy",
     Import = "import",
+    ResourceImport = "resource-import",
     PreviewUpdate = "Pupdate",
     PreviewRefresh = "Prefresh",
     PreviewDestroy = "Pdestroy",

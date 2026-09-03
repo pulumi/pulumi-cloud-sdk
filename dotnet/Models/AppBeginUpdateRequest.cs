@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class AppBeginUpdateRequest {
         /// <summary>
-        /// UpdateKind specifies the type of update (update, preview, refresh, destroy).
+        /// UpdateKind specifies the type of update (update, preview, refresh, destroy, resource-import).
         /// </summary>
         [JsonProperty("updateKind")]
         public AppUpdateKind UpdateKind { get; set; }

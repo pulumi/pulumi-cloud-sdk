@@ -28,4 +28,10 @@ public class AuditLogEventTypeCatalogEntry {
 
     // Whether this event records a failed authorization check rather than a completed action.
     public boolean authenticationFailure;
+
+    // Whether this event type is no longer recorded. A deprecated event type stays in the catalog because it names events already in an organization's audit log and exports, and stays valid as an 'eventFilter' value.
+    public boolean deprecated;
+
+    // The identifier of the event type that supersedes this one, absent when this event type is not deprecated or has no successor.
+    public String replacedBy;
 }

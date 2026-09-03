@@ -46,5 +46,17 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("authenticationFailure")]
         public bool AuthenticationFailure { get; set; }
+
+        /// <summary>
+        /// Whether this event type is no longer recorded. A deprecated event type stays in the catalog because it names events already in an organization's audit log and exports, and stays valid as an 'eventFilter' value.
+        /// </summary>
+        [JsonProperty("deprecated")]
+        public bool Deprecated { get; set; }
+
+        /// <summary>
+        /// The identifier of the event type that supersedes this one, absent when this event type is not deprecated or has no successor.
+        /// </summary>
+        [JsonProperty("replacedBy")]
+        public string ReplacedBy { get; set; }
     }
 }
