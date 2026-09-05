@@ -1079,6 +1079,24 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<StackMetadata>(request);
         }
 
+        public StackOutputsResponse GetStackOutputs(string orgName, string projectName, string stackName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetStackOutputs");
+            }
+            if (projectName == null) {
+                throw new ArgumentNullException(nameof(projectName), "Missing required parameter 'projectName' when calling GetStackOutputs");
+            }
+            if (stackName == null) {
+                throw new ArgumentNullException(nameof(stackName), "Missing required parameter 'stackName' when calling GetStackOutputs");
+            }
+            var request = new ApiRequest("GET", "/api/stacks/{orgName}/{projectName}/{stackName}/outputs");
+            request.PathParam("orgName", orgName);
+            request.PathParam("projectName", projectName);
+            request.PathParam("stackName", stackName);
+            request.Produces("application/json");
+            return this.client.Call<StackOutputsResponse>(request);
+        }
+
         public StackOverviewResponse GetStackOverview(string orgName, string projectName, string stackName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetStackOverview");

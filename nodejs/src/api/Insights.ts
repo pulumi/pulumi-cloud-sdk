@@ -461,6 +461,27 @@ export class Insights {
         });
     }
 
+    public GetGraphQuerySchema__generateUrl(): string {
+        let url = this.basePath + "insights/graph/schema";
+        return url;
+    }
+
+    public GetGraphQuerySchema(): Promise<GraphSchemaResponse> {
+        const __path = this.GetGraphQuerySchema__generateUrl();
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.setProduce("text/markdown");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<GraphSchemaResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                GraphSchemaResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public GetGraphSchema__generateUrl(orgName: string): string {
         let url = this.basePath + "insights/{orgName}/graph/schema";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));

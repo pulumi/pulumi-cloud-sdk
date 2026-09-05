@@ -800,6 +800,7 @@ export * from "./StackDeploymentsMetadataResponse";
 export * from "./StackDriftStatus";
 export * from "./StackMetadata";
 export * from "./StackNotificationSettings";
+export * from "./StackOutputsResponse";
 export * from "./StackOverviewResponse";
 export * from "./StackPermission";
 export * from "./StackReference";

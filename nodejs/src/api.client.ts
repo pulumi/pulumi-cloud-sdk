@@ -61,12 +61,25 @@ type ResponseKind = "json" | "binary" | "text";
  * Media types whose body is raw bytes rather than a text or JSON document, and
  * which therefore have to be read as an ArrayBuffer. Mirrors
  * `analyzer.IsBinaryMediaType` in the code generator, which types the
- * corresponding operations as `Promise<ArrayBuffer>`.
+ * corresponding operations as `Promise<ArrayBuffer>`. Also used for request
+ * bodies, which are sent unencoded.
  */
 const binaryMediaTypes = ["application/octet-stream", "application/x-tar"];
 
 function isBinaryMediaType(mediaType: string): boolean {
     return binaryMediaTypes.includes(mediaType);
+}
+
+/**
+ * Media types whose body is the text of the document itself, with no JSON
+ * envelope to encode. Mirrors `analyzer.IsUnencodedTextMediaType` in the code
+ * generator, which types the corresponding request bodies as `string` and makes
+ * the Go dispatch read them verbatim.
+ */
+const unencodedTextMediaTypes = ["application/x-yaml", "application/yaml", "text/plain", "text/markdown"];
+
+function isUnencodedTextMediaType(mediaType: string): boolean {
+    return unencodedTextMediaTypes.includes(mediaType);
 }
 
 export class ApiClient {
@@ -263,8 +276,12 @@ export class ApiClient {
     private encodeBody(requestOptions: ApiRequest, headers: Record<string, string>): RequestInit["body"] {
         if (requestOptions.hasBodyParam) {
             const consume = requestOptions.consumes?.[0] ?? "application/json";
-            if (consume === "application/octet-stream") {
-                headers["Content-Type"] = "application/octet-stream";
+            if (isBinaryMediaType(consume) || isUnencodedTextMediaType(consume)) {
+                // Send the body exactly as supplied. Raw bytes and unencoded text
+                // differ in how a response is read, but as a request body neither
+                // gets an encoding pass: JSON.stringify would quote and escape
+                // text into something the server cannot parse.
+                headers["Content-Type"] = consume;
                 return requestOptions.body as RequestInit["body"];
             }
             headers["Content-Type"] = "application/json";

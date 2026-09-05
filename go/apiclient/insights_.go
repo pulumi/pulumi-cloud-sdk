@@ -491,6 +491,53 @@ func (p *CloudClient) GetDiscoveredStack(
 	return &result, nil
 }
 
+type InterceptorForGetGraphQuerySchema struct {
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetGraphQuerySchema(
+	ctx context.Context,
+	extraHeaders ...http.Header,
+) (*ext1.GraphSchemaResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetGraphQuerySchema{
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GraphSchemaResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGraphQuerySchema: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/insights/graph/schema",
+		nil,
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result ext1.GraphSchemaResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForGetGraphSchema struct {
 	OrgName      string
 	ExtraHeaders []http.Header

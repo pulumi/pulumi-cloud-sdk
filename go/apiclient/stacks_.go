@@ -2943,6 +2943,66 @@ func (p *CloudClient) GetStackMetadata(
 	return &result, nil
 }
 
+type InterceptorForGetStackOutputs struct {
+	OrgName      string
+	ProjectName  string
+	StackName    string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetStackOutputs(
+	ctx context.Context,
+	orgName string,
+	projectName string,
+	stackName string,
+	extraHeaders ...http.Header,
+) (*ext1.StackOutputsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetStackOutputs{
+			OrgName:      orgName,
+			ProjectName:  projectName,
+			StackName:    stackName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackOutputsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackOutputs: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/stacks/{orgName}/{projectName}/{stackName}/outputs",
+		map[string]any{
+			"orgName":     orgName,
+			"projectName": projectName,
+			"stackName":   stackName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result ext1.StackOutputsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForGetStackOverview struct {
 	OrgName      string
 	ProjectName  string

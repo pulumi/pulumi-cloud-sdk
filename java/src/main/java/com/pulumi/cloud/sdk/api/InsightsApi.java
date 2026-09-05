@@ -157,6 +157,13 @@ public final class InsightsApi {
         return this.client.call($request, new TypeReference<GetDiscoveredStackResponse>() {});
     }
 
+    public GraphSchemaResponse getGraphQuerySchema() {
+        ApiRequest $request = new ApiRequest("GET", "/api/insights/graph/schema");
+        $request.produces("application/json");
+        $request.produces("text/markdown");
+        return this.client.call($request, new TypeReference<GraphSchemaResponse>() {});
+    }
+
     public GraphSchemaResponse getGraphSchema(String orgName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getGraphSchema");

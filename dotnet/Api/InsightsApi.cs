@@ -154,6 +154,13 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<GetDiscoveredStackResponse>(request);
         }
 
+        public GraphSchemaResponse GetGraphQuerySchema() {
+            var request = new ApiRequest("GET", "/api/insights/graph/schema");
+            request.Produces("application/json");
+            request.Produces("text/markdown");
+            return this.client.Call<GraphSchemaResponse>(request);
+        }
+
         public GraphSchemaResponse GetGraphSchema(string orgName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetGraphSchema");

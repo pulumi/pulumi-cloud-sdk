@@ -66,6 +66,7 @@ import { ListStackCollaboratorsResponse } from "../model/ListStackCollaboratorsR
 import { ListTeamsByStackResponse } from "../model/ListTeamsByStackResponse";
 import { PolicyGroupMode } from "../model/PolicyGroupMode";
 import { StackMetadata } from "../model/StackMetadata";
+import { StackOutputsResponse } from "../model/StackOutputsResponse";
 import { StackOverviewResponse } from "../model/StackOverviewResponse";
 import { StackTag } from "../model/StackTag";
 import { TransferStackRequest } from "../model/TransferStackRequest";
@@ -2928,6 +2929,58 @@ export class Stacks {
         return this.client.callWithOptions<StackMetadata>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 StackMetadata.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetStackOutputs__generateUrl(
+        orgName: string,
+        projectName: string,
+        stackName: string,
+    ): string {
+        let url = this.basePath + "stacks/{orgName}/{projectName}/{stackName}/outputs";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{projectName}", encodeURIComponent(String(projectName)));
+        url = url.replace("{stackName}", encodeURIComponent(String(stackName)));
+        return url;
+    }
+
+    public GetStackOutputs(
+        params: {
+            orgName: string,
+            projectName: string,
+            stackName: string,
+        },
+    ): Promise<StackOutputsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetStackOutputs.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetStackOutputs.");
+        }
+
+        // verify required parameter 'projectName' is not null or undefined
+        if (params.projectName === null || params.projectName === undefined) {
+            throw new Error("Required parameter projectName was null or undefined when calling GetStackOutputs.");
+        }
+
+        // verify required parameter 'stackName' is not null or undefined
+        if (params.stackName === null || params.stackName === undefined) {
+            throw new Error("Required parameter stackName was null or undefined when calling GetStackOutputs.");
+        }
+
+        const __path = this.GetStackOutputs__generateUrl(params.orgName, params.projectName, params.stackName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<StackOutputsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                StackOutputsResponse.fixupPrototype(__res0);
             }
         });
     }

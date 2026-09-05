@@ -305,6 +305,7 @@ export class Environments {
             orgName: string,
             showSecrets?: boolean,
         },
+        request: string,
     ): Promise<EnvironmentResponse> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling CheckYAML_esc.");
@@ -315,6 +316,11 @@ export class Environments {
             throw new Error("Required parameter orgName was null or undefined when calling CheckYAML_esc.");
         }
 
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CheckYAML_esc.");
+        }
+
         const __path = this.CheckYAML_esc__generateUrl(params.orgName);
 
         let __requestOptions = new ApiRequest();
@@ -322,7 +328,10 @@ export class Environments {
         if (params.showSecrets !== undefined) {
             __requestOptions.setQueryParam("showSecrets", params.showSecrets);
         }
+        __requestOptions.setConsume("application/x-yaml");
         __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
         __requestOptions.method = "POST";
 
         return this.client.callWithOptions<EnvironmentResponse>(__path, __requestOptions, (__res0) => {
@@ -343,6 +352,7 @@ export class Environments {
             orgName: string,
             showSecrets?: boolean,
         },
+        request: string,
     ): Promise<EnvironmentResponse> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling CheckYAML_preview.");
@@ -353,6 +363,11 @@ export class Environments {
             throw new Error("Required parameter orgName was null or undefined when calling CheckYAML_preview.");
         }
 
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CheckYAML_preview.");
+        }
+
         const __path = this.CheckYAML_preview__generateUrl(params.orgName);
 
         let __requestOptions = new ApiRequest();
@@ -360,7 +375,10 @@ export class Environments {
         if (params.showSecrets !== undefined) {
             __requestOptions.setQueryParam("showSecrets", params.showSecrets);
         }
+        __requestOptions.setConsume("application/x-yaml");
         __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
         __requestOptions.method = "POST";
 
         return this.client.callWithOptions<EnvironmentResponse>(__path, __requestOptions, (__res0) => {

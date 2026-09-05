@@ -93,26 +93,36 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<CheckEnvironmentResponse>(request);
         }
 
-        public EnvironmentResponse CheckYAML_esc(string orgName, bool? showSecrets) {
+        public EnvironmentResponse CheckYAML_esc(string orgName, string request, bool? showSecrets) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CheckYAML_esc");
             }
-            var request = new ApiRequest("POST", "/api/esc/environments/{orgName}/yaml/check");
-            request.PathParam("orgName", orgName);
-            request.QueryParam("showSecrets", showSecrets);
-            request.Produces("application/json");
-            return this.client.Call<EnvironmentResponse>(request);
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CheckYAML_esc");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/esc/environments/{orgName}/yaml/check");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("showSecrets", showSecrets);
+            apiRequest.Consumes("application/x-yaml");
+            apiRequest.Produces("application/json");
+            return this.client.Call<EnvironmentResponse>(apiRequest);
         }
 
-        public EnvironmentResponse CheckYAML_preview(string orgName, bool? showSecrets) {
+        public EnvironmentResponse CheckYAML_preview(string orgName, string request, bool? showSecrets) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CheckYAML_preview");
             }
-            var request = new ApiRequest("POST", "/api/preview/environments/{orgName}/yaml/check");
-            request.PathParam("orgName", orgName);
-            request.QueryParam("showSecrets", showSecrets);
-            request.Produces("application/json");
-            return this.client.Call<EnvironmentResponse>(request);
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CheckYAML_preview");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/preview/environments/{orgName}/yaml/check");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("showSecrets", showSecrets);
+            apiRequest.Consumes("application/x-yaml");
+            apiRequest.Produces("application/json");
+            return this.client.Call<EnvironmentResponse>(apiRequest);
         }
 
         public void CloneEnvironment(string orgName, string projectName, string envName, CloneEnvironmentRequest request) {

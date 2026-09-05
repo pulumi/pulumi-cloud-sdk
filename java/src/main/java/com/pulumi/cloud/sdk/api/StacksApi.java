@@ -1085,6 +1085,24 @@ public final class StacksApi {
         return this.client.call($request, new TypeReference<StackMetadata>() {});
     }
 
+    public StackOutputsResponse getStackOutputs(String orgName, String projectName, String stackName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getStackOutputs");
+        }
+        if (projectName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'projectName' when calling getStackOutputs");
+        }
+        if (stackName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'stackName' when calling getStackOutputs");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/stacks/{orgName}/{projectName}/{stackName}/outputs");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("projectName", projectName);
+        $request.pathParam("stackName", stackName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<StackOutputsResponse>() {});
+    }
+
     public StackOverviewResponse getStackOverview(String orgName, String projectName, String stackName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getStackOverview");

@@ -265,12 +265,16 @@ class EnvironmentsApi(object):
     def check_y_a_m_l_esc(
         self,
         org_name: 'str',
+        request: 'str',
         show_secrets: 'bool' = None,
         _request_timeout: int = None,
     ) -> 'EnvironmentResponse':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `check_y_a_m_l_esc`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `check_y_a_m_l_esc`")
 
         collection_formats = {}
         resource_path = '/api/esc/environments/{orgName}/yaml/check'
@@ -288,12 +292,14 @@ class EnvironmentsApi(object):
         local_var_files = {}
 
         body_params = None
+        if request is not None:
+            body_params = request
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/x-yaml'])
 
         # Authentication setting
         auth_settings = ['auth_token']
@@ -313,12 +319,16 @@ class EnvironmentsApi(object):
     def check_y_a_m_l_preview(
         self,
         org_name: 'str',
+        request: 'str',
         show_secrets: 'bool' = None,
         _request_timeout: int = None,
     ) -> 'EnvironmentResponse':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `check_y_a_m_l_preview`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `check_y_a_m_l_preview`")
 
         collection_formats = {}
         resource_path = '/api/preview/environments/{orgName}/yaml/check'
@@ -336,12 +346,14 @@ class EnvironmentsApi(object):
         local_var_files = {}
 
         body_params = None
+        if request is not None:
+            body_params = request
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/x-yaml'])
 
         # Authentication setting
         auth_settings = ['auth_token']

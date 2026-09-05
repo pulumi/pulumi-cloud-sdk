@@ -277,6 +277,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments_versions(
 type InterceptorForCheckYAML_esc struct {
 	OrgName      string
 	ShowSecrets  *bool
+	Request      string
 	ExtraHeaders []http.Header
 }
 
@@ -284,12 +285,14 @@ func (p *CloudClient) CheckYAML_esc(
 	ctx context.Context,
 	orgName string,
 	showSecrets *bool,
+	request string,
 	extraHeaders ...http.Header,
 ) (*ext1.EnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckYAML_esc{
 			OrgName:      orgName,
 			ShowSecrets:  showSecrets,
+			Request:      request,
 			ExtraHeaders: extraHeaders,
 		}
 		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
@@ -305,7 +308,7 @@ func (p *CloudClient) CheckYAML_esc(
 		}
 	}
 
-	req, err := p.createRequest(
+	req, err := p.createRequestWithRawBody(
 		ctx,
 		"POST",
 		"/api/esc/environments/{orgName}/yaml/check",
@@ -315,7 +318,9 @@ func (p *CloudClient) CheckYAML_esc(
 		map[string]any{
 			"showSecrets": showSecrets,
 		},
+		[]byte(request),
 	)
+	req.Header.Set("Content-Type", "application/x-yaml")
 	if err != nil {
 		return nil, err
 	}
@@ -334,6 +339,7 @@ func (p *CloudClient) CheckYAML_esc(
 type InterceptorForCheckYAML_preview struct {
 	OrgName      string
 	ShowSecrets  *bool
+	Request      string
 	ExtraHeaders []http.Header
 }
 
@@ -341,12 +347,14 @@ func (p *CloudClient) CheckYAML_preview(
 	ctx context.Context,
 	orgName string,
 	showSecrets *bool,
+	request string,
 	extraHeaders ...http.Header,
 ) (*ext1.EnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckYAML_preview{
 			OrgName:      orgName,
 			ShowSecrets:  showSecrets,
+			Request:      request,
 			ExtraHeaders: extraHeaders,
 		}
 		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
@@ -362,7 +370,7 @@ func (p *CloudClient) CheckYAML_preview(
 		}
 	}
 
-	req, err := p.createRequest(
+	req, err := p.createRequestWithRawBody(
 		ctx,
 		"POST",
 		"/api/preview/environments/{orgName}/yaml/check",
@@ -372,7 +380,9 @@ func (p *CloudClient) CheckYAML_preview(
 		map[string]any{
 			"showSecrets": showSecrets,
 		},
+		[]byte(request),
 	)
+	req.Header.Set("Content-Type", "application/x-yaml")
 	if err != nil {
 		return nil, err
 	}
@@ -6687,6 +6697,7 @@ func (p *CloudClient) UpdateEnvironment_esc_environments(
 		nil,
 		[]byte(request),
 	)
+	req.Header.Set("Content-Type", "application/x-yaml")
 	if err != nil {
 		return nil, err
 	}
@@ -6747,6 +6758,7 @@ func (p *CloudClient) UpdateEnvironment_preview_environments(
 		nil,
 		[]byte(request),
 	)
+	req.Header.Set("Content-Type", "application/x-yaml")
 	if err != nil {
 		return nil, err
 	}

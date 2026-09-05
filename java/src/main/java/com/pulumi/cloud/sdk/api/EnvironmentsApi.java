@@ -96,24 +96,34 @@ public final class EnvironmentsApi {
         return this.client.call($request, new TypeReference<CheckEnvironmentResponse>() {});
     }
 
-    public EnvironmentResponse checkYAML_esc(String orgName, Boolean showSecrets) {
+    public EnvironmentResponse checkYAML_esc(String orgName, String request, Boolean showSecrets) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling checkYAML_esc");
         }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling checkYAML_esc");
+        }
         ApiRequest $request = new ApiRequest("POST", "/api/esc/environments/{orgName}/yaml/check");
         $request.pathParam("orgName", orgName);
+        $request.body(request);
         $request.queryParam("showSecrets", showSecrets);
+        $request.consumes("application/x-yaml");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<EnvironmentResponse>() {});
     }
 
-    public EnvironmentResponse checkYAML_preview(String orgName, Boolean showSecrets) {
+    public EnvironmentResponse checkYAML_preview(String orgName, String request, Boolean showSecrets) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling checkYAML_preview");
         }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling checkYAML_preview");
+        }
         ApiRequest $request = new ApiRequest("POST", "/api/preview/environments/{orgName}/yaml/check");
         $request.pathParam("orgName", orgName);
+        $request.body(request);
         $request.queryParam("showSecrets", showSecrets);
+        $request.consumes("application/x-yaml");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<EnvironmentResponse>() {});
     }

@@ -785,6 +785,7 @@ from .stack_deployments_metadata_response_ import StackDeploymentsMetadataRespon
 from .stack_drift_status_ import StackDriftStatus
 from .stack_metadata_ import StackMetadata
 from .stack_notification_settings_ import StackNotificationSettings
+from .stack_outputs_response_ import StackOutputsResponse
 from .stack_overview_response_ import StackOverviewResponse
 from .stack_permission_ import StackPermission
 from .stack_reference_ import StackReference
