@@ -482,41 +482,6 @@ export class Insights {
         });
     }
 
-    public GetGraphSchema__generateUrl(orgName: string): string {
-        let url = this.basePath + "insights/{orgName}/graph/schema";
-        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
-        return url;
-    }
-
-    public GetGraphSchema(
-        params: {
-            orgName: string,
-        },
-    ): Promise<GraphSchemaResponse> {
-        if (params === undefined) {
-            throw new Error("Required parameter params was null or undefined when calling GetGraphSchema.");
-        }
-
-        // verify required parameter 'orgName' is not null or undefined
-        if (params.orgName === null || params.orgName === undefined) {
-            throw new Error("Required parameter orgName was null or undefined when calling GetGraphSchema.");
-        }
-
-        const __path = this.GetGraphSchema__generateUrl(params.orgName);
-
-        let __requestOptions = new ApiRequest();
-
-        __requestOptions.setProduce("application/json");
-        __requestOptions.setProduce("text/markdown");
-        __requestOptions.method = "GET";
-
-        return this.client.callWithOptions<GraphSchemaResponse>(__path, __requestOptions, (__res0) => {
-            if (__res0) {
-                GraphSchemaResponse.fixupPrototype(__res0);
-            }
-        });
-    }
-
     public GetInsightAccountTags__generateUrl(
         orgName: string,
         accountName: string,

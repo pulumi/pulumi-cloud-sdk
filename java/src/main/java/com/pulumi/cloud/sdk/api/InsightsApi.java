@@ -164,17 +164,6 @@ public final class InsightsApi {
         return this.client.call($request, new TypeReference<GraphSchemaResponse>() {});
     }
 
-    public GraphSchemaResponse getGraphSchema(String orgName) {
-        if (orgName == null) {
-            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getGraphSchema");
-        }
-        ApiRequest $request = new ApiRequest("GET", "/api/insights/{orgName}/graph/schema");
-        $request.pathParam("orgName", orgName);
-        $request.produces("application/json");
-        $request.produces("text/markdown");
-        return this.client.call($request, new TypeReference<GraphSchemaResponse>() {});
-    }
-
     public GetInsightAccountTagsResponse getInsightAccountTags(String orgName, String accountName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getInsightAccountTags");

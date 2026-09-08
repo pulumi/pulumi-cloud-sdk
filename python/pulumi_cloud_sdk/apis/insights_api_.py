@@ -540,51 +540,6 @@ class InsightsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
-    def get_graph_schema(
-        self,
-        org_name: 'str',
-        _request_timeout: int = None,
-    ) -> 'GraphSchemaResponse':
-        # verify the required parameter 'org_name' is set
-        if org_name is None:
-            raise ValueError("Missing the required parameter `org_name` when calling `get_graph_schema`")
-
-        collection_formats = {}
-        resource_path = '/api/insights/{orgName}/graph/schema'
-        path_params = {}
-        if org_name is not None:
-            path_params['orgName'] = org_name
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(['application/json', 'text/markdown'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
-
-        # Authentication setting
-        auth_settings = ['auth_token']
-
-        return self.api_client.call_api(resource_path, 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='GraphSchemaResponse',
-            auth_settings=auth_settings,
-            _request_timeout=_request_timeout,
-            collection_formats=collection_formats)
-
     def get_insight_account_tags(
         self,
         org_name: 'str',

@@ -538,58 +538,6 @@ func (p *CloudClient) GetGraphQuerySchema(
 	return &result, nil
 }
 
-type InterceptorForGetGraphSchema struct {
-	OrgName      string
-	ExtraHeaders []http.Header
-}
-
-func (p *CloudClient) GetGraphSchema(
-	ctx context.Context,
-	orgName string,
-	extraHeaders ...http.Header,
-) (*ext1.GraphSchemaResponse, error) {
-	if p.Interceptor != nil {
-		argForInterceptor := InterceptorForGetGraphSchema{
-			OrgName:      orgName,
-			ExtraHeaders: extraHeaders,
-		}
-		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
-		if err != nil {
-			return nil, err
-		}
-		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GraphSchemaResponse)
-			if !castFromInterceptor {
-				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGraphSchema: %T", resultFromInterceptor)
-			}
-			return &typedResultFromInterceptor, nil
-		}
-	}
-
-	req, err := p.createRequest(
-		ctx,
-		"GET",
-		"/api/insights/{orgName}/graph/schema",
-		map[string]any{
-			"orgName": orgName,
-		},
-		nil,
-	)
-	if err != nil {
-		return nil, err
-	}
-	respBody, err := p.invokeWithResponse(req, extraHeaders)
-	if err != nil {
-		return nil, err
-	}
-	var result ext1.GraphSchemaResponse
-	err = json.Unmarshal(respBody, &result)
-	if err != nil {
-		return nil, err
-	}
-	return &result, nil
-}
-
 type InterceptorForGetInsightAccountTags struct {
 	OrgName      string
 	AccountName  string

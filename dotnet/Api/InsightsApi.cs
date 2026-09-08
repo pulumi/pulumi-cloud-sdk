@@ -161,17 +161,6 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<GraphSchemaResponse>(request);
         }
 
-        public GraphSchemaResponse GetGraphSchema(string orgName) {
-            if (orgName == null) {
-                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetGraphSchema");
-            }
-            var request = new ApiRequest("GET", "/api/insights/{orgName}/graph/schema");
-            request.PathParam("orgName", orgName);
-            request.Produces("application/json");
-            request.Produces("text/markdown");
-            return this.client.Call<GraphSchemaResponse>(request);
-        }
-
         public GetInsightAccountTagsResponse GetInsightAccountTags(string orgName, string accountName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetInsightAccountTags");
