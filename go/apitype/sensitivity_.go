@@ -70,3 +70,17 @@ func (v *Sensitivity) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v Sensitivity) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *Sensitivity) UnmarshalText(text []byte) error {
+	typed := Sensitivity(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for Sensitivity: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

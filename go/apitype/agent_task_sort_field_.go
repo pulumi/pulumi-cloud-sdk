@@ -94,3 +94,17 @@ func (v *AgentTaskSortField) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v AgentTaskSortField) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *AgentTaskSortField) UnmarshalText(text []byte) error {
+	typed := AgentTaskSortField(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for AgentTaskSortField: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

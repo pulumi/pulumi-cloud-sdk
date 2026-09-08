@@ -70,3 +70,17 @@ func (v *AgentTaskSortDirection) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v AgentTaskSortDirection) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *AgentTaskSortDirection) UnmarshalText(text []byte) error {
+	typed := AgentTaskSortDirection(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for AgentTaskSortDirection: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

@@ -70,3 +70,17 @@ func (v *OrganizationMemberKind) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v OrganizationMemberKind) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *OrganizationMemberKind) UnmarshalText(text []byte) error {
+	typed := OrganizationMemberKind(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for OrganizationMemberKind: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

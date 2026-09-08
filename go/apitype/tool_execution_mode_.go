@@ -73,3 +73,17 @@ func (v *ToolExecutionMode) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v ToolExecutionMode) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *ToolExecutionMode) UnmarshalText(text []byte) error {
+	typed := ToolExecutionMode(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for ToolExecutionMode: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

@@ -14,16 +14,12 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
-export enum AppAPICapability {
-    DeltaCheckpointUploads = "delta-checkpoint-uploads",
-    DeltaCheckpointUploadsV2 = "delta-checkpoint-uploads-v2",
-    BatchEncrypt = "batch-encrypt",
-    CopilotSummarizeError = "copilot-summarize-error",
-    CopilotExplainPreview = "copilot-explain-preview",
-    DeploymentSchemaVersion = "deployment-schema-version",
-    StackPolicyPacks = "stack-policy-packs",
-    APIVersion = "api-version",
-    NeoCLIMode = "neo-cli-mode",
-    BeginUpdate = "begin-update",
-    StackOutputs = "stack-outputs",
+export enum DocsLanguage {
+    Typescript = "typescript",
+    Python = "python",
+    Go = "go",
+    Csharp = "dotnet",
+    Java = "java",
+    Yaml = "yaml",
+    Hcl = "hcl",
 }

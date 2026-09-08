@@ -86,3 +86,17 @@ func (v *AccessTokenType) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v AccessTokenType) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *AccessTokenType) UnmarshalText(text []byte) error {
+	typed := AccessTokenType(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for AccessTokenType: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

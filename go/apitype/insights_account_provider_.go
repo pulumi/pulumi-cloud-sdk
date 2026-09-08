@@ -94,3 +94,17 @@ func (v *InsightsAccountProvider) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v InsightsAccountProvider) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *InsightsAccountProvider) UnmarshalText(text []byte) error {
+	typed := InsightsAccountProvider(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for InsightsAccountProvider: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

@@ -5,7 +5,10 @@
 
 package apitype
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // The programming language runtime used by a Pulumi program.
 type RuntimeLanguage string
@@ -84,4 +87,33 @@ func (v RuntimeLanguage) GoString() string {
 		return "apitype.RuntimeLanguage" + s
 	}
 	return fmt.Sprintf("apitype.RuntimeLanguage(%#v)", string(v))
+}
+
+func (v *RuntimeLanguage) UnmarshalJSON(bytes []byte) error {
+	var raw string
+	if err := json.Unmarshal(bytes, &raw); err != nil {
+		return err
+	}
+
+	typed := RuntimeLanguage(raw)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for RuntimeLanguage: %v", raw)
+	}
+
+	*v = typed
+	return nil
+}
+
+func (v RuntimeLanguage) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *RuntimeLanguage) UnmarshalText(text []byte) error {
+	typed := RuntimeLanguage(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for RuntimeLanguage: %v", string(text))
+	}
+
+	*v = typed
+	return nil
 }

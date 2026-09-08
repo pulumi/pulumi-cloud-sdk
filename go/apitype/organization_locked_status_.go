@@ -85,3 +85,17 @@ func (v *OrganizationLockedStatus) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v OrganizationLockedStatus) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *OrganizationLockedStatus) UnmarshalText(text []byte) error {
+	typed := OrganizationLockedStatus(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for OrganizationLockedStatus: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

@@ -21,6 +21,7 @@ class AppAPICapability(AutoEnumEncoder):
     APIVersion = "api-version"
     NeoCLIMode = "neo-cli-mode"
     BeginUpdate = "begin-update"
+    StackOutputs = "stack-outputs"
 
     @staticmethod
     def keys() -> list['AppAPICapability']:
@@ -34,7 +35,8 @@ class AppAPICapability(AutoEnumEncoder):
             AppAPICapability.StackPolicyPacks,
             AppAPICapability.APIVersion,
             AppAPICapability.NeoCLIMode,
-            AppAPICapability.BeginUpdate
+            AppAPICapability.BeginUpdate,
+            AppAPICapability.StackOutputs
         ]
 
     @staticmethod
@@ -49,7 +51,8 @@ class AppAPICapability(AutoEnumEncoder):
             AppAPICapability.StackPolicyPacks.value,
             AppAPICapability.APIVersion.value,
             AppAPICapability.NeoCLIMode.value,
-            AppAPICapability.BeginUpdate.value
+            AppAPICapability.BeginUpdate.value,
+            AppAPICapability.StackOutputs.value
         ]
 
     @staticmethod

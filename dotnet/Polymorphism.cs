@@ -58,6 +58,36 @@ namespace Pulumi.Cloud.Sdk
     }
 
     /// <summary>
+    /// Registers the synthetic fallback subtype for a polymorphic base marked
+    /// <c>wildcardSubtype = true</c> in the IDL. Emitted by the generator on the
+    /// root of the hierarchy. When the wire discriminator value does not match
+    /// any registered <see cref="JsonSubTypeAttribute"/>, <see cref="PolymorphicConverter"/>
+    /// constructs this subtype instead of failing to deserialize.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
+    public sealed class JsonSubTypeUnknownAttribute : Attribute
+    {
+        public Type Subtype { get; }
+
+        public JsonSubTypeUnknownAttribute(Type subtype)
+        {
+            Subtype = subtype;
+        }
+    }
+
+    /// <summary>
+    /// Implemented by a generated "Unknown" fallback subtype (wildcardSubtype = true
+    /// in the IDL). Populated directly by <see cref="PolymorphicConverter"/> when no
+    /// <see cref="JsonSubTypeAttribute"/> / <see cref="JsonSubTypeNameAttribute"/>
+    /// matches the wire discriminator value.
+    /// </summary>
+    public interface IJsonWildcardSubtype
+    {
+        string JsonWildcardDiscriminator { set; }
+        JToken JsonWildcardRaw { set; }
+    }
+
+    /// <summary>
     /// Newtonsoft converter that resolves a discriminated union by reading its
     /// discriminator property (at any position in the object) and mapping the value
     /// to the concrete type registered via <see cref="JsonSubTypeAttribute"/> /
@@ -131,6 +161,17 @@ namespace Pulumi.Cloud.Sdk
                     {
                         target = resolved;
                     }
+                    else
+                    {
+                        var wildcard = FindWildcardSubtype(objectType);
+                        if (wildcard != null)
+                        {
+                            var instance = (IJsonWildcardSubtype)Activator.CreateInstance(wildcard);
+                            instance.JsonWildcardDiscriminator = token.ToString();
+                            instance.JsonWildcardRaw = jo;
+                            return instance;
+                        }
+                    }
                 }
             }
 
@@ -158,6 +199,18 @@ namespace Pulumi.Cloud.Sdk
             }
 
             var type = value.GetType();
+
+            // A wildcardSubtype fallback instance carries an unrecognized discriminator
+            // value and the raw payload that produced it — sending it back to the server
+            // would resend the bad discriminator, which wildcardSubtype exists to avoid.
+            // Fail loudly instead of silently serializing it as an ordinary bean (the
+            // public Discriminator/Raw properties, not the original shape).
+            if (value is IJsonWildcardSubtype)
+            {
+                throw new JsonSerializationException(
+                    $"Cannot serialize {type.Name}: it captures an unrecognized discriminator value " +
+                    "(wildcardSubtype) and is deserialize-only.");
+            }
 
             JObject jo;
             _skipWrite = true;
@@ -211,6 +264,21 @@ namespace Pulumi.Cloud.Sdk
                 if (name != null && name.TypeName == value)
                 {
                     return sub.Subtype;
+                }
+            }
+            return null;
+        }
+
+        // Walk the base-type chain (matching FindDiscriminatorName) looking for a
+        // [JsonSubTypeUnknown] fallback subtype registration.
+        private static Type FindWildcardSubtype(Type type)
+        {
+            for (var t = type; t != null; t = t.BaseType)
+            {
+                var attr = t.GetCustomAttribute<JsonSubTypeUnknownAttribute>(false);
+                if (attr != null)
+                {
+                    return attr.Subtype;
                 }
             }
             return null;

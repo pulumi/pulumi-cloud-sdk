@@ -67,3 +67,17 @@ func (v *PolicyIssueKind) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v PolicyIssueKind) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *PolicyIssueKind) UnmarshalText(text []byte) error {
+	typed := PolicyIssueKind(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for PolicyIssueKind: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

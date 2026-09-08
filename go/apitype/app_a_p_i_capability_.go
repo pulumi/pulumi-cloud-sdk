@@ -43,6 +43,9 @@ const (
 
 	// Indicates that the service supports the combined begin-update endpoint.
 	AppAPICapabilityBeginUpdate AppAPICapability = "begin-update"
+
+	// Indicates that the service supports /api/stacks/{org}/{project}/{stack}/outputs.
+	AppAPICapabilityStackOutputs AppAPICapability = "stack-outputs"
 )
 
 func (v AppAPICapability) AllValues() []AppAPICapability {
@@ -57,6 +60,7 @@ func (v AppAPICapability) AllValues() []AppAPICapability {
 		AppAPICapabilityAPIVersion,
 		AppAPICapabilityNeoCLIMode,
 		AppAPICapabilityBeginUpdate,
+		AppAPICapabilityStackOutputs,
 	}
 }
 
@@ -81,6 +85,8 @@ func (v AppAPICapability) IsValid() bool {
 	case AppAPICapabilityNeoCLIMode:
 		return true
 	case AppAPICapabilityBeginUpdate:
+		return true
+	case AppAPICapabilityStackOutputs:
 		return true
 	}
 
@@ -109,6 +115,8 @@ func (v AppAPICapability) openapiName() string {
 		return "NeoCLIMode"
 	case AppAPICapabilityBeginUpdate:
 		return "BeginUpdate"
+	case AppAPICapabilityStackOutputs:
+		return "StackOutputs"
 	}
 
 	return ""

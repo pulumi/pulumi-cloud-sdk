@@ -78,3 +78,17 @@ func (v *GitHubAppPermissionLevel) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v GitHubAppPermissionLevel) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *GitHubAppPermissionLevel) UnmarshalText(text []byte) error {
+	typed := GitHubAppPermissionLevel(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for GitHubAppPermissionLevel: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

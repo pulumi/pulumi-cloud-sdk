@@ -78,3 +78,17 @@ func (v *OrganizationInviteRole) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v OrganizationInviteRole) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *OrganizationInviteRole) UnmarshalText(text []byte) error {
+	typed := OrganizationInviteRole(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for OrganizationInviteRole: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

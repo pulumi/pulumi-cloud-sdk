@@ -70,5 +70,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "begin-update")]
         BeginUpdate,
+
+        /// <summary>
+        /// Indicates that the service supports /api/stacks/{org}/{project}/{stack}/outputs.
+        /// </summary>
+        [EnumMember(Value = "stack-outputs")]
+        StackOutputs,
     }
 }

@@ -10,7 +10,7 @@ type RegistryDocsSupportingType struct {
 	// Pulumi type token of this type.
 	TypeToken string `json:"typeToken" yaml:"typeToken"`
 	// Display name keyed by language.
-	Name map[string]string `json:"name" yaml:"name"`
+	Name map[DocsLanguage]string `json:"name" yaml:"name"`
 	// 'object' or 'enum'.
 	Kind string `json:"kind" yaml:"kind"`
 	// Properties (when kind is 'object').

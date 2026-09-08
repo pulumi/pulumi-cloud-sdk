@@ -334,6 +334,20 @@ class PulumiModelEncoder(object):
         type_annotation: str,
         /,
     ) -> typing.Callable[[Any, bool, bool], Any]:
+        if getattr(klass, "__WILDCARD_SUBTYPE__", False):
+            # A wildcardSubtype fallback instance carries an unrecognized
+            # discriminator value and the raw payload that produced it — sending
+            # it back to the server would resend the bad discriminator, which
+            # wildcardSubtype exists to avoid. Fail loudly instead of silently
+            # serializing the wrong (or empty) shape.
+            def _serialize_wildcard_subtype(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
+                raise TypeError(
+                    f"cannot serialize {klass.__name__}: it captures an unrecognized discriminator "
+                    "value (wildcardSubtype) and is deserialize-only"
+                )
+
+            return _serialize_wildcard_subtype
+
         if issubclass(klass, (datetime, date)):
             def _serialize_dates(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
                 if keep_raw_values:
@@ -739,6 +753,11 @@ class PulumiModelEncoder(object):
                 klass = fixup(data, default_value)
             else:
                 klass = fixup(data)
+
+        if getattr(klass, "__WILDCARD_SUBTYPE__", False):
+            discriminator_field = getattr(klass, "DISCRIMINATOR", None)
+            discriminator_value = data.get(discriminator_field) if discriminator_field else None
+            return klass(discriminator=discriminator_value, raw=data)
 
         if not klass:
             return data

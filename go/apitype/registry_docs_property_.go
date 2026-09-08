@@ -8,9 +8,9 @@ package apitype
 // A property of a resource or function.
 type RegistryDocsProperty struct {
 	// Property name, keyed by language.
-	Name map[string]string `json:"name" yaml:"name"`
+	Name map[DocsLanguage]string `json:"name" yaml:"name"`
 	// Display type, keyed by language.
-	Type map[string]string `json:"type" yaml:"type"`
+	Type map[DocsLanguage]string `json:"type" yaml:"type"`
 	// Whether the property is required.
 	Required bool `json:"required" yaml:"required"`
 	// Whether changing this property forces replacement.
@@ -18,7 +18,7 @@ type RegistryDocsProperty struct {
 	// Whether this property is deprecated.
 	Deprecated *bool `json:"deprecated,omitzero" yaml:"deprecated,omitempty"`
 	// Markdown description, keyed by language.
-	Description map[string]string `json:"description" yaml:"description"`
+	Description map[DocsLanguage]string `json:"description" yaml:"description"`
 	// Reference to a local supporting type or a remote type. Null for primitive types.
 	TypeRef *RegistryDocsTypeRef `json:"typeRef,omitempty" yaml:"typeRef,omitempty"`
 }

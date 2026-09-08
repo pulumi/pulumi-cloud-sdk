@@ -301,7 +301,7 @@ func (p *CloudClient) DeleteResourceMigrationAnnotation(
 			"stackName":   stackName,
 		},
 		map[string]any{
-			"resourceUrn": &resourceUrn,
+			"resourceUrn": new(resourceUrn),
 		},
 	)
 	if err != nil {
@@ -955,7 +955,7 @@ func (p *CloudClient) GetUsageSummaryInsightsScans(
 			"orgName": orgName,
 		},
 		map[string]any{
-			"granularity":   &granularity,
+			"granularity":   new(granularity),
 			"lookbackDays":  lookbackDays,
 			"lookbackStart": lookbackStart,
 		},

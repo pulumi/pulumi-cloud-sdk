@@ -78,3 +78,17 @@ func (v *ScanSchedule) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v ScanSchedule) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *ScanSchedule) UnmarshalText(text []byte) error {
+	typed := ScanSchedule(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for ScanSchedule: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

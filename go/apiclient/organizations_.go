@@ -5010,7 +5010,7 @@ func (p *CloudClient) GetUsageSummaryDiscoveredResourceHours(
 			"orgName": orgName,
 		},
 		map[string]any{
-			"granularity":   &granularity,
+			"granularity":   new(granularity),
 			"lookbackDays":  lookbackDays,
 			"lookbackStart": lookbackStart,
 		},
@@ -5075,7 +5075,7 @@ func (p *CloudClient) GetUsageSummaryEnvironmentSecrets(
 			"orgName": orgName,
 		},
 		map[string]any{
-			"granularity":   &granularity,
+			"granularity":   new(granularity),
 			"lookbackDays":  lookbackDays,
 			"lookbackStart": lookbackStart,
 		},
@@ -5143,7 +5143,7 @@ func (p *CloudClient) GetUsageSummaryNeoTokens(
 			"orgName": orgName,
 		},
 		map[string]any{
-			"granularity":         &granularity,
+			"granularity":         new(granularity),
 			"includeTagBreakdown": includeTagBreakdown,
 			"lookbackDays":        lookbackDays,
 			"lookbackStart":       lookbackStart,
@@ -5209,7 +5209,7 @@ func (p *CloudClient) GetUsageSummaryResourceHours(
 			"orgName": orgName,
 		},
 		map[string]any{
-			"granularity":   &granularity,
+			"granularity":   new(granularity),
 			"lookbackDays":  lookbackDays,
 			"lookbackStart": lookbackStart,
 		},
@@ -6435,7 +6435,7 @@ func (p *CloudClient) ListRolesByOrgIDAndUXPurpose(
 		},
 		map[string]any{
 			"assignedToMe": assignedToMe,
-			"uxPurpose":    &uxPurpose,
+			"uxPurpose":    new(uxPurpose),
 		},
 	)
 	if err != nil {

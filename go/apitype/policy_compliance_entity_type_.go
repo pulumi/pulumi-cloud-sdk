@@ -78,3 +78,17 @@ func (v *PolicyComplianceEntityType) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v PolicyComplianceEntityType) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *PolicyComplianceEntityType) UnmarshalText(text []byte) error {
+	typed := PolicyComplianceEntityType(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for PolicyComplianceEntityType: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

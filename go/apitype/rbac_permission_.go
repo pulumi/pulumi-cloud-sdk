@@ -1212,6 +1212,21 @@ func (v *RbacPermission) UnmarshalJSON(bytes []byte) error {
 	return nil
 }
 
+func (v RbacPermission) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *RbacPermission) UnmarshalText(text []byte) error {
+	typed := RbacPermission(text)
+	if !typed.IsValid() {
+		var typedEmpty RbacPermission
+		typed = typedEmpty
+	}
+
+	*v = typed
+	return nil
+}
+
 type RbacPermissionSlice []RbacPermission
 
 func (v *RbacPermissionSlice) UnmarshalJSON(bytes []byte) error {

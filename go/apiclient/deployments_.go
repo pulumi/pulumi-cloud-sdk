@@ -1219,7 +1219,7 @@ func (p *CloudClient) GetUsageSummaryDeployCompute(
 			"orgName": orgName,
 		},
 		map[string]any{
-			"granularity":   &granularity,
+			"granularity":   new(granularity),
 			"lookbackDays":  lookbackDays,
 			"lookbackStart": lookbackStart,
 		},

@@ -94,3 +94,17 @@ func (v *UsageSummaryTimeUnit) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v UsageSummaryTimeUnit) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *UsageSummaryTimeUnit) UnmarshalText(text []byte) error {
+	typed := UsageSummaryTimeUnit(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for UsageSummaryTimeUnit: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

@@ -67,3 +67,17 @@ func (v *NeoTaskSharingMode) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v NeoTaskSharingMode) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *NeoTaskSharingMode) UnmarshalText(text []byte) error {
+	typed := NeoTaskSharingMode(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for NeoTaskSharingMode: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

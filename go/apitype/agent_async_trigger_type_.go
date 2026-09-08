@@ -70,3 +70,17 @@ func (v *AgentAsyncTriggerType) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v AgentAsyncTriggerType) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *AgentAsyncTriggerType) UnmarshalText(text []byte) error {
+	typed := AgentAsyncTriggerType(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for AgentAsyncTriggerType: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

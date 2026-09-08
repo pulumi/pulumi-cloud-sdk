@@ -5,7 +5,10 @@
 
 package apitype
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // Visibility indicates whether an entity is public or private.
 type Visibility string
@@ -48,4 +51,33 @@ func (v Visibility) GoString() string {
 		return "apitype.Visibility" + s
 	}
 	return fmt.Sprintf("apitype.Visibility(%#v)", string(v))
+}
+
+func (v *Visibility) UnmarshalJSON(bytes []byte) error {
+	var raw string
+	if err := json.Unmarshal(bytes, &raw); err != nil {
+		return err
+	}
+
+	typed := Visibility(raw)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for Visibility: %v", raw)
+	}
+
+	*v = typed
+	return nil
+}
+
+func (v Visibility) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *Visibility) UnmarshalText(text []byte) error {
+	typed := Visibility(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for Visibility: %v", string(text))
+	}
+
+	*v = typed
+	return nil
 }

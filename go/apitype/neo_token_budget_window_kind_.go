@@ -86,3 +86,17 @@ func (v *NeoTokenBudgetWindowKind) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v NeoTokenBudgetWindowKind) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *NeoTokenBudgetWindowKind) UnmarshalText(text []byte) error {
+	typed := NeoTokenBudgetWindowKind(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for NeoTokenBudgetWindowKind: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

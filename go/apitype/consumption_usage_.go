@@ -10,7 +10,7 @@ type ConsumptionUsage struct {
 	// The total consumed
 	TotalConsumed int64 `json:"totalConsumed" yaml:"totalConsumed"`
 	// The consumed amount
-	Consumed map[string]int64 `json:"consumed" yaml:"consumed"`
+	Consumed map[ProductCategory]int64 `json:"consumed" yaml:"consumed"`
 	// UnitRateSchema captures which pricing plan is associated with the product subscription,
 	// and further indicates which pricing rate structure should be read.
 	UnitRateSchema UnitRateSchema `json:"unitRateSchema" yaml:"unitRateSchema"`

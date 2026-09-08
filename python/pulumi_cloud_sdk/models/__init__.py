@@ -358,6 +358,7 @@ from .docker_image_ import DockerImage
 from .docker_image_credentials_ import DockerImageCredentials
 from .docker_image_credentials_request_ import DockerImageCredentialsRequest
 from .docker_image_request_ import DockerImageRequest
+from .docs_language_ import DocsLanguage
 from .drift_run_ import DriftRun
 from .drift_run_update_ import DriftRunUpdate
 from .encrypt_environment_secrets_request_ import EncryptEnvironmentSecretsRequest
@@ -496,6 +497,7 @@ from .graph_traverse_step_ import GraphTraverseStep
 from .graph_traverse_target_ import GraphTraverseTarget
 from .graph_visibility_ import GraphVisibility
 from .identity_provider_ import IdentityProvider
+from .include_map_key_types_ import IncludeMapKeyTypes
 from .initiate_o_auth_request_ import InitiateOAuthRequest
 from .initiate_o_auth_response_ import InitiateOAuthResponse
 from .insights_account_ import InsightsAccount
@@ -700,6 +702,7 @@ from .policy_pack_access_ import PolicyPackAccess
 from .policy_results_metadata_ import PolicyResultsMetadata
 from .policy_violation_v2_ import PolicyViolationV2
 from .preferred_v_c_s_ import PreferredVCS
+from .product_category_ import ProductCategory
 from .provider_schema_ import ProviderSchema
 from .publish_package_version_complete_request_ import PublishPackageVersionCompleteRequest
 from .publish_package_version_complete_response_ import PublishPackageVersionCompleteResponse

@@ -5,7 +5,10 @@
 
 package apitype
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // Programming language for filtering registry documentation content.
 type RegistryDocsLanguage string
@@ -99,4 +102,33 @@ func (v RegistryDocsLanguage) GoString() string {
 		return "apitype.RegistryDocsLanguage" + s
 	}
 	return fmt.Sprintf("apitype.RegistryDocsLanguage(%#v)", string(v))
+}
+
+func (v *RegistryDocsLanguage) UnmarshalJSON(bytes []byte) error {
+	var raw string
+	if err := json.Unmarshal(bytes, &raw); err != nil {
+		return err
+	}
+
+	typed := RegistryDocsLanguage(raw)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for RegistryDocsLanguage: %v", raw)
+	}
+
+	*v = typed
+	return nil
+}
+
+func (v RegistryDocsLanguage) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *RegistryDocsLanguage) UnmarshalText(text []byte) error {
+	typed := RegistryDocsLanguage(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for RegistryDocsLanguage: %v", string(text))
+	}
+
+	*v = typed
+	return nil
 }

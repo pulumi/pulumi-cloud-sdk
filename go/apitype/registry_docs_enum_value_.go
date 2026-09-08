@@ -8,9 +8,9 @@ package apitype
 // A value in an enum type definition.
 type RegistryDocsEnumValue struct {
 	// Enum value name keyed by language.
-	Name map[string]string `json:"name" yaml:"name"`
+	Name map[DocsLanguage]string `json:"name" yaml:"name"`
 	// Wire value of this enum variant.
 	Value string `json:"value" yaml:"value"`
 	// Description keyed by language.
-	Description map[string]string `json:"description,omitempty" yaml:"description,omitempty"`
+	Description map[DocsLanguage]string `json:"description,omitempty" yaml:"description,omitempty"`
 }

@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-cloud-sdk/go
 
-go 1.25.11
+go 1.26.6
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

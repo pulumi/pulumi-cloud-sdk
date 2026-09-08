@@ -94,5 +94,65 @@ namespace Pulumi.Cloud.Sdk.Tests
             Assert.False(json.ContainsKey("value"));
             Assert.Equal("PermissionLiteralExpressionString", json["__type"]!.ToString());
         }
+
+        // A polymorphic base marked with [JsonSubTypeUnknown] (the generator's
+        // wildcardSubtype = true emission — see cmd/pulumi-codegen/cmd/dotnet.go
+        // emitWildcardSubtypeModel) is hand-rolled here rather than generated, so this
+        // exercises PolymorphicConverter's fallback path directly.
+        [JsonConverter(typeof(PolymorphicConverter))]
+        [JsonDiscriminator("kind")]
+        [JsonSubType(typeof(WildcardTestBranch))]
+        [JsonSubTypeUnknown(typeof(WildcardTestUnknown))]
+        public abstract class WildcardTestBase
+        {
+        }
+
+        [JsonSubTypeName("known")]
+        public class WildcardTestBranch : WildcardTestBase
+        {
+            public string Value { get; set; } = null!;
+        }
+
+        public class WildcardTestUnknown : WildcardTestBase, IJsonWildcardSubtype
+        {
+            public string Discriminator { get; private set; } = null!;
+            public JToken Raw { get; private set; } = null!;
+
+            string IJsonWildcardSubtype.JsonWildcardDiscriminator { set { Discriminator = value; } }
+            JToken IJsonWildcardSubtype.JsonWildcardRaw { set { Raw = value; } }
+        }
+
+        [Fact]
+        public void UnknownDiscriminatorValueProducesWildcardFallback()
+        {
+            const string json = "{\"kind\":\"mystery\",\"extra\":42}";
+
+            var back = JsonConvert.DeserializeObject<WildcardTestBase>(json, Json.Settings);
+
+            var unknown = Assert.IsType<WildcardTestUnknown>(back);
+            Assert.Equal("mystery", unknown.Discriminator);
+            Assert.Equal(42, unknown.Raw["extra"]!.Value<int>());
+        }
+
+        [Fact]
+        public void KnownDiscriminatorValueStillResolvesNormallyOnWildcardBase()
+        {
+            const string json = "{\"kind\":\"known\",\"value\":\"a\"}";
+
+            var back = JsonConvert.DeserializeObject<WildcardTestBase>(json, Json.Settings);
+
+            var branch = Assert.IsType<WildcardTestBranch>(back);
+            Assert.Equal("a", branch.Value);
+        }
+
+        [Fact]
+        public void SerializingUnknownFailsLoudlyInsteadOfEmittingWrongShape()
+        {
+            var back = JsonConvert.DeserializeObject<WildcardTestBase>("{\"kind\":\"mystery\",\"extra\":42}", Json.Settings);
+            var unknown = Assert.IsType<WildcardTestUnknown>(back);
+
+            var ex = Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(unknown, Json.Settings));
+            Assert.Contains("deserialize-only", ex.Message);
+        }
     }
 }

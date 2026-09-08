@@ -73,3 +73,17 @@ func (v *NeoApprovalMode) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v NeoApprovalMode) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *NeoApprovalMode) UnmarshalText(text []byte) error {
+	typed := NeoApprovalMode(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for NeoApprovalMode: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

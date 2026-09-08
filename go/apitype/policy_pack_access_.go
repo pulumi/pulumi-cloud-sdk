@@ -86,3 +86,17 @@ func (v *PolicyPackAccess) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v PolicyPackAccess) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *PolicyPackAccess) UnmarshalText(text []byte) error {
+	typed := PolicyPackAccess(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for PolicyPackAccess: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

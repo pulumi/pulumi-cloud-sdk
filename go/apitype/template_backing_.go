@@ -78,3 +78,17 @@ func (v *TemplateBacking) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v TemplateBacking) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *TemplateBacking) UnmarshalText(text []byte) error {
+	typed := TemplateBacking(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for TemplateBacking: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

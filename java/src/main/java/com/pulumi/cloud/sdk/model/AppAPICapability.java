@@ -27,7 +27,9 @@ public enum AppAPICapability {
     // Advertises that the service supports Neo CLI mode. The configuration object carries `minCliVersion`, the minimum `pulumi` CLI semver required to start a Neo CLI session.
     NeoCLIMode("neo-cli-mode"),
     // Indicates that the service supports the combined begin-update endpoint.
-    BeginUpdate("begin-update");
+    BeginUpdate("begin-update"),
+    // Indicates that the service supports /api/stacks/{org}/{project}/{stack}/outputs.
+    StackOutputs("stack-outputs");
 
     private final String value;
 

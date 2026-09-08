@@ -110,3 +110,17 @@ func (v *AgentTaskSource) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v AgentTaskSource) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *AgentTaskSource) UnmarshalText(text []byte) error {
+	typed := AgentTaskSource(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for AgentTaskSource: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

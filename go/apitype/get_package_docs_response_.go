@@ -19,7 +19,7 @@ type GetPackageDocsResponse struct {
 	// missing. Never null.
 	Language string `json:"language" yaml:"language"`
 	// Display name keyed by language.
-	Name map[string]string `json:"name" yaml:"name"`
+	Name map[DocsLanguage]string `json:"name" yaml:"name"`
 	// Description as an array of content nodes. Chooser nodes are resolved.
 	Description []RegistryContentNode `json:"description" yaml:"description"`
 	// Constructor syntax as content nodes: a chooser with one option per language when lang is 'all', otherwise the requested language's code

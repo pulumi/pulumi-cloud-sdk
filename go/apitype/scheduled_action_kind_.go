@@ -86,3 +86,17 @@ func (v *ScheduledActionKind) UnmarshalJSON(bytes []byte) error {
 	*v = typed
 	return nil
 }
+
+func (v ScheduledActionKind) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *ScheduledActionKind) UnmarshalText(text []byte) error {
+	typed := ScheduledActionKind(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for ScheduledActionKind: %v", string(text))
+	}
+
+	*v = typed
+	return nil
+}

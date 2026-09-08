@@ -5,7 +5,10 @@
 
 package apitype
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // PackageStatus represents the maturity level of a registry package.
 type PackageStatus string
@@ -48,4 +51,33 @@ func (v PackageStatus) GoString() string {
 		return "apitype.PackageStatus" + s
 	}
 	return fmt.Sprintf("apitype.PackageStatus(%#v)", string(v))
+}
+
+func (v *PackageStatus) UnmarshalJSON(bytes []byte) error {
+	var raw string
+	if err := json.Unmarshal(bytes, &raw); err != nil {
+		return err
+	}
+
+	typed := PackageStatus(raw)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for PackageStatus: %v", raw)
+	}
+
+	*v = typed
+	return nil
+}
+
+func (v PackageStatus) MarshalText() ([]byte, error) {
+	return []byte(v), nil
+}
+
+func (v *PackageStatus) UnmarshalText(text []byte) error {
+	typed := PackageStatus(text)
+	if !typed.IsValid() {
+		return fmt.Errorf("invalid value for PackageStatus: %v", string(text))
+	}
+
+	*v = typed
+	return nil
 }
