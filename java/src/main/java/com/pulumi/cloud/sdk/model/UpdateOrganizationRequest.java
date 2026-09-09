@@ -68,6 +68,6 @@ public class UpdateOrganizationRequest {
     // The ID of the default agent pool for the organization. Set to empty string to revert to the Pulumi Hosted Pool.
     public String setDefaultAgentPoolID;
 
-    // The maximum allowed access token expiry, in days, for personal, organization, and team access tokens used against this organization. A value of 0 clears the policy (the prior default behavior, in which tokens may have any expiry or no expiry). A positive value requires every token to have an expiry, and the remaining lifetime of the token must not exceed this many days. Web sessions and system-managed tokens (deployment runners, agent pools, stack tokens) are not subject to this policy. Leave the field unset to make no change to the existing policy value.
+    // The maximum allowed access token expiry, in days, for personal, organization, and team access tokens used against this organization. A value of 0 clears the policy (the prior default behavior, in which tokens may have any expiry or no expiry). A positive value requires every token to have an expiry, and the token's total lifetime (from creation to expiry) must not exceed this many days. Web sessions and system-managed tokens (deployment runners, agent pools, stack tokens) are not subject to this policy. Leave the field unset to make no change to the existing policy value.
     public Long setMaxAccessTokenExpiryDays;
 }

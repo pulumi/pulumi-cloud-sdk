@@ -117,7 +117,7 @@ type OrganizationMetadata struct {
 	PastDueSince *time.Time `json:"pastDueSince,omitempty" yaml:"pastDueSince,omitempty"`
 	// The maximum allowed access token expiry, in days, for personal, organization, and team access tokens used against this organization.
 	// Null means no policy (the default behavior, in which tokens may have any expiry or no expiry). When set, requires every token to have an
-	// expiry, and the remaining lifetime of the token must not exceed this many days. Web sessions and system-managed tokens are not subject
-	// to this policy.
+	// expiry, and the token's total lifetime (from creation to expiry) must not exceed this many days. Web sessions and system-managed tokens
+	// are not subject to this policy.
 	MaxAccessTokenExpiryDays *int `json:"maxAccessTokenExpiryDays,omitzero" yaml:"maxAccessTokenExpiryDays,omitempty"`
 }
