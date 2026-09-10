@@ -25,4 +25,7 @@ export enum SaasOffer {
     EnterpriseGrowth = "enterprise-growth",
     BusinessCritical = "business-critical",
     Free = "free",
+    Essentials = "essentials",
+    Pro = "pro",
+    BusinessEnterprise = "business-enterprise",
 }

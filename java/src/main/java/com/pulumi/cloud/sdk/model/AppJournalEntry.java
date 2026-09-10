@@ -67,4 +67,16 @@ public class AppJournalEntry {
 
     // True if serializing this journal entry's state, operation, or new snapshot produced strings containing non-UTF-8 bytes, which replay uses to gate rebuilt deployments on the byteString feature.
     public boolean requiresByteString;
+
+    // Indices of the resources in the base snapshot that a state migration removes. Only set for state-migration journal entries.
+    public List<Long> removeOlds;
+
+    // Resources that a state migration splices into the base snapshot, in order. Only set for state-migration journal entries.
+    public List<AppResourceV3> states;
+
+    // Complete replacements for retained base resources whose references were rewritten by a state migration. Only set for state-migration journal entries.
+    public List<AppJournalBaseStatePatch> baseStatePatches;
+
+    // Complete replacements for resources produced by operations earlier in this update. Only set for state-migration journal entries.
+    public List<AppJournalNewStatePatch> newStatePatches;
 }

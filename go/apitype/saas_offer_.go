@@ -41,6 +41,16 @@ const (
 
 	// The Pulumi Free tier for individual organizations with access to core features.
 	SaasOfferFree SaasOffer = "free"
+
+	// SaasOfferEssentials is the Pulumi Essentials edition, billed by consumption.
+	SaasOfferEssentials SaasOffer = "essentials"
+
+	// SaasOfferPro is the Pulumi Pro edition, billed by consumption.
+	SaasOfferPro SaasOffer = "pro"
+
+	// SaasOfferBusinessEnterprise is the Pulumi Enterprise edition, billed by consumption. Distinct from the legacy per-member 'enterprise'
+	// offer.
+	SaasOfferBusinessEnterprise SaasOffer = "business-enterprise"
 )
 
 func (v SaasOffer) AllValues() []SaasOffer {
@@ -55,6 +65,9 @@ func (v SaasOffer) AllValues() []SaasOffer {
 		SaasOfferEnterpriseGrowth,
 		SaasOfferBusinessCritical,
 		SaasOfferFree,
+		SaasOfferEssentials,
+		SaasOfferPro,
+		SaasOfferBusinessEnterprise,
 	}
 }
 
@@ -79,6 +92,12 @@ func (v SaasOffer) IsValid() bool {
 	case SaasOfferBusinessCritical:
 		return true
 	case SaasOfferFree:
+		return true
+	case SaasOfferEssentials:
+		return true
+	case SaasOfferPro:
+		return true
+	case SaasOfferBusinessEnterprise:
 		return true
 	}
 
@@ -107,6 +126,12 @@ func (v SaasOffer) openapiName() string {
 		return "BusinessCritical"
 	case SaasOfferFree:
 		return "Free"
+	case SaasOfferEssentials:
+		return "Essentials"
+	case SaasOfferPro:
+		return "Pro"
+	case SaasOfferBusinessEnterprise:
+		return "BusinessEnterprise"
 	}
 
 	return ""

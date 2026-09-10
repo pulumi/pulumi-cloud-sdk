@@ -24,6 +24,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         Individual,
 
         /// <summary>
+        /// Per calendar-month, SKU-defined token allowance for a Free-plan organization.
+        /// </summary>
+        [EnumMember(Value = "free")]
+        Free,
+
+        /// <summary>
         /// Per calendar-month, admin-configured dollar allowance for a multi-user organization.
         /// </summary>
         [EnumMember(Value = "org-dollar")]

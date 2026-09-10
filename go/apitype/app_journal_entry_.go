@@ -46,4 +46,13 @@ type AppJournalEntry struct {
 	// True if serializing this journal entry's state, operation, or new snapshot produced strings containing non-UTF-8 bytes, which replay
 	// uses to gate rebuilt deployments on the byteString feature.
 	RequiresByteString bool `json:"requiresByteString,omitzero" yaml:"requiresByteString,omitempty"`
+	// Indices of the resources in the base snapshot that a state migration removes. Only set for state-migration journal entries.
+	RemoveOlds []int64 `json:"removeOlds,omitempty" yaml:"removeOlds,omitempty"`
+	// Resources that a state migration splices into the base snapshot, in order. Only set for state-migration journal entries.
+	States []AppResourceV3 `json:"states,omitempty" yaml:"states,omitempty"`
+	// Complete replacements for retained base resources whose references were rewritten by a state migration. Only set for state-migration
+	// journal entries.
+	BaseStatePatches []AppJournalBaseStatePatch `json:"baseStatePatches,omitempty" yaml:"baseStatePatches,omitempty"`
+	// Complete replacements for resources produced by operations earlier in this update. Only set for state-migration journal entries.
+	NewStatePatches []AppJournalNewStatePatch `json:"newStatePatches,omitempty" yaml:"newStatePatches,omitempty"`
 }

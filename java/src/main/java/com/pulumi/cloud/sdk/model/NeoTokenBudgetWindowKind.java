@@ -12,6 +12,8 @@ public enum NeoTokenBudgetWindowKind {
     Trial("trial"),
     // Per calendar-month allowance for a single-user free organization.
     Individual("individual"),
+    // Per calendar-month, SKU-defined token allowance for a Free-plan organization.
+    Free("free"),
     // Per calendar-month, admin-configured dollar allowance for a multi-user organization.
     OrgDollar("org-dollar"),
     // Per calendar-month, admin-configured dollar allowance for a single member of a multi-user organization.

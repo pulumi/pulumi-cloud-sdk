@@ -20,6 +20,9 @@ const (
 	// Per calendar-month allowance for a single-user free organization.
 	NeoTokenBudgetWindowKindIndividual NeoTokenBudgetWindowKind = "individual"
 
+	// Per calendar-month, SKU-defined token allowance for a Free-plan organization.
+	NeoTokenBudgetWindowKindFree NeoTokenBudgetWindowKind = "free"
+
 	// Per calendar-month, admin-configured dollar allowance for a multi-user organization.
 	NeoTokenBudgetWindowKindOrgDollar NeoTokenBudgetWindowKind = "org-dollar"
 
@@ -31,6 +34,7 @@ func (v NeoTokenBudgetWindowKind) AllValues() []NeoTokenBudgetWindowKind {
 	return []NeoTokenBudgetWindowKind{
 		NeoTokenBudgetWindowKindTrial,
 		NeoTokenBudgetWindowKindIndividual,
+		NeoTokenBudgetWindowKindFree,
 		NeoTokenBudgetWindowKindOrgDollar,
 		NeoTokenBudgetWindowKindMemberDollar,
 	}
@@ -41,6 +45,8 @@ func (v NeoTokenBudgetWindowKind) IsValid() bool {
 	case NeoTokenBudgetWindowKindTrial:
 		return true
 	case NeoTokenBudgetWindowKindIndividual:
+		return true
+	case NeoTokenBudgetWindowKindFree:
 		return true
 	case NeoTokenBudgetWindowKindOrgDollar:
 		return true
@@ -57,6 +63,8 @@ func (v NeoTokenBudgetWindowKind) openapiName() string {
 		return "Trial"
 	case NeoTokenBudgetWindowKindIndividual:
 		return "Individual"
+	case NeoTokenBudgetWindowKindFree:
+		return "Free"
 	case NeoTokenBudgetWindowKindOrgDollar:
 		return "OrgDollar"
 	case NeoTokenBudgetWindowKindMemberDollar:

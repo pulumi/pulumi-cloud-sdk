@@ -124,5 +124,29 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("requiresByteString")]
         public bool RequiresByteString { get; set; }
+
+        /// <summary>
+        /// Indices of the resources in the base snapshot that a state migration removes. Only set for state-migration journal entries.
+        /// </summary>
+        [JsonProperty("removeOlds")]
+        public System.Collections.Generic.List<long> RemoveOlds { get; set; }
+
+        /// <summary>
+        /// Resources that a state migration splices into the base snapshot, in order. Only set for state-migration journal entries.
+        /// </summary>
+        [JsonProperty("states")]
+        public System.Collections.Generic.List<AppResourceV3> States { get; set; }
+
+        /// <summary>
+        /// Complete replacements for retained base resources whose references were rewritten by a state migration. Only set for state-migration journal entries.
+        /// </summary>
+        [JsonProperty("baseStatePatches")]
+        public System.Collections.Generic.List<AppJournalBaseStatePatch> BaseStatePatches { get; set; }
+
+        /// <summary>
+        /// Complete replacements for resources produced by operations earlier in this update. Only set for state-migration journal entries.
+        /// </summary>
+        [JsonProperty("newStatePatches")]
+        public System.Collections.Generic.List<AppJournalNewStatePatch> NewStatePatches { get; set; }
     }
 }

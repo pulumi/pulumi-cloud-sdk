@@ -27,7 +27,13 @@ public enum SaasOffer {
     // SaasOfferBusinessCritical is the business critical edition, billed by consumption.
     BusinessCritical("business-critical"),
     // The Pulumi Free tier for individual organizations with access to core features.
-    Free("free");
+    Free("free"),
+    // SaasOfferEssentials is the Pulumi Essentials edition, billed by consumption.
+    Essentials("essentials"),
+    // SaasOfferPro is the Pulumi Pro edition, billed by consumption.
+    Pro("pro"),
+    // SaasOfferBusinessEnterprise is the Pulumi Enterprise edition, billed by consumption. Distinct from the legacy per-member 'enterprise' offer.
+    BusinessEnterprise("business-enterprise");
 
     private final String value;
 

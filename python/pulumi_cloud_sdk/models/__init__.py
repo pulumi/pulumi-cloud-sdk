@@ -119,9 +119,11 @@ from .app_import_stack_request_ import AppImportStackRequest
 from .app_import_stack_response_ import AppImportStackResponse
 from .app_insights_account_reference_ import AppInsightsAccountReference
 from .app_j_s_o_n_schema_type_ import AppJSONSchemaType
+from .app_journal_base_state_patch_ import AppJournalBaseStatePatch
 from .app_journal_entries_ import AppJournalEntries
 from .app_journal_entry_ import AppJournalEntry
 from .app_journal_entry_kind_ import AppJournalEntryKind
+from .app_journal_new_state_patch_ import AppJournalNewStatePatch
 from .app_list_policy_groups_response_ import AppListPolicyGroupsResponse
 from .app_list_policy_packs_response_ import AppListPolicyPacksResponse
 from .app_list_stacks_response_ import AppListStacksResponse

@@ -17,6 +17,7 @@
 export enum NeoTokenBudgetWindowKind {
     Trial = "trial",
     Individual = "individual",
+    Free = "free",
     OrgDollar = "org-dollar",
     MemberDollar = "member-dollar",
 }

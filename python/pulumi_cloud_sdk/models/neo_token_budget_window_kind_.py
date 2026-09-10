@@ -13,6 +13,7 @@ from .._support import AutoEnumEncoder
 class NeoTokenBudgetWindowKind(AutoEnumEncoder):
     Trial = "trial"
     Individual = "individual"
+    Free = "free"
     OrgDollar = "org-dollar"
     MemberDollar = "member-dollar"
 
@@ -21,6 +22,7 @@ class NeoTokenBudgetWindowKind(AutoEnumEncoder):
         return [
             NeoTokenBudgetWindowKind.Trial,
             NeoTokenBudgetWindowKind.Individual,
+            NeoTokenBudgetWindowKind.Free,
             NeoTokenBudgetWindowKind.OrgDollar,
             NeoTokenBudgetWindowKind.MemberDollar
         ]
@@ -30,6 +32,7 @@ class NeoTokenBudgetWindowKind(AutoEnumEncoder):
         return [
             NeoTokenBudgetWindowKind.Trial.value,
             NeoTokenBudgetWindowKind.Individual.value,
+            NeoTokenBudgetWindowKind.Free.value,
             NeoTokenBudgetWindowKind.OrgDollar.value,
             NeoTokenBudgetWindowKind.MemberDollar.value
         ]

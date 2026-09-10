@@ -16,7 +16,9 @@
 
 import type { AppDeploymentV3 } from "./AppDeploymentV3";
 import type { AppExtension } from "./AppExtension";
+import type { AppJournalBaseStatePatch } from "./AppJournalBaseStatePatch";
 import type { AppJournalEntryKind } from "./AppJournalEntryKind";
+import type { AppJournalNewStatePatch } from "./AppJournalNewStatePatch";
 import type { AppOperationV2 } from "./AppOperationV2";
 import type { AppResourceV3 } from "./AppResourceV3";
 import type { AppSecretsProvidersV1 } from "./AppSecretsProvidersV1";
@@ -43,6 +45,10 @@ export class AppJournalEntry {
     extensionRef?: string;
     extension?: AppExtension;
     requiresByteString?: boolean;
+    removeOlds?: number[];
+    states?: AppResourceV3[];
+    baseStatePatches?: AppJournalBaseStatePatch[];
+    newStatePatches?: AppJournalNewStatePatch[];
 
     getFixupPrototypeFunction() {
         return AppJournalEntry.fixupPrototype;
@@ -122,6 +128,36 @@ export class AppJournalEntry {
             // Lazy import - only evaluated when called
             const { AppExtension } = require("./AppExtension");
             AppExtension.fixupPrototype(this.extension);
+        }
+        if (this.states) {
+            for (let i0 = 0; i0 < this.states.length; i0++) {
+                let val0 = this.states[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { AppResourceV3 } = require("./AppResourceV3");
+                    AppResourceV3.fixupPrototype(val0);
+                }
+            }
+        }
+        if (this.baseStatePatches) {
+            for (let i0 = 0; i0 < this.baseStatePatches.length; i0++) {
+                let val0 = this.baseStatePatches[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { AppJournalBaseStatePatch } = require("./AppJournalBaseStatePatch");
+                    AppJournalBaseStatePatch.fixupPrototype(val0);
+                }
+            }
+        }
+        if (this.newStatePatches) {
+            for (let i0 = 0; i0 < this.newStatePatches.length; i0++) {
+                let val0 = this.newStatePatches[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { AppJournalNewStatePatch } = require("./AppJournalNewStatePatch");
+                    AppJournalNewStatePatch.fixupPrototype(val0);
+                }
+            }
         }
     }
 }

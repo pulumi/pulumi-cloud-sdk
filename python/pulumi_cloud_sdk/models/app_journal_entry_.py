@@ -36,6 +36,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     :var extension_ref: str - declared
     :var extension: AppExtension - declared
     :var requires_byte_string: bool - declared
+    :var remove_olds: list[int] - declared
+    :var states: list[AppResourceV3] - declared
+    :var base_state_patches: list[AppJournalBaseStatePatch] - declared
+    :var new_state_patches: list[AppJournalNewStatePatch] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'version': 'int',
@@ -57,6 +61,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         'extension_ref': 'str',
         'extension': 'AppExtension',
         'requires_byte_string': 'bool',
+        'remove_olds': 'list[int]',
+        'states': 'list[AppResourceV3]',
+        'base_state_patches': 'list[AppJournalBaseStatePatch]',
+        'new_state_patches': 'list[AppJournalNewStatePatch]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -79,6 +87,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         'extension_ref': 'extensionRef',
         'extension': 'extension',
         'requires_byte_string': 'requiresByteString',
+        'remove_olds': 'removeOlds',
+        'states': 'states',
+        'base_state_patches': 'baseStatePatches',
+        'new_state_patches': 'newStatePatches',
     }
 
     FIELDS_version = 'version'
@@ -100,6 +112,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     FIELDS_extension_ref = 'extensionRef'
     FIELDS_extension = 'extension'
     FIELDS_requires_byte_string = 'requiresByteString'
+    FIELDS_remove_olds = 'removeOlds'
+    FIELDS_states = 'states'
+    FIELDS_base_state_patches = 'baseStatePatches'
+    FIELDS_new_state_patches = 'newStatePatches'
 
     _version: 'int'
     _kind: 'AppJournalEntryKind'
@@ -120,6 +136,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     _extension_ref: 'str'
     _extension: 'AppExtension'
     _requires_byte_string: 'bool'
+    _remove_olds: 'list[int]'
+    _states: 'list[AppResourceV3]'
+    _base_state_patches: 'list[AppJournalBaseStatePatch]'
+    _new_state_patches: 'list[AppJournalNewStatePatch]'
 
     def __init__(
         self,
@@ -142,6 +162,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         extension_ref: 'str' = None,
         extension: 'AppExtension' = None,
         requires_byte_string: 'bool' = False,
+        remove_olds: 'list[int]' = None,
+        states: 'list[AppResourceV3]' = None,
+        base_state_patches: 'list[AppJournalBaseStatePatch]' = None,
+        new_state_patches: 'list[AppJournalNewStatePatch]' = None,
     ) -> None:
         super().__init__()
 
@@ -164,6 +188,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         self.extension_ref = extension_ref
         self.extension = extension
         self.requires_byte_string = requires_byte_string
+        self.remove_olds = remove_olds
+        self.states = states
+        self.base_state_patches = base_state_patches
+        self.new_state_patches = new_state_patches
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppJournalEntry):
@@ -186,6 +214,10 @@ class AppJournalEntry(PulumiAutoModelEncoder):
             self._extension_ref = source._extension_ref
             self._extension = source._extension
             self._requires_byte_string = source._requires_byte_string
+            self._remove_olds = source._remove_olds
+            self._states = source._states
+            self._base_state_patches = source._base_state_patches
+            self._new_state_patches = source._new_state_patches
 
     @property
     def version(self) -> 'int':
@@ -517,6 +549,142 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     @requires_byte_string.setter
     def requires_byte_string(self, requires_byte_string: 'bool'):
         self._requires_byte_string = requires_byte_string
+
+    @property
+    def remove_olds(self) -> 'list[int]':
+        return self._remove_olds
+
+    @remove_olds.setter
+    def remove_olds(self, remove_olds: 'list[int]'):
+        self._remove_olds = remove_olds
+
+    @property
+    def remove_olds__autoinit(self) -> 'list[int]':
+        """Return ``remove_olds``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._remove_olds``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``remove_olds__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._remove_olds is None:
+            self._remove_olds = self.remove_olds__safederef
+
+        return self._remove_olds
+
+    @property
+    def remove_olds__safederef(self) -> 'list[int]':
+        """Return ``remove_olds``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``remove_olds`` stays unset and each
+        call returns a new default. Use ``remove_olds__autoinit`` to persist the default on
+        first access.
+        """
+        if self._remove_olds is None:
+            return []
+
+        return self._remove_olds
+
+    @property
+    def states(self) -> 'list[AppResourceV3]':
+        return self._states
+
+    @states.setter
+    def states(self, states: 'list[AppResourceV3]'):
+        self._states = states
+
+    @property
+    def states__autoinit(self) -> 'list[AppResourceV3]':
+        """Return ``states``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._states``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``states__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._states is None:
+            self._states = self.states__safederef
+
+        return self._states
+
+    @property
+    def states__safederef(self) -> 'list[AppResourceV3]':
+        """Return ``states``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``states`` stays unset and each
+        call returns a new default. Use ``states__autoinit`` to persist the default on
+        first access.
+        """
+        if self._states is None:
+            return []
+
+        return self._states
+
+    @property
+    def base_state_patches(self) -> 'list[AppJournalBaseStatePatch]':
+        return self._base_state_patches
+
+    @base_state_patches.setter
+    def base_state_patches(self, base_state_patches: 'list[AppJournalBaseStatePatch]'):
+        self._base_state_patches = base_state_patches
+
+    @property
+    def base_state_patches__autoinit(self) -> 'list[AppJournalBaseStatePatch]':
+        """Return ``base_state_patches``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._base_state_patches``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``base_state_patches__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._base_state_patches is None:
+            self._base_state_patches = self.base_state_patches__safederef
+
+        return self._base_state_patches
+
+    @property
+    def base_state_patches__safederef(self) -> 'list[AppJournalBaseStatePatch]':
+        """Return ``base_state_patches``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``base_state_patches`` stays unset and each
+        call returns a new default. Use ``base_state_patches__autoinit`` to persist the default on
+        first access.
+        """
+        if self._base_state_patches is None:
+            return []
+
+        return self._base_state_patches
+
+    @property
+    def new_state_patches(self) -> 'list[AppJournalNewStatePatch]':
+        return self._new_state_patches
+
+    @new_state_patches.setter
+    def new_state_patches(self, new_state_patches: 'list[AppJournalNewStatePatch]'):
+        self._new_state_patches = new_state_patches
+
+    @property
+    def new_state_patches__autoinit(self) -> 'list[AppJournalNewStatePatch]':
+        """Return ``new_state_patches``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._new_state_patches``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``new_state_patches__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._new_state_patches is None:
+            self._new_state_patches = self.new_state_patches__safederef
+
+        return self._new_state_patches
+
+    @property
+    def new_state_patches__safederef(self) -> 'list[AppJournalNewStatePatch]':
+        """Return ``new_state_patches``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``new_state_patches`` stays unset and each
+        call returns a new default. Use ``new_state_patches__autoinit`` to persist the default on
+        first access.
+        """
+        if self._new_state_patches is None:
+            return []
+
+        return self._new_state_patches
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppJournalEntry):

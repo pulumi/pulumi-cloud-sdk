@@ -70,5 +70,23 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "free")]
         Free,
+
+        /// <summary>
+        /// SaasOfferEssentials is the Pulumi Essentials edition, billed by consumption.
+        /// </summary>
+        [EnumMember(Value = "essentials")]
+        Essentials,
+
+        /// <summary>
+        /// SaasOfferPro is the Pulumi Pro edition, billed by consumption.
+        /// </summary>
+        [EnumMember(Value = "pro")]
+        Pro,
+
+        /// <summary>
+        /// SaasOfferBusinessEnterprise is the Pulumi Enterprise edition, billed by consumption. Distinct from the legacy per-member 'enterprise' offer.
+        /// </summary>
+        [EnumMember(Value = "business-enterprise")]
+        BusinessEnterprise,
     }
 }
