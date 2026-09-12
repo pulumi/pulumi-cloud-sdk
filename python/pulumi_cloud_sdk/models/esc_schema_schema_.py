@@ -193,7 +193,6 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
 
     def __init__(
         self,
-        type: 'str',
         defs: 'dict[str, EscSchemaSchema]' = None,
         ref: 'str' = None,
         any_of: 'list[EscSchemaSchema]' = None,
@@ -202,6 +201,7 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
         items: 'EscSchemaSchema' = None,
         additional_properties: 'EscSchemaSchema' = None,
         properties: 'dict[str, EscSchemaSchema]' = None,
+        type: 'str' = None,
         const: 'Any' = None,
         enum: 'list[Any]' = None,
         multiple_of: 'str' = None,
@@ -553,9 +553,6 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
 
     @type.setter
     def type(self, type: 'str'):
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")
-
         self._type = type
 
     @property

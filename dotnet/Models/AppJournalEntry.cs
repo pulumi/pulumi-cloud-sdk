@@ -132,7 +132,13 @@ namespace Pulumi.Cloud.Sdk.Models {
         public System.Collections.Generic.List<long> RemoveOlds { get; set; }
 
         /// <summary>
-        /// Resources that a state migration splices into the base snapshot, in order. Only set for state-migration journal entries.
+        /// The complete base snapshot produced by a state migration, in order. Base resources absent from this list are removed. Only set for state-migration journal entries.
+        /// </summary>
+        [JsonProperty("layout")]
+        public System.Collections.Generic.List<AppJournalLayoutItem> Layout { get; set; }
+
+        /// <summary>
+        /// Resources that a state migration splices into the base snapshot at the positions given by layout. Only set for state-migration journal entries.
         /// </summary>
         [JsonProperty("states")]
         public System.Collections.Generic.List<AppResourceV3> States { get; set; }

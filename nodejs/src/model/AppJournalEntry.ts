@@ -18,6 +18,7 @@ import type { AppDeploymentV3 } from "./AppDeploymentV3";
 import type { AppExtension } from "./AppExtension";
 import type { AppJournalBaseStatePatch } from "./AppJournalBaseStatePatch";
 import type { AppJournalEntryKind } from "./AppJournalEntryKind";
+import type { AppJournalLayoutItem } from "./AppJournalLayoutItem";
 import type { AppJournalNewStatePatch } from "./AppJournalNewStatePatch";
 import type { AppOperationV2 } from "./AppOperationV2";
 import type { AppResourceV3 } from "./AppResourceV3";
@@ -46,6 +47,7 @@ export class AppJournalEntry {
     extension?: AppExtension;
     requiresByteString?: boolean;
     removeOlds?: number[];
+    layout?: AppJournalLayoutItem[];
     states?: AppResourceV3[];
     baseStatePatches?: AppJournalBaseStatePatch[];
     newStatePatches?: AppJournalNewStatePatch[];
@@ -128,6 +130,16 @@ export class AppJournalEntry {
             // Lazy import - only evaluated when called
             const { AppExtension } = require("./AppExtension");
             AppExtension.fixupPrototype(this.extension);
+        }
+        if (this.layout) {
+            for (let i0 = 0; i0 < this.layout.length; i0++) {
+                let val0 = this.layout[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { AppJournalLayoutItem } = require("./AppJournalLayoutItem");
+                    AppJournalLayoutItem.fixupPrototype(val0);
+                }
+            }
         }
         if (this.states) {
             for (let i0 = 0; i0 < this.states.length; i0++) {

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class NewPolicyGroupRequest {
-    // The name of the new policy group.
+    // The name of the new policy group. Up to 100 characters, made up of letters, numbers, hyphens, underscores, periods, or spaces, and may not begin or end with a space.
     public String name;
 
     // The type of entities this policy group applies to (stacks or accounts). Fixed at creation; it cannot be changed later.

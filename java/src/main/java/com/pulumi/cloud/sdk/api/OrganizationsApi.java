@@ -11,6 +11,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.pulumi.cloud.sdk.ApiClient;
 import com.pulumi.cloud.sdk.ApiRequest;
+import com.pulumi.cloud.sdk.HeaderParsing;
+import com.pulumi.cloud.sdk.ResponseWithHeaders;
 import com.pulumi.cloud.sdk.model.*;
 
 public final class OrganizationsApi {

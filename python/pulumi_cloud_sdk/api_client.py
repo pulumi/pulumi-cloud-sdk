@@ -15,12 +15,45 @@ generated model type.
 import json
 from datetime import date, datetime
 from enum import Enum
-from typing import Any, Optional
+from typing import Any, Generic, Optional, TypeVar
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 from ._support import default_encoder
 from .configuration import Configuration
+
+R = TypeVar("R")
+H = TypeVar("H")
+
+
+class ResponseWithHeaders(Generic[R, H]):
+    """
+    Pairs a deserialized response body with typed response headers, mirroring
+    ``apitype.ResponseWithHeaders[R, H]`` (Go) / ``ResponseWithHeaders<R, H>``
+    (TypeScript). Returned by generated ``*Api`` methods for operations whose
+    response declares response headers.
+    """
+
+    def __init__(self, response: R, headers: H) -> None:
+        self.response = response
+        self.headers = headers
+
+
+def parse_number_header(value: Optional[str], cast, default):
+    """
+    Convert a response header's raw string value via ``cast`` (``int`` or
+    ``float``), defaulting to ``default`` when the header is missing *or* its
+    value fails to parse. Unlike ``int(value or 0)`` -- which only substitutes
+    the default for an absent/empty header -- a present-but-malformed value
+    (e.g. ``"abc"``) is truthy, so ``or`` never triggers and ``int("abc")``
+    would otherwise raise ValueError out of the generated client call.
+    """
+    if value is None:
+        return default
+    try:
+        return cast(value)
+    except (TypeError, ValueError):
+        return default
 
 
 def _query_param_value(value: Any) -> str:
@@ -124,3 +157,60 @@ class ApiClient(object):
         # PulumiModelEncoder resolves it against the generated models package.
         decoded = json.loads(raw) if raw else None
         return default_encoder.deserialize(decoded, response_type)
+
+    def call_api_with_headers(
+        self,
+        resource_path: str,
+        method: str,
+        path_params: Optional[dict] = None,
+        query_params: Optional[dict] = None,
+        header_params: Optional[dict] = None,
+        body: Any = None,
+        post_params: Any = None,
+        files: Any = None,
+        response_type: Optional[str] = None,
+        auth_settings: Optional[list] = None,
+        collection_formats: Optional[dict] = None,
+        _preload_content: bool = True,
+        _request_timeout: Optional[float] = None,
+    ) -> tuple[Any, Any]:
+        """
+        Same as :meth:`call_api`, but also returns the response's headers (an
+        ``http.client.HTTPMessage``, exposing ``.get(name)``) alongside the
+        deserialized body — for operations whose response declares typed
+        response headers. Kept as its own method (duplicating call_api's body)
+        rather than added as an optional code path on call_api, so every other
+        generated method's call site is untouched.
+        """
+        headers = dict(self.default_headers)
+        headers.update(header_params or {})
+        if self.configuration.access_token:
+            headers["Authorization"] = "token " + self.configuration.access_token
+
+        # Substitute path parameters, then append query parameters.
+        path = resource_path
+        for key, value in (path_params or {}).items():
+            path = path.replace("{" + key + "}", quote(str(value), safe=""))
+
+        url = self.configuration.host.rstrip("/") + path
+        if query_params:
+            encoded = _encode_query(query_params)
+            if encoded:
+                url = url + "?" + encoded
+
+        data: Optional[bytes] = None
+        if body is not None:
+            headers.setdefault("Content-Type", "application/json")
+            data = json.dumps(default_encoder.sanitize_for_serialization(body)).encode("utf-8")
+
+        request = Request(url, data=data, headers=headers, method=method)
+        with urlopen(request, timeout=_request_timeout) as response:
+            raw = response.read()
+            response_headers = response.headers
+
+        self.last_response = raw
+        if not _preload_content or not response_type:
+            return raw, response_headers
+
+        decoded = json.loads(raw) if raw else None
+        return default_encoder.deserialize(decoded, response_type), response_headers

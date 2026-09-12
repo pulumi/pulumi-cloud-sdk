@@ -10,8 +10,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForCheckEnvironment_esc_environments struct {
@@ -29,7 +30,7 @@ func (p *CloudClient) CheckEnvironment_esc_environments(
 	envName string,
 	showSecrets *bool,
 	extraHeaders ...http.Header,
-) (*ext1.CheckEnvironmentResponse, error) {
+) (*apitype.CheckEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckEnvironment_esc_environments{
 			OrgName:      orgName,
@@ -43,7 +44,7 @@ func (p *CloudClient) CheckEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CheckEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CheckEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CheckEnvironment_esc_environments: %T", resultFromInterceptor)
 			}
@@ -71,7 +72,7 @@ func (p *CloudClient) CheckEnvironment_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CheckEnvironmentResponse
+	var result apitype.CheckEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -96,7 +97,7 @@ func (p *CloudClient) CheckEnvironment_esc_environments_versions(
 	version string,
 	showSecrets *bool,
 	extraHeaders ...http.Header,
-) (*ext1.CheckEnvironmentResponse, error) {
+) (*apitype.CheckEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckEnvironment_esc_environments_versions{
 			OrgName:      orgName,
@@ -111,7 +112,7 @@ func (p *CloudClient) CheckEnvironment_esc_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CheckEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CheckEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CheckEnvironment_esc_environments_versions: %T", resultFromInterceptor)
 			}
@@ -140,7 +141,7 @@ func (p *CloudClient) CheckEnvironment_esc_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CheckEnvironmentResponse
+	var result apitype.CheckEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -161,7 +162,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments(
 	envName string,
 	showSecrets *bool,
 	extraHeaders ...http.Header,
-) (*ext1.CheckEnvironmentResponse, error) {
+) (*apitype.CheckEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckEnvironment_preview_environments{
 			OrgName:      orgName,
@@ -174,7 +175,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CheckEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CheckEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CheckEnvironment_preview_environments: %T", resultFromInterceptor)
 			}
@@ -201,7 +202,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CheckEnvironmentResponse
+	var result apitype.CheckEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -224,7 +225,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments_versions(
 	version string,
 	showSecrets *bool,
 	extraHeaders ...http.Header,
-) (*ext1.CheckEnvironmentResponse, error) {
+) (*apitype.CheckEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckEnvironment_preview_environments_versions{
 			OrgName:      orgName,
@@ -238,7 +239,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CheckEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CheckEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CheckEnvironment_preview_environments_versions: %T", resultFromInterceptor)
 			}
@@ -266,7 +267,7 @@ func (p *CloudClient) CheckEnvironment_preview_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CheckEnvironmentResponse
+	var result apitype.CheckEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -287,7 +288,7 @@ func (p *CloudClient) CheckYAML_esc(
 	showSecrets *bool,
 	request string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentResponse, error) {
+) (*apitype.EnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckYAML_esc{
 			OrgName:      orgName,
@@ -300,7 +301,7 @@ func (p *CloudClient) CheckYAML_esc(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CheckYAML_esc: %T", resultFromInterceptor)
 			}
@@ -320,15 +321,15 @@ func (p *CloudClient) CheckYAML_esc(
 		},
 		[]byte(request),
 	)
-	req.Header.Set("Content-Type", "application/x-yaml")
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("Content-Type", "application/x-yaml")
 	respBody, err := p.invokeWithResponse(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentResponse
+	var result apitype.EnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -349,7 +350,7 @@ func (p *CloudClient) CheckYAML_preview(
 	showSecrets *bool,
 	request string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentResponse, error) {
+) (*apitype.EnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCheckYAML_preview{
 			OrgName:      orgName,
@@ -362,7 +363,7 @@ func (p *CloudClient) CheckYAML_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CheckYAML_preview: %T", resultFromInterceptor)
 			}
@@ -382,15 +383,15 @@ func (p *CloudClient) CheckYAML_preview(
 		},
 		[]byte(request),
 	)
-	req.Header.Set("Content-Type", "application/x-yaml")
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("Content-Type", "application/x-yaml")
 	respBody, err := p.invokeWithResponse(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentResponse
+	var result apitype.EnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -402,7 +403,7 @@ type InterceptorForCloneEnvironment struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.CloneEnvironmentRequest
+	Request      apitype.CloneEnvironmentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -411,7 +412,7 @@ func (p *CloudClient) CloneEnvironment(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.CloneEnvironmentRequest,
+	request apitype.CloneEnvironmentRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -466,7 +467,7 @@ func (p *CloudClient) CreateEnvironmentDraft(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeRequestRef, error) {
+) (*apitype.ChangeRequestRef, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateEnvironmentDraft{
 			OrgName:      orgName,
@@ -479,7 +480,7 @@ func (p *CloudClient) CreateEnvironmentDraft(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeRequestRef)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeRequestRef)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateEnvironmentDraft: %T", resultFromInterceptor)
 			}
@@ -505,7 +506,7 @@ func (p *CloudClient) CreateEnvironmentDraft(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeRequestRef
+	var result apitype.ChangeRequestRef
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -517,7 +518,7 @@ type InterceptorForCreateEnvironmentSchedule struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.CreateEnvironmentScheduleRequest
+	Request      apitype.CreateEnvironmentScheduleRequest
 	ExtraHeaders []http.Header
 }
 
@@ -526,9 +527,9 @@ func (p *CloudClient) CreateEnvironmentSchedule(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.CreateEnvironmentScheduleRequest,
+	request apitype.CreateEnvironmentScheduleRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateEnvironmentSchedule{
 			OrgName:      orgName,
@@ -542,7 +543,7 @@ func (p *CloudClient) CreateEnvironmentSchedule(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateEnvironmentSchedule: %T", resultFromInterceptor)
 			}
@@ -569,7 +570,7 @@ func (p *CloudClient) CreateEnvironmentSchedule(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -581,7 +582,7 @@ type InterceptorForCreateEnvironmentTag_esc_environments struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.CreateEnvironmentTagRequest
+	Request      apitype.CreateEnvironmentTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -590,9 +591,9 @@ func (p *CloudClient) CreateEnvironmentTag_esc_environments(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.CreateEnvironmentTagRequest,
+	request apitype.CreateEnvironmentTagRequest,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentTag, error) {
+) (*apitype.EnvironmentTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateEnvironmentTag_esc_environments{
 			OrgName:      orgName,
@@ -606,7 +607,7 @@ func (p *CloudClient) CreateEnvironmentTag_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateEnvironmentTag_esc_environments: %T", resultFromInterceptor)
 			}
@@ -633,7 +634,7 @@ func (p *CloudClient) CreateEnvironmentTag_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentTag
+	var result apitype.EnvironmentTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -644,7 +645,7 @@ func (p *CloudClient) CreateEnvironmentTag_esc_environments(
 type InterceptorForCreateEnvironmentTag_preview_environments struct {
 	OrgName      string
 	EnvName      string
-	Request      ext1.CreateEnvironmentTagRequest
+	Request      apitype.CreateEnvironmentTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -652,9 +653,9 @@ func (p *CloudClient) CreateEnvironmentTag_preview_environments(
 	ctx context.Context,
 	orgName string,
 	envName string,
-	request ext1.CreateEnvironmentTagRequest,
+	request apitype.CreateEnvironmentTagRequest,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentTag, error) {
+) (*apitype.EnvironmentTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateEnvironmentTag_preview_environments{
 			OrgName:      orgName,
@@ -667,7 +668,7 @@ func (p *CloudClient) CreateEnvironmentTag_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateEnvironmentTag_preview_environments: %T", resultFromInterceptor)
 			}
@@ -693,7 +694,7 @@ func (p *CloudClient) CreateEnvironmentTag_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentTag
+	var result apitype.EnvironmentTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -703,14 +704,14 @@ func (p *CloudClient) CreateEnvironmentTag_preview_environments(
 
 type InterceptorForCreateEnvironment_esc_environments struct {
 	OrgName      string
-	Request      ext1.CreateEnvironmentRequest
+	Request      apitype.CreateEnvironmentRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateEnvironment_esc_environments(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateEnvironmentRequest,
+	request apitype.CreateEnvironmentRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -751,7 +752,7 @@ func (p *CloudClient) CreateEnvironment_esc_environments(
 type InterceptorForCreateEnvironment_preview_environments struct {
 	OrgName      string
 	EnvName      string
-	Request      ext1.CreateEnvironmentRequest
+	Request      apitype.CreateEnvironmentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -759,7 +760,7 @@ func (p *CloudClient) CreateEnvironment_preview_environments(
 	ctx context.Context,
 	orgName string,
 	envName string,
-	request ext1.CreateEnvironmentRequest,
+	request apitype.CreateEnvironmentRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -803,7 +804,7 @@ type InterceptorForCreateOpenEnvironmentRequest struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.CreateEnvironmentOpenRequest
+	Request      apitype.CreateEnvironmentOpenRequest
 	ExtraHeaders []http.Header
 }
 
@@ -812,9 +813,9 @@ func (p *CloudClient) CreateOpenEnvironmentRequest(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.CreateEnvironmentOpenRequest,
+	request apitype.CreateEnvironmentOpenRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateEnvironmentOpenRequestResponse, error) {
+) (*apitype.CreateEnvironmentOpenRequestResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOpenEnvironmentRequest{
 			OrgName:      orgName,
@@ -828,7 +829,7 @@ func (p *CloudClient) CreateOpenEnvironmentRequest(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateEnvironmentOpenRequestResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateEnvironmentOpenRequestResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOpenEnvironmentRequest: %T", resultFromInterceptor)
 			}
@@ -855,7 +856,7 @@ func (p *CloudClient) CreateOpenEnvironmentRequest(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateEnvironmentOpenRequestResponse
+	var result apitype.CreateEnvironmentOpenRequestResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -867,7 +868,7 @@ type InterceptorForCreateRevisionTag_esc_environments_versions_tags struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.CreateEnvironmentRevisionTagRequest
+	Request      apitype.CreateEnvironmentRevisionTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -876,7 +877,7 @@ func (p *CloudClient) CreateRevisionTag_esc_environments_versions_tags(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.CreateEnvironmentRevisionTagRequest,
+	request apitype.CreateEnvironmentRevisionTagRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -922,7 +923,7 @@ type InterceptorForCreateRevisionTag_preview_environments_versions_tags struct {
 	OrgName      string
 	EnvName      string
 	TagName      string
-	Request      ext1.CreateEnvironmentRevisionTagRequest
+	Request      apitype.CreateEnvironmentRevisionTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -931,7 +932,7 @@ func (p *CloudClient) CreateRevisionTag_preview_environments_versions_tags(
 	orgName string,
 	envName string,
 	tagName string,
-	request ext1.CreateEnvironmentRevisionTagRequest,
+	request apitype.CreateEnvironmentRevisionTagRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -977,7 +978,7 @@ type InterceptorForCreateWebhook_esc_environments struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -986,9 +987,9 @@ func (p *CloudClient) CreateWebhook_esc_environments(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateWebhook_esc_environments{
 			OrgName:      orgName,
@@ -1002,7 +1003,7 @@ func (p *CloudClient) CreateWebhook_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateWebhook_esc_environments: %T", resultFromInterceptor)
 			}
@@ -1029,7 +1030,7 @@ func (p *CloudClient) CreateWebhook_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1040,7 +1041,7 @@ func (p *CloudClient) CreateWebhook_esc_environments(
 type InterceptorForCreateWebhook_preview_environments struct {
 	OrgName      string
 	EnvName      string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -1048,9 +1049,9 @@ func (p *CloudClient) CreateWebhook_preview_environments(
 	ctx context.Context,
 	orgName string,
 	envName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateWebhook_preview_environments{
 			OrgName:      orgName,
@@ -1063,7 +1064,7 @@ func (p *CloudClient) CreateWebhook_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateWebhook_preview_environments: %T", resultFromInterceptor)
 			}
@@ -1089,7 +1090,7 @@ func (p *CloudClient) CreateWebhook_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1101,7 +1102,7 @@ type InterceptorForDecryptEnvironmentSecrets struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.DecryptEnvironmentSecretsRequest
+	Request      apitype.DecryptEnvironmentSecretsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1110,9 +1111,9 @@ func (p *CloudClient) DecryptEnvironmentSecrets(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.DecryptEnvironmentSecretsRequest,
+	request apitype.DecryptEnvironmentSecretsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.DecryptEnvironmentSecretsResponse, error) {
+) (*apitype.DecryptEnvironmentSecretsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptEnvironmentSecrets{
 			OrgName:      orgName,
@@ -1126,7 +1127,7 @@ func (p *CloudClient) DecryptEnvironmentSecrets(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.DecryptEnvironmentSecretsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.DecryptEnvironmentSecretsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptEnvironmentSecrets: %T", resultFromInterceptor)
 			}
@@ -1153,7 +1154,7 @@ func (p *CloudClient) DecryptEnvironmentSecrets(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.DecryptEnvironmentSecretsResponse
+	var result apitype.DecryptEnvironmentSecretsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1174,7 +1175,7 @@ func (p *CloudClient) DecryptEnvironment_esc_environments(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptEnvironment_esc_environments{
 			OrgName:      orgName,
@@ -1187,7 +1188,7 @@ func (p *CloudClient) DecryptEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptEnvironment_esc_environments: %T", resultFromInterceptor)
 			}
@@ -1209,12 +1210,23 @@ func (p *CloudClient) DecryptEnvironment_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForDecryptEnvironment_esc_environments_versions struct {
@@ -1232,7 +1244,7 @@ func (p *CloudClient) DecryptEnvironment_esc_environments_versions(
 	envName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptEnvironment_esc_environments_versions{
 			OrgName:      orgName,
@@ -1246,7 +1258,7 @@ func (p *CloudClient) DecryptEnvironment_esc_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptEnvironment_esc_environments_versions: %T", resultFromInterceptor)
 			}
@@ -1269,12 +1281,23 @@ func (p *CloudClient) DecryptEnvironment_esc_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForDecryptEnvironment_preview_environments struct {
@@ -1288,7 +1311,7 @@ func (p *CloudClient) DecryptEnvironment_preview_environments(
 	orgName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptEnvironment_preview_environments{
 			OrgName:      orgName,
@@ -1300,7 +1323,7 @@ func (p *CloudClient) DecryptEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptEnvironment_preview_environments: %T", resultFromInterceptor)
 			}
@@ -1321,12 +1344,23 @@ func (p *CloudClient) DecryptEnvironment_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForDecryptEnvironment_preview_environments_versions struct {
@@ -1342,7 +1376,7 @@ func (p *CloudClient) DecryptEnvironment_preview_environments_versions(
 	envName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptEnvironment_preview_environments_versions{
 			OrgName:      orgName,
@@ -1355,7 +1389,7 @@ func (p *CloudClient) DecryptEnvironment_preview_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptEnvironment_preview_environments_versions: %T", resultFromInterceptor)
 			}
@@ -1377,12 +1411,23 @@ func (p *CloudClient) DecryptEnvironment_preview_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForDeleteEnvironmentSchedule struct {
@@ -1860,7 +1905,7 @@ type InterceptorForEncryptEnvironmentSecrets struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.EncryptEnvironmentSecretsRequest
+	Request      apitype.EncryptEnvironmentSecretsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1869,9 +1914,9 @@ func (p *CloudClient) EncryptEnvironmentSecrets(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.EncryptEnvironmentSecretsRequest,
+	request apitype.EncryptEnvironmentSecretsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.EncryptEnvironmentSecretsResponse, error) {
+) (*apitype.EncryptEnvironmentSecretsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForEncryptEnvironmentSecrets{
 			OrgName:      orgName,
@@ -1885,7 +1930,7 @@ func (p *CloudClient) EncryptEnvironmentSecrets(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EncryptEnvironmentSecretsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EncryptEnvironmentSecretsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for EncryptEnvironmentSecrets: %T", resultFromInterceptor)
 			}
@@ -1912,7 +1957,7 @@ func (p *CloudClient) EncryptEnvironmentSecrets(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EncryptEnvironmentSecretsResponse
+	var result apitype.EncryptEnvironmentSecretsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1927,7 +1972,7 @@ type InterceptorForGetContextSchema struct {
 func (p *CloudClient) GetContextSchema(
 	ctx context.Context,
 	extraHeaders ...http.Header,
-) (*ext1.ContextSchema, error) {
+) (*apitype.ContextSchema, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetContextSchema{
 			ExtraHeaders: extraHeaders,
@@ -1937,7 +1982,7 @@ func (p *CloudClient) GetContextSchema(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ContextSchema)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ContextSchema)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetContextSchema: %T", resultFromInterceptor)
 			}
@@ -1959,7 +2004,7 @@ func (p *CloudClient) GetContextSchema(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ContextSchema
+	var result apitype.ContextSchema
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1980,7 +2025,7 @@ func (p *CloudClient) GetEnvironmentMetadata_esc_environments(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentMetadata, error) {
+) (*apitype.EnvironmentMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEnvironmentMetadata_esc_environments{
 			OrgName:      orgName,
@@ -1993,7 +2038,7 @@ func (p *CloudClient) GetEnvironmentMetadata_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEnvironmentMetadata_esc_environments: %T", resultFromInterceptor)
 			}
@@ -2019,7 +2064,7 @@ func (p *CloudClient) GetEnvironmentMetadata_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentMetadata
+	var result apitype.EnvironmentMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2038,7 +2083,7 @@ func (p *CloudClient) GetEnvironmentMetadata_preview_environments(
 	orgName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentMetadata, error) {
+) (*apitype.EnvironmentMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEnvironmentMetadata_preview_environments{
 			OrgName:      orgName,
@@ -2050,7 +2095,7 @@ func (p *CloudClient) GetEnvironmentMetadata_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEnvironmentMetadata_preview_environments: %T", resultFromInterceptor)
 			}
@@ -2075,7 +2120,7 @@ func (p *CloudClient) GetEnvironmentMetadata_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentMetadata
+	var result apitype.EnvironmentMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2096,7 +2141,7 @@ func (p *CloudClient) GetEnvironmentSettings(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentSettings, error) {
+) (*apitype.EnvironmentSettings, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEnvironmentSettings{
 			OrgName:      orgName,
@@ -2109,7 +2154,7 @@ func (p *CloudClient) GetEnvironmentSettings(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentSettings)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentSettings)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEnvironmentSettings: %T", resultFromInterceptor)
 			}
@@ -2135,7 +2180,7 @@ func (p *CloudClient) GetEnvironmentSettings(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentSettings
+	var result apitype.EnvironmentSettings
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2158,7 +2203,7 @@ func (p *CloudClient) GetEnvironmentTag_esc_environments(
 	envName string,
 	tagName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentTag, error) {
+) (*apitype.EnvironmentTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEnvironmentTag_esc_environments{
 			OrgName:      orgName,
@@ -2172,7 +2217,7 @@ func (p *CloudClient) GetEnvironmentTag_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEnvironmentTag_esc_environments: %T", resultFromInterceptor)
 			}
@@ -2199,7 +2244,7 @@ func (p *CloudClient) GetEnvironmentTag_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentTag
+	var result apitype.EnvironmentTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2220,7 +2265,7 @@ func (p *CloudClient) GetEnvironmentTag_preview_environments(
 	envName string,
 	tagName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentTag, error) {
+) (*apitype.EnvironmentTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEnvironmentTag_preview_environments{
 			OrgName:      orgName,
@@ -2233,7 +2278,7 @@ func (p *CloudClient) GetEnvironmentTag_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEnvironmentTag_preview_environments: %T", resultFromInterceptor)
 			}
@@ -2259,7 +2304,7 @@ func (p *CloudClient) GetEnvironmentTag_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentTag
+	var result apitype.EnvironmentTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2276,7 +2321,7 @@ func (p *CloudClient) GetProviderSchema_esc(
 	ctx context.Context,
 	providerName string,
 	extraHeaders ...http.Header,
-) (*ext1.ProviderSchema, error) {
+) (*apitype.ProviderSchema, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetProviderSchema_esc{
 			ProviderName: providerName,
@@ -2287,7 +2332,7 @@ func (p *CloudClient) GetProviderSchema_esc(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ProviderSchema)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ProviderSchema)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetProviderSchema_esc: %T", resultFromInterceptor)
 			}
@@ -2311,7 +2356,7 @@ func (p *CloudClient) GetProviderSchema_esc(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ProviderSchema
+	var result apitype.ProviderSchema
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2328,7 +2373,7 @@ func (p *CloudClient) GetProviderSchema_preview_environments(
 	ctx context.Context,
 	providerName string,
 	extraHeaders ...http.Header,
-) (*ext1.ProviderSchema, error) {
+) (*apitype.ProviderSchema, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetProviderSchema_preview_environments{
 			ProviderName: providerName,
@@ -2339,7 +2384,7 @@ func (p *CloudClient) GetProviderSchema_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ProviderSchema)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ProviderSchema)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetProviderSchema_preview_environments: %T", resultFromInterceptor)
 			}
@@ -2363,7 +2408,7 @@ func (p *CloudClient) GetProviderSchema_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ProviderSchema
+	var result apitype.ProviderSchema
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2380,7 +2425,7 @@ func (p *CloudClient) GetRotatorSchema(
 	ctx context.Context,
 	rotatorName string,
 	extraHeaders ...http.Header,
-) (*ext1.ProviderSchema, error) {
+) (*apitype.ProviderSchema, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetRotatorSchema{
 			RotatorName:  rotatorName,
@@ -2391,7 +2436,7 @@ func (p *CloudClient) GetRotatorSchema(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ProviderSchema)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ProviderSchema)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetRotatorSchema: %T", resultFromInterceptor)
 			}
@@ -2415,7 +2460,7 @@ func (p *CloudClient) GetRotatorSchema(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ProviderSchema
+	var result apitype.ProviderSchema
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2438,7 +2483,7 @@ func (p *CloudClient) GetWebhookDeliveries_esc_environments(
 	envName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookDelivery, error) {
+) (*[]apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetWebhookDeliveries_esc_environments{
 			OrgName:      orgName,
@@ -2452,7 +2497,7 @@ func (p *CloudClient) GetWebhookDeliveries_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetWebhookDeliveries_esc_environments: %T", resultFromInterceptor)
 			}
@@ -2479,7 +2524,7 @@ func (p *CloudClient) GetWebhookDeliveries_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookDelivery
+	var result []apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2500,7 +2545,7 @@ func (p *CloudClient) GetWebhookDeliveries_preview_environments(
 	envName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookDelivery, error) {
+) (*[]apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetWebhookDeliveries_preview_environments{
 			OrgName:      orgName,
@@ -2513,7 +2558,7 @@ func (p *CloudClient) GetWebhookDeliveries_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetWebhookDeliveries_preview_environments: %T", resultFromInterceptor)
 			}
@@ -2539,7 +2584,7 @@ func (p *CloudClient) GetWebhookDeliveries_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookDelivery
+	var result []apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2562,7 +2607,7 @@ func (p *CloudClient) GetWebhook_esc_environments(
 	envName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetWebhook_esc_environments{
 			OrgName:      orgName,
@@ -2576,7 +2621,7 @@ func (p *CloudClient) GetWebhook_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetWebhook_esc_environments: %T", resultFromInterceptor)
 			}
@@ -2603,7 +2648,7 @@ func (p *CloudClient) GetWebhook_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2624,7 +2669,7 @@ func (p *CloudClient) GetWebhook_preview_environments(
 	envName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetWebhook_preview_environments{
 			OrgName:      orgName,
@@ -2637,7 +2682,7 @@ func (p *CloudClient) GetWebhook_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetWebhook_preview_environments: %T", resultFromInterceptor)
 			}
@@ -2663,7 +2708,7 @@ func (p *CloudClient) GetWebhook_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2684,7 +2729,7 @@ func (p *CloudClient) HeadEnvironment_esc_environments(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*any, error) {
+) (*apitype.HeadersForEnvironmentOp, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForHeadEnvironment_esc_environments{
 			OrgName:      orgName,
@@ -2697,7 +2742,11 @@ func (p *CloudClient) HeadEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			return &resultFromInterceptor, nil
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.HeadersForEnvironmentOp)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for HeadEnvironment_esc_environments: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
 		}
 	}
 
@@ -2715,16 +2764,22 @@ func (p *CloudClient) HeadEnvironment_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	responseHeaders, err := p.invokeWithHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
-	var result any
-	err = json.Unmarshal(respBody, &result)
-	if err != nil {
-		return nil, err
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
 	}
-	return &result, nil
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &headersResult, nil
 }
 
 type InterceptorForHeadEnvironment_preview_environments struct {
@@ -2738,7 +2793,7 @@ func (p *CloudClient) HeadEnvironment_preview_environments(
 	orgName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*any, error) {
+) (*apitype.HeadersForEnvironmentOp, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForHeadEnvironment_preview_environments{
 			OrgName:      orgName,
@@ -2750,7 +2805,11 @@ func (p *CloudClient) HeadEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			return &resultFromInterceptor, nil
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.HeadersForEnvironmentOp)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for HeadEnvironment_preview_environments: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
 		}
 	}
 
@@ -2767,16 +2826,22 @@ func (p *CloudClient) HeadEnvironment_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	responseHeaders, err := p.invokeWithHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
-	var result any
-	err = json.Unmarshal(respBody, &result)
-	if err != nil {
-		return nil, err
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
 	}
-	return &result, nil
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &headersResult, nil
 }
 
 type InterceptorForListAllEnvironmentTags_esc struct {
@@ -2894,7 +2959,7 @@ func (p *CloudClient) ListDeletedEnvironments(
 	orgName string,
 	continuationToken *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentsResponse, error) {
+) (*apitype.ListEnvironmentsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListDeletedEnvironments{
 			OrgName:           orgName,
@@ -2906,7 +2971,7 @@ func (p *CloudClient) ListDeletedEnvironments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListDeletedEnvironments: %T", resultFromInterceptor)
 			}
@@ -2932,7 +2997,7 @@ func (p *CloudClient) ListDeletedEnvironments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentsResponse
+	var result apitype.ListEnvironmentsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2961,7 +3026,7 @@ func (p *CloudClient) ListEnvironmentReferrers_esc_environments(
 	count *int,
 	latestStackVersionOnly *bool,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentReferrersResponse, error) {
+) (*apitype.ListEnvironmentReferrersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentReferrers_esc_environments{
 			OrgName:                orgName,
@@ -2978,7 +3043,7 @@ func (p *CloudClient) ListEnvironmentReferrers_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentReferrersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentReferrersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentReferrers_esc_environments: %T", resultFromInterceptor)
 			}
@@ -3009,7 +3074,7 @@ func (p *CloudClient) ListEnvironmentReferrers_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentReferrersResponse
+	var result apitype.ListEnvironmentReferrersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3040,7 +3105,7 @@ func (p *CloudClient) ListEnvironmentReferrers_esc_environments_versions(
 	count *int,
 	latestStackVersionOnly *bool,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentReferrersResponse, error) {
+) (*apitype.ListEnvironmentReferrersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentReferrers_esc_environments_versions{
 			OrgName:                orgName,
@@ -3058,7 +3123,7 @@ func (p *CloudClient) ListEnvironmentReferrers_esc_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentReferrersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentReferrersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentReferrers_esc_environments_versions: %T", resultFromInterceptor)
 			}
@@ -3090,7 +3155,7 @@ func (p *CloudClient) ListEnvironmentReferrers_esc_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentReferrersResponse
+	var result apitype.ListEnvironmentReferrersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3119,7 +3184,7 @@ func (p *CloudClient) ListEnvironmentReferrers_preview_environments_versions(
 	count *int,
 	latestStackVersionOnly *bool,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentReferrersResponse, error) {
+) (*apitype.ListEnvironmentReferrersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentReferrers_preview_environments_versions{
 			OrgName:                orgName,
@@ -3136,7 +3201,7 @@ func (p *CloudClient) ListEnvironmentReferrers_preview_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentReferrersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentReferrersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentReferrers_preview_environments_versions: %T", resultFromInterceptor)
 			}
@@ -3167,7 +3232,7 @@ func (p *CloudClient) ListEnvironmentReferrers_preview_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentReferrersResponse
+	var result apitype.ListEnvironmentReferrersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3192,7 +3257,7 @@ func (p *CloudClient) ListEnvironmentRevisions_esc_environments(
 	before *int,
 	count *int,
 	extraHeaders ...http.Header,
-) (*[]ext1.EnvironmentRevision, error) {
+) (*[]apitype.EnvironmentRevision, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentRevisions_esc_environments{
 			OrgName:      orgName,
@@ -3207,7 +3272,7 @@ func (p *CloudClient) ListEnvironmentRevisions_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.EnvironmentRevision)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.EnvironmentRevision)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentRevisions_esc_environments: %T", resultFromInterceptor)
 			}
@@ -3236,7 +3301,7 @@ func (p *CloudClient) ListEnvironmentRevisions_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.EnvironmentRevision
+	var result []apitype.EnvironmentRevision
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3259,7 +3324,7 @@ func (p *CloudClient) ListEnvironmentRevisions_preview_environments(
 	before *int,
 	count *int,
 	extraHeaders ...http.Header,
-) (*[]ext1.EnvironmentRevision, error) {
+) (*[]apitype.EnvironmentRevision, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentRevisions_preview_environments{
 			OrgName:      orgName,
@@ -3273,7 +3338,7 @@ func (p *CloudClient) ListEnvironmentRevisions_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.EnvironmentRevision)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.EnvironmentRevision)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentRevisions_preview_environments: %T", resultFromInterceptor)
 			}
@@ -3301,7 +3366,7 @@ func (p *CloudClient) ListEnvironmentRevisions_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.EnvironmentRevision
+	var result []apitype.EnvironmentRevision
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3322,7 +3387,7 @@ func (p *CloudClient) ListEnvironmentSchedule(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListScheduledActionsResponse, error) {
+) (*apitype.ListScheduledActionsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentSchedule{
 			OrgName:      orgName,
@@ -3335,7 +3400,7 @@ func (p *CloudClient) ListEnvironmentSchedule(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListScheduledActionsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListScheduledActionsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentSchedule: %T", resultFromInterceptor)
 			}
@@ -3361,7 +3426,7 @@ func (p *CloudClient) ListEnvironmentSchedule(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListScheduledActionsResponse
+	var result apitype.ListScheduledActionsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3384,7 +3449,7 @@ func (p *CloudClient) ListEnvironmentScheduleHistory(
 	envName string,
 	scheduleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ListScheduledActionHistoryResponse, error) {
+) (*apitype.ListScheduledActionHistoryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentScheduleHistory{
 			OrgName:      orgName,
@@ -3398,7 +3463,7 @@ func (p *CloudClient) ListEnvironmentScheduleHistory(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListScheduledActionHistoryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListScheduledActionHistoryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentScheduleHistory: %T", resultFromInterceptor)
 			}
@@ -3425,7 +3490,7 @@ func (p *CloudClient) ListEnvironmentScheduleHistory(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListScheduledActionHistoryResponse
+	var result apitype.ListScheduledActionHistoryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3446,7 +3511,7 @@ func (p *CloudClient) ListEnvironmentSecretRotationHistory(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentSecretRotationHistoryResponse, error) {
+) (*apitype.ListEnvironmentSecretRotationHistoryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentSecretRotationHistory{
 			OrgName:      orgName,
@@ -3459,7 +3524,7 @@ func (p *CloudClient) ListEnvironmentSecretRotationHistory(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentSecretRotationHistoryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentSecretRotationHistoryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentSecretRotationHistory: %T", resultFromInterceptor)
 			}
@@ -3485,7 +3550,7 @@ func (p *CloudClient) ListEnvironmentSecretRotationHistory(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentSecretRotationHistoryResponse
+	var result apitype.ListEnvironmentSecretRotationHistoryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3510,7 +3575,7 @@ func (p *CloudClient) ListEnvironmentTags_esc_environments(
 	after *int,
 	count *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentTagsResponse, error) {
+) (*apitype.ListEnvironmentTagsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentTags_esc_environments{
 			OrgName:      orgName,
@@ -3525,7 +3590,7 @@ func (p *CloudClient) ListEnvironmentTags_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentTagsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentTagsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentTags_esc_environments: %T", resultFromInterceptor)
 			}
@@ -3554,7 +3619,7 @@ func (p *CloudClient) ListEnvironmentTags_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentTagsResponse
+	var result apitype.ListEnvironmentTagsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3577,7 +3642,7 @@ func (p *CloudClient) ListEnvironmentTags_preview_environments(
 	after *int,
 	count *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentTagsResponse, error) {
+) (*apitype.ListEnvironmentTagsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironmentTags_preview_environments{
 			OrgName:      orgName,
@@ -3591,7 +3656,7 @@ func (p *CloudClient) ListEnvironmentTags_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentTagsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentTagsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironmentTags_preview_environments: %T", resultFromInterceptor)
 			}
@@ -3619,7 +3684,7 @@ func (p *CloudClient) ListEnvironmentTags_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentTagsResponse
+	var result apitype.ListEnvironmentTagsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3642,7 +3707,7 @@ func (p *CloudClient) ListEnvironments_esc(
 	maxResults *int,
 	organization *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentsResponse, error) {
+) (*apitype.ListEnvironmentsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironments_esc{
 			ContinuationToken:       continuationToken,
@@ -3656,7 +3721,7 @@ func (p *CloudClient) ListEnvironments_esc(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironments_esc: %T", resultFromInterceptor)
 			}
@@ -3683,7 +3748,7 @@ func (p *CloudClient) ListEnvironments_esc(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentsResponse
+	var result apitype.ListEnvironmentsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3706,7 +3771,7 @@ func (p *CloudClient) ListEnvironments_preview(
 	maxResults *int,
 	organization *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentsResponse, error) {
+) (*apitype.ListEnvironmentsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEnvironments_preview{
 			ContinuationToken:       continuationToken,
@@ -3720,7 +3785,7 @@ func (p *CloudClient) ListEnvironments_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEnvironments_preview: %T", resultFromInterceptor)
 			}
@@ -3747,7 +3812,7 @@ func (p *CloudClient) ListEnvironments_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentsResponse
+	var result apitype.ListEnvironmentsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3772,7 +3837,7 @@ func (p *CloudClient) ListOrgEnvironments_esc(
 	maxResults *int,
 	roleID *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentsResponse, error) {
+) (*apitype.ListEnvironmentsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgEnvironments_esc{
 			OrgName:                 orgName,
@@ -3787,7 +3852,7 @@ func (p *CloudClient) ListOrgEnvironments_esc(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgEnvironments_esc: %T", resultFromInterceptor)
 			}
@@ -3816,7 +3881,7 @@ func (p *CloudClient) ListOrgEnvironments_esc(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentsResponse
+	var result apitype.ListEnvironmentsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3841,7 +3906,7 @@ func (p *CloudClient) ListOrgEnvironments_preview(
 	maxResults *int,
 	roleID *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentsResponse, error) {
+) (*apitype.ListEnvironmentsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgEnvironments_preview{
 			OrgName:                 orgName,
@@ -3856,7 +3921,7 @@ func (p *CloudClient) ListOrgEnvironments_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgEnvironments_preview: %T", resultFromInterceptor)
 			}
@@ -3885,7 +3950,7 @@ func (p *CloudClient) ListOrgEnvironments_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentsResponse
+	var result apitype.ListEnvironmentsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3902,7 +3967,7 @@ func (p *CloudClient) ListProviders_esc(
 	ctx context.Context,
 	orgName *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListProvidersResponse, error) {
+) (*apitype.ListProvidersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListProviders_esc{
 			OrgName:      orgName,
@@ -3913,7 +3978,7 @@ func (p *CloudClient) ListProviders_esc(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListProvidersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListProvidersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListProviders_esc: %T", resultFromInterceptor)
 			}
@@ -3937,7 +4002,7 @@ func (p *CloudClient) ListProviders_esc(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListProvidersResponse
+	var result apitype.ListProvidersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3954,7 +4019,7 @@ func (p *CloudClient) ListProviders_preview_environments(
 	ctx context.Context,
 	orgName *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListProvidersResponse, error) {
+) (*apitype.ListProvidersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListProviders_preview_environments{
 			OrgName:      orgName,
@@ -3965,7 +4030,7 @@ func (p *CloudClient) ListProviders_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListProvidersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListProvidersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListProviders_preview_environments: %T", resultFromInterceptor)
 			}
@@ -3989,7 +4054,7 @@ func (p *CloudClient) ListProviders_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListProvidersResponse
+	var result apitype.ListProvidersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4014,7 +4079,7 @@ func (p *CloudClient) ListRevisionTags_esc_environments_versions(
 	after *string,
 	count *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentRevisionTagsResponse, error) {
+) (*apitype.ListEnvironmentRevisionTagsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListRevisionTags_esc_environments_versions{
 			OrgName:      orgName,
@@ -4029,7 +4094,7 @@ func (p *CloudClient) ListRevisionTags_esc_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentRevisionTagsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentRevisionTagsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListRevisionTags_esc_environments_versions: %T", resultFromInterceptor)
 			}
@@ -4058,7 +4123,7 @@ func (p *CloudClient) ListRevisionTags_esc_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentRevisionTagsResponse
+	var result apitype.ListEnvironmentRevisionTagsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4085,7 +4150,7 @@ func (p *CloudClient) ListRevisionTags_esc_environments_versions2(
 	after *string,
 	count *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentRevisionTagsResponse, error) {
+) (*apitype.ListEnvironmentRevisionTagsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListRevisionTags_esc_environments_versions2{
 			OrgName:      orgName,
@@ -4101,7 +4166,7 @@ func (p *CloudClient) ListRevisionTags_esc_environments_versions2(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentRevisionTagsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentRevisionTagsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListRevisionTags_esc_environments_versions2: %T", resultFromInterceptor)
 			}
@@ -4131,7 +4196,7 @@ func (p *CloudClient) ListRevisionTags_esc_environments_versions2(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentRevisionTagsResponse
+	var result apitype.ListEnvironmentRevisionTagsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4154,7 +4219,7 @@ func (p *CloudClient) ListRevisionTags_preview_environments_versions(
 	after *string,
 	count *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentRevisionTagsResponse, error) {
+) (*apitype.ListEnvironmentRevisionTagsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListRevisionTags_preview_environments_versions{
 			OrgName:      orgName,
@@ -4168,7 +4233,7 @@ func (p *CloudClient) ListRevisionTags_preview_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentRevisionTagsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentRevisionTagsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListRevisionTags_preview_environments_versions: %T", resultFromInterceptor)
 			}
@@ -4196,7 +4261,7 @@ func (p *CloudClient) ListRevisionTags_preview_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentRevisionTagsResponse
+	var result apitype.ListEnvironmentRevisionTagsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4221,7 +4286,7 @@ func (p *CloudClient) ListRevisionTags_preview_environments_versions2(
 	after *string,
 	count *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListEnvironmentRevisionTagsResponse, error) {
+) (*apitype.ListEnvironmentRevisionTagsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListRevisionTags_preview_environments_versions2{
 			OrgName:      orgName,
@@ -4236,7 +4301,7 @@ func (p *CloudClient) ListRevisionTags_preview_environments_versions2(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListEnvironmentRevisionTagsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEnvironmentRevisionTagsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListRevisionTags_preview_environments_versions2: %T", resultFromInterceptor)
 			}
@@ -4265,7 +4330,7 @@ func (p *CloudClient) ListRevisionTags_preview_environments_versions2(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListEnvironmentRevisionTagsResponse
+	var result apitype.ListEnvironmentRevisionTagsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4282,7 +4347,7 @@ func (p *CloudClient) ListRotators(
 	ctx context.Context,
 	orgName *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListRotatorsResponse, error) {
+) (*apitype.ListRotatorsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListRotators{
 			OrgName:      orgName,
@@ -4293,7 +4358,7 @@ func (p *CloudClient) ListRotators(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListRotatorsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListRotatorsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListRotators: %T", resultFromInterceptor)
 			}
@@ -4317,7 +4382,7 @@ func (p *CloudClient) ListRotators(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListRotatorsResponse
+	var result apitype.ListRotatorsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4338,7 +4403,7 @@ func (p *CloudClient) ListWebhooks_esc_environments(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookResponse, error) {
+) (*[]apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListWebhooks_esc_environments{
 			OrgName:      orgName,
@@ -4351,7 +4416,7 @@ func (p *CloudClient) ListWebhooks_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListWebhooks_esc_environments: %T", resultFromInterceptor)
 			}
@@ -4377,7 +4442,7 @@ func (p *CloudClient) ListWebhooks_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookResponse
+	var result []apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4396,7 +4461,7 @@ func (p *CloudClient) ListWebhooks_preview_environments(
 	orgName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookResponse, error) {
+) (*[]apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListWebhooks_preview_environments{
 			OrgName:      orgName,
@@ -4408,7 +4473,7 @@ func (p *CloudClient) ListWebhooks_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListWebhooks_preview_environments: %T", resultFromInterceptor)
 			}
@@ -4433,7 +4498,7 @@ func (p *CloudClient) ListWebhooks_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookResponse
+	var result []apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4460,7 +4525,7 @@ func (p *CloudClient) OpenEnvironmentDraft(
 	duration *string,
 	revision *int,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenEnvironmentDraft{
 			OrgName:         orgName,
@@ -4476,7 +4541,7 @@ func (p *CloudClient) OpenEnvironmentDraft(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenEnvironmentDraft: %T", resultFromInterceptor)
 			}
@@ -4506,7 +4571,7 @@ func (p *CloudClient) OpenEnvironmentDraft(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4529,7 +4594,7 @@ func (p *CloudClient) OpenEnvironment_esc_environments(
 	envName string,
 	duration *string,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenEnvironment_esc_environments{
 			OrgName:      orgName,
@@ -4543,7 +4608,7 @@ func (p *CloudClient) OpenEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenEnvironment_esc_environments: %T", resultFromInterceptor)
 			}
@@ -4571,7 +4636,7 @@ func (p *CloudClient) OpenEnvironment_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4596,7 +4661,7 @@ func (p *CloudClient) OpenEnvironment_esc_environments_versions(
 	version string,
 	duration *string,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenEnvironment_esc_environments_versions{
 			OrgName:      orgName,
@@ -4611,7 +4676,7 @@ func (p *CloudClient) OpenEnvironment_esc_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenEnvironment_esc_environments_versions: %T", resultFromInterceptor)
 			}
@@ -4640,7 +4705,7 @@ func (p *CloudClient) OpenEnvironment_esc_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4661,7 +4726,7 @@ func (p *CloudClient) OpenEnvironment_preview_environments(
 	envName string,
 	duration *string,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenEnvironment_preview_environments{
 			OrgName:      orgName,
@@ -4674,7 +4739,7 @@ func (p *CloudClient) OpenEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenEnvironment_preview_environments: %T", resultFromInterceptor)
 			}
@@ -4701,7 +4766,7 @@ func (p *CloudClient) OpenEnvironment_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4724,7 +4789,7 @@ func (p *CloudClient) OpenEnvironment_preview_environments_versions(
 	version string,
 	duration *string,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenEnvironment_preview_environments_versions{
 			OrgName:      orgName,
@@ -4738,7 +4803,7 @@ func (p *CloudClient) OpenEnvironment_preview_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenEnvironment_preview_environments_versions: %T", resultFromInterceptor)
 			}
@@ -4766,7 +4831,7 @@ func (p *CloudClient) OpenEnvironment_preview_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4785,7 +4850,7 @@ func (p *CloudClient) OpenYAML_esc(
 	orgName string,
 	duration *string,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenYAML_esc{
 			OrgName:      orgName,
@@ -4797,7 +4862,7 @@ func (p *CloudClient) OpenYAML_esc(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenYAML_esc: %T", resultFromInterceptor)
 			}
@@ -4823,7 +4888,7 @@ func (p *CloudClient) OpenYAML_esc(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4842,7 +4907,7 @@ func (p *CloudClient) OpenYAML_preview(
 	orgName string,
 	duration *string,
 	extraHeaders ...http.Header,
-) (*ext1.OpenEnvironmentResponse, error) {
+) (*apitype.OpenEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOpenYAML_preview{
 			OrgName:      orgName,
@@ -4854,7 +4919,7 @@ func (p *CloudClient) OpenYAML_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OpenEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OpenEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OpenYAML_preview: %T", resultFromInterceptor)
 			}
@@ -4880,7 +4945,7 @@ func (p *CloudClient) OpenYAML_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OpenEnvironmentResponse
+	var result apitype.OpenEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4892,7 +4957,7 @@ type InterceptorForPatchEnvironmentSettings struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.PatchEnvironmentSettingsRequest
+	Request      apitype.PatchEnvironmentSettingsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -4901,7 +4966,7 @@ func (p *CloudClient) PatchEnvironmentSettings(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.PatchEnvironmentSettingsRequest,
+	request apitype.PatchEnvironmentSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5013,7 +5078,7 @@ func (p *CloudClient) PingWebhook_esc_environments(
 	envName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPingWebhook_esc_environments{
 			OrgName:      orgName,
@@ -5027,7 +5092,7 @@ func (p *CloudClient) PingWebhook_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PingWebhook_esc_environments: %T", resultFromInterceptor)
 			}
@@ -5054,7 +5119,7 @@ func (p *CloudClient) PingWebhook_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5075,7 +5140,7 @@ func (p *CloudClient) PingWebhook_preview_environments(
 	envName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPingWebhook_preview_environments{
 			OrgName:      orgName,
@@ -5088,7 +5153,7 @@ func (p *CloudClient) PingWebhook_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PingWebhook_preview_environments: %T", resultFromInterceptor)
 			}
@@ -5114,7 +5179,7 @@ func (p *CloudClient) PingWebhook_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5135,7 +5200,7 @@ func (p *CloudClient) ReadAnonymousOpenEnvironment_esc(
 	openSessionID string,
 	property *string,
 	extraHeaders ...http.Header,
-) (*any, error) {
+) (*json.RawMessage, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadAnonymousOpenEnvironment_esc{
 			OrgName:       orgName,
@@ -5148,7 +5213,11 @@ func (p *CloudClient) ReadAnonymousOpenEnvironment_esc(
 			return nil, err
 		}
 		if intercepted {
-			return &resultFromInterceptor, nil
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(json.RawMessage)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadAnonymousOpenEnvironment_esc: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
 		}
 	}
 
@@ -5171,7 +5240,7 @@ func (p *CloudClient) ReadAnonymousOpenEnvironment_esc(
 	if err != nil {
 		return nil, err
 	}
-	var result any
+	var result json.RawMessage
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5192,7 +5261,7 @@ func (p *CloudClient) ReadAnonymousOpenEnvironment_preview(
 	openSessionID string,
 	property *string,
 	extraHeaders ...http.Header,
-) (*any, error) {
+) (*json.RawMessage, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadAnonymousOpenEnvironment_preview{
 			OrgName:       orgName,
@@ -5205,7 +5274,11 @@ func (p *CloudClient) ReadAnonymousOpenEnvironment_preview(
 			return nil, err
 		}
 		if intercepted {
-			return &resultFromInterceptor, nil
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(json.RawMessage)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadAnonymousOpenEnvironment_preview: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
 		}
 	}
 
@@ -5228,7 +5301,7 @@ func (p *CloudClient) ReadAnonymousOpenEnvironment_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result any
+	var result json.RawMessage
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5316,7 +5389,7 @@ func (p *CloudClient) ReadEnvironmentSchedule(
 	envName string,
 	scheduleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadEnvironmentSchedule{
 			OrgName:      orgName,
@@ -5330,7 +5403,7 @@ func (p *CloudClient) ReadEnvironmentSchedule(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadEnvironmentSchedule: %T", resultFromInterceptor)
 			}
@@ -5357,7 +5430,7 @@ func (p *CloudClient) ReadEnvironmentSchedule(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5378,7 +5451,7 @@ func (p *CloudClient) ReadEnvironment_esc_environments(
 	projectName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadEnvironment_esc_environments{
 			OrgName:      orgName,
@@ -5391,7 +5464,7 @@ func (p *CloudClient) ReadEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadEnvironment_esc_environments: %T", resultFromInterceptor)
 			}
@@ -5413,12 +5486,23 @@ func (p *CloudClient) ReadEnvironment_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForReadEnvironment_esc_environments_versions struct {
@@ -5436,7 +5520,7 @@ func (p *CloudClient) ReadEnvironment_esc_environments_versions(
 	envName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadEnvironment_esc_environments_versions{
 			OrgName:      orgName,
@@ -5450,7 +5534,7 @@ func (p *CloudClient) ReadEnvironment_esc_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadEnvironment_esc_environments_versions: %T", resultFromInterceptor)
 			}
@@ -5473,12 +5557,23 @@ func (p *CloudClient) ReadEnvironment_esc_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForReadEnvironment_preview_environments struct {
@@ -5492,7 +5587,7 @@ func (p *CloudClient) ReadEnvironment_preview_environments(
 	orgName string,
 	envName string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadEnvironment_preview_environments{
 			OrgName:      orgName,
@@ -5504,7 +5599,7 @@ func (p *CloudClient) ReadEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadEnvironment_preview_environments: %T", resultFromInterceptor)
 			}
@@ -5525,12 +5620,23 @@ func (p *CloudClient) ReadEnvironment_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForReadEnvironment_preview_environments_versions struct {
@@ -5546,7 +5652,7 @@ func (p *CloudClient) ReadEnvironment_preview_environments_versions(
 	envName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*string, error) {
+) (*apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadEnvironment_preview_environments_versions{
 			OrgName:      orgName,
@@ -5559,7 +5665,7 @@ func (p *CloudClient) ReadEnvironment_preview_environments_versions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadEnvironment_preview_environments_versions: %T", resultFromInterceptor)
 			}
@@ -5581,12 +5687,23 @@ func (p *CloudClient) ReadEnvironment_preview_environments_versions(
 	if err != nil {
 		return nil, err
 	}
-	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	rawResult, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
 	result := string(rawResult)
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[string, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForReadOpenEnvironmentRequest struct {
@@ -5606,7 +5723,7 @@ func (p *CloudClient) ReadOpenEnvironmentRequest(
 	changeRequestID string,
 	revision *int,
 	extraHeaders ...http.Header,
-) (*ext1.CreateEnvironmentOpenRequest, error) {
+) (*apitype.CreateEnvironmentOpenRequest, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadOpenEnvironmentRequest{
 			OrgName:         orgName,
@@ -5621,7 +5738,7 @@ func (p *CloudClient) ReadOpenEnvironmentRequest(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateEnvironmentOpenRequest)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateEnvironmentOpenRequest)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadOpenEnvironmentRequest: %T", resultFromInterceptor)
 			}
@@ -5650,7 +5767,7 @@ func (p *CloudClient) ReadOpenEnvironmentRequest(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateEnvironmentOpenRequest
+	var result apitype.CreateEnvironmentOpenRequest
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5675,7 +5792,7 @@ func (p *CloudClient) ReadOpenEnvironment_esc_environments(
 	openSessionID string,
 	property *string,
 	extraHeaders ...http.Header,
-) (*any, error) {
+) (*json.RawMessage, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadOpenEnvironment_esc_environments{
 			OrgName:       orgName,
@@ -5690,7 +5807,11 @@ func (p *CloudClient) ReadOpenEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			return &resultFromInterceptor, nil
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(json.RawMessage)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadOpenEnvironment_esc_environments: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
 		}
 	}
 
@@ -5715,7 +5836,7 @@ func (p *CloudClient) ReadOpenEnvironment_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result any
+	var result json.RawMessage
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5738,7 +5859,7 @@ func (p *CloudClient) ReadOpenEnvironment_preview_environments(
 	openSessionID string,
 	property *string,
 	extraHeaders ...http.Header,
-) (*any, error) {
+) (*json.RawMessage, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadOpenEnvironment_preview_environments{
 			OrgName:       orgName,
@@ -5752,7 +5873,11 @@ func (p *CloudClient) ReadOpenEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			return &resultFromInterceptor, nil
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(json.RawMessage)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadOpenEnvironment_preview_environments: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
 		}
 	}
 
@@ -5776,7 +5901,7 @@ func (p *CloudClient) ReadOpenEnvironment_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result any
+	var result json.RawMessage
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5799,7 +5924,7 @@ func (p *CloudClient) ReadRevisionTag_esc_environments(
 	envName string,
 	tagName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentRevisionTag, error) {
+) (*apitype.EnvironmentRevisionTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadRevisionTag_esc_environments{
 			OrgName:      orgName,
@@ -5813,7 +5938,7 @@ func (p *CloudClient) ReadRevisionTag_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentRevisionTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentRevisionTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadRevisionTag_esc_environments: %T", resultFromInterceptor)
 			}
@@ -5840,7 +5965,7 @@ func (p *CloudClient) ReadRevisionTag_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentRevisionTag
+	var result apitype.EnvironmentRevisionTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5861,7 +5986,7 @@ func (p *CloudClient) ReadRevisionTag_preview_environments(
 	envName string,
 	tagName string,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentRevisionTag, error) {
+) (*apitype.EnvironmentRevisionTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadRevisionTag_preview_environments{
 			OrgName:      orgName,
@@ -5874,7 +5999,7 @@ func (p *CloudClient) ReadRevisionTag_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentRevisionTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentRevisionTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadRevisionTag_preview_environments: %T", resultFromInterceptor)
 			}
@@ -5900,7 +6025,7 @@ func (p *CloudClient) ReadRevisionTag_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentRevisionTag
+	var result apitype.EnvironmentRevisionTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5912,7 +6037,7 @@ type InterceptorForReassignEnvironmentOwnership struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.UserInfo
+	Request      apitype.UserInfo
 	ExtraHeaders []http.Header
 }
 
@@ -5921,9 +6046,9 @@ func (p *CloudClient) ReassignEnvironmentOwnership(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.UserInfo,
+	request apitype.UserInfo,
 	extraHeaders ...http.Header,
-) (*ext1.UserInfo, error) {
+) (*apitype.UserInfo, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReassignEnvironmentOwnership{
 			OrgName:      orgName,
@@ -5937,7 +6062,7 @@ func (p *CloudClient) ReassignEnvironmentOwnership(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UserInfo)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UserInfo)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReassignEnvironmentOwnership: %T", resultFromInterceptor)
 			}
@@ -5964,7 +6089,7 @@ func (p *CloudClient) ReassignEnvironmentOwnership(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UserInfo
+	var result apitype.UserInfo
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5989,7 +6114,7 @@ func (p *CloudClient) RedeliverWebhookEvent_esc_environments(
 	hookName string,
 	event string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRedeliverWebhookEvent_esc_environments{
 			OrgName:      orgName,
@@ -6004,7 +6129,7 @@ func (p *CloudClient) RedeliverWebhookEvent_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RedeliverWebhookEvent_esc_environments: %T", resultFromInterceptor)
 			}
@@ -6032,7 +6157,7 @@ func (p *CloudClient) RedeliverWebhookEvent_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6055,7 +6180,7 @@ func (p *CloudClient) RedeliverWebhookEvent_preview_environments(
 	hookName string,
 	event string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRedeliverWebhookEvent_preview_environments{
 			OrgName:      orgName,
@@ -6069,7 +6194,7 @@ func (p *CloudClient) RedeliverWebhookEvent_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RedeliverWebhookEvent_preview_environments: %T", resultFromInterceptor)
 			}
@@ -6096,7 +6221,7 @@ func (p *CloudClient) RedeliverWebhookEvent_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6106,14 +6231,14 @@ func (p *CloudClient) RedeliverWebhookEvent_preview_environments(
 
 type InterceptorForRestoreEnvironment struct {
 	OrgName      string
-	Request      ext1.RestoreEnvironmentRequest
+	Request      apitype.RestoreEnvironmentRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) RestoreEnvironment(
 	ctx context.Context,
 	orgName string,
-	request ext1.RestoreEnvironmentRequest,
+	request apitype.RestoreEnvironmentRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6211,7 +6336,7 @@ type InterceptorForRetractEnvironmentRevision_esc_environments struct {
 	ProjectName  string
 	EnvName      string
 	Version      string
-	Request      ext1.RetractEnvironmentRevisionRequest
+	Request      apitype.RetractEnvironmentRevisionRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6221,7 +6346,7 @@ func (p *CloudClient) RetractEnvironmentRevision_esc_environments(
 	projectName string,
 	envName string,
 	version string,
-	request ext1.RetractEnvironmentRevisionRequest,
+	request apitype.RetractEnvironmentRevisionRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6269,7 +6394,7 @@ type InterceptorForRetractEnvironmentRevision_preview_environments struct {
 	OrgName      string
 	EnvName      string
 	Version      string
-	Request      ext1.RetractEnvironmentRevisionRequest
+	Request      apitype.RetractEnvironmentRevisionRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6278,7 +6403,7 @@ func (p *CloudClient) RetractEnvironmentRevision_preview_environments(
 	orgName string,
 	envName string,
 	version string,
-	request ext1.RetractEnvironmentRevisionRequest,
+	request apitype.RetractEnvironmentRevisionRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6324,7 +6449,7 @@ type InterceptorForRotateEnvironment struct {
 	OrgName      string
 	ProjectName  string
 	EnvName      string
-	Request      ext1.RotateEnvironmentRequest
+	Request      apitype.RotateEnvironmentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6333,9 +6458,9 @@ func (p *CloudClient) RotateEnvironment(
 	orgName string,
 	projectName string,
 	envName string,
-	request ext1.RotateEnvironmentRequest,
+	request apitype.RotateEnvironmentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.RotateEnvironmentResponse, error) {
+) (*apitype.RotateEnvironmentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRotateEnvironment{
 			OrgName:      orgName,
@@ -6349,7 +6474,7 @@ func (p *CloudClient) RotateEnvironment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.RotateEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.RotateEnvironmentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RotateEnvironment: %T", resultFromInterceptor)
 			}
@@ -6376,7 +6501,7 @@ func (p *CloudClient) RotateEnvironment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.RotateEnvironmentResponse
+	var result apitype.RotateEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6399,7 +6524,7 @@ func (p *CloudClient) UpdateEnvironmentDraft(
 	envName string,
 	changeRequestID string,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeRequestRef, error) {
+) (*apitype.ChangeRequestRef, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateEnvironmentDraft{
 			OrgName:         orgName,
@@ -6413,7 +6538,7 @@ func (p *CloudClient) UpdateEnvironmentDraft(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeRequestRef)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeRequestRef)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEnvironmentDraft: %T", resultFromInterceptor)
 			}
@@ -6440,7 +6565,7 @@ func (p *CloudClient) UpdateEnvironmentDraft(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeRequestRef
+	var result apitype.ChangeRequestRef
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6453,7 +6578,7 @@ type InterceptorForUpdateEnvironmentSchedule struct {
 	ProjectName  string
 	EnvName      string
 	ScheduleID   string
-	Request      ext1.CreateEnvironmentScheduleRequest
+	Request      apitype.CreateEnvironmentScheduleRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6463,9 +6588,9 @@ func (p *CloudClient) UpdateEnvironmentSchedule(
 	projectName string,
 	envName string,
 	scheduleID string,
-	request ext1.CreateEnvironmentScheduleRequest,
+	request apitype.CreateEnvironmentScheduleRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateEnvironmentSchedule{
 			OrgName:      orgName,
@@ -6480,7 +6605,7 @@ func (p *CloudClient) UpdateEnvironmentSchedule(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEnvironmentSchedule: %T", resultFromInterceptor)
 			}
@@ -6508,7 +6633,7 @@ func (p *CloudClient) UpdateEnvironmentSchedule(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6521,7 +6646,7 @@ type InterceptorForUpdateEnvironmentTag_esc_environments struct {
 	ProjectName  string
 	EnvName      string
 	TagName      string
-	Request      ext1.UpdateEnvironmentTagRequest
+	Request      apitype.UpdateEnvironmentTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6531,9 +6656,9 @@ func (p *CloudClient) UpdateEnvironmentTag_esc_environments(
 	projectName string,
 	envName string,
 	tagName string,
-	request ext1.UpdateEnvironmentTagRequest,
+	request apitype.UpdateEnvironmentTagRequest,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentTag, error) {
+) (*apitype.EnvironmentTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateEnvironmentTag_esc_environments{
 			OrgName:      orgName,
@@ -6548,7 +6673,7 @@ func (p *CloudClient) UpdateEnvironmentTag_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEnvironmentTag_esc_environments: %T", resultFromInterceptor)
 			}
@@ -6576,7 +6701,7 @@ func (p *CloudClient) UpdateEnvironmentTag_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentTag
+	var result apitype.EnvironmentTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6588,7 +6713,7 @@ type InterceptorForUpdateEnvironmentTag_preview_environments struct {
 	OrgName      string
 	EnvName      string
 	TagName      string
-	Request      ext1.UpdateEnvironmentTagRequest
+	Request      apitype.UpdateEnvironmentTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6597,9 +6722,9 @@ func (p *CloudClient) UpdateEnvironmentTag_preview_environments(
 	orgName string,
 	envName string,
 	tagName string,
-	request ext1.UpdateEnvironmentTagRequest,
+	request apitype.UpdateEnvironmentTagRequest,
 	extraHeaders ...http.Header,
-) (*ext1.EnvironmentTag, error) {
+) (*apitype.EnvironmentTag, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateEnvironmentTag_preview_environments{
 			OrgName:      orgName,
@@ -6613,7 +6738,7 @@ func (p *CloudClient) UpdateEnvironmentTag_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.EnvironmentTag)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EnvironmentTag)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEnvironmentTag_preview_environments: %T", resultFromInterceptor)
 			}
@@ -6640,7 +6765,7 @@ func (p *CloudClient) UpdateEnvironmentTag_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.EnvironmentTag
+	var result apitype.EnvironmentTag
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6663,7 +6788,7 @@ func (p *CloudClient) UpdateEnvironment_esc_environments(
 	envName string,
 	request string,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateEnvironmentResponse, error) {
+) (*apitype.ResponseWithHeaders[apitype.UpdateEnvironmentResponse, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateEnvironment_esc_environments{
 			OrgName:      orgName,
@@ -6677,7 +6802,7 @@ func (p *CloudClient) UpdateEnvironment_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[apitype.UpdateEnvironmentResponse, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEnvironment_esc_environments: %T", resultFromInterceptor)
 			}
@@ -6697,20 +6822,31 @@ func (p *CloudClient) UpdateEnvironment_esc_environments(
 		nil,
 		[]byte(request),
 	)
+	if err != nil {
+		return nil, err
+	}
 	req.Header.Set("Content-Type", "application/x-yaml")
+	respBody, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
-	respBody, err := p.invokeWithResponse(req, extraHeaders)
-	if err != nil {
-		return nil, err
-	}
-	var result ext1.UpdateEnvironmentResponse
+	var result apitype.UpdateEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
 	}
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[apitype.UpdateEnvironmentResponse, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForUpdateEnvironment_preview_environments struct {
@@ -6726,7 +6862,7 @@ func (p *CloudClient) UpdateEnvironment_preview_environments(
 	envName string,
 	request string,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateEnvironmentResponse, error) {
+) (*apitype.ResponseWithHeaders[apitype.UpdateEnvironmentResponse, apitype.HeadersForEnvironmentOp], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateEnvironment_preview_environments{
 			OrgName:      orgName,
@@ -6739,7 +6875,7 @@ func (p *CloudClient) UpdateEnvironment_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateEnvironmentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseWithHeaders[apitype.UpdateEnvironmentResponse, apitype.HeadersForEnvironmentOp])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEnvironment_preview_environments: %T", resultFromInterceptor)
 			}
@@ -6758,20 +6894,31 @@ func (p *CloudClient) UpdateEnvironment_preview_environments(
 		nil,
 		[]byte(request),
 	)
+	if err != nil {
+		return nil, err
+	}
 	req.Header.Set("Content-Type", "application/x-yaml")
+	respBody, responseHeaders, err := p.invokeWithResponseAndHeaders(req, extraHeaders)
 	if err != nil {
 		return nil, err
 	}
-	respBody, err := p.invokeWithResponse(req, extraHeaders)
-	if err != nil {
-		return nil, err
-	}
-	var result ext1.UpdateEnvironmentResponse
+	var result apitype.UpdateEnvironmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
 	}
-	return &result, nil
+	headerETag := responseHeaders.Get("ETag")
+	var headerPulumiESCRevision int
+	if raw := responseHeaders.Get("Pulumi-ESC-Revision"); raw != "" {
+		if parsed, err := strconv.ParseInt(raw, 10, 0); err == nil {
+			headerPulumiESCRevision = int(parsed)
+		}
+	}
+	headersResult := apitype.HeadersForEnvironmentOp{
+		ETag:              headerETag,
+		PulumiESCRevision: headerPulumiESCRevision,
+	}
+	return &apitype.ResponseWithHeaders[apitype.UpdateEnvironmentResponse, apitype.HeadersForEnvironmentOp]{Response: result, Headers: headersResult}, nil
 }
 
 type InterceptorForUpdateOpenEnvironmentRequest struct {
@@ -6779,7 +6926,7 @@ type InterceptorForUpdateOpenEnvironmentRequest struct {
 	ProjectName     string
 	EnvName         string
 	ChangeRequestID string
-	Request         ext1.CreateEnvironmentOpenRequest
+	Request         apitype.CreateEnvironmentOpenRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -6789,9 +6936,9 @@ func (p *CloudClient) UpdateOpenEnvironmentRequest(
 	projectName string,
 	envName string,
 	changeRequestID string,
-	request ext1.CreateEnvironmentOpenRequest,
+	request apitype.CreateEnvironmentOpenRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeRequestRef, error) {
+) (*apitype.ChangeRequestRef, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateOpenEnvironmentRequest{
 			OrgName:         orgName,
@@ -6806,7 +6953,7 @@ func (p *CloudClient) UpdateOpenEnvironmentRequest(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeRequestRef)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeRequestRef)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateOpenEnvironmentRequest: %T", resultFromInterceptor)
 			}
@@ -6834,7 +6981,7 @@ func (p *CloudClient) UpdateOpenEnvironmentRequest(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeRequestRef
+	var result apitype.ChangeRequestRef
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6847,7 +6994,7 @@ type InterceptorForUpdateRevisionTag_esc_environments struct {
 	ProjectName  string
 	EnvName      string
 	TagName      string
-	Request      ext1.UpdateEnvironmentRevisionTagRequest
+	Request      apitype.UpdateEnvironmentRevisionTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6857,7 +7004,7 @@ func (p *CloudClient) UpdateRevisionTag_esc_environments(
 	projectName string,
 	envName string,
 	tagName string,
-	request ext1.UpdateEnvironmentRevisionTagRequest,
+	request apitype.UpdateEnvironmentRevisionTagRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6905,7 +7052,7 @@ type InterceptorForUpdateRevisionTag_preview_environments struct {
 	OrgName      string
 	EnvName      string
 	TagName      string
-	Request      ext1.UpdateEnvironmentRevisionTagRequest
+	Request      apitype.UpdateEnvironmentRevisionTagRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6914,7 +7061,7 @@ func (p *CloudClient) UpdateRevisionTag_preview_environments(
 	orgName string,
 	envName string,
 	tagName string,
-	request ext1.UpdateEnvironmentRevisionTagRequest,
+	request apitype.UpdateEnvironmentRevisionTagRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6961,7 +7108,7 @@ type InterceptorForUpdateWebhook_esc_environments struct {
 	ProjectName  string
 	EnvName      string
 	HookName     string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -6971,9 +7118,9 @@ func (p *CloudClient) UpdateWebhook_esc_environments(
 	projectName string,
 	envName string,
 	hookName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateWebhook_esc_environments{
 			OrgName:      orgName,
@@ -6988,7 +7135,7 @@ func (p *CloudClient) UpdateWebhook_esc_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateWebhook_esc_environments: %T", resultFromInterceptor)
 			}
@@ -7016,7 +7163,7 @@ func (p *CloudClient) UpdateWebhook_esc_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7028,7 +7175,7 @@ type InterceptorForUpdateWebhook_preview_environments struct {
 	OrgName      string
 	EnvName      string
 	HookName     string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -7037,9 +7184,9 @@ func (p *CloudClient) UpdateWebhook_preview_environments(
 	orgName string,
 	envName string,
 	hookName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateWebhook_preview_environments{
 			OrgName:      orgName,
@@ -7053,7 +7200,7 @@ func (p *CloudClient) UpdateWebhook_preview_environments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateWebhook_preview_environments: %T", resultFromInterceptor)
 			}
@@ -7080,7 +7227,7 @@ func (p *CloudClient) UpdateWebhook_preview_environments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

@@ -10,11 +10,13 @@ import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * HTTP engine for the generated Pulumi Cloud SDK, built on the JDK
@@ -117,6 +119,117 @@ public class ApiClient {
 
         try {
             return Json.MAPPER.readValue(raw, responseType);
+        } catch (IOException e) {
+            throw new ApiException(statusCode, "Failed to deserialize response from " + url + ": " + e.getMessage(),
+                    url, null, new String(raw, StandardCharsets.UTF_8), e);
+        }
+    }
+
+    /**
+     * Perform a request and return both the deserialized 2xx response body and
+     * the response's headers, converted by {@code parseHeaders} — for operations
+     * whose response declares typed response headers. Kept as its own method
+     * (duplicating {@link #call(ApiRequest, TypeReference)}'s body via
+     * {@link #executeWithHeaders}) rather than added as an optional code path on
+     * {@code call}, so every other generated method's call site is untouched.
+     */
+    public <T, H> ResponseWithHeaders<T, H> callWithHeaders(
+            ApiRequest request, TypeReference<T> responseType, Function<HttpHeaders, H> parseHeaders) {
+        Result<T> result = executeWithHeaders(request, responseType);
+        return new ResponseWithHeaders<>(result.body, parseHeaders.apply(result.headers));
+    }
+
+    /**
+     * Perform a request and return just the response's headers, converted by
+     * {@code parseHeaders} — for a no-body (e.g. 204) operation that still
+     * carries typed response headers.
+     */
+    public <H> H callWithHeadersOnly(ApiRequest request, Function<HttpHeaders, H> parseHeaders) {
+        Result<Void> result = executeWithHeaders(request, null);
+        return parseHeaders.apply(result.headers);
+    }
+
+    /** Holds both halves of {@link #executeWithHeaders}'s result. */
+    private static final class Result<T> {
+        final T body;
+        final HttpHeaders headers;
+
+        Result(T body, HttpHeaders headers) {
+            this.body = body;
+            this.headers = headers;
+        }
+    }
+
+    /**
+     * Same as {@link #call(ApiRequest, TypeReference)}, but also returns the
+     * response's headers alongside the deserialized body — for operations whose
+     * response declares typed response headers.
+     */
+    @SuppressWarnings("unchecked")
+    private <T> Result<T> executeWithHeaders(ApiRequest request, TypeReference<T> responseType) {
+        String url = buildUrl(request);
+
+        HttpRequest.Builder builder = HttpRequest.newBuilder(URI.create(url)).timeout(configuration.getTimeout());
+
+        String token = configuration.getAccessToken().get();
+        if (token != null && !token.isEmpty()) {
+            builder.header("Authorization", "token " + token);
+        }
+        builder.header("X-Pulumi-Source", configuration.getSource());
+        builder.header("Accept", request.produces.isEmpty() ? "application/json" : String.join(", ", request.produces));
+
+        byte[] bodyBytes = null;
+        if (request.hasBody) {
+            String contentType = request.consumes.isEmpty() ? "application/json" : request.consumes.get(0);
+            builder.header("Content-Type", contentType);
+            if ("application/octet-stream".equals(contentType) && request.body instanceof byte[]) {
+                bodyBytes = (byte[]) request.body;
+            } else {
+                try {
+                    bodyBytes = Json.MAPPER.writeValueAsBytes(request.body);
+                } catch (IOException e) {
+                    throw new ApiException(0, "Failed to serialize request body: " + e.getMessage(), url, null, null, e);
+                }
+            }
+        }
+
+        HttpRequest.BodyPublisher publisher = bodyBytes == null
+                ? HttpRequest.BodyPublishers.noBody()
+                : HttpRequest.BodyPublishers.ofByteArray(bodyBytes);
+        builder.method(request.method, publisher);
+
+        HttpResponse<byte[]> response;
+        try {
+            response = http.send(builder.build(), HttpResponse.BodyHandlers.ofByteArray());
+        } catch (IOException e) {
+            throw new ApiException(0, "Request to " + url + " failed: " + e.getMessage(), url, null, null, e);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new ApiException(0, "Request to " + url + " was interrupted", url, null, null, e);
+        }
+
+        int statusCode = response.statusCode();
+        byte[] raw = response.body();
+        HttpHeaders headers = response.headers();
+
+        if (statusCode < 200 || statusCode >= 300) {
+            throw buildError(statusCode, raw, url);
+        }
+
+        if (responseType == null || statusCode == 204 || raw == null || raw.length == 0) {
+            return new Result<>(null, headers);
+        }
+
+        Type type = responseType.getType();
+        if (type == byte[].class) {
+            return new Result<>((T) raw, headers);
+        }
+        if (type == String.class) {
+            return new Result<>((T) new String(raw, StandardCharsets.UTF_8), headers);
+        }
+
+        try {
+            return new Result<>(Json.MAPPER.readValue(raw, responseType), headers);
         } catch (IOException e) {
             throw new ApiException(statusCode, "Failed to deserialize response from " + url + ": " + e.getMessage(),
                     url, null, new String(raw, StandardCharsets.UTF_8), e);

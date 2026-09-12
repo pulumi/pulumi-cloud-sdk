@@ -11,21 +11,21 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForCreateOrgAgentPool struct {
 	OrgName      string
-	Request      ext1.CreateOrgAgentPoolRequest
+	Request      apitype.CreateOrgAgentPoolRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateOrgAgentPool(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateOrgAgentPoolRequest,
+	request apitype.CreateOrgAgentPoolRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateAccessTokenResponse, error) {
+) (*apitype.CreateAccessTokenResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOrgAgentPool{
 			OrgName:      orgName,
@@ -37,7 +37,7 @@ func (p *CloudClient) CreateOrgAgentPool(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateAccessTokenResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateAccessTokenResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOrgAgentPool: %T", resultFromInterceptor)
 			}
@@ -62,7 +62,7 @@ func (p *CloudClient) CreateOrgAgentPool(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateAccessTokenResponse
+	var result apitype.CreateAccessTokenResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -133,7 +133,7 @@ func (p *CloudClient) GetAgentPool(
 	orgName string,
 	poolId string,
 	extraHeaders ...http.Header,
-) (*ext1.AgentPoolDetail, error) {
+) (*apitype.AgentPoolDetail, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetAgentPool{
 			OrgName:      orgName,
@@ -145,7 +145,7 @@ func (p *CloudClient) GetAgentPool(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentPoolDetail)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentPoolDetail)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAgentPool: %T", resultFromInterceptor)
 			}
@@ -170,7 +170,7 @@ func (p *CloudClient) GetAgentPool(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentPoolDetail
+	var result apitype.AgentPoolDetail
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -187,7 +187,7 @@ func (p *CloudClient) ListOrgAgentPool(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListAgentPoolsResponse, error) {
+) (*apitype.ListAgentPoolsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgAgentPool{
 			OrgName:      orgName,
@@ -198,7 +198,7 @@ func (p *CloudClient) ListOrgAgentPool(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAgentPoolsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAgentPoolsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgAgentPool: %T", resultFromInterceptor)
 			}
@@ -222,7 +222,7 @@ func (p *CloudClient) ListOrgAgentPool(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAgentPoolsResponse
+	var result apitype.ListAgentPoolsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -233,7 +233,7 @@ func (p *CloudClient) ListOrgAgentPool(
 type InterceptorForPatchOrgAgentPool struct {
 	OrgName      string
 	PoolId       string
-	Request      ext1.CreateOrgAgentPoolRequest
+	Request      apitype.CreateOrgAgentPoolRequest
 	ExtraHeaders []http.Header
 }
 
@@ -241,9 +241,9 @@ func (p *CloudClient) PatchOrgAgentPool(
 	ctx context.Context,
 	orgName string,
 	poolId string,
-	request ext1.CreateOrgAgentPoolRequest,
+	request apitype.CreateOrgAgentPoolRequest,
 	extraHeaders ...http.Header,
-) (*ext1.PatchOrgAgentPoolResponse, error) {
+) (*apitype.PatchOrgAgentPoolResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPatchOrgAgentPool{
 			OrgName:      orgName,
@@ -256,7 +256,7 @@ func (p *CloudClient) PatchOrgAgentPool(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PatchOrgAgentPoolResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PatchOrgAgentPoolResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PatchOrgAgentPool: %T", resultFromInterceptor)
 			}
@@ -282,7 +282,7 @@ func (p *CloudClient) PatchOrgAgentPool(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PatchOrgAgentPoolResponse
+	var result apitype.PatchOrgAgentPoolResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

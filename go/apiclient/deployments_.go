@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForCancelDeployment struct {
@@ -124,7 +124,7 @@ type InterceptorForCreateAPIDeploymentHandlerV2 struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.CreateDeploymentRequest
+	Request      apitype.CreateDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -133,9 +133,9 @@ func (p *CloudClient) CreateAPIDeploymentHandlerV2(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.CreateDeploymentRequest,
+	request apitype.CreateDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateDeploymentResponse, error) {
+) (*apitype.CreateDeploymentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateAPIDeploymentHandlerV2{
 			OrgName:      orgName,
@@ -149,7 +149,7 @@ func (p *CloudClient) CreateAPIDeploymentHandlerV2(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateDeploymentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateDeploymentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateAPIDeploymentHandlerV2: %T", resultFromInterceptor)
 			}
@@ -176,7 +176,7 @@ func (p *CloudClient) CreateAPIDeploymentHandlerV2(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateDeploymentResponse
+	var result apitype.CreateDeploymentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -188,7 +188,7 @@ type InterceptorForCreateScheduledDeployment struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.CreateScheduledDeploymentRequest
+	Request      apitype.CreateScheduledDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -197,9 +197,9 @@ func (p *CloudClient) CreateScheduledDeployment(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.CreateScheduledDeploymentRequest,
+	request apitype.CreateScheduledDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateScheduledDeployment{
 			OrgName:      orgName,
@@ -213,7 +213,7 @@ func (p *CloudClient) CreateScheduledDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateScheduledDeployment: %T", resultFromInterceptor)
 			}
@@ -240,7 +240,7 @@ func (p *CloudClient) CreateScheduledDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -252,7 +252,7 @@ type InterceptorForCreateScheduledDriftDeployment struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.CreateScheduledDriftDeploymentRequest
+	Request      apitype.CreateScheduledDriftDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -261,9 +261,9 @@ func (p *CloudClient) CreateScheduledDriftDeployment(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.CreateScheduledDriftDeploymentRequest,
+	request apitype.CreateScheduledDriftDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateScheduledDriftDeployment{
 			OrgName:      orgName,
@@ -277,7 +277,7 @@ func (p *CloudClient) CreateScheduledDriftDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateScheduledDriftDeployment: %T", resultFromInterceptor)
 			}
@@ -304,7 +304,7 @@ func (p *CloudClient) CreateScheduledDriftDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -316,7 +316,7 @@ type InterceptorForCreateScheduledTTLDeployment struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.CreateScheduledTTLDeploymentRequest
+	Request      apitype.CreateScheduledTTLDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -325,9 +325,9 @@ func (p *CloudClient) CreateScheduledTTLDeployment(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.CreateScheduledTTLDeploymentRequest,
+	request apitype.CreateScheduledTTLDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateScheduledTTLDeployment{
 			OrgName:      orgName,
@@ -341,7 +341,7 @@ func (p *CloudClient) CreateScheduledTTLDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateScheduledTTLDeployment: %T", resultFromInterceptor)
 			}
@@ -368,7 +368,7 @@ func (p *CloudClient) CreateScheduledTTLDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -495,7 +495,7 @@ type InterceptorForEncryptDeploymentSettingsSecret struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.SecretValue
+	Request      apitype.SecretValue
 	ExtraHeaders []http.Header
 }
 
@@ -504,9 +504,9 @@ func (p *CloudClient) EncryptDeploymentSettingsSecret(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.SecretValue,
+	request apitype.SecretValue,
 	extraHeaders ...http.Header,
-) (*ext1.SecretValue, error) {
+) (*apitype.SecretValue, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForEncryptDeploymentSettingsSecret{
 			OrgName:      orgName,
@@ -520,7 +520,7 @@ func (p *CloudClient) EncryptDeploymentSettingsSecret(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.SecretValue)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.SecretValue)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for EncryptDeploymentSettingsSecret: %T", resultFromInterceptor)
 			}
@@ -547,7 +547,7 @@ func (p *CloudClient) EncryptDeploymentSettingsSecret(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.SecretValue
+	var result apitype.SecretValue
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -566,7 +566,7 @@ func (p *CloudClient) GetDeployUsageReport(
 	orgName string,
 	lookbackDays *int,
 	extraHeaders ...http.Header,
-) (*[]ext1.UsageRecord, error) {
+) (*[]apitype.UsageRecord, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeployUsageReport{
 			OrgName:      orgName,
@@ -578,7 +578,7 @@ func (p *CloudClient) GetDeployUsageReport(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.UsageRecord)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.UsageRecord)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeployUsageReport: %T", resultFromInterceptor)
 			}
@@ -604,7 +604,7 @@ func (p *CloudClient) GetDeployUsageReport(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.UsageRecord
+	var result []apitype.UsageRecord
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -627,7 +627,7 @@ func (p *CloudClient) GetDeployment(
 	stackName string,
 	deploymentId string,
 	extraHeaders ...http.Header,
-) (*ext1.GetDeploymentResponse, error) {
+) (*apitype.GetDeploymentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeployment{
 			OrgName:      orgName,
@@ -641,7 +641,7 @@ func (p *CloudClient) GetDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetDeploymentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetDeploymentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeployment: %T", resultFromInterceptor)
 			}
@@ -668,7 +668,7 @@ func (p *CloudClient) GetDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetDeploymentResponse
+	var result apitype.GetDeploymentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -701,7 +701,7 @@ func (p *CloudClient) GetDeploymentLogs(
 	offset *int,
 	step *int,
 	extraHeaders ...http.Header,
-) (*ext1.DeploymentLogsBase, error) {
+) (*apitype.DeploymentLogsBase, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeploymentLogs{
 			OrgName:           orgName,
@@ -720,7 +720,7 @@ func (p *CloudClient) GetDeploymentLogs(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.DeploymentLogsBase)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.DeploymentLogsBase)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeploymentLogs: %T", resultFromInterceptor)
 			}
@@ -753,14 +753,14 @@ func (p *CloudClient) GetDeploymentLogs(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.DeploymentLogsBase
+	var result apitype.DeploymentLogsBase
 	var decoded json.RawMessage
 	err = json.Unmarshal(respBody, &decoded)
 	if err != nil {
 		return nil, err
 	}
 	if decoded != nil {
-		if err = ext1.UnmarshalJSONDeploymentLogsBase(decoded, &result); err != nil {
+		if err = apitype.UnmarshalJSONDeploymentLogsBase(decoded, &result); err != nil {
 			return nil, err
 		}
 	}
@@ -780,7 +780,7 @@ func (p *CloudClient) GetDeploymentSettings(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.DeploymentSettings, error) {
+) (*apitype.DeploymentSettings, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeploymentSettings{
 			OrgName:      orgName,
@@ -793,7 +793,7 @@ func (p *CloudClient) GetDeploymentSettings(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.DeploymentSettings)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.DeploymentSettings)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeploymentSettings: %T", resultFromInterceptor)
 			}
@@ -819,7 +819,7 @@ func (p *CloudClient) GetDeploymentSettings(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.DeploymentSettings
+	var result apitype.DeploymentSettings
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -842,7 +842,7 @@ func (p *CloudClient) GetDeploymentUpdates(
 	stackName string,
 	deploymentId string,
 	extraHeaders ...http.Header,
-) (*[]ext1.UpdateInfo, error) {
+) (*[]apitype.UpdateInfo, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeploymentUpdates{
 			OrgName:      orgName,
@@ -856,7 +856,7 @@ func (p *CloudClient) GetDeploymentUpdates(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.UpdateInfo)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.UpdateInfo)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeploymentUpdates: %T", resultFromInterceptor)
 			}
@@ -883,7 +883,7 @@ func (p *CloudClient) GetDeploymentUpdates(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.UpdateInfo
+	var result []apitype.UpdateInfo
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -906,7 +906,7 @@ func (p *CloudClient) GetDeployment_version(
 	stackName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*ext1.GetDeploymentResponse, error) {
+) (*apitype.GetDeploymentResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeployment_version{
 			OrgName:      orgName,
@@ -920,7 +920,7 @@ func (p *CloudClient) GetDeployment_version(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetDeploymentResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetDeploymentResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeployment_version: %T", resultFromInterceptor)
 			}
@@ -947,7 +947,7 @@ func (p *CloudClient) GetDeployment_version(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetDeploymentResponse
+	var result apitype.GetDeploymentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -964,7 +964,7 @@ func (p *CloudClient) GetDeploymentsStatus(
 	ctx context.Context,
 	deploymentId string,
 	extraHeaders ...http.Header,
-) (*ext1.JobStatus, error) {
+) (*apitype.JobStatus, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDeploymentsStatus{
 			DeploymentId: deploymentId,
@@ -975,7 +975,7 @@ func (p *CloudClient) GetDeploymentsStatus(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.JobStatus)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.JobStatus)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDeploymentsStatus: %T", resultFromInterceptor)
 			}
@@ -999,7 +999,7 @@ func (p *CloudClient) GetDeploymentsStatus(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.JobStatus
+	var result apitype.JobStatus
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1022,7 +1022,7 @@ func (p *CloudClient) GetDriftRun(
 	stackName string,
 	driftRunId string,
 	extraHeaders ...http.Header,
-) (*ext1.DriftRun, error) {
+) (*apitype.DriftRun, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetDriftRun{
 			OrgName:      orgName,
@@ -1036,7 +1036,7 @@ func (p *CloudClient) GetDriftRun(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.DriftRun)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.DriftRun)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetDriftRun: %T", resultFromInterceptor)
 			}
@@ -1063,7 +1063,7 @@ func (p *CloudClient) GetDriftRun(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.DriftRun
+	var result apitype.DriftRun
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1127,7 +1127,7 @@ func (p *CloudClient) GetStackDriftStatus(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.StackDriftStatus, error) {
+) (*apitype.StackDriftStatus, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackDriftStatus{
 			OrgName:      orgName,
@@ -1140,7 +1140,7 @@ func (p *CloudClient) GetStackDriftStatus(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackDriftStatus)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StackDriftStatus)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackDriftStatus: %T", resultFromInterceptor)
 			}
@@ -1166,7 +1166,7 @@ func (p *CloudClient) GetStackDriftStatus(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StackDriftStatus
+	var result apitype.StackDriftStatus
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1176,7 +1176,7 @@ func (p *CloudClient) GetStackDriftStatus(
 
 type InterceptorForGetUsageSummaryDeployCompute struct {
 	OrgName       string
-	Granularity   ext1.UsageSummaryTimeUnit
+	Granularity   apitype.UsageSummaryTimeUnit
 	LookbackDays  *int64
 	LookbackStart *int64
 	ExtraHeaders  []http.Header
@@ -1185,11 +1185,11 @@ type InterceptorForGetUsageSummaryDeployCompute struct {
 func (p *CloudClient) GetUsageSummaryDeployCompute(
 	ctx context.Context,
 	orgName string,
-	granularity ext1.UsageSummaryTimeUnit,
+	granularity apitype.UsageSummaryTimeUnit,
 	lookbackDays *int64,
 	lookbackStart *int64,
 	extraHeaders ...http.Header,
-) (*ext1.GetResourceCountSummaryResponse, error) {
+) (*apitype.GetResourceCountSummaryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUsageSummaryDeployCompute{
 			OrgName:       orgName,
@@ -1203,7 +1203,7 @@ func (p *CloudClient) GetUsageSummaryDeployCompute(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetResourceCountSummaryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetResourceCountSummaryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUsageSummaryDeployCompute: %T", resultFromInterceptor)
 			}
@@ -1231,7 +1231,7 @@ func (p *CloudClient) GetUsageSummaryDeployCompute(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetResourceCountSummaryResponse
+	var result apitype.GetResourceCountSummaryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1256,7 +1256,7 @@ func (p *CloudClient) ListDriftRuns(
 	page *int,
 	pageSize *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListDriftRunsResponse, error) {
+) (*apitype.ListDriftRunsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListDriftRuns{
 			OrgName:      orgName,
@@ -1271,7 +1271,7 @@ func (p *CloudClient) ListDriftRuns(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListDriftRunsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListDriftRunsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListDriftRuns: %T", resultFromInterceptor)
 			}
@@ -1300,7 +1300,7 @@ func (p *CloudClient) ListDriftRuns(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListDriftRunsResponse
+	var result apitype.ListDriftRunsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1325,7 +1325,7 @@ func (p *CloudClient) ListOrgDeployments(
 	pageSize *int,
 	sort *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListDeploymentResponseV2, error) {
+) (*apitype.ListDeploymentResponseV2, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgDeployments{
 			OrgName:      orgName,
@@ -1340,7 +1340,7 @@ func (p *CloudClient) ListOrgDeployments(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListDeploymentResponseV2)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListDeploymentResponseV2)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgDeployments: %T", resultFromInterceptor)
 			}
@@ -1369,7 +1369,7 @@ func (p *CloudClient) ListOrgDeployments(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListDeploymentResponseV2
+	var result apitype.ListDeploymentResponseV2
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1390,7 +1390,7 @@ func (p *CloudClient) ListScheduledDeployment(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListScheduledActionsResponse, error) {
+) (*apitype.ListScheduledActionsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListScheduledDeployment{
 			OrgName:      orgName,
@@ -1403,7 +1403,7 @@ func (p *CloudClient) ListScheduledDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListScheduledActionsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListScheduledActionsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListScheduledDeployment: %T", resultFromInterceptor)
 			}
@@ -1429,7 +1429,7 @@ func (p *CloudClient) ListScheduledDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListScheduledActionsResponse
+	var result apitype.ListScheduledActionsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1452,7 +1452,7 @@ func (p *CloudClient) ListScheduledDeploymentHistory(
 	stackName string,
 	scheduleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ListScheduledActionHistoryResponse, error) {
+) (*apitype.ListScheduledActionHistoryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListScheduledDeploymentHistory{
 			OrgName:      orgName,
@@ -1466,7 +1466,7 @@ func (p *CloudClient) ListScheduledDeploymentHistory(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListScheduledActionHistoryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListScheduledActionHistoryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListScheduledDeploymentHistory: %T", resultFromInterceptor)
 			}
@@ -1493,7 +1493,7 @@ func (p *CloudClient) ListScheduledDeploymentHistory(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListScheduledActionHistoryResponse
+	var result apitype.ListScheduledActionHistoryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1522,7 +1522,7 @@ func (p *CloudClient) ListStackDeploymentsHandlerV2(
 	pageSize *int,
 	sort *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListDeploymentResponseV2, error) {
+) (*apitype.ListDeploymentResponseV2, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListStackDeploymentsHandlerV2{
 			OrgName:      orgName,
@@ -1539,7 +1539,7 @@ func (p *CloudClient) ListStackDeploymentsHandlerV2(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListDeploymentResponseV2)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListDeploymentResponseV2)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListStackDeploymentsHandlerV2: %T", resultFromInterceptor)
 			}
@@ -1570,7 +1570,7 @@ func (p *CloudClient) ListStackDeploymentsHandlerV2(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListDeploymentResponseV2
+	var result apitype.ListDeploymentResponseV2
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1587,7 +1587,7 @@ func (p *CloudClient) OrgDeploymentsMetadata(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.OrgDeploymentsMetadataResponse, error) {
+) (*apitype.OrgDeploymentsMetadataResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForOrgDeploymentsMetadata{
 			OrgName:      orgName,
@@ -1598,7 +1598,7 @@ func (p *CloudClient) OrgDeploymentsMetadata(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrgDeploymentsMetadataResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrgDeploymentsMetadataResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for OrgDeploymentsMetadata: %T", resultFromInterceptor)
 			}
@@ -1622,7 +1622,7 @@ func (p *CloudClient) OrgDeploymentsMetadata(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrgDeploymentsMetadataResponse
+	var result apitype.OrgDeploymentsMetadataResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1634,7 +1634,7 @@ type InterceptorForPatchDeploymentSettings struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.DeploymentSettingsRequest
+	Request      apitype.DeploymentSettingsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1643,9 +1643,9 @@ func (p *CloudClient) PatchDeploymentSettings(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.DeploymentSettingsRequest,
+	request apitype.DeploymentSettingsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.DeploymentSettings, error) {
+) (*apitype.DeploymentSettings, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPatchDeploymentSettings{
 			OrgName:      orgName,
@@ -1659,7 +1659,7 @@ func (p *CloudClient) PatchDeploymentSettings(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.DeploymentSettings)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.DeploymentSettings)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PatchDeploymentSettings: %T", resultFromInterceptor)
 			}
@@ -1686,7 +1686,7 @@ func (p *CloudClient) PatchDeploymentSettings(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.DeploymentSettings
+	var result apitype.DeploymentSettings
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1850,7 +1850,7 @@ type InterceptorForPollDeploymentsQueue struct {
 func (p *CloudClient) PollDeploymentsQueue(
 	ctx context.Context,
 	extraHeaders ...http.Header,
-) (*ext1.AgentWorkflowDefinition, error) {
+) (*apitype.AgentWorkflowDefinition, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPollDeploymentsQueue{
 			ExtraHeaders: extraHeaders,
@@ -1860,7 +1860,7 @@ func (p *CloudClient) PollDeploymentsQueue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentWorkflowDefinition)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentWorkflowDefinition)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PollDeploymentsQueue: %T", resultFromInterceptor)
 			}
@@ -1882,7 +1882,7 @@ func (p *CloudClient) PollDeploymentsQueue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentWorkflowDefinition
+	var result apitype.AgentWorkflowDefinition
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1905,7 +1905,7 @@ func (p *CloudClient) ReadScheduledDeployment(
 	stackName string,
 	scheduleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadScheduledDeployment{
 			OrgName:      orgName,
@@ -1919,7 +1919,7 @@ func (p *CloudClient) ReadScheduledDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadScheduledDeployment: %T", resultFromInterceptor)
 			}
@@ -1946,7 +1946,7 @@ func (p *CloudClient) ReadScheduledDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1958,7 +1958,7 @@ type InterceptorForReplaceDeploymentSettings struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.DeploymentSettingsRequest
+	Request      apitype.DeploymentSettingsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1967,9 +1967,9 @@ func (p *CloudClient) ReplaceDeploymentSettings(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.DeploymentSettingsRequest,
+	request apitype.DeploymentSettingsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.DeploymentSettings, error) {
+) (*apitype.DeploymentSettings, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReplaceDeploymentSettings{
 			OrgName:      orgName,
@@ -1983,7 +1983,7 @@ func (p *CloudClient) ReplaceDeploymentSettings(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.DeploymentSettings)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.DeploymentSettings)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReplaceDeploymentSettings: %T", resultFromInterceptor)
 			}
@@ -2010,7 +2010,7 @@ func (p *CloudClient) ReplaceDeploymentSettings(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.DeploymentSettings
+	var result apitype.DeploymentSettings
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2180,7 +2180,7 @@ func (p *CloudClient) StackDeploymentsMetadata(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.StackDeploymentsMetadataResponse, error) {
+) (*apitype.StackDeploymentsMetadataResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStackDeploymentsMetadata{
 			OrgName:      orgName,
@@ -2193,7 +2193,7 @@ func (p *CloudClient) StackDeploymentsMetadata(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackDeploymentsMetadataResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StackDeploymentsMetadataResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StackDeploymentsMetadata: %T", resultFromInterceptor)
 			}
@@ -2219,7 +2219,7 @@ func (p *CloudClient) StackDeploymentsMetadata(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StackDeploymentsMetadataResponse
+	var result apitype.StackDeploymentsMetadataResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2232,7 +2232,7 @@ type InterceptorForUpdateScheduledDeployment struct {
 	ProjectName  string
 	StackName    string
 	ScheduleID   string
-	Request      ext1.CreateScheduledDeploymentRequest
+	Request      apitype.CreateScheduledDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -2242,9 +2242,9 @@ func (p *CloudClient) UpdateScheduledDeployment(
 	projectName string,
 	stackName string,
 	scheduleID string,
-	request ext1.CreateScheduledDeploymentRequest,
+	request apitype.CreateScheduledDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateScheduledDeployment{
 			OrgName:      orgName,
@@ -2259,7 +2259,7 @@ func (p *CloudClient) UpdateScheduledDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateScheduledDeployment: %T", resultFromInterceptor)
 			}
@@ -2287,7 +2287,7 @@ func (p *CloudClient) UpdateScheduledDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2300,7 +2300,7 @@ type InterceptorForUpdateScheduledDriftDeployment struct {
 	ProjectName  string
 	StackName    string
 	ScheduleID   string
-	Request      ext1.CreateScheduledDriftDeploymentRequest
+	Request      apitype.CreateScheduledDriftDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -2310,9 +2310,9 @@ func (p *CloudClient) UpdateScheduledDriftDeployment(
 	projectName string,
 	stackName string,
 	scheduleID string,
-	request ext1.CreateScheduledDriftDeploymentRequest,
+	request apitype.CreateScheduledDriftDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateScheduledDriftDeployment{
 			OrgName:      orgName,
@@ -2327,7 +2327,7 @@ func (p *CloudClient) UpdateScheduledDriftDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateScheduledDriftDeployment: %T", resultFromInterceptor)
 			}
@@ -2355,7 +2355,7 @@ func (p *CloudClient) UpdateScheduledDriftDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2368,7 +2368,7 @@ type InterceptorForUpdateScheduledTTLDeployment struct {
 	ProjectName  string
 	StackName    string
 	ScheduleID   string
-	Request      ext1.CreateScheduledTTLDeploymentRequest
+	Request      apitype.CreateScheduledTTLDeploymentRequest
 	ExtraHeaders []http.Header
 }
 
@@ -2378,9 +2378,9 @@ func (p *CloudClient) UpdateScheduledTTLDeployment(
 	projectName string,
 	stackName string,
 	scheduleID string,
-	request ext1.CreateScheduledTTLDeploymentRequest,
+	request apitype.CreateScheduledTTLDeploymentRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ScheduledAction, error) {
+) (*apitype.ScheduledAction, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateScheduledTTLDeployment{
 			OrgName:      orgName,
@@ -2395,7 +2395,7 @@ func (p *CloudClient) UpdateScheduledTTLDeployment(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ScheduledAction)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ScheduledAction)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateScheduledTTLDeployment: %T", resultFromInterceptor)
 			}
@@ -2423,7 +2423,7 @@ func (p *CloudClient) UpdateScheduledTTLDeployment(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ScheduledAction
+	var result apitype.ScheduledAction
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

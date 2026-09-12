@@ -23,7 +23,7 @@ export class EscSchemaSchema {
     items?: EscSchemaSchema;
     additionalProperties?: EscSchemaSchema;
     properties?: { [key: string]: EscSchemaSchema };
-    type: string;
+    type?: string;
     const?: any;
     enum?: any[];
     multipleOf?: string;

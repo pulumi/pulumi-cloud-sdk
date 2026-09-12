@@ -14,7 +14,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
-import { ApiClient, ApiRequest, ServerSentEventsStream } from "../api.client";
+import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
 import { AgentPoolDetail } from "../model/AgentPoolDetail";
 import { CreateAccessTokenResponse } from "../model/CreateAccessTokenResponse";

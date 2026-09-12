@@ -48,7 +48,11 @@ type AppJournalEntry struct {
 	RequiresByteString bool `json:"requiresByteString,omitzero" yaml:"requiresByteString,omitempty"`
 	// Indices of the resources in the base snapshot that a state migration removes. Only set for state-migration journal entries.
 	RemoveOlds []int64 `json:"removeOlds,omitempty" yaml:"removeOlds,omitempty"`
-	// Resources that a state migration splices into the base snapshot, in order. Only set for state-migration journal entries.
+	// The complete base snapshot produced by a state migration, in order. Base resources absent from this list are removed. Only set for
+	// state-migration journal entries.
+	Layout []AppJournalLayoutItem `json:"layout,omitempty" yaml:"layout,omitempty"`
+	// Resources that a state migration splices into the base snapshot at the positions given by layout. Only set for state-migration journal
+	// entries.
 	States []AppResourceV3 `json:"states,omitempty" yaml:"states,omitempty"`
 	// Complete replacements for retained base resources whose references were rewritten by a state migration. Only set for state-migration
 	// journal entries.

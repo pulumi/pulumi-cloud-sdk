@@ -10,17 +10,17 @@ import (
 	"encoding/json"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForAITemplate struct {
-	Request      ext1.AITemplateRequest
+	Request      apitype.AITemplateRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) AITemplate(
 	ctx context.Context,
-	request ext1.AITemplateRequest,
+	request apitype.AITemplateRequest,
 	extraHeaders ...http.Header,
 ) (*any, error) {
 	if p.Interceptor != nil {

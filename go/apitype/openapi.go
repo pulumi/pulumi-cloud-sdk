@@ -2,7 +2,9 @@
 
 package apitype
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 // OpenAPIName returns the OpenAPI name of certain generated types.
 func OpenAPIName(object interface{ openapiName() string }) string {
@@ -32,4 +34,9 @@ type RawProperty struct {
 // String provides compatibility with CSV export.
 func (r RawProperty) String() string {
 	return string(r.RawMessage)
+}
+
+type ResponseWithHeaders[R any, H any] struct {
+	Response R
+	Headers  H
 }

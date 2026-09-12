@@ -71,7 +71,10 @@ public class AppJournalEntry {
     // Indices of the resources in the base snapshot that a state migration removes. Only set for state-migration journal entries.
     public List<Long> removeOlds;
 
-    // Resources that a state migration splices into the base snapshot, in order. Only set for state-migration journal entries.
+    // The complete base snapshot produced by a state migration, in order. Base resources absent from this list are removed. Only set for state-migration journal entries.
+    public List<AppJournalLayoutItem> layout;
+
+    // Resources that a state migration splices into the base snapshot at the positions given by layout. Only set for state-migration journal entries.
     public List<AppResourceV3> states;
 
     // Complete replacements for retained base resources whose references were rewritten by a state migration. Only set for state-migration journal entries.

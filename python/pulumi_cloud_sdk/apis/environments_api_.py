@@ -5,7 +5,7 @@
 # RUN 'make openapi_python' TO REFRESH.
 
 from typing import Any
-from ..api_client import ApiClient
+from ..api_client import ApiClient, ResponseWithHeaders, parse_number_header
 from ..configuration import Configuration
 
 # noinspection PyUnresolvedReferences
@@ -1159,7 +1159,7 @@ class EnvironmentsApi(object):
         project_name: 'str',
         env_name: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `decrypt_environment_esc_environments`")
@@ -1198,7 +1198,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -1209,6 +1209,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def decrypt_environment_esc_environments_versions(
         self,
@@ -1217,7 +1219,7 @@ class EnvironmentsApi(object):
         env_name: 'str',
         version: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `decrypt_environment_esc_environments_versions`")
@@ -1261,7 +1263,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -1272,13 +1274,15 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def decrypt_environment_preview_environments(
         self,
         org_name: 'str',
         env_name: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `decrypt_environment_preview_environments`")
@@ -1312,7 +1316,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -1323,6 +1327,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def decrypt_environment_preview_environments_versions(
         self,
@@ -1330,7 +1336,7 @@ class EnvironmentsApi(object):
         env_name: 'str',
         version: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `decrypt_environment_preview_environments_versions`")
@@ -1369,7 +1375,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -1380,6 +1386,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def delete_environment_schedule(
         self,
@@ -2680,7 +2688,7 @@ class EnvironmentsApi(object):
         project_name: 'str',
         env_name: 'str',
         _request_timeout: int = None,
-    ) -> 'Any':
+    ) -> 'HeadersForEnvironmentOp':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `head_environment_esc_environments`")
@@ -2719,24 +2727,26 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'HEAD',
+        _, headers = self.api_client.call_api_with_headers(resource_path, 'HEAD',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Any',
+            response_type=None,
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return headers_obj
 
     def head_environment_preview_environments(
         self,
         org_name: 'str',
         env_name: 'str',
         _request_timeout: int = None,
-    ) -> 'Any':
+    ) -> 'HeadersForEnvironmentOp':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `head_environment_preview_environments`")
@@ -2770,17 +2780,19 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'HEAD',
+        _, headers = self.api_client.call_api_with_headers(resource_path, 'HEAD',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Any',
+            response_type=None,
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return headers_obj
 
     def list_all_environment_tags_esc(
         self,
@@ -5146,7 +5158,7 @@ class EnvironmentsApi(object):
         project_name: 'str',
         env_name: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `read_environment_esc_environments`")
@@ -5185,7 +5197,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -5196,6 +5208,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def read_environment_esc_environments_versions(
         self,
@@ -5204,7 +5218,7 @@ class EnvironmentsApi(object):
         env_name: 'str',
         version: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `read_environment_esc_environments_versions`")
@@ -5248,7 +5262,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -5259,13 +5273,15 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def read_environment_preview_environments(
         self,
         org_name: 'str',
         env_name: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `read_environment_preview_environments`")
@@ -5299,7 +5315,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -5310,6 +5326,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def read_environment_preview_environments_versions(
         self,
@@ -5317,7 +5335,7 @@ class EnvironmentsApi(object):
         env_name: 'str',
         version: 'str',
         _request_timeout: int = None,
-    ) -> 'str':
+    ) -> 'ResponseWithHeaders[str, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `read_environment_preview_environments_versions`")
@@ -5356,7 +5374,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'GET',
             path_params,
             query_params,
             header_params,
@@ -5367,6 +5385,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def read_open_environment_request(
         self,
@@ -6455,7 +6475,7 @@ class EnvironmentsApi(object):
         env_name: 'str',
         request: 'str',
         _request_timeout: int = None,
-    ) -> 'UpdateEnvironmentResponse':
+    ) -> 'ResponseWithHeaders[UpdateEnvironmentResponse, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `update_environment_esc_environments`")
@@ -6499,7 +6519,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'PATCH',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'PATCH',
             path_params,
             query_params,
             header_params,
@@ -6510,6 +6530,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def update_environment_preview_environments(
         self,
@@ -6517,7 +6539,7 @@ class EnvironmentsApi(object):
         env_name: 'str',
         request: 'str',
         _request_timeout: int = None,
-    ) -> 'UpdateEnvironmentResponse':
+    ) -> 'ResponseWithHeaders[UpdateEnvironmentResponse, HeadersForEnvironmentOp]':
         # verify the required parameter 'org_name' is set
         if org_name is None:
             raise ValueError("Missing the required parameter `org_name` when calling `update_environment_preview_environments`")
@@ -6556,7 +6578,7 @@ class EnvironmentsApi(object):
         # Authentication setting
         auth_settings = ['auth_token']
 
-        return self.api_client.call_api(resource_path, 'PATCH',
+        response, headers = self.api_client.call_api_with_headers(resource_path, 'PATCH',
             path_params,
             query_params,
             header_params,
@@ -6567,6 +6589,8 @@ class EnvironmentsApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+        headers_obj = HeadersForEnvironmentOp(e_tag=headers.get("ETag") or '', pulumi_e_s_c_revision=parse_number_header(headers.get("Pulumi-ESC-Revision"), int, 0))
+        return ResponseWithHeaders(response, headers_obj)
 
     def update_open_environment_request(
         self,

@@ -11,6 +11,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.pulumi.cloud.sdk.ApiClient;
 import com.pulumi.cloud.sdk.ApiRequest;
+import com.pulumi.cloud.sdk.HeaderParsing;
+import com.pulumi.cloud.sdk.ResponseWithHeaders;
 import com.pulumi.cloud.sdk.model.*;
 
 public final class EnvironmentsApi {
@@ -397,7 +399,7 @@ public final class EnvironmentsApi {
         return this.client.call($request, new TypeReference<DecryptEnvironmentSecretsResponse>() {});
     }
 
-    public String decryptEnvironment_esc_environments(String orgName, String projectName, String envName) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> decryptEnvironment_esc_environments(String orgName, String projectName, String envName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling decryptEnvironment_esc_environments");
         }
@@ -412,10 +414,10 @@ public final class EnvironmentsApi {
         $request.pathParam("projectName", projectName);
         $request.pathParam("envName", envName);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public String decryptEnvironment_esc_environments_versions(String orgName, String projectName, String envName, String version) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> decryptEnvironment_esc_environments_versions(String orgName, String projectName, String envName, String version) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling decryptEnvironment_esc_environments_versions");
         }
@@ -434,10 +436,10 @@ public final class EnvironmentsApi {
         $request.pathParam("envName", envName);
         $request.pathParam("version", version);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public String decryptEnvironment_preview_environments(String orgName, String envName) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> decryptEnvironment_preview_environments(String orgName, String envName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling decryptEnvironment_preview_environments");
         }
@@ -448,10 +450,10 @@ public final class EnvironmentsApi {
         $request.pathParam("orgName", orgName);
         $request.pathParam("envName", envName);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public String decryptEnvironment_preview_environments_versions(String orgName, String envName, String version) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> decryptEnvironment_preview_environments_versions(String orgName, String envName, String version) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling decryptEnvironment_preview_environments_versions");
         }
@@ -466,7 +468,7 @@ public final class EnvironmentsApi {
         $request.pathParam("envName", envName);
         $request.pathParam("version", version);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
     public void deleteEnvironmentSchedule(String orgName, String projectName, String envName, String scheduleID) {
@@ -863,7 +865,7 @@ public final class EnvironmentsApi {
         return this.client.call($request, new TypeReference<WebhookResponse>() {});
     }
 
-    public JsonNode headEnvironment_esc_environments(String orgName, String projectName, String envName) {
+    public HeadersForEnvironmentOp headEnvironment_esc_environments(String orgName, String projectName, String envName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling headEnvironment_esc_environments");
         }
@@ -877,11 +879,10 @@ public final class EnvironmentsApi {
         $request.pathParam("orgName", orgName);
         $request.pathParam("projectName", projectName);
         $request.pathParam("envName", envName);
-        $request.produces("application/json");
-        return this.client.call($request, new TypeReference<JsonNode>() {});
+        return this.client.callWithHeadersOnly($request, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public JsonNode headEnvironment_preview_environments(String orgName, String envName) {
+    public HeadersForEnvironmentOp headEnvironment_preview_environments(String orgName, String envName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling headEnvironment_preview_environments");
         }
@@ -891,8 +892,7 @@ public final class EnvironmentsApi {
         ApiRequest $request = new ApiRequest("HEAD", "/api/preview/environments/{orgName}/{envName}");
         $request.pathParam("orgName", orgName);
         $request.pathParam("envName", envName);
-        $request.produces("application/json");
-        return this.client.call($request, new TypeReference<JsonNode>() {});
+        return this.client.callWithHeadersOnly($request, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
     public Map<String, List<String>> listAllEnvironmentTags_esc(String orgName) {
@@ -1587,7 +1587,7 @@ public final class EnvironmentsApi {
         return this.client.call($request, new TypeReference<ScheduledAction>() {});
     }
 
-    public String readEnvironment_esc_environments(String orgName, String projectName, String envName) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> readEnvironment_esc_environments(String orgName, String projectName, String envName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling readEnvironment_esc_environments");
         }
@@ -1602,10 +1602,10 @@ public final class EnvironmentsApi {
         $request.pathParam("projectName", projectName);
         $request.pathParam("envName", envName);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public String readEnvironment_esc_environments_versions(String orgName, String projectName, String envName, String version) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> readEnvironment_esc_environments_versions(String orgName, String projectName, String envName, String version) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling readEnvironment_esc_environments_versions");
         }
@@ -1624,10 +1624,10 @@ public final class EnvironmentsApi {
         $request.pathParam("envName", envName);
         $request.pathParam("version", version);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public String readEnvironment_preview_environments(String orgName, String envName) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> readEnvironment_preview_environments(String orgName, String envName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling readEnvironment_preview_environments");
         }
@@ -1638,10 +1638,10 @@ public final class EnvironmentsApi {
         $request.pathParam("orgName", orgName);
         $request.pathParam("envName", envName);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public String readEnvironment_preview_environments_versions(String orgName, String envName, String version) {
+    public ResponseWithHeaders<String, HeadersForEnvironmentOp> readEnvironment_preview_environments_versions(String orgName, String envName, String version) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling readEnvironment_preview_environments_versions");
         }
@@ -1656,7 +1656,7 @@ public final class EnvironmentsApi {
         $request.pathParam("envName", envName);
         $request.pathParam("version", version);
         $request.produces("application/x-yaml");
-        return this.client.call($request, new TypeReference<String>() {});
+        return this.client.callWithHeaders($request, new TypeReference<String>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
     public CreateEnvironmentOpenRequest readOpenEnvironmentRequest(String orgName, String projectName, String envName, String changeRequestID, Long revision) {
@@ -2040,7 +2040,7 @@ public final class EnvironmentsApi {
         return this.client.call($request, new TypeReference<EnvironmentTag>() {});
     }
 
-    public UpdateEnvironmentResponse updateEnvironment_esc_environments(String orgName, String projectName, String envName, String request) {
+    public ResponseWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp> updateEnvironment_esc_environments(String orgName, String projectName, String envName, String request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateEnvironment_esc_environments");
         }
@@ -2060,10 +2060,10 @@ public final class EnvironmentsApi {
         $request.body(request);
         $request.consumes("application/x-yaml");
         $request.produces("application/json");
-        return this.client.call($request, new TypeReference<UpdateEnvironmentResponse>() {});
+        return this.client.callWithHeaders($request, new TypeReference<UpdateEnvironmentResponse>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
-    public UpdateEnvironmentResponse updateEnvironment_preview_environments(String orgName, String envName, String request) {
+    public ResponseWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp> updateEnvironment_preview_environments(String orgName, String envName, String request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateEnvironment_preview_environments");
         }
@@ -2079,7 +2079,7 @@ public final class EnvironmentsApi {
         $request.body(request);
         $request.consumes("application/x-yaml");
         $request.produces("application/json");
-        return this.client.call($request, new TypeReference<UpdateEnvironmentResponse>() {});
+        return this.client.callWithHeaders($request, new TypeReference<UpdateEnvironmentResponse>() {}, h -> new HeadersForEnvironmentOp(HeaderParsing.stringOrDefault(h, "ETag"), HeaderParsing.parseLong(h, "Pulumi-ESC-Revision")));
     }
 
     public ChangeRequestRef updateOpenEnvironmentRequest(String orgName, String projectName, String envName, String changeRequestID, CreateEnvironmentOpenRequest request) {

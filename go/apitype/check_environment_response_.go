@@ -7,7 +7,7 @@ package apitype
 
 // Response body for check environment.
 type CheckEnvironmentResponse struct {
-	*EscEnvironment
+	EscEnvironment
 
 	// List of diagnostics
 	Diagnostics []EnvironmentDiagnostic `json:"diagnostics,omitempty" yaml:"diagnostics,omitempty"`

@@ -7,7 +7,7 @@ package apitype
 
 // EnvironmentResponse is the response returned when retrieving or evaluating an environment.
 type EnvironmentResponse struct {
-	*EscEnvironment
+	EscEnvironment
 
 	// The list of diagnostics produced during environment evaluation.
 	Diagnostics []EnvironmentDiagnostic `json:"diagnostics,omitempty" yaml:"diagnostics,omitempty"`

@@ -14,7 +14,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
-import { ApiClient, ApiRequest, ServerSentEventsStream } from "../api.client";
+import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
 import { ChangeRequestRef } from "../model/ChangeRequestRef";
 import { CheckEnvironmentResponse } from "../model/CheckEnvironmentResponse";
@@ -36,6 +36,7 @@ import { EnvironmentRevision } from "../model/EnvironmentRevision";
 import { EnvironmentRevisionTag } from "../model/EnvironmentRevisionTag";
 import { EnvironmentSettings } from "../model/EnvironmentSettings";
 import { EnvironmentTag } from "../model/EnvironmentTag";
+import { HeadersForEnvironmentOp } from "../model/HeadersForEnvironmentOp";
 import { ListEnvironmentReferrersResponse } from "../model/ListEnvironmentReferrersResponse";
 import { ListEnvironmentRevisionTagsResponse } from "../model/ListEnvironmentRevisionTagsResponse";
 import { ListEnvironmentSecretRotationHistoryResponse } from "../model/ListEnvironmentSecretRotationHistoryResponse";
@@ -1123,7 +1124,7 @@ export class Environments {
             projectName: string,
             envName: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling DecryptEnvironment_esc_environments.");
         }
@@ -1150,7 +1151,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public DecryptEnvironment_esc_environments_versions__generateUrl(
@@ -1174,7 +1175,7 @@ export class Environments {
             envName: string,
             version: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling DecryptEnvironment_esc_environments_versions.");
         }
@@ -1206,7 +1207,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public DecryptEnvironment_preview_environments__generateUrl(
@@ -1224,7 +1225,7 @@ export class Environments {
             orgName: string,
             envName: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling DecryptEnvironment_preview_environments.");
         }
@@ -1246,7 +1247,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public DecryptEnvironment_preview_environments_versions__generateUrl(
@@ -1267,7 +1268,7 @@ export class Environments {
             envName: string,
             version: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling DecryptEnvironment_preview_environments_versions.");
         }
@@ -1294,7 +1295,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public DeleteEnvironmentSchedule__generateUrl(
@@ -2437,7 +2438,7 @@ export class Environments {
             projectName: string,
             envName: string,
         },
-    ): Promise<any> {
+    ): Promise<HeadersForEnvironmentOp> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling HeadEnvironment_esc_environments.");
         }
@@ -2461,10 +2462,9 @@ export class Environments {
 
         let __requestOptions = new ApiRequest();
 
-        __requestOptions.setProduce("application/json");
         __requestOptions.method = "HEAD";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeadersOnly<HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public HeadEnvironment_preview_environments__generateUrl(
@@ -2482,7 +2482,7 @@ export class Environments {
             orgName: string,
             envName: string,
         },
-    ): Promise<any> {
+    ): Promise<HeadersForEnvironmentOp> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling HeadEnvironment_preview_environments.");
         }
@@ -2501,10 +2501,9 @@ export class Environments {
 
         let __requestOptions = new ApiRequest();
 
-        __requestOptions.setProduce("application/json");
         __requestOptions.method = "HEAD";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeadersOnly<HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public ListAllEnvironmentTags_esc__generateUrl(orgName: string): string {
@@ -4653,7 +4652,7 @@ export class Environments {
             projectName: string,
             envName: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling ReadEnvironment_esc_environments.");
         }
@@ -4680,7 +4679,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public ReadEnvironment_esc_environments_versions__generateUrl(
@@ -4704,7 +4703,7 @@ export class Environments {
             envName: string,
             version: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling ReadEnvironment_esc_environments_versions.");
         }
@@ -4736,7 +4735,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public ReadEnvironment_preview_environments__generateUrl(
@@ -4754,7 +4753,7 @@ export class Environments {
             orgName: string,
             envName: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling ReadEnvironment_preview_environments.");
         }
@@ -4776,7 +4775,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public ReadEnvironment_preview_environments_versions__generateUrl(
@@ -4797,7 +4796,7 @@ export class Environments {
             envName: string,
             version: string,
         },
-    ): Promise<string> {
+    ): Promise<ResponseWithHeaders<string, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling ReadEnvironment_preview_environments_versions.");
         }
@@ -4824,7 +4823,7 @@ export class Environments {
         __requestOptions.setProduce("application/x-yaml");
         __requestOptions.method = "GET";
 
-        return this.client.callWithOptions(__path, __requestOptions);
+        return this.client.callWithOptionsAndHeaders<string, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }));
     }
 
     public ReadOpenEnvironmentRequest__generateUrl(
@@ -5856,7 +5855,7 @@ export class Environments {
             envName: string,
         },
         request: string,
-    ): Promise<UpdateEnvironmentResponse> {
+    ): Promise<ResponseWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling UpdateEnvironment_esc_environments.");
         }
@@ -5891,7 +5890,7 @@ export class Environments {
         __requestOptions.hasBodyParam = true;
         __requestOptions.method = "PATCH";
 
-        return this.client.callWithOptions<UpdateEnvironmentResponse>(__path, __requestOptions, (__res0) => {
+        return this.client.callWithOptionsAndHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }), (__res0) => {
             if (__res0) {
                 UpdateEnvironmentResponse.fixupPrototype(__res0);
             }
@@ -5914,7 +5913,7 @@ export class Environments {
             envName: string,
         },
         request: string,
-    ): Promise<UpdateEnvironmentResponse> {
+    ): Promise<ResponseWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp>> {
         if (params === undefined) {
             throw new Error("Required parameter params was null or undefined when calling UpdateEnvironment_preview_environments.");
         }
@@ -5944,7 +5943,7 @@ export class Environments {
         __requestOptions.hasBodyParam = true;
         __requestOptions.method = "PATCH";
 
-        return this.client.callWithOptions<UpdateEnvironmentResponse>(__path, __requestOptions, (__res0) => {
+        return this.client.callWithOptionsAndHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp>(__path, __requestOptions, (h) => ({ eTag: h.get("ETag") ?? "", pulumiESCRevision: (Number(h.get("Pulumi-ESC-Revision")) || 0) }), (__res0) => {
             if (__res0) {
                 UpdateEnvironmentResponse.fixupPrototype(__res0);
             }

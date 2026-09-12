@@ -11,14 +11,14 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForAddStackTag struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.StackTag
+	Request      apitype.StackTag
 	ExtraHeaders []http.Header
 }
 
@@ -27,7 +27,7 @@ func (p *CloudClient) AddStackTag(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.StackTag,
+	request apitype.StackTag,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -74,7 +74,7 @@ type InterceptorForAppendUpdateLogEntry_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppAppendUpdateLogEntryRequest
+	Request      apitype.AppAppendUpdateLogEntryRequest
 	ExtraHeaders []http.Header
 }
 
@@ -84,7 +84,7 @@ func (p *CloudClient) AppendUpdateLogEntry_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppAppendUpdateLogEntryRequest,
+	request apitype.AppAppendUpdateLogEntryRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -133,7 +133,7 @@ type InterceptorForAppendUpdateLogEntry_preview struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppAppendUpdateLogEntryRequest
+	Request      apitype.AppAppendUpdateLogEntryRequest
 	ExtraHeaders []http.Header
 }
 
@@ -143,7 +143,7 @@ func (p *CloudClient) AppendUpdateLogEntry_preview(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppAppendUpdateLogEntryRequest,
+	request apitype.AppAppendUpdateLogEntryRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -192,7 +192,7 @@ type InterceptorForAppendUpdateLogEntry_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppAppendUpdateLogEntryRequest
+	Request      apitype.AppAppendUpdateLogEntryRequest
 	ExtraHeaders []http.Header
 }
 
@@ -202,7 +202,7 @@ func (p *CloudClient) AppendUpdateLogEntry_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppAppendUpdateLogEntryRequest,
+	request apitype.AppAppendUpdateLogEntryRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -251,7 +251,7 @@ type InterceptorForAppendUpdateLogEntry_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppAppendUpdateLogEntryRequest
+	Request      apitype.AppAppendUpdateLogEntryRequest
 	ExtraHeaders []http.Header
 }
 
@@ -261,7 +261,7 @@ func (p *CloudClient) AppendUpdateLogEntry_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppAppendUpdateLogEntryRequest,
+	request apitype.AppAppendUpdateLogEntryRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -309,7 +309,7 @@ type InterceptorForBatchDecryptValue struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppBatchDecryptRequest
+	Request      apitype.AppBatchDecryptRequest
 	ExtraHeaders []http.Header
 }
 
@@ -318,9 +318,9 @@ func (p *CloudClient) BatchDecryptValue(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppBatchDecryptRequest,
+	request apitype.AppBatchDecryptRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppBatchDecryptResponse, error) {
+) (*apitype.AppBatchDecryptResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForBatchDecryptValue{
 			OrgName:      orgName,
@@ -334,7 +334,7 @@ func (p *CloudClient) BatchDecryptValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppBatchDecryptResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppBatchDecryptResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for BatchDecryptValue: %T", resultFromInterceptor)
 			}
@@ -361,7 +361,7 @@ func (p *CloudClient) BatchDecryptValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppBatchDecryptResponse
+	var result apitype.AppBatchDecryptResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -373,7 +373,7 @@ type InterceptorForBatchEncryptValue struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppBatchEncryptRequest
+	Request      apitype.AppBatchEncryptRequest
 	ExtraHeaders []http.Header
 }
 
@@ -382,9 +382,9 @@ func (p *CloudClient) BatchEncryptValue(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppBatchEncryptRequest,
+	request apitype.AppBatchEncryptRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppBatchEncryptResponse, error) {
+) (*apitype.AppBatchEncryptResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForBatchEncryptValue{
 			OrgName:      orgName,
@@ -398,7 +398,7 @@ func (p *CloudClient) BatchEncryptValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppBatchEncryptResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppBatchEncryptResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for BatchEncryptValue: %T", resultFromInterceptor)
 			}
@@ -425,7 +425,7 @@ func (p *CloudClient) BatchEncryptValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppBatchEncryptResponse
+	var result apitype.AppBatchEncryptResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -437,7 +437,7 @@ type InterceptorForBeginUpdate struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppBeginUpdateRequest
+	Request      apitype.AppBeginUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -446,9 +446,9 @@ func (p *CloudClient) BeginUpdate(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppBeginUpdateRequest,
+	request apitype.AppBeginUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppBeginUpdateResponse, error) {
+) (*apitype.AppBeginUpdateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForBeginUpdate{
 			OrgName:      orgName,
@@ -462,7 +462,7 @@ func (p *CloudClient) BeginUpdate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppBeginUpdateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppBeginUpdateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for BeginUpdate: %T", resultFromInterceptor)
 			}
@@ -489,7 +489,7 @@ func (p *CloudClient) BeginUpdate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppBeginUpdateResponse
+	var result apitype.AppBeginUpdateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -722,7 +722,7 @@ type InterceptorForCompleteUpdate_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppCompleteUpdateRequest
+	Request      apitype.AppCompleteUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -732,7 +732,7 @@ func (p *CloudClient) CompleteUpdate_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppCompleteUpdateRequest,
+	request apitype.AppCompleteUpdateRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -781,7 +781,7 @@ type InterceptorForCompleteUpdate_preview struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppCompleteUpdateRequest
+	Request      apitype.AppCompleteUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -791,7 +791,7 @@ func (p *CloudClient) CompleteUpdate_preview(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppCompleteUpdateRequest,
+	request apitype.AppCompleteUpdateRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -840,7 +840,7 @@ type InterceptorForCompleteUpdate_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppCompleteUpdateRequest
+	Request      apitype.AppCompleteUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -850,7 +850,7 @@ func (p *CloudClient) CompleteUpdate_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppCompleteUpdateRequest,
+	request apitype.AppCompleteUpdateRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -899,7 +899,7 @@ type InterceptorForCompleteUpdate_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppCompleteUpdateRequest
+	Request      apitype.AppCompleteUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -909,7 +909,7 @@ func (p *CloudClient) CompleteUpdate_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppCompleteUpdateRequest,
+	request apitype.AppCompleteUpdateRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -959,7 +959,7 @@ type InterceptorForCreateJournalEntries_destroy struct {
 	StackName           string
 	UpdateID            string
 	IncludeNonActivated *bool
-	Request             ext1.AppJournalEntries
+	Request             apitype.AppJournalEntries
 	ExtraHeaders        []http.Header
 }
 
@@ -970,7 +970,7 @@ func (p *CloudClient) CreateJournalEntries_destroy(
 	stackName string,
 	updateID string,
 	include_non_activated *bool,
-	request ext1.AppJournalEntries,
+	request apitype.AppJournalEntries,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -1023,7 +1023,7 @@ type InterceptorForCreateJournalEntries_preview struct {
 	StackName           string
 	UpdateID            string
 	IncludeNonActivated *bool
-	Request             ext1.AppJournalEntries
+	Request             apitype.AppJournalEntries
 	ExtraHeaders        []http.Header
 }
 
@@ -1034,7 +1034,7 @@ func (p *CloudClient) CreateJournalEntries_preview(
 	stackName string,
 	updateID string,
 	include_non_activated *bool,
-	request ext1.AppJournalEntries,
+	request apitype.AppJournalEntries,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -1087,7 +1087,7 @@ type InterceptorForCreateJournalEntries_refresh struct {
 	StackName           string
 	UpdateID            string
 	IncludeNonActivated *bool
-	Request             ext1.AppJournalEntries
+	Request             apitype.AppJournalEntries
 	ExtraHeaders        []http.Header
 }
 
@@ -1098,7 +1098,7 @@ func (p *CloudClient) CreateJournalEntries_refresh(
 	stackName string,
 	updateID string,
 	include_non_activated *bool,
-	request ext1.AppJournalEntries,
+	request apitype.AppJournalEntries,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -1151,7 +1151,7 @@ type InterceptorForCreateJournalEntries_update struct {
 	StackName           string
 	UpdateID            string
 	IncludeNonActivated *bool
-	Request             ext1.AppJournalEntries
+	Request             apitype.AppJournalEntries
 	ExtraHeaders        []http.Header
 }
 
@@ -1162,7 +1162,7 @@ func (p *CloudClient) CreateJournalEntries_update(
 	stackName string,
 	updateID string,
 	include_non_activated *bool,
-	request ext1.AppJournalEntries,
+	request apitype.AppJournalEntries,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -1213,7 +1213,7 @@ type InterceptorForCreateStackWebhook struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -1222,9 +1222,9 @@ func (p *CloudClient) CreateStackWebhook(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateStackWebhook{
 			OrgName:      orgName,
@@ -1238,7 +1238,7 @@ func (p *CloudClient) CreateStackWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateStackWebhook: %T", resultFromInterceptor)
 			}
@@ -1265,7 +1265,7 @@ func (p *CloudClient) CreateStackWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1277,7 +1277,7 @@ type InterceptorForCreateUpdateForDestroy struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppUpdateProgramRequest
+	Request      apitype.AppUpdateProgramRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1286,9 +1286,9 @@ func (p *CloudClient) CreateUpdateForDestroy(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppUpdateProgramRequest,
+	request apitype.AppUpdateProgramRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateProgramResponse, error) {
+) (*apitype.AppUpdateProgramResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateUpdateForDestroy{
 			OrgName:      orgName,
@@ -1302,7 +1302,7 @@ func (p *CloudClient) CreateUpdateForDestroy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateProgramResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateProgramResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateUpdateForDestroy: %T", resultFromInterceptor)
 			}
@@ -1329,7 +1329,7 @@ func (p *CloudClient) CreateUpdateForDestroy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateProgramResponse
+	var result apitype.AppUpdateProgramResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1341,7 +1341,7 @@ type InterceptorForCreateUpdateForPreview struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppUpdateProgramRequest
+	Request      apitype.AppUpdateProgramRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1350,9 +1350,9 @@ func (p *CloudClient) CreateUpdateForPreview(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppUpdateProgramRequest,
+	request apitype.AppUpdateProgramRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateProgramResponse, error) {
+) (*apitype.AppUpdateProgramResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateUpdateForPreview{
 			OrgName:      orgName,
@@ -1366,7 +1366,7 @@ func (p *CloudClient) CreateUpdateForPreview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateProgramResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateProgramResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateUpdateForPreview: %T", resultFromInterceptor)
 			}
@@ -1393,7 +1393,7 @@ func (p *CloudClient) CreateUpdateForPreview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateProgramResponse
+	var result apitype.AppUpdateProgramResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1405,7 +1405,7 @@ type InterceptorForCreateUpdateForRefresh struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppUpdateProgramRequest
+	Request      apitype.AppUpdateProgramRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1414,9 +1414,9 @@ func (p *CloudClient) CreateUpdateForRefresh(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppUpdateProgramRequest,
+	request apitype.AppUpdateProgramRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateProgramResponse, error) {
+) (*apitype.AppUpdateProgramResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateUpdateForRefresh{
 			OrgName:      orgName,
@@ -1430,7 +1430,7 @@ func (p *CloudClient) CreateUpdateForRefresh(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateProgramResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateProgramResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateUpdateForRefresh: %T", resultFromInterceptor)
 			}
@@ -1457,7 +1457,7 @@ func (p *CloudClient) CreateUpdateForRefresh(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateProgramResponse
+	var result apitype.AppUpdateProgramResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1469,7 +1469,7 @@ type InterceptorForCreateUpdateForUpdate struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppUpdateProgramRequest
+	Request      apitype.AppUpdateProgramRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1478,9 +1478,9 @@ func (p *CloudClient) CreateUpdateForUpdate(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppUpdateProgramRequest,
+	request apitype.AppUpdateProgramRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateProgramResponse, error) {
+) (*apitype.AppUpdateProgramResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateUpdateForUpdate{
 			OrgName:      orgName,
@@ -1494,7 +1494,7 @@ func (p *CloudClient) CreateUpdateForUpdate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateProgramResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateProgramResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateUpdateForUpdate: %T", resultFromInterceptor)
 			}
@@ -1521,7 +1521,7 @@ func (p *CloudClient) CreateUpdateForUpdate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateProgramResponse
+	var result apitype.AppUpdateProgramResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1533,7 +1533,7 @@ type InterceptorForDecryptValue struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppDecryptValueRequest
+	Request      apitype.AppDecryptValueRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1542,9 +1542,9 @@ func (p *CloudClient) DecryptValue(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppDecryptValueRequest,
+	request apitype.AppDecryptValueRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppDecryptValueResponse, error) {
+) (*apitype.AppDecryptValueResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptValue{
 			OrgName:      orgName,
@@ -1558,7 +1558,7 @@ func (p *CloudClient) DecryptValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppDecryptValueResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppDecryptValueResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptValue: %T", resultFromInterceptor)
 			}
@@ -1585,7 +1585,7 @@ func (p *CloudClient) DecryptValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppDecryptValueResponse
+	var result apitype.AppDecryptValueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1869,7 +1869,7 @@ type InterceptorForEncryptValue struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppEncryptValueRequest
+	Request      apitype.AppEncryptValueRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1878,9 +1878,9 @@ func (p *CloudClient) EncryptValue(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppEncryptValueRequest,
+	request apitype.AppEncryptValueRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppEncryptValueResponse, error) {
+) (*apitype.AppEncryptValueResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForEncryptValue{
 			OrgName:      orgName,
@@ -1894,7 +1894,7 @@ func (p *CloudClient) EncryptValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppEncryptValueResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppEncryptValueResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for EncryptValue: %T", resultFromInterceptor)
 			}
@@ -1921,7 +1921,7 @@ func (p *CloudClient) EncryptValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppEncryptValueResponse
+	var result apitype.AppEncryptValueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1942,7 +1942,7 @@ func (p *CloudClient) ExportStack(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.AppUntypedDeployment, error) {
+) (*apitype.AppUntypedDeployment, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForExportStack{
 			OrgName:      orgName,
@@ -1955,7 +1955,7 @@ func (p *CloudClient) ExportStack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUntypedDeployment)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUntypedDeployment)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ExportStack: %T", resultFromInterceptor)
 			}
@@ -1981,7 +1981,7 @@ func (p *CloudClient) ExportStack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUntypedDeployment
+	var result apitype.AppUntypedDeployment
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2004,7 +2004,7 @@ func (p *CloudClient) ExportStackAtVersion(
 	stackName string,
 	version int,
 	extraHeaders ...http.Header,
-) (*ext1.AppUntypedDeployment, error) {
+) (*apitype.AppUntypedDeployment, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForExportStackAtVersion{
 			OrgName:      orgName,
@@ -2018,7 +2018,7 @@ func (p *CloudClient) ExportStackAtVersion(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUntypedDeployment)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUntypedDeployment)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ExportStackAtVersion: %T", resultFromInterceptor)
 			}
@@ -2045,7 +2045,7 @@ func (p *CloudClient) ExportStackAtVersion(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUntypedDeployment
+	var result apitype.AppUntypedDeployment
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2076,7 +2076,7 @@ func (p *CloudClient) GetEngineEvents_destroy(
 	type_ *[]int,
 	urn *string,
 	extraHeaders ...http.Header,
-) (*ext1.GetUpdateEventsResponse, error) {
+) (*apitype.GetUpdateEventsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEngineEvents_destroy{
 			OrgName:             orgName,
@@ -2094,7 +2094,7 @@ func (p *CloudClient) GetEngineEvents_destroy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetUpdateEventsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetUpdateEventsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEngineEvents_destroy: %T", resultFromInterceptor)
 			}
@@ -2126,7 +2126,7 @@ func (p *CloudClient) GetEngineEvents_destroy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetUpdateEventsResponse
+	var result apitype.GetUpdateEventsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2157,7 +2157,7 @@ func (p *CloudClient) GetEngineEvents_preview(
 	type_ *[]int,
 	urn *string,
 	extraHeaders ...http.Header,
-) (*ext1.GetUpdateEventsResponse, error) {
+) (*apitype.GetUpdateEventsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEngineEvents_preview{
 			OrgName:             orgName,
@@ -2175,7 +2175,7 @@ func (p *CloudClient) GetEngineEvents_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetUpdateEventsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetUpdateEventsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEngineEvents_preview: %T", resultFromInterceptor)
 			}
@@ -2207,7 +2207,7 @@ func (p *CloudClient) GetEngineEvents_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetUpdateEventsResponse
+	var result apitype.GetUpdateEventsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2238,7 +2238,7 @@ func (p *CloudClient) GetEngineEvents_refresh(
 	type_ *[]int,
 	urn *string,
 	extraHeaders ...http.Header,
-) (*ext1.GetUpdateEventsResponse, error) {
+) (*apitype.GetUpdateEventsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEngineEvents_refresh{
 			OrgName:             orgName,
@@ -2256,7 +2256,7 @@ func (p *CloudClient) GetEngineEvents_refresh(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetUpdateEventsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetUpdateEventsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEngineEvents_refresh: %T", resultFromInterceptor)
 			}
@@ -2288,7 +2288,7 @@ func (p *CloudClient) GetEngineEvents_refresh(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetUpdateEventsResponse
+	var result apitype.GetUpdateEventsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2319,7 +2319,7 @@ func (p *CloudClient) GetEngineEvents_update(
 	type_ *[]int,
 	urn *string,
 	extraHeaders ...http.Header,
-) (*ext1.GetUpdateEventsResponse, error) {
+) (*apitype.GetUpdateEventsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetEngineEvents_update{
 			OrgName:             orgName,
@@ -2337,7 +2337,7 @@ func (p *CloudClient) GetEngineEvents_update(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetUpdateEventsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetUpdateEventsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetEngineEvents_update: %T", resultFromInterceptor)
 			}
@@ -2369,7 +2369,7 @@ func (p *CloudClient) GetEngineEvents_update(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetUpdateEventsResponse
+	var result apitype.GetUpdateEventsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2396,7 +2396,7 @@ func (p *CloudClient) GetLatestStackPreviews(
 	page *int,
 	pageSize *int,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackUpdatesResponse, error) {
+) (*apitype.GetStackUpdatesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetLatestStackPreviews{
 			OrgName:      orgName,
@@ -2412,7 +2412,7 @@ func (p *CloudClient) GetLatestStackPreviews(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackUpdatesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackUpdatesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetLatestStackPreviews: %T", resultFromInterceptor)
 			}
@@ -2442,7 +2442,7 @@ func (p *CloudClient) GetLatestStackPreviews(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackUpdatesResponse
+	var result apitype.GetStackUpdatesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2465,7 +2465,7 @@ func (p *CloudClient) GetLatestStackResource(
 	stackName string,
 	urn string,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackResourceResponse, error) {
+) (*apitype.GetStackResourceResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetLatestStackResource{
 			OrgName:      orgName,
@@ -2479,7 +2479,7 @@ func (p *CloudClient) GetLatestStackResource(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackResourceResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackResourceResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetLatestStackResource: %T", resultFromInterceptor)
 			}
@@ -2506,7 +2506,7 @@ func (p *CloudClient) GetLatestStackResource(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackResourceResponse
+	var result apitype.GetStackResourceResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2527,7 +2527,7 @@ func (p *CloudClient) GetLatestStackResources(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackResourcesResponse, error) {
+) (*apitype.GetStackResourcesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetLatestStackResources{
 			OrgName:      orgName,
@@ -2540,7 +2540,7 @@ func (p *CloudClient) GetLatestStackResources(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackResourcesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackResourcesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetLatestStackResources: %T", resultFromInterceptor)
 			}
@@ -2566,7 +2566,7 @@ func (p *CloudClient) GetLatestStackResources(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackResourcesResponse
+	var result apitype.GetStackResourcesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2587,7 +2587,7 @@ func (p *CloudClient) GetLatestStackUpdate(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateInfo, error) {
+) (*apitype.UpdateInfo, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetLatestStackUpdate{
 			OrgName:      orgName,
@@ -2600,7 +2600,7 @@ func (p *CloudClient) GetLatestStackUpdate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateInfo)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UpdateInfo)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetLatestStackUpdate: %T", resultFromInterceptor)
 			}
@@ -2626,7 +2626,7 @@ func (p *CloudClient) GetLatestStackUpdate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UpdateInfo
+	var result apitype.UpdateInfo
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2647,7 +2647,7 @@ func (p *CloudClient) GetLatestUpdateTimeline(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.GetUpdateTimelineResponse, error) {
+) (*apitype.GetUpdateTimelineResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetLatestUpdateTimeline{
 			OrgName:      orgName,
@@ -2660,7 +2660,7 @@ func (p *CloudClient) GetLatestUpdateTimeline(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetUpdateTimelineResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetUpdateTimelineResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetLatestUpdateTimeline: %T", resultFromInterceptor)
 			}
@@ -2686,7 +2686,7 @@ func (p *CloudClient) GetLatestUpdateTimeline(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetUpdateTimelineResponse
+	var result apitype.GetUpdateTimelineResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2707,7 +2707,7 @@ func (p *CloudClient) GetStack(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.AppStack, error) {
+) (*apitype.AppStack, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStack{
 			OrgName:      orgName,
@@ -2720,7 +2720,7 @@ func (p *CloudClient) GetStack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStack)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStack)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStack: %T", resultFromInterceptor)
 			}
@@ -2746,7 +2746,7 @@ func (p *CloudClient) GetStack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStack
+	var result apitype.AppStack
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2771,7 +2771,7 @@ func (p *CloudClient) GetStackActivity(
 	page *int,
 	pageSize *int,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackActivityResponse, error) {
+) (*apitype.GetStackActivityResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackActivity{
 			OrgName:      orgName,
@@ -2786,7 +2786,7 @@ func (p *CloudClient) GetStackActivity(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackActivityResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackActivityResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackActivity: %T", resultFromInterceptor)
 			}
@@ -2815,7 +2815,7 @@ func (p *CloudClient) GetStackActivity(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackActivityResponse
+	var result apitype.GetStackActivityResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2836,7 +2836,7 @@ func (p *CloudClient) GetStackConfig(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.AppStackConfig, error) {
+) (*apitype.AppStackConfig, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackConfig{
 			OrgName:      orgName,
@@ -2849,7 +2849,7 @@ func (p *CloudClient) GetStackConfig(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStackConfig)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStackConfig)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackConfig: %T", resultFromInterceptor)
 			}
@@ -2875,7 +2875,7 @@ func (p *CloudClient) GetStackConfig(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStackConfig
+	var result apitype.AppStackConfig
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2896,7 +2896,7 @@ func (p *CloudClient) GetStackMetadata(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.StackMetadata, error) {
+) (*apitype.StackMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackMetadata{
 			OrgName:      orgName,
@@ -2909,7 +2909,7 @@ func (p *CloudClient) GetStackMetadata(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StackMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackMetadata: %T", resultFromInterceptor)
 			}
@@ -2935,7 +2935,7 @@ func (p *CloudClient) GetStackMetadata(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StackMetadata
+	var result apitype.StackMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2956,7 +2956,7 @@ func (p *CloudClient) GetStackOutputs(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.StackOutputsResponse, error) {
+) (*apitype.StackOutputsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackOutputs{
 			OrgName:      orgName,
@@ -2969,7 +2969,7 @@ func (p *CloudClient) GetStackOutputs(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackOutputsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StackOutputsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackOutputs: %T", resultFromInterceptor)
 			}
@@ -2995,7 +2995,7 @@ func (p *CloudClient) GetStackOutputs(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StackOutputsResponse
+	var result apitype.StackOutputsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3016,7 +3016,7 @@ func (p *CloudClient) GetStackOverview(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.StackOverviewResponse, error) {
+) (*apitype.StackOverviewResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackOverview{
 			OrgName:      orgName,
@@ -3029,7 +3029,7 @@ func (p *CloudClient) GetStackOverview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackOverviewResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StackOverviewResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackOverview: %T", resultFromInterceptor)
 			}
@@ -3055,7 +3055,7 @@ func (p *CloudClient) GetStackOverview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StackOverviewResponse
+	var result apitype.StackOverviewResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3076,7 +3076,7 @@ func (p *CloudClient) GetStackPolicyGroups(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.AppListPolicyGroupsResponse, error) {
+) (*apitype.AppListPolicyGroupsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackPolicyGroups{
 			OrgName:      orgName,
@@ -3089,7 +3089,7 @@ func (p *CloudClient) GetStackPolicyGroups(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppListPolicyGroupsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppListPolicyGroupsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackPolicyGroups: %T", resultFromInterceptor)
 			}
@@ -3115,7 +3115,7 @@ func (p *CloudClient) GetStackPolicyGroups(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppListPolicyGroupsResponse
+	var result apitype.AppListPolicyGroupsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3127,7 +3127,7 @@ type InterceptorForGetStackPolicyPacks struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Mode         *ext1.PolicyGroupMode
+	Mode         *apitype.PolicyGroupMode
 	ExtraHeaders []http.Header
 }
 
@@ -3136,9 +3136,9 @@ func (p *CloudClient) GetStackPolicyPacks(
 	orgName string,
 	projectName string,
 	stackName string,
-	mode *ext1.PolicyGroupMode,
+	mode *apitype.PolicyGroupMode,
 	extraHeaders ...http.Header,
-) (*ext1.AppGetStackPolicyPacksResponse, error) {
+) (*apitype.AppGetStackPolicyPacksResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackPolicyPacks{
 			OrgName:      orgName,
@@ -3152,7 +3152,7 @@ func (p *CloudClient) GetStackPolicyPacks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppGetStackPolicyPacksResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppGetStackPolicyPacksResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackPolicyPacks: %T", resultFromInterceptor)
 			}
@@ -3180,7 +3180,7 @@ func (p *CloudClient) GetStackPolicyPacks(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppGetStackPolicyPacksResponse
+	var result apitype.AppGetStackPolicyPacksResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3203,7 +3203,7 @@ func (p *CloudClient) GetStackPreview(
 	stackName string,
 	updateID string,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateInfo, error) {
+) (*apitype.UpdateInfo, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackPreview{
 			OrgName:      orgName,
@@ -3217,7 +3217,7 @@ func (p *CloudClient) GetStackPreview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateInfo)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UpdateInfo)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackPreview: %T", resultFromInterceptor)
 			}
@@ -3244,7 +3244,7 @@ func (p *CloudClient) GetStackPreview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UpdateInfo
+	var result apitype.UpdateInfo
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3267,7 +3267,7 @@ func (p *CloudClient) GetStackPreviewSummary(
 	stackName string,
 	updateID string,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateSummary, error) {
+) (*apitype.UpdateSummary, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackPreviewSummary{
 			OrgName:      orgName,
@@ -3281,7 +3281,7 @@ func (p *CloudClient) GetStackPreviewSummary(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateSummary)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UpdateSummary)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackPreviewSummary: %T", resultFromInterceptor)
 			}
@@ -3308,7 +3308,7 @@ func (p *CloudClient) GetStackPreviewSummary(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UpdateSummary
+	var result apitype.UpdateSummary
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3337,7 +3337,7 @@ func (p *CloudClient) GetStackPreviews(
 	page *int,
 	pageSize *int,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackUpdatesResponse, error) {
+) (*apitype.GetStackUpdatesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackPreviews{
 			OrgName:      orgName,
@@ -3354,7 +3354,7 @@ func (p *CloudClient) GetStackPreviews(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackUpdatesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackUpdatesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackPreviews: %T", resultFromInterceptor)
 			}
@@ -3385,7 +3385,7 @@ func (p *CloudClient) GetStackPreviews(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackUpdatesResponse
+	var result apitype.GetStackUpdatesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3410,7 +3410,7 @@ func (p *CloudClient) GetStackResource(
 	version int,
 	urn string,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackResourceResponse, error) {
+) (*apitype.GetStackResourceResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackResource{
 			OrgName:      orgName,
@@ -3425,7 +3425,7 @@ func (p *CloudClient) GetStackResource(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackResourceResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackResourceResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackResource: %T", resultFromInterceptor)
 			}
@@ -3453,7 +3453,7 @@ func (p *CloudClient) GetStackResource(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackResourceResponse
+	var result apitype.GetStackResourceResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3474,7 +3474,7 @@ func (p *CloudClient) GetStackResourceCount(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackResourceCountResponse, error) {
+) (*apitype.GetStackResourceCountResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackResourceCount{
 			OrgName:      orgName,
@@ -3487,7 +3487,7 @@ func (p *CloudClient) GetStackResourceCount(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackResourceCountResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackResourceCountResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackResourceCount: %T", resultFromInterceptor)
 			}
@@ -3513,7 +3513,7 @@ func (p *CloudClient) GetStackResourceCount(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackResourceCountResponse
+	var result apitype.GetStackResourceCountResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3536,7 +3536,7 @@ func (p *CloudClient) GetStackResources(
 	stackName string,
 	version int,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackResourcesResponse, error) {
+) (*apitype.GetStackResourcesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackResources{
 			OrgName:      orgName,
@@ -3550,7 +3550,7 @@ func (p *CloudClient) GetStackResources(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackResourcesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackResourcesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackResources: %T", resultFromInterceptor)
 			}
@@ -3577,7 +3577,7 @@ func (p *CloudClient) GetStackResources(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackResourcesResponse
+	var result apitype.GetStackResourcesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3589,7 +3589,7 @@ type InterceptorForGetStackStarterWorkflow struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.GetStarterWorkflowRequest
+	Request      apitype.GetStarterWorkflowRequest
 	ExtraHeaders []http.Header
 }
 
@@ -3598,9 +3598,9 @@ func (p *CloudClient) GetStackStarterWorkflow(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.GetStarterWorkflowRequest,
+	request apitype.GetStarterWorkflowRequest,
 	extraHeaders ...http.Header,
-) (*ext1.GetStackStarterWorkflowResponse, error) {
+) (*apitype.GetStackStarterWorkflowResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackStarterWorkflow{
 			OrgName:      orgName,
@@ -3614,7 +3614,7 @@ func (p *CloudClient) GetStackStarterWorkflow(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetStackStarterWorkflowResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetStackStarterWorkflowResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackStarterWorkflow: %T", resultFromInterceptor)
 			}
@@ -3641,7 +3641,7 @@ func (p *CloudClient) GetStackStarterWorkflow(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetStackStarterWorkflowResponse
+	var result apitype.GetStackStarterWorkflowResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3664,7 +3664,7 @@ func (p *CloudClient) GetStackUpdate(
 	stackName string,
 	version int,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateInfo, error) {
+) (*apitype.UpdateInfo, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackUpdate{
 			OrgName:      orgName,
@@ -3678,7 +3678,7 @@ func (p *CloudClient) GetStackUpdate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateInfo)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UpdateInfo)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackUpdate: %T", resultFromInterceptor)
 			}
@@ -3705,7 +3705,7 @@ func (p *CloudClient) GetStackUpdate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UpdateInfo
+	var result apitype.UpdateInfo
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3728,7 +3728,7 @@ func (p *CloudClient) GetStackUpdateSummary(
 	stackName string,
 	version int,
 	extraHeaders ...http.Header,
-) (*ext1.UpdateSummary, error) {
+) (*apitype.UpdateSummary, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackUpdateSummary{
 			OrgName:      orgName,
@@ -3742,7 +3742,7 @@ func (p *CloudClient) GetStackUpdateSummary(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UpdateSummary)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UpdateSummary)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackUpdateSummary: %T", resultFromInterceptor)
 			}
@@ -3769,7 +3769,7 @@ func (p *CloudClient) GetStackUpdateSummary(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UpdateSummary
+	var result apitype.UpdateSummary
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3861,7 +3861,7 @@ func (p *CloudClient) GetStackWebhook(
 	stackName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackWebhook{
 			OrgName:      orgName,
@@ -3875,7 +3875,7 @@ func (p *CloudClient) GetStackWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackWebhook: %T", resultFromInterceptor)
 			}
@@ -3902,7 +3902,7 @@ func (p *CloudClient) GetStackWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3925,7 +3925,7 @@ func (p *CloudClient) GetStackWebhookDeliveries(
 	stackName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookDelivery, error) {
+) (*[]apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackWebhookDeliveries{
 			OrgName:      orgName,
@@ -3939,7 +3939,7 @@ func (p *CloudClient) GetStackWebhookDeliveries(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetStackWebhookDeliveries: %T", resultFromInterceptor)
 			}
@@ -3966,7 +3966,7 @@ func (p *CloudClient) GetStackWebhookDeliveries(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookDelivery
+	var result []apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4060,7 +4060,7 @@ func (p *CloudClient) GetUpdateStatusForDestroy(
 	updateID string,
 	continuationToken *string,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateResults, error) {
+) (*apitype.AppUpdateResults, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUpdateStatusForDestroy{
 			OrgName:           orgName,
@@ -4075,7 +4075,7 @@ func (p *CloudClient) GetUpdateStatusForDestroy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateResults)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateResults)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUpdateStatusForDestroy: %T", resultFromInterceptor)
 			}
@@ -4104,7 +4104,7 @@ func (p *CloudClient) GetUpdateStatusForDestroy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateResults
+	var result apitype.AppUpdateResults
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4129,7 +4129,7 @@ func (p *CloudClient) GetUpdateStatusForPreview(
 	updateID string,
 	continuationToken *string,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateResults, error) {
+) (*apitype.AppUpdateResults, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUpdateStatusForPreview{
 			OrgName:           orgName,
@@ -4144,7 +4144,7 @@ func (p *CloudClient) GetUpdateStatusForPreview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateResults)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateResults)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUpdateStatusForPreview: %T", resultFromInterceptor)
 			}
@@ -4173,7 +4173,7 @@ func (p *CloudClient) GetUpdateStatusForPreview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateResults
+	var result apitype.AppUpdateResults
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4198,7 +4198,7 @@ func (p *CloudClient) GetUpdateStatusForRefresh(
 	updateID string,
 	continuationToken *string,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateResults, error) {
+) (*apitype.AppUpdateResults, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUpdateStatusForRefresh{
 			OrgName:           orgName,
@@ -4213,7 +4213,7 @@ func (p *CloudClient) GetUpdateStatusForRefresh(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateResults)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateResults)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUpdateStatusForRefresh: %T", resultFromInterceptor)
 			}
@@ -4242,7 +4242,7 @@ func (p *CloudClient) GetUpdateStatusForRefresh(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateResults
+	var result apitype.AppUpdateResults
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4267,7 +4267,7 @@ func (p *CloudClient) GetUpdateStatusForUpdate(
 	updateID string,
 	continuationToken *string,
 	extraHeaders ...http.Header,
-) (*ext1.AppUpdateResults, error) {
+) (*apitype.AppUpdateResults, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUpdateStatusForUpdate{
 			OrgName:           orgName,
@@ -4282,7 +4282,7 @@ func (p *CloudClient) GetUpdateStatusForUpdate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppUpdateResults)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppUpdateResults)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUpdateStatusForUpdate: %T", resultFromInterceptor)
 			}
@@ -4311,7 +4311,7 @@ func (p *CloudClient) GetUpdateStatusForUpdate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppUpdateResults
+	var result apitype.AppUpdateResults
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4334,7 +4334,7 @@ func (p *CloudClient) GetUpdateTimeline(
 	stackName string,
 	version int,
 	extraHeaders ...http.Header,
-) (*ext1.GetUpdateTimelineResponse, error) {
+) (*apitype.GetUpdateTimelineResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUpdateTimeline{
 			OrgName:      orgName,
@@ -4348,7 +4348,7 @@ func (p *CloudClient) GetUpdateTimeline(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetUpdateTimelineResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetUpdateTimelineResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUpdateTimeline: %T", resultFromInterceptor)
 			}
@@ -4375,7 +4375,7 @@ func (p *CloudClient) GetUpdateTimeline(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetUpdateTimelineResponse
+	var result apitype.GetUpdateTimelineResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4387,7 +4387,7 @@ type InterceptorForImportStack struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppImportStackRequest
+	Request      apitype.AppImportStackRequest
 	ExtraHeaders []http.Header
 }
 
@@ -4396,9 +4396,9 @@ func (p *CloudClient) ImportStack(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppImportStackRequest,
+	request apitype.AppImportStackRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppImportStackResponse, error) {
+) (*apitype.AppImportStackResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForImportStack{
 			OrgName:      orgName,
@@ -4412,7 +4412,7 @@ func (p *CloudClient) ImportStack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppImportStackResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppImportStackResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ImportStack: %T", resultFromInterceptor)
 			}
@@ -4439,7 +4439,7 @@ func (p *CloudClient) ImportStack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppImportStackResponse
+	var result apitype.AppImportStackResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4460,7 +4460,7 @@ func (p *CloudClient) ListDownstreamStackReferences(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListDownstreamStackReferencesResponse, error) {
+) (*apitype.ListDownstreamStackReferencesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListDownstreamStackReferences{
 			OrgName:      orgName,
@@ -4473,7 +4473,7 @@ func (p *CloudClient) ListDownstreamStackReferences(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListDownstreamStackReferencesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListDownstreamStackReferencesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListDownstreamStackReferences: %T", resultFromInterceptor)
 			}
@@ -4499,7 +4499,7 @@ func (p *CloudClient) ListDownstreamStackReferences(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListDownstreamStackReferencesResponse
+	var result apitype.ListDownstreamStackReferencesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4522,7 +4522,7 @@ func (p *CloudClient) ListMemberStackPermissions(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListMemberStackPermissionsResponse, error) {
+) (*apitype.ListMemberStackPermissionsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListMemberStackPermissions{
 			OrgName:      orgName,
@@ -4536,7 +4536,7 @@ func (p *CloudClient) ListMemberStackPermissions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListMemberStackPermissionsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListMemberStackPermissionsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListMemberStackPermissions: %T", resultFromInterceptor)
 			}
@@ -4563,7 +4563,7 @@ func (p *CloudClient) ListMemberStackPermissions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListMemberStackPermissionsResponse
+	var result apitype.ListMemberStackPermissionsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4584,7 +4584,7 @@ func (p *CloudClient) ListStackPermissions(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListStackCollaboratorsResponse, error) {
+) (*apitype.ListStackCollaboratorsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListStackPermissions{
 			OrgName:      orgName,
@@ -4597,7 +4597,7 @@ func (p *CloudClient) ListStackPermissions(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListStackCollaboratorsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListStackCollaboratorsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListStackPermissions: %T", resultFromInterceptor)
 			}
@@ -4623,7 +4623,7 @@ func (p *CloudClient) ListStackPermissions(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListStackCollaboratorsResponse
+	var result apitype.ListStackCollaboratorsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4644,7 +4644,7 @@ func (p *CloudClient) ListStackTeams(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListTeamsByStackResponse, error) {
+) (*apitype.ListTeamsByStackResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListStackTeams{
 			OrgName:      orgName,
@@ -4657,7 +4657,7 @@ func (p *CloudClient) ListStackTeams(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListTeamsByStackResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListTeamsByStackResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListStackTeams: %T", resultFromInterceptor)
 			}
@@ -4683,7 +4683,7 @@ func (p *CloudClient) ListStackTeams(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListTeamsByStackResponse
+	var result apitype.ListTeamsByStackResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4704,7 +4704,7 @@ func (p *CloudClient) ListStackWebhooks(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookResponse, error) {
+) (*[]apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListStackWebhooks{
 			OrgName:      orgName,
@@ -4717,7 +4717,7 @@ func (p *CloudClient) ListStackWebhooks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListStackWebhooks: %T", resultFromInterceptor)
 			}
@@ -4743,7 +4743,7 @@ func (p *CloudClient) ListStackWebhooks(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookResponse
+	var result []apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4764,7 +4764,7 @@ func (p *CloudClient) ListUpstreamStackReferences(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListDownstreamStackReferencesResponse, error) {
+) (*apitype.ListDownstreamStackReferencesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListUpstreamStackReferences{
 			OrgName:      orgName,
@@ -4777,7 +4777,7 @@ func (p *CloudClient) ListUpstreamStackReferences(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListDownstreamStackReferencesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListDownstreamStackReferencesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListUpstreamStackReferences: %T", resultFromInterceptor)
 			}
@@ -4803,7 +4803,7 @@ func (p *CloudClient) ListUpstreamStackReferences(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListDownstreamStackReferencesResponse
+	var result apitype.ListDownstreamStackReferencesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4815,7 +4815,7 @@ type InterceptorForLogOnlyBatchDecryptValue struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppLog3rdPartyDecryptionEvent
+	Request      apitype.AppLog3rdPartyDecryptionEvent
 	ExtraHeaders []http.Header
 }
 
@@ -4824,7 +4824,7 @@ func (p *CloudClient) LogOnlyBatchDecryptValue(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppLog3rdPartyDecryptionEvent,
+	request apitype.AppLog3rdPartyDecryptionEvent,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -4870,7 +4870,7 @@ type InterceptorForLogOnlyDecryptValue struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppLog3rdPartyDecryptionEvent
+	Request      apitype.AppLog3rdPartyDecryptionEvent
 	ExtraHeaders []http.Header
 }
 
@@ -4879,7 +4879,7 @@ func (p *CloudClient) LogOnlyDecryptValue(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppLog3rdPartyDecryptionEvent,
+	request apitype.AppLog3rdPartyDecryptionEvent,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -4926,7 +4926,7 @@ type InterceptorForPatchUpdateCheckpointDelta_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateCheckpointDeltaRequest
+	Request      apitype.AppPatchUpdateCheckpointDeltaRequest
 	ExtraHeaders []http.Header
 }
 
@@ -4936,7 +4936,7 @@ func (p *CloudClient) PatchUpdateCheckpointDelta_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateCheckpointDeltaRequest,
+	request apitype.AppPatchUpdateCheckpointDeltaRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -4985,7 +4985,7 @@ type InterceptorForPatchUpdateCheckpointDelta_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateCheckpointDeltaRequest
+	Request      apitype.AppPatchUpdateCheckpointDeltaRequest
 	ExtraHeaders []http.Header
 }
 
@@ -4995,7 +4995,7 @@ func (p *CloudClient) PatchUpdateCheckpointDelta_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateCheckpointDeltaRequest,
+	request apitype.AppPatchUpdateCheckpointDeltaRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5044,7 +5044,7 @@ type InterceptorForPatchUpdateCheckpointDelta_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateCheckpointDeltaRequest
+	Request      apitype.AppPatchUpdateCheckpointDeltaRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5054,7 +5054,7 @@ func (p *CloudClient) PatchUpdateCheckpointDelta_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateCheckpointDeltaRequest,
+	request apitype.AppPatchUpdateCheckpointDeltaRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5103,7 +5103,7 @@ type InterceptorForPatchUpdateCheckpoint_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateCheckpointRequest
+	Request      apitype.AppPatchUpdateCheckpointRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5113,7 +5113,7 @@ func (p *CloudClient) PatchUpdateCheckpoint_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateCheckpointRequest,
+	request apitype.AppPatchUpdateCheckpointRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5162,7 +5162,7 @@ type InterceptorForPatchUpdateCheckpoint_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateCheckpointRequest
+	Request      apitype.AppPatchUpdateCheckpointRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5172,7 +5172,7 @@ func (p *CloudClient) PatchUpdateCheckpoint_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateCheckpointRequest,
+	request apitype.AppPatchUpdateCheckpointRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5221,7 +5221,7 @@ type InterceptorForPatchUpdateCheckpoint_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateCheckpointRequest
+	Request      apitype.AppPatchUpdateCheckpointRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5231,7 +5231,7 @@ func (p *CloudClient) PatchUpdateCheckpoint_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateCheckpointRequest,
+	request apitype.AppPatchUpdateCheckpointRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5280,7 +5280,7 @@ type InterceptorForPatchUpdateVerbatimCheckpoint_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateVerbatimCheckpointRequest
+	Request      apitype.AppPatchUpdateVerbatimCheckpointRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5290,7 +5290,7 @@ func (p *CloudClient) PatchUpdateVerbatimCheckpoint_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateVerbatimCheckpointRequest,
+	request apitype.AppPatchUpdateVerbatimCheckpointRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5339,7 +5339,7 @@ type InterceptorForPatchUpdateVerbatimCheckpoint_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateVerbatimCheckpointRequest
+	Request      apitype.AppPatchUpdateVerbatimCheckpointRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5349,7 +5349,7 @@ func (p *CloudClient) PatchUpdateVerbatimCheckpoint_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateVerbatimCheckpointRequest,
+	request apitype.AppPatchUpdateVerbatimCheckpointRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5398,7 +5398,7 @@ type InterceptorForPatchUpdateVerbatimCheckpoint_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppPatchUpdateVerbatimCheckpointRequest
+	Request      apitype.AppPatchUpdateVerbatimCheckpointRequest
 	ExtraHeaders []http.Header
 }
 
@@ -5408,7 +5408,7 @@ func (p *CloudClient) PatchUpdateVerbatimCheckpoint_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppPatchUpdateVerbatimCheckpointRequest,
+	request apitype.AppPatchUpdateVerbatimCheckpointRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5467,7 +5467,7 @@ func (p *CloudClient) PingStackWebhook(
 	stackName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPingStackWebhook{
 			OrgName:      orgName,
@@ -5481,7 +5481,7 @@ func (p *CloudClient) PingStackWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PingStackWebhook: %T", resultFromInterceptor)
 			}
@@ -5508,7 +5508,7 @@ func (p *CloudClient) PingStackWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5520,7 +5520,7 @@ type InterceptorForReassignStackOwnership struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.UserInfo
+	Request      apitype.UserInfo
 	ExtraHeaders []http.Header
 }
 
@@ -5529,9 +5529,9 @@ func (p *CloudClient) ReassignStackOwnership(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.UserInfo,
+	request apitype.UserInfo,
 	extraHeaders ...http.Header,
-) (*ext1.UserInfo, error) {
+) (*apitype.UserInfo, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReassignStackOwnership{
 			OrgName:      orgName,
@@ -5545,7 +5545,7 @@ func (p *CloudClient) ReassignStackOwnership(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.UserInfo)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UserInfo)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReassignStackOwnership: %T", resultFromInterceptor)
 			}
@@ -5572,7 +5572,7 @@ func (p *CloudClient) ReassignStackOwnership(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.UserInfo
+	var result apitype.UserInfo
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5585,7 +5585,7 @@ type InterceptorForRecordEngineEventBatch_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEventBatch
+	Request      apitype.AppEngineEventBatch
 	ExtraHeaders []http.Header
 }
 
@@ -5595,7 +5595,7 @@ func (p *CloudClient) RecordEngineEventBatch_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEventBatch,
+	request apitype.AppEngineEventBatch,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5644,7 +5644,7 @@ type InterceptorForRecordEngineEventBatch_preview struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEventBatch
+	Request      apitype.AppEngineEventBatch
 	ExtraHeaders []http.Header
 }
 
@@ -5654,7 +5654,7 @@ func (p *CloudClient) RecordEngineEventBatch_preview(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEventBatch,
+	request apitype.AppEngineEventBatch,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5703,7 +5703,7 @@ type InterceptorForRecordEngineEventBatch_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEventBatch
+	Request      apitype.AppEngineEventBatch
 	ExtraHeaders []http.Header
 }
 
@@ -5713,7 +5713,7 @@ func (p *CloudClient) RecordEngineEventBatch_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEventBatch,
+	request apitype.AppEngineEventBatch,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5762,7 +5762,7 @@ type InterceptorForRecordEngineEventBatch_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEventBatch
+	Request      apitype.AppEngineEventBatch
 	ExtraHeaders []http.Header
 }
 
@@ -5772,7 +5772,7 @@ func (p *CloudClient) RecordEngineEventBatch_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEventBatch,
+	request apitype.AppEngineEventBatch,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5821,7 +5821,7 @@ type InterceptorForRecordEngineEvent_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEvent
+	Request      apitype.AppEngineEvent
 	ExtraHeaders []http.Header
 }
 
@@ -5831,7 +5831,7 @@ func (p *CloudClient) RecordEngineEvent_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEvent,
+	request apitype.AppEngineEvent,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5880,7 +5880,7 @@ type InterceptorForRecordEngineEvent_preview struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEvent
+	Request      apitype.AppEngineEvent
 	ExtraHeaders []http.Header
 }
 
@@ -5890,7 +5890,7 @@ func (p *CloudClient) RecordEngineEvent_preview(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEvent,
+	request apitype.AppEngineEvent,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5939,7 +5939,7 @@ type InterceptorForRecordEngineEvent_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEvent
+	Request      apitype.AppEngineEvent
 	ExtraHeaders []http.Header
 }
 
@@ -5949,7 +5949,7 @@ func (p *CloudClient) RecordEngineEvent_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEvent,
+	request apitype.AppEngineEvent,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -5998,7 +5998,7 @@ type InterceptorForRecordEngineEvent_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppEngineEvent
+	Request      apitype.AppEngineEvent
 	ExtraHeaders []http.Header
 }
 
@@ -6008,7 +6008,7 @@ func (p *CloudClient) RecordEngineEvent_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppEngineEvent,
+	request apitype.AppEngineEvent,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6069,7 +6069,7 @@ func (p *CloudClient) RedeliverStackWebhookEvent(
 	hookName string,
 	event string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRedeliverStackWebhookEvent{
 			OrgName:      orgName,
@@ -6084,7 +6084,7 @@ func (p *CloudClient) RedeliverStackWebhookEvent(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RedeliverStackWebhookEvent: %T", resultFromInterceptor)
 			}
@@ -6112,7 +6112,7 @@ func (p *CloudClient) RedeliverStackWebhookEvent(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6124,7 +6124,7 @@ type InterceptorForRenameStack struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppStackRenameRequest
+	Request      apitype.AppStackRenameRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6133,9 +6133,9 @@ func (p *CloudClient) RenameStack(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppStackRenameRequest,
+	request apitype.AppStackRenameRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppImportStackResponse, error) {
+) (*apitype.AppImportStackResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRenameStack{
 			OrgName:      orgName,
@@ -6149,7 +6149,7 @@ func (p *CloudClient) RenameStack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppImportStackResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppImportStackResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RenameStack: %T", resultFromInterceptor)
 			}
@@ -6176,7 +6176,7 @@ func (p *CloudClient) RenameStack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppImportStackResponse
+	var result apitype.AppImportStackResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6189,7 +6189,7 @@ type InterceptorForRenewUpdateLease_destroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppRenewUpdateLeaseRequest
+	Request      apitype.AppRenewUpdateLeaseRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6199,9 +6199,9 @@ func (p *CloudClient) RenewUpdateLease_destroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppRenewUpdateLeaseRequest,
+	request apitype.AppRenewUpdateLeaseRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppRenewUpdateLeaseResponse, error) {
+) (*apitype.AppRenewUpdateLeaseResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRenewUpdateLease_destroy{
 			OrgName:      orgName,
@@ -6216,7 +6216,7 @@ func (p *CloudClient) RenewUpdateLease_destroy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppRenewUpdateLeaseResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppRenewUpdateLeaseResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RenewUpdateLease_destroy: %T", resultFromInterceptor)
 			}
@@ -6244,7 +6244,7 @@ func (p *CloudClient) RenewUpdateLease_destroy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppRenewUpdateLeaseResponse
+	var result apitype.AppRenewUpdateLeaseResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6257,7 +6257,7 @@ type InterceptorForRenewUpdateLease_preview struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppRenewUpdateLeaseRequest
+	Request      apitype.AppRenewUpdateLeaseRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6267,9 +6267,9 @@ func (p *CloudClient) RenewUpdateLease_preview(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppRenewUpdateLeaseRequest,
+	request apitype.AppRenewUpdateLeaseRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppRenewUpdateLeaseResponse, error) {
+) (*apitype.AppRenewUpdateLeaseResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRenewUpdateLease_preview{
 			OrgName:      orgName,
@@ -6284,7 +6284,7 @@ func (p *CloudClient) RenewUpdateLease_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppRenewUpdateLeaseResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppRenewUpdateLeaseResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RenewUpdateLease_preview: %T", resultFromInterceptor)
 			}
@@ -6312,7 +6312,7 @@ func (p *CloudClient) RenewUpdateLease_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppRenewUpdateLeaseResponse
+	var result apitype.AppRenewUpdateLeaseResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6325,7 +6325,7 @@ type InterceptorForRenewUpdateLease_refresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppRenewUpdateLeaseRequest
+	Request      apitype.AppRenewUpdateLeaseRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6335,9 +6335,9 @@ func (p *CloudClient) RenewUpdateLease_refresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppRenewUpdateLeaseRequest,
+	request apitype.AppRenewUpdateLeaseRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppRenewUpdateLeaseResponse, error) {
+) (*apitype.AppRenewUpdateLeaseResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRenewUpdateLease_refresh{
 			OrgName:      orgName,
@@ -6352,7 +6352,7 @@ func (p *CloudClient) RenewUpdateLease_refresh(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppRenewUpdateLeaseResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppRenewUpdateLeaseResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RenewUpdateLease_refresh: %T", resultFromInterceptor)
 			}
@@ -6380,7 +6380,7 @@ func (p *CloudClient) RenewUpdateLease_refresh(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppRenewUpdateLeaseResponse
+	var result apitype.AppRenewUpdateLeaseResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6393,7 +6393,7 @@ type InterceptorForRenewUpdateLease_update struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppRenewUpdateLeaseRequest
+	Request      apitype.AppRenewUpdateLeaseRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6403,9 +6403,9 @@ func (p *CloudClient) RenewUpdateLease_update(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppRenewUpdateLeaseRequest,
+	request apitype.AppRenewUpdateLeaseRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppRenewUpdateLeaseResponse, error) {
+) (*apitype.AppRenewUpdateLeaseResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRenewUpdateLease_update{
 			OrgName:      orgName,
@@ -6420,7 +6420,7 @@ func (p *CloudClient) RenewUpdateLease_update(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppRenewUpdateLeaseResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppRenewUpdateLeaseResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RenewUpdateLease_update: %T", resultFromInterceptor)
 			}
@@ -6448,7 +6448,7 @@ func (p *CloudClient) RenewUpdateLease_update(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppRenewUpdateLeaseResponse
+	var result apitype.AppRenewUpdateLeaseResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6461,7 +6461,7 @@ type InterceptorForStartUpdateForDestroy struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppStartUpdateRequest
+	Request      apitype.AppStartUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6471,9 +6471,9 @@ func (p *CloudClient) StartUpdateForDestroy(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppStartUpdateRequest,
+	request apitype.AppStartUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppStartUpdateResponse, error) {
+) (*apitype.AppStartUpdateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStartUpdateForDestroy{
 			OrgName:      orgName,
@@ -6488,7 +6488,7 @@ func (p *CloudClient) StartUpdateForDestroy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStartUpdateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStartUpdateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StartUpdateForDestroy: %T", resultFromInterceptor)
 			}
@@ -6516,7 +6516,7 @@ func (p *CloudClient) StartUpdateForDestroy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStartUpdateResponse
+	var result apitype.AppStartUpdateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6529,7 +6529,7 @@ type InterceptorForStartUpdateForPreview struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppStartUpdateRequest
+	Request      apitype.AppStartUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6539,9 +6539,9 @@ func (p *CloudClient) StartUpdateForPreview(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppStartUpdateRequest,
+	request apitype.AppStartUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppStartUpdateResponse, error) {
+) (*apitype.AppStartUpdateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStartUpdateForPreview{
 			OrgName:      orgName,
@@ -6556,7 +6556,7 @@ func (p *CloudClient) StartUpdateForPreview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStartUpdateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStartUpdateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StartUpdateForPreview: %T", resultFromInterceptor)
 			}
@@ -6584,7 +6584,7 @@ func (p *CloudClient) StartUpdateForPreview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStartUpdateResponse
+	var result apitype.AppStartUpdateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6597,7 +6597,7 @@ type InterceptorForStartUpdateForRefresh struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppStartUpdateRequest
+	Request      apitype.AppStartUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6607,9 +6607,9 @@ func (p *CloudClient) StartUpdateForRefresh(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppStartUpdateRequest,
+	request apitype.AppStartUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppStartUpdateResponse, error) {
+) (*apitype.AppStartUpdateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStartUpdateForRefresh{
 			OrgName:      orgName,
@@ -6624,7 +6624,7 @@ func (p *CloudClient) StartUpdateForRefresh(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStartUpdateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStartUpdateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StartUpdateForRefresh: %T", resultFromInterceptor)
 			}
@@ -6652,7 +6652,7 @@ func (p *CloudClient) StartUpdateForRefresh(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStartUpdateResponse
+	var result apitype.AppStartUpdateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6665,7 +6665,7 @@ type InterceptorForStartUpdateForUpdate struct {
 	ProjectName  string
 	StackName    string
 	UpdateID     string
-	Request      ext1.AppStartUpdateRequest
+	Request      apitype.AppStartUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6675,9 +6675,9 @@ func (p *CloudClient) StartUpdateForUpdate(
 	projectName string,
 	stackName string,
 	updateID string,
-	request ext1.AppStartUpdateRequest,
+	request apitype.AppStartUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppStartUpdateResponse, error) {
+) (*apitype.AppStartUpdateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStartUpdateForUpdate{
 			OrgName:      orgName,
@@ -6692,7 +6692,7 @@ func (p *CloudClient) StartUpdateForUpdate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStartUpdateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStartUpdateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StartUpdateForUpdate: %T", resultFromInterceptor)
 			}
@@ -6720,7 +6720,7 @@ func (p *CloudClient) StartUpdateForUpdate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStartUpdateResponse
+	var result apitype.AppStartUpdateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6732,7 +6732,7 @@ type InterceptorForTransferStack struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.TransferStackRequest
+	Request      apitype.TransferStackRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6741,7 +6741,7 @@ func (p *CloudClient) TransferStack(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.TransferStackRequest,
+	request apitype.TransferStackRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -6787,7 +6787,7 @@ type InterceptorForUpdateStackConfig struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.AppStackConfig
+	Request      apitype.AppStackConfig
 	ExtraHeaders []http.Header
 }
 
@@ -6796,9 +6796,9 @@ func (p *CloudClient) UpdateStackConfig(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.AppStackConfig,
+	request apitype.AppStackConfig,
 	extraHeaders ...http.Header,
-) (*ext1.AppStackConfig, error) {
+) (*apitype.AppStackConfig, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateStackConfig{
 			OrgName:      orgName,
@@ -6812,7 +6812,7 @@ func (p *CloudClient) UpdateStackConfig(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppStackConfig)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppStackConfig)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateStackConfig: %T", resultFromInterceptor)
 			}
@@ -6839,7 +6839,7 @@ func (p *CloudClient) UpdateStackConfig(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppStackConfig
+	var result apitype.AppStackConfig
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6851,7 +6851,7 @@ type InterceptorForUpdateStackNotificationSettings struct {
 	OrgName      string
 	ProjectName  string
 	StackName    string
-	Request      ext1.UpdateStackNotificationSettingsRequest
+	Request      apitype.UpdateStackNotificationSettingsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6860,9 +6860,9 @@ func (p *CloudClient) UpdateStackNotificationSettings(
 	orgName string,
 	projectName string,
 	stackName string,
-	request ext1.UpdateStackNotificationSettingsRequest,
+	request apitype.UpdateStackNotificationSettingsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.StackMetadata, error) {
+) (*apitype.StackMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateStackNotificationSettings{
 			OrgName:      orgName,
@@ -6876,7 +6876,7 @@ func (p *CloudClient) UpdateStackNotificationSettings(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StackMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StackMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateStackNotificationSettings: %T", resultFromInterceptor)
 			}
@@ -6903,7 +6903,7 @@ func (p *CloudClient) UpdateStackNotificationSettings(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StackMetadata
+	var result apitype.StackMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6916,7 +6916,7 @@ type InterceptorForUpdateStackTag struct {
 	ProjectName  string
 	StackName    string
 	TagName      string
-	Request      ext1.StackTag
+	Request      apitype.StackTag
 	ExtraHeaders []http.Header
 }
 
@@ -6926,7 +6926,7 @@ func (p *CloudClient) UpdateStackTag(
 	projectName string,
 	stackName string,
 	tagName string,
-	request ext1.StackTag,
+	request apitype.StackTag,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -7030,7 +7030,7 @@ type InterceptorForUpdateStackWebhook struct {
 	ProjectName  string
 	StackName    string
 	HookName     string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -7040,9 +7040,9 @@ func (p *CloudClient) UpdateStackWebhook(
 	projectName string,
 	stackName string,
 	hookName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateStackWebhook{
 			OrgName:      orgName,
@@ -7057,7 +7057,7 @@ func (p *CloudClient) UpdateStackWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateStackWebhook: %T", resultFromInterceptor)
 			}
@@ -7085,7 +7085,7 @@ func (p *CloudClient) UpdateStackWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7108,7 +7108,7 @@ func (p *CloudClient) UpdateSummary(
 	stackName string,
 	updateID string,
 	extraHeaders ...http.Header,
-) (*ext1.ConsoleUpdateSummary, error) {
+) (*apitype.ConsoleUpdateSummary, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateSummary{
 			OrgName:      orgName,
@@ -7122,7 +7122,7 @@ func (p *CloudClient) UpdateSummary(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ConsoleUpdateSummary)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ConsoleUpdateSummary)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateSummary: %T", resultFromInterceptor)
 			}
@@ -7149,7 +7149,7 @@ func (p *CloudClient) UpdateSummary(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ConsoleUpdateSummary
+	var result apitype.ConsoleUpdateSummary
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7170,7 +7170,7 @@ func (p *CloudClient) UpdateSummaryHandlerLatest(
 	projectName string,
 	stackName string,
 	extraHeaders ...http.Header,
-) (*ext1.ConsoleUpdateSummary, error) {
+) (*apitype.ConsoleUpdateSummary, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateSummaryHandlerLatest{
 			OrgName:      orgName,
@@ -7183,7 +7183,7 @@ func (p *CloudClient) UpdateSummaryHandlerLatest(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ConsoleUpdateSummary)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ConsoleUpdateSummary)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateSummaryHandlerLatest: %T", resultFromInterceptor)
 			}
@@ -7209,7 +7209,7 @@ func (p *CloudClient) UpdateSummaryHandlerLatest(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ConsoleUpdateSummary
+	var result apitype.ConsoleUpdateSummary
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7222,7 +7222,7 @@ type InterceptorForUpdateTeamStackPermissions struct {
 	ProjectName  string
 	StackName    string
 	TeamName     string
-	Request      ext1.UpdateTeamStackPermissionsRequest
+	Request      apitype.UpdateTeamStackPermissionsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -7232,7 +7232,7 @@ func (p *CloudClient) UpdateTeamStackPermissions(
 	projectName string,
 	stackName string,
 	teamName string,
-	request ext1.UpdateTeamStackPermissionsRequest,
+	request apitype.UpdateTeamStackPermissionsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {

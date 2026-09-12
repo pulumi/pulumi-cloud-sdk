@@ -14,7 +14,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
-import { ApiClient, ApiRequest, ServerSentEventsStream } from "../api.client";
+import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
 import { AgentWorkflowDefinition } from "../model/AgentWorkflowDefinition";
 import { CreateDeploymentRequest } from "../model/CreateDeploymentRequest";
