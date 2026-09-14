@@ -37,6 +37,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     :var extension: AppExtension - declared
     :var requires_byte_string: bool - declared
     :var remove_olds: list[int] - declared
+    :var layout: list[AppJournalLayoutItem] - declared
     :var states: list[AppResourceV3] - declared
     :var base_state_patches: list[AppJournalBaseStatePatch] - declared
     :var new_state_patches: list[AppJournalNewStatePatch] - declared
@@ -62,6 +63,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         'extension': 'AppExtension',
         'requires_byte_string': 'bool',
         'remove_olds': 'list[int]',
+        'layout': 'list[AppJournalLayoutItem]',
         'states': 'list[AppResourceV3]',
         'base_state_patches': 'list[AppJournalBaseStatePatch]',
         'new_state_patches': 'list[AppJournalNewStatePatch]',
@@ -88,6 +90,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         'extension': 'extension',
         'requires_byte_string': 'requiresByteString',
         'remove_olds': 'removeOlds',
+        'layout': 'layout',
         'states': 'states',
         'base_state_patches': 'baseStatePatches',
         'new_state_patches': 'newStatePatches',
@@ -113,6 +116,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     FIELDS_extension = 'extension'
     FIELDS_requires_byte_string = 'requiresByteString'
     FIELDS_remove_olds = 'removeOlds'
+    FIELDS_layout = 'layout'
     FIELDS_states = 'states'
     FIELDS_base_state_patches = 'baseStatePatches'
     FIELDS_new_state_patches = 'newStatePatches'
@@ -137,6 +141,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
     _extension: 'AppExtension'
     _requires_byte_string: 'bool'
     _remove_olds: 'list[int]'
+    _layout: 'list[AppJournalLayoutItem]'
     _states: 'list[AppResourceV3]'
     _base_state_patches: 'list[AppJournalBaseStatePatch]'
     _new_state_patches: 'list[AppJournalNewStatePatch]'
@@ -163,6 +168,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         extension: 'AppExtension' = None,
         requires_byte_string: 'bool' = False,
         remove_olds: 'list[int]' = None,
+        layout: 'list[AppJournalLayoutItem]' = None,
         states: 'list[AppResourceV3]' = None,
         base_state_patches: 'list[AppJournalBaseStatePatch]' = None,
         new_state_patches: 'list[AppJournalNewStatePatch]' = None,
@@ -189,6 +195,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
         self.extension = extension
         self.requires_byte_string = requires_byte_string
         self.remove_olds = remove_olds
+        self.layout = layout
         self.states = states
         self.base_state_patches = base_state_patches
         self.new_state_patches = new_state_patches
@@ -215,6 +222,7 @@ class AppJournalEntry(PulumiAutoModelEncoder):
             self._extension = source._extension
             self._requires_byte_string = source._requires_byte_string
             self._remove_olds = source._remove_olds
+            self._layout = source._layout
             self._states = source._states
             self._base_state_patches = source._base_state_patches
             self._new_state_patches = source._new_state_patches
@@ -583,6 +591,40 @@ class AppJournalEntry(PulumiAutoModelEncoder):
             return []
 
         return self._remove_olds
+
+    @property
+    def layout(self) -> 'list[AppJournalLayoutItem]':
+        return self._layout
+
+    @layout.setter
+    def layout(self, layout: 'list[AppJournalLayoutItem]'):
+        self._layout = layout
+
+    @property
+    def layout__autoinit(self) -> 'list[AppJournalLayoutItem]':
+        """Return ``layout``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._layout``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``layout__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._layout is None:
+            self._layout = self.layout__safederef
+
+        return self._layout
+
+    @property
+    def layout__safederef(self) -> 'list[AppJournalLayoutItem]':
+        """Return ``layout``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``layout`` stays unset and each
+        call returns a new default. Use ``layout__autoinit`` to persist the default on
+        first access.
+        """
+        if self._layout is None:
+            return []
+
+        return self._layout
 
     @property
     def states(self) -> 'list[AppResourceV3]':

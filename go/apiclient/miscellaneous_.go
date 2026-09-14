@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForCapabilities struct {
@@ -21,7 +21,7 @@ type InterceptorForCapabilities struct {
 func (p *CloudClient) Capabilities(
 	ctx context.Context,
 	extraHeaders ...http.Header,
-) (*ext1.AppCapabilitiesResponse, error) {
+) (*apitype.AppCapabilitiesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCapabilities{
 			ExtraHeaders: extraHeaders,
@@ -31,7 +31,7 @@ func (p *CloudClient) Capabilities(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppCapabilitiesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppCapabilitiesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Capabilities: %T", resultFromInterceptor)
 			}
@@ -53,7 +53,7 @@ func (p *CloudClient) Capabilities(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppCapabilitiesResponse
+	var result apitype.AppCapabilitiesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -113,7 +113,7 @@ func (p *CloudClient) Token(
 	ctx context.Context,
 	request map[string]any,
 	extraHeaders ...http.Header,
-) (*ext1.TokenExchangeGrantResponse, error) {
+) (*apitype.TokenExchangeGrantResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForToken{
 			Request:      request,
@@ -124,7 +124,7 @@ func (p *CloudClient) Token(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.TokenExchangeGrantResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.TokenExchangeGrantResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Token: %T", resultFromInterceptor)
 			}
@@ -147,7 +147,7 @@ func (p *CloudClient) Token(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.TokenExchangeGrantResponse
+	var result apitype.TokenExchangeGrantResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -162,7 +162,7 @@ type InterceptorForVersion struct {
 func (p *CloudClient) Version(
 	ctx context.Context,
 	extraHeaders ...http.Header,
-) (*ext1.AppCLIVersionResponse, error) {
+) (*apitype.AppCLIVersionResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForVersion{
 			ExtraHeaders: extraHeaders,
@@ -172,7 +172,7 @@ func (p *CloudClient) Version(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppCLIVersionResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppCLIVersionResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Version: %T", resultFromInterceptor)
 			}
@@ -194,7 +194,7 @@ func (p *CloudClient) Version(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppCLIVersionResponse
+	var result apitype.AppCLIVersionResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

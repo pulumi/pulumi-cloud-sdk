@@ -9,7 +9,7 @@
 
 export * as Models from "./model/models";
 export { ApiService } from "./api.services";
-export { ApiClient, ApiClientConfiguration, ApiError, ApiRequest } from "./api.client";
+export { ApiClient, ApiClientConfiguration, ApiError, ApiRequest, ResponseWithHeaders } from "./api.client";
 export type { EnumOrString, Lookup, ServerSentEventsStream } from "./api.client";
 export { Future } from "./future";
 export { CancelSignal } from "./cancel-signal";

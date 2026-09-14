@@ -394,7 +394,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<DecryptEnvironmentSecretsResponse>(apiRequest);
         }
 
-        public string DecryptEnvironment_esc_environments(string orgName, string projectName, string envName) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> DecryptEnvironment_esc_environments(string orgName, string projectName, string envName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DecryptEnvironment_esc_environments");
             }
@@ -409,10 +409,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("projectName", projectName);
             request.PathParam("envName", envName);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public string DecryptEnvironment_esc_environments_versions(string orgName, string projectName, string envName, string version) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> DecryptEnvironment_esc_environments_versions(string orgName, string projectName, string envName, string version) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DecryptEnvironment_esc_environments_versions");
             }
@@ -431,10 +431,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("envName", envName);
             request.PathParam("version", version);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public string DecryptEnvironment_preview_environments(string orgName, string envName) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> DecryptEnvironment_preview_environments(string orgName, string envName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DecryptEnvironment_preview_environments");
             }
@@ -445,10 +445,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("orgName", orgName);
             request.PathParam("envName", envName);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public string DecryptEnvironment_preview_environments_versions(string orgName, string envName, string version) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> DecryptEnvironment_preview_environments_versions(string orgName, string envName, string version) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DecryptEnvironment_preview_environments_versions");
             }
@@ -463,7 +463,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("envName", envName);
             request.PathParam("version", version);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
         public void DeleteEnvironmentSchedule(string orgName, string projectName, string envName, string scheduleID) {
@@ -860,7 +860,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<WebhookResponse>(request);
         }
 
-        public JToken HeadEnvironment_esc_environments(string orgName, string projectName, string envName) {
+        public HeadersForEnvironmentOp HeadEnvironment_esc_environments(string orgName, string projectName, string envName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling HeadEnvironment_esc_environments");
             }
@@ -874,11 +874,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("orgName", orgName);
             request.PathParam("projectName", projectName);
             request.PathParam("envName", envName);
-            request.Produces("application/json");
-            return this.client.Call<JToken>(request);
+            return this.client.CallWithHeadersOnly<HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public JToken HeadEnvironment_preview_environments(string orgName, string envName) {
+        public HeadersForEnvironmentOp HeadEnvironment_preview_environments(string orgName, string envName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling HeadEnvironment_preview_environments");
             }
@@ -888,8 +887,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             var request = new ApiRequest("HEAD", "/api/preview/environments/{orgName}/{envName}");
             request.PathParam("orgName", orgName);
             request.PathParam("envName", envName);
-            request.Produces("application/json");
-            return this.client.Call<JToken>(request);
+            return this.client.CallWithHeadersOnly<HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
         public System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> ListAllEnvironmentTags_esc(string orgName) {
@@ -1584,7 +1582,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ScheduledAction>(request);
         }
 
-        public string ReadEnvironment_esc_environments(string orgName, string projectName, string envName) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> ReadEnvironment_esc_environments(string orgName, string projectName, string envName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ReadEnvironment_esc_environments");
             }
@@ -1599,10 +1597,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("projectName", projectName);
             request.PathParam("envName", envName);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public string ReadEnvironment_esc_environments_versions(string orgName, string projectName, string envName, string version) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> ReadEnvironment_esc_environments_versions(string orgName, string projectName, string envName, string version) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ReadEnvironment_esc_environments_versions");
             }
@@ -1621,10 +1619,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("envName", envName);
             request.PathParam("version", version);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public string ReadEnvironment_preview_environments(string orgName, string envName) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> ReadEnvironment_preview_environments(string orgName, string envName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ReadEnvironment_preview_environments");
             }
@@ -1635,10 +1633,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("orgName", orgName);
             request.PathParam("envName", envName);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public string ReadEnvironment_preview_environments_versions(string orgName, string envName, string version) {
+        public ResponseWithHeaders<string, HeadersForEnvironmentOp> ReadEnvironment_preview_environments_versions(string orgName, string envName, string version) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ReadEnvironment_preview_environments_versions");
             }
@@ -1653,7 +1651,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("envName", envName);
             request.PathParam("version", version);
             request.Produces("application/x-yaml");
-            return this.client.Call<string>(request);
+            return this.client.CallWithHeaders<string, HeadersForEnvironmentOp>(request, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
         public CreateEnvironmentOpenRequest ReadOpenEnvironmentRequest(string orgName, string projectName, string envName, string changeRequestID, long? revision) {
@@ -2037,7 +2035,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<EnvironmentTag>(apiRequest);
         }
 
-        public UpdateEnvironmentResponse UpdateEnvironment_esc_environments(string orgName, string projectName, string envName, string request) {
+        public ResponseWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp> UpdateEnvironment_esc_environments(string orgName, string projectName, string envName, string request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateEnvironment_esc_environments");
             }
@@ -2057,10 +2055,10 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Body(request);
             apiRequest.Consumes("application/x-yaml");
             apiRequest.Produces("application/json");
-            return this.client.Call<UpdateEnvironmentResponse>(apiRequest);
+            return this.client.CallWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp>(apiRequest, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
-        public UpdateEnvironmentResponse UpdateEnvironment_preview_environments(string orgName, string envName, string request) {
+        public ResponseWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp> UpdateEnvironment_preview_environments(string orgName, string envName, string request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateEnvironment_preview_environments");
             }
@@ -2076,7 +2074,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Body(request);
             apiRequest.Consumes("application/x-yaml");
             apiRequest.Produces("application/json");
-            return this.client.Call<UpdateEnvironmentResponse>(apiRequest);
+            return this.client.CallWithHeaders<UpdateEnvironmentResponse, HeadersForEnvironmentOp>(apiRequest, h => new HeadersForEnvironmentOp { ETag = h.GetFirstOrDefault("ETag") ?? "", PulumiESCRevision = long.TryParse(h.GetFirstOrDefault("Pulumi-ESC-Revision"), out var parsedPulumiESCRevision) ? parsedPulumiESCRevision : 0L });
         }
 
         public ChangeRequestRef UpdateOpenEnvironmentRequest(string orgName, string projectName, string envName, string changeRequestID, CreateEnvironmentOpenRequest request) {

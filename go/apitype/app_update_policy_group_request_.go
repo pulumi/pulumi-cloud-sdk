@@ -7,8 +7,8 @@ package apitype
 
 // UpdatePolicyGroupRequest modifies a Policy Group.
 type AppUpdatePolicyGroupRequest struct {
-	// The new name to assign to the policy group. Rejected with a 400 error for an organization's default Policy Groups, which cannot be
-	// renamed.
+	// The new name to assign to the policy group. Up to 100 characters, made up of letters, numbers, hyphens, underscores, periods, or spaces,
+	// and may not begin or end with a space. Rejected with a 400 error for an organization's default Policy Groups, which cannot be renamed.
 	NewName *string `json:"newName,omitempty" yaml:"newName,omitempty"`
 	// A stack to add to the policy group.
 	AddStack *AppPulumiStackReference `json:"addStack,omitempty" yaml:"addStack,omitempty"`

@@ -11,13 +11,13 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForAddCustomVCSRepository struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.AddCustomVCSRepositoryRequest
+	Request       apitype.AddCustomVCSRepositoryRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -25,7 +25,7 @@ func (p *CloudClient) AddCustomVCSRepository(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.AddCustomVCSRepositoryRequest,
+	request apitype.AddCustomVCSRepositoryRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -67,16 +67,16 @@ func (p *CloudClient) AddCustomVCSRepository(
 
 type InterceptorForClaimGitHubIntegration struct {
 	OrgName      string
-	Request      ext1.ClaimGitHubIntegrationRequest
+	Request      apitype.ClaimGitHubIntegrationRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) ClaimGitHubIntegration(
 	ctx context.Context,
 	orgName string,
-	request ext1.ClaimGitHubIntegrationRequest,
+	request apitype.ClaimGitHubIntegrationRequest,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubIntegrationDetails, error) {
+) (*apitype.GitHubIntegrationDetails, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForClaimGitHubIntegration{
 			OrgName:      orgName,
@@ -88,7 +88,7 @@ func (p *CloudClient) ClaimGitHubIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubIntegrationDetails)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubIntegrationDetails)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ClaimGitHubIntegration: %T", resultFromInterceptor)
 			}
@@ -113,7 +113,7 @@ func (p *CloudClient) ClaimGitHubIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubIntegrationDetails
+	var result apitype.GitHubIntegrationDetails
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -123,16 +123,16 @@ func (p *CloudClient) ClaimGitHubIntegration(
 
 type InterceptorForCompleteAzureDevOpsOAuth struct {
 	OrgName      string
-	Request      ext1.CompleteOAuthRequest
+	Request      apitype.CompleteOAuthRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CompleteAzureDevOpsOAuth(
 	ctx context.Context,
 	orgName string,
-	request ext1.CompleteOAuthRequest,
+	request apitype.CompleteOAuthRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CompleteOAuthResponse, error) {
+) (*apitype.CompleteOAuthResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCompleteAzureDevOpsOAuth{
 			OrgName:      orgName,
@@ -144,7 +144,7 @@ func (p *CloudClient) CompleteAzureDevOpsOAuth(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CompleteOAuthResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CompleteOAuthResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CompleteAzureDevOpsOAuth: %T", resultFromInterceptor)
 			}
@@ -169,7 +169,7 @@ func (p *CloudClient) CompleteAzureDevOpsOAuth(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CompleteOAuthResponse
+	var result apitype.CompleteOAuthResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -179,14 +179,14 @@ func (p *CloudClient) CompleteAzureDevOpsOAuth(
 
 type InterceptorForCreateAzureDevOpsSetup struct {
 	OrgName      string
-	Request      ext1.UpdateAzureDevOpsAppIntegrationRequest
+	Request      apitype.UpdateAzureDevOpsAppIntegrationRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateAzureDevOpsSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.UpdateAzureDevOpsAppIntegrationRequest,
+	request apitype.UpdateAzureDevOpsAppIntegrationRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -226,14 +226,14 @@ func (p *CloudClient) CreateAzureDevOpsSetup(
 
 type InterceptorForCreateBitBucketSetup struct {
 	OrgName      string
-	Request      ext1.BitBucketSetupRequest
+	Request      apitype.BitBucketSetupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateBitBucketSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.BitBucketSetupRequest,
+	request apitype.BitBucketSetupRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -273,16 +273,16 @@ func (p *CloudClient) CreateBitBucketSetup(
 
 type InterceptorForCreateCustomVCSIntegration struct {
 	OrgName      string
-	Request      ext1.CreateCustomVCSIntegrationRequest
+	Request      apitype.CreateCustomVCSIntegrationRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateCustomVCSIntegration(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateCustomVCSIntegrationRequest,
+	request apitype.CreateCustomVCSIntegrationRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CustomVCSIntegrationResponse, error) {
+) (*apitype.CustomVCSIntegrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateCustomVCSIntegration{
 			OrgName:      orgName,
@@ -294,7 +294,7 @@ func (p *CloudClient) CreateCustomVCSIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CustomVCSIntegrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CustomVCSIntegrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateCustomVCSIntegration: %T", resultFromInterceptor)
 			}
@@ -319,7 +319,7 @@ func (p *CloudClient) CreateCustomVCSIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CustomVCSIntegrationResponse
+	var result apitype.CustomVCSIntegrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -329,14 +329,14 @@ func (p *CloudClient) CreateCustomVCSIntegration(
 
 type InterceptorForCreateGitLabSetup struct {
 	OrgName      string
-	Request      ext1.GitLabSetupRequest
+	Request      apitype.GitLabSetupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateGitLabSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.GitLabSetupRequest,
+	request apitype.GitLabSetupRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -712,7 +712,7 @@ func (p *CloudClient) GetAzureDevOpsAccessStatus(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.AzureDevOpsAccessResponse, error) {
+) (*apitype.AzureDevOpsAccessResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetAzureDevOpsAccessStatus{
 			OrgName:      orgName,
@@ -723,7 +723,7 @@ func (p *CloudClient) GetAzureDevOpsAccessStatus(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AzureDevOpsAccessResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AzureDevOpsAccessResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAzureDevOpsAccessStatus: %T", resultFromInterceptor)
 			}
@@ -747,7 +747,7 @@ func (p *CloudClient) GetAzureDevOpsAccessStatus(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AzureDevOpsAccessResponse
+	var result apitype.AzureDevOpsAccessResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -766,7 +766,7 @@ func (p *CloudClient) GetAzureDevOpsIntegration(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.AzureDevOpsAppIntegrationResponse, error) {
+) (*apitype.AzureDevOpsAppIntegrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetAzureDevOpsIntegration{
 			OrgName:       orgName,
@@ -778,7 +778,7 @@ func (p *CloudClient) GetAzureDevOpsIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AzureDevOpsAppIntegrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AzureDevOpsAppIntegrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAzureDevOpsIntegration: %T", resultFromInterceptor)
 			}
@@ -803,7 +803,7 @@ func (p *CloudClient) GetAzureDevOpsIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AzureDevOpsAppIntegrationResponse
+	var result apitype.AzureDevOpsAppIntegrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -820,7 +820,7 @@ func (p *CloudClient) GetBitBucketAccessStatus(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.BitBucketAccessStatusResponse, error) {
+) (*apitype.BitBucketAccessStatusResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetBitBucketAccessStatus{
 			OrgName:      orgName,
@@ -831,7 +831,7 @@ func (p *CloudClient) GetBitBucketAccessStatus(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.BitBucketAccessStatusResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.BitBucketAccessStatusResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetBitBucketAccessStatus: %T", resultFromInterceptor)
 			}
@@ -855,7 +855,7 @@ func (p *CloudClient) GetBitBucketAccessStatus(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.BitBucketAccessStatusResponse
+	var result apitype.BitBucketAccessStatusResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -874,7 +874,7 @@ func (p *CloudClient) GetBitBucketIntegration(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.BitBucketIntegrationDetails, error) {
+) (*apitype.BitBucketIntegrationDetails, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetBitBucketIntegration{
 			OrgName:       orgName,
@@ -886,7 +886,7 @@ func (p *CloudClient) GetBitBucketIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.BitBucketIntegrationDetails)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.BitBucketIntegrationDetails)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetBitBucketIntegration: %T", resultFromInterceptor)
 			}
@@ -911,7 +911,7 @@ func (p *CloudClient) GetBitBucketIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.BitBucketIntegrationDetails
+	var result apitype.BitBucketIntegrationDetails
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -930,7 +930,7 @@ func (p *CloudClient) GetCustomVCSIntegration(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.CustomVCSIntegrationResponse, error) {
+) (*apitype.CustomVCSIntegrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetCustomVCSIntegration{
 			OrgName:       orgName,
@@ -942,7 +942,7 @@ func (p *CloudClient) GetCustomVCSIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CustomVCSIntegrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CustomVCSIntegrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetCustomVCSIntegration: %T", resultFromInterceptor)
 			}
@@ -967,7 +967,7 @@ func (p *CloudClient) GetCustomVCSIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CustomVCSIntegrationResponse
+	var result apitype.CustomVCSIntegrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -984,7 +984,7 @@ func (p *CloudClient) GetGitHubAccess(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.VCSGitHubAccessResponse, error) {
+) (*apitype.VCSGitHubAccessResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitHubAccess{
 			OrgName:      orgName,
@@ -995,7 +995,7 @@ func (p *CloudClient) GetGitHubAccess(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.VCSGitHubAccessResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.VCSGitHubAccessResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitHubAccess: %T", resultFromInterceptor)
 			}
@@ -1019,7 +1019,7 @@ func (p *CloudClient) GetGitHubAccess(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.VCSGitHubAccessResponse
+	var result apitype.VCSGitHubAccessResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1038,7 +1038,7 @@ func (p *CloudClient) GetGitHubEnterpriseAuthorizeURL(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubEnterpriseAuthorizeURLResponse, error) {
+) (*apitype.GitHubEnterpriseAuthorizeURLResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitHubEnterpriseAuthorizeURL{
 			OrgName:       orgName,
@@ -1050,7 +1050,7 @@ func (p *CloudClient) GetGitHubEnterpriseAuthorizeURL(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubEnterpriseAuthorizeURLResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubEnterpriseAuthorizeURLResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitHubEnterpriseAuthorizeURL: %T", resultFromInterceptor)
 			}
@@ -1075,7 +1075,7 @@ func (p *CloudClient) GetGitHubEnterpriseAuthorizeURL(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubEnterpriseAuthorizeURLResponse
+	var result apitype.GitHubEnterpriseAuthorizeURLResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1094,7 +1094,7 @@ func (p *CloudClient) GetGitHubEnterpriseIntegration(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubIntegrationDetails, error) {
+) (*apitype.GitHubIntegrationDetails, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitHubEnterpriseIntegration{
 			OrgName:       orgName,
@@ -1106,7 +1106,7 @@ func (p *CloudClient) GetGitHubEnterpriseIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubIntegrationDetails)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubIntegrationDetails)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitHubEnterpriseIntegration: %T", resultFromInterceptor)
 			}
@@ -1131,7 +1131,7 @@ func (p *CloudClient) GetGitHubEnterpriseIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubIntegrationDetails
+	var result apitype.GitHubIntegrationDetails
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1150,7 +1150,7 @@ func (p *CloudClient) GetGitHubEnterpriseUserIdentity(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubEnterpriseUserIdentityResponse, error) {
+) (*apitype.GitHubEnterpriseUserIdentityResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitHubEnterpriseUserIdentity{
 			OrgName:       orgName,
@@ -1162,7 +1162,7 @@ func (p *CloudClient) GetGitHubEnterpriseUserIdentity(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubEnterpriseUserIdentityResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubEnterpriseUserIdentityResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitHubEnterpriseUserIdentity: %T", resultFromInterceptor)
 			}
@@ -1187,7 +1187,7 @@ func (p *CloudClient) GetGitHubEnterpriseUserIdentity(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubEnterpriseUserIdentityResponse
+	var result apitype.GitHubEnterpriseUserIdentityResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1206,7 +1206,7 @@ func (p *CloudClient) GetGitHubIntegration(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubIntegrationDetails, error) {
+) (*apitype.GitHubIntegrationDetails, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitHubIntegration{
 			OrgName:       orgName,
@@ -1218,7 +1218,7 @@ func (p *CloudClient) GetGitHubIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubIntegrationDetails)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubIntegrationDetails)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitHubIntegration: %T", resultFromInterceptor)
 			}
@@ -1243,7 +1243,7 @@ func (p *CloudClient) GetGitHubIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubIntegrationDetails
+	var result apitype.GitHubIntegrationDetails
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1260,7 +1260,7 @@ func (p *CloudClient) GetGitLabAccessStatus(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.GitLabAccessStatusResponse, error) {
+) (*apitype.GitLabAccessStatusResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitLabAccessStatus{
 			OrgName:      orgName,
@@ -1271,7 +1271,7 @@ func (p *CloudClient) GetGitLabAccessStatus(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitLabAccessStatusResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitLabAccessStatusResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitLabAccessStatus: %T", resultFromInterceptor)
 			}
@@ -1295,7 +1295,7 @@ func (p *CloudClient) GetGitLabAccessStatus(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitLabAccessStatusResponse
+	var result apitype.GitLabAccessStatusResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1314,7 +1314,7 @@ func (p *CloudClient) GetGitLabIntegration(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.GitLabIntegrationDetails, error) {
+) (*apitype.GitLabIntegrationDetails, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetGitLabIntegration{
 			OrgName:       orgName,
@@ -1326,7 +1326,7 @@ func (p *CloudClient) GetGitLabIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitLabIntegrationDetails)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitLabIntegrationDetails)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetGitLabIntegration: %T", resultFromInterceptor)
 			}
@@ -1351,7 +1351,7 @@ func (p *CloudClient) GetGitLabIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitLabIntegrationDetails
+	var result apitype.GitLabIntegrationDetails
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1361,16 +1361,16 @@ func (p *CloudClient) GetGitLabIntegration(
 
 type InterceptorForInitiateAzureDevOpsOAuth struct {
 	OrgName      string
-	Request      ext1.InitiateOAuthRequest
+	Request      apitype.InitiateOAuthRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) InitiateAzureDevOpsOAuth(
 	ctx context.Context,
 	orgName string,
-	request ext1.InitiateOAuthRequest,
+	request apitype.InitiateOAuthRequest,
 	extraHeaders ...http.Header,
-) (*ext1.InitiateOAuthResponse, error) {
+) (*apitype.InitiateOAuthResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForInitiateAzureDevOpsOAuth{
 			OrgName:      orgName,
@@ -1382,7 +1382,7 @@ func (p *CloudClient) InitiateAzureDevOpsOAuth(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.InitiateOAuthResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.InitiateOAuthResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for InitiateAzureDevOpsOAuth: %T", resultFromInterceptor)
 			}
@@ -1407,7 +1407,7 @@ func (p *CloudClient) InitiateAzureDevOpsOAuth(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.InitiateOAuthResponse
+	var result apitype.InitiateOAuthResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1424,7 +1424,7 @@ func (p *CloudClient) ListAllVCSIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListVCSIntegrationSummariesResponse, error) {
+) (*apitype.ListVCSIntegrationSummariesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAllVCSIntegrations{
 			OrgName:      orgName,
@@ -1435,7 +1435,7 @@ func (p *CloudClient) ListAllVCSIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListVCSIntegrationSummariesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListVCSIntegrationSummariesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAllVCSIntegrations: %T", resultFromInterceptor)
 			}
@@ -1459,7 +1459,7 @@ func (p *CloudClient) ListAllVCSIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListVCSIntegrationSummariesResponse
+	var result apitype.ListVCSIntegrationSummariesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1476,7 +1476,7 @@ func (p *CloudClient) ListAzureDevOpsIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListAzureDevOpsIntegrationsResponse, error) {
+) (*apitype.ListAzureDevOpsIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAzureDevOpsIntegrations{
 			OrgName:      orgName,
@@ -1487,7 +1487,7 @@ func (p *CloudClient) ListAzureDevOpsIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAzureDevOpsIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAzureDevOpsIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAzureDevOpsIntegrations: %T", resultFromInterceptor)
 			}
@@ -1511,7 +1511,7 @@ func (p *CloudClient) ListAzureDevOpsIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAzureDevOpsIntegrationsResponse
+	var result apitype.ListAzureDevOpsIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1528,7 +1528,7 @@ func (p *CloudClient) ListAzureDevOpsOrganizations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.AzureDevOpsOrganization, error) {
+) (*[]apitype.AzureDevOpsOrganization, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAzureDevOpsOrganizations{
 			OrgName:      orgName,
@@ -1539,7 +1539,7 @@ func (p *CloudClient) ListAzureDevOpsOrganizations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.AzureDevOpsOrganization)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.AzureDevOpsOrganization)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAzureDevOpsOrganizations: %T", resultFromInterceptor)
 			}
@@ -1563,7 +1563,7 @@ func (p *CloudClient) ListAzureDevOpsOrganizations(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.AzureDevOpsOrganization
+	var result []apitype.AzureDevOpsOrganization
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1582,7 +1582,7 @@ func (p *CloudClient) ListAzureDevOpsProjects(
 	orgName string,
 	adoOrgName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.AzureDevOpsProject, error) {
+) (*[]apitype.AzureDevOpsProject, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAzureDevOpsProjects{
 			OrgName:      orgName,
@@ -1594,7 +1594,7 @@ func (p *CloudClient) ListAzureDevOpsProjects(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.AzureDevOpsProject)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.AzureDevOpsProject)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAzureDevOpsProjects: %T", resultFromInterceptor)
 			}
@@ -1619,7 +1619,7 @@ func (p *CloudClient) ListAzureDevOpsProjects(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.AzureDevOpsProject
+	var result []apitype.AzureDevOpsProject
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1636,7 +1636,7 @@ func (p *CloudClient) ListBitBucketIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListBitBucketIntegrationsResponse, error) {
+) (*apitype.ListBitBucketIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListBitBucketIntegrations{
 			OrgName:      orgName,
@@ -1647,7 +1647,7 @@ func (p *CloudClient) ListBitBucketIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListBitBucketIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListBitBucketIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListBitBucketIntegrations: %T", resultFromInterceptor)
 			}
@@ -1671,7 +1671,7 @@ func (p *CloudClient) ListBitBucketIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListBitBucketIntegrationsResponse
+	var result apitype.ListBitBucketIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1688,7 +1688,7 @@ func (p *CloudClient) ListClaimableGitHubIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ClaimableGitHubIntegrationsResponse, error) {
+) (*apitype.ClaimableGitHubIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListClaimableGitHubIntegrations{
 			OrgName:      orgName,
@@ -1699,7 +1699,7 @@ func (p *CloudClient) ListClaimableGitHubIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ClaimableGitHubIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ClaimableGitHubIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListClaimableGitHubIntegrations: %T", resultFromInterceptor)
 			}
@@ -1723,7 +1723,7 @@ func (p *CloudClient) ListClaimableGitHubIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ClaimableGitHubIntegrationsResponse
+	var result apitype.ClaimableGitHubIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1740,7 +1740,7 @@ func (p *CloudClient) ListCustomVCSIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListCustomVCSIntegrationsResponse, error) {
+) (*apitype.ListCustomVCSIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListCustomVCSIntegrations{
 			OrgName:      orgName,
@@ -1751,7 +1751,7 @@ func (p *CloudClient) ListCustomVCSIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListCustomVCSIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListCustomVCSIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListCustomVCSIntegrations: %T", resultFromInterceptor)
 			}
@@ -1775,7 +1775,7 @@ func (p *CloudClient) ListCustomVCSIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListCustomVCSIntegrationsResponse
+	var result apitype.ListCustomVCSIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1792,7 +1792,7 @@ func (p *CloudClient) ListGitHubEnterpriseIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListGitHubIntegrationsResponse, error) {
+) (*apitype.ListGitHubIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListGitHubEnterpriseIntegrations{
 			OrgName:      orgName,
@@ -1803,7 +1803,7 @@ func (p *CloudClient) ListGitHubEnterpriseIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListGitHubIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListGitHubIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListGitHubEnterpriseIntegrations: %T", resultFromInterceptor)
 			}
@@ -1827,7 +1827,7 @@ func (p *CloudClient) ListGitHubEnterpriseIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListGitHubIntegrationsResponse
+	var result apitype.ListGitHubIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1846,7 +1846,7 @@ func (p *CloudClient) ListGitHubEnterpriseLinkedMembers(
 	orgName string,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubEnterpriseLinkedMembersResponse, error) {
+) (*apitype.GitHubEnterpriseLinkedMembersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListGitHubEnterpriseLinkedMembers{
 			OrgName:       orgName,
@@ -1858,7 +1858,7 @@ func (p *CloudClient) ListGitHubEnterpriseLinkedMembers(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubEnterpriseLinkedMembersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubEnterpriseLinkedMembersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListGitHubEnterpriseLinkedMembers: %T", resultFromInterceptor)
 			}
@@ -1883,7 +1883,7 @@ func (p *CloudClient) ListGitHubEnterpriseLinkedMembers(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubEnterpriseLinkedMembersResponse
+	var result apitype.GitHubEnterpriseLinkedMembersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1900,7 +1900,7 @@ func (p *CloudClient) ListGitHubIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListGitHubIntegrationsResponse, error) {
+) (*apitype.ListGitHubIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListGitHubIntegrations{
 			OrgName:      orgName,
@@ -1911,7 +1911,7 @@ func (p *CloudClient) ListGitHubIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListGitHubIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListGitHubIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListGitHubIntegrations: %T", resultFromInterceptor)
 			}
@@ -1935,7 +1935,7 @@ func (p *CloudClient) ListGitHubIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListGitHubIntegrationsResponse
+	var result apitype.ListGitHubIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1952,7 +1952,7 @@ func (p *CloudClient) ListGitLabIntegrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListGitLabIntegrationsResponse, error) {
+) (*apitype.ListGitLabIntegrationsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListGitLabIntegrations{
 			OrgName:      orgName,
@@ -1963,7 +1963,7 @@ func (p *CloudClient) ListGitLabIntegrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListGitLabIntegrationsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListGitLabIntegrationsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListGitLabIntegrations: %T", resultFromInterceptor)
 			}
@@ -1987,7 +1987,7 @@ func (p *CloudClient) ListGitLabIntegrations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListGitLabIntegrationsResponse
+	var result apitype.ListGitLabIntegrationsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1997,7 +1997,7 @@ func (p *CloudClient) ListGitLabIntegrations(
 
 type InterceptorForListVCSBranches struct {
 	OrgName       string
-	Provider      ext1.VCSProvider
+	Provider      apitype.VCSProvider
 	IntegrationId string
 	RepoId        string
 	ExtraHeaders  []http.Header
@@ -2006,11 +2006,11 @@ type InterceptorForListVCSBranches struct {
 func (p *CloudClient) ListVCSBranches(
 	ctx context.Context,
 	orgName string,
-	provider ext1.VCSProvider,
+	provider apitype.VCSProvider,
 	integrationId string,
 	repoId string,
 	extraHeaders ...http.Header,
-) (*ext1.ListVCSBranchesResponse, error) {
+) (*apitype.ListVCSBranchesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListVCSBranches{
 			OrgName:       orgName,
@@ -2024,7 +2024,7 @@ func (p *CloudClient) ListVCSBranches(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListVCSBranchesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListVCSBranchesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListVCSBranches: %T", resultFromInterceptor)
 			}
@@ -2051,7 +2051,7 @@ func (p *CloudClient) ListVCSBranches(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListVCSBranchesResponse
+	var result apitype.ListVCSBranchesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2061,7 +2061,7 @@ func (p *CloudClient) ListVCSBranches(
 
 type InterceptorForListVCSRepoDestinations struct {
 	OrgName       string
-	Provider      ext1.VCSProvider
+	Provider      apitype.VCSProvider
 	IntegrationId string
 	ExtraHeaders  []http.Header
 }
@@ -2069,10 +2069,10 @@ type InterceptorForListVCSRepoDestinations struct {
 func (p *CloudClient) ListVCSRepoDestinations(
 	ctx context.Context,
 	orgName string,
-	provider ext1.VCSProvider,
+	provider apitype.VCSProvider,
 	integrationId string,
 	extraHeaders ...http.Header,
-) (*ext1.ListVCSReposResponse, error) {
+) (*apitype.ListVCSReposResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListVCSRepoDestinations{
 			OrgName:       orgName,
@@ -2085,7 +2085,7 @@ func (p *CloudClient) ListVCSRepoDestinations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListVCSReposResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListVCSReposResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListVCSRepoDestinations: %T", resultFromInterceptor)
 			}
@@ -2111,7 +2111,7 @@ func (p *CloudClient) ListVCSRepoDestinations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListVCSReposResponse
+	var result apitype.ListVCSReposResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2121,7 +2121,7 @@ func (p *CloudClient) ListVCSRepoDestinations(
 
 type InterceptorForListVCSRepos struct {
 	OrgName       string
-	Provider      ext1.VCSProvider
+	Provider      apitype.VCSProvider
 	IntegrationId string
 	Page          *int64
 	ExtraHeaders  []http.Header
@@ -2130,11 +2130,11 @@ type InterceptorForListVCSRepos struct {
 func (p *CloudClient) ListVCSRepos(
 	ctx context.Context,
 	orgName string,
-	provider ext1.VCSProvider,
+	provider apitype.VCSProvider,
 	integrationId string,
 	page *int64,
 	extraHeaders ...http.Header,
-) (*ext1.ListVCSReposResponse, error) {
+) (*apitype.ListVCSReposResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListVCSRepos{
 			OrgName:       orgName,
@@ -2148,7 +2148,7 @@ func (p *CloudClient) ListVCSRepos(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListVCSReposResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListVCSReposResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListVCSRepos: %T", resultFromInterceptor)
 			}
@@ -2176,7 +2176,7 @@ func (p *CloudClient) ListVCSRepos(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListVCSReposResponse
+	var result apitype.ListVCSReposResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2187,7 +2187,7 @@ func (p *CloudClient) ListVCSRepos(
 type InterceptorForRemoveCustomVCSRepository struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.RemoveCustomVCSRepositoryRequest
+	Request       apitype.RemoveCustomVCSRepositoryRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2195,7 +2195,7 @@ func (p *CloudClient) RemoveCustomVCSRepository(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.RemoveCustomVCSRepositoryRequest,
+	request apitype.RemoveCustomVCSRepositoryRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -2244,7 +2244,7 @@ func (p *CloudClient) StartGitHubSetup(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.GitHubSetupResponse, error) {
+) (*apitype.GitHubSetupResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStartGitHubSetup{
 			OrgName:      orgName,
@@ -2255,7 +2255,7 @@ func (p *CloudClient) StartGitHubSetup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GitHubSetupResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GitHubSetupResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StartGitHubSetup: %T", resultFromInterceptor)
 			}
@@ -2279,7 +2279,7 @@ func (p *CloudClient) StartGitHubSetup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GitHubSetupResponse
+	var result apitype.GitHubSetupResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2290,7 +2290,7 @@ func (p *CloudClient) StartGitHubSetup(
 type InterceptorForUpdateAzureDevOpsIntegration struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.AzureDevOpsSettingsRequest
+	Request       apitype.AzureDevOpsSettingsRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2298,7 +2298,7 @@ func (p *CloudClient) UpdateAzureDevOpsIntegration(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.AzureDevOpsSettingsRequest,
+	request apitype.AzureDevOpsSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -2341,7 +2341,7 @@ func (p *CloudClient) UpdateAzureDevOpsIntegration(
 type InterceptorForUpdateBitBucketIntegration struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.BitBucketSettingsRequest
+	Request       apitype.BitBucketSettingsRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2349,7 +2349,7 @@ func (p *CloudClient) UpdateBitBucketIntegration(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.BitBucketSettingsRequest,
+	request apitype.BitBucketSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -2392,7 +2392,7 @@ func (p *CloudClient) UpdateBitBucketIntegration(
 type InterceptorForUpdateCustomVCSIntegration struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.UpdateCustomVCSIntegrationRequest
+	Request       apitype.UpdateCustomVCSIntegrationRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2400,9 +2400,9 @@ func (p *CloudClient) UpdateCustomVCSIntegration(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.UpdateCustomVCSIntegrationRequest,
+	request apitype.UpdateCustomVCSIntegrationRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CustomVCSIntegrationResponse, error) {
+) (*apitype.CustomVCSIntegrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateCustomVCSIntegration{
 			OrgName:       orgName,
@@ -2415,7 +2415,7 @@ func (p *CloudClient) UpdateCustomVCSIntegration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CustomVCSIntegrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CustomVCSIntegrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateCustomVCSIntegration: %T", resultFromInterceptor)
 			}
@@ -2441,7 +2441,7 @@ func (p *CloudClient) UpdateCustomVCSIntegration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CustomVCSIntegrationResponse
+	var result apitype.CustomVCSIntegrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2452,7 +2452,7 @@ func (p *CloudClient) UpdateCustomVCSIntegration(
 type InterceptorForUpdateGitHubEnterpriseIntegration struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.GitHubSettingsRequest
+	Request       apitype.GitHubSettingsRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2460,7 +2460,7 @@ func (p *CloudClient) UpdateGitHubEnterpriseIntegration(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.GitHubSettingsRequest,
+	request apitype.GitHubSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -2503,7 +2503,7 @@ func (p *CloudClient) UpdateGitHubEnterpriseIntegration(
 type InterceptorForUpdateGitHubIntegration struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.GitHubSettingsRequest
+	Request       apitype.GitHubSettingsRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2511,7 +2511,7 @@ func (p *CloudClient) UpdateGitHubIntegration(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.GitHubSettingsRequest,
+	request apitype.GitHubSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -2554,7 +2554,7 @@ func (p *CloudClient) UpdateGitHubIntegration(
 type InterceptorForUpdateGitLabIntegration struct {
 	OrgName       string
 	IntegrationId string
-	Request       ext1.GitLabSettingsRequest
+	Request       apitype.GitLabSettingsRequest
 	ExtraHeaders  []http.Header
 }
 
@@ -2562,7 +2562,7 @@ func (p *CloudClient) UpdateGitLabIntegration(
 	ctx context.Context,
 	orgName string,
 	integrationId string,
-	request ext1.GitLabSettingsRequest,
+	request apitype.GitLabSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {

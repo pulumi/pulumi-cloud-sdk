@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForDeletePublishPackageVersion_preview struct {
@@ -144,7 +144,7 @@ func (p *CloudClient) GetPackageVersion_preview(
 	name string,
 	version string,
 	extraHeaders ...http.Header,
-) (*ext1.PackageMetadata, error) {
+) (*apitype.PackageMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPackageVersion_preview{
 			Source:       source,
@@ -158,7 +158,7 @@ func (p *CloudClient) GetPackageVersion_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PackageMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PackageMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPackageVersion_preview: %T", resultFromInterceptor)
 			}
@@ -185,7 +185,7 @@ func (p *CloudClient) GetPackageVersion_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PackageMetadata
+	var result apitype.PackageMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -208,7 +208,7 @@ func (p *CloudClient) GetTemplateVersion_preview(
 	name string,
 	version string,
 	extraHeaders ...http.Header,
-) (*ext1.GetTemplateResponse, error) {
+) (*apitype.GetTemplateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetTemplateVersion_preview{
 			Source:       source,
@@ -222,7 +222,7 @@ func (p *CloudClient) GetTemplateVersion_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetTemplateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetTemplateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetTemplateVersion_preview: %T", resultFromInterceptor)
 			}
@@ -249,7 +249,7 @@ func (p *CloudClient) GetTemplateVersion_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetTemplateResponse
+	var result apitype.GetTemplateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -280,7 +280,7 @@ func (p *CloudClient) ListPackages_preview(
 	sort *string,
 	visibility *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListPackagesResponse, error) {
+) (*apitype.ListPackagesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListPackages_preview{
 			Asc:               asc,
@@ -298,7 +298,7 @@ func (p *CloudClient) ListPackages_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListPackagesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPackagesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPackages_preview: %T", resultFromInterceptor)
 			}
@@ -329,7 +329,7 @@ func (p *CloudClient) ListPackages_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListPackagesResponse
+	var result apitype.ListPackagesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -338,7 +338,7 @@ func (p *CloudClient) ListPackages_preview(
 }
 
 type InterceptorForListTemplates_preview struct {
-	Backing           *[]ext1.TemplateBacking
+	Backing           *[]apitype.TemplateBacking
 	ContinuationToken *string
 	Limit             *int
 	Name              *string
@@ -349,14 +349,14 @@ type InterceptorForListTemplates_preview struct {
 
 func (p *CloudClient) ListTemplates_preview(
 	ctx context.Context,
-	backing *[]ext1.TemplateBacking,
+	backing *[]apitype.TemplateBacking,
 	continuationToken *string,
 	limit *int,
 	name *string,
 	orgLogin *string,
 	search *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListTemplatesResponse, error) {
+) (*apitype.ListTemplatesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTemplates_preview{
 			Backing:           backing,
@@ -372,7 +372,7 @@ func (p *CloudClient) ListTemplates_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListTemplatesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListTemplatesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListTemplates_preview: %T", resultFromInterceptor)
 			}
@@ -401,7 +401,7 @@ func (p *CloudClient) ListTemplates_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListTemplatesResponse
+	var result apitype.ListTemplatesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -414,7 +414,7 @@ type InterceptorForPostPublishPackageVersionComplete_preview struct {
 	Publisher    string
 	Name         string
 	Version      string
-	Request      ext1.PublishPackageVersionCompleteRequest
+	Request      apitype.PublishPackageVersionCompleteRequest
 	ExtraHeaders []http.Header
 }
 
@@ -424,9 +424,9 @@ func (p *CloudClient) PostPublishPackageVersionComplete_preview(
 	publisher string,
 	name string,
 	version string,
-	request ext1.PublishPackageVersionCompleteRequest,
+	request apitype.PublishPackageVersionCompleteRequest,
 	extraHeaders ...http.Header,
-) (*ext1.PublishPackageVersionCompleteResponse, error) {
+) (*apitype.PublishPackageVersionCompleteResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPostPublishPackageVersionComplete_preview{
 			Source:       source,
@@ -441,7 +441,7 @@ func (p *CloudClient) PostPublishPackageVersionComplete_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PublishPackageVersionCompleteResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PublishPackageVersionCompleteResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PostPublishPackageVersionComplete_preview: %T", resultFromInterceptor)
 			}
@@ -469,7 +469,7 @@ func (p *CloudClient) PostPublishPackageVersionComplete_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PublishPackageVersionCompleteResponse
+	var result apitype.PublishPackageVersionCompleteResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -481,7 +481,7 @@ type InterceptorForPostPublishPackageVersion_preview struct {
 	Source       string
 	Publisher    string
 	Name         string
-	Request      ext1.StartPackagePublishRequest
+	Request      apitype.StartPackagePublishRequest
 	ExtraHeaders []http.Header
 }
 
@@ -490,9 +490,9 @@ func (p *CloudClient) PostPublishPackageVersion_preview(
 	source string,
 	publisher string,
 	name string,
-	request ext1.StartPackagePublishRequest,
+	request apitype.StartPackagePublishRequest,
 	extraHeaders ...http.Header,
-) (*ext1.StartPackagePublishResponse, error) {
+) (*apitype.StartPackagePublishResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPostPublishPackageVersion_preview{
 			Source:       source,
@@ -506,7 +506,7 @@ func (p *CloudClient) PostPublishPackageVersion_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StartPackagePublishResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StartPackagePublishResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PostPublishPackageVersion_preview: %T", resultFromInterceptor)
 			}
@@ -533,7 +533,7 @@ func (p *CloudClient) PostPublishPackageVersion_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StartPackagePublishResponse
+	var result apitype.StartPackagePublishResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -546,7 +546,7 @@ type InterceptorForPostPublishTemplateVersionComplete_preview struct {
 	Publisher    string
 	Name         string
 	Version      string
-	Request      ext1.PublishTemplateVersionCompleteRequest
+	Request      apitype.PublishTemplateVersionCompleteRequest
 	ExtraHeaders []http.Header
 }
 
@@ -556,9 +556,9 @@ func (p *CloudClient) PostPublishTemplateVersionComplete_preview(
 	publisher string,
 	name string,
 	version string,
-	request ext1.PublishTemplateVersionCompleteRequest,
+	request apitype.PublishTemplateVersionCompleteRequest,
 	extraHeaders ...http.Header,
-) (*ext1.PublishTemplateVersionCompleteResponse, error) {
+) (*apitype.PublishTemplateVersionCompleteResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPostPublishTemplateVersionComplete_preview{
 			Source:       source,
@@ -573,7 +573,7 @@ func (p *CloudClient) PostPublishTemplateVersionComplete_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PublishTemplateVersionCompleteResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PublishTemplateVersionCompleteResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PostPublishTemplateVersionComplete_preview: %T", resultFromInterceptor)
 			}
@@ -601,7 +601,7 @@ func (p *CloudClient) PostPublishTemplateVersionComplete_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PublishTemplateVersionCompleteResponse
+	var result apitype.PublishTemplateVersionCompleteResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -613,7 +613,7 @@ type InterceptorForPostPublishTemplateVersion_preview struct {
 	Source       string
 	Publisher    string
 	Name         string
-	Request      ext1.StartTemplatePublishRequest
+	Request      apitype.StartTemplatePublishRequest
 	ExtraHeaders []http.Header
 }
 
@@ -622,9 +622,9 @@ func (p *CloudClient) PostPublishTemplateVersion_preview(
 	source string,
 	publisher string,
 	name string,
-	request ext1.StartTemplatePublishRequest,
+	request apitype.StartTemplatePublishRequest,
 	extraHeaders ...http.Header,
-) (*ext1.StartTemplatePublishResponse, error) {
+) (*apitype.StartTemplatePublishResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPostPublishTemplateVersion_preview{
 			Source:       source,
@@ -638,7 +638,7 @@ func (p *CloudClient) PostPublishTemplateVersion_preview(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.StartTemplatePublishResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.StartTemplatePublishResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PostPublishTemplateVersion_preview: %T", resultFromInterceptor)
 			}
@@ -665,7 +665,7 @@ func (p *CloudClient) PostPublishTemplateVersion_preview(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.StartTemplatePublishResponse
+	var result apitype.StartTemplatePublishResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

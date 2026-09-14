@@ -13,7 +13,7 @@ hand-written. See README.md.
 
 from . import apis, models
 from ._support import PulumiAutoModelEncoder, PulumiModelEncoder, default_encoder
-from .api_client import ApiClient
+from .api_client import ApiClient, ResponseWithHeaders
 from .configuration import Configuration
 
 __all__ = [
@@ -24,4 +24,5 @@ __all__ = [
     "PulumiModelEncoder",
     "PulumiAutoModelEncoder",
     "default_encoder",
+    "ResponseWithHeaders",
 ]

@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class NewPolicyGroupRequest {
         /// <summary>
-        /// The name of the new policy group.
+        /// The name of the new policy group. Up to 100 characters, made up of letters, numbers, hyphens, underscores, periods, or spaces, and may not begin or end with a space.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

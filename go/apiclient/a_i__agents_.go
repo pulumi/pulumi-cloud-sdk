@@ -11,13 +11,13 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForCancelTask struct {
 	OrgName      string
 	TaskID       string
-	Request      ext1.CancelAgentTaskRequest
+	Request      apitype.CancelAgentTaskRequest
 	ExtraHeaders []http.Header
 }
 
@@ -25,7 +25,7 @@ func (p *CloudClient) CancelTask(
 	ctx context.Context,
 	orgName string,
 	taskID string,
-	request ext1.CancelAgentTaskRequest,
+	request apitype.CancelAgentTaskRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -68,7 +68,7 @@ func (p *CloudClient) CancelTask(
 type InterceptorForClaim struct {
 	OrgName      string
 	DryRun       *bool
-	Request      ext1.AgentClaimRequest
+	Request      apitype.AgentClaimRequest
 	ExtraHeaders []http.Header
 }
 
@@ -76,9 +76,9 @@ func (p *CloudClient) Claim(
 	ctx context.Context,
 	orgName string,
 	dryRun *bool,
-	request ext1.AgentClaimRequest,
+	request apitype.AgentClaimRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AgentClaimResponse, error) {
+) (*apitype.AgentClaimResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForClaim{
 			OrgName:      orgName,
@@ -91,7 +91,7 @@ func (p *CloudClient) Claim(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentClaimResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentClaimResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Claim: %T", resultFromInterceptor)
 			}
@@ -118,7 +118,7 @@ func (p *CloudClient) Claim(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentClaimResponse
+	var result apitype.AgentClaimResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -135,7 +135,7 @@ func (p *CloudClient) ClaimStatus(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.AgentClaimsStatus, error) {
+) (*apitype.AgentClaimsStatus, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForClaimStatus{
 			OrgName:      orgName,
@@ -146,7 +146,7 @@ func (p *CloudClient) ClaimStatus(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentClaimsStatus)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentClaimsStatus)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ClaimStatus: %T", resultFromInterceptor)
 			}
@@ -170,7 +170,7 @@ func (p *CloudClient) ClaimStatus(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentClaimsStatus
+	var result apitype.AgentClaimsStatus
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -180,16 +180,16 @@ func (p *CloudClient) ClaimStatus(
 
 type InterceptorForCreateTasks struct {
 	OrgName      string
-	Request      ext1.CreateAgentTaskRequest
+	Request      apitype.CreateAgentTaskRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateTasks(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateAgentTaskRequest,
+	request apitype.CreateAgentTaskRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateAgentTaskResponse, error) {
+) (*apitype.CreateAgentTaskResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateTasks{
 			OrgName:      orgName,
@@ -201,7 +201,7 @@ func (p *CloudClient) CreateTasks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateAgentTaskResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateAgentTaskResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateTasks: %T", resultFromInterceptor)
 			}
@@ -226,7 +226,7 @@ func (p *CloudClient) CreateTasks(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateAgentTaskResponse
+	var result apitype.CreateAgentTaskResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -245,7 +245,7 @@ func (p *CloudClient) GetTask(
 	orgName string,
 	taskID string,
 	extraHeaders ...http.Header,
-) (*ext1.AgentTask, error) {
+) (*apitype.AgentTask, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetTask{
 			OrgName:      orgName,
@@ -257,7 +257,7 @@ func (p *CloudClient) GetTask(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentTask)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentTask)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetTask: %T", resultFromInterceptor)
 			}
@@ -282,7 +282,7 @@ func (p *CloudClient) GetTask(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentTask
+	var result apitype.AgentTask
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -305,7 +305,7 @@ func (p *CloudClient) GetTaskEvents(
 	continuationToken *string,
 	pageSize *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListAgentTaskEventsResponse, error) {
+) (*apitype.ListAgentTaskEventsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetTaskEvents{
 			OrgName:           orgName,
@@ -319,7 +319,7 @@ func (p *CloudClient) GetTaskEvents(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAgentTaskEventsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAgentTaskEventsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetTaskEvents: %T", resultFromInterceptor)
 			}
@@ -347,7 +347,7 @@ func (p *CloudClient) GetTaskEvents(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAgentTaskEventsResponse
+	var result apitype.ListAgentTaskEventsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -359,9 +359,9 @@ type InterceptorForListTasks struct {
 	OrgName           string
 	ContinuationToken *string
 	PageSize          *int
-	SortBy            *ext1.AgentTaskSortField
-	SortDirection     *ext1.AgentTaskSortDirection
-	TaskType          *ext1.AgentTaskType
+	SortBy            *apitype.AgentTaskSortField
+	SortDirection     *apitype.AgentTaskSortDirection
+	TaskType          *apitype.AgentTaskType
 	ExtraHeaders      []http.Header
 }
 
@@ -370,11 +370,11 @@ func (p *CloudClient) ListTasks(
 	orgName string,
 	continuationToken *string,
 	pageSize *int,
-	sortBy *ext1.AgentTaskSortField,
-	sortDirection *ext1.AgentTaskSortDirection,
-	taskType *ext1.AgentTaskType,
+	sortBy *apitype.AgentTaskSortField,
+	sortDirection *apitype.AgentTaskSortDirection,
+	taskType *apitype.AgentTaskType,
 	extraHeaders ...http.Header,
-) (*ext1.ListAgentTasksResponse, error) {
+) (*apitype.ListAgentTasksResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTasks{
 			OrgName:           orgName,
@@ -390,7 +390,7 @@ func (p *CloudClient) ListTasks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAgentTasksResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAgentTasksResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListTasks: %T", resultFromInterceptor)
 			}
@@ -420,7 +420,7 @@ func (p *CloudClient) ListTasks(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAgentTasksResponse
+	var result apitype.ListAgentTasksResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -431,7 +431,7 @@ func (p *CloudClient) ListTasks(
 type InterceptorForRespondToTask struct {
 	OrgName      string
 	TaskID       string
-	Request      ext1.AgentRespondToTaskRequest
+	Request      apitype.AgentRespondToTaskRequest
 	ExtraHeaders []http.Header
 }
 
@@ -439,7 +439,7 @@ func (p *CloudClient) RespondToTask(
 	ctx context.Context,
 	orgName string,
 	taskID string,
-	request ext1.AgentRespondToTaskRequest,
+	request apitype.AgentRespondToTaskRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -480,15 +480,15 @@ func (p *CloudClient) RespondToTask(
 }
 
 type InterceptorForSignup struct {
-	Request      ext1.AgentSignupRequest
+	Request      apitype.AgentSignupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) Signup(
 	ctx context.Context,
-	request ext1.AgentSignupRequest,
+	request apitype.AgentSignupRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AgentSignupResponse, error) {
+) (*apitype.AgentSignupResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForSignup{
 			Request:      request,
@@ -499,7 +499,7 @@ func (p *CloudClient) Signup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentSignupResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentSignupResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Signup: %T", resultFromInterceptor)
 			}
@@ -522,7 +522,7 @@ func (p *CloudClient) Signup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentSignupResponse
+	var result apitype.AgentSignupResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -537,7 +537,7 @@ type InterceptorForSignupChallenge struct {
 func (p *CloudClient) SignupChallenge(
 	ctx context.Context,
 	extraHeaders ...http.Header,
-) (*ext1.AgentSignupChallenge, error) {
+) (*apitype.AgentSignupChallenge, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForSignupChallenge{
 			ExtraHeaders: extraHeaders,
@@ -547,7 +547,7 @@ func (p *CloudClient) SignupChallenge(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentSignupChallenge)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentSignupChallenge)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for SignupChallenge: %T", resultFromInterceptor)
 			}
@@ -569,7 +569,7 @@ func (p *CloudClient) SignupChallenge(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentSignupChallenge
+	var result apitype.AgentSignupChallenge
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -586,7 +586,7 @@ func (p *CloudClient) SignupValidate(
 	ctx context.Context,
 	claimToken string,
 	extraHeaders ...http.Header,
-) (*ext1.AgentClaimResponse, error) {
+) (*apitype.AgentClaimResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForSignupValidate{
 			ClaimToken:   claimToken,
@@ -597,7 +597,7 @@ func (p *CloudClient) SignupValidate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentClaimResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentClaimResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for SignupValidate: %T", resultFromInterceptor)
 			}
@@ -621,7 +621,7 @@ func (p *CloudClient) SignupValidate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentClaimResponse
+	var result apitype.AgentClaimResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -640,7 +640,7 @@ func (p *CloudClient) StreamTaskEvents(
 	orgName string,
 	taskID string,
 	extraHeaders ...http.Header,
-) (*SSEReader[ext1.AgentConsoleEvent], error) {
+) (*SSEReader[apitype.AgentConsoleEvent], error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForStreamTaskEvents{
 			OrgName:      orgName,
@@ -652,7 +652,7 @@ func (p *CloudClient) StreamTaskEvents(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(SSEReader[ext1.AgentConsoleEvent])
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(SSEReader[apitype.AgentConsoleEvent])
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for StreamTaskEvents: %T", resultFromInterceptor)
 			}
@@ -677,15 +677,15 @@ func (p *CloudClient) StreamTaskEvents(
 	if err != nil {
 		return nil, err
 	}
-	return NewSSEReader[ext1.AgentConsoleEvent](reader, func(bytes []byte, t *ext1.AgentConsoleEvent) error {
-		return ext1.UnmarshalJSONAgentConsoleEvent(bytes, t)
+	return NewSSEReader[apitype.AgentConsoleEvent](reader, func(bytes []byte, t *apitype.AgentConsoleEvent) error {
+		return apitype.UnmarshalJSONAgentConsoleEvent(bytes, t)
 	}), nil
 }
 
 type InterceptorForUpdateTask struct {
 	OrgName      string
 	TaskID       string
-	Request      ext1.UpdateTaskRequest
+	Request      apitype.UpdateTaskRequest
 	ExtraHeaders []http.Header
 }
 
@@ -693,9 +693,9 @@ func (p *CloudClient) UpdateTask(
 	ctx context.Context,
 	orgName string,
 	taskID string,
-	request ext1.UpdateTaskRequest,
+	request apitype.UpdateTaskRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AgentTask, error) {
+) (*apitype.AgentTask, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateTask{
 			OrgName:      orgName,
@@ -708,7 +708,7 @@ func (p *CloudClient) UpdateTask(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AgentTask)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentTask)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateTask: %T", resultFromInterceptor)
 			}
@@ -734,7 +734,7 @@ func (p *CloudClient) UpdateTask(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AgentTask
+	var result apitype.AgentTask
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

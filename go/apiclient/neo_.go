@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForDeleteNeoMemberUsageCap struct {
@@ -113,7 +113,7 @@ func (p *CloudClient) GetNeoUsageCap(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.NeoUsageCap, error) {
+) (*apitype.NeoUsageCap, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetNeoUsageCap{
 			OrgName:      orgName,
@@ -124,7 +124,7 @@ func (p *CloudClient) GetNeoUsageCap(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.NeoUsageCap)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.NeoUsageCap)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetNeoUsageCap: %T", resultFromInterceptor)
 			}
@@ -148,7 +148,7 @@ func (p *CloudClient) GetNeoUsageCap(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.NeoUsageCap
+	var result apitype.NeoUsageCap
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -167,7 +167,7 @@ func (p *CloudClient) GetOrgNeoTokenBudget(
 	orgName string,
 	taskId *string,
 	extraHeaders ...http.Header,
-) (*ext1.OrgNeoTokenBudget, error) {
+) (*apitype.OrgNeoTokenBudget, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgNeoTokenBudget{
 			OrgName:      orgName,
@@ -179,7 +179,7 @@ func (p *CloudClient) GetOrgNeoTokenBudget(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrgNeoTokenBudget)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrgNeoTokenBudget)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgNeoTokenBudget: %T", resultFromInterceptor)
 			}
@@ -205,7 +205,7 @@ func (p *CloudClient) GetOrgNeoTokenBudget(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrgNeoTokenBudget
+	var result apitype.OrgNeoTokenBudget
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -222,7 +222,7 @@ func (p *CloudClient) ListNeoMemberUsageCaps(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.NeoMemberUsageCaps, error) {
+) (*apitype.NeoMemberUsageCaps, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListNeoMemberUsageCaps{
 			OrgName:      orgName,
@@ -233,7 +233,7 @@ func (p *CloudClient) ListNeoMemberUsageCaps(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.NeoMemberUsageCaps)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.NeoMemberUsageCaps)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListNeoMemberUsageCaps: %T", resultFromInterceptor)
 			}
@@ -257,7 +257,7 @@ func (p *CloudClient) ListNeoMemberUsageCaps(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.NeoMemberUsageCaps
+	var result apitype.NeoMemberUsageCaps
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -268,7 +268,7 @@ func (p *CloudClient) ListNeoMemberUsageCaps(
 type InterceptorForUpdateNeoMemberUsageCap struct {
 	OrgName      string
 	UserID       string
-	Request      ext1.UpdateNeoMemberUsageCapRequest
+	Request      apitype.UpdateNeoMemberUsageCapRequest
 	ExtraHeaders []http.Header
 }
 
@@ -276,9 +276,9 @@ func (p *CloudClient) UpdateNeoMemberUsageCap(
 	ctx context.Context,
 	orgName string,
 	userID string,
-	request ext1.UpdateNeoMemberUsageCapRequest,
+	request apitype.UpdateNeoMemberUsageCapRequest,
 	extraHeaders ...http.Header,
-) (*ext1.NeoMemberUsageCap, error) {
+) (*apitype.NeoMemberUsageCap, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateNeoMemberUsageCap{
 			OrgName:      orgName,
@@ -291,7 +291,7 @@ func (p *CloudClient) UpdateNeoMemberUsageCap(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.NeoMemberUsageCap)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.NeoMemberUsageCap)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateNeoMemberUsageCap: %T", resultFromInterceptor)
 			}
@@ -317,7 +317,7 @@ func (p *CloudClient) UpdateNeoMemberUsageCap(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.NeoMemberUsageCap
+	var result apitype.NeoMemberUsageCap
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -327,16 +327,16 @@ func (p *CloudClient) UpdateNeoMemberUsageCap(
 
 type InterceptorForUpdateNeoUsageCap struct {
 	OrgName      string
-	Request      ext1.UpdateNeoUsageCapRequest
+	Request      apitype.UpdateNeoUsageCapRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) UpdateNeoUsageCap(
 	ctx context.Context,
 	orgName string,
-	request ext1.UpdateNeoUsageCapRequest,
+	request apitype.UpdateNeoUsageCapRequest,
 	extraHeaders ...http.Header,
-) (*ext1.NeoUsageCap, error) {
+) (*apitype.NeoUsageCap, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateNeoUsageCap{
 			OrgName:      orgName,
@@ -348,7 +348,7 @@ func (p *CloudClient) UpdateNeoUsageCap(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.NeoUsageCap)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.NeoUsageCap)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateNeoUsageCap: %T", resultFromInterceptor)
 			}
@@ -373,7 +373,7 @@ func (p *CloudClient) UpdateNeoUsageCap(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.NeoUsageCap
+	var result apitype.NeoUsageCap
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

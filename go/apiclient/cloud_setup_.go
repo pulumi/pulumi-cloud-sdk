@@ -11,21 +11,21 @@ import (
 	"fmt"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForAWSSSOInitiate struct {
 	OrgName      string
-	Request      ext1.AWSSSOInitiateRequest
+	Request      apitype.AWSSSOInitiateRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) AWSSSOInitiate(
 	ctx context.Context,
 	orgName string,
-	request ext1.AWSSSOInitiateRequest,
+	request apitype.AWSSSOInitiateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AWSSSOInitiateResponse, error) {
+) (*apitype.AWSSSOInitiateResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAWSSSOInitiate{
 			OrgName:      orgName,
@@ -37,7 +37,7 @@ func (p *CloudClient) AWSSSOInitiate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AWSSSOInitiateResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AWSSSOInitiateResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AWSSSOInitiate: %T", resultFromInterceptor)
 			}
@@ -62,7 +62,7 @@ func (p *CloudClient) AWSSSOInitiate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AWSSSOInitiateResponse
+	var result apitype.AWSSSOInitiateResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (p *CloudClient) AWSSSOListAccounts(
 	region *string,
 	sessionId *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListCloudAccountsResponse, error) {
+) (*apitype.ListCloudAccountsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAWSSSOListAccounts{
 			OrgName:      orgName,
@@ -96,7 +96,7 @@ func (p *CloudClient) AWSSSOListAccounts(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListCloudAccountsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListCloudAccountsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AWSSSOListAccounts: %T", resultFromInterceptor)
 			}
@@ -123,7 +123,7 @@ func (p *CloudClient) AWSSSOListAccounts(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListCloudAccountsResponse
+	var result apitype.ListCloudAccountsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -133,16 +133,16 @@ func (p *CloudClient) AWSSSOListAccounts(
 
 type InterceptorForAWSSSOSetup struct {
 	OrgName      string
-	Request      ext1.AWSSSOSetupRequest
+	Request      apitype.AWSSSOSetupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) AWSSSOSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.AWSSSOSetupRequest,
+	request apitype.AWSSSOSetupRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CloudSetupResult, error) {
+) (*apitype.CloudSetupResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAWSSSOSetup{
 			OrgName:      orgName,
@@ -154,7 +154,7 @@ func (p *CloudClient) AWSSSOSetup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CloudSetupResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CloudSetupResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AWSSSOSetup: %T", resultFromInterceptor)
 			}
@@ -179,7 +179,7 @@ func (p *CloudClient) AWSSSOSetup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CloudSetupResult
+	var result apitype.CloudSetupResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -189,16 +189,16 @@ func (p *CloudClient) AWSSSOSetup(
 
 type InterceptorForAWSSetup struct {
 	OrgName      string
-	Request      ext1.AWSSetupRequest
+	Request      apitype.AWSSetupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) AWSSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.AWSSetupRequest,
+	request apitype.AWSSetupRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CloudSetupResult, error) {
+) (*apitype.CloudSetupResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAWSSetup{
 			OrgName:      orgName,
@@ -210,7 +210,7 @@ func (p *CloudClient) AWSSetup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CloudSetupResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CloudSetupResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AWSSetup: %T", resultFromInterceptor)
 			}
@@ -235,7 +235,7 @@ func (p *CloudClient) AWSSetup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CloudSetupResult
+	var result apitype.CloudSetupResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -254,7 +254,7 @@ func (p *CloudClient) AzureListAccounts(
 	orgName string,
 	armSessionId *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListCloudAccountsResponse, error) {
+) (*apitype.ListCloudAccountsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAzureListAccounts{
 			OrgName:      orgName,
@@ -266,7 +266,7 @@ func (p *CloudClient) AzureListAccounts(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListCloudAccountsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListCloudAccountsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AzureListAccounts: %T", resultFromInterceptor)
 			}
@@ -292,7 +292,7 @@ func (p *CloudClient) AzureListAccounts(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListCloudAccountsResponse
+	var result apitype.ListCloudAccountsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -302,16 +302,16 @@ func (p *CloudClient) AzureListAccounts(
 
 type InterceptorForAzureSetup struct {
 	OrgName      string
-	Request      ext1.AzureSetupRequest
+	Request      apitype.AzureSetupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) AzureSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.AzureSetupRequest,
+	request apitype.AzureSetupRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CloudSetupResult, error) {
+) (*apitype.CloudSetupResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAzureSetup{
 			OrgName:      orgName,
@@ -323,7 +323,7 @@ func (p *CloudClient) AzureSetup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CloudSetupResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CloudSetupResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AzureSetup: %T", resultFromInterceptor)
 			}
@@ -348,7 +348,7 @@ func (p *CloudClient) AzureSetup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CloudSetupResult
+	var result apitype.CloudSetupResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -358,16 +358,16 @@ func (p *CloudClient) AzureSetup(
 
 type InterceptorForCompleteOAuth struct {
 	OrgName      string
-	Request      ext1.CompleteOAuthRequest
+	Request      apitype.CompleteOAuthRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CompleteOAuth(
 	ctx context.Context,
 	orgName string,
-	request ext1.CompleteOAuthRequest,
+	request apitype.CompleteOAuthRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CompleteOAuthResponse, error) {
+) (*apitype.CompleteOAuthResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCompleteOAuth{
 			OrgName:      orgName,
@@ -379,7 +379,7 @@ func (p *CloudClient) CompleteOAuth(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CompleteOAuthResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CompleteOAuthResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CompleteOAuth: %T", resultFromInterceptor)
 			}
@@ -404,7 +404,7 @@ func (p *CloudClient) CompleteOAuth(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CompleteOAuthResponse
+	var result apitype.CompleteOAuthResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -425,7 +425,7 @@ func (p *CloudClient) GCPListAccounts(
 	gcpOrganizationId *string,
 	oauthSessionId *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListCloudAccountsResponse, error) {
+) (*apitype.ListCloudAccountsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGCPListAccounts{
 			OrgName:           orgName,
@@ -438,7 +438,7 @@ func (p *CloudClient) GCPListAccounts(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListCloudAccountsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListCloudAccountsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GCPListAccounts: %T", resultFromInterceptor)
 			}
@@ -465,7 +465,7 @@ func (p *CloudClient) GCPListAccounts(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListCloudAccountsResponse
+	var result apitype.ListCloudAccountsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -475,16 +475,16 @@ func (p *CloudClient) GCPListAccounts(
 
 type InterceptorForGCPSetup struct {
 	OrgName      string
-	Request      ext1.GCPSetupRequest
+	Request      apitype.GCPSetupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) GCPSetup(
 	ctx context.Context,
 	orgName string,
-	request ext1.GCPSetupRequest,
+	request apitype.GCPSetupRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CloudSetupResult, error) {
+) (*apitype.CloudSetupResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGCPSetup{
 			OrgName:      orgName,
@@ -496,7 +496,7 @@ func (p *CloudClient) GCPSetup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CloudSetupResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CloudSetupResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GCPSetup: %T", resultFromInterceptor)
 			}
@@ -521,7 +521,7 @@ func (p *CloudClient) GCPSetup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CloudSetupResult
+	var result apitype.CloudSetupResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -531,16 +531,16 @@ func (p *CloudClient) GCPSetup(
 
 type InterceptorForInitiateOAuth struct {
 	OrgName      string
-	Request      ext1.InitiateOAuthRequest
+	Request      apitype.InitiateOAuthRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) InitiateOAuth(
 	ctx context.Context,
 	orgName string,
-	request ext1.InitiateOAuthRequest,
+	request apitype.InitiateOAuthRequest,
 	extraHeaders ...http.Header,
-) (*ext1.InitiateOAuthResponse, error) {
+) (*apitype.InitiateOAuthResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForInitiateOAuth{
 			OrgName:      orgName,
@@ -552,7 +552,7 @@ func (p *CloudClient) InitiateOAuth(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.InitiateOAuthResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.InitiateOAuthResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for InitiateOAuth: %T", resultFromInterceptor)
 			}
@@ -577,7 +577,7 @@ func (p *CloudClient) InitiateOAuth(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.InitiateOAuthResponse
+	var result apitype.InitiateOAuthResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

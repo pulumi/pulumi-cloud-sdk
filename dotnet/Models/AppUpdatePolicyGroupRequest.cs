@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class AppUpdatePolicyGroupRequest {
         /// <summary>
-        /// The new name to assign to the policy group. Rejected with a 400 error for an organization's default Policy Groups, which cannot be renamed.
+        /// The new name to assign to the policy group. Up to 100 characters, made up of letters, numbers, hyphens, underscores, periods, or spaces, and may not begin or end with a space. Rejected with a 400 error for an organization's default Policy Groups, which cannot be renamed.
         /// </summary>
         [JsonProperty("newName")]
         public string NewName { get; set; }

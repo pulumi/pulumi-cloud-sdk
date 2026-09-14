@@ -12,7 +12,7 @@ import (
 	"io"
 	"net/http"
 
-	ext1 "github.com/pulumi/pulumi-cloud-sdk/go/apitype"
+	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
 )
 
 type InterceptorForAcceptOrgInvite struct {
@@ -65,7 +65,7 @@ func (p *CloudClient) AcceptOrgInvite(
 type InterceptorForAddComment struct {
 	OrgName         string
 	ChangeRequestID string
-	Request         ext1.AddChangeRequestCommentRequest
+	Request         apitype.AddChangeRequestCommentRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -73,7 +73,7 @@ func (p *CloudClient) AddComment(
 	ctx context.Context,
 	orgName string,
 	changeRequestID string,
-	request ext1.AddChangeRequestCommentRequest,
+	request apitype.AddChangeRequestCommentRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -116,7 +116,7 @@ func (p *CloudClient) AddComment(
 type InterceptorForAddOrganizationMember struct {
 	OrgName      string
 	UserLogin    string
-	Request      ext1.AddOrganizationMemberRequest
+	Request      apitype.AddOrganizationMemberRequest
 	ExtraHeaders []http.Header
 }
 
@@ -124,9 +124,9 @@ func (p *CloudClient) AddOrganizationMember(
 	ctx context.Context,
 	orgName string,
 	userLogin string,
-	request ext1.AddOrganizationMemberRequest,
+	request apitype.AddOrganizationMemberRequest,
 	extraHeaders ...http.Header,
-) (*ext1.OrganizationMember, error) {
+) (*apitype.OrganizationMember, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAddOrganizationMember{
 			OrgName:      orgName,
@@ -139,7 +139,7 @@ func (p *CloudClient) AddOrganizationMember(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrganizationMember)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrganizationMember)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AddOrganizationMember: %T", resultFromInterceptor)
 			}
@@ -165,7 +165,7 @@ func (p *CloudClient) AddOrganizationMember(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrganizationMember
+	var result apitype.OrganizationMember
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -179,7 +179,7 @@ type InterceptorForAddServiceItems struct {
 	OwnerName    string
 	ServiceName  string
 	MaxResults   *int
-	Request      ext1.AddServiceItemsRequest
+	Request      apitype.AddServiceItemsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -190,9 +190,9 @@ func (p *CloudClient) AddServiceItems(
 	ownerName string,
 	serviceName string,
 	maxResults *int,
-	request ext1.AddServiceItemsRequest,
+	request apitype.AddServiceItemsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.GetServiceResponse, error) {
+) (*apitype.GetServiceResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForAddServiceItems{
 			OrgName:      orgName,
@@ -208,7 +208,7 @@ func (p *CloudClient) AddServiceItems(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetServiceResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetServiceResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for AddServiceItems: %T", resultFromInterceptor)
 			}
@@ -238,7 +238,7 @@ func (p *CloudClient) AddServiceItems(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetServiceResponse
+	var result apitype.GetServiceResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -251,7 +251,7 @@ type InterceptorForAddServiceItemsV2 struct {
 	OwnerType    string
 	OwnerName    string
 	ServiceName  string
-	Request      ext1.AddServiceItemsRequest
+	Request      apitype.AddServiceItemsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -261,7 +261,7 @@ func (p *CloudClient) AddServiceItemsV2(
 	ownerType string,
 	ownerName string,
 	serviceName string,
-	request ext1.AddServiceItemsRequest,
+	request apitype.AddServiceItemsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -316,7 +316,7 @@ func (p *CloudClient) Apply(
 	orgName string,
 	changeRequestID string,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeRequestApplyResult, error) {
+) (*apitype.ChangeRequestApplyResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForApply{
 			OrgName:         orgName,
@@ -328,7 +328,7 @@ func (p *CloudClient) Apply(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeRequestApplyResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeRequestApplyResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Apply: %T", resultFromInterceptor)
 			}
@@ -353,7 +353,7 @@ func (p *CloudClient) Apply(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeRequestApplyResult
+	var result apitype.ChangeRequestApplyResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -364,7 +364,7 @@ func (p *CloudClient) Apply(
 type InterceptorForApprove struct {
 	OrgName         string
 	ChangeRequestID string
-	Request         ext1.ApproveChangeRequestRequest
+	Request         apitype.ApproveChangeRequestRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -372,7 +372,7 @@ func (p *CloudClient) Approve(
 	ctx context.Context,
 	orgName string,
 	changeRequestID string,
-	request ext1.ApproveChangeRequestRequest,
+	request apitype.ApproveChangeRequestRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -414,16 +414,16 @@ func (p *CloudClient) Approve(
 
 type InterceptorForBatchCreateOrgInviteEmail struct {
 	OrgName      string
-	Request      ext1.BatchCreateOrganizationInviteRequest
+	Request      apitype.BatchCreateOrganizationInviteRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) BatchCreateOrgInviteEmail(
 	ctx context.Context,
 	orgName string,
-	request ext1.BatchCreateOrganizationInviteRequest,
+	request apitype.BatchCreateOrganizationInviteRequest,
 	extraHeaders ...http.Header,
-) (*ext1.BatchCreateOrganizationInviteResponse, error) {
+) (*apitype.BatchCreateOrganizationInviteResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForBatchCreateOrgInviteEmail{
 			OrgName:      orgName,
@@ -435,7 +435,7 @@ func (p *CloudClient) BatchCreateOrgInviteEmail(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.BatchCreateOrganizationInviteResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.BatchCreateOrganizationInviteResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for BatchCreateOrgInviteEmail: %T", resultFromInterceptor)
 			}
@@ -460,7 +460,7 @@ func (p *CloudClient) BatchCreateOrgInviteEmail(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.BatchCreateOrganizationInviteResponse
+	var result apitype.BatchCreateOrganizationInviteResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -470,16 +470,16 @@ func (p *CloudClient) BatchCreateOrgInviteEmail(
 
 type InterceptorForBatchCreateOrgUnverifiedInviteEmail struct {
 	OrgName      string
-	Request      ext1.BatchCreateOrganizationInviteRequest
+	Request      apitype.BatchCreateOrganizationInviteRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) BatchCreateOrgUnverifiedInviteEmail(
 	ctx context.Context,
 	orgName string,
-	request ext1.BatchCreateOrganizationInviteRequest,
+	request apitype.BatchCreateOrganizationInviteRequest,
 	extraHeaders ...http.Header,
-) (*ext1.BatchCreateOrganizationInviteResponse, error) {
+) (*apitype.BatchCreateOrganizationInviteResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForBatchCreateOrgUnverifiedInviteEmail{
 			OrgName:      orgName,
@@ -491,7 +491,7 @@ func (p *CloudClient) BatchCreateOrgUnverifiedInviteEmail(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.BatchCreateOrganizationInviteResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.BatchCreateOrganizationInviteResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for BatchCreateOrgUnverifiedInviteEmail: %T", resultFromInterceptor)
 			}
@@ -516,7 +516,7 @@ func (p *CloudClient) BatchCreateOrgUnverifiedInviteEmail(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.BatchCreateOrganizationInviteResponse
+	var result apitype.BatchCreateOrganizationInviteResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -537,7 +537,7 @@ func (p *CloudClient) BatchDecryptProjectValue(
 	projectName string,
 	request any,
 	extraHeaders ...http.Header,
-) (*ext1.AppBatchDecryptResponse, error) {
+) (*apitype.AppBatchDecryptResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForBatchDecryptProjectValue{
 			OrgName:      orgName,
@@ -550,7 +550,7 @@ func (p *CloudClient) BatchDecryptProjectValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppBatchDecryptResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppBatchDecryptResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for BatchDecryptProjectValue: %T", resultFromInterceptor)
 			}
@@ -576,7 +576,7 @@ func (p *CloudClient) BatchDecryptProjectValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppBatchDecryptResponse
+	var result apitype.AppBatchDecryptResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -587,7 +587,7 @@ func (p *CloudClient) BatchDecryptProjectValue(
 type InterceptorForBatchUpdatePolicyGroup struct {
 	OrgName      string
 	PolicyGroup  string
-	Request      []ext1.UpdatePolicyGroupRequest
+	Request      []apitype.UpdatePolicyGroupRequest
 	ExtraHeaders []http.Header
 }
 
@@ -595,7 +595,7 @@ func (p *CloudClient) BatchUpdatePolicyGroup(
 	ctx context.Context,
 	orgName string,
 	policyGroup string,
-	request []ext1.UpdatePolicyGroupRequest,
+	request []apitype.UpdatePolicyGroupRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -685,7 +685,7 @@ func (p *CloudClient) CancelOrgInvite(
 type InterceptorForClose struct {
 	OrgName         string
 	ChangeRequestID string
-	Request         ext1.CloseChangeRequestRequest
+	Request         apitype.CloseChangeRequestRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -693,7 +693,7 @@ func (p *CloudClient) Close(
 	ctx context.Context,
 	orgName string,
 	changeRequestID string,
-	request ext1.CloseChangeRequestRequest,
+	request apitype.CloseChangeRequestRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -786,16 +786,16 @@ func (p *CloudClient) CompletePolicyPack(
 
 type InterceptorForCreateGate struct {
 	OrgName      string
-	Request      ext1.CreateChangeGateRequest
+	Request      apitype.CreateChangeGateRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateGate(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateChangeGateRequest,
+	request apitype.CreateChangeGateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeGate, error) {
+) (*apitype.ChangeGate, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateGate{
 			OrgName:      orgName,
@@ -807,7 +807,7 @@ func (p *CloudClient) CreateGate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeGate)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeGate)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateGate: %T", resultFromInterceptor)
 			}
@@ -832,7 +832,7 @@ func (p *CloudClient) CreateGate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeGate
+	var result apitype.ChangeGate
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -842,16 +842,16 @@ func (p *CloudClient) CreateGate(
 
 type InterceptorForCreateGitHubTeam struct {
 	OrgName      string
-	Request      ext1.CreateGitHubTeamRequest
+	Request      apitype.CreateGitHubTeamRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateGitHubTeam(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateGitHubTeamRequest,
+	request apitype.CreateGitHubTeamRequest,
 	extraHeaders ...http.Header,
-) (*ext1.Team, error) {
+) (*apitype.Team, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateGitHubTeam{
 			OrgName:      orgName,
@@ -863,7 +863,7 @@ func (p *CloudClient) CreateGitHubTeam(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.Team)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.Team)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateGitHubTeam: %T", resultFromInterceptor)
 			}
@@ -888,7 +888,7 @@ func (p *CloudClient) CreateGitHubTeam(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.Team
+	var result apitype.Team
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -898,16 +898,16 @@ func (p *CloudClient) CreateGitHubTeam(
 
 type InterceptorForCreateOrgInviteLink struct {
 	OrgName      string
-	Request      ext1.CreateOrganizationInviteRequest
+	Request      apitype.CreateOrganizationInviteRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateOrgInviteLink(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateOrganizationInviteRequest,
+	request apitype.CreateOrganizationInviteRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateOrganizationInviteResponse, error) {
+) (*apitype.CreateOrganizationInviteResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOrgInviteLink{
 			OrgName:      orgName,
@@ -919,7 +919,7 @@ func (p *CloudClient) CreateOrgInviteLink(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateOrganizationInviteResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateOrganizationInviteResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOrgInviteLink: %T", resultFromInterceptor)
 			}
@@ -944,7 +944,7 @@ func (p *CloudClient) CreateOrgInviteLink(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateOrganizationInviteResponse
+	var result apitype.CreateOrganizationInviteResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -954,16 +954,16 @@ func (p *CloudClient) CreateOrgInviteLink(
 
 type InterceptorForCreateOrgTemplateCollection struct {
 	OrgName      string
-	Request      ext1.UpsertOrgTemplateSourceRequest
+	Request      apitype.UpsertOrgTemplateSourceRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateOrgTemplateCollection(
 	ctx context.Context,
 	orgName string,
-	request ext1.UpsertOrgTemplateSourceRequest,
+	request apitype.UpsertOrgTemplateSourceRequest,
 	extraHeaders ...http.Header,
-) (*ext1.TemplateSource, error) {
+) (*apitype.TemplateSource, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOrgTemplateCollection{
 			OrgName:      orgName,
@@ -975,7 +975,7 @@ func (p *CloudClient) CreateOrgTemplateCollection(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.TemplateSource)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.TemplateSource)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOrgTemplateCollection: %T", resultFromInterceptor)
 			}
@@ -1000,7 +1000,7 @@ func (p *CloudClient) CreateOrgTemplateCollection(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.TemplateSource
+	var result apitype.TemplateSource
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1011,7 +1011,7 @@ func (p *CloudClient) CreateOrgTemplateCollection(
 type InterceptorForCreateOrgToken struct {
 	OrgName      string
 	Reason       *string
-	Request      ext1.CreateOrgAccessTokenRequest
+	Request      apitype.CreateOrgAccessTokenRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1019,9 +1019,9 @@ func (p *CloudClient) CreateOrgToken(
 	ctx context.Context,
 	orgName string,
 	reason *string,
-	request ext1.CreateOrgAccessTokenRequest,
+	request apitype.CreateOrgAccessTokenRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateAccessTokenResponse, error) {
+) (*apitype.CreateAccessTokenResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOrgToken{
 			OrgName:      orgName,
@@ -1034,7 +1034,7 @@ func (p *CloudClient) CreateOrgToken(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateAccessTokenResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateAccessTokenResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOrgToken: %T", resultFromInterceptor)
 			}
@@ -1061,7 +1061,7 @@ func (p *CloudClient) CreateOrgToken(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateAccessTokenResponse
+	var result apitype.CreateAccessTokenResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1071,16 +1071,16 @@ func (p *CloudClient) CreateOrgToken(
 
 type InterceptorForCreateOrganizationKey struct {
 	OrgName      string
-	Request      ext1.CustomerManagedKeyInput
+	Request      apitype.CustomerManagedKeyInput
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateOrganizationKey(
 	ctx context.Context,
 	orgName string,
-	request ext1.CustomerManagedKeyInput,
+	request apitype.CustomerManagedKeyInput,
 	extraHeaders ...http.Header,
-) (*ext1.CustomerManagedKey, error) {
+) (*apitype.CustomerManagedKey, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOrganizationKey{
 			OrgName:      orgName,
@@ -1092,7 +1092,7 @@ func (p *CloudClient) CreateOrganizationKey(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CustomerManagedKey)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CustomerManagedKey)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOrganizationKey: %T", resultFromInterceptor)
 			}
@@ -1117,7 +1117,7 @@ func (p *CloudClient) CreateOrganizationKey(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CustomerManagedKey
+	var result apitype.CustomerManagedKey
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1127,16 +1127,16 @@ func (p *CloudClient) CreateOrganizationKey(
 
 type InterceptorForCreateOrganizationWebhook struct {
 	OrgName      string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateOrganizationWebhook(
 	ctx context.Context,
 	orgName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateOrganizationWebhook{
 			OrgName:      orgName,
@@ -1148,7 +1148,7 @@ func (p *CloudClient) CreateOrganizationWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateOrganizationWebhook: %T", resultFromInterceptor)
 			}
@@ -1173,7 +1173,7 @@ func (p *CloudClient) CreateOrganizationWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1183,16 +1183,16 @@ func (p *CloudClient) CreateOrganizationWebhook(
 
 type InterceptorForCreatePolicyPack struct {
 	OrgName      string
-	Request      ext1.AppCreatePolicyPackRequest
+	Request      apitype.AppCreatePolicyPackRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreatePolicyPack(
 	ctx context.Context,
 	orgName string,
-	request ext1.AppCreatePolicyPackRequest,
+	request apitype.AppCreatePolicyPackRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppCreatePolicyPackResponse, error) {
+) (*apitype.AppCreatePolicyPackResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreatePolicyPack{
 			OrgName:      orgName,
@@ -1204,7 +1204,7 @@ func (p *CloudClient) CreatePolicyPack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppCreatePolicyPackResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppCreatePolicyPackResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreatePolicyPack: %T", resultFromInterceptor)
 			}
@@ -1229,7 +1229,7 @@ func (p *CloudClient) CreatePolicyPack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppCreatePolicyPackResponse
+	var result apitype.AppCreatePolicyPackResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1239,16 +1239,16 @@ func (p *CloudClient) CreatePolicyPack(
 
 type InterceptorForCreatePulumiTeam struct {
 	OrgName      string
-	Request      ext1.CreatePulumiTeamRequest
+	Request      apitype.CreatePulumiTeamRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreatePulumiTeam(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreatePulumiTeamRequest,
+	request apitype.CreatePulumiTeamRequest,
 	extraHeaders ...http.Header,
-) (*ext1.Team, error) {
+) (*apitype.Team, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreatePulumiTeam{
 			OrgName:      orgName,
@@ -1260,7 +1260,7 @@ func (p *CloudClient) CreatePulumiTeam(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.Team)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.Team)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreatePulumiTeam: %T", resultFromInterceptor)
 			}
@@ -1285,7 +1285,7 @@ func (p *CloudClient) CreatePulumiTeam(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.Team
+	var result apitype.Team
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1296,7 +1296,7 @@ func (p *CloudClient) CreatePulumiTeam(
 type InterceptorForCreateRole struct {
 	OrgName             string
 	CreatePolicyAndRole *bool
-	Request             ext1.PermissionDescriptorBase
+	Request             apitype.PermissionDescriptorBase
 	ExtraHeaders        []http.Header
 }
 
@@ -1304,9 +1304,9 @@ func (p *CloudClient) CreateRole(
 	ctx context.Context,
 	orgName string,
 	createPolicyAndRole *bool,
-	request ext1.PermissionDescriptorBase,
+	request apitype.PermissionDescriptorBase,
 	extraHeaders ...http.Header,
-) (*ext1.PermissionDescriptorRecord, error) {
+) (*apitype.PermissionDescriptorRecord, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateRole{
 			OrgName:             orgName,
@@ -1319,7 +1319,7 @@ func (p *CloudClient) CreateRole(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PermissionDescriptorRecord)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PermissionDescriptorRecord)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateRole: %T", resultFromInterceptor)
 			}
@@ -1346,7 +1346,7 @@ func (p *CloudClient) CreateRole(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PermissionDescriptorRecord
+	var result apitype.PermissionDescriptorRecord
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1356,16 +1356,16 @@ func (p *CloudClient) CreateRole(
 
 type InterceptorForCreateService struct {
 	OrgName      string
-	Request      ext1.CreateServiceRequest
+	Request      apitype.CreateServiceRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) CreateService(
 	ctx context.Context,
 	orgName string,
-	request ext1.CreateServiceRequest,
+	request apitype.CreateServiceRequest,
 	extraHeaders ...http.Header,
-) (*ext1.Service, error) {
+) (*apitype.Service, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateService{
 			OrgName:      orgName,
@@ -1377,7 +1377,7 @@ func (p *CloudClient) CreateService(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.Service)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.Service)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateService: %T", resultFromInterceptor)
 			}
@@ -1402,7 +1402,7 @@ func (p *CloudClient) CreateService(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.Service
+	var result apitype.Service
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1413,7 +1413,7 @@ func (p *CloudClient) CreateService(
 type InterceptorForCreateStack struct {
 	OrgName      string
 	ProjectName  string
-	Request      ext1.AppCreateStackRequest
+	Request      apitype.AppCreateStackRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1421,9 +1421,9 @@ func (p *CloudClient) CreateStack(
 	ctx context.Context,
 	orgName string,
 	projectName string,
-	request ext1.AppCreateStackRequest,
+	request apitype.AppCreateStackRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AppCreateStackResponse, error) {
+) (*apitype.AppCreateStackResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateStack{
 			OrgName:      orgName,
@@ -1436,7 +1436,7 @@ func (p *CloudClient) CreateStack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppCreateStackResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppCreateStackResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateStack: %T", resultFromInterceptor)
 			}
@@ -1462,7 +1462,7 @@ func (p *CloudClient) CreateStack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppCreateStackResponse
+	var result apitype.AppCreateStackResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1474,7 +1474,7 @@ type InterceptorForCreateTeamToken struct {
 	OrgName      string
 	TeamName     string
 	Reason       *string
-	Request      ext1.CreateTeamAccessTokenRequest
+	Request      apitype.CreateTeamAccessTokenRequest
 	ExtraHeaders []http.Header
 }
 
@@ -1483,9 +1483,9 @@ func (p *CloudClient) CreateTeamToken(
 	orgName string,
 	teamName string,
 	reason *string,
-	request ext1.CreateTeamAccessTokenRequest,
+	request apitype.CreateTeamAccessTokenRequest,
 	extraHeaders ...http.Header,
-) (*ext1.CreateAccessTokenResponse, error) {
+) (*apitype.CreateAccessTokenResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForCreateTeamToken{
 			OrgName:      orgName,
@@ -1499,7 +1499,7 @@ func (p *CloudClient) CreateTeamToken(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.CreateAccessTokenResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateAccessTokenResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateTeamToken: %T", resultFromInterceptor)
 			}
@@ -1527,7 +1527,7 @@ func (p *CloudClient) CreateTeamToken(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.CreateAccessTokenResponse
+	var result apitype.CreateAccessTokenResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1548,7 +1548,7 @@ func (p *CloudClient) DecryptProjectValue(
 	projectName string,
 	request any,
 	extraHeaders ...http.Header,
-) (*ext1.AppDecryptValueResponse, error) {
+) (*apitype.AppDecryptValueResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForDecryptProjectValue{
 			OrgName:      orgName,
@@ -1561,7 +1561,7 @@ func (p *CloudClient) DecryptProjectValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppDecryptValueResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppDecryptValueResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for DecryptProjectValue: %T", resultFromInterceptor)
 			}
@@ -1587,7 +1587,7 @@ func (p *CloudClient) DecryptProjectValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppDecryptValueResponse
+	var result apitype.AppDecryptValueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2377,7 +2377,7 @@ func (p *CloudClient) DisableAllOrganizationKeys(
 type InterceptorForDisableOrganizationKey struct {
 	OrgName      string
 	KeyID        string
-	Request      ext1.DisableCustomerManagedKeyRequest
+	Request      apitype.DisableCustomerManagedKeyRequest
 	ExtraHeaders []http.Header
 }
 
@@ -2385,7 +2385,7 @@ func (p *CloudClient) DisableOrganizationKey(
 	ctx context.Context,
 	orgName string,
 	keyID string,
-	request ext1.DisableCustomerManagedKeyRequest,
+	request apitype.DisableCustomerManagedKeyRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -2436,7 +2436,7 @@ func (p *CloudClient) EnableTeamRoles(
 	orgName string,
 	teamName string,
 	extraHeaders ...http.Header,
-) (*ext1.PermissionDescriptorRecord, error) {
+) (*apitype.PermissionDescriptorRecord, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForEnableTeamRoles{
 			OrgName:      orgName,
@@ -2448,7 +2448,7 @@ func (p *CloudClient) EnableTeamRoles(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PermissionDescriptorRecord)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PermissionDescriptorRecord)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for EnableTeamRoles: %T", resultFromInterceptor)
 			}
@@ -2473,7 +2473,7 @@ func (p *CloudClient) EnableTeamRoles(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PermissionDescriptorRecord
+	var result apitype.PermissionDescriptorRecord
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2494,7 +2494,7 @@ func (p *CloudClient) EncryptProjectValue(
 	projectName string,
 	request any,
 	extraHeaders ...http.Header,
-) (*ext1.AppEncryptValueResponse, error) {
+) (*apitype.AppEncryptValueResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForEncryptProjectValue{
 			OrgName:      orgName,
@@ -2507,7 +2507,7 @@ func (p *CloudClient) EncryptProjectValue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppEncryptValueResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppEncryptValueResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for EncryptProjectValue: %T", resultFromInterceptor)
 			}
@@ -2533,7 +2533,7 @@ func (p *CloudClient) EncryptProjectValue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppEncryptValueResponse
+	var result apitype.AppEncryptValueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2775,7 +2775,7 @@ func (p *CloudClient) ExportOrgResourceSearchQuery(
 type InterceptorForExportPolicyIssues struct {
 	OrgName      string
 	Closed       *bool
-	Request      ext1.AngularGridGetRowsRequest
+	Request      apitype.AngularGridGetRowsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -2783,7 +2783,7 @@ func (p *CloudClient) ExportPolicyIssues(
 	ctx context.Context,
 	orgName string,
 	closed *bool,
-	request ext1.AngularGridGetRowsRequest,
+	request apitype.AngularGridGetRowsRequest,
 	extraHeaders ...http.Header,
 ) (*string, error) {
 	if p.Interceptor != nil {
@@ -2840,7 +2840,7 @@ func (p *CloudClient) ForceAuditLogExport(
 	orgName string,
 	timestamp *int64,
 	extraHeaders ...http.Header,
-) (*ext1.AuditLogExportResult, error) {
+) (*apitype.AuditLogExportResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForForceAuditLogExport{
 			OrgName:      orgName,
@@ -2852,7 +2852,7 @@ func (p *CloudClient) ForceAuditLogExport(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AuditLogExportResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AuditLogExportResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ForceAuditLogExport: %T", resultFromInterceptor)
 			}
@@ -2878,7 +2878,7 @@ func (p *CloudClient) ForceAuditLogExport(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AuditLogExportResult
+	var result apitype.AuditLogExportResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2897,7 +2897,7 @@ func (p *CloudClient) Get(
 	orgName string,
 	changeRequestID string,
 	extraHeaders ...http.Header,
-) (*ext1.GetChangeRequestResponse, error) {
+) (*apitype.GetChangeRequestResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGet{
 			OrgName:         orgName,
@@ -2909,7 +2909,7 @@ func (p *CloudClient) Get(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetChangeRequestResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetChangeRequestResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for Get: %T", resultFromInterceptor)
 			}
@@ -2934,7 +2934,7 @@ func (p *CloudClient) Get(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetChangeRequestResponse
+	var result apitype.GetChangeRequestResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2951,7 +2951,7 @@ func (p *CloudClient) GetAuditLogExportConfiguration(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.OrganizationAuditLogExportSettings, error) {
+) (*apitype.OrganizationAuditLogExportSettings, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetAuditLogExportConfiguration{
 			OrgName:      orgName,
@@ -2962,7 +2962,7 @@ func (p *CloudClient) GetAuditLogExportConfiguration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrganizationAuditLogExportSettings)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrganizationAuditLogExportSettings)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAuditLogExportConfiguration: %T", resultFromInterceptor)
 			}
@@ -2986,7 +2986,7 @@ func (p *CloudClient) GetAuditLogExportConfiguration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrganizationAuditLogExportSettings
+	var result apitype.OrganizationAuditLogExportSettings
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3053,7 +3053,7 @@ func (p *CloudClient) GetAuthPolicy(
 	orgName string,
 	issuerId string,
 	extraHeaders ...http.Header,
-) (*ext1.AuthPolicy, error) {
+) (*apitype.AuthPolicy, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetAuthPolicy{
 			OrgName:      orgName,
@@ -3065,7 +3065,7 @@ func (p *CloudClient) GetAuthPolicy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AuthPolicy)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AuthPolicy)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAuthPolicy: %T", resultFromInterceptor)
 			}
@@ -3090,7 +3090,7 @@ func (p *CloudClient) GetAuthPolicy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AuthPolicy
+	var result apitype.AuthPolicy
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3109,7 +3109,7 @@ func (p *CloudClient) GetNaturalLanguageQuery(
 	orgName string,
 	query *string,
 	extraHeaders ...http.Header,
-) (*ext1.GetNaturalLanguageQueryResponse, error) {
+) (*apitype.GetNaturalLanguageQueryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetNaturalLanguageQuery{
 			OrgName:      orgName,
@@ -3121,7 +3121,7 @@ func (p *CloudClient) GetNaturalLanguageQuery(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetNaturalLanguageQueryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetNaturalLanguageQueryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetNaturalLanguageQuery: %T", resultFromInterceptor)
 			}
@@ -3147,7 +3147,7 @@ func (p *CloudClient) GetNaturalLanguageQuery(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetNaturalLanguageQueryResponse
+	var result apitype.GetNaturalLanguageQueryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3166,7 +3166,7 @@ func (p *CloudClient) GetOidcIssuer(
 	orgName string,
 	issuerId string,
 	extraHeaders ...http.Header,
-) (*ext1.OidcIssuerRegistrationResponse, error) {
+) (*apitype.OidcIssuerRegistrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOidcIssuer{
 			OrgName:      orgName,
@@ -3178,7 +3178,7 @@ func (p *CloudClient) GetOidcIssuer(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OidcIssuerRegistrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OidcIssuerRegistrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOidcIssuer: %T", resultFromInterceptor)
 			}
@@ -3203,7 +3203,7 @@ func (p *CloudClient) GetOidcIssuer(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OidcIssuerRegistrationResponse
+	var result apitype.OidcIssuerRegistrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3222,7 +3222,7 @@ func (p *CloudClient) GetOrgInvite(
 	orgName string,
 	inviteID string,
 	extraHeaders ...http.Header,
-) (*ext1.OrganizationSummaryWithRole, error) {
+) (*apitype.OrganizationSummaryWithRole, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgInvite{
 			OrgName:      orgName,
@@ -3234,7 +3234,7 @@ func (p *CloudClient) GetOrgInvite(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrganizationSummaryWithRole)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrganizationSummaryWithRole)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgInvite: %T", resultFromInterceptor)
 			}
@@ -3259,7 +3259,7 @@ func (p *CloudClient) GetOrgInvite(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrganizationSummaryWithRole
+	var result apitype.OrganizationSummaryWithRole
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3280,7 +3280,7 @@ func (p *CloudClient) GetOrgRegistryPolicyPack(
 	policyPackName string,
 	tag *string,
 	extraHeaders ...http.Header,
-) (*ext1.GetRegistryPolicyPackVersionResponse, error) {
+) (*apitype.GetRegistryPolicyPackVersionResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgRegistryPolicyPack{
 			OrgName:        orgName,
@@ -3293,7 +3293,7 @@ func (p *CloudClient) GetOrgRegistryPolicyPack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetRegistryPolicyPackVersionResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetRegistryPolicyPackVersionResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgRegistryPolicyPack: %T", resultFromInterceptor)
 			}
@@ -3320,7 +3320,7 @@ func (p *CloudClient) GetOrgRegistryPolicyPack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetRegistryPolicyPackVersionResponse
+	var result apitype.GetRegistryPolicyPackVersionResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3357,7 +3357,7 @@ func (p *CloudClient) GetOrgResourceSearchQuery(
 	sort *[]string,
 	top *int,
 	extraHeaders ...http.Header,
-) (*ext1.ResourceSearchResult, error) {
+) (*apitype.ResourceSearchResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgResourceSearchQuery{
 			OrgName:      orgName,
@@ -3378,7 +3378,7 @@ func (p *CloudClient) GetOrgResourceSearchQuery(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ResourceSearchResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResourceSearchResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgResourceSearchQuery: %T", resultFromInterceptor)
 			}
@@ -3413,7 +3413,7 @@ func (p *CloudClient) GetOrgResourceSearchQuery(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ResourceSearchResult
+	var result apitype.ResourceSearchResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3452,7 +3452,7 @@ func (p *CloudClient) GetOrgResourceSearchV2Query(
 	sort *[]string,
 	top *int,
 	extraHeaders ...http.Header,
-) (*ext1.ResourceSearchResult, error) {
+) (*apitype.ResourceSearchResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgResourceSearchV2Query{
 			OrgName:      orgName,
@@ -3474,7 +3474,7 @@ func (p *CloudClient) GetOrgResourceSearchV2Query(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ResourceSearchResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResourceSearchResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgResourceSearchV2Query: %T", resultFromInterceptor)
 			}
@@ -3510,7 +3510,7 @@ func (p *CloudClient) GetOrgResourceSearchV2Query(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ResourceSearchResult
+	var result apitype.ResourceSearchResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3527,7 +3527,7 @@ func (p *CloudClient) GetOrgTemplateCollections(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.GetOrgTemplateSourcesResponse, error) {
+) (*apitype.GetOrgTemplateSourcesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgTemplateCollections{
 			OrgName:      orgName,
@@ -3538,7 +3538,7 @@ func (p *CloudClient) GetOrgTemplateCollections(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetOrgTemplateSourcesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetOrgTemplateSourcesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgTemplateCollections: %T", resultFromInterceptor)
 			}
@@ -3562,7 +3562,7 @@ func (p *CloudClient) GetOrgTemplateCollections(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetOrgTemplateSourcesResponse
+	var result apitype.GetOrgTemplateSourcesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3674,7 +3674,7 @@ func (p *CloudClient) GetOrgTemplates(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.GetOrgTemplatesResponse, error) {
+) (*apitype.GetOrgTemplatesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrgTemplates{
 			OrgName:      orgName,
@@ -3685,7 +3685,7 @@ func (p *CloudClient) GetOrgTemplates(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetOrgTemplatesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetOrgTemplatesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrgTemplates: %T", resultFromInterceptor)
 			}
@@ -3709,7 +3709,7 @@ func (p *CloudClient) GetOrgTemplates(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetOrgTemplatesResponse
+	var result apitype.GetOrgTemplatesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3726,7 +3726,7 @@ func (p *CloudClient) GetOrganization(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.Organization, error) {
+) (*apitype.Organization, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrganization{
 			OrgName:      orgName,
@@ -3737,7 +3737,7 @@ func (p *CloudClient) GetOrganization(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.Organization)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.Organization)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrganization: %T", resultFromInterceptor)
 			}
@@ -3761,7 +3761,7 @@ func (p *CloudClient) GetOrganization(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.Organization
+	var result apitype.Organization
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3780,7 +3780,7 @@ func (p *CloudClient) GetOrganizationMemberTeams(
 	orgName string,
 	user string,
 	extraHeaders ...http.Header,
-) (*ext1.GetOrganizationMemberTeamsResponse, error) {
+) (*apitype.GetOrganizationMemberTeamsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrganizationMemberTeams{
 			OrgName:      orgName,
@@ -3792,7 +3792,7 @@ func (p *CloudClient) GetOrganizationMemberTeams(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetOrganizationMemberTeamsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetOrganizationMemberTeamsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrganizationMemberTeams: %T", resultFromInterceptor)
 			}
@@ -3817,7 +3817,7 @@ func (p *CloudClient) GetOrganizationMemberTeams(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetOrganizationMemberTeamsResponse
+	var result apitype.GetOrganizationMemberTeamsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3834,7 +3834,7 @@ func (p *CloudClient) GetOrganizationMetadata(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.OrganizationMetadata, error) {
+) (*apitype.OrganizationMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrganizationMetadata{
 			OrgName:      orgName,
@@ -3845,7 +3845,7 @@ func (p *CloudClient) GetOrganizationMetadata(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrganizationMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrganizationMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrganizationMetadata: %T", resultFromInterceptor)
 			}
@@ -3869,7 +3869,7 @@ func (p *CloudClient) GetOrganizationMetadata(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrganizationMetadata
+	var result apitype.OrganizationMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3888,7 +3888,7 @@ func (p *CloudClient) GetOrganizationWebhook(
 	orgName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrganizationWebhook{
 			OrgName:      orgName,
@@ -3900,7 +3900,7 @@ func (p *CloudClient) GetOrganizationWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrganizationWebhook: %T", resultFromInterceptor)
 			}
@@ -3925,7 +3925,7 @@ func (p *CloudClient) GetOrganizationWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -3944,7 +3944,7 @@ func (p *CloudClient) GetOrganizationWebhookDeliveries(
 	orgName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookDelivery, error) {
+) (*[]apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetOrganizationWebhookDeliveries{
 			OrgName:      orgName,
@@ -3956,7 +3956,7 @@ func (p *CloudClient) GetOrganizationWebhookDeliveries(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetOrganizationWebhookDeliveries: %T", resultFromInterceptor)
 			}
@@ -3981,7 +3981,7 @@ func (p *CloudClient) GetOrganizationWebhookDeliveries(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookDelivery
+	var result []apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4006,7 +4006,7 @@ func (p *CloudClient) GetPackageUsedByStacks(
 	packageName *string,
 	version *string,
 	extraHeaders ...http.Header,
-) (*ext1.PackageUsageResponse, error) {
+) (*apitype.PackageUsageResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPackageUsedByStacks{
 			OrgName:           orgName,
@@ -4021,7 +4021,7 @@ func (p *CloudClient) GetPackageUsedByStacks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PackageUsageResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PackageUsageResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPackageUsedByStacks: %T", resultFromInterceptor)
 			}
@@ -4050,7 +4050,7 @@ func (p *CloudClient) GetPackageUsedByStacks(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PackageUsageResponse
+	var result apitype.PackageUsageResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4060,16 +4060,16 @@ func (p *CloudClient) GetPackageUsedByStacks(
 
 type InterceptorForGetPolicyComplianceResults struct {
 	OrgName      string
-	Request      ext1.GetPolicyComplianceResultsRequest
+	Request      apitype.GetPolicyComplianceResultsRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) GetPolicyComplianceResults(
 	ctx context.Context,
 	orgName string,
-	request ext1.GetPolicyComplianceResultsRequest,
+	request apitype.GetPolicyComplianceResultsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.GetPolicyComplianceResultsResponse, error) {
+) (*apitype.GetPolicyComplianceResultsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyComplianceResults{
 			OrgName:      orgName,
@@ -4081,7 +4081,7 @@ func (p *CloudClient) GetPolicyComplianceResults(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetPolicyComplianceResultsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetPolicyComplianceResultsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyComplianceResults: %T", resultFromInterceptor)
 			}
@@ -4106,7 +4106,7 @@ func (p *CloudClient) GetPolicyComplianceResults(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetPolicyComplianceResultsResponse
+	var result apitype.GetPolicyComplianceResultsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4125,7 +4125,7 @@ func (p *CloudClient) GetPolicyGroup(
 	orgName string,
 	policyGroup string,
 	extraHeaders ...http.Header,
-) (*ext1.PolicyGroup, error) {
+) (*apitype.PolicyGroup, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyGroup{
 			OrgName:      orgName,
@@ -4137,7 +4137,7 @@ func (p *CloudClient) GetPolicyGroup(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PolicyGroup)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyGroup)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyGroup: %T", resultFromInterceptor)
 			}
@@ -4162,7 +4162,7 @@ func (p *CloudClient) GetPolicyGroup(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PolicyGroup
+	var result apitype.PolicyGroup
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4179,7 +4179,7 @@ func (p *CloudClient) GetPolicyGroupMetadata(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.PolicyGroupMetadata, error) {
+) (*apitype.PolicyGroupMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyGroupMetadata{
 			OrgName:      orgName,
@@ -4190,7 +4190,7 @@ func (p *CloudClient) GetPolicyGroupMetadata(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PolicyGroupMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyGroupMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyGroupMetadata: %T", resultFromInterceptor)
 			}
@@ -4214,7 +4214,7 @@ func (p *CloudClient) GetPolicyGroupMetadata(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PolicyGroupMetadata
+	var result apitype.PolicyGroupMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4233,7 +4233,7 @@ func (p *CloudClient) GetPolicyIssue(
 	orgName string,
 	issueId string,
 	extraHeaders ...http.Header,
-) (*ext1.GetPolicyIssueResponse, error) {
+) (*apitype.GetPolicyIssueResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyIssue{
 			OrgName:      orgName,
@@ -4245,7 +4245,7 @@ func (p *CloudClient) GetPolicyIssue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetPolicyIssueResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetPolicyIssueResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyIssue: %T", resultFromInterceptor)
 			}
@@ -4270,7 +4270,7 @@ func (p *CloudClient) GetPolicyIssue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetPolicyIssueResponse
+	var result apitype.GetPolicyIssueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4281,7 +4281,7 @@ func (p *CloudClient) GetPolicyIssue(
 type InterceptorForGetPolicyIssuesFilters struct {
 	OrgName      string
 	Closed       *bool
-	Request      ext1.PolicyIssueFiltersRequest
+	Request      apitype.PolicyIssueFiltersRequest
 	ExtraHeaders []http.Header
 }
 
@@ -4289,9 +4289,9 @@ func (p *CloudClient) GetPolicyIssuesFilters(
 	ctx context.Context,
 	orgName string,
 	closed *bool,
-	request ext1.PolicyIssueFiltersRequest,
+	request apitype.PolicyIssueFiltersRequest,
 	extraHeaders ...http.Header,
-) (*ext1.PolicyIssueFiltersResponse, error) {
+) (*apitype.PolicyIssueFiltersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyIssuesFilters{
 			OrgName:      orgName,
@@ -4304,7 +4304,7 @@ func (p *CloudClient) GetPolicyIssuesFilters(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PolicyIssueFiltersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyIssueFiltersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyIssuesFilters: %T", resultFromInterceptor)
 			}
@@ -4331,7 +4331,7 @@ func (p *CloudClient) GetPolicyIssuesFilters(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PolicyIssueFiltersResponse
+	var result apitype.PolicyIssueFiltersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4352,7 +4352,7 @@ func (p *CloudClient) GetPolicyPack(
 	policyPackName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*ext1.AppGetPolicyPackResponse, error) {
+) (*apitype.AppGetPolicyPackResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyPack{
 			OrgName:        orgName,
@@ -4365,7 +4365,7 @@ func (p *CloudClient) GetPolicyPack(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppGetPolicyPackResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppGetPolicyPackResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyPack: %T", resultFromInterceptor)
 			}
@@ -4391,7 +4391,7 @@ func (p *CloudClient) GetPolicyPack(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppGetPolicyPackResponse
+	var result apitype.AppGetPolicyPackResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4412,7 +4412,7 @@ func (p *CloudClient) GetPolicyPackConfigSchema(
 	policyPackName string,
 	version string,
 	extraHeaders ...http.Header,
-) (*ext1.AppGetPolicyPackConfigSchemaResponse, error) {
+) (*apitype.AppGetPolicyPackConfigSchemaResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyPackConfigSchema{
 			OrgName:        orgName,
@@ -4425,7 +4425,7 @@ func (p *CloudClient) GetPolicyPackConfigSchema(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppGetPolicyPackConfigSchemaResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppGetPolicyPackConfigSchemaResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyPackConfigSchema: %T", resultFromInterceptor)
 			}
@@ -4451,7 +4451,7 @@ func (p *CloudClient) GetPolicyPackConfigSchema(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppGetPolicyPackConfigSchemaResponse
+	var result apitype.AppGetPolicyPackConfigSchemaResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4468,7 +4468,7 @@ func (p *CloudClient) GetPolicyResultsMetadata(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.PolicyResultsMetadata, error) {
+) (*apitype.PolicyResultsMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetPolicyResultsMetadata{
 			OrgName:      orgName,
@@ -4479,7 +4479,7 @@ func (p *CloudClient) GetPolicyResultsMetadata(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PolicyResultsMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyResultsMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyResultsMetadata: %T", resultFromInterceptor)
 			}
@@ -4503,7 +4503,7 @@ func (p *CloudClient) GetPolicyResultsMetadata(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PolicyResultsMetadata
+	var result apitype.PolicyResultsMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4572,7 +4572,7 @@ func (p *CloudClient) GetProjectTemplateConfiguration(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.GetTemplateConfigurationResponse, error) {
+) (*apitype.GetTemplateConfigurationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetProjectTemplateConfiguration{
 			OrgName:      orgName,
@@ -4583,7 +4583,7 @@ func (p *CloudClient) GetProjectTemplateConfiguration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetTemplateConfigurationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetTemplateConfigurationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetProjectTemplateConfiguration: %T", resultFromInterceptor)
 			}
@@ -4607,7 +4607,7 @@ func (p *CloudClient) GetProjectTemplateConfiguration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetTemplateConfigurationResponse
+	var result apitype.GetTemplateConfigurationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4628,7 +4628,7 @@ func (p *CloudClient) GetResourceColumnFilterSet(
 	field *string,
 	query *string,
 	extraHeaders ...http.Header,
-) (*map[string]ext1.Aggregation, error) {
+) (*map[string]apitype.Aggregation, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetResourceColumnFilterSet{
 			OrgName:      orgName,
@@ -4641,7 +4641,7 @@ func (p *CloudClient) GetResourceColumnFilterSet(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(map[string]ext1.Aggregation)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(map[string]apitype.Aggregation)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetResourceColumnFilterSet: %T", resultFromInterceptor)
 			}
@@ -4668,7 +4668,7 @@ func (p *CloudClient) GetResourceColumnFilterSet(
 	if err != nil {
 		return nil, err
 	}
-	var result map[string]ext1.Aggregation
+	var result map[string]apitype.Aggregation
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4685,7 +4685,7 @@ func (p *CloudClient) GetResourceDashboardAggregations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ResourceSearchResult, error) {
+) (*apitype.ResourceSearchResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetResourceDashboardAggregations{
 			OrgName:      orgName,
@@ -4696,7 +4696,7 @@ func (p *CloudClient) GetResourceDashboardAggregations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ResourceSearchResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResourceSearchResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetResourceDashboardAggregations: %T", resultFromInterceptor)
 			}
@@ -4720,7 +4720,7 @@ func (p *CloudClient) GetResourceDashboardAggregations(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ResourceSearchResult
+	var result apitype.ResourceSearchResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4739,7 +4739,7 @@ func (p *CloudClient) GetRole(
 	orgName string,
 	roleID string,
 	extraHeaders ...http.Header,
-) (*ext1.PermissionDescriptorRecord, error) {
+) (*apitype.PermissionDescriptorRecord, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetRole{
 			OrgName:      orgName,
@@ -4751,7 +4751,7 @@ func (p *CloudClient) GetRole(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PermissionDescriptorRecord)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PermissionDescriptorRecord)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetRole: %T", resultFromInterceptor)
 			}
@@ -4776,7 +4776,7 @@ func (p *CloudClient) GetRole(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PermissionDescriptorRecord
+	var result apitype.PermissionDescriptorRecord
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4793,7 +4793,7 @@ func (p *CloudClient) GetSAMLOrganization(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.SAMLOrganization, error) {
+) (*apitype.SAMLOrganization, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetSAMLOrganization{
 			OrgName:      orgName,
@@ -4804,7 +4804,7 @@ func (p *CloudClient) GetSAMLOrganization(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.SAMLOrganization)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.SAMLOrganization)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetSAMLOrganization: %T", resultFromInterceptor)
 			}
@@ -4828,7 +4828,7 @@ func (p *CloudClient) GetSAMLOrganization(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.SAMLOrganization
+	var result apitype.SAMLOrganization
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4855,7 +4855,7 @@ func (p *CloudClient) GetService(
 	continuationToken *string,
 	maxResults *int,
 	extraHeaders ...http.Header,
-) (*ext1.GetServiceResponse, error) {
+) (*apitype.GetServiceResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetService{
 			OrgName:           orgName,
@@ -4871,7 +4871,7 @@ func (p *CloudClient) GetService(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetServiceResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetServiceResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetService: %T", resultFromInterceptor)
 			}
@@ -4901,7 +4901,7 @@ func (p *CloudClient) GetService(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetServiceResponse
+	var result apitype.GetServiceResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4920,7 +4920,7 @@ func (p *CloudClient) GetTeam(
 	orgName string,
 	teamName string,
 	extraHeaders ...http.Header,
-) (*ext1.Team, error) {
+) (*apitype.Team, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetTeam{
 			OrgName:      orgName,
@@ -4932,7 +4932,7 @@ func (p *CloudClient) GetTeam(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.Team)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.Team)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetTeam: %T", resultFromInterceptor)
 			}
@@ -4957,7 +4957,7 @@ func (p *CloudClient) GetTeam(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.Team
+	var result apitype.Team
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -4967,7 +4967,7 @@ func (p *CloudClient) GetTeam(
 
 type InterceptorForGetUsageSummaryDiscoveredResourceHours struct {
 	OrgName       string
-	Granularity   ext1.UsageSummaryTimeUnit
+	Granularity   apitype.UsageSummaryTimeUnit
 	LookbackDays  *int64
 	LookbackStart *int64
 	ExtraHeaders  []http.Header
@@ -4976,11 +4976,11 @@ type InterceptorForGetUsageSummaryDiscoveredResourceHours struct {
 func (p *CloudClient) GetUsageSummaryDiscoveredResourceHours(
 	ctx context.Context,
 	orgName string,
-	granularity ext1.UsageSummaryTimeUnit,
+	granularity apitype.UsageSummaryTimeUnit,
 	lookbackDays *int64,
 	lookbackStart *int64,
 	extraHeaders ...http.Header,
-) (*ext1.GetResourceCountSummaryResponse, error) {
+) (*apitype.GetResourceCountSummaryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUsageSummaryDiscoveredResourceHours{
 			OrgName:       orgName,
@@ -4994,7 +4994,7 @@ func (p *CloudClient) GetUsageSummaryDiscoveredResourceHours(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetResourceCountSummaryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetResourceCountSummaryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUsageSummaryDiscoveredResourceHours: %T", resultFromInterceptor)
 			}
@@ -5022,7 +5022,7 @@ func (p *CloudClient) GetUsageSummaryDiscoveredResourceHours(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetResourceCountSummaryResponse
+	var result apitype.GetResourceCountSummaryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5032,7 +5032,7 @@ func (p *CloudClient) GetUsageSummaryDiscoveredResourceHours(
 
 type InterceptorForGetUsageSummaryEnvironmentSecrets struct {
 	OrgName       string
-	Granularity   ext1.UsageSummaryTimeUnit
+	Granularity   apitype.UsageSummaryTimeUnit
 	LookbackDays  *int64
 	LookbackStart *int64
 	ExtraHeaders  []http.Header
@@ -5041,11 +5041,11 @@ type InterceptorForGetUsageSummaryEnvironmentSecrets struct {
 func (p *CloudClient) GetUsageSummaryEnvironmentSecrets(
 	ctx context.Context,
 	orgName string,
-	granularity ext1.UsageSummaryTimeUnit,
+	granularity apitype.UsageSummaryTimeUnit,
 	lookbackDays *int64,
 	lookbackStart *int64,
 	extraHeaders ...http.Header,
-) (*ext1.GetResourceCountSummaryResponse, error) {
+) (*apitype.GetResourceCountSummaryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUsageSummaryEnvironmentSecrets{
 			OrgName:       orgName,
@@ -5059,7 +5059,7 @@ func (p *CloudClient) GetUsageSummaryEnvironmentSecrets(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetResourceCountSummaryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetResourceCountSummaryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUsageSummaryEnvironmentSecrets: %T", resultFromInterceptor)
 			}
@@ -5087,7 +5087,7 @@ func (p *CloudClient) GetUsageSummaryEnvironmentSecrets(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetResourceCountSummaryResponse
+	var result apitype.GetResourceCountSummaryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5097,7 +5097,7 @@ func (p *CloudClient) GetUsageSummaryEnvironmentSecrets(
 
 type InterceptorForGetUsageSummaryNeoTokens struct {
 	OrgName             string
-	Granularity         ext1.UsageSummaryTimeUnit
+	Granularity         apitype.UsageSummaryTimeUnit
 	IncludeTagBreakdown *bool
 	LookbackDays        *int64
 	LookbackStart       *int64
@@ -5107,12 +5107,12 @@ type InterceptorForGetUsageSummaryNeoTokens struct {
 func (p *CloudClient) GetUsageSummaryNeoTokens(
 	ctx context.Context,
 	orgName string,
-	granularity ext1.UsageSummaryTimeUnit,
+	granularity apitype.UsageSummaryTimeUnit,
 	includeTagBreakdown *bool,
 	lookbackDays *int64,
 	lookbackStart *int64,
 	extraHeaders ...http.Header,
-) (*ext1.GetResourceCountSummaryResponse, error) {
+) (*apitype.GetResourceCountSummaryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUsageSummaryNeoTokens{
 			OrgName:             orgName,
@@ -5127,7 +5127,7 @@ func (p *CloudClient) GetUsageSummaryNeoTokens(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetResourceCountSummaryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetResourceCountSummaryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUsageSummaryNeoTokens: %T", resultFromInterceptor)
 			}
@@ -5156,7 +5156,7 @@ func (p *CloudClient) GetUsageSummaryNeoTokens(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetResourceCountSummaryResponse
+	var result apitype.GetResourceCountSummaryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5166,7 +5166,7 @@ func (p *CloudClient) GetUsageSummaryNeoTokens(
 
 type InterceptorForGetUsageSummaryResourceHours struct {
 	OrgName       string
-	Granularity   ext1.UsageSummaryTimeUnit
+	Granularity   apitype.UsageSummaryTimeUnit
 	LookbackDays  *int64
 	LookbackStart *int64
 	ExtraHeaders  []http.Header
@@ -5175,11 +5175,11 @@ type InterceptorForGetUsageSummaryResourceHours struct {
 func (p *CloudClient) GetUsageSummaryResourceHours(
 	ctx context.Context,
 	orgName string,
-	granularity ext1.UsageSummaryTimeUnit,
+	granularity apitype.UsageSummaryTimeUnit,
 	lookbackDays *int64,
 	lookbackStart *int64,
 	extraHeaders ...http.Header,
-) (*ext1.GetResourceCountSummaryResponse, error) {
+) (*apitype.GetResourceCountSummaryResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetUsageSummaryResourceHours{
 			OrgName:       orgName,
@@ -5193,7 +5193,7 @@ func (p *CloudClient) GetUsageSummaryResourceHours(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetResourceCountSummaryResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetResourceCountSummaryResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for GetUsageSummaryResourceHours: %T", resultFromInterceptor)
 			}
@@ -5221,7 +5221,7 @@ func (p *CloudClient) GetUsageSummaryResourceHours(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetResourceCountSummaryResponse
+	var result apitype.GetResourceCountSummaryResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5293,7 +5293,7 @@ func (p *CloudClient) ListAuditLogEventTypes(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListAuditLogEventTypesResponse, error) {
+) (*apitype.ListAuditLogEventTypesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAuditLogEventTypes{
 			OrgName:      orgName,
@@ -5304,7 +5304,7 @@ func (p *CloudClient) ListAuditLogEventTypes(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAuditLogEventTypesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAuditLogEventTypesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAuditLogEventTypes: %T", resultFromInterceptor)
 			}
@@ -5328,7 +5328,7 @@ func (p *CloudClient) ListAuditLogEventTypes(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAuditLogEventTypesResponse
+	var result apitype.ListAuditLogEventTypesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5357,7 +5357,7 @@ func (p *CloudClient) ListAuditLogEventsHandlerV1(
 	startTime *int64,
 	userFilter *string,
 	extraHeaders ...http.Header,
-) (*ext1.ResponseAuditLogs, error) {
+) (*apitype.ResponseAuditLogs, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAuditLogEventsHandlerV1{
 			OrgName:           orgName,
@@ -5374,7 +5374,7 @@ func (p *CloudClient) ListAuditLogEventsHandlerV1(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ResponseAuditLogs)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseAuditLogs)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAuditLogEventsHandlerV1: %T", resultFromInterceptor)
 			}
@@ -5405,7 +5405,7 @@ func (p *CloudClient) ListAuditLogEventsHandlerV1(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ResponseAuditLogs
+	var result apitype.ResponseAuditLogs
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5434,7 +5434,7 @@ func (p *CloudClient) ListAuditLogEventsHandlerV2(
 	startTime *int64,
 	userFilter *string,
 	extraHeaders ...http.Header,
-) (*ext1.ResponseAuditLogs, error) {
+) (*apitype.ResponseAuditLogs, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAuditLogEventsHandlerV2{
 			OrgName:           orgName,
@@ -5451,7 +5451,7 @@ func (p *CloudClient) ListAuditLogEventsHandlerV2(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ResponseAuditLogs)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ResponseAuditLogs)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAuditLogEventsHandlerV2: %T", resultFromInterceptor)
 			}
@@ -5482,7 +5482,7 @@ func (p *CloudClient) ListAuditLogEventsHandlerV2(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ResponseAuditLogs
+	var result apitype.ResponseAuditLogs
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5499,7 +5499,7 @@ func (p *CloudClient) ListAvailableScopes(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*map[string][]ext1.RbacScopeGroup, error) {
+) (*map[string][]apitype.RbacScopeGroup, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListAvailableScopes{
 			OrgName:      orgName,
@@ -5510,7 +5510,7 @@ func (p *CloudClient) ListAvailableScopes(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(map[string][]ext1.RbacScopeGroup)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(map[string][]apitype.RbacScopeGroup)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAvailableScopes: %T", resultFromInterceptor)
 			}
@@ -5534,7 +5534,7 @@ func (p *CloudClient) ListAvailableScopes(
 	if err != nil {
 		return nil, err
 	}
-	var result map[string][]ext1.RbacScopeGroup
+	var result map[string][]apitype.RbacScopeGroup
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5551,7 +5551,7 @@ func (p *CloudClient) ListDeletedStacks(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListDeletedStacksResponse, error) {
+) (*apitype.ListDeletedStacksResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListDeletedStacks{
 			OrgName:      orgName,
@@ -5562,7 +5562,7 @@ func (p *CloudClient) ListDeletedStacks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListDeletedStacksResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListDeletedStacksResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListDeletedStacks: %T", resultFromInterceptor)
 			}
@@ -5586,7 +5586,7 @@ func (p *CloudClient) ListDeletedStacks(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListDeletedStacksResponse
+	var result apitype.ListDeletedStacksResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5607,7 +5607,7 @@ func (p *CloudClient) ListEvents(
 	changeRequestID string,
 	continuationToken *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListChangeRequestEventsResponse, error) {
+) (*apitype.ListChangeRequestEventsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListEvents{
 			OrgName:           orgName,
@@ -5620,7 +5620,7 @@ func (p *CloudClient) ListEvents(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListChangeRequestEventsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListChangeRequestEventsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEvents: %T", resultFromInterceptor)
 			}
@@ -5647,7 +5647,7 @@ func (p *CloudClient) ListEvents(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListChangeRequestEventsResponse
+	var result apitype.ListChangeRequestEventsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5668,7 +5668,7 @@ func (p *CloudClient) ListGates(
 	entityType *string,
 	qualifiedName *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListChangeGatesResponse, error) {
+) (*apitype.ListChangeGatesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListGates{
 			OrgName:       orgName,
@@ -5681,7 +5681,7 @@ func (p *CloudClient) ListGates(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListChangeGatesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListChangeGatesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListGates: %T", resultFromInterceptor)
 			}
@@ -5708,7 +5708,7 @@ func (p *CloudClient) ListGates(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListChangeGatesResponse
+	var result apitype.ListChangeGatesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5725,7 +5725,7 @@ func (p *CloudClient) ListOrgInvites(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListOrganizationInvitesResponse, error) {
+) (*apitype.ListOrganizationInvitesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgInvites{
 			OrgName:      orgName,
@@ -5736,7 +5736,7 @@ func (p *CloudClient) ListOrgInvites(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListOrganizationInvitesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListOrganizationInvitesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgInvites: %T", resultFromInterceptor)
 			}
@@ -5760,7 +5760,7 @@ func (p *CloudClient) ListOrgInvites(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListOrganizationInvitesResponse
+	var result apitype.ListOrganizationInvitesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5785,7 +5785,7 @@ func (p *CloudClient) ListOrgTokens(
 	maxResults *int,
 	search *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListAccessTokensResponse, error) {
+) (*apitype.ListAccessTokensResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgTokens{
 			OrgName:           orgName,
@@ -5800,7 +5800,7 @@ func (p *CloudClient) ListOrgTokens(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAccessTokensResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAccessTokensResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgTokens: %T", resultFromInterceptor)
 			}
@@ -5829,7 +5829,7 @@ func (p *CloudClient) ListOrgTokens(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAccessTokensResponse
+	var result apitype.ListAccessTokensResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5848,7 +5848,7 @@ func (p *CloudClient) ListOrgTokensWithRole(
 	orgName string,
 	roleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ListAccessTokensResponse, error) {
+) (*apitype.ListAccessTokensResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrgTokensWithRole{
 			OrgName:      orgName,
@@ -5860,7 +5860,7 @@ func (p *CloudClient) ListOrgTokensWithRole(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAccessTokensResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAccessTokensResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrgTokensWithRole: %T", resultFromInterceptor)
 			}
@@ -5885,7 +5885,7 @@ func (p *CloudClient) ListOrgTokensWithRole(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAccessTokensResponse
+	var result apitype.ListAccessTokensResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5902,7 +5902,7 @@ func (p *CloudClient) ListOrganizationKeyMigrations(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.KeyEncryptionKeyMigration, error) {
+) (*[]apitype.KeyEncryptionKeyMigration, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrganizationKeyMigrations{
 			OrgName:      orgName,
@@ -5913,7 +5913,7 @@ func (p *CloudClient) ListOrganizationKeyMigrations(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.KeyEncryptionKeyMigration)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.KeyEncryptionKeyMigration)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrganizationKeyMigrations: %T", resultFromInterceptor)
 			}
@@ -5937,7 +5937,7 @@ func (p *CloudClient) ListOrganizationKeyMigrations(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.KeyEncryptionKeyMigration
+	var result []apitype.KeyEncryptionKeyMigration
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -5954,7 +5954,7 @@ func (p *CloudClient) ListOrganizationKeys(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.CustomerManagedKey, error) {
+) (*[]apitype.CustomerManagedKey, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrganizationKeys{
 			OrgName:      orgName,
@@ -5965,7 +5965,7 @@ func (p *CloudClient) ListOrganizationKeys(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.CustomerManagedKey)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.CustomerManagedKey)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrganizationKeys: %T", resultFromInterceptor)
 			}
@@ -5989,7 +5989,7 @@ func (p *CloudClient) ListOrganizationKeys(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.CustomerManagedKey
+	var result []apitype.CustomerManagedKey
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6001,7 +6001,7 @@ type InterceptorForListOrganizationMembers struct {
 	OrgName           string
 	ContinuationToken *string
 	IncludeSuspended  *bool
-	Type              *ext1.OrganizationMemberKind
+	Type              *apitype.OrganizationMemberKind
 	ExtraHeaders      []http.Header
 }
 
@@ -6010,9 +6010,9 @@ func (p *CloudClient) ListOrganizationMembers(
 	orgName string,
 	continuationToken *string,
 	includeSuspended *bool,
-	type_ *ext1.OrganizationMemberKind,
+	type_ *apitype.OrganizationMemberKind,
 	extraHeaders ...http.Header,
-) (*ext1.ListOrganizationMembersResponse, error) {
+) (*apitype.ListOrganizationMembersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrganizationMembers{
 			OrgName:           orgName,
@@ -6026,7 +6026,7 @@ func (p *CloudClient) ListOrganizationMembers(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListOrganizationMembersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListOrganizationMembersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrganizationMembers: %T", resultFromInterceptor)
 			}
@@ -6054,7 +6054,7 @@ func (p *CloudClient) ListOrganizationMembers(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListOrganizationMembersResponse
+	var result apitype.ListOrganizationMembersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6071,7 +6071,7 @@ func (p *CloudClient) ListOrganizationWebhooks(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*[]ext1.WebhookResponse, error) {
+) (*[]apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListOrganizationWebhooks{
 			OrgName:      orgName,
@@ -6082,7 +6082,7 @@ func (p *CloudClient) ListOrganizationWebhooks(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.([]apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOrganizationWebhooks: %T", resultFromInterceptor)
 			}
@@ -6106,7 +6106,7 @@ func (p *CloudClient) ListOrganizationWebhooks(
 	if err != nil {
 		return nil, err
 	}
-	var result []ext1.WebhookResponse
+	var result []apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6116,16 +6116,16 @@ func (p *CloudClient) ListOrganizationWebhooks(
 
 type InterceptorForListPoliciesCompliance struct {
 	OrgName      string
-	Request      ext1.AngularGridGetRowsRequest
+	Request      apitype.AngularGridGetRowsRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) ListPoliciesCompliance(
 	ctx context.Context,
 	orgName string,
-	request ext1.AngularGridGetRowsRequest,
+	request apitype.AngularGridGetRowsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ListPoliciesComplianceResponse, error) {
+) (*apitype.ListPoliciesComplianceResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListPoliciesCompliance{
 			OrgName:      orgName,
@@ -6137,7 +6137,7 @@ func (p *CloudClient) ListPoliciesCompliance(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListPoliciesComplianceResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPoliciesComplianceResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPoliciesCompliance: %T", resultFromInterceptor)
 			}
@@ -6162,7 +6162,7 @@ func (p *CloudClient) ListPoliciesCompliance(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListPoliciesComplianceResponse
+	var result apitype.ListPoliciesComplianceResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6179,7 +6179,7 @@ func (p *CloudClient) ListPolicyGroups(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.AppListPolicyGroupsResponse, error) {
+) (*apitype.AppListPolicyGroupsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListPolicyGroups{
 			OrgName:      orgName,
@@ -6190,7 +6190,7 @@ func (p *CloudClient) ListPolicyGroups(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppListPolicyGroupsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppListPolicyGroupsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyGroups: %T", resultFromInterceptor)
 			}
@@ -6214,7 +6214,7 @@ func (p *CloudClient) ListPolicyGroups(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppListPolicyGroupsResponse
+	var result apitype.AppListPolicyGroupsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6225,7 +6225,7 @@ func (p *CloudClient) ListPolicyGroups(
 type InterceptorForListPolicyIssues struct {
 	OrgName      string
 	Closed       *bool
-	Request      ext1.AngularGridGetRowsRequest
+	Request      apitype.AngularGridGetRowsRequest
 	ExtraHeaders []http.Header
 }
 
@@ -6233,9 +6233,9 @@ func (p *CloudClient) ListPolicyIssues(
 	ctx context.Context,
 	orgName string,
 	closed *bool,
-	request ext1.AngularGridGetRowsRequest,
+	request apitype.AngularGridGetRowsRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ListPolicyIssuesResponse, error) {
+) (*apitype.ListPolicyIssuesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListPolicyIssues{
 			OrgName:      orgName,
@@ -6248,7 +6248,7 @@ func (p *CloudClient) ListPolicyIssues(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListPolicyIssuesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPolicyIssuesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyIssues: %T", resultFromInterceptor)
 			}
@@ -6275,7 +6275,7 @@ func (p *CloudClient) ListPolicyIssues(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListPolicyIssuesResponse
+	var result apitype.ListPolicyIssuesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6294,7 +6294,7 @@ func (p *CloudClient) ListPolicyPacks_orgs(
 	orgName string,
 	policypack *string,
 	extraHeaders ...http.Header,
-) (*ext1.AppListPolicyPacksResponse, error) {
+) (*apitype.AppListPolicyPacksResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListPolicyPacks_orgs{
 			OrgName:      orgName,
@@ -6306,7 +6306,7 @@ func (p *CloudClient) ListPolicyPacks_orgs(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AppListPolicyPacksResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AppListPolicyPacksResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyPacks_orgs: %T", resultFromInterceptor)
 			}
@@ -6332,7 +6332,7 @@ func (p *CloudClient) ListPolicyPacks_orgs(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AppListPolicyPacksResponse
+	var result apitype.AppListPolicyPacksResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6349,7 +6349,7 @@ func (p *CloudClient) ListPolicyViolationsV2(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListPolicyViolationsV2Response, error) {
+) (*apitype.ListPolicyViolationsV2Response, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListPolicyViolationsV2{
 			OrgName:      orgName,
@@ -6360,7 +6360,7 @@ func (p *CloudClient) ListPolicyViolationsV2(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListPolicyViolationsV2Response)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPolicyViolationsV2Response)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyViolationsV2: %T", resultFromInterceptor)
 			}
@@ -6384,7 +6384,7 @@ func (p *CloudClient) ListPolicyViolationsV2(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListPolicyViolationsV2Response
+	var result apitype.ListPolicyViolationsV2Response
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6395,7 +6395,7 @@ func (p *CloudClient) ListPolicyViolationsV2(
 type InterceptorForListRolesByOrgIDAndUXPurpose struct {
 	OrgName      string
 	AssignedToMe *bool
-	UxPurpose    ext1.PermissionDescriptorUXPurpose
+	UxPurpose    apitype.PermissionDescriptorUXPurpose
 	ExtraHeaders []http.Header
 }
 
@@ -6403,9 +6403,9 @@ func (p *CloudClient) ListRolesByOrgIDAndUXPurpose(
 	ctx context.Context,
 	orgName string,
 	assignedToMe *bool,
-	uxPurpose ext1.PermissionDescriptorUXPurpose,
+	uxPurpose apitype.PermissionDescriptorUXPurpose,
 	extraHeaders ...http.Header,
-) (*ext1.ListRolesResponse, error) {
+) (*apitype.ListRolesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListRolesByOrgIDAndUXPurpose{
 			OrgName:      orgName,
@@ -6418,7 +6418,7 @@ func (p *CloudClient) ListRolesByOrgIDAndUXPurpose(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListRolesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListRolesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListRolesByOrgIDAndUXPurpose: %T", resultFromInterceptor)
 			}
@@ -6445,7 +6445,7 @@ func (p *CloudClient) ListRolesByOrgIDAndUXPurpose(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListRolesResponse
+	var result apitype.ListRolesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6462,7 +6462,7 @@ func (p *CloudClient) ListSAMLOrganizationAdmins(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListSAMLOrganizationAdminsResponse, error) {
+) (*apitype.ListSAMLOrganizationAdminsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListSAMLOrganizationAdmins{
 			OrgName:      orgName,
@@ -6473,7 +6473,7 @@ func (p *CloudClient) ListSAMLOrganizationAdmins(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListSAMLOrganizationAdminsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListSAMLOrganizationAdminsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListSAMLOrganizationAdmins: %T", resultFromInterceptor)
 			}
@@ -6497,7 +6497,7 @@ func (p *CloudClient) ListSAMLOrganizationAdmins(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListSAMLOrganizationAdminsResponse
+	var result apitype.ListSAMLOrganizationAdminsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6518,7 +6518,7 @@ func (p *CloudClient) ListServices(
 	continuationToken *string,
 	maxResults *int,
 	extraHeaders ...http.Header,
-) (*ext1.ListServicesResponse, error) {
+) (*apitype.ListServicesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListServices{
 			OrgName:           orgName,
@@ -6531,7 +6531,7 @@ func (p *CloudClient) ListServices(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListServicesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListServicesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListServices: %T", resultFromInterceptor)
 			}
@@ -6558,7 +6558,7 @@ func (p *CloudClient) ListServices(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListServicesResponse
+	var result apitype.ListServicesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6577,7 +6577,7 @@ func (p *CloudClient) ListTeamRoles(
 	orgName string,
 	teamName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListTeamRolesResponse, error) {
+) (*apitype.ListTeamRolesResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTeamRoles{
 			OrgName:      orgName,
@@ -6589,7 +6589,7 @@ func (p *CloudClient) ListTeamRoles(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListTeamRolesResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListTeamRolesResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListTeamRoles: %T", resultFromInterceptor)
 			}
@@ -6614,7 +6614,7 @@ func (p *CloudClient) ListTeamRoles(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListTeamRolesResponse
+	var result apitype.ListTeamRolesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6641,7 +6641,7 @@ func (p *CloudClient) ListTeamTokens(
 	maxResults *int,
 	search *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListAccessTokensResponse, error) {
+) (*apitype.ListAccessTokensResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTeamTokens{
 			OrgName:           orgName,
@@ -6657,7 +6657,7 @@ func (p *CloudClient) ListTeamTokens(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListAccessTokensResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAccessTokensResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListTeamTokens: %T", resultFromInterceptor)
 			}
@@ -6687,7 +6687,7 @@ func (p *CloudClient) ListTeamTokens(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListAccessTokensResponse
+	var result apitype.ListAccessTokensResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6704,7 +6704,7 @@ func (p *CloudClient) ListTeams(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListTeamsResponse, error) {
+) (*apitype.ListTeamsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTeams{
 			OrgName:      orgName,
@@ -6715,7 +6715,7 @@ func (p *CloudClient) ListTeams(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListTeamsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListTeamsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListTeams: %T", resultFromInterceptor)
 			}
@@ -6739,7 +6739,7 @@ func (p *CloudClient) ListTeams(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListTeamsResponse
+	var result apitype.ListTeamsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6758,7 +6758,7 @@ func (p *CloudClient) ListTeamsWithRole(
 	orgName string,
 	roleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ListTeamsWithRoleResponse, error) {
+) (*apitype.ListTeamsWithRoleResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTeamsWithRole{
 			OrgName:      orgName,
@@ -6770,7 +6770,7 @@ func (p *CloudClient) ListTeamsWithRole(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListTeamsWithRoleResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListTeamsWithRoleResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListTeamsWithRole: %T", resultFromInterceptor)
 			}
@@ -6795,7 +6795,7 @@ func (p *CloudClient) ListTeamsWithRole(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListTeamsWithRoleResponse
+	var result apitype.ListTeamsWithRoleResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6814,7 +6814,7 @@ func (p *CloudClient) ListUsersWithRole(
 	orgName string,
 	roleID string,
 	extraHeaders ...http.Header,
-) (*ext1.ListUsersWithRoleResponse, error) {
+) (*apitype.ListUsersWithRoleResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListUsersWithRole{
 			OrgName:      orgName,
@@ -6826,7 +6826,7 @@ func (p *CloudClient) ListUsersWithRole(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListUsersWithRoleResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListUsersWithRoleResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ListUsersWithRole: %T", resultFromInterceptor)
 			}
@@ -6851,7 +6851,7 @@ func (p *CloudClient) ListUsersWithRole(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListUsersWithRoleResponse
+	var result apitype.ListUsersWithRoleResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6876,7 +6876,7 @@ func (p *CloudClient) List_change_requests(
 	entityId *string,
 	entityType *string,
 	extraHeaders ...http.Header,
-) (*ext1.ListChangeRequestsResponse, error) {
+) (*apitype.ListChangeRequestsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForList_change_requests{
 			OrgName:           orgName,
@@ -6891,7 +6891,7 @@ func (p *CloudClient) List_change_requests(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListChangeRequestsResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListChangeRequestsResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for List_change_requests: %T", resultFromInterceptor)
 			}
@@ -6920,7 +6920,7 @@ func (p *CloudClient) List_change_requests(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListChangeRequestsResponse
+	var result apitype.ListChangeRequestsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6937,7 +6937,7 @@ func (p *CloudClient) List_orgs_oidc_issuers(
 	ctx context.Context,
 	orgName string,
 	extraHeaders ...http.Header,
-) (*ext1.ListOidcIssuersResponse, error) {
+) (*apitype.ListOidcIssuersResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForList_orgs_oidc_issuers{
 			OrgName:      orgName,
@@ -6948,7 +6948,7 @@ func (p *CloudClient) List_orgs_oidc_issuers(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ListOidcIssuersResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListOidcIssuersResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for List_orgs_oidc_issuers: %T", resultFromInterceptor)
 			}
@@ -6972,7 +6972,7 @@ func (p *CloudClient) List_orgs_oidc_issuers(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ListOidcIssuersResponse
+	var result apitype.ListOidcIssuersResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6982,14 +6982,14 @@ func (p *CloudClient) List_orgs_oidc_issuers(
 
 type InterceptorForNewPolicyGroup struct {
 	OrgName      string
-	Request      ext1.NewPolicyGroupRequest
+	Request      apitype.NewPolicyGroupRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) NewPolicyGroup(
 	ctx context.Context,
 	orgName string,
-	request ext1.NewPolicyGroupRequest,
+	request apitype.NewPolicyGroupRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -7038,7 +7038,7 @@ func (p *CloudClient) PingOrganizationWebhook(
 	orgName string,
 	hookName string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForPingOrganizationWebhook{
 			OrgName:      orgName,
@@ -7050,7 +7050,7 @@ func (p *CloudClient) PingOrganizationWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for PingOrganizationWebhook: %T", resultFromInterceptor)
 			}
@@ -7075,7 +7075,7 @@ func (p *CloudClient) PingOrganizationWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7146,7 +7146,7 @@ func (p *CloudClient) ReadGate(
 	orgName string,
 	gateID string,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeGate, error) {
+) (*apitype.ChangeGate, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForReadGate{
 			OrgName:      orgName,
@@ -7158,7 +7158,7 @@ func (p *CloudClient) ReadGate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeGate)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeGate)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for ReadGate: %T", resultFromInterceptor)
 			}
@@ -7183,7 +7183,7 @@ func (p *CloudClient) ReadGate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeGate
+	var result apitype.ChangeGate
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7204,7 +7204,7 @@ func (p *CloudClient) RedeliverOrganizationWebhookEvent(
 	hookName string,
 	event string,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookDelivery, error) {
+) (*apitype.WebhookDelivery, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRedeliverOrganizationWebhookEvent{
 			OrgName:      orgName,
@@ -7217,7 +7217,7 @@ func (p *CloudClient) RedeliverOrganizationWebhookEvent(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookDelivery)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookDelivery)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RedeliverOrganizationWebhookEvent: %T", resultFromInterceptor)
 			}
@@ -7243,7 +7243,7 @@ func (p *CloudClient) RedeliverOrganizationWebhookEvent(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookDelivery
+	var result apitype.WebhookDelivery
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7262,7 +7262,7 @@ func (p *CloudClient) RegenerateThumbprints(
 	orgName string,
 	issuerId string,
 	extraHeaders ...http.Header,
-) (*ext1.OidcIssuerRegistrationResponse, error) {
+) (*apitype.OidcIssuerRegistrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRegenerateThumbprints{
 			OrgName:      orgName,
@@ -7274,7 +7274,7 @@ func (p *CloudClient) RegenerateThumbprints(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OidcIssuerRegistrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OidcIssuerRegistrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RegenerateThumbprints: %T", resultFromInterceptor)
 			}
@@ -7299,7 +7299,7 @@ func (p *CloudClient) RegenerateThumbprints(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OidcIssuerRegistrationResponse
+	var result apitype.OidcIssuerRegistrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7309,16 +7309,16 @@ func (p *CloudClient) RegenerateThumbprints(
 
 type InterceptorForRegisterOidcIssuer struct {
 	OrgName      string
-	Request      ext1.OidcIssuerRegistrationRequest
+	Request      apitype.OidcIssuerRegistrationRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) RegisterOidcIssuer(
 	ctx context.Context,
 	orgName string,
-	request ext1.OidcIssuerRegistrationRequest,
+	request apitype.OidcIssuerRegistrationRequest,
 	extraHeaders ...http.Header,
-) (*ext1.OidcIssuerRegistrationResponse, error) {
+) (*apitype.OidcIssuerRegistrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRegisterOidcIssuer{
 			OrgName:      orgName,
@@ -7330,7 +7330,7 @@ func (p *CloudClient) RegisterOidcIssuer(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OidcIssuerRegistrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OidcIssuerRegistrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RegisterOidcIssuer: %T", resultFromInterceptor)
 			}
@@ -7355,7 +7355,7 @@ func (p *CloudClient) RegisterOidcIssuer(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OidcIssuerRegistrationResponse
+	var result apitype.OidcIssuerRegistrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7384,7 +7384,7 @@ func (p *CloudClient) RemoveServiceItem(
 	itemName string,
 	maxResults *int,
 	extraHeaders ...http.Header,
-) (*ext1.GetServiceResponse, error) {
+) (*apitype.GetServiceResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForRemoveServiceItem{
 			OrgName:      orgName,
@@ -7401,7 +7401,7 @@ func (p *CloudClient) RemoveServiceItem(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetServiceResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetServiceResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for RemoveServiceItem: %T", resultFromInterceptor)
 			}
@@ -7432,7 +7432,7 @@ func (p *CloudClient) RemoveServiceItem(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetServiceResponse
+	var result apitype.GetServiceResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7506,7 +7506,7 @@ func (p *CloudClient) RemoveServiceItemV2(
 type InterceptorForResendOrgInvite struct {
 	OrgName      string
 	InviteID     string
-	Request      ext1.ResendOrganizationInviteRequest
+	Request      apitype.ResendOrganizationInviteRequest
 	ExtraHeaders []http.Header
 }
 
@@ -7514,7 +7514,7 @@ func (p *CloudClient) ResendOrgInvite(
 	ctx context.Context,
 	orgName string,
 	inviteID string,
-	request ext1.ResendOrganizationInviteRequest,
+	request apitype.ResendOrganizationInviteRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -7557,7 +7557,7 @@ func (p *CloudClient) ResendOrgInvite(
 type InterceptorForRestoreDeletedStack struct {
 	OrgName      string
 	ProgramID    string
-	Request      ext1.RestoreDeletedStackRequest
+	Request      apitype.RestoreDeletedStackRequest
 	ExtraHeaders []http.Header
 }
 
@@ -7565,7 +7565,7 @@ func (p *CloudClient) RestoreDeletedStack(
 	ctx context.Context,
 	orgName string,
 	programID string,
-	request ext1.RestoreDeletedStackRequest,
+	request apitype.RestoreDeletedStackRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -7797,7 +7797,7 @@ func (p *CloudClient) SetSoleOrganizationAdmin(
 type InterceptorForSubmit struct {
 	OrgName         string
 	ChangeRequestID string
-	Request         ext1.SubmitChangeRequestRequest
+	Request         apitype.SubmitChangeRequestRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -7805,7 +7805,7 @@ func (p *CloudClient) Submit(
 	ctx context.Context,
 	orgName string,
 	changeRequestID string,
-	request ext1.SubmitChangeRequestRequest,
+	request apitype.SubmitChangeRequestRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -7847,16 +7847,16 @@ func (p *CloudClient) Submit(
 
 type InterceptorForTestAuditLogExportConfiguration struct {
 	OrgName      string
-	Request      ext1.AuditLogsExportS3Config
+	Request      apitype.AuditLogsExportS3Config
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) TestAuditLogExportConfiguration(
 	ctx context.Context,
 	orgName string,
-	request ext1.AuditLogsExportS3Config,
+	request apitype.AuditLogsExportS3Config,
 	extraHeaders ...http.Header,
-) (*ext1.AuditLogExportResult, error) {
+) (*apitype.AuditLogExportResult, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForTestAuditLogExportConfiguration{
 			OrgName:      orgName,
@@ -7868,7 +7868,7 @@ func (p *CloudClient) TestAuditLogExportConfiguration(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AuditLogExportResult)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AuditLogExportResult)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for TestAuditLogExportConfiguration: %T", resultFromInterceptor)
 			}
@@ -7893,7 +7893,7 @@ func (p *CloudClient) TestAuditLogExportConfiguration(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AuditLogExportResult
+	var result apitype.AuditLogExportResult
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -7903,14 +7903,14 @@ func (p *CloudClient) TestAuditLogExportConfiguration(
 
 type InterceptorForTransferAllStacks struct {
 	OrgName      string
-	Request      ext1.TransferAllStacksRequest
+	Request      apitype.TransferAllStacksRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) TransferAllStacks(
 	ctx context.Context,
 	orgName string,
-	request ext1.TransferAllStacksRequest,
+	request apitype.TransferAllStacksRequest,
 	extraHeaders ...http.Header,
 ) (*string, error) {
 	if p.Interceptor != nil {
@@ -7956,7 +7956,7 @@ func (p *CloudClient) TransferAllStacks(
 type InterceptorForUnapprove struct {
 	OrgName         string
 	ChangeRequestID string
-	Request         ext1.UnapproveChangeRequestRequest
+	Request         apitype.UnapproveChangeRequestRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -7964,7 +7964,7 @@ func (p *CloudClient) Unapprove(
 	ctx context.Context,
 	orgName string,
 	changeRequestID string,
-	request ext1.UnapproveChangeRequestRequest,
+	request apitype.UnapproveChangeRequestRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -8007,7 +8007,7 @@ func (p *CloudClient) Unapprove(
 type InterceptorForUpdate struct {
 	OrgName         string
 	ChangeRequestID string
-	Request         ext1.UpdateChangeRequestRequest
+	Request         apitype.UpdateChangeRequestRequest
 	ExtraHeaders    []http.Header
 }
 
@@ -8015,7 +8015,7 @@ func (p *CloudClient) Update(
 	ctx context.Context,
 	orgName string,
 	changeRequestID string,
-	request ext1.UpdateChangeRequestRequest,
+	request apitype.UpdateChangeRequestRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -8057,14 +8057,14 @@ func (p *CloudClient) Update(
 
 type InterceptorForUpdateAuditLogExportConfiguration struct {
 	OrgName      string
-	Request      ext1.UpdateOrganizationAuditLogExportSettingsRequest
+	Request      apitype.UpdateOrganizationAuditLogExportSettingsRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) UpdateAuditLogExportConfiguration(
 	ctx context.Context,
 	orgName string,
-	request ext1.UpdateOrganizationAuditLogExportSettingsRequest,
+	request apitype.UpdateOrganizationAuditLogExportSettingsRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -8105,7 +8105,7 @@ func (p *CloudClient) UpdateAuditLogExportConfiguration(
 type InterceptorForUpdateAuthPolicy struct {
 	OrgName      string
 	PolicyId     string
-	Request      ext1.AuthPolicyUpdateRequest
+	Request      apitype.AuthPolicyUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8113,9 +8113,9 @@ func (p *CloudClient) UpdateAuthPolicy(
 	ctx context.Context,
 	orgName string,
 	policyId string,
-	request ext1.AuthPolicyUpdateRequest,
+	request apitype.AuthPolicyUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.AuthPolicy, error) {
+) (*apitype.AuthPolicy, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateAuthPolicy{
 			OrgName:      orgName,
@@ -8128,7 +8128,7 @@ func (p *CloudClient) UpdateAuthPolicy(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.AuthPolicy)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AuthPolicy)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateAuthPolicy: %T", resultFromInterceptor)
 			}
@@ -8154,7 +8154,7 @@ func (p *CloudClient) UpdateAuthPolicy(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.AuthPolicy
+	var result apitype.AuthPolicy
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8165,7 +8165,7 @@ func (p *CloudClient) UpdateAuthPolicy(
 type InterceptorForUpdateGate struct {
 	OrgName      string
 	GateID       string
-	Request      ext1.UpdateChangeGateRequest
+	Request      apitype.UpdateChangeGateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8173,9 +8173,9 @@ func (p *CloudClient) UpdateGate(
 	ctx context.Context,
 	orgName string,
 	gateID string,
-	request ext1.UpdateChangeGateRequest,
+	request apitype.UpdateChangeGateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.ChangeGate, error) {
+) (*apitype.ChangeGate, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateGate{
 			OrgName:      orgName,
@@ -8188,7 +8188,7 @@ func (p *CloudClient) UpdateGate(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.ChangeGate)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ChangeGate)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateGate: %T", resultFromInterceptor)
 			}
@@ -8214,7 +8214,7 @@ func (p *CloudClient) UpdateGate(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.ChangeGate
+	var result apitype.ChangeGate
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8225,7 +8225,7 @@ func (p *CloudClient) UpdateGate(
 type InterceptorForUpdateOidcIssuer struct {
 	OrgName      string
 	IssuerId     string
-	Request      ext1.OidcIssuerUpdateRequest
+	Request      apitype.OidcIssuerUpdateRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8233,9 +8233,9 @@ func (p *CloudClient) UpdateOidcIssuer(
 	ctx context.Context,
 	orgName string,
 	issuerId string,
-	request ext1.OidcIssuerUpdateRequest,
+	request apitype.OidcIssuerUpdateRequest,
 	extraHeaders ...http.Header,
-) (*ext1.OidcIssuerRegistrationResponse, error) {
+) (*apitype.OidcIssuerRegistrationResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateOidcIssuer{
 			OrgName:      orgName,
@@ -8248,7 +8248,7 @@ func (p *CloudClient) UpdateOidcIssuer(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OidcIssuerRegistrationResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OidcIssuerRegistrationResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateOidcIssuer: %T", resultFromInterceptor)
 			}
@@ -8274,7 +8274,7 @@ func (p *CloudClient) UpdateOidcIssuer(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OidcIssuerRegistrationResponse
+	var result apitype.OidcIssuerRegistrationResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8285,7 +8285,7 @@ func (p *CloudClient) UpdateOidcIssuer(
 type InterceptorForUpdateOrgTemplateCollection struct {
 	OrgName      string
 	TemplateID   string
-	Request      ext1.UpsertOrgTemplateSourceRequest
+	Request      apitype.UpsertOrgTemplateSourceRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8293,9 +8293,9 @@ func (p *CloudClient) UpdateOrgTemplateCollection(
 	ctx context.Context,
 	orgName string,
 	templateID string,
-	request ext1.UpsertOrgTemplateSourceRequest,
+	request apitype.UpsertOrgTemplateSourceRequest,
 	extraHeaders ...http.Header,
-) (*ext1.TemplateSource, error) {
+) (*apitype.TemplateSource, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateOrgTemplateCollection{
 			OrgName:      orgName,
@@ -8308,7 +8308,7 @@ func (p *CloudClient) UpdateOrgTemplateCollection(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.TemplateSource)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.TemplateSource)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateOrgTemplateCollection: %T", resultFromInterceptor)
 			}
@@ -8334,7 +8334,7 @@ func (p *CloudClient) UpdateOrgTemplateCollection(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.TemplateSource
+	var result apitype.TemplateSource
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8392,7 +8392,7 @@ func (p *CloudClient) UpdateOrganizationDefaultRole(
 type InterceptorForUpdateOrganizationMember struct {
 	OrgName      string
 	UserLogin    string
-	Request      ext1.UpdateOrganizationMemberRequest
+	Request      apitype.UpdateOrganizationMemberRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8400,7 +8400,7 @@ func (p *CloudClient) UpdateOrganizationMember(
 	ctx context.Context,
 	orgName string,
 	userLogin string,
-	request ext1.UpdateOrganizationMemberRequest,
+	request apitype.UpdateOrganizationMemberRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -8442,16 +8442,16 @@ func (p *CloudClient) UpdateOrganizationMember(
 
 type InterceptorForUpdateOrganizationSettings struct {
 	OrgName      string
-	Request      ext1.UpdateOrganizationRequest
+	Request      apitype.UpdateOrganizationRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) UpdateOrganizationSettings(
 	ctx context.Context,
 	orgName string,
-	request ext1.UpdateOrganizationRequest,
+	request apitype.UpdateOrganizationRequest,
 	extraHeaders ...http.Header,
-) (*ext1.OrganizationMetadata, error) {
+) (*apitype.OrganizationMetadata, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateOrganizationSettings{
 			OrgName:      orgName,
@@ -8463,7 +8463,7 @@ func (p *CloudClient) UpdateOrganizationSettings(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.OrganizationMetadata)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrganizationMetadata)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateOrganizationSettings: %T", resultFromInterceptor)
 			}
@@ -8488,7 +8488,7 @@ func (p *CloudClient) UpdateOrganizationSettings(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.OrganizationMetadata
+	var result apitype.OrganizationMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8499,7 +8499,7 @@ func (p *CloudClient) UpdateOrganizationSettings(
 type InterceptorForUpdateOrganizationWebhook struct {
 	OrgName      string
 	HookName     string
-	Request      ext1.Webhook
+	Request      apitype.Webhook
 	ExtraHeaders []http.Header
 }
 
@@ -8507,9 +8507,9 @@ func (p *CloudClient) UpdateOrganizationWebhook(
 	ctx context.Context,
 	orgName string,
 	hookName string,
-	request ext1.Webhook,
+	request apitype.Webhook,
 	extraHeaders ...http.Header,
-) (*ext1.WebhookResponse, error) {
+) (*apitype.WebhookResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateOrganizationWebhook{
 			OrgName:      orgName,
@@ -8522,7 +8522,7 @@ func (p *CloudClient) UpdateOrganizationWebhook(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.WebhookResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.WebhookResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateOrganizationWebhook: %T", resultFromInterceptor)
 			}
@@ -8548,7 +8548,7 @@ func (p *CloudClient) UpdateOrganizationWebhook(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.WebhookResponse
+	var result apitype.WebhookResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8559,7 +8559,7 @@ func (p *CloudClient) UpdateOrganizationWebhook(
 type InterceptorForUpdatePolicyGroup struct {
 	OrgName      string
 	PolicyGroup  string
-	Request      ext1.UpdatePolicyGroupRequest
+	Request      apitype.UpdatePolicyGroupRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8567,7 +8567,7 @@ func (p *CloudClient) UpdatePolicyGroup(
 	ctx context.Context,
 	orgName string,
 	policyGroup string,
-	request ext1.UpdatePolicyGroupRequest,
+	request apitype.UpdatePolicyGroupRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {
@@ -8610,7 +8610,7 @@ func (p *CloudClient) UpdatePolicyGroup(
 type InterceptorForUpdatePolicyIssue struct {
 	OrgName      string
 	IssueId      string
-	Request      ext1.UpdatePolicyIssueRequest
+	Request      apitype.UpdatePolicyIssueRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8618,9 +8618,9 @@ func (p *CloudClient) UpdatePolicyIssue(
 	ctx context.Context,
 	orgName string,
 	issueId string,
-	request ext1.UpdatePolicyIssueRequest,
+	request apitype.UpdatePolicyIssueRequest,
 	extraHeaders ...http.Header,
-) (*ext1.GetPolicyIssueResponse, error) {
+) (*apitype.GetPolicyIssueResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdatePolicyIssue{
 			OrgName:      orgName,
@@ -8633,7 +8633,7 @@ func (p *CloudClient) UpdatePolicyIssue(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.GetPolicyIssueResponse)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetPolicyIssueResponse)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdatePolicyIssue: %T", resultFromInterceptor)
 			}
@@ -8659,7 +8659,7 @@ func (p *CloudClient) UpdatePolicyIssue(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.GetPolicyIssueResponse
+	var result apitype.GetPolicyIssueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8670,7 +8670,7 @@ func (p *CloudClient) UpdatePolicyIssue(
 type InterceptorForUpdateRole struct {
 	OrgName      string
 	RoleID       string
-	Request      ext1.UpdateRoleRequest
+	Request      apitype.UpdateRoleRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8678,9 +8678,9 @@ func (p *CloudClient) UpdateRole(
 	ctx context.Context,
 	orgName string,
 	roleID string,
-	request ext1.UpdateRoleRequest,
+	request apitype.UpdateRoleRequest,
 	extraHeaders ...http.Header,
-) (*ext1.PermissionDescriptorRecord, error) {
+) (*apitype.PermissionDescriptorRecord, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateRole{
 			OrgName:      orgName,
@@ -8693,7 +8693,7 @@ func (p *CloudClient) UpdateRole(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.PermissionDescriptorRecord)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PermissionDescriptorRecord)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateRole: %T", resultFromInterceptor)
 			}
@@ -8719,7 +8719,7 @@ func (p *CloudClient) UpdateRole(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.PermissionDescriptorRecord
+	var result apitype.PermissionDescriptorRecord
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8729,16 +8729,16 @@ func (p *CloudClient) UpdateRole(
 
 type InterceptorForUpdateSAMLOrganization struct {
 	OrgName      string
-	Request      ext1.UpdateSAMLOrganizationRequest
+	Request      apitype.UpdateSAMLOrganizationRequest
 	ExtraHeaders []http.Header
 }
 
 func (p *CloudClient) UpdateSAMLOrganization(
 	ctx context.Context,
 	orgName string,
-	request ext1.UpdateSAMLOrganizationRequest,
+	request apitype.UpdateSAMLOrganizationRequest,
 	extraHeaders ...http.Header,
-) (*ext1.SAMLOrganization, error) {
+) (*apitype.SAMLOrganization, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateSAMLOrganization{
 			OrgName:      orgName,
@@ -8750,7 +8750,7 @@ func (p *CloudClient) UpdateSAMLOrganization(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.SAMLOrganization)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.SAMLOrganization)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateSAMLOrganization: %T", resultFromInterceptor)
 			}
@@ -8775,7 +8775,7 @@ func (p *CloudClient) UpdateSAMLOrganization(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.SAMLOrganization
+	var result apitype.SAMLOrganization
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8835,7 +8835,7 @@ type InterceptorForUpdateService struct {
 	OwnerType    string
 	OwnerName    string
 	ServiceName  string
-	Request      ext1.UpdateServiceMetadataRequest
+	Request      apitype.UpdateServiceMetadataRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8845,9 +8845,9 @@ func (p *CloudClient) UpdateService(
 	ownerType string,
 	ownerName string,
 	serviceName string,
-	request ext1.UpdateServiceMetadataRequest,
+	request apitype.UpdateServiceMetadataRequest,
 	extraHeaders ...http.Header,
-) (*ext1.Service, error) {
+) (*apitype.Service, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForUpdateService{
 			OrgName:      orgName,
@@ -8862,7 +8862,7 @@ func (p *CloudClient) UpdateService(
 			return nil, err
 		}
 		if intercepted {
-			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(ext1.Service)
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.Service)
 			if !castFromInterceptor {
 				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateService: %T", resultFromInterceptor)
 			}
@@ -8890,7 +8890,7 @@ func (p *CloudClient) UpdateService(
 	if err != nil {
 		return nil, err
 	}
-	var result ext1.Service
+	var result apitype.Service
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -8901,7 +8901,7 @@ func (p *CloudClient) UpdateService(
 type InterceptorForUpdateTeam struct {
 	OrgName      string
 	TeamName     string
-	Request      ext1.UpdateTeamRequest
+	Request      apitype.UpdateTeamRequest
 	ExtraHeaders []http.Header
 }
 
@@ -8909,7 +8909,7 @@ func (p *CloudClient) UpdateTeam(
 	ctx context.Context,
 	orgName string,
 	teamName string,
-	request ext1.UpdateTeamRequest,
+	request apitype.UpdateTeamRequest,
 	extraHeaders ...http.Header,
 ) error {
 	if p.Interceptor != nil {

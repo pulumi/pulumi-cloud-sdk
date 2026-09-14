@@ -55,6 +55,12 @@ export interface ServerSentEventsStream<T> {
     abort: AbortController;
 }
 
+/** Result of `callWithOptionsAndHeaders`: a response body paired with typed response headers. */
+export class ResponseWithHeaders<R, H> {
+    response: R;
+    headers: H;
+}
+
 type ResponseKind = "json" | "binary" | "text";
 
 /**
@@ -147,6 +153,119 @@ export class ApiClient {
             .catch((err) => {
                 // Network failure or abort. If the Future already settled (e.g. an
                 // external cancel that triggered controller.abort), this is a no-op.
+                if (!future.isResolved()) {
+                    future.reject(err);
+                }
+            });
+
+        return future;
+    }
+
+    /**
+     * Issue an HTTP request and return a Future that resolves with the parsed
+     * response body and headers. `parseHeaders` converts the response's global
+     * `Headers` into the typed header value `H`. `fixup` runs synchronously on
+     * the parsed body before the Future resolves, exactly as in `callWithOptions`.
+     */
+    callWithOptionsAndHeaders<T, H>(
+        path: string,
+        requestOptions: ApiRequest,
+        parseHeaders: (value: Headers) => H,
+        fixup?: (value: T) => void,
+    ): Future<ResponseWithHeaders<T, H>> {
+        const future = new Future<ResponseWithHeaders<T, H>>();
+        const controller = new AbortController();
+
+        future.then(
+            () => undefined,
+            () => controller.abort(),
+        );
+
+        const headers = this.baseHeaders(requestOptions);
+        headers["Accept"] = `application/vnd.pulumi+${this.configuration.version}`;
+
+        let responseKind: ResponseKind = "text";
+        const binaryProduce = requestOptions.produces?.find(isBinaryMediaType);
+        if (requestOptions.produces?.includes("application/json")) {
+            headers["Accept"] = "application/json";
+            responseKind = "json";
+        } else if (binaryProduce !== undefined) {
+            headers["Accept"] = binaryProduce;
+            responseKind = "binary";
+        }
+
+        const body = this.encodeBody(requestOptions, headers);
+        const url = this.buildUrl(path, requestOptions.queryParams);
+
+        fetch(url, { method: requestOptions.method, headers, body, signal: controller.signal })
+            .then(async (response) => {
+                if (!response.ok) {
+                    const err = await this.buildError(response, url);
+                    if (!future.isResolved()) {
+                        future.reject(err);
+                        this.routeError(err);
+                    }
+                    return;
+                }
+                try {
+                    const value = await this.parseResponseBody<T>(response, responseKind);
+                    if (fixup) {
+                        fixup(value);
+                    }
+                    future.resolve({ response: value, headers: parseHeaders(response.headers) });
+                } catch (err) {
+                    const wrapped = new ApiError(response.status, String(err), undefined, url);
+                    if (!future.isResolved()) {
+                        future.reject(wrapped);
+                        this.routeError(wrapped);
+                    }
+                }
+            })
+            .catch((err) => {
+                if (!future.isResolved()) {
+                    future.reject(err);
+                }
+            });
+
+        return future;
+    }
+
+    /**
+     * Issue an HTTP request and return a Future that resolves with just the
+     * response headers, converted by `parseHeaders`. For no-body (e.g. 204)
+     * operations that still carry typed response headers.
+     */
+    callWithOptionsAndHeadersOnly<H>(
+        path: string,
+        requestOptions: ApiRequest,
+        parseHeaders: (value: Headers) => H,
+    ): Future<H> {
+        const future = new Future<H>();
+        const controller = new AbortController();
+
+        future.then(
+            () => undefined,
+            () => controller.abort(),
+        );
+
+        const headers = this.baseHeaders(requestOptions);
+        headers["Accept"] = `application/vnd.pulumi+${this.configuration.version}`;
+        const body = this.encodeBody(requestOptions, headers);
+        const url = this.buildUrl(path, requestOptions.queryParams);
+
+        fetch(url, { method: requestOptions.method, headers, body, signal: controller.signal })
+            .then(async (response) => {
+                if (!response.ok) {
+                    const err = await this.buildError(response, url);
+                    if (!future.isResolved()) {
+                        future.reject(err);
+                        this.routeError(err);
+                    }
+                    return;
+                }
+                future.resolve(parseHeaders(response.headers));
+            })
+            .catch((err) => {
                 if (!future.isResolved()) {
                     future.reject(err);
                 }

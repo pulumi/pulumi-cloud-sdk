@@ -223,6 +223,37 @@ func (p *CloudClient) invokeWithStreamingResponse(req *http.Request, headers []h
 	return resp.Body, nil
 }
 
+// invokeWithHeaders is invoke's counterpart for operations whose response carries typed headers
+// but no body (e.g. a HEAD request): it discards the response body but returns the response's
+// headers for the caller to decode into its typed headers struct.
+func (p *CloudClient) invokeWithHeaders(req *http.Request, headers []http.Header) (http.Header, error) {
+	resp, err := p.invokeRaw(req, headers)
+	if err != nil {
+		return nil, err
+	}
+
+	p.discardBody(resp)
+	return resp.Header, nil
+}
+
+// invokeWithResponseAndHeaders is invokeWithResponse's counterpart for operations whose response
+// carries typed headers alongside a body.
+func (p *CloudClient) invokeWithResponseAndHeaders(req *http.Request, headers []http.Header) ([]byte, http.Header, error) {
+	resp, err := p.invokeRaw(req, headers)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	defer p.ignoreClose(resp.Body)
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return body, resp.Header, nil
+}
+
 func (p *CloudClient) discardBody(resp *http.Response) {
 	if resp != nil {
 		p.ignoreClose(resp.Body)
