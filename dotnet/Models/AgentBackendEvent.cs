@@ -136,6 +136,18 @@ namespace Pulumi.Cloud.Sdk.Models {
             /// </summary>
             [JsonProperty("name")]
             public string Name { get; set; }
+
+            /// <summary>
+            /// Where this tool call is being executed. Omitted means this is an informational event about a cloud or CLI execution already covered by the containing assistant message. When set to 'worker', this event is the brain dispatching a cleared worker tool call: the service enqueues it for the task's managed worker to pick up.
+            /// </summary>
+            [JsonProperty("execution_mode")]
+            public ToolExecutionMode? Execution_mode { get; set; }
+
+            /// <summary>
+            /// Tool arguments. Present exactly when execution_mode is 'worker'.
+            /// </summary>
+            [JsonProperty("args")]
+            public System.Collections.Generic.Dictionary<string, JToken> Args { get; set; }
         }
 
         [JsonSubTypeName("exec_tool_call_progress")]

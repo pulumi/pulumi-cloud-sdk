@@ -19,12 +19,16 @@ class AgentBackendEventExecToolCall(AgentBackendEvent):
     """
     :var tool_call_id: str - declared
     :var name: str - declared
+    :var execution_mode: ToolExecutionMode - declared
+    :var args: dict[str, Any] - declared
     :var timestamp: datetime - inherited
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'timestamp': 'datetime',
         'tool_call_id': 'str',
         'name': 'str',
+        'execution_mode': 'ToolExecutionMode',
+        'args': 'dict[str, Any]',
         '__DISCRIMINATOR_VALUE__': 'str'
     }
 
@@ -32,6 +36,8 @@ class AgentBackendEventExecToolCall(AgentBackendEvent):
         'timestamp': 'timestamp',
         'tool_call_id': 'tool_call_id',
         'name': 'name',
+        'execution_mode': 'execution_mode',
+        'args': 'args',
         '__DISCRIMINATOR_VALUE__': 'type'
     }
 
@@ -39,26 +45,36 @@ class AgentBackendEventExecToolCall(AgentBackendEvent):
 
     FIELDS_tool_call_id = 'tool_call_id'
     FIELDS_name = 'name'
+    FIELDS_execution_mode = 'execution_mode'
+    FIELDS_args = 'args'
 
     _tool_call_id: 'str'
     _name: 'str'
+    _execution_mode: 'ToolExecutionMode'
+    _args: 'dict[str, Any]'
 
     def __init__(
         self,
         timestamp: 'datetime',
         tool_call_id: 'str',
         name: 'str',
+        execution_mode: 'ToolExecutionMode' = None,
+        args: 'dict[str, Any]' = None,
     ) -> None:
         super().__init__(timestamp=timestamp)
 
         self.tool_call_id = tool_call_id
         self.name = name
+        self.execution_mode = execution_mode
+        self.args = args
 
     def copy_common_fields(self, source: Any, /) -> None:
         super().copy_common_fields(source)
         if isinstance(source, AgentBackendEventExecToolCall):
             self._tool_call_id = source._tool_call_id
             self._name = source._name
+            self._execution_mode = source._execution_mode
+            self._args = source._args
 
     @property
     def tool_call_id(self) -> 'str':
@@ -81,6 +97,48 @@ class AgentBackendEventExecToolCall(AgentBackendEvent):
             raise ValueError("Invalid value for `name`, must not be `None`")
 
         self._name = name
+
+    @property
+    def execution_mode(self) -> 'ToolExecutionMode':
+        return self._execution_mode
+
+    @execution_mode.setter
+    def execution_mode(self, execution_mode: 'ToolExecutionMode'):
+        self._execution_mode = execution_mode
+
+    @property
+    def args(self) -> 'dict[str, Any]':
+        return self._args
+
+    @args.setter
+    def args(self, args: 'dict[str, Any]'):
+        self._args = args
+
+    @property
+    def args__autoinit(self) -> 'dict[str, Any]':
+        """Return ``args``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._args``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``args__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._args is None:
+            self._args = self.args__safederef
+
+        return self._args
+
+    @property
+    def args__safederef(self) -> 'dict[str, Any]':
+        """Return ``args``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``args`` stays unset and each
+        call returns a new default. Use ``args__autoinit`` to persist the default on
+        first access.
+        """
+        if self._args is None:
+            return {}
+
+        return self._args
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AgentBackendEventExecToolCall):

@@ -15,11 +15,14 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 import { AgentBackendEvent } from "./AgentBackendEvent";
+import type { ToolExecutionMode } from "./ToolExecutionMode";
 
 
 export class AgentBackendEventExecToolCall extends AgentBackendEvent {
     tool_call_id: string;
     name: string;
+    execution_mode?: ToolExecutionMode;
+    args?: { [key: string]: any };
 
     constructor() {
         super();

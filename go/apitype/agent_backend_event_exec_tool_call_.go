@@ -24,6 +24,14 @@ type AgentBackendEventExecToolCall interface {
 	// Tool name.
 	Name() string
 	SetName(v string) error
+	// Where this tool call is being executed. Omitted means this is an informational event about a cloud or CLI execution already covered by
+	// the containing assistant message. When set to 'worker', this event is the brain dispatching a cleared worker tool call: the service
+	// enqueues it for the task's managed worker to pick up.
+	Execution_mode() *ToolExecutionMode
+	SetExecution_mode(v *ToolExecutionMode) error
+	// Tool arguments. Present exactly when execution_mode is 'worker'.
+	Args() map[string]any
+	SetArgs(v map[string]any) error
 }
 
 func AgentBackendEventExecToolCallChecker[T any]() {
@@ -61,8 +69,10 @@ func AgentBackendEventExecToolCallAsDiscriminator[T AgentBackendEventExecToolCal
 
 type AgentBackendEventExecToolCallBuilder struct {
 	AgentBackendEventBuilder
-	Tool_call_id string
-	Name         string
+	Tool_call_id   string
+	Name           string
+	Execution_mode *ToolExecutionMode
+	Args           map[string]any
 }
 
 func (b AgentBackendEventExecToolCallBuilder) Build() AgentBackendEventExecToolCall {
@@ -70,15 +80,19 @@ func (b AgentBackendEventExecToolCallBuilder) Build() AgentBackendEventExecToolC
 		agentBackendEventImpl: agentBackendEventImpl{
 			fieldTimestamp: b.Timestamp,
 		},
-		fieldTool_call_id: b.Tool_call_id,
-		fieldName:         b.Name,
+		fieldTool_call_id:   b.Tool_call_id,
+		fieldName:           b.Name,
+		fieldExecution_mode: b.Execution_mode,
+		fieldArgs:           b.Args,
 	}
 }
 
 type agentBackendEventExecToolCallImpl struct {
 	agentBackendEventImpl
-	fieldTool_call_id string
-	fieldName         string
+	fieldTool_call_id   string
+	fieldName           string
+	fieldExecution_mode *ToolExecutionMode
+	fieldArgs           map[string]any
 }
 
 func (m *agentBackendEventExecToolCallImpl) GetInstancesFromTypeHierarchy() []AgentBackendEvent {
@@ -113,12 +127,32 @@ func (m *agentBackendEventExecToolCallImpl) SetName(v string) error {
 	return nil
 }
 
+func (m *agentBackendEventExecToolCallImpl) Execution_mode() *ToolExecutionMode {
+	return m.fieldExecution_mode
+}
+
+func (m *agentBackendEventExecToolCallImpl) SetExecution_mode(v *ToolExecutionMode) error {
+	m.fieldExecution_mode = v
+	return nil
+}
+
+func (m *agentBackendEventExecToolCallImpl) Args() map[string]any {
+	return m.fieldArgs
+}
+
+func (m *agentBackendEventExecToolCallImpl) SetArgs(v map[string]any) error {
+	m.fieldArgs = v
+	return nil
+}
+
 func (m *agentBackendEventExecToolCallImpl) MarshalJSON() ([]byte, error) {
 	type marshaller struct {
-		InternalDiscriminator string    `json:"type,omitempty"`
-		FieldTimestamp        time.Time `json:"timestamp"`
-		FieldTool_call_id     string    `json:"tool_call_id"`
-		FieldName             string    `json:"name"`
+		InternalDiscriminator string             `json:"type,omitempty"`
+		FieldTimestamp        time.Time          `json:"timestamp"`
+		FieldTool_call_id     string             `json:"tool_call_id"`
+		FieldName             string             `json:"name"`
+		FieldExecution_mode   *ToolExecutionMode `json:"execution_mode,omitempty"`
+		FieldArgs             map[string]any     `json:"args,omitempty"`
 	}
 
 	var v marshaller
@@ -126,14 +160,18 @@ func (m *agentBackendEventExecToolCallImpl) MarshalJSON() ([]byte, error) {
 	v.FieldTimestamp = m.fieldTimestamp
 	v.FieldTool_call_id = m.fieldTool_call_id
 	v.FieldName = m.fieldName
+	v.FieldExecution_mode = m.fieldExecution_mode
+	v.FieldArgs = m.fieldArgs
 	return json.Marshal(v)
 }
 
 func (m *agentBackendEventExecToolCallImpl) UnmarshalJSON(bytes []byte) error {
 	type decoder struct {
-		FieldTimestamp    time.Time `json:"timestamp"`
-		FieldTool_call_id string    `json:"tool_call_id"`
-		FieldName         string    `json:"name"`
+		FieldTimestamp      time.Time          `json:"timestamp"`
+		FieldTool_call_id   string             `json:"tool_call_id"`
+		FieldName           string             `json:"name"`
+		FieldExecution_mode *ToolExecutionMode `json:"execution_mode,omitempty"`
+		FieldArgs           map[string]any     `json:"args,omitempty"`
 	}
 
 	var v decoder
@@ -144,15 +182,19 @@ func (m *agentBackendEventExecToolCallImpl) UnmarshalJSON(bytes []byte) error {
 	m.fieldTimestamp = v.FieldTimestamp
 	m.fieldTool_call_id = v.FieldTool_call_id
 	m.fieldName = v.FieldName
+	m.fieldExecution_mode = v.FieldExecution_mode
+	m.fieldArgs = v.FieldArgs
 	return nil
 }
 
 func (m agentBackendEventExecToolCallImpl) MarshalYAML() (any, error) {
 	type marshaller struct {
-		InternalDiscriminator string    `yaml:"type"`
-		FieldTimestamp        time.Time `yaml:"timestamp,omitempty"`
-		FieldTool_call_id     string    `yaml:"tool_call_id,omitempty"`
-		FieldName             string    `yaml:"name,omitempty"`
+		InternalDiscriminator string             `yaml:"type"`
+		FieldTimestamp        time.Time          `yaml:"timestamp,omitempty"`
+		FieldTool_call_id     string             `yaml:"tool_call_id,omitempty"`
+		FieldName             string             `yaml:"name,omitempty"`
+		FieldExecution_mode   *ToolExecutionMode `yaml:"execution_mode,omitempty"`
+		FieldArgs             map[string]any     `yaml:"args,omitempty"`
 	}
 
 	var v marshaller
@@ -160,14 +202,18 @@ func (m agentBackendEventExecToolCallImpl) MarshalYAML() (any, error) {
 	v.FieldTimestamp = m.fieldTimestamp
 	v.FieldTool_call_id = m.fieldTool_call_id
 	v.FieldName = m.fieldName
+	v.FieldExecution_mode = m.fieldExecution_mode
+	v.FieldArgs = m.fieldArgs
 	return &v, nil
 }
 
 func (m *agentBackendEventExecToolCallImpl) UnmarshalYAML(value *yaml.Node) error {
 	type decoder struct {
-		FieldTimestamp    time.Time `yaml:"timestamp,omitempty"`
-		FieldTool_call_id string    `yaml:"tool_call_id,omitempty"`
-		FieldName         string    `yaml:"name,omitempty"`
+		FieldTimestamp      time.Time          `yaml:"timestamp,omitempty"`
+		FieldTool_call_id   string             `yaml:"tool_call_id,omitempty"`
+		FieldName           string             `yaml:"name,omitempty"`
+		FieldExecution_mode *ToolExecutionMode `yaml:"execution_mode,omitempty"`
+		FieldArgs           map[string]any     `yaml:"args,omitempty"`
 	}
 
 	var v decoder
@@ -178,5 +224,7 @@ func (m *agentBackendEventExecToolCallImpl) UnmarshalYAML(value *yaml.Node) erro
 	m.fieldTimestamp = v.FieldTimestamp
 	m.fieldTool_call_id = v.FieldTool_call_id
 	m.fieldName = v.FieldName
+	m.fieldExecution_mode = v.FieldExecution_mode
+	m.fieldArgs = v.FieldArgs
 	return nil
 }

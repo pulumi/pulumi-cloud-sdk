@@ -92,6 +92,12 @@ public abstract class AgentBackendEvent {
 
         // Tool name.
         public String name;
+
+        // Where this tool call is being executed. Omitted means this is an informational event about a cloud or CLI execution already covered by the containing assistant message. When set to 'worker', this event is the brain dispatching a cleared worker tool call: the service enqueues it for the task's managed worker to pick up.
+        public ToolExecutionMode execution_mode;
+
+        // Tool arguments. Present exactly when execution_mode is 'worker'.
+        public Map<String, JsonNode> args;
     }
 
     @JsonTypeName("exec_tool_call_progress")
