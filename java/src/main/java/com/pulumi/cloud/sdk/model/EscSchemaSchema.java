@@ -11,6 +11,12 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class EscSchemaSchema {
+    // Set when the schema is 'true'.
+    public boolean always;
+
+    // Set when the schema is 'false'.
+    public boolean never;
+
     // Schema definitions that can be referenced by $ref.
     @JsonProperty("$defs")
     public Map<String, EscSchemaSchema> _defs;
@@ -115,4 +121,36 @@ public class EscSchemaSchema {
 
     // Pulumi ESC extension: property paths within this schema that support rotation-only updates.
     public List<String> rotateOnly;
+
+    public static class Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<EscSchemaSchema> implements com.fasterxml.jackson.databind.deser.ResolvableDeserializer {
+        private final com.fasterxml.jackson.databind.JsonDeserializer<?> defaultDeserializer;
+
+        public Deserializer(com.fasterxml.jackson.databind.JsonDeserializer<?> defaultDeserializer) {
+            this.defaultDeserializer = defaultDeserializer;
+        }
+
+        @Override
+        public void resolve(com.fasterxml.jackson.databind.DeserializationContext ctxt) throws com.fasterxml.jackson.databind.JsonMappingException {
+            if (defaultDeserializer instanceof com.fasterxml.jackson.databind.deser.ResolvableDeserializer) {
+                ((com.fasterxml.jackson.databind.deser.ResolvableDeserializer) defaultDeserializer).resolve(ctxt);
+            }
+        }
+
+        @Override
+        public EscSchemaSchema deserialize(com.fasterxml.jackson.core.JsonParser p, com.fasterxml.jackson.databind.DeserializationContext ctxt) throws java.io.IOException {
+            // Backward compatibility
+            if (p.currentToken() == com.fasterxml.jackson.core.JsonToken.VALUE_TRUE) {
+                EscSchemaSchema result = new EscSchemaSchema();
+                result.always = true;
+                return result;
+            }
+            if (p.currentToken() == com.fasterxml.jackson.core.JsonToken.VALUE_FALSE) {
+                EscSchemaSchema result = new EscSchemaSchema();
+                result.never = true;
+                return result;
+            }
+
+            return (EscSchemaSchema) defaultDeserializer.deserialize(p, ctxt);
+        }
+    }
 }

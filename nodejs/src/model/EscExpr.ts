@@ -69,6 +69,12 @@ export class EscExpr {
             const { EscRange } = require("./EscRange");
             EscRange.fixupPrototype(this.range);
         }
+        {
+            // Lazy import - only evaluated when called
+            const { EscSchemaSchema } = require("./EscSchemaSchema");
+            this.schema = EscSchemaSchema.fixupWire(this.schema);
+        }
+
         if (this.schema) {
             // Lazy import - only evaluated when called
             const { EscSchemaSchema } = require("./EscSchemaSchema");

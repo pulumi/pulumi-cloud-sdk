@@ -126,6 +126,8 @@ type OrganizationFeatures struct {
 	NeoCustomAgentsEnabled bool `json:"neoCustomAgentsEnabled" yaml:"neoCustomAgentsEnabled"`
 	// Whether Neo Security (cloud security posture scanning) is enabled.
 	NeoSecurityEnabled bool `json:"neoSecurityEnabled" yaml:"neoSecurityEnabled"`
+	// Whether event-triggered Neo tasks are enabled.
+	AgentTriggeredTasksEnabled bool `json:"agentTriggeredTasksEnabled" yaml:"agentTriggeredTasksEnabled"`
 	// Deprecated. The legacy per-stack code-access-for-AI-reviews setting has been removed; no longer populated (always false).
 	AiReviewCodeAccessEnabled bool `json:"aiReviewCodeAccessEnabled,omitzero" yaml:"aiReviewCodeAccessEnabled,omitempty"`
 	// Whether agentic Neo Code Reviews (a single agentic review per pull request, replacing the legacy per-stack AI preview summaries) are

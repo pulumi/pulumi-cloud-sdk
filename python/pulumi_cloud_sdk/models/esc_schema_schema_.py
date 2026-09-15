@@ -17,6 +17,8 @@ from . import *
 # noinspection PyShadowingBuiltins,PyShadowingNames
 class EscSchemaSchema(PulumiAutoModelEncoder):
     """
+    :var always: bool - declared
+    :var never: bool - declared
     :var defs: dict[str, EscSchemaSchema] - declared
     :var ref: str - declared
     :var any_of: list[EscSchemaSchema] - declared
@@ -52,6 +54,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
     :var rotate_only: list[str] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
+        'always': 'bool',
+        'never': 'bool',
         'defs': 'dict[str, EscSchemaSchema]',
         'ref': 'str',
         'any_of': 'list[EscSchemaSchema]',
@@ -88,6 +92,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
+        'always': 'always',
+        'never': 'never',
         'defs': '$defs',
         'ref': '$ref',
         'any_of': 'anyOf',
@@ -123,6 +129,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
         'rotate_only': 'rotateOnly',
     }
 
+    FIELDS_always = 'always'
+    FIELDS_never = 'never'
     FIELDS_defs = '$defs'
     FIELDS_ref = '$ref'
     FIELDS_any_of = 'anyOf'
@@ -157,6 +165,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
     FIELDS_secret = 'secret'
     FIELDS_rotate_only = 'rotateOnly'
 
+    _always: 'bool'
+    _never: 'bool'
     _defs: 'dict[str, EscSchemaSchema]'
     _ref: 'str'
     _any_of: 'list[EscSchemaSchema]'
@@ -193,7 +203,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
 
     def __init__(
         self,
-        type: 'str',
+        always: 'bool' = False,
+        never: 'bool' = False,
         defs: 'dict[str, EscSchemaSchema]' = None,
         ref: 'str' = None,
         any_of: 'list[EscSchemaSchema]' = None,
@@ -202,6 +213,7 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
         items: 'EscSchemaSchema' = None,
         additional_properties: 'EscSchemaSchema' = None,
         properties: 'dict[str, EscSchemaSchema]' = None,
+        type: 'str' = None,
         const: 'Any' = None,
         enum: 'list[Any]' = None,
         multiple_of: 'str' = None,
@@ -229,6 +241,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
     ) -> None:
         super().__init__()
 
+        self.always = always
+        self.never = never
         self.defs = defs
         self.ref = ref
         self.any_of = any_of
@@ -265,6 +279,8 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, EscSchemaSchema):
+            self._always = source._always
+            self._never = source._never
             self._defs = source._defs
             self._ref = source._ref
             self._any_of = source._any_of
@@ -298,6 +314,22 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
             self._examples = source._examples
             self._secret = source._secret
             self._rotate_only = source._rotate_only
+
+    @property
+    def always(self) -> 'bool':
+        return self._always
+
+    @always.setter
+    def always(self, always: 'bool'):
+        self._always = always
+
+    @property
+    def never(self) -> 'bool':
+        return self._never
+
+    @never.setter
+    def never(self, never: 'bool'):
+        self._never = never
 
     @property
     def defs(self) -> 'dict[str, EscSchemaSchema]':
@@ -553,9 +585,6 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
 
     @type.setter
     def type(self, type: 'str'):
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")
-
         self._type = type
 
     @property
@@ -879,6 +908,16 @@ class EscSchemaSchema(PulumiAutoModelEncoder):
             return []
 
         return self._rotate_only
+
+    @staticmethod
+    def fixup_wire(data: Any) -> Any:
+        # Backward compatibility
+        if data is True:
+            return {'always': True}
+        if data is False:
+            return {'never': True}
+
+        return data
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, EscSchemaSchema):

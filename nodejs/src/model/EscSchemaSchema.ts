@@ -15,6 +15,8 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 export class EscSchemaSchema {
+    always?: boolean;
+    never?: boolean;
     $defs?: { [key: string]: EscSchemaSchema };
     $ref?: string;
     anyOf?: EscSchemaSchema[];
@@ -23,7 +25,7 @@ export class EscSchemaSchema {
     items?: EscSchemaSchema;
     additionalProperties?: EscSchemaSchema;
     properties?: { [key: string]: EscSchemaSchema };
-    type: string;
+    type?: string;
     const?: any;
     enum?: any[];
     multipleOf?: string;
@@ -64,6 +66,16 @@ export class EscSchemaSchema {
         return EscSchemaSchema.newInstance(JSON.parse(JSON.stringify(model)));
     }
 
+    static fixupWire(obj: EscSchemaSchema | boolean): EscSchemaSchema;
+    static fixupWire(obj: EscSchemaSchema | boolean | undefined): EscSchemaSchema | undefined;
+    static fixupWire(obj: EscSchemaSchema | boolean | undefined | null): EscSchemaSchema | undefined | null {
+        // Backward compatibility
+        if (obj === true) return EscSchemaSchema.newInstance({always: true});
+        if (obj === false) return EscSchemaSchema.newInstance({never: true});
+
+        return obj;
+    }
+
     static fixupPrototype(obj: EscSchemaSchema) {
         if (!obj) return;
 
@@ -80,6 +92,8 @@ export class EscSchemaSchema {
     fixupFields() {
         if (this.$defs) {
             for (let key0 in this.$defs) {
+                this.$defs[key0] = EscSchemaSchema.fixupWire(this.$defs[key0]);
+
                 let val0 = this.$defs[key0];
                 if (val0) {
                     EscSchemaSchema.fixupPrototype(val0);
@@ -88,6 +102,8 @@ export class EscSchemaSchema {
         }
         if (this.anyOf) {
             for (let i0 = 0; i0 < this.anyOf.length; i0++) {
+                this.anyOf[i0] = EscSchemaSchema.fixupWire(this.anyOf[i0]);
+
                 let val0 = this.anyOf[i0];
                 if (val0) {
                     EscSchemaSchema.fixupPrototype(val0);
@@ -96,6 +112,8 @@ export class EscSchemaSchema {
         }
         if (this.oneOf) {
             for (let i0 = 0; i0 < this.oneOf.length; i0++) {
+                this.oneOf[i0] = EscSchemaSchema.fixupWire(this.oneOf[i0]);
+
                 let val0 = this.oneOf[i0];
                 if (val0) {
                     EscSchemaSchema.fixupPrototype(val0);
@@ -104,20 +122,32 @@ export class EscSchemaSchema {
         }
         if (this.prefixItems) {
             for (let i0 = 0; i0 < this.prefixItems.length; i0++) {
+                this.prefixItems[i0] = EscSchemaSchema.fixupWire(this.prefixItems[i0]);
+
                 let val0 = this.prefixItems[i0];
                 if (val0) {
                     EscSchemaSchema.fixupPrototype(val0);
                 }
             }
         }
+        {
+            this.items = EscSchemaSchema.fixupWire(this.items);
+        }
+
         if (this.items) {
             EscSchemaSchema.fixupPrototype(this.items);
         }
+        {
+            this.additionalProperties = EscSchemaSchema.fixupWire(this.additionalProperties);
+        }
+
         if (this.additionalProperties) {
             EscSchemaSchema.fixupPrototype(this.additionalProperties);
         }
         if (this.properties) {
             for (let key0 in this.properties) {
+                this.properties[key0] = EscSchemaSchema.fixupWire(this.properties[key0]);
+
                 let val0 = this.properties[key0];
                 if (val0) {
                     EscSchemaSchema.fixupPrototype(val0);

@@ -767,6 +767,14 @@ class PulumiModelEncoder(object):
 
     def __deserialize_model(self, data: Any, klass: type, /) -> Any:
         """Deserialize a dict into a model instance, honoring discriminators."""
+        # EscSchemaSchema-only: its wire representation may legally be a bare boolean, a
+        # legacy JSON Schema shorthand for {always: true} / {never: true} instead of an
+        # object. This is a one-off fixup for this specific model, not a general mechanism
+        # for arbitrary "fixup_wire" hooks — it's spelled out explicitly here rather than
+        # a bare getattr/duck-typing check. See python.go's emitEscSchemaSchemaFixupWire.
+        if klass.__name__ == "EscSchemaSchema":
+            data = klass.fixup_wire(data)
+
         fixup = getattr(klass, "fixup_prototype", None)
         if fixup:
             discriminator_field = getattr(klass, "DISCRIMINATOR", None)

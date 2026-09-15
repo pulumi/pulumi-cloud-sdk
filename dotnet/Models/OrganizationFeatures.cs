@@ -360,6 +360,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool NeoSecurityEnabled { get; set; }
 
         /// <summary>
+        /// Whether event-triggered Neo tasks are enabled.
+        /// </summary>
+        [JsonProperty("agentTriggeredTasksEnabled")]
+        public bool AgentTriggeredTasksEnabled { get; set; }
+
+        /// <summary>
         /// Deprecated. The legacy per-stack code-access-for-AI-reviews setting has been removed; no longer populated (always false).
         /// </summary>
         [JsonProperty("aiReviewCodeAccessEnabled")]
