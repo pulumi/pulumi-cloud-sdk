@@ -17,6 +17,7 @@ model shape avoids re-walking its type metadata — this is what keeps
 serialization fast and correct across the large generated model surface.
 """
 
+import base64
 import inspect
 import re
 import sys
@@ -189,8 +190,11 @@ class PulumiModelEncoder(object):
     DEFAULT_STATE = "__default_state__"
     SKIP_ATTRIBUTES = "__skip_attributes__"
 
-    PRIMITIVE_TYPES = (float, bool, bytes, str, int)
-    PRIMITIVE_TYPES_EXT = (*PRIMITIVE_TYPES, datetime, date, Enum)
+    # bytes is deliberately not a primitive: its JSON wire form is a base64
+    # string, so both directions need a conversion (see _serialize_bytes and
+    # _deserialize_bytes) instead of a passthrough.
+    PRIMITIVE_TYPES = (float, bool, str, int)
+    PRIMITIVE_TYPES_EXT = (*PRIMITIVE_TYPES, bytes, datetime, date, Enum)
     NATIVE_TYPES_MAPPING = {
         "int": int,
         "long": int,
@@ -357,6 +361,15 @@ class PulumiModelEncoder(object):
 
             return _serialize_dates
 
+        if issubclass(klass, (bytes, bytearray)):
+            def _serialize_bytes(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
+                if keep_raw_values:
+                    return obj
+
+                return base64.b64encode(obj).decode("ascii")
+
+            return _serialize_bytes
+
         if issubclass(klass, self.PRIMITIVE_TYPES):
             def _serialize_primitive_passthrough(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
                 return obj
@@ -366,7 +379,7 @@ class PulumiModelEncoder(object):
         if issubclass(klass, list):
             if type_annotation.startswith("list[") and (match := re.match(r"list\[(.*)]", type_annotation)):
                 elem_klass = match.group(1)
-                if elem_klass in ["str", "int", "float", "bool", "bytes"]:
+                if elem_klass in ["str", "int", "float", "bool"]:
                     def _serialize_passthrough_list(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
                         return list(obj)
 
@@ -393,7 +406,7 @@ class PulumiModelEncoder(object):
         if issubclass(klass, set):
             if type_annotation.startswith("set[") and (match := re.match(r"set\[(.*)]", type_annotation)):
                 elem_klass = match.group(1)
-                if elem_klass in ["str", "int", "float", "bool", "bytes"]:
+                if elem_klass in ["str", "int", "float", "bool"]:
                     def _serialize_set_primitive(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
                         return {str(sub_obj): True for sub_obj in obj}
 
@@ -416,7 +429,7 @@ class PulumiModelEncoder(object):
                 value_klass = match.group(2)
 
                 if key_klass == "str":
-                    if value_klass in ["str", "int", "float", "bool", "bytes"]:
+                    if value_klass in ["str", "int", "float", "bool"]:
                         def _serialize_passthrough_dict(obj: Any, keep_raw_values: bool, unwrap_enums: bool, /) -> Any:
                             return dict(obj)
 
@@ -549,6 +562,15 @@ class PulumiModelEncoder(object):
                 return deepcopy(data)
 
             return _deserialize_any
+
+        if klass is bytes:
+            def _deserialize_bytes(data: Any, /) -> Any:
+                if isinstance(data, str):
+                    return base64.b64decode(data)
+
+                return bytes(data)
+
+            return _deserialize_bytes
 
         if klass in self.PRIMITIVE_TYPES:
             def _deserialize_primitive(data: Any, /) -> Any:

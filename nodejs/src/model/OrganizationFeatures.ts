@@ -58,6 +58,7 @@ export class OrganizationFeatures {
     policyManagementV2Enabled: boolean;
     policyIssueManagementEnabled: boolean;
     aiAgentsEnabled: boolean;
+    aiAgentsReadOnly: boolean;
     themingEnabled: boolean;
     customRoleCondition: boolean;
     neoTaskSharingEnabled: boolean;

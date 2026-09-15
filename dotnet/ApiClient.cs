@@ -23,6 +23,25 @@ namespace Pulumi.Cloud.Sdk
     /// </summary>
     public sealed class ApiClient
     {
+        // Media types whose body is raw bytes rather than a text or JSON document.
+        // Mirrors analyzer.IsBinaryMediaType in the code generator.
+        private static readonly string[] BinaryMediaTypes =
+        {
+            "application/octet-stream",
+            "application/x-tar",
+        };
+
+        // Media types whose body is the text of the document itself, with no JSON
+        // envelope to encode. Mirrors analyzer.IsUnencodedTextMediaType in the
+        // code generator, which types these request bodies as string.
+        private static readonly string[] UnencodedTextMediaTypes =
+        {
+            "application/x-yaml",
+            "application/yaml",
+            "text/plain",
+            "text/markdown",
+        };
+
         private readonly ApiClientConfiguration configuration;
         private readonly HttpClient http;
 
@@ -115,10 +134,21 @@ namespace Pulumi.Cloud.Sdk
             if (request.HasBody)
             {
                 var contentType = request.ConsumesList.Count == 0 ? "application/json" : request.ConsumesList[0];
-                if (contentType == "application/octet-stream" && request.BodyValue is byte[] bytes)
+                if (Array.IndexOf(BinaryMediaTypes, contentType) >= 0 && request.BodyValue is byte[] bytes)
                 {
                     message.Content = new ByteArrayContent(bytes);
                     message.Content.Headers.TryAddWithoutValidation("Content-Type", contentType);
+                }
+                else if (Array.IndexOf(UnencodedTextMediaTypes, contentType) >= 0 && request.BodyValue is string text)
+                {
+                    // The body is the document itself. JsonConvert would quote and
+                    // escape it into a JSON string the server cannot parse.
+                    message.Content = new ByteArrayContent(Encoding.UTF8.GetBytes(text));
+                    message.Content.Headers.TryAddWithoutValidation("Content-Type", contentType);
+                }
+                else if (contentType != "application/json")
+                {
+                    throw new ApiException(0, "Request media type " + contentType + " has no encoder in this client", url, null, null, null);
                 }
                 else
                 {

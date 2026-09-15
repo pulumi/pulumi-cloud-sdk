@@ -137,6 +137,44 @@ test("binary body values are base64-encoded, not dropped", async () => {
     });
 });
 
+test("an application/x-yaml body is sent verbatim under its declared content type", async () => {
+    const config = new ApiClientConfiguration("https://example.test/api/", "test-src", () => "tok", 8);
+    const definition = "values:\n  foo: bar\n";
+    const { captured } = await capture(
+        config,
+        (req) => {
+            req.method = "POST";
+            req.setConsume("application/x-yaml");
+            req.setProduce("application/json");
+            req.body = definition;
+            req.hasBodyParam = true;
+        },
+        "https://example.test/api/environments/check",
+    );
+
+    assert.equal(captured.init.body, definition);
+    assert.equal(captured.init.headers["Content-Type"], "application/x-yaml");
+});
+
+test("an application/octet-stream body is sent verbatim", async () => {
+    const config = new ApiClientConfiguration("https://example.test/api/", "test-src", () => "tok", 8);
+    const bytes = new Uint8Array([0, 1, 104, 105]);
+    const { captured } = await capture(
+        config,
+        (req) => {
+            req.method = "POST";
+            req.setConsume("application/octet-stream");
+            req.setProduce("application/json");
+            req.body = bytes;
+            req.hasBodyParam = true;
+        },
+        "https://example.test/api/blobs",
+    );
+
+    assert.equal(captured.init.body, bytes);
+    assert.equal(captured.init.headers["Content-Type"], "application/octet-stream");
+});
+
 test("an application/x-tar response is read as raw bytes, not text", async () => {
     // A download's body *is* the bytes — unlike a byte[] inside a JSON
     // document, which is base64 (#37343). Reading it as text would corrupt any

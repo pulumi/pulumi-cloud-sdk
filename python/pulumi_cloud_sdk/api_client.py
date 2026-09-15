@@ -55,6 +55,23 @@ def parse_number_header(value: Optional[str], cast, default):
     except (TypeError, ValueError):
         return default
 
+# Media types whose body is raw bytes rather than a text or JSON document.
+# Mirrors ``analyzer.IsBinaryMediaType`` in the code generator.
+_BINARY_MEDIA_TYPES = ("application/octet-stream", "application/x-tar")
+
+# Media types whose body is the text of the document itself, with no JSON
+# envelope to encode or decode. Mirrors ``analyzer.IsUnencodedTextMediaType``
+# in the code generator, which types these bodies as ``str``.
+_UNENCODED_TEXT_MEDIA_TYPES = ("application/x-yaml", "application/yaml", "text/plain", "text/markdown")
+
+
+def _bare_media_type(content_type: str) -> str:
+    return content_type.split(";", 1)[0].strip().lower()
+
+
+def _default_transport(request: Request, timeout: Optional[float]) -> Any:
+    return urlopen(request, timeout=timeout)
+
 
 def _query_param_value(value: Any) -> str:
     """
@@ -93,10 +110,17 @@ def _encode_query(query_params: dict) -> str:
 
 
 class ApiClient(object):
-    def __init__(self, configuration: Optional[Configuration] = None) -> None:
+    def __init__(self, configuration: Optional[Configuration] = None, transport: Any = None) -> None:
+        """
+        ``transport`` is a callable ``(request, timeout) -> response`` used in
+        place of ``urllib.request.urlopen``; the response must be a context
+        manager with ``read()`` and ``headers``. It exists so tests and callers
+        with custom HTTP needs (proxies, retries) can supply their own engine.
+        """
         self.configuration = configuration or Configuration()
         self.default_headers: dict[str, str] = {}
         self.last_response: Any = None
+        self._transport = transport or _default_transport
 
     def select_header_accept(self, accepts: list[str]) -> Optional[str]:
         if not accepts:
@@ -142,16 +166,34 @@ class ApiClient(object):
 
         data: Optional[bytes] = None
         if body is not None:
-            headers.setdefault("Content-Type", "application/json")
-            data = json.dumps(default_encoder.sanitize_for_serialization(body)).encode("utf-8")
+            content_type = _bare_media_type(headers.setdefault("Content-Type", "application/json"))
+            if content_type in _BINARY_MEDIA_TYPES and isinstance(body, (bytes, bytearray)):
+                data = bytes(body)
+            elif content_type in _UNENCODED_TEXT_MEDIA_TYPES and isinstance(body, str):
+                # The body is the document itself. json.dumps would quote and
+                # escape it into a JSON string the server cannot parse.
+                data = body.encode("utf-8")
+            elif content_type == "application/json":
+                data = json.dumps(default_encoder.sanitize_for_serialization(body)).encode("utf-8")
+            else:
+                raise ValueError(f"request media type {content_type} has no encoder in this client")
 
         request = Request(url, data=data, headers=headers, method=method)
-        with urlopen(request, timeout=_request_timeout) as response:
+        with self._transport(request, _request_timeout) as response:
             raw = response.read()
+            response_media_type = _bare_media_type(response.headers.get("Content-Type") or "")
 
         self.last_response = raw
         if not _preload_content or not response_type:
             return raw
+
+        if response_media_type in _BINARY_MEDIA_TYPES:
+            return raw
+        if response_media_type in _UNENCODED_TEXT_MEDIA_TYPES:
+            # The body is the document itself (YAML, markdown, plain text);
+            # json.loads on it would fail or, worse, quietly succeed on a
+            # document that happens to be a valid JSON scalar.
+            return raw.decode("utf-8")
 
         # response_type is the wire type-name string (e.g. 'Stack', 'list[Stack]');
         # PulumiModelEncoder resolves it against the generated models package.

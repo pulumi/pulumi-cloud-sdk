@@ -270,6 +270,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool AiAgentsEnabled { get; set; }
 
         /// <summary>
+        /// Whether the organization has read-only access to AI agents: it is not entitled to Neo on its current plan, but may still read the tasks it already has. Mutually exclusive with aiAgentsEnabled. When both are false, Neo is hidden entirely, which is what an organization sees when Neo has been disabled for it.
+        /// </summary>
+        [JsonProperty("aiAgentsReadOnly")]
+        public bool AiAgentsReadOnly { get; set; }
+
+        /// <summary>
         /// Whether UI theming is enabled.
         /// </summary>
         [JsonProperty("themingEnabled")]

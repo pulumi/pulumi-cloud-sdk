@@ -140,6 +140,9 @@ public class OrganizationFeatures {
     // Whether AI agents (Pulumi Copilot) are enabled.
     public boolean aiAgentsEnabled;
 
+    // Whether the organization has read-only access to AI agents: it is not entitled to Neo on its current plan, but may still read the tasks it already has. Mutually exclusive with aiAgentsEnabled. When both are false, Neo is hidden entirely, which is what an organization sees when Neo has been disabled for it.
+    public boolean aiAgentsReadOnly;
+
     // Whether UI theming is enabled.
     public boolean themingEnabled;
 

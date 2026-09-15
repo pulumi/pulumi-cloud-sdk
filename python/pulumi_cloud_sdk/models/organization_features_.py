@@ -60,6 +60,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var policy_management_v2_enabled: bool - declared
     :var policy_issue_management_enabled: bool - declared
     :var ai_agents_enabled: bool - declared
+    :var ai_agents_read_only: bool - declared
     :var theming_enabled: bool - declared
     :var custom_role_condition: bool - declared
     :var neo_task_sharing_enabled: bool - declared
@@ -144,6 +145,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'policy_management_v2_enabled': 'bool',
         'policy_issue_management_enabled': 'bool',
         'ai_agents_enabled': 'bool',
+        'ai_agents_read_only': 'bool',
         'theming_enabled': 'bool',
         'custom_role_condition': 'bool',
         'neo_task_sharing_enabled': 'bool',
@@ -229,6 +231,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'policy_management_v2_enabled': 'policyManagementV2Enabled',
         'policy_issue_management_enabled': 'policyIssueManagementEnabled',
         'ai_agents_enabled': 'aiAgentsEnabled',
+        'ai_agents_read_only': 'aiAgentsReadOnly',
         'theming_enabled': 'themingEnabled',
         'custom_role_condition': 'customRoleCondition',
         'neo_task_sharing_enabled': 'neoTaskSharingEnabled',
@@ -313,6 +316,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_policy_management_v2_enabled = 'policyManagementV2Enabled'
     FIELDS_policy_issue_management_enabled = 'policyIssueManagementEnabled'
     FIELDS_ai_agents_enabled = 'aiAgentsEnabled'
+    FIELDS_ai_agents_read_only = 'aiAgentsReadOnly'
     FIELDS_theming_enabled = 'themingEnabled'
     FIELDS_custom_role_condition = 'customRoleCondition'
     FIELDS_neo_task_sharing_enabled = 'neoTaskSharingEnabled'
@@ -396,6 +400,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _policy_management_v2_enabled: 'bool'
     _policy_issue_management_enabled: 'bool'
     _ai_agents_enabled: 'bool'
+    _ai_agents_read_only: 'bool'
     _theming_enabled: 'bool'
     _custom_role_condition: 'bool'
     _neo_task_sharing_enabled: 'bool'
@@ -476,6 +481,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         policy_management_v2_enabled: 'bool',
         policy_issue_management_enabled: 'bool',
         ai_agents_enabled: 'bool',
+        ai_agents_read_only: 'bool',
         theming_enabled: 'bool',
         custom_role_condition: 'bool',
         neo_task_sharing_enabled: 'bool',
@@ -566,6 +572,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.policy_management_v2_enabled = policy_management_v2_enabled
         self.policy_issue_management_enabled = policy_issue_management_enabled
         self.ai_agents_enabled = ai_agents_enabled
+        self.ai_agents_read_only = ai_agents_read_only
         self.theming_enabled = theming_enabled
         self.custom_role_condition = custom_role_condition
         self.neo_task_sharing_enabled = neo_task_sharing_enabled
@@ -651,6 +658,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._policy_management_v2_enabled = source._policy_management_v2_enabled
             self._policy_issue_management_enabled = source._policy_issue_management_enabled
             self._ai_agents_enabled = source._ai_agents_enabled
+            self._ai_agents_read_only = source._ai_agents_read_only
             self._theming_enabled = source._theming_enabled
             self._custom_role_condition = source._custom_role_condition
             self._neo_task_sharing_enabled = source._neo_task_sharing_enabled
@@ -1148,6 +1156,17 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `ai_agents_enabled`, must not be `None`")
 
         self._ai_agents_enabled = ai_agents_enabled
+
+    @property
+    def ai_agents_read_only(self) -> 'bool':
+        return self._ai_agents_read_only
+
+    @ai_agents_read_only.setter
+    def ai_agents_read_only(self, ai_agents_read_only: 'bool'):
+        if ai_agents_read_only is None:
+            raise ValueError("Invalid value for `ai_agents_read_only`, must not be `None`")
+
+        self._ai_agents_read_only = ai_agents_read_only
 
     @property
     def theming_enabled(self) -> 'bool':

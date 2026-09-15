@@ -94,6 +94,10 @@ type OrganizationFeatures struct {
 	PolicyIssueManagementEnabled bool `json:"policyIssueManagementEnabled" yaml:"policyIssueManagementEnabled"`
 	// Whether AI agents (Pulumi Copilot) are enabled.
 	AIAgentsEnabled bool `json:"aiAgentsEnabled" yaml:"aiAgentsEnabled"`
+	// Whether the organization has read-only access to AI agents: it is not entitled to Neo on its current plan, but may still read the tasks
+	// it already has. Mutually exclusive with aiAgentsEnabled. When both are false, Neo is hidden entirely, which is what an organization sees
+	// when Neo has been disabled for it.
+	AIAgentsReadOnly bool `json:"aiAgentsReadOnly" yaml:"aiAgentsReadOnly"`
 	// Whether UI theming is enabled.
 	ThemingEnabled bool `json:"themingEnabled" yaml:"themingEnabled"`
 	// Whether custom role conditions are enabled.

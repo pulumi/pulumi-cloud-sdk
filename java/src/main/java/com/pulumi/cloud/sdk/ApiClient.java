@@ -28,6 +28,17 @@ import java.util.function.Function;
  * surface as {@link ApiException}.
  */
 public class ApiClient {
+    // Media types whose body is raw bytes rather than a text or JSON document.
+    // Mirrors analyzer.IsBinaryMediaType in the code generator.
+    private static final List<String> BINARY_MEDIA_TYPES =
+            List.of("application/octet-stream", "application/x-tar");
+
+    // Media types whose body is the text of the document itself, with no JSON
+    // envelope to encode. Mirrors analyzer.IsUnencodedTextMediaType in the code
+    // generator, which types these request bodies as String.
+    private static final List<String> UNENCODED_TEXT_MEDIA_TYPES =
+            List.of("application/x-yaml", "application/yaml", "text/plain", "text/markdown");
+
     private final ApiClientConfiguration configuration;
     private final HttpClient http;
 
@@ -36,8 +47,13 @@ public class ApiClient {
     }
 
     public ApiClient(ApiClientConfiguration configuration) {
+        this(configuration, HttpClient.newHttpClient());
+    }
+
+    /** Use a caller-supplied {@link HttpClient} (custom proxy, executor, or a test transport). */
+    public ApiClient(ApiClientConfiguration configuration, HttpClient http) {
         this.configuration = configuration;
-        this.http = HttpClient.newHttpClient();
+        this.http = http;
     }
 
     public ApiClientConfiguration getConfiguration() {
@@ -72,8 +88,15 @@ public class ApiClient {
         if (request.hasBody) {
             String contentType = request.consumes.isEmpty() ? "application/json" : request.consumes.get(0);
             builder.header("Content-Type", contentType);
-            if ("application/octet-stream".equals(contentType) && request.body instanceof byte[]) {
+            if (BINARY_MEDIA_TYPES.contains(contentType) && request.body instanceof byte[]) {
                 bodyBytes = (byte[]) request.body;
+            } else if (UNENCODED_TEXT_MEDIA_TYPES.contains(contentType) && request.body instanceof String) {
+                // The body is the document itself. Jackson would quote and
+                // escape it into a JSON string the server cannot parse.
+                bodyBytes = ((String) request.body).getBytes(StandardCharsets.UTF_8);
+            } else if (!"application/json".equals(contentType)) {
+                throw new ApiException(0, "Request media type " + contentType + " has no encoder in this client",
+                        url, null, null, null);
             } else {
                 try {
                     bodyBytes = Json.MAPPER.writeValueAsBytes(request.body);
