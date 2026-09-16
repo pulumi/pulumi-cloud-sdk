@@ -34,5 +34,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("is_error")]
         public bool Is_error { get; set; }
+
+        /// <summary>
+        /// Set when a managed Neo worker posted this result as the first one after starting with a reset (non-restored) workspace, so the agent can factor in that its files did not carry over from a prior turn. Never set for CLI-executed tool results.
+        /// </summary>
+        [JsonProperty("workspace_reset")]
+        public bool Workspace_reset { get; set; }
     }
 }

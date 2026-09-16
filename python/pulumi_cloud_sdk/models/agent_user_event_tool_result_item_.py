@@ -21,12 +21,14 @@ class AgentUserEventToolResultItem(PulumiAutoModelEncoder):
     :var name: str - declared
     :var content: Any - declared
     :var is_error: bool - declared
+    :var workspace_reset: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'tool_call_id': 'str',
         'name': 'str',
         'content': 'Any',
         'is_error': 'bool',
+        'workspace_reset': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -34,17 +36,20 @@ class AgentUserEventToolResultItem(PulumiAutoModelEncoder):
         'name': 'name',
         'content': 'content',
         'is_error': 'is_error',
+        'workspace_reset': 'workspace_reset',
     }
 
     FIELDS_tool_call_id = 'tool_call_id'
     FIELDS_name = 'name'
     FIELDS_content = 'content'
     FIELDS_is_error = 'is_error'
+    FIELDS_workspace_reset = 'workspace_reset'
 
     _tool_call_id: 'str'
     _name: 'str'
     _content: 'Any'
     _is_error: 'bool'
+    _workspace_reset: 'bool'
 
     def __init__(
         self,
@@ -52,6 +57,7 @@ class AgentUserEventToolResultItem(PulumiAutoModelEncoder):
         name: 'str',
         content: 'Any',
         is_error: 'bool' = False,
+        workspace_reset: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -59,6 +65,7 @@ class AgentUserEventToolResultItem(PulumiAutoModelEncoder):
         self.name = name
         self.content = content
         self.is_error = is_error
+        self.workspace_reset = workspace_reset
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AgentUserEventToolResultItem):
@@ -66,6 +73,7 @@ class AgentUserEventToolResultItem(PulumiAutoModelEncoder):
             self._name = source._name
             self._content = source._content
             self._is_error = source._is_error
+            self._workspace_reset = source._workspace_reset
 
     @property
     def tool_call_id(self) -> 'str':
@@ -107,6 +115,14 @@ class AgentUserEventToolResultItem(PulumiAutoModelEncoder):
     @is_error.setter
     def is_error(self, is_error: 'bool'):
         self._is_error = is_error
+
+    @property
+    def workspace_reset(self) -> 'bool':
+        return self._workspace_reset
+
+    @workspace_reset.setter
+    def workspace_reset(self, workspace_reset: 'bool'):
+        self._workspace_reset = workspace_reset
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AgentUserEventToolResultItem):

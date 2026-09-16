@@ -15,4 +15,7 @@ type AgentUserEventToolResultItem struct {
 	Content any `json:"content" yaml:"content"`
 	// Whether the tool execution resulted in an error.
 	Is_error bool `json:"is_error,omitzero" yaml:"is_error,omitempty"`
+	// Set when a managed Neo worker posted this result as the first one after starting with a reset (non-restored) workspace, so the agent can
+	// factor in that its files did not carry over from a prior turn. Never set for CLI-executed tool results.
+	Workspace_reset bool `json:"workspace_reset,omitzero" yaml:"workspace_reset,omitempty"`
 }

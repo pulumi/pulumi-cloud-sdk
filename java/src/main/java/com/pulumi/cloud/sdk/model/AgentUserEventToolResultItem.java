@@ -22,4 +22,7 @@ public class AgentUserEventToolResultItem {
 
     // Whether the tool execution resulted in an error.
     public boolean is_error;
+
+    // Set when a managed Neo worker posted this result as the first one after starting with a reset (non-restored) workspace, so the agent can factor in that its files did not carry over from a prior turn. Never set for CLI-executed tool results.
+    public boolean workspace_reset;
 }

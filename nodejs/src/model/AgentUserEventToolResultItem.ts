@@ -19,6 +19,7 @@ export class AgentUserEventToolResultItem {
     name: string;
     content: any;
     is_error?: boolean;
+    workspace_reset?: boolean;
 
     getFixupPrototypeFunction() {
         return AgentUserEventToolResultItem.fixupPrototype;
