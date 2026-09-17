@@ -17,7 +17,7 @@ public class GraphSchemaNodeType {
     // Field names usable in anchor match.fields predicates for this node type. This is the widest of the three vocabularies.
     public List<String> selectableFields;
 
-    // Field names usable in return.fields projections, and — for node types that carry a document — in a traverse step's target.match. Naming a field outside this list returns a 400.
+    // Field names usable in return.fields projections, and — for node types that carry a document — in a traverse step's target.match. A name in no node type's list returns a 400; a name in some other type's list is absent from this type's nodes.
     public List<String> projectableFields;
 
     // Field names usable in aggregate.groupBy for this node type. Naming a field outside this list returns a 400. Empty for node types that cannot be aggregated.

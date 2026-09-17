@@ -11,7 +11,7 @@ type GraphQueryReturn struct {
 	// traversal frontier.
 	Select []string `json:"select,omitempty" yaml:"select,omitempty"`
 	// Node fields to project into each returned node's fields map. Every name must appear in the projectableFields list the schema endpoint
-	// advertises for the resource node type. Not valid together with aggregate.
+	// advertises for the resource node type; a node type projects only the subset in its own list. Not valid together with aggregate.
 	Fields []string `json:"fields,omitempty" yaml:"fields,omitempty"`
 	// When true, the response includes explicit evidence paths to the final traversal frontier, regardless of which frontiers return.select
 	// projects. Defaults to false.

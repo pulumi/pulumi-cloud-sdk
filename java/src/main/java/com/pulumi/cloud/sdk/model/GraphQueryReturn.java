@@ -14,7 +14,7 @@ public class GraphQueryReturn {
     // Named frontiers to include in the response nodes: 'anchor' and/or traversal step aliases. Defaults to the anchor plus the final traversal frontier.
     public List<String> select;
 
-    // Node fields to project into each returned node's fields map. Every name must appear in the projectableFields list the schema endpoint advertises for the resource node type. Not valid together with aggregate.
+    // Node fields to project into each returned node's fields map. Every name must appear in the projectableFields list the schema endpoint advertises for the resource node type; a node type projects only the subset in its own list. Not valid together with aggregate.
     public List<String> fields;
 
     // When true, the response includes explicit evidence paths to the final traversal frontier, regardless of which frontiers return.select projects. Defaults to false.

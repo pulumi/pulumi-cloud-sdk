@@ -66,7 +66,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public System.Collections.Generic.Dictionary<string, string> Fields { get; set; }
 
         /// <summary>
-        /// True when this node carries no indexed document, so none of the fields requested in return.fields could be evaluated on it. Absent unless return.fields was requested.
+        /// True when the engine had no indexed document for this resource, so none of the fields requested in return.fields could be evaluated on it. A stack node never carries it: it projects name, project and stack from its own identity. Absent unless return.fields was requested.
         /// </summary>
         [JsonProperty("fieldsUnavailable")]
         public bool FieldsUnavailable { get; set; }

@@ -18,7 +18,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public System.Collections.Generic.List<string> Select { get; set; }
 
         /// <summary>
-        /// Node fields to project into each returned node's fields map. Every name must appear in the projectableFields list the schema endpoint advertises for the resource node type. Not valid together with aggregate.
+        /// Node fields to project into each returned node's fields map. Every name must appear in the projectableFields list the schema endpoint advertises for the resource node type; a node type projects only the subset in its own list. Not valid together with aggregate.
         /// </summary>
         [JsonProperty("fields")]
         public System.Collections.Generic.List<string> Fields { get; set; }
