@@ -10,7 +10,20 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Pulumi.Cloud.Sdk.Models {
+    [JsonConverter(typeof(Converter))]
     public class EscSchemaSchema {
+        /// <summary>
+        /// Set when the schema is 'true'.
+        /// </summary>
+        [JsonProperty("always")]
+        public bool Always { get; set; }
+
+        /// <summary>
+        /// Set when the schema is 'false'.
+        /// </summary>
+        [JsonProperty("never")]
+        public bool Never { get; set; }
+
         /// <summary>
         /// Schema definitions that can be referenced by $ref.
         /// </summary>
@@ -208,5 +221,36 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("rotateOnly")]
         public System.Collections.Generic.List<string> RotateOnly { get; set; }
+
+        public class Converter : JsonConverter {
+            public override bool CanConvert(Type objectType) {
+                return objectType == typeof(EscSchemaSchema);
+            }
+
+            public override bool CanWrite => false;
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+                // Backward compatibility
+                if (reader.TokenType == JsonToken.Boolean) {
+                    var value = (bool)reader.Value;
+                    var result = new EscSchemaSchema();
+                    result.Always = value;
+                    result.Never = !value;
+                    return result;
+                }
+
+                if (reader.TokenType == JsonToken.Null) {
+                    return null;
+                }
+
+                var target = new EscSchemaSchema();
+                serializer.Populate(reader, target);
+                return target;
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

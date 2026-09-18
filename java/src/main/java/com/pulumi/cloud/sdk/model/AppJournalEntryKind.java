@@ -15,7 +15,10 @@ public enum AppJournalEntryKind {
     Outputs(4),
     Write(5),
     SecretsManager(6),
-    RebuiltBaseState(7);
+    RebuiltBaseState(7),
+    ExtensionParameterize(8),
+    Snippets(9),
+    StateMigration(10);
 
     private final long value;
 

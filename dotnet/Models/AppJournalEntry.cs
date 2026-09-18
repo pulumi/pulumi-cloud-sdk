@@ -126,7 +126,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool RequiresByteString { get; set; }
 
         /// <summary>
-        /// Indices of the resources in the base snapshot that a state migration removes. Only set for state-migration journal entries.
+        /// Deprecated: this field is unused. Use layout to specify the complete base snapshot produced by a state migration.
         /// </summary>
         [JsonProperty("removeOlds")]
         public System.Collections.Generic.List<long> RemoveOlds { get; set; }

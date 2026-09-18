@@ -19,6 +19,9 @@ class AppJournalEntryKind(AutoEnumEncoder):
     Write = 5
     SecretsManager = 6
     RebuiltBaseState = 7
+    ExtensionParameterize = 8
+    Snippets = 9
+    StateMigration = 10
 
     @staticmethod
     def keys() -> list['AppJournalEntryKind']:
@@ -30,7 +33,10 @@ class AppJournalEntryKind(AutoEnumEncoder):
             AppJournalEntryKind.Outputs,
             AppJournalEntryKind.Write,
             AppJournalEntryKind.SecretsManager,
-            AppJournalEntryKind.RebuiltBaseState
+            AppJournalEntryKind.RebuiltBaseState,
+            AppJournalEntryKind.ExtensionParameterize,
+            AppJournalEntryKind.Snippets,
+            AppJournalEntryKind.StateMigration
         ]
 
     @staticmethod
@@ -43,7 +49,10 @@ class AppJournalEntryKind(AutoEnumEncoder):
             AppJournalEntryKind.Outputs.value,
             AppJournalEntryKind.Write.value,
             AppJournalEntryKind.SecretsManager.value,
-            AppJournalEntryKind.RebuiltBaseState.value
+            AppJournalEntryKind.RebuiltBaseState.value,
+            AppJournalEntryKind.ExtensionParameterize.value,
+            AppJournalEntryKind.Snippets.value,
+            AppJournalEntryKind.StateMigration.value
         ]
 
     @staticmethod

@@ -61,6 +61,12 @@ export class EscEvaluatedExecutionContext {
                 }
             }
         }
+        {
+            // Lazy import - only evaluated when called
+            const { EscSchemaSchema } = require("./EscSchemaSchema");
+            this.schema = EscSchemaSchema.fixupWire(this.schema);
+        }
+
         if (this.schema) {
             // Lazy import - only evaluated when called
             const { EscSchemaSchema } = require("./EscSchemaSchema");

@@ -23,4 +23,7 @@ export enum AppJournalEntryKind {
     Write = 5,
     SecretsManager = 6,
     RebuiltBaseState = 7,
+    ExtensionParameterize = 8,
+    Snippets = 9,
+    StateMigration = 10,
 }

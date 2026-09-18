@@ -185,6 +185,9 @@ public class OrganizationFeatures {
     // Whether Neo Security (cloud security posture scanning) is enabled.
     public boolean neoSecurityEnabled;
 
+    // Whether event-triggered Neo tasks are enabled.
+    public boolean agentTriggeredTasksEnabled;
+
     // Deprecated. The legacy per-stack code-access-for-AI-reviews setting has been removed; no longer populated (always false).
     public boolean aiReviewCodeAccessEnabled;
 

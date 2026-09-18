@@ -7,10 +7,16 @@ package apitype
 
 import (
 	"encoding/json"
+	"math/big"
+	"regexp"
 )
 
 // EscSchemaSchema represents a JSON Schema used to describe the shape of environment values.
 type EscSchemaSchema struct {
+	// Set when the schema is 'true'.
+	Always bool `json:"always,omitzero" yaml:"always,omitempty"`
+	// Set when the schema is 'false'.
+	Never bool `json:"never,omitzero" yaml:"never,omitempty"`
 	// Schema definitions that can be referenced by $ref.
 	Defs map[string]*EscSchemaSchema `json:"$defs,omitempty" yaml:"$defs,omitempty"`
 	// A JSON reference to a schema definition.
@@ -28,7 +34,7 @@ type EscSchemaSchema struct {
 	// Schemas for named object properties.
 	Properties map[string]*EscSchemaSchema `json:"properties,omitempty" yaml:"properties,omitempty"`
 	// The type of the schema (e.g. string, number, object, array, boolean).
-	Type string `json:"type" yaml:"type"`
+	Type string `json:"type,omitempty" yaml:"type,omitempty"`
 	// A constant value the instance must equal.
 	Const any `json:"const,omitempty" yaml:"const,omitempty"`
 	// A list of allowed values.
@@ -77,4 +83,20 @@ type EscSchemaSchema struct {
 	Secret bool `json:"secret,omitzero" yaml:"secret,omitempty"`
 	// Pulumi ESC extension: property paths within this schema that support rotation-only updates.
 	RotateOnly []string `json:"rotateOnly,omitempty" yaml:"rotateOnly,omitempty"`
+
+	ref              *EscSchemaSchema
+	multipleOf       *big.Float
+	maximum          *big.Float
+	exclusiveMaximum *big.Float
+	minimum          *big.Float
+	exclusiveMinimum *big.Float
+	maxLength        *uint
+	minLength        *uint
+	pattern          *regexp.Regexp
+	maxItems         *uint
+	minItems         *uint
+	maxProperties    *uint
+	minProperties    *uint
+	rotateOnly       bool
+	compiled         bool
 }

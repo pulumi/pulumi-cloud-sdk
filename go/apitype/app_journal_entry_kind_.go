@@ -11,14 +11,17 @@ import "fmt"
 type AppJournalEntryKind int64
 
 const (
-	AppJournalEntryKindBegin            AppJournalEntryKind = 0
-	AppJournalEntryKindSuccess          AppJournalEntryKind = 1
-	AppJournalEntryKindFailure          AppJournalEntryKind = 2
-	AppJournalEntryKindRefreshSuccess   AppJournalEntryKind = 3
-	AppJournalEntryKindOutputs          AppJournalEntryKind = 4
-	AppJournalEntryKindWrite            AppJournalEntryKind = 5
-	AppJournalEntryKindSecretsManager   AppJournalEntryKind = 6
-	AppJournalEntryKindRebuiltBaseState AppJournalEntryKind = 7
+	AppJournalEntryKindBegin                 AppJournalEntryKind = 0
+	AppJournalEntryKindSuccess               AppJournalEntryKind = 1
+	AppJournalEntryKindFailure               AppJournalEntryKind = 2
+	AppJournalEntryKindRefreshSuccess        AppJournalEntryKind = 3
+	AppJournalEntryKindOutputs               AppJournalEntryKind = 4
+	AppJournalEntryKindWrite                 AppJournalEntryKind = 5
+	AppJournalEntryKindSecretsManager        AppJournalEntryKind = 6
+	AppJournalEntryKindRebuiltBaseState      AppJournalEntryKind = 7
+	AppJournalEntryKindExtensionParameterize AppJournalEntryKind = 8
+	AppJournalEntryKindSnippets              AppJournalEntryKind = 9
+	AppJournalEntryKindStateMigration        AppJournalEntryKind = 10
 )
 
 func (v AppJournalEntryKind) AllValues() []AppJournalEntryKind {
@@ -31,6 +34,9 @@ func (v AppJournalEntryKind) AllValues() []AppJournalEntryKind {
 		AppJournalEntryKindWrite,
 		AppJournalEntryKindSecretsManager,
 		AppJournalEntryKindRebuiltBaseState,
+		AppJournalEntryKindExtensionParameterize,
+		AppJournalEntryKindSnippets,
+		AppJournalEntryKindStateMigration,
 	}
 }
 
@@ -51,6 +57,12 @@ func (v AppJournalEntryKind) IsValid() bool {
 	case AppJournalEntryKindSecretsManager:
 		return true
 	case AppJournalEntryKindRebuiltBaseState:
+		return true
+	case AppJournalEntryKindExtensionParameterize:
+		return true
+	case AppJournalEntryKindSnippets:
+		return true
+	case AppJournalEntryKindStateMigration:
 		return true
 	}
 
@@ -75,6 +87,12 @@ func (v AppJournalEntryKind) openapiName() string {
 		return "SecretsManager"
 	case AppJournalEntryKindRebuiltBaseState:
 		return "RebuiltBaseState"
+	case AppJournalEntryKindExtensionParameterize:
+		return "ExtensionParameterize"
+	case AppJournalEntryKindSnippets:
+		return "Snippets"
+	case AppJournalEntryKindStateMigration:
+		return "StateMigration"
 	}
 
 	return ""

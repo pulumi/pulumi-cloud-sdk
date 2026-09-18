@@ -59,6 +59,12 @@ export class EscBuiltinExpr {
             const { EscRange } = require("./EscRange");
             EscRange.fixupPrototype(this.nameRange);
         }
+        {
+            // Lazy import - only evaluated when called
+            const { EscSchemaSchema } = require("./EscSchemaSchema");
+            this.argSchema = EscSchemaSchema.fixupWire(this.argSchema);
+        }
+
         if (this.argSchema) {
             // Lazy import - only evaluated when called
             const { EscSchemaSchema } = require("./EscSchemaSchema");

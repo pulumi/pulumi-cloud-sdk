@@ -52,11 +52,23 @@ export class ProviderSchema {
     }
 
     fixupFields() {
+        {
+            // Lazy import - only evaluated when called
+            const { EscSchemaSchema } = require("./EscSchemaSchema");
+            this.inputs = EscSchemaSchema.fixupWire(this.inputs);
+        }
+
         if (this.inputs) {
             // Lazy import - only evaluated when called
             const { EscSchemaSchema } = require("./EscSchemaSchema");
             EscSchemaSchema.fixupPrototype(this.inputs);
         }
+        {
+            // Lazy import - only evaluated when called
+            const { EscSchemaSchema } = require("./EscSchemaSchema");
+            this.outputs = EscSchemaSchema.fixupWire(this.outputs);
+        }
+
         if (this.outputs) {
             // Lazy import - only evaluated when called
             const { EscSchemaSchema } = require("./EscSchemaSchema");
