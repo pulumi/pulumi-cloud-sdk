@@ -52,6 +52,7 @@ export class AgentTask {
     toolExecutionMode?: ToolExecutionMode;
     sourceAutomationID?: string;
     agentDefinitionId?: string;
+    pendingInputCount?: number;
     source?: AgentTaskSource;
     vcsProvider?: VCSProvider;
 

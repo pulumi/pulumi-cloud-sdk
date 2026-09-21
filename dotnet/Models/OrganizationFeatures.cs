@@ -514,5 +514,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("linkExpressCheckoutEnabled")]
         public bool LinkExpressCheckoutEnabled { get; set; }
+
+        /// <summary>
+        /// Whether an environment can hold one open draft per author rather than one in total.
+        /// </summary>
+        [JsonProperty("multiChangeRequestsEnabled")]
+        public bool MultiChangeRequestsEnabled { get; set; }
     }
 }

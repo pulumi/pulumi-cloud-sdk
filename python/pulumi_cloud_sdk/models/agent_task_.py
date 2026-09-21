@@ -41,6 +41,7 @@ class AgentTask(PulumiAutoModelEncoder):
     :var tool_execution_mode: ToolExecutionMode - declared
     :var source_automation_i_d: str - declared
     :var agent_definition_id: str - declared
+    :var pending_input_count: int - declared
     :var source: AgentTaskSource - declared
     :var vcs_provider: VCSProvider - declared
     """
@@ -69,6 +70,7 @@ class AgentTask(PulumiAutoModelEncoder):
         'tool_execution_mode': 'ToolExecutionMode',
         'source_automation_i_d': 'str',
         'agent_definition_id': 'str',
+        'pending_input_count': 'int',
         'source': 'AgentTaskSource',
         'vcs_provider': 'VCSProvider',
     }
@@ -98,6 +100,7 @@ class AgentTask(PulumiAutoModelEncoder):
         'tool_execution_mode': 'toolExecutionMode',
         'source_automation_i_d': 'sourceAutomationID',
         'agent_definition_id': 'agentDefinitionId',
+        'pending_input_count': 'pendingInputCount',
         'source': 'source',
         'vcs_provider': 'vcsProvider',
     }
@@ -126,6 +129,7 @@ class AgentTask(PulumiAutoModelEncoder):
     FIELDS_tool_execution_mode = 'toolExecutionMode'
     FIELDS_source_automation_i_d = 'sourceAutomationID'
     FIELDS_agent_definition_id = 'agentDefinitionId'
+    FIELDS_pending_input_count = 'pendingInputCount'
     FIELDS_source = 'source'
     FIELDS_vcs_provider = 'vcsProvider'
 
@@ -153,6 +157,7 @@ class AgentTask(PulumiAutoModelEncoder):
     _tool_execution_mode: 'ToolExecutionMode'
     _source_automation_i_d: 'str'
     _agent_definition_id: 'str'
+    _pending_input_count: 'int'
     _source: 'AgentTaskSource'
     _vcs_provider: 'VCSProvider'
 
@@ -182,6 +187,7 @@ class AgentTask(PulumiAutoModelEncoder):
         tool_execution_mode: 'ToolExecutionMode' = None,
         source_automation_i_d: 'str' = None,
         agent_definition_id: 'str' = None,
+        pending_input_count: 'int' = 0,
         source: 'AgentTaskSource' = None,
         vcs_provider: 'VCSProvider' = None,
     ) -> None:
@@ -211,6 +217,7 @@ class AgentTask(PulumiAutoModelEncoder):
         self.tool_execution_mode = tool_execution_mode
         self.source_automation_i_d = source_automation_i_d
         self.agent_definition_id = agent_definition_id
+        self.pending_input_count = pending_input_count
         self.source = source
         self.vcs_provider = vcs_provider
 
@@ -240,6 +247,7 @@ class AgentTask(PulumiAutoModelEncoder):
             self._tool_execution_mode = source._tool_execution_mode
             self._source_automation_i_d = source._source_automation_i_d
             self._agent_definition_id = source._agent_definition_id
+            self._pending_input_count = source._pending_input_count
             self._source = source._source
             self._vcs_provider = source._vcs_provider
 
@@ -520,6 +528,14 @@ class AgentTask(PulumiAutoModelEncoder):
     @agent_definition_id.setter
     def agent_definition_id(self, agent_definition_id: 'str'):
         self._agent_definition_id = agent_definition_id
+
+    @property
+    def pending_input_count(self) -> 'int':
+        return self._pending_input_count
+
+    @pending_input_count.setter
+    def pending_input_count(self, pending_input_count: 'int'):
+        self._pending_input_count = pending_input_count
 
     @property
     def source(self) -> 'AgentTaskSource':

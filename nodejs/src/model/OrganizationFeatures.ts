@@ -99,6 +99,7 @@ export class OrganizationFeatures {
     neoByokEnabled: boolean;
     neoAgentTaskRbacEnforcementEnabled?: boolean;
     linkExpressCheckoutEnabled?: boolean;
+    multiChangeRequestsEnabled?: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationFeatures.fixupPrototype;

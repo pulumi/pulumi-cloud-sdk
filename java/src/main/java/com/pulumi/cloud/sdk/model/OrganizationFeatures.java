@@ -262,4 +262,7 @@ public class OrganizationFeatures {
 
     // Whether one-click Link express checkout is enabled for adding a payment method.
     public boolean linkExpressCheckoutEnabled;
+
+    // Whether an environment can hold one open draft per author rather than one in total.
+    public boolean multiChangeRequestsEnabled;
 }

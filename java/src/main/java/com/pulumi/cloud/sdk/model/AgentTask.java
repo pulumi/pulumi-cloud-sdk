@@ -83,6 +83,9 @@ public class AgentTask {
     // The Custom Agent definition this task was run as, if any. Null for tasks run by a user directly rather than as a saved agent.
     public String agentDefinitionId;
 
+    // The number of pending inputs waiting behind this task. Present for tasks that can receive asynchronous inputs.
+    public int pendingInputCount;
+
     // The origin that triggered this task. Valid values: 'console', 'cli', 'slack', 'schedule', 'api', 'github', 'code-review'.
     public AgentTaskSource source;
 

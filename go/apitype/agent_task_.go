@@ -64,6 +64,8 @@ type AgentTask struct {
 	SourceAutomationID *string `json:"sourceAutomationID,omitempty" yaml:"sourceAutomationID,omitempty"`
 	// The Custom Agent definition this task was run as, if any. Null for tasks run by a user directly rather than as a saved agent.
 	AgentDefinitionID *string `json:"agentDefinitionId,omitempty" yaml:"agentDefinitionId,omitempty"`
+	// The number of pending inputs waiting behind this task. Present for tasks that can receive asynchronous inputs.
+	PendingInputCount int32 `json:"pendingInputCount,omitzero" yaml:"pendingInputCount,omitempty"`
 	// The origin that triggered this task. Valid values: 'console', 'cli', 'slack', 'schedule', 'api', 'github', 'code-review'.
 	Source AgentTaskSource `json:"source,omitempty" yaml:"source,omitempty"`
 	// The version control system this task operates against. Set for tasks that target a specific VCS platform (e.g. code reviews). Null for
@@ -97,6 +99,7 @@ func (m *AgentTask) UnmarshalJSON(bytes []byte) error {
 		FieldToolExecutionMode                 ToolExecutionMode      `json:"toolExecutionMode,omitempty"`
 		FieldSourceAutomationID                *string                `json:"sourceAutomationID,omitempty"`
 		FieldAgentDefinitionID                 *string                `json:"agentDefinitionId,omitempty"`
+		FieldPendingInputCount                 int32                  `json:"pendingInputCount,omitzero"`
 		FieldSource                            AgentTaskSource        `json:"source,omitempty"`
 		FieldVcsProvider                       *VCSProvider           `json:"vcsProvider,omitempty"`
 	}
@@ -142,6 +145,7 @@ func (m *AgentTask) UnmarshalJSON(bytes []byte) error {
 	m.ToolExecutionMode = v.FieldToolExecutionMode
 	m.SourceAutomationID = v.FieldSourceAutomationID
 	m.AgentDefinitionID = v.FieldAgentDefinitionID
+	m.PendingInputCount = v.FieldPendingInputCount
 	m.Source = v.FieldSource
 	m.VcsProvider = v.FieldVcsProvider
 	return nil
@@ -173,6 +177,7 @@ func (m *AgentTask) UnmarshalYAML(value *yaml.Node) error {
 		FieldToolExecutionMode                 ToolExecutionMode      `yaml:"toolExecutionMode,omitempty"`
 		FieldSourceAutomationID                *string                `yaml:"sourceAutomationID,omitempty"`
 		FieldAgentDefinitionID                 *string                `yaml:"agentDefinitionId,omitempty"`
+		FieldPendingInputCount                 int32                  `yaml:"pendingInputCount,omitempty"`
 		FieldSource                            AgentTaskSource        `yaml:"source,omitempty"`
 		FieldVcsProvider                       *VCSProvider           `yaml:"vcsProvider,omitempty"`
 	}
@@ -218,6 +223,7 @@ func (m *AgentTask) UnmarshalYAML(value *yaml.Node) error {
 	m.ToolExecutionMode = v.FieldToolExecutionMode
 	m.SourceAutomationID = v.FieldSourceAutomationID
 	m.AgentDefinitionID = v.FieldAgentDefinitionID
+	m.PendingInputCount = v.FieldPendingInputCount
 	m.Source = v.FieldSource
 	m.VcsProvider = v.FieldVcsProvider
 	return nil

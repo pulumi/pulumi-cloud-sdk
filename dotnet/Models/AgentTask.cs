@@ -156,6 +156,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string AgentDefinitionID { get; set; }
 
         /// <summary>
+        /// The number of pending inputs waiting behind this task. Present for tasks that can receive asynchronous inputs.
+        /// </summary>
+        [JsonProperty("pendingInputCount")]
+        public int PendingInputCount { get; set; }
+
+        /// <summary>
         /// The origin that triggered this task. Valid values: 'console', 'cli', 'slack', 'schedule', 'api', 'github', 'code-review'.
         /// </summary>
         [JsonProperty("source")]
