@@ -362,6 +362,9 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "policy_results:read")]
         InsightsPolicyResultsRead,
 
+        [EnumMember(Value = "policy_results:update")]
+        InsightsPolicyResultsUpdate,
+
         [EnumMember(Value = "environment:create")]
         EnvironmentCreate,
 

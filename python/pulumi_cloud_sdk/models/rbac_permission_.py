@@ -127,6 +127,7 @@ class RbacPermission(AutoEnumEncoder):
     InsightsPolicyPackUpdate = "policy_pack:update"
     InsightsPolicyPackDelete = "policy_pack:delete"
     InsightsPolicyResultsRead = "policy_results:read"
+    InsightsPolicyResultsUpdate = "policy_results:update"
     EnvironmentCreate = "environment:create"
     EnvironmentList = "environment:list"
     EnvironmentRead = "environment:read"
@@ -323,6 +324,7 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.InsightsPolicyPackUpdate,
             RbacPermission.InsightsPolicyPackDelete,
             RbacPermission.InsightsPolicyResultsRead,
+            RbacPermission.InsightsPolicyResultsUpdate,
             RbacPermission.EnvironmentCreate,
             RbacPermission.EnvironmentList,
             RbacPermission.EnvironmentRead,
@@ -520,6 +522,7 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.InsightsPolicyPackUpdate.value,
             RbacPermission.InsightsPolicyPackDelete.value,
             RbacPermission.InsightsPolicyResultsRead.value,
+            RbacPermission.InsightsPolicyResultsUpdate.value,
             RbacPermission.EnvironmentCreate.value,
             RbacPermission.EnvironmentList.value,
             RbacPermission.EnvironmentRead.value,

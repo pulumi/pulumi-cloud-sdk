@@ -131,6 +131,7 @@ export enum RbacPermission {
     InsightsPolicyPackUpdate = "policy_pack:update",
     InsightsPolicyPackDelete = "policy_pack:delete",
     InsightsPolicyResultsRead = "policy_results:read",
+    InsightsPolicyResultsUpdate = "policy_results:update",
     EnvironmentCreate = "environment:create",
     EnvironmentList = "environment:list",
     EnvironmentRead = "environment:read",
