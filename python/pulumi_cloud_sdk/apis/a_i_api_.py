@@ -66,3 +66,48 @@ class AIApi(object):
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
+
+    def copilot_skill(
+        self,
+        request: 'CopilotRequest',
+        _request_timeout: int = None,
+    ) -> 'CopilotResponse':
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `copilot_skill`")
+
+        collection_formats = {}
+        resource_path = '/api/ai/chat/preview'
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CopilotResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)

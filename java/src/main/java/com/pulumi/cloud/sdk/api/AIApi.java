@@ -32,4 +32,15 @@ public final class AIApi {
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<JsonNode>() {});
     }
+
+    public CopilotResponse copilotSkill(CopilotRequest request) {
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling copilotSkill");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/ai/chat/preview");
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<CopilotResponse>() {});
+    }
 }

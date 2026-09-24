@@ -17,6 +17,8 @@
 import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
 import { AITemplateRequest } from "../model/AITemplateRequest";
+import { CopilotRequest } from "../model/CopilotRequest";
+import { CopilotResponse } from "../model/CopilotResponse";
 
 
 export class AI {
@@ -49,5 +51,33 @@ export class AI {
         __requestOptions.method = "POST";
 
         return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public CopilotSkill__generateUrl(): string {
+        let url = this.basePath + "ai/chat/preview";
+        return url;
+    }
+
+    public CopilotSkill(request: CopilotRequest): Promise<CopilotResponse> {
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CopilotSkill.");
+        }
+
+        const __path = this.CopilotSkill__generateUrl();
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<CopilotResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                CopilotResponse.fixupPrototype(__res0);
+            }
+        });
     }
 }

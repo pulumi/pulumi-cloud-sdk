@@ -27,5 +27,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Produces("application/json");
             return this.client.Call<JToken>(apiRequest);
         }
+
+        public CopilotResponse CopilotSkill(CopilotRequest request) {
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CopilotSkill");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/ai/chat/preview");
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<CopilotResponse>(apiRequest);
+        }
     }
 }

@@ -8,6 +8,7 @@ package apiclient
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/pulumi/pulumi-cloud-sdk/go/apitype"
@@ -53,6 +54,57 @@ func (p *CloudClient) AITemplate(
 		return nil, err
 	}
 	var result any
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForCopilotSkill struct {
+	Request      apitype.CopilotRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CopilotSkill(
+	ctx context.Context,
+	request apitype.CopilotRequest,
+	extraHeaders ...http.Header,
+) (*apitype.CopilotResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCopilotSkill{
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CopilotResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CopilotSkill: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/ai/chat/preview",
+		nil,
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.CopilotResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
