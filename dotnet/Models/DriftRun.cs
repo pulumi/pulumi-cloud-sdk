@@ -29,7 +29,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Created { get; set; }
 
         /// <summary>
-        /// The current status of the drift run.
+        /// The current status of the drift run. For a run started by a deployment, this is the deployment's status. Otherwise it is derived from the state of the run's refresh preview update: `running` while the update is in progress, then `succeeded` or `failed`. Canceled and timed-out updates report `failed`.
         /// </summary>
         [JsonProperty("status")]
         public JobStatus Status { get; set; }

@@ -14,7 +14,7 @@ public class StepRun {
     // The name of the step.
     public String name;
 
-    // The current status of the step.
+    // The current execution status of this step. Steps in a job run in order.
     public StepStatus status;
 
     // The timestamp when the step started.

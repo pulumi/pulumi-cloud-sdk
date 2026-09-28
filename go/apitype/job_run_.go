@@ -10,7 +10,7 @@ import (
 
 // JobRun contains information about a job run.
 type JobRun struct {
-	// The current status of the job run
+	// The current execution status of this job.
 	Status JobStatus `json:"status" yaml:"status"`
 	// When the job started running
 	Started *time.Time `json:"started,omitempty" yaml:"started,omitempty"`

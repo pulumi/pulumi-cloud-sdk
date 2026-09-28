@@ -12,6 +12,7 @@ type DriftRunUpdate struct {
 	ResourceChanges map[string]int `json:"resourceChanges,omitempty" yaml:"resourceChanges,omitempty"`
 	// The timestamp when the update was last modified.
 	Modified string `json:"modified" yaml:"modified"`
-	// The current status of the update.
+	// The current status of the update, derived from its update state: `running` while the update is in progress, then `succeeded` or
+	// `failed`. Canceled and timed-out updates report `failed`.
 	Status JobStatus `json:"status" yaml:"status"`
 }

@@ -29,7 +29,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Modified { get; set; }
 
         /// <summary>
-        /// The current status of the update.
+        /// The current status of the update, derived from its update state: `running` while the update is in progress, then `succeeded` or `failed`. Canceled and timed-out updates report `failed`.
         /// </summary>
         [JsonProperty("status")]
         public JobStatus Status { get; set; }

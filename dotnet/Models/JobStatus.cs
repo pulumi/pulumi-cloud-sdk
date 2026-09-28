@@ -11,37 +11,37 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum JobStatus {
         /// <summary>
-        /// JobStatusNotStarted indicates that a job has not yet started.
+        /// The work has been created but has not started yet.
         /// </summary>
         [EnumMember(Value = "not-started")]
         NotStarted,
 
         /// <summary>
-        /// JobStatusAccepted indicates that a job has been accepted for execution, but is not yet running.
+        /// The work has been picked up for execution but has not started running yet.
         /// </summary>
         [EnumMember(Value = "accepted")]
         Accepted,
 
         /// <summary>
-        /// JobStatusRunning indicates that a job is running.
+        /// The work is executing.
         /// </summary>
         [EnumMember(Value = "running")]
         Running,
 
         /// <summary>
-        /// JobStatusFailed indicates that a job has failed.
+        /// The work finished without completing successfully. Failures, timeouts, and cancellations are all reported as `failed`, and there is no separate status for canceled work. This is a terminal status.
         /// </summary>
         [EnumMember(Value = "failed")]
         Failed,
 
         /// <summary>
-        /// JobStatusSucceeded indicates that a job has succeeded.
+        /// The work completed successfully. This is a terminal status.
         /// </summary>
         [EnumMember(Value = "succeeded")]
         Succeeded,
 
         /// <summary>
-        /// JobStatusSkipped indicates that a job has skipped as there are fresher deployments to execute in the queue.
+        /// The work was dropped without ever running. Only deployments report this status. This is a terminal status.
         /// </summary>
         [EnumMember(Value = "skipped")]
         Skipped,

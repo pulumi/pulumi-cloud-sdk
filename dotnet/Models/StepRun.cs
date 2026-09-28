@@ -17,7 +17,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Name { get; set; }
 
         /// <summary>
-        /// The current status of the step.
+        /// The current execution status of this step. Steps in a job run in order.
         /// </summary>
         [JsonProperty("status")]
         public StepStatus Status { get; set; }

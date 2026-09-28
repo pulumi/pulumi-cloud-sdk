@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class DeploymentJob {
         /// <summary>
-        /// The current status of the deployment job.
+        /// The current execution status of this job. A deployment reports the status of its job, so this is normally the same value as the deployment's own `status`.
         /// </summary>
         [JsonProperty("status")]
         public JobStatus Status { get; set; }

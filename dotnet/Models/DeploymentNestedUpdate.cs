@@ -41,7 +41,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public long EndTime { get; set; }
 
         /// <summary>
-        /// The result of the update operation.
+        /// The outcome of this individual Pulumi update. This reports the result of one update rather than the status of the deployment as a whole, and it uses a different set of values from the deployment's `status`.
         /// </summary>
         [JsonProperty("result")]
         public AppUpdateResult Result { get; set; }

@@ -12,7 +12,7 @@ import (
 type StepRun struct {
 	// The name of the step.
 	Name string `json:"name" yaml:"name"`
-	// The current status of the step.
+	// The current execution status of this step. Steps in a job run in order.
 	Status StepStatus `json:"status" yaml:"status"`
 	// The timestamp when the step started.
 	Started *time.Time `json:"started,omitempty" yaml:"started,omitempty"`

@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class JobRun {
         /// <summary>
-        /// The current status of the job run
+        /// The current execution status of this job.
         /// </summary>
         [JsonProperty("status")]
         public JobStatus Status { get; set; }

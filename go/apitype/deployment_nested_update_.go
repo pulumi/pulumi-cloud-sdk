@@ -16,7 +16,8 @@ type DeploymentNestedUpdate struct {
 	StartTime int64 `json:"startTime" yaml:"startTime"`
 	// The Unix timestamp when the update ended.
 	EndTime int64 `json:"endTime" yaml:"endTime"`
-	// The result of the update operation.
+	// The outcome of this individual Pulumi update. This reports the result of one update rather than the status of the deployment as a whole,
+	// and it uses a different set of values from the deployment's `status`.
 	Result AppUpdateResult `json:"result" yaml:"result"`
 	// The kind of update operation.
 	Kind AppUpdateKind `json:"kind" yaml:"kind"`

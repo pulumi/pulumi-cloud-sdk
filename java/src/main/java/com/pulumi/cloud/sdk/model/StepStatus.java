@@ -8,13 +8,13 @@ import com.fasterxml.jackson.annotation.*;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum StepStatus {
-    // StepStatusNotStarted indicates that a step has not yet started.
+    // The step has not started. Either it is waiting for an earlier step to finish, or it will never run because the job failed or was canceled before reaching it.
     NotStarted("not-started"),
-    // StepStatusRunning indicates that a step is running.
+    // The step is currently executing.
     Running("running"),
-    // StepStatusFailed indicates that a step has failed.
+    // The step did not complete successfully. The job containing it fails, and any later steps in that job are left as `not-started`. This is a terminal status.
     Failed("failed"),
-    // StepStatusSucceeded indicates that a step has succeeded.
+    // The step completed successfully. If it was the last step in the job, the job succeeds. Otherwise the job keeps running and the next step starts. This is a terminal status.
     Succeeded("succeeded");
 
     private final String value;

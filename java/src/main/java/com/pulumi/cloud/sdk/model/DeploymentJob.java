@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class DeploymentJob {
-    // The current status of the deployment job.
+    // The current execution status of this job. A deployment reports the status of its job, so this is normally the same value as the deployment's own `status`.
     public JobStatus status;
 
     // The timestamp when the job started.

@@ -8,17 +8,17 @@ import com.fasterxml.jackson.annotation.*;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum JobStatus {
-    // JobStatusNotStarted indicates that a job has not yet started.
+    // The work has been created but has not started yet.
     NotStarted("not-started"),
-    // JobStatusAccepted indicates that a job has been accepted for execution, but is not yet running.
+    // The work has been picked up for execution but has not started running yet.
     Accepted("accepted"),
-    // JobStatusRunning indicates that a job is running.
+    // The work is executing.
     Running("running"),
-    // JobStatusFailed indicates that a job has failed.
+    // The work finished without completing successfully. Failures, timeouts, and cancellations are all reported as `failed`, and there is no separate status for canceled work. This is a terminal status.
     Failed("failed"),
-    // JobStatusSucceeded indicates that a job has succeeded.
+    // The work completed successfully. This is a terminal status.
     Succeeded("succeeded"),
-    // JobStatusSkipped indicates that a job has skipped as there are fresher deployments to execute in the queue.
+    // The work was dropped without ever running. Only deployments report this status. This is a terminal status.
     Skipped("skipped");
 
     private final String value;

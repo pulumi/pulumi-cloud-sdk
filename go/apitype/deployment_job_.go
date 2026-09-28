@@ -10,7 +10,8 @@ import (
 
 // DeploymentJob represents a deployment job with its status, timing, and step information.
 type DeploymentJob struct {
-	// The current status of the deployment job.
+	// The current execution status of this job. A deployment reports the status of its job, so this is normally the same value as the
+	// deployment's own `status`.
 	Status JobStatus `json:"status" yaml:"status"`
 	// The timestamp when the job started.
 	Started *time.Time `json:"started,omitempty" yaml:"started,omitempty"`

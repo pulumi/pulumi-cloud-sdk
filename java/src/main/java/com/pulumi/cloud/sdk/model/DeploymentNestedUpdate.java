@@ -26,7 +26,7 @@ public class DeploymentNestedUpdate {
     // The Unix timestamp when the update ended.
     public long endTime;
 
-    // The result of the update operation.
+    // The outcome of this individual Pulumi update. This reports the result of one update rather than the status of the deployment as a whole, and it uses a different set of values from the deployment's `status`.
     public AppUpdateResult result;
 
     // The kind of update operation.

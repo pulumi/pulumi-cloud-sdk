@@ -20,6 +20,6 @@ public class DriftRunUpdate {
     // The timestamp when the update was last modified.
     public String modified;
 
-    // The current status of the update.
+    // The current status of the update, derived from its update state: `running` while the update is in progress, then `succeeded` or `failed`. Canceled and timed-out updates report `failed`.
     public JobStatus status;
 }

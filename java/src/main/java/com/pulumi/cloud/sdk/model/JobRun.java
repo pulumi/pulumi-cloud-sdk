@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class JobRun {
-    // The current status of the job run
+    // The current execution status of this job.
     public JobStatus status;
 
     // When the job started running

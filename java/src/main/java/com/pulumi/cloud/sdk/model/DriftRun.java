@@ -20,7 +20,7 @@ public class DriftRun {
     // The timestamp when the drift run was created.
     public String created;
 
-    // The current status of the drift run.
+    // The current status of the drift run. For a run started by a deployment, this is the deployment's status. Otherwise it is derived from the state of the run's refresh preview update: `running` while the update is in progress, then `succeeded` or `failed`. Canceled and timed-out updates report `failed`.
     public JobStatus status;
 
     // The deployment identifier associated with the drift run.
