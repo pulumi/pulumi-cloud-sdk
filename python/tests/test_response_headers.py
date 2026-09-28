@@ -67,7 +67,7 @@ class ResponseHeadersTest(unittest.TestCase):
         self.assertIsInstance(result.response, UpdateEnvironmentResponse)
         self.assertIsInstance(result.headers, HeadersForEnvironmentOp)
         self.assertEqual(result.headers.e_tag, "abc123")
-        self.assertEqual(result.headers.pulumi_e_s_c_revision, 7)
+        self.assertEqual(result.headers.pulumi_esc_revision, 7)
 
     def test_no_body_operation_resolves_to_just_the_headers(self):
         api = _make_api()
@@ -77,7 +77,7 @@ class ResponseHeadersTest(unittest.TestCase):
 
         self.assertIsInstance(result, HeadersForEnvironmentOp)
         self.assertEqual(result.e_tag, "head-etag")
-        self.assertEqual(result.pulumi_e_s_c_revision, 3)
+        self.assertEqual(result.pulumi_esc_revision, 3)
 
     def test_missing_headers_default_to_the_zero_value(self):
         api = _make_api()
@@ -86,7 +86,7 @@ class ResponseHeadersTest(unittest.TestCase):
             result = api.head_environment_esc_environments("acme", "proj", "env")
 
         self.assertEqual(result.e_tag, "")
-        self.assertEqual(result.pulumi_e_s_c_revision, 0)
+        self.assertEqual(result.pulumi_esc_revision, 0)
 
     def test_malformed_header_defaults_to_the_zero_value_rather_than_raising(self):
         # A malformed-but-present header must not fail an otherwise-successful
@@ -97,7 +97,7 @@ class ResponseHeadersTest(unittest.TestCase):
             result = api.head_environment_esc_environments("acme", "proj", "env")
 
         self.assertEqual(result.e_tag, "some-etag")
-        self.assertEqual(result.pulumi_e_s_c_revision, 0)
+        self.assertEqual(result.pulumi_esc_revision, 0)
 
 
 if __name__ == "__main__":
