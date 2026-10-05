@@ -69,6 +69,7 @@ func (m *permissionBooleanExpressionImpl) GetInstancesFromTypeHierarchy() []Perm
 		&permissionExpressionAndImpl{},
 		&permissionExpressionEqualImpl{},
 		&permissionExpressionHasTagImpl{},
+		&permissionExpressionInImpl{},
 		&permissionExpressionNotImpl{},
 		&permissionExpressionOrImpl{},
 	}
@@ -114,6 +115,13 @@ func UnmarshalJSONPermissionBooleanExpression(bytes []byte, res *PermissionBoole
 		return nil
 	case "PermissionExpressionHasTag":
 		var subValue permissionExpressionHasTagImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionExpressionIn":
+		var subValue permissionExpressionInImpl
 		if err = json.Unmarshal(bytes, &subValue); err != nil {
 			return err
 		}
@@ -169,6 +177,13 @@ func UnmarshalYamlPermissionBooleanExpression(node yaml.Node, res *PermissionBoo
 		return nil
 	case "PermissionExpressionHasTag":
 		var subValue permissionExpressionHasTagImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionExpressionIn":
+		var subValue permissionExpressionInImpl
 		if err = node.Decode(&subValue); err != nil {
 			return err
 		}

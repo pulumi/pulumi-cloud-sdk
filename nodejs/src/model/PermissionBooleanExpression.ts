@@ -52,6 +52,7 @@ export class PermissionBooleanExpression extends PermissionExpression {
         const { PermissionExpressionAnd } = require("./PermissionExpressionAnd");
         const { PermissionExpressionEqual } = require("./PermissionExpressionEqual");
         const { PermissionExpressionHasTag } = require("./PermissionExpressionHasTag");
+        const { PermissionExpressionIn } = require("./PermissionExpressionIn");
         const { PermissionExpressionNot } = require("./PermissionExpressionNot");
         const { PermissionExpressionOr } = require("./PermissionExpressionOr");
 
@@ -59,6 +60,7 @@ export class PermissionBooleanExpression extends PermissionExpression {
             PermissionExpressionAnd,
             PermissionExpressionEqual,
             PermissionExpressionHasTag,
+            PermissionExpressionIn,
             PermissionExpressionNot,
             PermissionExpressionOr,
         ];

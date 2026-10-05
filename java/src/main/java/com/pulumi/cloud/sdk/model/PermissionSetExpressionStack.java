@@ -10,11 +10,8 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
-@JsonSubTypes({
-    @JsonSubTypes.Type(value = PermissionBooleanExpressionBinary.class),
-    @JsonSubTypes.Type(value = PermissionBooleanExpressionUnary.class),
-    @JsonSubTypes.Type(value = PermissionExpressionEqual.class),
-    @JsonSubTypes.Type(value = PermissionExpressionIn.class)
-})
-public abstract class PermissionBooleanExpression extends PermissionExpression {
+@JsonTypeName("PermissionSetExpressionStack")
+public class PermissionSetExpressionStack extends PermissionSetExpression {
+    // The identity of the stacks.
+    public List<String> identities;
 }

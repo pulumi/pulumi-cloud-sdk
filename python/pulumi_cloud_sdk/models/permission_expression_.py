@@ -71,6 +71,7 @@ class PermissionExpression(PulumiAutoModelEncoder):
                 "PermissionExpressionEnvironment": models.PermissionExpressionEnvironment,
                 "PermissionExpressionEqual": models.PermissionExpressionEqual,
                 "PermissionExpressionHasTag": models.PermissionExpressionHasTag,
+                "PermissionExpressionIn": models.PermissionExpressionIn,
                 "PermissionExpressionInsightsAccount": models.PermissionExpressionInsightsAccount,
                 "PermissionExpressionNot": models.PermissionExpressionNot,
                 "PermissionExpressionOr": models.PermissionExpressionOr,
@@ -84,6 +85,11 @@ class PermissionExpression(PulumiAutoModelEncoder):
                 "PermissionLiteralExpressionStack": models.PermissionLiteralExpressionStack,
                 "PermissionLiteralExpressionString": models.PermissionLiteralExpressionString,
                 "PermissionLiteralExpressionTeam": models.PermissionLiteralExpressionTeam,
+                "PermissionSetExpressionEnvironment": models.PermissionSetExpressionEnvironment,
+                "PermissionSetExpressionInsightsAccount": models.PermissionSetExpressionInsightsAccount,
+                "PermissionSetExpressionStack": models.PermissionSetExpressionStack,
+                "PermissionSetExpressionString": models.PermissionSetExpressionString,
+                "PermissionSetExpressionTeam": models.PermissionSetExpressionTeam,
             }
             setattr(PermissionExpression, "__DISCRIMINATOR_SWITCHER__", switcher)
         return switcher

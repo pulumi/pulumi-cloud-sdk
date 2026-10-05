@@ -15,7 +15,8 @@ import com.fasterxml.jackson.databind.JsonNode;
     @JsonSubTypes.Type(value = PermissionBooleanExpression.class),
     @JsonSubTypes.Type(value = PermissionContextExpression.class),
     @JsonSubTypes.Type(value = PermissionExpressionTag.class),
-    @JsonSubTypes.Type(value = PermissionLiteralExpression.class)
+    @JsonSubTypes.Type(value = PermissionLiteralExpression.class),
+    @JsonSubTypes.Type(value = PermissionSetExpression.class)
 })
 public abstract class PermissionExpression {
 }

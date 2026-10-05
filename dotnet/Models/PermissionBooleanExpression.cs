@@ -12,6 +12,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonSubType(typeof(PermissionExpressionAnd))]
     [JsonSubType(typeof(PermissionExpressionEqual))]
     [JsonSubType(typeof(PermissionExpressionHasTag))]
+    [JsonSubType(typeof(PermissionExpressionIn))]
     [JsonSubType(typeof(PermissionExpressionNot))]
     [JsonSubType(typeof(PermissionExpressionOr))]
     public abstract class PermissionBooleanExpression : PermissionExpression {

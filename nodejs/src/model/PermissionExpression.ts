@@ -53,6 +53,7 @@ export class PermissionExpression {
         const { PermissionExpressionEnvironment } = require("./PermissionExpressionEnvironment");
         const { PermissionExpressionEqual } = require("./PermissionExpressionEqual");
         const { PermissionExpressionHasTag } = require("./PermissionExpressionHasTag");
+        const { PermissionExpressionIn } = require("./PermissionExpressionIn");
         const { PermissionExpressionInsightsAccount } = require("./PermissionExpressionInsightsAccount");
         const { PermissionExpressionNot } = require("./PermissionExpressionNot");
         const { PermissionExpressionOr } = require("./PermissionExpressionOr");
@@ -66,6 +67,11 @@ export class PermissionExpression {
         const { PermissionLiteralExpressionStack } = require("./PermissionLiteralExpressionStack");
         const { PermissionLiteralExpressionString } = require("./PermissionLiteralExpressionString");
         const { PermissionLiteralExpressionTeam } = require("./PermissionLiteralExpressionTeam");
+        const { PermissionSetExpressionEnvironment } = require("./PermissionSetExpressionEnvironment");
+        const { PermissionSetExpressionInsightsAccount } = require("./PermissionSetExpressionInsightsAccount");
+        const { PermissionSetExpressionStack } = require("./PermissionSetExpressionStack");
+        const { PermissionSetExpressionString } = require("./PermissionSetExpressionString");
+        const { PermissionSetExpressionTeam } = require("./PermissionSetExpressionTeam");
 
         switch (obj.__type) {
             case "PermissionExpressionAnd":
@@ -79,6 +85,9 @@ export class PermissionExpression {
                 break;
             case "PermissionExpressionHasTag":
                 Object.setPrototypeOf(obj, PermissionExpressionHasTag.prototype);
+                break;
+            case "PermissionExpressionIn":
+                Object.setPrototypeOf(obj, PermissionExpressionIn.prototype);
                 break;
             case "PermissionExpressionInsightsAccount":
                 Object.setPrototypeOf(obj, PermissionExpressionInsightsAccount.prototype);
@@ -119,6 +128,21 @@ export class PermissionExpression {
             case "PermissionLiteralExpressionTeam":
                 Object.setPrototypeOf(obj, PermissionLiteralExpressionTeam.prototype);
                 break;
+            case "PermissionSetExpressionEnvironment":
+                Object.setPrototypeOf(obj, PermissionSetExpressionEnvironment.prototype);
+                break;
+            case "PermissionSetExpressionInsightsAccount":
+                Object.setPrototypeOf(obj, PermissionSetExpressionInsightsAccount.prototype);
+                break;
+            case "PermissionSetExpressionStack":
+                Object.setPrototypeOf(obj, PermissionSetExpressionStack.prototype);
+                break;
+            case "PermissionSetExpressionString":
+                Object.setPrototypeOf(obj, PermissionSetExpressionString.prototype);
+                break;
+            case "PermissionSetExpressionTeam":
+                Object.setPrototypeOf(obj, PermissionSetExpressionTeam.prototype);
+                break;
         }
 
         return true; // Tell the caller this is a polymorphic type, it should not overwrite the prototype.
@@ -130,6 +154,7 @@ export class PermissionExpression {
         const { PermissionExpressionEnvironment } = require("./PermissionExpressionEnvironment");
         const { PermissionExpressionEqual } = require("./PermissionExpressionEqual");
         const { PermissionExpressionHasTag } = require("./PermissionExpressionHasTag");
+        const { PermissionExpressionIn } = require("./PermissionExpressionIn");
         const { PermissionExpressionInsightsAccount } = require("./PermissionExpressionInsightsAccount");
         const { PermissionExpressionNot } = require("./PermissionExpressionNot");
         const { PermissionExpressionOr } = require("./PermissionExpressionOr");
@@ -143,12 +168,18 @@ export class PermissionExpression {
         const { PermissionLiteralExpressionStack } = require("./PermissionLiteralExpressionStack");
         const { PermissionLiteralExpressionString } = require("./PermissionLiteralExpressionString");
         const { PermissionLiteralExpressionTeam } = require("./PermissionLiteralExpressionTeam");
+        const { PermissionSetExpressionEnvironment } = require("./PermissionSetExpressionEnvironment");
+        const { PermissionSetExpressionInsightsAccount } = require("./PermissionSetExpressionInsightsAccount");
+        const { PermissionSetExpressionStack } = require("./PermissionSetExpressionStack");
+        const { PermissionSetExpressionString } = require("./PermissionSetExpressionString");
+        const { PermissionSetExpressionTeam } = require("./PermissionSetExpressionTeam");
 
         return [
             PermissionExpressionAnd,
             PermissionExpressionEnvironment,
             PermissionExpressionEqual,
             PermissionExpressionHasTag,
+            PermissionExpressionIn,
             PermissionExpressionInsightsAccount,
             PermissionExpressionNot,
             PermissionExpressionOr,
@@ -162,6 +193,11 @@ export class PermissionExpression {
             PermissionLiteralExpressionStack,
             PermissionLiteralExpressionString,
             PermissionLiteralExpressionTeam,
+            PermissionSetExpressionEnvironment,
+            PermissionSetExpressionInsightsAccount,
+            PermissionSetExpressionStack,
+            PermissionSetExpressionString,
+            PermissionSetExpressionTeam,
         ];
     }
 

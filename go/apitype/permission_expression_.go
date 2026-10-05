@@ -69,6 +69,7 @@ func (m *permissionExpressionImpl) GetInstancesFromTypeHierarchy() []PermissionE
 		&permissionExpressionEnvironmentImpl{},
 		&permissionExpressionEqualImpl{},
 		&permissionExpressionHasTagImpl{},
+		&permissionExpressionInImpl{},
 		&permissionExpressionInsightsAccountImpl{},
 		&permissionExpressionNotImpl{},
 		&permissionExpressionOrImpl{},
@@ -82,6 +83,11 @@ func (m *permissionExpressionImpl) GetInstancesFromTypeHierarchy() []PermissionE
 		&permissionLiteralExpressionStackImpl{},
 		&permissionLiteralExpressionStringImpl{},
 		&permissionLiteralExpressionTeamImpl{},
+		&permissionSetExpressionEnvironmentImpl{},
+		&permissionSetExpressionInsightsAccountImpl{},
+		&permissionSetExpressionStackImpl{},
+		&permissionSetExpressionStringImpl{},
+		&permissionSetExpressionTeamImpl{},
 	}
 }
 
@@ -135,6 +141,13 @@ func UnmarshalJSONPermissionExpression(bytes []byte, res *PermissionExpression) 
 		}
 		*res = &subValue
 		return nil
+	case "PermissionExpressionIn":
+		var subValue permissionExpressionInImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
 	case "PermissionExpressionInsightsAccount":
 		var subValue permissionExpressionInsightsAccountImpl
 		if err = json.Unmarshal(bytes, &subValue); err != nil {
@@ -221,6 +234,41 @@ func UnmarshalJSONPermissionExpression(bytes []byte, res *PermissionExpression) 
 		return nil
 	case "PermissionLiteralExpressionTeam":
 		var subValue permissionLiteralExpressionTeamImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionEnvironment":
+		var subValue permissionSetExpressionEnvironmentImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionInsightsAccount":
+		var subValue permissionSetExpressionInsightsAccountImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionStack":
+		var subValue permissionSetExpressionStackImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionString":
+		var subValue permissionSetExpressionStringImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionTeam":
+		var subValue permissionSetExpressionTeamImpl
 		if err = json.Unmarshal(bytes, &subValue); err != nil {
 			return err
 		}
@@ -274,6 +322,13 @@ func UnmarshalYamlPermissionExpression(node yaml.Node, res *PermissionExpression
 		}
 		*res = &subValue
 		return nil
+	case "PermissionExpressionIn":
+		var subValue permissionExpressionInImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
 	case "PermissionExpressionInsightsAccount":
 		var subValue permissionExpressionInsightsAccountImpl
 		if err = node.Decode(&subValue); err != nil {
@@ -360,6 +415,41 @@ func UnmarshalYamlPermissionExpression(node yaml.Node, res *PermissionExpression
 		return nil
 	case "PermissionLiteralExpressionTeam":
 		var subValue permissionLiteralExpressionTeamImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionEnvironment":
+		var subValue permissionSetExpressionEnvironmentImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionInsightsAccount":
+		var subValue permissionSetExpressionInsightsAccountImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionStack":
+		var subValue permissionSetExpressionStackImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionString":
+		var subValue permissionSetExpressionStringImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "PermissionSetExpressionTeam":
+		var subValue permissionSetExpressionTeamImpl
 		if err = node.Decode(&subValue); err != nil {
 			return err
 		}

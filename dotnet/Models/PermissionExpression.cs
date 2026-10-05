@@ -15,6 +15,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonSubType(typeof(PermissionExpressionEnvironment))]
     [JsonSubType(typeof(PermissionExpressionEqual))]
     [JsonSubType(typeof(PermissionExpressionHasTag))]
+    [JsonSubType(typeof(PermissionExpressionIn))]
     [JsonSubType(typeof(PermissionExpressionInsightsAccount))]
     [JsonSubType(typeof(PermissionExpressionNot))]
     [JsonSubType(typeof(PermissionExpressionOr))]
@@ -28,6 +29,11 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonSubType(typeof(PermissionLiteralExpressionStack))]
     [JsonSubType(typeof(PermissionLiteralExpressionString))]
     [JsonSubType(typeof(PermissionLiteralExpressionTeam))]
+    [JsonSubType(typeof(PermissionSetExpressionEnvironment))]
+    [JsonSubType(typeof(PermissionSetExpressionInsightsAccount))]
+    [JsonSubType(typeof(PermissionSetExpressionStack))]
+    [JsonSubType(typeof(PermissionSetExpressionString))]
+    [JsonSubType(typeof(PermissionSetExpressionTeam))]
     public abstract class PermissionExpression {
     }
 }
