@@ -21,6 +21,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     :var active_change_request: ChangeRequestRef - declared
     :var gated_actions: list[str] - declared
     :var open_request_needed: bool - declared
+    :var oidc_subject_v2: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -28,6 +29,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         'active_change_request': 'ChangeRequestRef',
         'gated_actions': 'list[str]',
         'open_request_needed': 'bool',
+        'oidc_subject_v2': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -36,6 +38,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         'active_change_request': 'activeChangeRequest',
         'gated_actions': 'gatedActions',
         'open_request_needed': 'openRequestNeeded',
+        'oidc_subject_v2': 'oidcSubjectV2',
     }
 
     FIELDS_id = 'id'
@@ -43,12 +46,14 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     FIELDS_active_change_request = 'activeChangeRequest'
     FIELDS_gated_actions = 'gatedActions'
     FIELDS_open_request_needed = 'openRequestNeeded'
+    FIELDS_oidc_subject_v2 = 'oidcSubjectV2'
 
     _id: 'str'
     _owned_by: 'UserInfo'
     _active_change_request: 'ChangeRequestRef'
     _gated_actions: 'list[str]'
     _open_request_needed: 'bool'
+    _oidc_subject_v2: 'str'
 
     def __init__(
         self,
@@ -57,6 +62,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         active_change_request: 'ChangeRequestRef' = None,
         gated_actions: 'list[str]' = None,
         open_request_needed: 'bool' = False,
+        oidc_subject_v2: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -65,6 +71,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         self.active_change_request = active_change_request
         self.gated_actions = gated_actions
         self.open_request_needed = open_request_needed
+        self.oidc_subject_v2 = oidc_subject_v2
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, EnvironmentMetadata):
@@ -73,6 +80,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
             self._active_change_request = source._active_change_request
             self._gated_actions = source._gated_actions
             self._open_request_needed = source._open_request_needed
+            self._oidc_subject_v2 = source._oidc_subject_v2
 
     @property
     def id(self) -> 'str':
@@ -199,6 +207,14 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     @open_request_needed.setter
     def open_request_needed(self, open_request_needed: 'bool'):
         self._open_request_needed = open_request_needed
+
+    @property
+    def oidc_subject_v2(self) -> 'str':
+        return self._oidc_subject_v2
+
+    @oidc_subject_v2.setter
+    def oidc_subject_v2(self, oidc_subject_v2: 'str'):
+        self._oidc_subject_v2 = oidc_subject_v2
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, EnvironmentMetadata):

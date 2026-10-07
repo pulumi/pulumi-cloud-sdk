@@ -23,6 +23,7 @@ export class EnvironmentMetadata {
     activeChangeRequest?: ChangeRequestRef;
     gatedActions?: string[];
     openRequestNeeded?: boolean;
+    oidcSubjectV2?: string;
 
     getFixupPrototypeFunction() {
         return EnvironmentMetadata.fixupPrototype;

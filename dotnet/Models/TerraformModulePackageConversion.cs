@@ -17,7 +17,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Status { get; set; }
 
         /// <summary>
-        /// A fault code classifying why the conversion produced no package, not prose: unknown, transient, misconfigured, timed_out, missing_provider, unsupported_feature, invalid_version or module_error. Every code other than unknown is a positive classification; unknown means the conversion failed and nothing recognised why, so a retry has no established reason to succeed. Clients render their own wording from it. Present when the status is failed or unsupported.
+        /// A fault code classifying why the conversion produced no package, not prose: unknown, transient, misconfigured, timed_out, missing_provider, unsupported_feature, invalid_version, module_error or unreachable_module_source. Every code other than unknown is a positive classification; unknown means the conversion failed and nothing recognised why, so a retry has no established reason to succeed. Clients render their own wording from it. Present when the status is failed or unsupported.
         /// </summary>
         [JsonProperty("failureReason")]
         public string FailureReason { get; set; }

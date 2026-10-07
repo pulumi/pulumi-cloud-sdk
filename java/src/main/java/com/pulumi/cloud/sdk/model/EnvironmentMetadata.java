@@ -25,4 +25,7 @@ public class EnvironmentMetadata {
 
     // OpenRequestNeeded indicates whether an open request is currently needed in order to open the environment.
     public boolean openRequestNeeded;
+
+    // The subject Pulumi signs into OIDC tokens minted by an fn::open::oidc provider declared in this environment. A provider this environment imports from elsewhere mints the subject of the environment that declares it.
+    public String oidcSubjectV2;
 }

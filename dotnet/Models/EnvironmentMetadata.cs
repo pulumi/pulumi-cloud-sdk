@@ -39,5 +39,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("openRequestNeeded")]
         public bool OpenRequestNeeded { get; set; }
+
+        /// <summary>
+        /// The subject Pulumi signs into OIDC tokens minted by an fn::open::oidc provider declared in this environment. A provider this environment imports from elsewhere mints the subject of the environment that declares it.
+        /// </summary>
+        [JsonProperty("oidcSubjectV2")]
+        public string OidcSubjectV2 { get; set; }
     }
 }
