@@ -35,6 +35,9 @@ public class OrganizationMetadata {
     // The time when the organization's active retrial expires, if it is on a retrial.
     public ZonedDateTime retrialExpiration;
 
+    // The plan whose features the organization's active retrial grants, if it is on a retrial. The product field keeps reporting the plan the organization is subscribed to.
+    public SaasOffer retrialProduct;
+
     // Whether the subscription will be canceled at the end of the current billing period.
     public Boolean subscriptionCancelAtPeriodEnd;
 

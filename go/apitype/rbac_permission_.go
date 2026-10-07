@@ -101,6 +101,10 @@ const (
 	RbacPermissionAgentPoolUpdate                    RbacPermission = "agent_pool:update"
 	RbacPermissionAgentPoolDelete                    RbacPermission = "agent_pool:delete"
 	RbacPermissionAgentTaskCreate                    RbacPermission = "agent_task:create"
+	RbacPermissionAgentTaskRead                      RbacPermission = "agent_task:read"
+	RbacPermissionAgentTaskContribute                RbacPermission = "agent_task:contribute"
+	RbacPermissionAgentTaskApprove                   RbacPermission = "agent_task:approve"
+	RbacPermissionAgentTaskManage                    RbacPermission = "agent_task:manage"
 	RbacPermissionOrganizationWebhookRead            RbacPermission = "organization_webhook:read"
 	RbacPermissionOrganizationWebhookCreate          RbacPermission = "organization_webhook:create"
 	RbacPermissionOrganizationWebhookUpdate          RbacPermission = "organization_webhook:update"
@@ -298,6 +302,10 @@ func (v RbacPermission) AllValues() []RbacPermission {
 		RbacPermissionAgentPoolUpdate,
 		RbacPermissionAgentPoolDelete,
 		RbacPermissionAgentTaskCreate,
+		RbacPermissionAgentTaskRead,
+		RbacPermissionAgentTaskContribute,
+		RbacPermissionAgentTaskApprove,
+		RbacPermissionAgentTaskManage,
 		RbacPermissionOrganizationWebhookRead,
 		RbacPermissionOrganizationWebhookCreate,
 		RbacPermissionOrganizationWebhookUpdate,
@@ -580,6 +588,14 @@ func (v RbacPermission) IsValid() bool {
 	case RbacPermissionAgentPoolDelete:
 		return true
 	case RbacPermissionAgentTaskCreate:
+		return true
+	case RbacPermissionAgentTaskRead:
+		return true
+	case RbacPermissionAgentTaskContribute:
+		return true
+	case RbacPermissionAgentTaskApprove:
+		return true
+	case RbacPermissionAgentTaskManage:
 		return true
 	case RbacPermissionOrganizationWebhookRead:
 		return true
@@ -974,6 +990,14 @@ func (v RbacPermission) openapiName() string {
 		return "AgentPoolDelete"
 	case RbacPermissionAgentTaskCreate:
 		return "AgentTaskCreate"
+	case RbacPermissionAgentTaskRead:
+		return "AgentTaskRead"
+	case RbacPermissionAgentTaskContribute:
+		return "AgentTaskContribute"
+	case RbacPermissionAgentTaskApprove:
+		return "AgentTaskApprove"
+	case RbacPermissionAgentTaskManage:
+		return "AgentTaskManage"
 	case RbacPermissionOrganizationWebhookRead:
 		return "OrganizationWebhookRead"
 	case RbacPermissionOrganizationWebhookCreate:

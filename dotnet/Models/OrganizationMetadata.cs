@@ -59,6 +59,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public DateTimeOffset? RetrialExpiration { get; set; }
 
         /// <summary>
+        /// The plan whose features the organization's active retrial grants, if it is on a retrial. The product field keeps reporting the plan the organization is subscribed to.
+        /// </summary>
+        [JsonProperty("retrialProduct")]
+        public SaasOffer? RetrialProduct { get; set; }
+
+        /// <summary>
         /// Whether the subscription will be canceled at the end of the current billing period.
         /// </summary>
         [JsonProperty("subscriptionCancelAtPeriodEnd")]

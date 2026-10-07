@@ -95,6 +95,10 @@ class RbacPermission(AutoEnumEncoder):
     AgentPoolUpdate = "agent_pool:update"
     AgentPoolDelete = "agent_pool:delete"
     AgentTaskCreate = "agent_task:create"
+    AgentTaskRead = "agent_task:read"
+    AgentTaskContribute = "agent_task:contribute"
+    AgentTaskApprove = "agent_task:approve"
+    AgentTaskManage = "agent_task:manage"
     OrganizationWebhookRead = "organization_webhook:read"
     OrganizationWebhookCreate = "organization_webhook:create"
     OrganizationWebhookUpdate = "organization_webhook:update"
@@ -292,6 +296,10 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.AgentPoolUpdate,
             RbacPermission.AgentPoolDelete,
             RbacPermission.AgentTaskCreate,
+            RbacPermission.AgentTaskRead,
+            RbacPermission.AgentTaskContribute,
+            RbacPermission.AgentTaskApprove,
+            RbacPermission.AgentTaskManage,
             RbacPermission.OrganizationWebhookRead,
             RbacPermission.OrganizationWebhookCreate,
             RbacPermission.OrganizationWebhookUpdate,
@@ -490,6 +498,10 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.AgentPoolUpdate.value,
             RbacPermission.AgentPoolDelete.value,
             RbacPermission.AgentTaskCreate.value,
+            RbacPermission.AgentTaskRead.value,
+            RbacPermission.AgentTaskContribute.value,
+            RbacPermission.AgentTaskApprove.value,
+            RbacPermission.AgentTaskManage.value,
             RbacPermission.OrganizationWebhookRead.value,
             RbacPermission.OrganizationWebhookCreate.value,
             RbacPermission.OrganizationWebhookUpdate.value,

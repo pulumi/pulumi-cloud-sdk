@@ -268,6 +268,18 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "agent_task:create")]
         AgentTaskCreate,
 
+        [EnumMember(Value = "agent_task:read")]
+        AgentTaskRead,
+
+        [EnumMember(Value = "agent_task:contribute")]
+        AgentTaskContribute,
+
+        [EnumMember(Value = "agent_task:approve")]
+        AgentTaskApprove,
+
+        [EnumMember(Value = "agent_task:manage")]
+        AgentTaskManage,
+
         [EnumMember(Value = "organization_webhook:read")]
         OrganizationWebhookRead,
 

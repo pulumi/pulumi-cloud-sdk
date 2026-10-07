@@ -35,6 +35,7 @@ export class OrganizationMetadata {
     subscriptionStatus?: string;
     subscriptionTrialEnd?: number;
     retrialExpiration?: Date;
+    retrialProduct?: SaasOffer;
     subscriptionCancelAtPeriodEnd?: boolean;
     subscriptionPeriodEnd?: Date;
     userRole: OrganizationRole;
