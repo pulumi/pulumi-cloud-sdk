@@ -280,6 +280,27 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "agent_task:manage")]
         AgentTaskManage,
 
+        [EnumMember(Value = "agent_automations:read")]
+        AgentAutomationsRead,
+
+        [EnumMember(Value = "agent_automations:create")]
+        AgentAutomationsCreate,
+
+        [EnumMember(Value = "agent_automations:update")]
+        AgentAutomationsUpdate,
+
+        [EnumMember(Value = "agent_automations:delete")]
+        AgentAutomationsDelete,
+
+        [EnumMember(Value = "agent_definitions:create")]
+        AgentDefinitionsCreate,
+
+        [EnumMember(Value = "agent_definitions:update")]
+        AgentDefinitionsUpdate,
+
+        [EnumMember(Value = "agent_definitions:delete")]
+        AgentDefinitionsDelete,
+
         [EnumMember(Value = "organization_webhook:read")]
         OrganizationWebhookRead,
 

@@ -99,6 +99,13 @@ class RbacPermission(AutoEnumEncoder):
     AgentTaskContribute = "agent_task:contribute"
     AgentTaskApprove = "agent_task:approve"
     AgentTaskManage = "agent_task:manage"
+    AgentAutomationsRead = "agent_automations:read"
+    AgentAutomationsCreate = "agent_automations:create"
+    AgentAutomationsUpdate = "agent_automations:update"
+    AgentAutomationsDelete = "agent_automations:delete"
+    AgentDefinitionsCreate = "agent_definitions:create"
+    AgentDefinitionsUpdate = "agent_definitions:update"
+    AgentDefinitionsDelete = "agent_definitions:delete"
     OrganizationWebhookRead = "organization_webhook:read"
     OrganizationWebhookCreate = "organization_webhook:create"
     OrganizationWebhookUpdate = "organization_webhook:update"
@@ -300,6 +307,13 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.AgentTaskContribute,
             RbacPermission.AgentTaskApprove,
             RbacPermission.AgentTaskManage,
+            RbacPermission.AgentAutomationsRead,
+            RbacPermission.AgentAutomationsCreate,
+            RbacPermission.AgentAutomationsUpdate,
+            RbacPermission.AgentAutomationsDelete,
+            RbacPermission.AgentDefinitionsCreate,
+            RbacPermission.AgentDefinitionsUpdate,
+            RbacPermission.AgentDefinitionsDelete,
             RbacPermission.OrganizationWebhookRead,
             RbacPermission.OrganizationWebhookCreate,
             RbacPermission.OrganizationWebhookUpdate,
@@ -502,6 +516,13 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.AgentTaskContribute.value,
             RbacPermission.AgentTaskApprove.value,
             RbacPermission.AgentTaskManage.value,
+            RbacPermission.AgentAutomationsRead.value,
+            RbacPermission.AgentAutomationsCreate.value,
+            RbacPermission.AgentAutomationsUpdate.value,
+            RbacPermission.AgentAutomationsDelete.value,
+            RbacPermission.AgentDefinitionsCreate.value,
+            RbacPermission.AgentDefinitionsUpdate.value,
+            RbacPermission.AgentDefinitionsDelete.value,
             RbacPermission.OrganizationWebhookRead.value,
             RbacPermission.OrganizationWebhookCreate.value,
             RbacPermission.OrganizationWebhookUpdate.value,
