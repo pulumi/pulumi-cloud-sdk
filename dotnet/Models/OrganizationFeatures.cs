@@ -515,9 +515,15 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool LinkExpressCheckoutEnabled { get; set; }
 
         /// <summary>
-        /// Whether an environment can hold one open draft per author rather than one in total.
+        /// Deprecated. Always true: an environment holds one open draft per author.
         /// </summary>
         [JsonProperty("multiChangeRequestsEnabled")]
         public bool MultiChangeRequestsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the Pulumi Agents workspace navigation is enabled.
+        /// </summary>
+        [JsonProperty("agentsAsTeamMembersEnabled")]
+        public bool AgentsAsTeamMembersEnabled { get; set; }
     }
 }

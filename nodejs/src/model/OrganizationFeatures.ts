@@ -99,6 +99,7 @@ export class OrganizationFeatures {
     neoAgentTaskRbacEnforcementEnabled?: boolean;
     linkExpressCheckoutEnabled?: boolean;
     multiChangeRequestsEnabled?: boolean;
+    agentsAsTeamMembersEnabled?: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationFeatures.fixupPrototype;
