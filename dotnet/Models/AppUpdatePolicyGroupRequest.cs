@@ -51,23 +51,5 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("removeInsightsAccount")]
         public AppInsightsAccountReference RemoveInsightsAccount { get; set; }
-
-        /// <summary>
-        /// Deprecated: ignored by the service. Use `addStack` / `removeStack`.
-        /// </summary>
-        [JsonProperty("stacks")]
-        public System.Collections.Generic.List<AppPulumiStackReference> Stacks { get; set; }
-
-        /// <summary>
-        /// Deprecated: ignored by the service. Use `addPolicyPack` / `removePolicyPack`.
-        /// </summary>
-        [JsonProperty("policyPacks")]
-        public System.Collections.Generic.List<AppPolicyPackMetadata> PolicyPacks { get; set; }
-
-        /// <summary>
-        /// Deprecated: ignored by the service. Use `addInsightsAccount` / `removeInsightsAccount`.
-        /// </summary>
-        [JsonProperty("insightsAccounts")]
-        public System.Collections.Generic.List<string> InsightsAccounts { get; set; }
     }
 }

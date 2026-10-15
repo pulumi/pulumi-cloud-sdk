@@ -23,9 +23,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
     :var remove_policy_pack: AppPolicyPackMetadata - declared
     :var add_insights_account: AppInsightsAccountReference - declared
     :var remove_insights_account: AppInsightsAccountReference - declared
-    :var stacks: list[AppPulumiStackReference] - declared
-    :var policy_packs: list[AppPolicyPackMetadata] - declared
-    :var insights_accounts: list[str] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'new_name': 'str',
@@ -35,9 +32,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
         'remove_policy_pack': 'AppPolicyPackMetadata',
         'add_insights_account': 'AppInsightsAccountReference',
         'remove_insights_account': 'AppInsightsAccountReference',
-        'stacks': 'list[AppPulumiStackReference]',
-        'policy_packs': 'list[AppPolicyPackMetadata]',
-        'insights_accounts': 'list[str]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -48,9 +42,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
         'remove_policy_pack': 'removePolicyPack',
         'add_insights_account': 'addInsightsAccount',
         'remove_insights_account': 'removeInsightsAccount',
-        'stacks': 'stacks',
-        'policy_packs': 'policyPacks',
-        'insights_accounts': 'insightsAccounts',
     }
 
     FIELDS_new_name = 'newName'
@@ -60,9 +51,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
     FIELDS_remove_policy_pack = 'removePolicyPack'
     FIELDS_add_insights_account = 'addInsightsAccount'
     FIELDS_remove_insights_account = 'removeInsightsAccount'
-    FIELDS_stacks = 'stacks'
-    FIELDS_policy_packs = 'policyPacks'
-    FIELDS_insights_accounts = 'insightsAccounts'
 
     _new_name: 'str'
     _add_stack: 'AppPulumiStackReference'
@@ -71,9 +59,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
     _remove_policy_pack: 'AppPolicyPackMetadata'
     _add_insights_account: 'AppInsightsAccountReference'
     _remove_insights_account: 'AppInsightsAccountReference'
-    _stacks: 'list[AppPulumiStackReference]'
-    _policy_packs: 'list[AppPolicyPackMetadata]'
-    _insights_accounts: 'list[str]'
 
     def __init__(
         self,
@@ -84,9 +69,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
         remove_policy_pack: 'AppPolicyPackMetadata' = None,
         add_insights_account: 'AppInsightsAccountReference' = None,
         remove_insights_account: 'AppInsightsAccountReference' = None,
-        stacks: 'list[AppPulumiStackReference]' = None,
-        policy_packs: 'list[AppPolicyPackMetadata]' = None,
-        insights_accounts: 'list[str]' = None,
     ) -> None:
         super().__init__()
 
@@ -97,9 +79,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
         self.remove_policy_pack = remove_policy_pack
         self.add_insights_account = add_insights_account
         self.remove_insights_account = remove_insights_account
-        self.stacks = stacks
-        self.policy_packs = policy_packs
-        self.insights_accounts = insights_accounts
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppUpdatePolicyGroupRequest):
@@ -110,9 +89,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
             self._remove_policy_pack = source._remove_policy_pack
             self._add_insights_account = source._add_insights_account
             self._remove_insights_account = source._remove_insights_account
-            self._stacks = source._stacks
-            self._policy_packs = source._policy_packs
-            self._insights_accounts = source._insights_accounts
 
     @property
     def new_name(self) -> 'str':
@@ -331,108 +307,6 @@ class AppUpdatePolicyGroupRequest(PulumiAutoModelEncoder):
             return models.AppInsightsAccountReference._new_empty()
 
         return self._remove_insights_account
-
-    @property
-    def stacks(self) -> 'list[AppPulumiStackReference]':
-        return self._stacks
-
-    @stacks.setter
-    def stacks(self, stacks: 'list[AppPulumiStackReference]'):
-        self._stacks = stacks
-
-    @property
-    def stacks__autoinit(self) -> 'list[AppPulumiStackReference]':
-        """Return ``stacks``, creating and storing an empty default when it is unset.
-
-        Side effect: the created default is written back to ``self._stacks``, so it
-        persists on the model and is included when the model is serialized. Prefer
-        ``stacks__safederef`` when you only want to read a default without mutating self.
-        """
-        if self._stacks is None:
-            self._stacks = self.stacks__safederef
-
-        return self._stacks
-
-    @property
-    def stacks__safederef(self) -> 'list[AppPulumiStackReference]':
-        """Return ``stacks``, or a freshly built empty default when it is unset.
-
-        No side effect: the default is not stored, so ``stacks`` stays unset and each
-        call returns a new default. Use ``stacks__autoinit`` to persist the default on
-        first access.
-        """
-        if self._stacks is None:
-            return []
-
-        return self._stacks
-
-    @property
-    def policy_packs(self) -> 'list[AppPolicyPackMetadata]':
-        return self._policy_packs
-
-    @policy_packs.setter
-    def policy_packs(self, policy_packs: 'list[AppPolicyPackMetadata]'):
-        self._policy_packs = policy_packs
-
-    @property
-    def policy_packs__autoinit(self) -> 'list[AppPolicyPackMetadata]':
-        """Return ``policy_packs``, creating and storing an empty default when it is unset.
-
-        Side effect: the created default is written back to ``self._policy_packs``, so it
-        persists on the model and is included when the model is serialized. Prefer
-        ``policy_packs__safederef`` when you only want to read a default without mutating self.
-        """
-        if self._policy_packs is None:
-            self._policy_packs = self.policy_packs__safederef
-
-        return self._policy_packs
-
-    @property
-    def policy_packs__safederef(self) -> 'list[AppPolicyPackMetadata]':
-        """Return ``policy_packs``, or a freshly built empty default when it is unset.
-
-        No side effect: the default is not stored, so ``policy_packs`` stays unset and each
-        call returns a new default. Use ``policy_packs__autoinit`` to persist the default on
-        first access.
-        """
-        if self._policy_packs is None:
-            return []
-
-        return self._policy_packs
-
-    @property
-    def insights_accounts(self) -> 'list[str]':
-        return self._insights_accounts
-
-    @insights_accounts.setter
-    def insights_accounts(self, insights_accounts: 'list[str]'):
-        self._insights_accounts = insights_accounts
-
-    @property
-    def insights_accounts__autoinit(self) -> 'list[str]':
-        """Return ``insights_accounts``, creating and storing an empty default when it is unset.
-
-        Side effect: the created default is written back to ``self._insights_accounts``, so it
-        persists on the model and is included when the model is serialized. Prefer
-        ``insights_accounts__safederef`` when you only want to read a default without mutating self.
-        """
-        if self._insights_accounts is None:
-            self._insights_accounts = self.insights_accounts__safederef
-
-        return self._insights_accounts
-
-    @property
-    def insights_accounts__safederef(self) -> 'list[str]':
-        """Return ``insights_accounts``, or a freshly built empty default when it is unset.
-
-        No side effect: the default is not stored, so ``insights_accounts`` stays unset and each
-        call returns a new default. Use ``insights_accounts__autoinit`` to persist the default on
-        first access.
-        """
-        if self._insights_accounts is None:
-            return []
-
-        return self._insights_accounts
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppUpdatePolicyGroupRequest):

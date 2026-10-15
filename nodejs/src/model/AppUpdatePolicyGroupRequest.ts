@@ -26,9 +26,6 @@ export class AppUpdatePolicyGroupRequest {
     removePolicyPack?: AppPolicyPackMetadata;
     addInsightsAccount?: AppInsightsAccountReference;
     removeInsightsAccount?: AppInsightsAccountReference;
-    stacks?: AppPulumiStackReference[];
-    policyPacks?: AppPolicyPackMetadata[];
-    insightsAccounts?: string[];
 
     getFixupPrototypeFunction() {
         return AppUpdatePolicyGroupRequest.fixupPrototype;
@@ -97,26 +94,6 @@ export class AppUpdatePolicyGroupRequest {
             // Lazy import - only evaluated when called
             const { AppInsightsAccountReference } = require("./AppInsightsAccountReference");
             AppInsightsAccountReference.fixupPrototype(this.removeInsightsAccount);
-        }
-        if (this.stacks) {
-            for (let i0 = 0; i0 < this.stacks.length; i0++) {
-                let val0 = this.stacks[i0];
-                if (val0) {
-                    // Lazy import - only evaluated when called
-                    const { AppPulumiStackReference } = require("./AppPulumiStackReference");
-                    AppPulumiStackReference.fixupPrototype(val0);
-                }
-            }
-        }
-        if (this.policyPacks) {
-            for (let i0 = 0; i0 < this.policyPacks.length; i0++) {
-                let val0 = this.policyPacks[i0];
-                if (val0) {
-                    // Lazy import - only evaluated when called
-                    const { AppPolicyPackMetadata } = require("./AppPolicyPackMetadata");
-                    AppPolicyPackMetadata.fixupPrototype(val0);
-                }
-            }
         }
     }
 }

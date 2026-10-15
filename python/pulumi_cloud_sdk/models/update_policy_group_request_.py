@@ -24,9 +24,6 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
     :var remove_policy_pack: AppPolicyPackMetadata - inherited
     :var add_insights_account: AppInsightsAccountReference - inherited
     :var remove_insights_account: AppInsightsAccountReference - inherited
-    :var stacks: list[AppPulumiStackReference] - inherited
-    :var policy_packs: list[AppPolicyPackMetadata] - inherited
-    :var insights_accounts: list[str] - inherited
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'new_name': 'str',
@@ -36,9 +33,6 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         'remove_policy_pack': 'AppPolicyPackMetadata',
         'add_insights_account': 'AppInsightsAccountReference',
         'remove_insights_account': 'AppInsightsAccountReference',
-        'stacks': 'list[AppPulumiStackReference]',
-        'policy_packs': 'list[AppPolicyPackMetadata]',
-        'insights_accounts': 'list[str]',
         'agent_pool_id': 'str',
     }
 
@@ -50,9 +44,6 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         'remove_policy_pack': 'removePolicyPack',
         'add_insights_account': 'addInsightsAccount',
         'remove_insights_account': 'removeInsightsAccount',
-        'stacks': 'stacks',
-        'policy_packs': 'policyPacks',
-        'insights_accounts': 'insightsAccounts',
         'agent_pool_id': 'agentPoolId',
     }
 
@@ -69,12 +60,9 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         remove_policy_pack: 'AppPolicyPackMetadata' = None,
         add_insights_account: 'AppInsightsAccountReference' = None,
         remove_insights_account: 'AppInsightsAccountReference' = None,
-        stacks: 'list[AppPulumiStackReference]' = None,
-        policy_packs: 'list[AppPolicyPackMetadata]' = None,
-        insights_accounts: 'list[str]' = None,
         agent_pool_id: 'str' = None,
     ) -> None:
-        super().__init__(new_name=new_name, add_stack=add_stack, remove_stack=remove_stack, add_policy_pack=add_policy_pack, remove_policy_pack=remove_policy_pack, add_insights_account=add_insights_account, remove_insights_account=remove_insights_account, stacks=stacks, policy_packs=policy_packs, insights_accounts=insights_accounts)
+        super().__init__(new_name=new_name, add_stack=add_stack, remove_stack=remove_stack, add_policy_pack=add_policy_pack, remove_policy_pack=remove_policy_pack, add_insights_account=add_insights_account, remove_insights_account=remove_insights_account)
 
         self.agent_pool_id = agent_pool_id
 

@@ -119,6 +119,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool GitHubEnterpriseIntegrationEnabled { get; set; }
 
         /// <summary>
+        /// Whether GitHub Enterprise Cloud with data residency (ghe.com) integration is enabled.
+        /// </summary>
+        [JsonProperty("gitHubEnterpriseCloudDataResidencyEnabled")]
+        public bool GitHubEnterpriseCloudDataResidencyEnabled { get; set; }
+
+        /// <summary>
         /// Deprecated. Per-user (individual) GitHub Enterprise authentication is now a per-installation setting; no longer populated.
         /// </summary>
         [JsonProperty("gitHubEnterpriseIndividualAuthEnabled")]

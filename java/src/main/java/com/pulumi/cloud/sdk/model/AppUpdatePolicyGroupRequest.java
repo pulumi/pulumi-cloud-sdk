@@ -34,13 +34,4 @@ public class AppUpdatePolicyGroupRequest {
 
     // An Insights account to remove from the policy group.
     public AppInsightsAccountReference removeInsightsAccount;
-
-    // Deprecated: ignored by the service. Use `addStack` / `removeStack`.
-    public List<AppPulumiStackReference> stacks;
-
-    // Deprecated: ignored by the service. Use `addPolicyPack` / `removePolicyPack`.
-    public List<AppPolicyPackMetadata> policyPacks;
-
-    // Deprecated: ignored by the service. Use `addInsightsAccount` / `removeInsightsAccount`.
-    public List<String> insightsAccounts;
 }

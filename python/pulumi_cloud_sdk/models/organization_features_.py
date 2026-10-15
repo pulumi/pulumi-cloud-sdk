@@ -34,6 +34,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var environment_revision_tags_enabled: bool - declared
     :var legacy_deployments_org_token: bool - declared
     :var git_hub_enterprise_integration_enabled: bool - declared
+    :var git_hub_enterprise_cloud_data_residency_enabled: bool - declared
     :var git_hub_enterprise_individual_auth_enabled: bool - declared
     :var agent_pool_registration_enabled: bool - declared
     :var dashboard_onboarding_ui_enabled: bool - declared
@@ -123,6 +124,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'environment_revision_tags_enabled': 'bool',
         'legacy_deployments_org_token': 'bool',
         'git_hub_enterprise_integration_enabled': 'bool',
+        'git_hub_enterprise_cloud_data_residency_enabled': 'bool',
         'git_hub_enterprise_individual_auth_enabled': 'bool',
         'agent_pool_registration_enabled': 'bool',
         'dashboard_onboarding_ui_enabled': 'bool',
@@ -213,6 +215,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'environment_revision_tags_enabled': 'environmentRevisionTagsEnabled',
         'legacy_deployments_org_token': 'legacyDeploymentsOrgToken',
         'git_hub_enterprise_integration_enabled': 'gitHubEnterpriseIntegrationEnabled',
+        'git_hub_enterprise_cloud_data_residency_enabled': 'gitHubEnterpriseCloudDataResidencyEnabled',
         'git_hub_enterprise_individual_auth_enabled': 'gitHubEnterpriseIndividualAuthEnabled',
         'agent_pool_registration_enabled': 'agentPoolRegistrationEnabled',
         'dashboard_onboarding_ui_enabled': 'dashboardOnboardingUIEnabled',
@@ -302,6 +305,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_environment_revision_tags_enabled = 'environmentRevisionTagsEnabled'
     FIELDS_legacy_deployments_org_token = 'legacyDeploymentsOrgToken'
     FIELDS_git_hub_enterprise_integration_enabled = 'gitHubEnterpriseIntegrationEnabled'
+    FIELDS_git_hub_enterprise_cloud_data_residency_enabled = 'gitHubEnterpriseCloudDataResidencyEnabled'
     FIELDS_git_hub_enterprise_individual_auth_enabled = 'gitHubEnterpriseIndividualAuthEnabled'
     FIELDS_agent_pool_registration_enabled = 'agentPoolRegistrationEnabled'
     FIELDS_dashboard_onboarding_ui_enabled = 'dashboardOnboardingUIEnabled'
@@ -390,6 +394,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _environment_revision_tags_enabled: 'bool'
     _legacy_deployments_org_token: 'bool'
     _git_hub_enterprise_integration_enabled: 'bool'
+    _git_hub_enterprise_cloud_data_residency_enabled: 'bool'
     _git_hub_enterprise_individual_auth_enabled: 'bool'
     _agent_pool_registration_enabled: 'bool'
     _dashboard_onboarding_ui_enabled: 'bool'
@@ -479,6 +484,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         environment_revision_tags_enabled: 'bool',
         legacy_deployments_org_token: 'bool',
         git_hub_enterprise_integration_enabled: 'bool',
+        git_hub_enterprise_cloud_data_residency_enabled: 'bool',
         agent_pool_registration_enabled: 'bool',
         drift_detection_enabled: 'bool',
         self_hosted_deployments_enabled: 'bool',
@@ -570,6 +576,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.environment_revision_tags_enabled = environment_revision_tags_enabled
         self.legacy_deployments_org_token = legacy_deployments_org_token
         self.git_hub_enterprise_integration_enabled = git_hub_enterprise_integration_enabled
+        self.git_hub_enterprise_cloud_data_residency_enabled = git_hub_enterprise_cloud_data_residency_enabled
         self.git_hub_enterprise_individual_auth_enabled = git_hub_enterprise_individual_auth_enabled
         self.agent_pool_registration_enabled = agent_pool_registration_enabled
         self.dashboard_onboarding_ui_enabled = dashboard_onboarding_ui_enabled
@@ -660,6 +667,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._environment_revision_tags_enabled = source._environment_revision_tags_enabled
             self._legacy_deployments_org_token = source._legacy_deployments_org_token
             self._git_hub_enterprise_integration_enabled = source._git_hub_enterprise_integration_enabled
+            self._git_hub_enterprise_cloud_data_residency_enabled = source._git_hub_enterprise_cloud_data_residency_enabled
             self._git_hub_enterprise_individual_auth_enabled = source._git_hub_enterprise_individual_auth_enabled
             self._agent_pool_registration_enabled = source._agent_pool_registration_enabled
             self._dashboard_onboarding_ui_enabled = source._dashboard_onboarding_ui_enabled
@@ -924,6 +932,17 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `git_hub_enterprise_integration_enabled`, must not be `None`")
 
         self._git_hub_enterprise_integration_enabled = git_hub_enterprise_integration_enabled
+
+    @property
+    def git_hub_enterprise_cloud_data_residency_enabled(self) -> 'bool':
+        return self._git_hub_enterprise_cloud_data_residency_enabled
+
+    @git_hub_enterprise_cloud_data_residency_enabled.setter
+    def git_hub_enterprise_cloud_data_residency_enabled(self, git_hub_enterprise_cloud_data_residency_enabled: 'bool'):
+        if git_hub_enterprise_cloud_data_residency_enabled is None:
+            raise ValueError("Invalid value for `git_hub_enterprise_cloud_data_residency_enabled`, must not be `None`")
+
+        self._git_hub_enterprise_cloud_data_residency_enabled = git_hub_enterprise_cloud_data_residency_enabled
 
     @property
     def git_hub_enterprise_individual_auth_enabled(self) -> 'bool':

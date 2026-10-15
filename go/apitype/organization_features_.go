@@ -43,6 +43,8 @@ type OrganizationFeatures struct {
 	LegacyDeploymentsOrgToken bool `json:"legacyDeploymentsOrgToken" yaml:"legacyDeploymentsOrgToken"`
 	// Whether GitHub Enterprise integration is enabled.
 	GitHubEnterpriseIntegrationEnabled bool `json:"gitHubEnterpriseIntegrationEnabled" yaml:"gitHubEnterpriseIntegrationEnabled"`
+	// Whether GitHub Enterprise Cloud with data residency (ghe.com) integration is enabled.
+	GitHubEnterpriseCloudDataResidencyEnabled bool `json:"gitHubEnterpriseCloudDataResidencyEnabled" yaml:"gitHubEnterpriseCloudDataResidencyEnabled"`
 	// Deprecated. Per-user (individual) GitHub Enterprise authentication is now a per-installation setting; no longer populated.
 	GitHubEnterpriseIndividualAuthEnabled bool `json:"gitHubEnterpriseIndividualAuthEnabled,omitzero" yaml:"gitHubEnterpriseIndividualAuthEnabled,omitempty"`
 	// Whether agent pool registration is enabled for self-hosted deployments.

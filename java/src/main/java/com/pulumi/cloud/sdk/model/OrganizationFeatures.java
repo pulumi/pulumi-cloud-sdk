@@ -65,6 +65,9 @@ public class OrganizationFeatures {
     // Whether GitHub Enterprise integration is enabled.
     public boolean gitHubEnterpriseIntegrationEnabled;
 
+    // Whether GitHub Enterprise Cloud with data residency (ghe.com) integration is enabled.
+    public boolean gitHubEnterpriseCloudDataResidencyEnabled;
+
     // Deprecated. Per-user (individual) GitHub Enterprise authentication is now a per-installation setting; no longer populated.
     public boolean gitHubEnterpriseIndividualAuthEnabled;
 

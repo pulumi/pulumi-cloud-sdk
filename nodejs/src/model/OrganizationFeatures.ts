@@ -32,6 +32,7 @@ export class OrganizationFeatures {
     environmentRevisionTagsEnabled: boolean;
     legacyDeploymentsOrgToken: boolean;
     gitHubEnterpriseIntegrationEnabled: boolean;
+    gitHubEnterpriseCloudDataResidencyEnabled: boolean;
     gitHubEnterpriseIndividualAuthEnabled?: boolean;
     agentPoolRegistrationEnabled: boolean;
     dashboardOnboardingUIEnabled?: boolean;
