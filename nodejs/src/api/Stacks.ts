@@ -50,6 +50,8 @@ import { AppUpdateProgramRequest } from "../model/AppUpdateProgramRequest";
 import { AppUpdateProgramResponse } from "../model/AppUpdateProgramResponse";
 import { AppUpdateResults } from "../model/AppUpdateResults";
 import { ConsoleUpdateSummary } from "../model/ConsoleUpdateSummary";
+import { CreateCoherenceWindowSubgroupRequest } from "../model/CreateCoherenceWindowSubgroupRequest";
+import { CreateCoherenceWindowSubgroupResponse } from "../model/CreateCoherenceWindowSubgroupResponse";
 import { GetStackActivityResponse } from "../model/GetStackActivityResponse";
 import { GetStackResourceCountResponse } from "../model/GetStackResourceCountResponse";
 import { GetStackResourceResponse } from "../model/GetStackResourceResponse";
@@ -802,6 +804,53 @@ export class Stacks {
         return this.client.callWithOptions(__path, __requestOptions);
     }
 
+    public CloseCoherenceWindowSubgroup__generateUrl(
+        orgName: string,
+        windowID: string,
+        subgroupID: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/coherence-windows/{windowID}/subgroups/{subgroupID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{windowID}", encodeURIComponent(String(windowID)));
+        url = url.replace("{subgroupID}", encodeURIComponent(String(subgroupID)));
+        return url;
+    }
+
+    public CloseCoherenceWindowSubgroup(
+        params: {
+            orgName: string,
+            windowID: string,
+            subgroupID: string,
+        },
+    ): Promise<void> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CloseCoherenceWindowSubgroup.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CloseCoherenceWindowSubgroup.");
+        }
+
+        // verify required parameter 'windowID' is not null or undefined
+        if (params.windowID === null || params.windowID === undefined) {
+            throw new Error("Required parameter windowID was null or undefined when calling CloseCoherenceWindowSubgroup.");
+        }
+
+        // verify required parameter 'subgroupID' is not null or undefined
+        if (params.subgroupID === null || params.subgroupID === undefined) {
+            throw new Error("Required parameter subgroupID was null or undefined when calling CloseCoherenceWindowSubgroup.");
+        }
+
+        const __path = this.CloseCoherenceWindowSubgroup__generateUrl(params.orgName, params.windowID, params.subgroupID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.method = "DELETE";
+
+        return this.client.callWithOptions(__path, __requestOptions);
+    }
+
     public CompleteUpdate_destroy__generateUrl(
         orgName: string,
         projectName: string,
@@ -1056,6 +1105,59 @@ export class Stacks {
         __requestOptions.method = "POST";
 
         return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public CreateCoherenceWindowSubgroup__generateUrl(
+        orgName: string,
+        windowID: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/coherence-windows/{windowID}/subgroups";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{windowID}", encodeURIComponent(String(windowID)));
+        return url;
+    }
+
+    public CreateCoherenceWindowSubgroup(
+        params: {
+            orgName: string,
+            windowID: string,
+        },
+        request: CreateCoherenceWindowSubgroupRequest,
+    ): Promise<CreateCoherenceWindowSubgroupResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreateCoherenceWindowSubgroup.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CreateCoherenceWindowSubgroup.");
+        }
+
+        // verify required parameter 'windowID' is not null or undefined
+        if (params.windowID === null || params.windowID === undefined) {
+            throw new Error("Required parameter windowID was null or undefined when calling CreateCoherenceWindowSubgroup.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreateCoherenceWindowSubgroup.");
+        }
+
+        const __path = this.CreateCoherenceWindowSubgroup__generateUrl(params.orgName, params.windowID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<CreateCoherenceWindowSubgroupResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                CreateCoherenceWindowSubgroupResponse.fixupPrototype(__res0);
+            }
+        });
     }
 
     public CreateJournalEntries_destroy__generateUrl(
@@ -2949,6 +3051,7 @@ export class Stacks {
             orgName: string,
             projectName: string,
             stackName: string,
+            readingUpdateID?: string,
         },
     ): Promise<StackOutputsResponse> {
         if (params === undefined) {
@@ -2974,6 +3077,9 @@ export class Stacks {
 
         let __requestOptions = new ApiRequest();
 
+        if (params.readingUpdateID !== undefined) {
+            __requestOptions.setQueryParam("readingUpdateID", params.readingUpdateID);
+        }
         __requestOptions.setProduce("application/json");
         __requestOptions.method = "GET";
 

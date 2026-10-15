@@ -12,6 +12,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(PolymorphicConverter))]
     [JsonDiscriminator("type")]
     [JsonSubType(typeof(AgentConsoleEvent.AgentResponse))]
+    [JsonSubType(typeof(AgentConsoleEvent.TriggerUserInput))]
     [JsonSubType(typeof(AgentConsoleEvent.UserInput))]
     public abstract class AgentConsoleEvent {
         /// <summary>
@@ -33,6 +34,27 @@ namespace Pulumi.Cloud.Sdk.Models {
             /// </summary>
             [JsonProperty("eventBody")]
             public AgentBackendEvent EventBody { get; set; }
+        }
+
+        [JsonSubTypeName("triggerUserInput")]
+        public class TriggerUserInput : AgentConsoleEvent {
+            /// <summary>
+            /// The sanitized message or confirmation delivered with the trigger events.
+            /// </summary>
+            [JsonProperty("eventBody")]
+            public AgentUserEvent EventBody { get; set; }
+
+            /// <summary>
+            /// The nonempty collection of trigger events delivered with this input, in delivery order.
+            /// </summary>
+            [JsonProperty("triggerEvents")]
+            public System.Collections.Generic.List<AgentTriggerEvent> TriggerEvents { get; set; }
+
+            /// <summary>
+            /// Instructions saved on the trigger when the task started.
+            /// </summary>
+            [JsonProperty("triggerInstructions")]
+            public string TriggerInstructions { get; set; }
         }
 
         [JsonSubTypeName("userInput")]

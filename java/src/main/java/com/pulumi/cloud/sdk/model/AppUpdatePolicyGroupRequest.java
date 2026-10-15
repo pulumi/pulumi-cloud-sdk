@@ -35,12 +35,12 @@ public class AppUpdatePolicyGroupRequest {
     // An Insights account to remove from the policy group.
     public AppInsightsAccountReference removeInsightsAccount;
 
-    // When non-nil, replaces the full list of stacks in the group.
+    // Deprecated: ignored by the service. Use `addStack` / `removeStack`.
     public List<AppPulumiStackReference> stacks;
 
-    // When non-nil, replaces the full list of Policy Packs applied to the group.
+    // Deprecated: ignored by the service. Use `addPolicyPack` / `removePolicyPack`.
     public List<AppPolicyPackMetadata> policyPacks;
 
-    // When non-nil, replaces the full list of Insights accounts in the group.
+    // Deprecated: ignored by the service. Use `addInsightsAccount` / `removeInsightsAccount`.
     public List<String> insightsAccounts;
 }

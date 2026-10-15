@@ -53,6 +53,8 @@ import { CreateTeamAccessTokenRequest } from "../model/CreateTeamAccessTokenRequ
 import { CustomerManagedKey } from "../model/CustomerManagedKey";
 import { CustomerManagedKeyInput } from "../model/CustomerManagedKeyInput";
 import { DisableCustomerManagedKeyRequest } from "../model/DisableCustomerManagedKeyRequest";
+import { EntityAssignmentsResponse } from "../model/EntityAssignmentsResponse";
+import { EntityInstance } from "../model/EntityInstance";
 import { GetChangeRequestResponse } from "../model/GetChangeRequestResponse";
 import { GetNaturalLanguageQueryResponse } from "../model/GetNaturalLanguageQueryResponse";
 import { GetOrgTemplateSourcesResponse } from "../model/GetOrgTemplateSourcesResponse";
@@ -118,6 +120,8 @@ import { TransferAllStacksRequest } from "../model/TransferAllStacksRequest";
 import { UnapproveChangeRequestRequest } from "../model/UnapproveChangeRequestRequest";
 import { UpdateChangeGateRequest } from "../model/UpdateChangeGateRequest";
 import { UpdateChangeRequestRequest } from "../model/UpdateChangeRequestRequest";
+import { UpdateEntityAssignmentRequest } from "../model/UpdateEntityAssignmentRequest";
+import { UpdateEntityAssignmentResponse } from "../model/UpdateEntityAssignmentResponse";
 import { UpdateOrganizationAuditLogExportSettingsRequest } from "../model/UpdateOrganizationAuditLogExportSettingsRequest";
 import { UpdateOrganizationMemberRequest } from "../model/UpdateOrganizationMemberRequest";
 import { UpdateOrganizationRequest } from "../model/UpdateOrganizationRequest";
@@ -4547,6 +4551,49 @@ export class Organizations {
         });
     }
 
+    public ListEntityAssignments__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/assignments/list";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListEntityAssignments(
+        params: {
+            orgName: string,
+        },
+        request: EntityInstance,
+    ): Promise<EntityAssignmentsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListEntityAssignments.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListEntityAssignments.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling ListEntityAssignments.");
+        }
+
+        const __path = this.ListEntityAssignments__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<EntityAssignmentsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                EntityAssignmentsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public ListEvents__generateUrl(
         orgName: string,
         changeRequestID: string,
@@ -6551,6 +6598,49 @@ export class Organizations {
         return this.client.callWithOptions<AuthPolicy>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 AuthPolicy.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public UpdateEntityAssignment__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/assignments/update";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public UpdateEntityAssignment(
+        params: {
+            orgName: string,
+        },
+        request: UpdateEntityAssignmentRequest,
+    ): Promise<UpdateEntityAssignmentResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdateEntityAssignment.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdateEntityAssignment.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdateEntityAssignment.");
+        }
+
+        const __path = this.UpdateEntityAssignment__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<UpdateEntityAssignmentResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                UpdateEntityAssignmentResponse.fixupPrototype(__res0);
             }
         });
     }

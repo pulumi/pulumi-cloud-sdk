@@ -16,6 +16,7 @@
 export enum PermissionDescriptorUXPurpose {
     Role = "role",
     RolePrivate = "role_private",
+    RoleUserPrivate = "role_user_private",
     RoleTemporary = "role_temporary",
     Policy = "policy",
     Set = "set",

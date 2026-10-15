@@ -12,6 +12,7 @@ from .._support import AutoEnumEncoder
 class PermissionDescriptorUXPurpose(AutoEnumEncoder):
     Role = "role"
     RolePrivate = "role_private"
+    RoleUserPrivate = "role_user_private"
     RoleTemporary = "role_temporary"
     Policy = "policy"
     Set = "set"
@@ -21,6 +22,7 @@ class PermissionDescriptorUXPurpose(AutoEnumEncoder):
         return [
             PermissionDescriptorUXPurpose.Role,
             PermissionDescriptorUXPurpose.RolePrivate,
+            PermissionDescriptorUXPurpose.RoleUserPrivate,
             PermissionDescriptorUXPurpose.RoleTemporary,
             PermissionDescriptorUXPurpose.Policy,
             PermissionDescriptorUXPurpose.Set
@@ -31,6 +33,7 @@ class PermissionDescriptorUXPurpose(AutoEnumEncoder):
         return [
             PermissionDescriptorUXPurpose.Role.value,
             PermissionDescriptorUXPurpose.RolePrivate.value,
+            PermissionDescriptorUXPurpose.RoleUserPrivate.value,
             PermissionDescriptorUXPurpose.RoleTemporary.value,
             PermissionDescriptorUXPurpose.Policy.value,
             PermissionDescriptorUXPurpose.Set.value

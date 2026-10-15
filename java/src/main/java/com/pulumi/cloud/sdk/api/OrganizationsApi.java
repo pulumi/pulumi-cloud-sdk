@@ -1476,6 +1476,21 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListDeletedStacksResponse>() {});
     }
 
+    public EntityAssignmentsResponse listEntityAssignments(String orgName, EntityInstance request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listEntityAssignments");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling listEntityAssignments");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/assignments/list");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<EntityAssignmentsResponse>() {});
+    }
+
     public ListChangeRequestEventsResponse listEvents(String orgName, String changeRequestID, String continuationToken) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listEvents");
@@ -2136,6 +2151,21 @@ public final class OrganizationsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<AuthPolicy>() {});
+    }
+
+    public UpdateEntityAssignmentResponse updateEntityAssignment(String orgName, UpdateEntityAssignmentRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateEntityAssignment");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateEntityAssignment");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/assignments/update");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<UpdateEntityAssignmentResponse>() {});
     }
 
     public ChangeGate updateGate(String orgName, String gateID, UpdateChangeGateRequest request) {

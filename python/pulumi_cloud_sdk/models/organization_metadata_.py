@@ -24,6 +24,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     :var subscription_status: str - declared
     :var subscription_trial_end: int - declared
     :var retrial_expiration: datetime - declared
+    :var retrial_announced_end_date: datetime - declared
     :var retrial_product: SaasOffer - declared
     :var subscription_cancel_at_period_end: bool - declared
     :var subscription_period_end: datetime - declared
@@ -71,6 +72,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         'subscription_status': 'str',
         'subscription_trial_end': 'int',
         'retrial_expiration': 'datetime',
+        'retrial_announced_end_date': 'datetime',
         'retrial_product': 'SaasOffer',
         'subscription_cancel_at_period_end': 'bool',
         'subscription_period_end': 'datetime',
@@ -119,6 +121,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         'subscription_status': 'subscriptionStatus',
         'subscription_trial_end': 'subscriptionTrialEnd',
         'retrial_expiration': 'retrialExpiration',
+        'retrial_announced_end_date': 'retrialAnnouncedEndDate',
         'retrial_product': 'retrialProduct',
         'subscription_cancel_at_period_end': 'subscriptionCancelAtPeriodEnd',
         'subscription_period_end': 'subscriptionPeriodEnd',
@@ -166,6 +169,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     FIELDS_subscription_status = 'subscriptionStatus'
     FIELDS_subscription_trial_end = 'subscriptionTrialEnd'
     FIELDS_retrial_expiration = 'retrialExpiration'
+    FIELDS_retrial_announced_end_date = 'retrialAnnouncedEndDate'
     FIELDS_retrial_product = 'retrialProduct'
     FIELDS_subscription_cancel_at_period_end = 'subscriptionCancelAtPeriodEnd'
     FIELDS_subscription_period_end = 'subscriptionPeriodEnd'
@@ -212,6 +216,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     _subscription_status: 'str'
     _subscription_trial_end: 'int'
     _retrial_expiration: 'datetime'
+    _retrial_announced_end_date: 'datetime'
     _retrial_product: 'SaasOffer'
     _subscription_cancel_at_period_end: 'bool'
     _subscription_period_end: 'datetime'
@@ -285,6 +290,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         subscription_status: 'str' = None,
         subscription_trial_end: 'int' = 0,
         retrial_expiration: 'datetime' = None,
+        retrial_announced_end_date: 'datetime' = None,
         retrial_product: 'SaasOffer' = None,
         subscription_cancel_at_period_end: 'bool' = False,
         subscription_period_end: 'datetime' = None,
@@ -308,6 +314,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         self.subscription_status = subscription_status
         self.subscription_trial_end = subscription_trial_end
         self.retrial_expiration = retrial_expiration
+        self.retrial_announced_end_date = retrial_announced_end_date
         self.retrial_product = retrial_product
         self.subscription_cancel_at_period_end = subscription_cancel_at_period_end
         self.subscription_period_end = subscription_period_end
@@ -356,6 +363,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
             self._subscription_status = source._subscription_status
             self._subscription_trial_end = source._subscription_trial_end
             self._retrial_expiration = source._retrial_expiration
+            self._retrial_announced_end_date = source._retrial_announced_end_date
             self._retrial_product = source._retrial_product
             self._subscription_cancel_at_period_end = source._subscription_cancel_at_period_end
             self._subscription_period_end = source._subscription_period_end
@@ -466,6 +474,14 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     @retrial_expiration.setter
     def retrial_expiration(self, retrial_expiration: 'datetime'):
         self._retrial_expiration = retrial_expiration
+
+    @property
+    def retrial_announced_end_date(self) -> 'datetime':
+        return self._retrial_announced_end_date
+
+    @retrial_announced_end_date.setter
+    def retrial_announced_end_date(self, retrial_announced_end_date: 'datetime'):
+        self._retrial_announced_end_date = retrial_announced_end_date
 
     @property
     def retrial_product(self) -> 'SaasOffer':

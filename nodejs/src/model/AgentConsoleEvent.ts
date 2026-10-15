@@ -52,11 +52,15 @@ export class AgentConsoleEvent {
     protected static setPrototype(obj: AgentConsoleEvent): boolean {
         // Lazy import - only evaluated when called
         const { AgentConsoleEventAgentResponse } = require("./AgentConsoleEventAgentResponse");
+        const { AgentConsoleEventTriggerUserInput } = require("./AgentConsoleEventTriggerUserInput");
         const { AgentConsoleEventUserInput } = require("./AgentConsoleEventUserInput");
 
         switch (obj.type) {
             case "agentResponse":
                 Object.setPrototypeOf(obj, AgentConsoleEventAgentResponse.prototype);
+                break;
+            case "triggerUserInput":
+                Object.setPrototypeOf(obj, AgentConsoleEventTriggerUserInput.prototype);
                 break;
             case "userInput":
                 Object.setPrototypeOf(obj, AgentConsoleEventUserInput.prototype);
@@ -69,10 +73,12 @@ export class AgentConsoleEvent {
     static getTypeHierarchy(): (typeof AgentConsoleEvent)[] {
         // Lazy import - only evaluated when called
         const { AgentConsoleEventAgentResponse } = require("./AgentConsoleEventAgentResponse");
+        const { AgentConsoleEventTriggerUserInput } = require("./AgentConsoleEventTriggerUserInput");
         const { AgentConsoleEventUserInput } = require("./AgentConsoleEventUserInput");
 
         return [
             AgentConsoleEventAgentResponse,
+            AgentConsoleEventTriggerUserInput,
             AgentConsoleEventUserInput,
         ];
     }

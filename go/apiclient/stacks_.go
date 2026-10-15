@@ -716,6 +716,57 @@ func (p *CloudClient) CancelUpdate_update(
 	return nil
 }
 
+type InterceptorForCloseCoherenceWindowSubgroup struct {
+	OrgName      string
+	WindowID     string
+	SubgroupID   string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CloseCoherenceWindowSubgroup(
+	ctx context.Context,
+	orgName string,
+	windowID string,
+	subgroupID string,
+	extraHeaders ...http.Header,
+) error {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCloseCoherenceWindowSubgroup{
+			OrgName:      orgName,
+			WindowID:     windowID,
+			SubgroupID:   subgroupID,
+			ExtraHeaders: extraHeaders,
+		}
+		_, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return err
+		}
+		if intercepted {
+			return nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"DELETE",
+		"/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups/{subgroupID}",
+		map[string]any{
+			"orgName":    orgName,
+			"windowID":   windowID,
+			"subgroupID": subgroupID,
+		},
+		nil,
+	)
+	if err != nil {
+		return err
+	}
+	err = p.invoke(req, extraHeaders)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 type InterceptorForCompleteUpdate_destroy struct {
 	OrgName      string
 	ProjectName  string
@@ -950,6 +1001,66 @@ func (p *CloudClient) CompleteUpdate_update(
 		return err
 	}
 	return nil
+}
+
+type InterceptorForCreateCoherenceWindowSubgroup struct {
+	OrgName      string
+	WindowID     string
+	Request      apitype.CreateCoherenceWindowSubgroupRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CreateCoherenceWindowSubgroup(
+	ctx context.Context,
+	orgName string,
+	windowID string,
+	request apitype.CreateCoherenceWindowSubgroupRequest,
+	extraHeaders ...http.Header,
+) (*apitype.CreateCoherenceWindowSubgroupResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCreateCoherenceWindowSubgroup{
+			OrgName:      orgName,
+			WindowID:     windowID,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateCoherenceWindowSubgroupResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateCoherenceWindowSubgroup: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups",
+		map[string]any{
+			"orgName":  orgName,
+			"windowID": windowID,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.CreateCoherenceWindowSubgroupResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
 }
 
 type InterceptorForCreateJournalEntries_destroy struct {
@@ -2943,10 +3054,11 @@ func (p *CloudClient) GetStackMetadata(
 }
 
 type InterceptorForGetStackOutputs struct {
-	OrgName      string
-	ProjectName  string
-	StackName    string
-	ExtraHeaders []http.Header
+	OrgName         string
+	ProjectName     string
+	StackName       string
+	ReadingUpdateID *string
+	ExtraHeaders    []http.Header
 }
 
 func (p *CloudClient) GetStackOutputs(
@@ -2954,14 +3066,16 @@ func (p *CloudClient) GetStackOutputs(
 	orgName string,
 	projectName string,
 	stackName string,
+	readingUpdateID *string,
 	extraHeaders ...http.Header,
 ) (*apitype.StackOutputsResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForGetStackOutputs{
-			OrgName:      orgName,
-			ProjectName:  projectName,
-			StackName:    stackName,
-			ExtraHeaders: extraHeaders,
+			OrgName:         orgName,
+			ProjectName:     projectName,
+			StackName:       stackName,
+			ReadingUpdateID: readingUpdateID,
+			ExtraHeaders:    extraHeaders,
 		}
 		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
 		if err != nil {
@@ -2985,7 +3099,9 @@ func (p *CloudClient) GetStackOutputs(
 			"projectName": projectName,
 			"stackName":   stackName,
 		},
-		nil,
+		map[string]any{
+			"readingUpdateID": readingUpdateID,
+		},
 	)
 	if err != nil {
 		return nil, err

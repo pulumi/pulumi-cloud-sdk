@@ -23,6 +23,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     :var options: AppUpdateOptions - declared
     :var config: dict[str, AppConfigValue] - declared
     :var metadata: AppUpdateMetadata - declared
+    :var coherence_window: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
@@ -32,6 +33,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         'options': 'AppUpdateOptions',
         'config': 'dict[str, AppConfigValue]',
         'metadata': 'AppUpdateMetadata',
+        'coherence_window': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -42,6 +44,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         'options': 'options',
         'config': 'config',
         'metadata': 'metadata',
+        'coherence_window': 'coherenceWindow',
     }
 
     FIELDS_name = 'name'
@@ -51,6 +54,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     FIELDS_options = 'options'
     FIELDS_config = 'config'
     FIELDS_metadata = 'metadata'
+    FIELDS_coherence_window = 'coherenceWindow'
 
     _name: 'str'
     _runtime: 'str'
@@ -59,6 +63,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     _options: 'AppUpdateOptions'
     _config: 'dict[str, AppConfigValue]'
     _metadata: 'AppUpdateMetadata'
+    _coherence_window: 'str'
 
     def __init__(
         self,
@@ -69,6 +74,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         options: 'AppUpdateOptions',
         config: 'dict[str, AppConfigValue]',
         metadata: 'AppUpdateMetadata',
+        coherence_window: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -79,6 +85,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         self.options = options
         self.config = config
         self.metadata = metadata
+        self.coherence_window = coherence_window
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppUpdateProgramRequest):
@@ -89,6 +96,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
             self._options = source._options
             self._config = source._config
             self._metadata = source._metadata
+            self._coherence_window = source._coherence_window
 
     @property
     def name(self) -> 'str':
@@ -246,6 +254,14 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
             return models.AppUpdateMetadata._new_empty()
 
         return self._metadata
+
+    @property
+    def coherence_window(self) -> 'str':
+        return self._coherence_window
+
+    @coherence_window.setter
+    def coherence_window(self, coherence_window: 'str'):
+        self._coherence_window = coherence_window
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppUpdateProgramRequest):

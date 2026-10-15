@@ -26,6 +26,8 @@ import { AgentSignupResponse } from "../model/AgentSignupResponse";
 import { AgentTask } from "../model/AgentTask";
 import { AgentTaskSortDirection } from "../model/AgentTaskSortDirection";
 import { AgentTaskSortField } from "../model/AgentTaskSortField";
+import { AgentTaskSource } from "../model/AgentTaskSource";
+import { AgentTaskStatus } from "../model/AgentTaskStatus";
 import { AgentTaskType } from "../model/AgentTaskType";
 import { CancelAgentTaskRequest } from "../model/CancelAgentTaskRequest";
 import { CreateAgentTaskRequest } from "../model/CreateAgentTaskRequest";
@@ -320,10 +322,14 @@ export class AI_Agents {
     public ListTasks(
         params: {
             orgName: string,
+            agentDefinitionId?: string,
             continuationToken?: string,
+            excludeSources?: AgentTaskSource[],
             pageSize?: number,
+            query?: string,
             sortBy?: AgentTaskSortField,
             sortDirection?: AgentTaskSortDirection,
+            status?: AgentTaskStatus,
             taskType?: AgentTaskType,
         },
     ): Promise<ListAgentTasksResponse> {
@@ -340,17 +346,29 @@ export class AI_Agents {
 
         let __requestOptions = new ApiRequest();
 
+        if (params.agentDefinitionId !== undefined) {
+            __requestOptions.setQueryParam("agentDefinitionId", params.agentDefinitionId);
+        }
         if (params.continuationToken !== undefined) {
             __requestOptions.setQueryParam("continuationToken", params.continuationToken);
         }
+        if (params.excludeSources !== undefined) {
+            __requestOptions.setQueryParam("excludeSources", params.excludeSources);
+        }
         if (params.pageSize !== undefined) {
             __requestOptions.setQueryParam("pageSize", params.pageSize);
+        }
+        if (params.query !== undefined) {
+            __requestOptions.setQueryParam("query", params.query);
         }
         if (params.sortBy !== undefined) {
             __requestOptions.setQueryParam("sortBy", params.sortBy);
         }
         if (params.sortDirection !== undefined) {
             __requestOptions.setQueryParam("sortDirection", params.sortDirection);
+        }
+        if (params.status !== undefined) {
+            __requestOptions.setQueryParam("status", params.status);
         }
         if (params.taskType !== undefined) {
             __requestOptions.setQueryParam("taskType", params.taskType);

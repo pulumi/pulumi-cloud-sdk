@@ -31,4 +31,7 @@ public class AppUpdateProgramRequest {
 
     // The metadata
     public AppUpdateMetadata metadata;
+
+    // The ID of the stack update coherence window this update joins. Every update reading a coherence window observes the same outputs for any stack it reads, and each stack may contribute at most one update to a window, so an update in a window runs without its preview; previews join a window of their own, and read what other previews there predicted. Omit it to run the update outside any window.
+    public String coherenceWindow;
 }

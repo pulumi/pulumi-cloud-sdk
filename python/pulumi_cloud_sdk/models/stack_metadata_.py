@@ -16,6 +16,7 @@ from . import *
 # noinspection PyShadowingBuiltins,PyShadowingNames
 class StackMetadata(PulumiAutoModelEncoder):
     """
+    :var id: str - declared
     :var org_name: str - declared
     :var project_name: str - declared
     :var stack_name: str - declared
@@ -23,6 +24,7 @@ class StackMetadata(PulumiAutoModelEncoder):
     :var notification_settings: StackNotificationSettings - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
+        'id': 'str',
         'org_name': 'str',
         'project_name': 'str',
         'stack_name': 'str',
@@ -31,6 +33,7 @@ class StackMetadata(PulumiAutoModelEncoder):
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
+        'id': 'id',
         'org_name': 'orgName',
         'project_name': 'projectName',
         'stack_name': 'stackName',
@@ -38,12 +41,14 @@ class StackMetadata(PulumiAutoModelEncoder):
         'notification_settings': 'notificationSettings',
     }
 
+    FIELDS_id = 'id'
     FIELDS_org_name = 'orgName'
     FIELDS_project_name = 'projectName'
     FIELDS_stack_name = 'stackName'
     FIELDS_owned_by = 'ownedBy'
     FIELDS_notification_settings = 'notificationSettings'
 
+    _id: 'str'
     _org_name: 'str'
     _project_name: 'str'
     _stack_name: 'str'
@@ -52,6 +57,7 @@ class StackMetadata(PulumiAutoModelEncoder):
 
     def __init__(
         self,
+        id: 'str',
         org_name: 'str',
         project_name: 'str',
         stack_name: 'str',
@@ -60,6 +66,7 @@ class StackMetadata(PulumiAutoModelEncoder):
     ) -> None:
         super().__init__()
 
+        self.id = id
         self.org_name = org_name
         self.project_name = project_name
         self.stack_name = stack_name
@@ -68,11 +75,23 @@ class StackMetadata(PulumiAutoModelEncoder):
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, StackMetadata):
+            self._id = source._id
             self._org_name = source._org_name
             self._project_name = source._project_name
             self._stack_name = source._stack_name
             self._owned_by = source._owned_by
             self._notification_settings = source._notification_settings
+
+    @property
+    def id(self) -> 'str':
+        return self._id
+
+    @id.setter
+    def id(self, id: 'str'):
+        if id is None:
+            raise ValueError("Invalid value for `id`, must not be `None`")
+
+        self._id = id
 
     @property
     def org_name(self) -> 'str':

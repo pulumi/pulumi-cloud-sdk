@@ -5262,6 +5262,57 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def list_entity_assignments(
+        self,
+        org_name: 'str',
+        request: 'EntityInstance',
+        _request_timeout: int = None,
+    ) -> 'EntityAssignmentsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_entity_assignments`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `list_entity_assignments`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/assignments/list'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='EntityAssignmentsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def list_events(
         self,
         org_name: 'str',
@@ -7664,6 +7715,57 @@ class OrganizationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='AuthPolicy',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def update_entity_assignment(
+        self,
+        org_name: 'str',
+        request: 'UpdateEntityAssignmentRequest',
+        _request_timeout: int = None,
+    ) -> 'UpdateEntityAssignmentResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `update_entity_assignment`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `update_entity_assignment`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/assignments/update'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='UpdateEntityAssignmentResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

@@ -23,7 +23,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool IsOrgDefault { get; set; }
 
         /// <summary>
-        /// The type of entities this policy group applies to (stacks or accounts).
+        /// Deprecated: a legacy label set when the policy group was created. It does not restrict which entities the group holds; `mode` does.
         /// </summary>
         [JsonProperty("entityType")]
         public PolicyGroupEntityType EntityType { get; set; }

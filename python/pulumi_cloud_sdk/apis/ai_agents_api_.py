@@ -338,10 +338,14 @@ class AI_AgentsApi(object):
     def list_tasks(
         self,
         org_name: 'str',
+        agent_definition_id: 'str' = None,
         continuation_token: 'str' = None,
+        exclude_sources: 'list[AgentTaskSource]' = None,
         page_size: 'int' = None,
+        query: 'str' = None,
         sort_by: 'AgentTaskSortField' = None,
         sort_direction: 'AgentTaskSortDirection' = None,
+        status: 'AgentTaskStatus' = None,
         task_type: 'AgentTaskType' = None,
         _request_timeout: int = None,
     ) -> 'ListAgentTasksResponse':
@@ -356,14 +360,22 @@ class AI_AgentsApi(object):
             path_params['orgName'] = org_name
 
         query_params = {}
+        if agent_definition_id is not None:
+            query_params['agentDefinitionId'] = agent_definition_id
         if continuation_token is not None:
             query_params['continuationToken'] = continuation_token
+        if exclude_sources is not None:
+            query_params['excludeSources'] = exclude_sources
         if page_size is not None:
             query_params['pageSize'] = page_size
+        if query is not None:
+            query_params['query'] = query
         if sort_by is not None:
             query_params['sortBy'] = sort_by
         if sort_direction is not None:
             query_params['sortDirection'] = sort_direction
+        if status is not None:
+            query_params['status'] = status
         if task_type is not None:
             query_params['taskType'] = task_type
 

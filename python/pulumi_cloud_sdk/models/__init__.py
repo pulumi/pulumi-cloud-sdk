@@ -41,6 +41,7 @@ from .agent_claim_response_ import AgentClaimResponse
 from .agent_claims_status_ import AgentClaimsStatus
 from .agent_console_event_ import AgentConsoleEvent
 from .agent_console_event_agent_response_ import AgentConsoleEventAgentResponse
+from .agent_console_event_trigger_user_input_ import AgentConsoleEventTriggerUserInput
 from .agent_console_event_user_input_ import AgentConsoleEventUserInput
 from .agent_entity_ import AgentEntity
 from .agent_entity_diff_ import AgentEntityDiff
@@ -63,6 +64,8 @@ from .agent_task_sort_field_ import AgentTaskSortField
 from .agent_task_source_ import AgentTaskSource
 from .agent_task_status_ import AgentTaskStatus
 from .agent_task_type_ import AgentTaskType
+from .agent_trigger_event_ import AgentTriggerEvent
+from .agent_trigger_event_detail_ import AgentTriggerEventDetail
 from .agent_user_event_ import AgentUserEvent
 from .agent_user_event_cancel_ import AgentUserEventCancel
 from .agent_user_event_confirmation_ import AgentUserEventConfirmation
@@ -211,6 +214,9 @@ from .approval_rule_eligibility_output_team_ import ApprovalRuleEligibilityOutpu
 from .approval_rule_eligibility_output_user_ import ApprovalRuleEligibilityOutputUser
 from .approve_change_request_request_ import ApproveChangeRequestRequest
 from .artifact_version_name_spec_ import ArtifactVersionNameSpec
+from .assignment_principal_ import AssignmentPrincipal
+from .assignment_source_ import AssignmentSource
+from .assignment_team_ import AssignmentTeam
 from .audit_log_event_ import AuditLogEvent
 from .audit_log_event_type_catalog_entry_ import AuditLogEventTypeCatalogEntry
 from .audit_log_export_result_ import AuditLogExportResult
@@ -304,6 +310,8 @@ from .create_access_token_response_ import CreateAccessTokenResponse
 from .create_agent_task_request_ import CreateAgentTaskRequest
 from .create_agent_task_response_ import CreateAgentTaskResponse
 from .create_change_gate_request_ import CreateChangeGateRequest
+from .create_coherence_window_subgroup_request_ import CreateCoherenceWindowSubgroupRequest
+from .create_coherence_window_subgroup_response_ import CreateCoherenceWindowSubgroupResponse
 from .create_custom_vcs_integration_request_ import CreateCustomVCSIntegrationRequest
 from .create_deployment_request_ import CreateDeploymentRequest
 from .create_deployment_response_ import CreateDeploymentResponse
@@ -378,6 +386,9 @@ from .drift_run_update_ import DriftRunUpdate
 from .encrypt_environment_secrets_request_ import EncryptEnvironmentSecretsRequest
 from .encrypt_environment_secrets_response_ import EncryptEnvironmentSecretsResponse
 from .engine_event_ import EngineEvent
+from .entity_assignment_ import EntityAssignment
+from .entity_assignments_response_ import EntityAssignmentsResponse
+from .entity_instance_ import EntityInstance
 from .environment_diagnostic_ import EnvironmentDiagnostic
 from .environment_diagnostics_response_ import EnvironmentDiagnosticsResponse
 from .environment_function_summary_ import EnvironmentFunctionSummary
@@ -696,6 +707,7 @@ from .permission_literal_expression_stack_ import PermissionLiteralExpressionSta
 from .permission_literal_expression_string_ import PermissionLiteralExpressionString
 from .permission_literal_expression_team_ import PermissionLiteralExpressionTeam
 from .permission_selectvalue_ import PermissionSelectvalue
+from .permission_set_ import PermissionSet
 from .permission_set_expression_ import PermissionSetExpression
 from .permission_set_expression_environment_ import PermissionSetExpressionEnvironment
 from .permission_set_expression_insights_account_ import PermissionSetExpressionInsightsAccount
@@ -875,6 +887,8 @@ from .update_azure_dev_ops_app_integration_request_ import UpdateAzureDevOpsAppI
 from .update_change_gate_request_ import UpdateChangeGateRequest
 from .update_change_request_request_ import UpdateChangeRequestRequest
 from .update_custom_vcs_integration_request_ import UpdateCustomVCSIntegrationRequest
+from .update_entity_assignment_request_ import UpdateEntityAssignmentRequest
+from .update_entity_assignment_response_ import UpdateEntityAssignmentResponse
 from .update_environment_response_ import UpdateEnvironmentResponse
 from .update_environment_revision_tag_request_ import UpdateEnvironmentRevisionTagRequest
 from .update_environment_tag_request_ import UpdateEnvironmentTagRequest

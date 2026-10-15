@@ -301,6 +301,23 @@ public final class StacksApi {
         this.client.call($request);
     }
 
+    public void closeCoherenceWindowSubgroup(String orgName, String windowID, String subgroupID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling closeCoherenceWindowSubgroup");
+        }
+        if (windowID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'windowID' when calling closeCoherenceWindowSubgroup");
+        }
+        if (subgroupID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'subgroupID' when calling closeCoherenceWindowSubgroup");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups/{subgroupID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("windowID", windowID);
+        $request.pathParam("subgroupID", subgroupID);
+        this.client.call($request);
+    }
+
     public void completeUpdate_destroy(String orgName, String projectName, String stackName, String updateID, AppCompleteUpdateRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling completeUpdate_destroy");
@@ -403,6 +420,25 @@ public final class StacksApi {
         $request.body(request);
         $request.consumes("application/json");
         this.client.call($request);
+    }
+
+    public CreateCoherenceWindowSubgroupResponse createCoherenceWindowSubgroup(String orgName, String windowID, CreateCoherenceWindowSubgroupRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createCoherenceWindowSubgroup");
+        }
+        if (windowID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'windowID' when calling createCoherenceWindowSubgroup");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createCoherenceWindowSubgroup");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("windowID", windowID);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<CreateCoherenceWindowSubgroupResponse>() {});
     }
 
     public void createJournalEntries_destroy(String orgName, String projectName, String stackName, String updateID, AppJournalEntries request, Boolean include_non_activated) {
@@ -1087,7 +1123,7 @@ public final class StacksApi {
         return this.client.call($request, new TypeReference<StackMetadata>() {});
     }
 
-    public StackOutputsResponse getStackOutputs(String orgName, String projectName, String stackName) {
+    public StackOutputsResponse getStackOutputs(String orgName, String projectName, String stackName, String readingUpdateID) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getStackOutputs");
         }
@@ -1101,6 +1137,7 @@ public final class StacksApi {
         $request.pathParam("orgName", orgName);
         $request.pathParam("projectName", projectName);
         $request.pathParam("stackName", stackName);
+        $request.queryParam("readingUpdateID", readingUpdateID);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<StackOutputsResponse>() {});
     }

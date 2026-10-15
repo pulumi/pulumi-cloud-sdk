@@ -19,7 +19,7 @@ import type { PolicyGroupMode } from "./PolicyGroupMode";
 
 export class NewPolicyGroupRequest {
     name: string;
-    entityType: PolicyGroupEntityType;
+    entityType?: PolicyGroupEntityType;
     mode?: PolicyGroupMode;
     agentPoolId?: string;
 

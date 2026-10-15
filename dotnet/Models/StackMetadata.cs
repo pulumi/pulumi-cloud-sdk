@@ -11,6 +11,12 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class StackMetadata {
         /// <summary>
+        /// The stack's ID.
+        /// </summary>
+        [JsonProperty("id")]
+        public string ID { get; set; }
+
+        /// <summary>
         /// The organization that owns the stack.
         /// </summary>
         [JsonProperty("orgName")]

@@ -17,7 +17,7 @@ public class PolicyGroup {
     // True if this is either the default stacks or default accounts policy group for the organization.
     public boolean isOrgDefault;
 
-    // The type of entities this policy group applies to (stacks or accounts).
+    // Deprecated: a legacy label set when the policy group was created. It does not restrict which entities the group holds; `mode` does.
     public PolicyGroupEntityType entityType;
 
     // The enforcement mode for the policy group (audit or preventative).

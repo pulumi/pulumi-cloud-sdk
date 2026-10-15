@@ -102,6 +102,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var link_express_checkout_enabled: bool - declared
     :var multi_change_requests_enabled: bool - declared
     :var agents_as_team_members_enabled: bool - declared
+    :var entity_user_assignments_enabled: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'audit_logs_enabled': 'bool',
@@ -190,6 +191,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'link_express_checkout_enabled': 'bool',
         'multi_change_requests_enabled': 'bool',
         'agents_as_team_members_enabled': 'bool',
+        'entity_user_assignments_enabled': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -279,6 +281,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'link_express_checkout_enabled': 'linkExpressCheckoutEnabled',
         'multi_change_requests_enabled': 'multiChangeRequestsEnabled',
         'agents_as_team_members_enabled': 'agentsAsTeamMembersEnabled',
+        'entity_user_assignments_enabled': 'entityUserAssignmentsEnabled',
     }
 
     FIELDS_audit_logs_enabled = 'auditLogsEnabled'
@@ -367,6 +370,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_link_express_checkout_enabled = 'linkExpressCheckoutEnabled'
     FIELDS_multi_change_requests_enabled = 'multiChangeRequestsEnabled'
     FIELDS_agents_as_team_members_enabled = 'agentsAsTeamMembersEnabled'
+    FIELDS_entity_user_assignments_enabled = 'entityUserAssignmentsEnabled'
 
     _audit_logs_enabled: 'bool'
     _has_terraform_modules: 'bool'
@@ -454,6 +458,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _link_express_checkout_enabled: 'bool'
     _multi_change_requests_enabled: 'bool'
     _agents_as_team_members_enabled: 'bool'
+    _entity_user_assignments_enabled: 'bool'
 
     def __init__(
         self,
@@ -514,6 +519,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         cli_integration_catalog_enabled: 'bool',
         service_backed_config_enabled: 'bool',
         neo_byok_enabled: 'bool',
+        entity_user_assignments_enabled: 'bool',
         has_terraform_modules: 'bool' = False,
         git_hub_enterprise_individual_auth_enabled: 'bool' = False,
         dashboard_onboarding_ui_enabled: 'bool' = False,
@@ -632,6 +638,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.link_express_checkout_enabled = link_express_checkout_enabled
         self.multi_change_requests_enabled = multi_change_requests_enabled
         self.agents_as_team_members_enabled = agents_as_team_members_enabled
+        self.entity_user_assignments_enabled = entity_user_assignments_enabled
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OrganizationFeatures):
@@ -721,6 +728,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._link_express_checkout_enabled = source._link_express_checkout_enabled
             self._multi_change_requests_enabled = source._multi_change_requests_enabled
             self._agents_as_team_members_enabled = source._agents_as_team_members_enabled
+            self._entity_user_assignments_enabled = source._entity_user_assignments_enabled
 
     @property
     def audit_logs_enabled(self) -> 'bool':
@@ -1580,6 +1588,17 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @agents_as_team_members_enabled.setter
     def agents_as_team_members_enabled(self, agents_as_team_members_enabled: 'bool'):
         self._agents_as_team_members_enabled = agents_as_team_members_enabled
+
+    @property
+    def entity_user_assignments_enabled(self) -> 'bool':
+        return self._entity_user_assignments_enabled
+
+    @entity_user_assignments_enabled.setter
+    def entity_user_assignments_enabled(self, entity_user_assignments_enabled: 'bool'):
+        if entity_user_assignments_enabled is None:
+            raise ValueError("Invalid value for `entity_user_assignments_enabled`, must not be `None`")
+
+        self._entity_user_assignments_enabled = entity_user_assignments_enabled
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, OrganizationFeatures):

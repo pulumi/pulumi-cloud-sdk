@@ -15,5 +15,17 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("status")]
         public AppUpdateStatus Status { get; set; }
+
+        /// <summary>
+        /// The stack outputs the update produced, keyed by output name, in the same representation exported stack state uses. A preview leaves no stack state behind, so it reports its outputs here; other update kinds record theirs in the stack's state and leave this absent.
+        /// </summary>
+        [JsonProperty("outputs")]
+        public System.Collections.Generic.Dictionary<string, JToken> Outputs { get; set; }
+
+        /// <summary>
+        /// The secrets provider that encrypted the secret values in 'outputs'.
+        /// </summary>
+        [JsonProperty("secretsProviders")]
+        public AppSecretsProvidersV1 SecretsProviders { get; set; }
     }
 }

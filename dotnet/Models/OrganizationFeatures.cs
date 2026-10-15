@@ -525,5 +525,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("agentsAsTeamMembersEnabled")]
         public bool AgentsAsTeamMembersEnabled { get; set; }
+
+        /// <summary>
+        /// Whether individual users can be assigned permission sets on stacks, environments and Insights accounts.
+        /// </summary>
+        [JsonProperty("entityUserAssignmentsEnabled")]
+        public bool EntityUserAssignmentsEnabled { get; set; }
     }
 }

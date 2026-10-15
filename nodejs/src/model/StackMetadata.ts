@@ -18,6 +18,7 @@ import type { UserInfo } from "./UserInfo";
 
 
 export class StackMetadata {
+    id: string;
     orgName: string;
     projectName: string;
     stackName: string;

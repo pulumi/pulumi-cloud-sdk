@@ -16,14 +16,14 @@ from . import *
 # noinspection PyShadowingBuiltins,PyShadowingNames
 class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
     """
-    :var add_insights_account: InsightsAccount - declared
-    :var remove_insights_account: InsightsAccount - declared
     :var agent_pool_id: str - declared
     :var new_name: str - inherited
     :var add_stack: AppPulumiStackReference - inherited
     :var remove_stack: AppPulumiStackReference - inherited
     :var add_policy_pack: AppPolicyPackMetadata - inherited
     :var remove_policy_pack: AppPolicyPackMetadata - inherited
+    :var add_insights_account: AppInsightsAccountReference - inherited
+    :var remove_insights_account: AppInsightsAccountReference - inherited
     :var stacks: list[AppPulumiStackReference] - inherited
     :var policy_packs: list[AppPolicyPackMetadata] - inherited
     :var insights_accounts: list[str] - inherited
@@ -56,12 +56,8 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         'agent_pool_id': 'agentPoolId',
     }
 
-    FIELDS_add_insights_account = 'addInsightsAccount'
-    FIELDS_remove_insights_account = 'removeInsightsAccount'
     FIELDS_agent_pool_id = 'agentPoolId'
 
-    _add_insights_account: 'InsightsAccount'
-    _remove_insights_account: 'InsightsAccount'
     _agent_pool_id: 'str'
 
     def __init__(
@@ -80,86 +76,12 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
     ) -> None:
         super().__init__(new_name=new_name, add_stack=add_stack, remove_stack=remove_stack, add_policy_pack=add_policy_pack, remove_policy_pack=remove_policy_pack, add_insights_account=add_insights_account, remove_insights_account=remove_insights_account, stacks=stacks, policy_packs=policy_packs, insights_accounts=insights_accounts)
 
-        self.add_insights_account = add_insights_account
-        self.remove_insights_account = remove_insights_account
         self.agent_pool_id = agent_pool_id
 
     def copy_common_fields(self, source: Any, /) -> None:
         super().copy_common_fields(source)
         if isinstance(source, UpdatePolicyGroupRequest):
-            self._add_insights_account = source._add_insights_account
-            self._remove_insights_account = source._remove_insights_account
             self._agent_pool_id = source._agent_pool_id
-
-    @property
-    def add_insights_account(self) -> 'InsightsAccount':
-        return self._add_insights_account
-
-    @add_insights_account.setter
-    def add_insights_account(self, add_insights_account: 'InsightsAccount'):
-        self._add_insights_account = add_insights_account
-
-    @property
-    def add_insights_account__autoinit(self) -> 'InsightsAccount':
-        """Return ``add_insights_account``, creating and storing an empty default when it is unset.
-
-        Side effect: the created default is written back to ``self._add_insights_account``, so it
-        persists on the model and is included when the model is serialized. Prefer
-        ``add_insights_account__safederef`` when you only want to read a default without mutating self.
-        """
-        if self._add_insights_account is None:
-            self._add_insights_account = self.add_insights_account__safederef
-
-        return self._add_insights_account
-
-    @property
-    def add_insights_account__safederef(self) -> 'InsightsAccount':
-        """Return ``add_insights_account``, or a freshly built empty default when it is unset.
-
-        No side effect: the default is not stored, so ``add_insights_account`` stays unset and each
-        call returns a new default. Use ``add_insights_account__autoinit`` to persist the default on
-        first access.
-        """
-        if self._add_insights_account is None:
-            from .. import models
-            return models.InsightsAccount._new_empty()
-
-        return self._add_insights_account
-
-    @property
-    def remove_insights_account(self) -> 'InsightsAccount':
-        return self._remove_insights_account
-
-    @remove_insights_account.setter
-    def remove_insights_account(self, remove_insights_account: 'InsightsAccount'):
-        self._remove_insights_account = remove_insights_account
-
-    @property
-    def remove_insights_account__autoinit(self) -> 'InsightsAccount':
-        """Return ``remove_insights_account``, creating and storing an empty default when it is unset.
-
-        Side effect: the created default is written back to ``self._remove_insights_account``, so it
-        persists on the model and is included when the model is serialized. Prefer
-        ``remove_insights_account__safederef`` when you only want to read a default without mutating self.
-        """
-        if self._remove_insights_account is None:
-            self._remove_insights_account = self.remove_insights_account__safederef
-
-        return self._remove_insights_account
-
-    @property
-    def remove_insights_account__safederef(self) -> 'InsightsAccount':
-        """Return ``remove_insights_account``, or a freshly built empty default when it is unset.
-
-        No side effect: the default is not stored, so ``remove_insights_account`` stays unset and each
-        call returns a new default. Use ``remove_insights_account__autoinit`` to persist the default on
-        first access.
-        """
-        if self._remove_insights_account is None:
-            from .. import models
-            return models.InsightsAccount._new_empty()
-
-        return self._remove_insights_account
 
     @property
     def agent_pool_id(self) -> 'str':

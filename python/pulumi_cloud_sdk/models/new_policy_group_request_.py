@@ -48,7 +48,7 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
     def __init__(
         self,
         name: 'str',
-        entity_type: 'PolicyGroupEntityType',
+        entity_type: 'PolicyGroupEntityType' = None,
         mode: 'PolicyGroupMode' = None,
         agent_pool_id: 'str' = None,
     ) -> None:
@@ -83,9 +83,6 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
 
     @entity_type.setter
     def entity_type(self, entity_type: 'PolicyGroupEntityType'):
-        if entity_type is None:
-            raise ValueError("Invalid value for `entity_type`, must not be `None`")
-
         self._entity_type = entity_type
 
     @property

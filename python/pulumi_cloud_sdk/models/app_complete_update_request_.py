@@ -17,30 +17,46 @@ from . import *
 class AppCompleteUpdateRequest(PulumiAutoModelEncoder):
     """
     :var status: AppUpdateStatus - declared
+    :var outputs: dict[str, Any] - declared
+    :var secrets_providers: AppSecretsProvidersV1 - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'status': 'AppUpdateStatus',
+        'outputs': 'dict[str, Any]',
+        'secrets_providers': 'AppSecretsProvidersV1',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'status': 'status',
+        'outputs': 'outputs',
+        'secrets_providers': 'secretsProviders',
     }
 
     FIELDS_status = 'status'
+    FIELDS_outputs = 'outputs'
+    FIELDS_secrets_providers = 'secretsProviders'
 
     _status: 'AppUpdateStatus'
+    _outputs: 'dict[str, Any]'
+    _secrets_providers: 'AppSecretsProvidersV1'
 
     def __init__(
         self,
         status: 'AppUpdateStatus',
+        outputs: 'dict[str, Any]' = None,
+        secrets_providers: 'AppSecretsProvidersV1' = None,
     ) -> None:
         super().__init__()
 
         self.status = status
+        self.outputs = outputs
+        self.secrets_providers = secrets_providers
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppCompleteUpdateRequest):
             self._status = source._status
+            self._outputs = source._outputs
+            self._secrets_providers = source._secrets_providers
 
     @property
     def status(self) -> 'AppUpdateStatus':
@@ -52,6 +68,75 @@ class AppCompleteUpdateRequest(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `status`, must not be `None`")
 
         self._status = status
+
+    @property
+    def outputs(self) -> 'dict[str, Any]':
+        return self._outputs
+
+    @outputs.setter
+    def outputs(self, outputs: 'dict[str, Any]'):
+        self._outputs = outputs
+
+    @property
+    def outputs__autoinit(self) -> 'dict[str, Any]':
+        """Return ``outputs``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._outputs``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``outputs__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._outputs is None:
+            self._outputs = self.outputs__safederef
+
+        return self._outputs
+
+    @property
+    def outputs__safederef(self) -> 'dict[str, Any]':
+        """Return ``outputs``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``outputs`` stays unset and each
+        call returns a new default. Use ``outputs__autoinit`` to persist the default on
+        first access.
+        """
+        if self._outputs is None:
+            return {}
+
+        return self._outputs
+
+    @property
+    def secrets_providers(self) -> 'AppSecretsProvidersV1':
+        return self._secrets_providers
+
+    @secrets_providers.setter
+    def secrets_providers(self, secrets_providers: 'AppSecretsProvidersV1'):
+        self._secrets_providers = secrets_providers
+
+    @property
+    def secrets_providers__autoinit(self) -> 'AppSecretsProvidersV1':
+        """Return ``secrets_providers``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._secrets_providers``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``secrets_providers__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._secrets_providers is None:
+            self._secrets_providers = self.secrets_providers__safederef
+
+        return self._secrets_providers
+
+    @property
+    def secrets_providers__safederef(self) -> 'AppSecretsProvidersV1':
+        """Return ``secrets_providers``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``secrets_providers`` stays unset and each
+        call returns a new default. Use ``secrets_providers__autoinit`` to persist the default on
+        first access.
+        """
+        if self._secrets_providers is None:
+            from .. import models
+            return models.AppSecretsProvidersV1._new_empty()
+
+        return self._secrets_providers
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppCompleteUpdateRequest):

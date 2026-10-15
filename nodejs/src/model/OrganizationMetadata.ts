@@ -35,6 +35,7 @@ export class OrganizationMetadata {
     subscriptionStatus?: string;
     subscriptionTrialEnd?: number;
     retrialExpiration?: Date;
+    retrialAnnouncedEndDate?: Date;
     retrialProduct?: SaasOffer;
     subscriptionCancelAtPeriodEnd?: boolean;
     subscriptionPeriodEnd?: Date;
@@ -107,6 +108,9 @@ export class OrganizationMetadata {
         }
         if (typeof this.retrialExpiration === "string") {
             this.retrialExpiration = new Date(this.retrialExpiration);
+        }
+        if (typeof this.retrialAnnouncedEndDate === "string") {
+            this.retrialAnnouncedEndDate = new Date(this.retrialAnnouncedEndDate);
         }
         if (typeof this.subscriptionPeriodEnd === "string") {
             this.subscriptionPeriodEnd = new Date(this.subscriptionPeriodEnd);

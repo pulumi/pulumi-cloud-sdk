@@ -18,37 +18,53 @@ class StackOutputsResponse(PulumiAutoModelEncoder):
     """
     :var outputs: dict[str, Any] - declared
     :var secrets_providers: AppSecretsProvidersV1 - declared
+    :var unknown: bool - declared
+    :var state: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'outputs': 'dict[str, Any]',
         'secrets_providers': 'AppSecretsProvidersV1',
+        'unknown': 'bool',
+        'state': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'outputs': 'outputs',
         'secrets_providers': 'secretsProviders',
+        'unknown': 'unknown',
+        'state': 'state',
     }
 
     FIELDS_outputs = 'outputs'
     FIELDS_secrets_providers = 'secretsProviders'
+    FIELDS_unknown = 'unknown'
+    FIELDS_state = 'state'
 
     _outputs: 'dict[str, Any]'
     _secrets_providers: 'AppSecretsProvidersV1'
+    _unknown: 'bool'
+    _state: 'str'
 
     def __init__(
         self,
         outputs: 'dict[str, Any]' = None,
         secrets_providers: 'AppSecretsProvidersV1' = None,
+        unknown: 'bool' = False,
+        state: 'str' = None,
     ) -> None:
         super().__init__()
 
         self.outputs = outputs
         self.secrets_providers = secrets_providers
+        self.unknown = unknown
+        self.state = state
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, StackOutputsResponse):
             self._outputs = source._outputs
             self._secrets_providers = source._secrets_providers
+            self._unknown = source._unknown
+            self._state = source._state
 
     @property
     def outputs(self) -> 'dict[str, Any]':
@@ -118,6 +134,22 @@ class StackOutputsResponse(PulumiAutoModelEncoder):
             return models.AppSecretsProvidersV1._new_empty()
 
         return self._secrets_providers
+
+    @property
+    def unknown(self) -> 'bool':
+        return self._unknown
+
+    @unknown.setter
+    def unknown(self, unknown: 'bool'):
+        self._unknown = unknown
+
+    @property
+    def state(self) -> 'str':
+        return self._state
+
+    @state.setter
+    def state(self, state: 'str'):
+        self._state = state
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, StackOutputsResponse):

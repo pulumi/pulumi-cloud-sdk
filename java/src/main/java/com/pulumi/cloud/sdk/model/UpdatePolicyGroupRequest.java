@@ -11,12 +11,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
-    // An Insights account to add to the policy group.
-    public InsightsAccount addInsightsAccount;
-
-    // An Insights account to remove from the policy group.
-    public InsightsAccount removeInsightsAccount;
-
     // Agent pool ID for audit policy evaluation. Set to empty string to clear, omit to leave unchanged.
     public String agentPoolId;
 }

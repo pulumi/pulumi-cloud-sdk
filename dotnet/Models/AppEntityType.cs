@@ -11,13 +11,13 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum AppEntityType {
         /// <summary>
-        /// Stacks indicates the policy group applies to stacks
+        /// Legacy label: stacks.
         /// </summary>
         [EnumMember(Value = "stacks")]
         Stacks,
 
         /// <summary>
-        /// Accounts indicates the policy group applies to accounts
+        /// Legacy label: accounts.
         /// </summary>
         [EnumMember(Value = "accounts")]
         Accounts,

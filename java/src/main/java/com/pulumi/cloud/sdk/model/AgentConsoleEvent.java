@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = AgentConsoleEvent.AgentResponse.class),
+    @JsonSubTypes.Type(value = AgentConsoleEvent.TriggerUserInput.class),
     @JsonSubTypes.Type(value = AgentConsoleEvent.UserInput.class)
 })
 public abstract class AgentConsoleEvent {
@@ -26,6 +27,18 @@ public abstract class AgentConsoleEvent {
     public static class AgentResponse extends AgentConsoleEvent {
         // The JSON blob as returned from the Agent.
         public AgentBackendEvent eventBody;
+    }
+
+    @JsonTypeName("triggerUserInput")
+    public static class TriggerUserInput extends AgentConsoleEvent {
+        // The sanitized message or confirmation delivered with the trigger events.
+        public AgentUserEvent eventBody;
+
+        // The nonempty collection of trigger events delivered with this input, in delivery order.
+        public List<AgentTriggerEvent> triggerEvents;
+
+        // Instructions saved on the trigger when the task started.
+        public String triggerInstructions;
     }
 
     @JsonTypeName("userInput")

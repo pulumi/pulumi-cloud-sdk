@@ -13,4 +13,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class AppCompleteUpdateRequest {
     // The current status
     public AppUpdateStatus status;
+
+    // The stack outputs the update produced, keyed by output name, in the same representation exported stack state uses. A preview leaves no stack state behind, so it reports its outputs here; other update kinds record theirs in the stack's state and leave this absent.
+    public Map<String, JsonNode> outputs;
+
+    // The secrets provider that encrypted the secret values in 'outputs'.
+    public AppSecretsProvidersV1 secretsProviders;
 }

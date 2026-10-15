@@ -295,6 +295,23 @@ namespace Pulumi.Cloud.Sdk.Api {
             this.client.Call(request);
         }
 
+        public void CloseCoherenceWindowSubgroup(string orgName, string windowID, string subgroupID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CloseCoherenceWindowSubgroup");
+            }
+            if (windowID == null) {
+                throw new ArgumentNullException(nameof(windowID), "Missing required parameter 'windowID' when calling CloseCoherenceWindowSubgroup");
+            }
+            if (subgroupID == null) {
+                throw new ArgumentNullException(nameof(subgroupID), "Missing required parameter 'subgroupID' when calling CloseCoherenceWindowSubgroup");
+            }
+            var request = new ApiRequest("DELETE", "/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups/{subgroupID}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("windowID", windowID);
+            request.PathParam("subgroupID", subgroupID);
+            this.client.Call(request);
+        }
+
         public void CompleteUpdate_destroy(string orgName, string projectName, string stackName, string updateID, AppCompleteUpdateRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CompleteUpdate_destroy");
@@ -397,6 +414,25 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Body(request);
             apiRequest.Consumes("application/json");
             this.client.Call(apiRequest);
+        }
+
+        public CreateCoherenceWindowSubgroupResponse CreateCoherenceWindowSubgroup(string orgName, string windowID, CreateCoherenceWindowSubgroupRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateCoherenceWindowSubgroup");
+            }
+            if (windowID == null) {
+                throw new ArgumentNullException(nameof(windowID), "Missing required parameter 'windowID' when calling CreateCoherenceWindowSubgroup");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreateCoherenceWindowSubgroup");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("windowID", windowID);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<CreateCoherenceWindowSubgroupResponse>(apiRequest);
         }
 
         public void CreateJournalEntries_destroy(string orgName, string projectName, string stackName, string updateID, AppJournalEntries request, bool? include_non_activated) {
@@ -1078,7 +1114,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<StackMetadata>(request);
         }
 
-        public StackOutputsResponse GetStackOutputs(string orgName, string projectName, string stackName) {
+        public StackOutputsResponse GetStackOutputs(string orgName, string projectName, string stackName, string readingUpdateID) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetStackOutputs");
             }
@@ -1092,6 +1128,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("orgName", orgName);
             request.PathParam("projectName", projectName);
             request.PathParam("stackName", stackName);
+            request.QueryParam("readingUpdateID", readingUpdateID);
             request.Produces("application/json");
             return this.client.Call<StackOutputsResponse>(request);
         }

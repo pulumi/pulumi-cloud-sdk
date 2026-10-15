@@ -356,10 +356,14 @@ func (p *CloudClient) GetTaskEvents(
 
 type InterceptorForListTasks struct {
 	OrgName           string
+	AgentDefinitionId *string
 	ContinuationToken *string
+	ExcludeSources    *[]apitype.AgentTaskSource
 	PageSize          *int
+	Query             *string
 	SortBy            *apitype.AgentTaskSortField
 	SortDirection     *apitype.AgentTaskSortDirection
+	Status            *apitype.AgentTaskStatus
 	TaskType          *apitype.AgentTaskType
 	ExtraHeaders      []http.Header
 }
@@ -367,20 +371,28 @@ type InterceptorForListTasks struct {
 func (p *CloudClient) ListTasks(
 	ctx context.Context,
 	orgName string,
+	agentDefinitionId *string,
 	continuationToken *string,
+	excludeSources *[]apitype.AgentTaskSource,
 	pageSize *int,
+	query *string,
 	sortBy *apitype.AgentTaskSortField,
 	sortDirection *apitype.AgentTaskSortDirection,
+	status *apitype.AgentTaskStatus,
 	taskType *apitype.AgentTaskType,
 	extraHeaders ...http.Header,
 ) (*apitype.ListAgentTasksResponse, error) {
 	if p.Interceptor != nil {
 		argForInterceptor := InterceptorForListTasks{
 			OrgName:           orgName,
+			AgentDefinitionId: agentDefinitionId,
 			ContinuationToken: continuationToken,
+			ExcludeSources:    excludeSources,
 			PageSize:          pageSize,
+			Query:             query,
 			SortBy:            sortBy,
 			SortDirection:     sortDirection,
+			Status:            status,
 			TaskType:          taskType,
 			ExtraHeaders:      extraHeaders,
 		}
@@ -405,10 +417,14 @@ func (p *CloudClient) ListTasks(
 			"orgName": orgName,
 		},
 		map[string]any{
+			"agentDefinitionId": agentDefinitionId,
 			"continuationToken": continuationToken,
+			"excludeSources":    excludeSources,
 			"pageSize":          pageSize,
+			"query":             query,
 			"sortBy":            sortBy,
 			"sortDirection":     sortDirection,
+			"status":            status,
 			"taskType":          taskType,
 		},
 	)

@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.*;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum AppEntityType {
-    // Stacks indicates the policy group applies to stacks
+    // Legacy label: stacks.
     Stacks("stacks"),
-    // Accounts indicates the policy group applies to accounts
+    // Legacy label: accounts.
     Accounts("accounts");
 
     private final String value;

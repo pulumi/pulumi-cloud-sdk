@@ -53,19 +53,19 @@ namespace Pulumi.Cloud.Sdk.Models {
         public AppInsightsAccountReference RemoveInsightsAccount { get; set; }
 
         /// <summary>
-        /// When non-nil, replaces the full list of stacks in the group.
+        /// Deprecated: ignored by the service. Use `addStack` / `removeStack`.
         /// </summary>
         [JsonProperty("stacks")]
         public System.Collections.Generic.List<AppPulumiStackReference> Stacks { get; set; }
 
         /// <summary>
-        /// When non-nil, replaces the full list of Policy Packs applied to the group.
+        /// Deprecated: ignored by the service. Use `addPolicyPack` / `removePolicyPack`.
         /// </summary>
         [JsonProperty("policyPacks")]
         public System.Collections.Generic.List<AppPolicyPackMetadata> PolicyPacks { get; set; }
 
         /// <summary>
-        /// When non-nil, replaces the full list of Insights accounts in the group.
+        /// Deprecated: ignored by the service. Use `addInsightsAccount` / `removeInsightsAccount`.
         /// </summary>
         [JsonProperty("insightsAccounts")]
         public System.Collections.Generic.List<string> InsightsAccounts { get; set; }

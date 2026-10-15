@@ -26,6 +26,7 @@ export class AppUpdateProgramRequest {
     options: AppUpdateOptions;
     config: { [key: string]: AppConfigValue };
     metadata: AppUpdateMetadata;
+    coherenceWindow?: string;
 
     getFixupPrototypeFunction() {
         return AppUpdateProgramRequest.fixupPrototype;

@@ -17,7 +17,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether this is the organization's default policy group, applied to all stacks not in another group.
+        /// Whether this is one of the organization's default policy groups. The default stacks group applies to every stack not in another group; the default accounts group applies to every Insights account not in another group.
         /// </summary>
         [JsonProperty("isOrgDefault")]
         public bool IsOrgDefault { get; set; }
@@ -35,7 +35,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public long NumAccounts { get; set; }
 
         /// <summary>
-        /// The type of entity this policy group targets (e.g. stacks, accounts).
+        /// Deprecated: a legacy label set when the policy group was created. It does not restrict which entities the group holds; `mode` does.
         /// </summary>
         [JsonProperty("entityType")]
         public AppEntityType EntityType { get; set; }

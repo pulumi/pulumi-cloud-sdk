@@ -59,6 +59,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public DateTimeOffset? RetrialExpiration { get; set; }
 
         /// <summary>
+        /// The day the organization's active retrial was announced to end, if one was. It is no later than retrialExpiration and is the date to show the organization; only its calendar day in UTC is meaningful.
+        /// </summary>
+        [JsonProperty("retrialAnnouncedEndDate")]
+        public DateTimeOffset? RetrialAnnouncedEndDate { get; set; }
+
+        /// <summary>
         /// The plan whose features the organization's active retrial grants, if it is on a retrial. The product field keeps reporting the plan the organization is subscribed to.
         /// </summary>
         [JsonProperty("retrialProduct")]

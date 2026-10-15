@@ -12,10 +12,6 @@ import (
 type UpdatePolicyGroupRequest struct {
 	AppUpdatePolicyGroupRequest
 
-	// An Insights account to add to the policy group.
-	AddInsightsAccount *InsightsAccount `json:"addInsightsAccount,omitempty" yaml:"addInsightsAccount,omitempty"`
-	// An Insights account to remove from the policy group.
-	RemoveInsightsAccount *InsightsAccount `json:"removeInsightsAccount,omitempty" yaml:"removeInsightsAccount,omitempty"`
 	// Agent pool ID for audit policy evaluation. Set to empty string to clear, omit to leave unchanged.
 	AgentPoolID jsonvalue.Value[string] `json:"agentPoolId,omitempty" yaml:"agentPoolId,omitempty"`
 }

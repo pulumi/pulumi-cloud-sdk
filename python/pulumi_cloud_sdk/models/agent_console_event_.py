@@ -88,6 +88,7 @@ class AgentConsoleEvent(PulumiAutoModelEncoder):
             from .. import models
             switcher = {
                 "agentResponse": models.AgentConsoleEventAgentResponse,
+                "triggerUserInput": models.AgentConsoleEventTriggerUserInput,
                 "userInput": models.AgentConsoleEventUserInput,
             }
             setattr(AgentConsoleEvent, "__DISCRIMINATOR_SWITCHER__", switcher)

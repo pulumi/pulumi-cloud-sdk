@@ -11,6 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class StackMetadata {
+    // The stack's ID.
+    public String id;
+
     // The organization that owns the stack.
     public String orgName;
 

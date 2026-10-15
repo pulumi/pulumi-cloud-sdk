@@ -100,6 +100,7 @@ export class OrganizationFeatures {
     linkExpressCheckoutEnabled?: boolean;
     multiChangeRequestsEnabled?: boolean;
     agentsAsTeamMembersEnabled?: boolean;
+    entityUserAssignmentsEnabled: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationFeatures.fixupPrototype;

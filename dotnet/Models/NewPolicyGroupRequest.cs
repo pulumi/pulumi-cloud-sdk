@@ -17,16 +17,16 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Name { get; set; }
 
         /// <summary>
-        /// The type of entities this policy group applies to (stacks or accounts). Fixed at creation; it cannot be changed later.
+        /// Deprecated: a legacy label, `stacks` or `accounts`. When `mode` is omitted it picks the mode (`accounts` → audit, `stacks` → preventative). When this is omitted, it is derived from `mode`. It does not restrict which entities the group can hold.
         /// </summary>
         [JsonProperty("entityType")]
-        public PolicyGroupEntityType EntityType { get; set; }
+        public PolicyGroupEntityType? EntityType { get; set; }
 
         /// <summary>
-        /// The enforcement mode for the policy group (audit or preventative). Defaults to 'audit' for account policy groups, 'preventative' for stack policy groups. Fixed at creation; it cannot be changed later.
+        /// The enforcement mode for the policy group (audit or preventative). The mode decides what the group can hold: an audit group holds stacks and Insights accounts, a preventative group holds stacks only. Required unless the deprecated `entityType` is sent. Fixed at creation; it cannot be changed later.
         /// </summary>
         [JsonProperty("mode")]
-        public PolicyGroupMode Mode { get; set; }
+        public PolicyGroupMode? Mode { get; set; }
 
         /// <summary>
         /// Agent pool ID for policy evaluation. Defaults to Pulumi hosted pool if not specified.

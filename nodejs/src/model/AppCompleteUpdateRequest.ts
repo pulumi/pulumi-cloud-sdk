@@ -13,11 +13,14 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { AppSecretsProvidersV1 } from "./AppSecretsProvidersV1";
 import type { AppUpdateStatus } from "./AppUpdateStatus";
 
 
 export class AppCompleteUpdateRequest {
     status: AppUpdateStatus;
+    outputs?: { [key: string]: any };
+    secretsProviders?: AppSecretsProvidersV1;
 
     getFixupPrototypeFunction() {
         return AppCompleteUpdateRequest.fixupPrototype;
@@ -48,6 +51,10 @@ export class AppCompleteUpdateRequest {
     }
 
     fixupFields() {
-        // Nothing to do.
+        if (this.secretsProviders) {
+            // Lazy import - only evaluated when called
+            const { AppSecretsProvidersV1 } = require("./AppSecretsProvidersV1");
+            AppSecretsProvidersV1.fixupPrototype(this.secretsProviders);
+        }
     }
 }

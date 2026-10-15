@@ -268,4 +268,7 @@ public class OrganizationFeatures {
 
     // Whether the Pulumi Agents workspace navigation is enabled.
     public boolean agentsAsTeamMembersEnabled;
+
+    // Whether individual users can be assigned permission sets on stacks, environments and Insights accounts.
+    public boolean entityUserAssignmentsEnabled;
 }

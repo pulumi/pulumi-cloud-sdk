@@ -184,4 +184,6 @@ type OrganizationFeatures struct {
 	MultiChangeRequestsEnabled bool `json:"multiChangeRequestsEnabled,omitzero" yaml:"multiChangeRequestsEnabled,omitempty"`
 	// Whether the Pulumi Agents workspace navigation is enabled.
 	AgentsAsTeamMembersEnabled bool `json:"agentsAsTeamMembersEnabled,omitzero" yaml:"agentsAsTeamMembersEnabled,omitempty"`
+	// Whether individual users can be assigned permission sets on stacks, environments and Insights accounts.
+	EntityUserAssignmentsEnabled bool `json:"entityUserAssignmentsEnabled" yaml:"entityUserAssignmentsEnabled"`
 }

@@ -14,12 +14,9 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 import { AppUpdatePolicyGroupRequest } from "./AppUpdatePolicyGroupRequest";
-import type { InsightsAccount } from "./InsightsAccount";
 
 
 export class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
-    addInsightsAccount?: InsightsAccount;
-    removeInsightsAccount?: InsightsAccount;
     agentPoolId?: string;
 
     getFixupPrototypeFunction() {
@@ -55,15 +52,5 @@ export class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
 
     fixupFields() {
         super.fixupFields();
-        if (this.addInsightsAccount) {
-            // Lazy import - only evaluated when called
-            const { InsightsAccount } = require("./InsightsAccount");
-            InsightsAccount.fixupPrototype(this.addInsightsAccount);
-        }
-        if (this.removeInsightsAccount) {
-            // Lazy import - only evaluated when called
-            const { InsightsAccount } = require("./InsightsAccount");
-            InsightsAccount.fixupPrototype(this.removeInsightsAccount);
-        }
     }
 }

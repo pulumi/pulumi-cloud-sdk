@@ -1458,6 +1458,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListDeletedStacksResponse>(request);
         }
 
+        public EntityAssignmentsResponse ListEntityAssignments(string orgName, EntityInstance request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListEntityAssignments");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling ListEntityAssignments");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/assignments/list");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<EntityAssignmentsResponse>(apiRequest);
+        }
+
         public ListChangeRequestEventsResponse ListEvents(string orgName, string changeRequestID, string continuationToken) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListEvents");
@@ -2115,6 +2130,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<AuthPolicy>(apiRequest);
+        }
+
+        public UpdateEntityAssignmentResponse UpdateEntityAssignment(string orgName, UpdateEntityAssignmentRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateEntityAssignment");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateEntityAssignment");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/assignments/update");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<UpdateEntityAssignmentResponse>(apiRequest);
         }
 
         public ChangeGate UpdateGate(string orgName, string gateID, UpdateChangeGateRequest request) {

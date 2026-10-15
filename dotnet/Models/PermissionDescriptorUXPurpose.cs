@@ -16,6 +16,9 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "role_private")]
         RolePrivate,
 
+        [EnumMember(Value = "role_user_private")]
+        RoleUserPrivate,
+
         [EnumMember(Value = "role_temporary")]
         RoleTemporary,
 

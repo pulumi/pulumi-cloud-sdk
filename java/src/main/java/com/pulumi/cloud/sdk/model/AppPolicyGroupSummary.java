@@ -14,7 +14,7 @@ public class AppPolicyGroupSummary {
     // The unique name of the policy group.
     public String name;
 
-    // Whether this is the organization's default policy group, applied to all stacks not in another group.
+    // Whether this is one of the organization's default policy groups. The default stacks group applies to every stack not in another group; the default accounts group applies to every Insights account not in another group.
     public boolean isOrgDefault;
 
     // Number of stacks assigned to this policy group.
@@ -23,7 +23,7 @@ public class AppPolicyGroupSummary {
     // Number of cloud accounts assigned to this policy group.
     public Long numAccounts;
 
-    // The type of entity this policy group targets (e.g. stacks, accounts).
+    // Deprecated: a legacy label set when the policy group was created. It does not restrict which entities the group holds; `mode` does.
     public AppEntityType entityType;
 
     // The enforcement mode of the policy group.

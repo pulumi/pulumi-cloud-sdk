@@ -801,6 +801,63 @@ class StacksApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def close_coherence_window_subgroup(
+        self,
+        org_name: 'str',
+        window_id: 'str',
+        subgroup_id: 'str',
+        _request_timeout: int = None,
+    ) -> None:
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `close_coherence_window_subgroup`")
+        # verify the required parameter 'window_id' is set
+        if window_id is None:
+            raise ValueError("Missing the required parameter `window_id` when calling `close_coherence_window_subgroup`")
+        # verify the required parameter 'subgroup_id' is set
+        if subgroup_id is None:
+            raise ValueError("Missing the required parameter `subgroup_id` when calling `close_coherence_window_subgroup`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups/{subgroupID}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if window_id is not None:
+            path_params['windowID'] = window_id
+        if subgroup_id is not None:
+            path_params['subgroupID'] = subgroup_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def complete_update_destroy(
         self,
         org_name: 'str',
@@ -1073,6 +1130,63 @@ class StacksApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def create_coherence_window_subgroup(
+        self,
+        org_name: 'str',
+        window_id: 'str',
+        request: 'CreateCoherenceWindowSubgroupRequest',
+        _request_timeout: int = None,
+    ) -> 'CreateCoherenceWindowSubgroupResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `create_coherence_window_subgroup`")
+        # verify the required parameter 'window_id' is set
+        if window_id is None:
+            raise ValueError("Missing the required parameter `window_id` when calling `create_coherence_window_subgroup`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `create_coherence_window_subgroup`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/coherence-windows/{windowID}/subgroups'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if window_id is not None:
+            path_params['windowID'] = window_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CreateCoherenceWindowSubgroupResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
@@ -3071,6 +3185,7 @@ class StacksApi(object):
         org_name: 'str',
         project_name: 'str',
         stack_name: 'str',
+        reading_update_id: 'str' = None,
         _request_timeout: int = None,
     ) -> 'StackOutputsResponse':
         # verify the required parameter 'org_name' is set
@@ -3094,6 +3209,8 @@ class StacksApi(object):
             path_params['stackName'] = stack_name
 
         query_params = {}
+        if reading_update_id is not None:
+            query_params['readingUpdateID'] = reading_update_id
 
         header_params = {}
 

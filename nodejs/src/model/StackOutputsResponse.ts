@@ -19,6 +19,8 @@ import type { AppSecretsProvidersV1 } from "./AppSecretsProvidersV1";
 export class StackOutputsResponse {
     outputs?: { [key: string]: any };
     secretsProviders?: AppSecretsProvidersV1;
+    unknown?: boolean;
+    state?: string;
 
     getFixupPrototypeFunction() {
         return StackOutputsResponse.fixupPrototype;

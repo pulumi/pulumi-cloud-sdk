@@ -11,18 +11,6 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class UpdatePolicyGroupRequest : AppUpdatePolicyGroupRequest {
         /// <summary>
-        /// An Insights account to add to the policy group.
-        /// </summary>
-        [JsonProperty("addInsightsAccount")]
-        public new InsightsAccount AddInsightsAccount { get; set; }
-
-        /// <summary>
-        /// An Insights account to remove from the policy group.
-        /// </summary>
-        [JsonProperty("removeInsightsAccount")]
-        public new InsightsAccount RemoveInsightsAccount { get; set; }
-
-        /// <summary>
         /// Agent pool ID for audit policy evaluation. Set to empty string to clear, omit to leave unchanged.
         /// </summary>
         [JsonProperty("agentPoolId")]

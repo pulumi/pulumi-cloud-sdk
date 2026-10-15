@@ -5593,6 +5593,62 @@ func (p *CloudClient) ListDeletedStacks(
 	return &result, nil
 }
 
+type InterceptorForListEntityAssignments struct {
+	OrgName      string
+	Request      apitype.EntityInstance
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListEntityAssignments(
+	ctx context.Context,
+	orgName string,
+	request apitype.EntityInstance,
+	extraHeaders ...http.Header,
+) (*apitype.EntityAssignmentsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListEntityAssignments{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EntityAssignmentsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEntityAssignments: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/assignments/list",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.EntityAssignmentsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListEvents struct {
 	OrgName           string
 	ChangeRequestID   string
@@ -8154,6 +8210,62 @@ func (p *CloudClient) UpdateAuthPolicy(
 		return nil, err
 	}
 	var result apitype.AuthPolicy
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForUpdateEntityAssignment struct {
+	OrgName      string
+	Request      apitype.UpdateEntityAssignmentRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) UpdateEntityAssignment(
+	ctx context.Context,
+	orgName string,
+	request apitype.UpdateEntityAssignmentRequest,
+	extraHeaders ...http.Header,
+) (*apitype.UpdateEntityAssignmentResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForUpdateEntityAssignment{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.UpdateEntityAssignmentResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateEntityAssignment: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/assignments/update",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.UpdateEntityAssignmentResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

@@ -21,10 +21,10 @@ type AppUpdatePolicyGroupRequest struct {
 	AddInsightsAccount *AppInsightsAccountReference `json:"addInsightsAccount,omitempty" yaml:"addInsightsAccount,omitempty"`
 	// An Insights account to remove from the policy group.
 	RemoveInsightsAccount *AppInsightsAccountReference `json:"removeInsightsAccount,omitempty" yaml:"removeInsightsAccount,omitempty"`
-	// When non-nil, replaces the full list of stacks in the group.
+	// Deprecated: ignored by the service. Use `addStack` / `removeStack`.
 	Stacks *[]AppPulumiStackReference `json:"stacks,omitempty" yaml:"stacks,omitempty"`
-	// When non-nil, replaces the full list of Policy Packs applied to the group.
+	// Deprecated: ignored by the service. Use `addPolicyPack` / `removePolicyPack`.
 	PolicyPacks *[]AppPolicyPackMetadata `json:"policyPacks,omitempty" yaml:"policyPacks,omitempty"`
-	// When non-nil, replaces the full list of Insights accounts in the group.
+	// Deprecated: ignored by the service. Use `addInsightsAccount` / `removeInsightsAccount`.
 	InsightsAccounts *[]string `json:"insightsAccounts,omitempty" yaml:"insightsAccounts,omitempty"`
 }

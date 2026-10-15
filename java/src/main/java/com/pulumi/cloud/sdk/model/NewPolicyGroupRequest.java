@@ -14,10 +14,10 @@ public class NewPolicyGroupRequest {
     // The name of the new policy group. Up to 100 characters, made up of letters, numbers, hyphens, underscores, periods, or spaces, and may not begin or end with a space.
     public String name;
 
-    // The type of entities this policy group applies to (stacks or accounts). Fixed at creation; it cannot be changed later.
+    // Deprecated: a legacy label, `stacks` or `accounts`. When `mode` is omitted it picks the mode (`accounts` → audit, `stacks` → preventative). When this is omitted, it is derived from `mode`. It does not restrict which entities the group can hold.
     public PolicyGroupEntityType entityType;
 
-    // The enforcement mode for the policy group (audit or preventative). Defaults to 'audit' for account policy groups, 'preventative' for stack policy groups. Fixed at creation; it cannot be changed later.
+    // The enforcement mode for the policy group (audit or preventative). The mode decides what the group can hold: an audit group holds stacks and Insights accounts, a preventative group holds stacks only. Required unless the deprecated `entityType` is sent. Fixed at creation; it cannot be changed later.
     public PolicyGroupMode mode;
 
     // Agent pool ID for policy evaluation. Defaults to Pulumi hosted pool if not specified.
