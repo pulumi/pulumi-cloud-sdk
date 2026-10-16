@@ -13,4 +13,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
     // Agent pool ID for audit policy evaluation. Set to empty string to clear, omit to leave unchanged.
     public String agentPoolId;
+
+    // Preview: a stack match rule, a boolean expression over stack tags, that replaces the policy group's current rule. Omit to leave the rule unchanged. Setting a rule requires the tag-based policy groups feature and is refused on the organization's default policy groups.
+    public PermissionBooleanExpression stackMatchRule;
+
+    // Preview: set to true to remove the policy group's stack match rule. Cannot be combined with `stackMatchRule` in the same request. Removing the rule is always allowed.
+    public boolean removeStackMatchRule;
+
+    // Preview: an account match rule, a boolean expression over Insights account tags, that replaces the policy group's current rule. Omit to leave the rule unchanged. Setting a rule requires the tag-based policy groups feature and is refused on the organization's default policy groups and on preventative groups.
+    public PermissionBooleanExpression accountMatchRule;
+
+    // Preview: set to true to remove the policy group's account match rule. Cannot be combined with `accountMatchRule` in the same request. Removing the rule is always allowed.
+    public boolean removeAccountMatchRule;
 }

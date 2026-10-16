@@ -20,12 +20,16 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
     :var entity_type: PolicyGroupEntityType - declared
     :var mode: PolicyGroupMode - declared
     :var agent_pool_id: str - declared
+    :var stack_match_rule: PermissionBooleanExpression - declared
+    :var account_match_rule: PermissionBooleanExpression - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
         'entity_type': 'PolicyGroupEntityType',
         'mode': 'PolicyGroupMode',
         'agent_pool_id': 'str',
+        'stack_match_rule': 'PermissionBooleanExpression',
+        'account_match_rule': 'PermissionBooleanExpression',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -33,17 +37,23 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
         'entity_type': 'entityType',
         'mode': 'mode',
         'agent_pool_id': 'agentPoolId',
+        'stack_match_rule': 'stackMatchRule',
+        'account_match_rule': 'accountMatchRule',
     }
 
     FIELDS_name = 'name'
     FIELDS_entity_type = 'entityType'
     FIELDS_mode = 'mode'
     FIELDS_agent_pool_id = 'agentPoolId'
+    FIELDS_stack_match_rule = 'stackMatchRule'
+    FIELDS_account_match_rule = 'accountMatchRule'
 
     _name: 'str'
     _entity_type: 'PolicyGroupEntityType'
     _mode: 'PolicyGroupMode'
     _agent_pool_id: 'str'
+    _stack_match_rule: 'PermissionBooleanExpression'
+    _account_match_rule: 'PermissionBooleanExpression'
 
     def __init__(
         self,
@@ -51,6 +61,8 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
         entity_type: 'PolicyGroupEntityType' = None,
         mode: 'PolicyGroupMode' = None,
         agent_pool_id: 'str' = None,
+        stack_match_rule: 'PermissionBooleanExpression' = None,
+        account_match_rule: 'PermissionBooleanExpression' = None,
     ) -> None:
         super().__init__()
 
@@ -58,6 +70,8 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
         self.entity_type = entity_type
         self.mode = mode
         self.agent_pool_id = agent_pool_id
+        self.stack_match_rule = stack_match_rule
+        self.account_match_rule = account_match_rule
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, NewPolicyGroupRequest):
@@ -65,6 +79,8 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
             self._entity_type = source._entity_type
             self._mode = source._mode
             self._agent_pool_id = source._agent_pool_id
+            self._stack_match_rule = source._stack_match_rule
+            self._account_match_rule = source._account_match_rule
 
     @property
     def name(self) -> 'str':
@@ -100,6 +116,22 @@ class NewPolicyGroupRequest(PulumiAutoModelEncoder):
     @agent_pool_id.setter
     def agent_pool_id(self, agent_pool_id: 'str'):
         self._agent_pool_id = agent_pool_id
+
+    @property
+    def stack_match_rule(self) -> 'PermissionBooleanExpression':
+        return self._stack_match_rule
+
+    @stack_match_rule.setter
+    def stack_match_rule(self, stack_match_rule: 'PermissionBooleanExpression'):
+        self._stack_match_rule = stack_match_rule
+
+    @property
+    def account_match_rule(self) -> 'PermissionBooleanExpression':
+        return self._account_match_rule
+
+    @account_match_rule.setter
+    def account_match_rule(self, account_match_rule: 'PermissionBooleanExpression'):
+        self._account_match_rule = account_match_rule
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, NewPolicyGroupRequest):

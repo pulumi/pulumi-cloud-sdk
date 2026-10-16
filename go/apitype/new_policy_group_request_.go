@@ -5,6 +5,10 @@
 package apitype
 
 import (
+	"encoding/json"
+
+	"gopkg.in/yaml.v3"
+
 	"github.com/pulumi/pulumi-cloud-sdk/go/apitype/jsonvalue"
 )
 
@@ -22,4 +26,74 @@ type NewPolicyGroupRequest struct {
 	Mode *PolicyGroupMode `json:"mode,omitempty" yaml:"mode,omitempty"`
 	// Agent pool ID for policy evaluation. Defaults to Pulumi hosted pool if not specified.
 	AgentPoolID jsonvalue.Value[string] `json:"agentPoolId,omitempty" yaml:"agentPoolId,omitempty"`
+	// Preview: a stack match rule to create the group with, a boolean expression over stack tags. Requires the tag-based policy groups
+	// feature.
+	StackMatchRule PermissionBooleanExpression `json:"stackMatchRule,omitempty" yaml:"stackMatchRule,omitempty"`
+	// Preview: an account match rule to create the group with, a boolean expression over Insights account tags. Requires the tag-based policy
+	// groups feature; not allowed on preventative groups.
+	AccountMatchRule PermissionBooleanExpression `json:"accountMatchRule,omitempty" yaml:"accountMatchRule,omitempty"`
+}
+
+func (m *NewPolicyGroupRequest) UnmarshalJSON(bytes []byte) error {
+	type decoder struct {
+		FieldName             string                  `json:"name"`
+		FieldEntityType       *PolicyGroupEntityType  `json:"entityType,omitempty"`
+		FieldMode             *PolicyGroupMode        `json:"mode,omitempty"`
+		FieldAgentPoolID      jsonvalue.Value[string] `json:"agentPoolId,omitempty"`
+		FieldStackMatchRule   json.RawMessage         `json:"stackMatchRule,omitempty"`
+		FieldAccountMatchRule json.RawMessage         `json:"accountMatchRule,omitempty"`
+	}
+
+	var v decoder
+	var err error
+	if err = json.Unmarshal(bytes, &v); err != nil {
+		return err
+	}
+	m.Name = v.FieldName
+	m.EntityType = v.FieldEntityType
+	m.Mode = v.FieldMode
+	m.AgentPoolID = v.FieldAgentPoolID
+	if v.FieldStackMatchRule != nil {
+		if err = UnmarshalJSONPermissionBooleanExpression(v.FieldStackMatchRule, &m.StackMatchRule); err != nil {
+			return err
+		}
+	}
+	if v.FieldAccountMatchRule != nil {
+		if err = UnmarshalJSONPermissionBooleanExpression(v.FieldAccountMatchRule, &m.AccountMatchRule); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (m *NewPolicyGroupRequest) UnmarshalYAML(value *yaml.Node) error {
+	type decoder struct {
+		FieldName             string                  `yaml:"name,omitempty"`
+		FieldEntityType       *PolicyGroupEntityType  `yaml:"entityType,omitempty"`
+		FieldMode             *PolicyGroupMode        `yaml:"mode,omitempty"`
+		FieldAgentPoolID      jsonvalue.Value[string] `yaml:"agentPoolId,omitempty"`
+		FieldStackMatchRule   yaml.Node               `yaml:"stackMatchRule,omitempty"`
+		FieldAccountMatchRule yaml.Node               `yaml:"accountMatchRule,omitempty"`
+	}
+
+	var v decoder
+	var err error
+	if err = value.Decode(&v); err != nil {
+		return err
+	}
+	m.Name = v.FieldName
+	m.EntityType = v.FieldEntityType
+	m.Mode = v.FieldMode
+	m.AgentPoolID = v.FieldAgentPoolID
+	if !v.FieldStackMatchRule.IsZero() {
+		if err = UnmarshalYamlPermissionBooleanExpression(v.FieldStackMatchRule, &m.StackMatchRule); err != nil {
+			return err
+		}
+	}
+	if !v.FieldAccountMatchRule.IsZero() {
+		if err = UnmarshalYamlPermissionBooleanExpression(v.FieldAccountMatchRule, &m.AccountMatchRule); err != nil {
+			return err
+		}
+	}
+	return nil
 }

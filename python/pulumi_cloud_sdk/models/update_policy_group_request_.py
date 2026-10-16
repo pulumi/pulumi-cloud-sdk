@@ -17,6 +17,10 @@ from . import *
 class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
     """
     :var agent_pool_id: str - declared
+    :var stack_match_rule: PermissionBooleanExpression - declared
+    :var remove_stack_match_rule: bool - declared
+    :var account_match_rule: PermissionBooleanExpression - declared
+    :var remove_account_match_rule: bool - declared
     :var new_name: str - inherited
     :var add_stack: AppPulumiStackReference - inherited
     :var remove_stack: AppPulumiStackReference - inherited
@@ -34,6 +38,10 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         'add_insights_account': 'AppInsightsAccountReference',
         'remove_insights_account': 'AppInsightsAccountReference',
         'agent_pool_id': 'str',
+        'stack_match_rule': 'PermissionBooleanExpression',
+        'remove_stack_match_rule': 'bool',
+        'account_match_rule': 'PermissionBooleanExpression',
+        'remove_account_match_rule': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -45,11 +53,23 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         'add_insights_account': 'addInsightsAccount',
         'remove_insights_account': 'removeInsightsAccount',
         'agent_pool_id': 'agentPoolId',
+        'stack_match_rule': 'stackMatchRule',
+        'remove_stack_match_rule': 'removeStackMatchRule',
+        'account_match_rule': 'accountMatchRule',
+        'remove_account_match_rule': 'removeAccountMatchRule',
     }
 
     FIELDS_agent_pool_id = 'agentPoolId'
+    FIELDS_stack_match_rule = 'stackMatchRule'
+    FIELDS_remove_stack_match_rule = 'removeStackMatchRule'
+    FIELDS_account_match_rule = 'accountMatchRule'
+    FIELDS_remove_account_match_rule = 'removeAccountMatchRule'
 
     _agent_pool_id: 'str'
+    _stack_match_rule: 'PermissionBooleanExpression'
+    _remove_stack_match_rule: 'bool'
+    _account_match_rule: 'PermissionBooleanExpression'
+    _remove_account_match_rule: 'bool'
 
     def __init__(
         self,
@@ -61,15 +81,27 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
         add_insights_account: 'AppInsightsAccountReference' = None,
         remove_insights_account: 'AppInsightsAccountReference' = None,
         agent_pool_id: 'str' = None,
+        stack_match_rule: 'PermissionBooleanExpression' = None,
+        remove_stack_match_rule: 'bool' = False,
+        account_match_rule: 'PermissionBooleanExpression' = None,
+        remove_account_match_rule: 'bool' = False,
     ) -> None:
         super().__init__(new_name=new_name, add_stack=add_stack, remove_stack=remove_stack, add_policy_pack=add_policy_pack, remove_policy_pack=remove_policy_pack, add_insights_account=add_insights_account, remove_insights_account=remove_insights_account)
 
         self.agent_pool_id = agent_pool_id
+        self.stack_match_rule = stack_match_rule
+        self.remove_stack_match_rule = remove_stack_match_rule
+        self.account_match_rule = account_match_rule
+        self.remove_account_match_rule = remove_account_match_rule
 
     def copy_common_fields(self, source: Any, /) -> None:
         super().copy_common_fields(source)
         if isinstance(source, UpdatePolicyGroupRequest):
             self._agent_pool_id = source._agent_pool_id
+            self._stack_match_rule = source._stack_match_rule
+            self._remove_stack_match_rule = source._remove_stack_match_rule
+            self._account_match_rule = source._account_match_rule
+            self._remove_account_match_rule = source._remove_account_match_rule
 
     @property
     def agent_pool_id(self) -> 'str':
@@ -78,6 +110,38 @@ class UpdatePolicyGroupRequest(AppUpdatePolicyGroupRequest):
     @agent_pool_id.setter
     def agent_pool_id(self, agent_pool_id: 'str'):
         self._agent_pool_id = agent_pool_id
+
+    @property
+    def stack_match_rule(self) -> 'PermissionBooleanExpression':
+        return self._stack_match_rule
+
+    @stack_match_rule.setter
+    def stack_match_rule(self, stack_match_rule: 'PermissionBooleanExpression'):
+        self._stack_match_rule = stack_match_rule
+
+    @property
+    def remove_stack_match_rule(self) -> 'bool':
+        return self._remove_stack_match_rule
+
+    @remove_stack_match_rule.setter
+    def remove_stack_match_rule(self, remove_stack_match_rule: 'bool'):
+        self._remove_stack_match_rule = remove_stack_match_rule
+
+    @property
+    def account_match_rule(self) -> 'PermissionBooleanExpression':
+        return self._account_match_rule
+
+    @account_match_rule.setter
+    def account_match_rule(self, account_match_rule: 'PermissionBooleanExpression'):
+        self._account_match_rule = account_match_rule
+
+    @property
+    def remove_account_match_rule(self) -> 'bool':
+        return self._remove_account_match_rule
+
+    @remove_account_match_rule.setter
+    def remove_account_match_rule(self, remove_account_match_rule: 'bool'):
+        self._remove_account_match_rule = remove_account_match_rule
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, UpdatePolicyGroupRequest):

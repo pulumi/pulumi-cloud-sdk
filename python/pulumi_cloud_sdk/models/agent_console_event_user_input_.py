@@ -17,6 +17,7 @@ from . import *
 class AgentConsoleEventUserInput(AgentConsoleEvent):
     """
     :var event_body: AgentUserEvent - declared
+    :var actor: UserInfo - declared
     :var id: str - inherited
     :var is_synthetic: bool - inherited
     """
@@ -24,6 +25,7 @@ class AgentConsoleEventUserInput(AgentConsoleEvent):
         'id': 'str',
         'is_synthetic': 'bool',
         'event_body': 'AgentUserEvent',
+        'actor': 'UserInfo',
         '__DISCRIMINATOR_VALUE__': 'str'
     }
 
@@ -31,29 +33,35 @@ class AgentConsoleEventUserInput(AgentConsoleEvent):
         'id': 'id',
         'is_synthetic': 'isSynthetic',
         'event_body': 'eventBody',
+        'actor': 'actor',
         '__DISCRIMINATOR_VALUE__': 'type'
     }
 
     __DISCRIMINATOR_VALUE__ = "userInput"
 
     FIELDS_event_body = 'eventBody'
+    FIELDS_actor = 'actor'
 
     _event_body: 'AgentUserEvent'
+    _actor: 'UserInfo'
 
     def __init__(
         self,
         id: 'str',
         is_synthetic: 'bool',
         event_body: 'AgentUserEvent',
+        actor: 'UserInfo' = None,
     ) -> None:
         super().__init__(id=id, is_synthetic=is_synthetic)
 
         self.event_body = event_body
+        self.actor = actor
 
     def copy_common_fields(self, source: Any, /) -> None:
         super().copy_common_fields(source)
         if isinstance(source, AgentConsoleEventUserInput):
             self._event_body = source._event_body
+            self._actor = source._actor
 
     @property
     def event_body(self) -> 'AgentUserEvent':
@@ -65,6 +73,41 @@ class AgentConsoleEventUserInput(AgentConsoleEvent):
             raise ValueError("Invalid value for `event_body`, must not be `None`")
 
         self._event_body = event_body
+
+    @property
+    def actor(self) -> 'UserInfo':
+        return self._actor
+
+    @actor.setter
+    def actor(self, actor: 'UserInfo'):
+        self._actor = actor
+
+    @property
+    def actor__autoinit(self) -> 'UserInfo':
+        """Return ``actor``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._actor``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``actor__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._actor is None:
+            self._actor = self.actor__safederef
+
+        return self._actor
+
+    @property
+    def actor__safederef(self) -> 'UserInfo':
+        """Return ``actor``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``actor`` stays unset and each
+        call returns a new default. Use ``actor__autoinit`` to persist the default on
+        first access.
+        """
+        if self._actor is None:
+            from .. import models
+            return models.UserInfo._new_empty()
+
+        return self._actor
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AgentConsoleEventUserInput):

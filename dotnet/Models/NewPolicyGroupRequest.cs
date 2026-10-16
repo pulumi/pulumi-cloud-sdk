@@ -33,5 +33,17 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("agentPoolId")]
         public string AgentPoolID { get; set; }
+
+        /// <summary>
+        /// Preview: a stack match rule to create the group with, a boolean expression over stack tags. Requires the tag-based policy groups feature.
+        /// </summary>
+        [JsonProperty("stackMatchRule")]
+        public PermissionBooleanExpression StackMatchRule { get; set; }
+
+        /// <summary>
+        /// Preview: an account match rule to create the group with, a boolean expression over Insights account tags. Requires the tag-based policy groups feature; not allowed on preventative groups.
+        /// </summary>
+        [JsonProperty("accountMatchRule")]
+        public PermissionBooleanExpression AccountMatchRule { get; set; }
     }
 }

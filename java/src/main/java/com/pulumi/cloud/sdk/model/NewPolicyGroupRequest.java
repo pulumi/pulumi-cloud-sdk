@@ -22,4 +22,10 @@ public class NewPolicyGroupRequest {
 
     // Agent pool ID for policy evaluation. Defaults to Pulumi hosted pool if not specified.
     public String agentPoolId;
+
+    // Preview: a stack match rule to create the group with, a boolean expression over stack tags. Requires the tag-based policy groups feature.
+    public PermissionBooleanExpression stackMatchRule;
+
+    // Preview: an account match rule to create the group with, a boolean expression over Insights account tags. Requires the tag-based policy groups feature; not allowed on preventative groups.
+    public PermissionBooleanExpression accountMatchRule;
 }

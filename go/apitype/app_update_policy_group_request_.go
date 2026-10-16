@@ -11,7 +11,7 @@ type AppUpdatePolicyGroupRequest struct {
 	NewName *string `json:"newName,omitempty" yaml:"newName,omitempty"`
 	// A stack to add to the policy group.
 	AddStack *AppPulumiStackReference `json:"addStack,omitempty" yaml:"addStack,omitempty"`
-	// A stack to remove from the policy group.
+	// A stack to remove from the policy group. Only stacks added with `addStack` can be removed.
 	RemoveStack *AppPulumiStackReference `json:"removeStack,omitempty" yaml:"removeStack,omitempty"`
 	// A policy pack to enable for the policy group.
 	AddPolicyPack *AppPolicyPackMetadata `json:"addPolicyPack,omitempty" yaml:"addPolicyPack,omitempty"`
@@ -19,6 +19,6 @@ type AppUpdatePolicyGroupRequest struct {
 	RemovePolicyPack *AppPolicyPackMetadata `json:"removePolicyPack,omitempty" yaml:"removePolicyPack,omitempty"`
 	// An Insights account to add to the policy group.
 	AddInsightsAccount *AppInsightsAccountReference `json:"addInsightsAccount,omitempty" yaml:"addInsightsAccount,omitempty"`
-	// An Insights account to remove from the policy group.
+	// An Insights account to remove from the policy group. Only accounts added with `addInsightsAccount` can be removed.
 	RemoveInsightsAccount *AppInsightsAccountReference `json:"removeInsightsAccount,omitempty" yaml:"removeInsightsAccount,omitempty"`
 }

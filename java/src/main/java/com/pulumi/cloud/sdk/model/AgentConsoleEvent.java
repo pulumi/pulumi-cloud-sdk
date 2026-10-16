@@ -45,5 +45,8 @@ public abstract class AgentConsoleEvent {
     public static class UserInput extends AgentConsoleEvent {
         // The prompt from the user to the Agent.
         public AgentUserEvent eventBody;
+
+        // The user who submitted this input. Absent for system-generated inputs and older events.
+        public UserInfo actor;
     }
 }

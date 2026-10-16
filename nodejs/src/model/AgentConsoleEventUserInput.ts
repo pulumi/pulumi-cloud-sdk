@@ -15,10 +15,12 @@
 
 import { AgentConsoleEvent } from "./AgentConsoleEvent";
 import type { AgentUserEvent } from "./AgentUserEvent";
+import type { UserInfo } from "./UserInfo";
 
 
 export class AgentConsoleEventUserInput extends AgentConsoleEvent {
     eventBody: AgentUserEvent;
+    actor?: UserInfo;
 
     constructor() {
         super();
@@ -61,6 +63,11 @@ export class AgentConsoleEventUserInput extends AgentConsoleEvent {
             // Lazy import - only evaluated when called
             const { AgentUserEvent } = require("./AgentUserEvent");
             AgentUserEvent.fixupPrototype(this.eventBody);
+        }
+        if (this.actor) {
+            // Lazy import - only evaluated when called
+            const { UserInfo } = require("./UserInfo");
+            UserInfo.fixupPrototype(this.actor);
         }
     }
 }

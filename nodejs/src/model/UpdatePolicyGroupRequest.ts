@@ -14,10 +14,15 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 import { AppUpdatePolicyGroupRequest } from "./AppUpdatePolicyGroupRequest";
+import type { PermissionBooleanExpression } from "./PermissionBooleanExpression";
 
 
 export class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
     agentPoolId?: string;
+    stackMatchRule?: PermissionBooleanExpression;
+    removeStackMatchRule?: boolean;
+    accountMatchRule?: PermissionBooleanExpression;
+    removeAccountMatchRule?: boolean;
 
     getFixupPrototypeFunction() {
         return UpdatePolicyGroupRequest.fixupPrototype;
@@ -52,5 +57,15 @@ export class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
 
     fixupFields() {
         super.fixupFields();
+        if (this.stackMatchRule) {
+            // Lazy import - only evaluated when called
+            const { PermissionBooleanExpression } = require("./PermissionBooleanExpression");
+            PermissionBooleanExpression.fixupPrototype(this.stackMatchRule);
+        }
+        if (this.accountMatchRule) {
+            // Lazy import - only evaluated when called
+            const { PermissionBooleanExpression } = require("./PermissionBooleanExpression");
+            PermissionBooleanExpression.fixupPrototype(this.accountMatchRule);
+        }
     }
 }

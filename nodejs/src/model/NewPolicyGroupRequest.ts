@@ -13,6 +13,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { PermissionBooleanExpression } from "./PermissionBooleanExpression";
 import type { PolicyGroupEntityType } from "./PolicyGroupEntityType";
 import type { PolicyGroupMode } from "./PolicyGroupMode";
 
@@ -22,6 +23,8 @@ export class NewPolicyGroupRequest {
     entityType?: PolicyGroupEntityType;
     mode?: PolicyGroupMode;
     agentPoolId?: string;
+    stackMatchRule?: PermissionBooleanExpression;
+    accountMatchRule?: PermissionBooleanExpression;
 
     getFixupPrototypeFunction() {
         return NewPolicyGroupRequest.fixupPrototype;
@@ -52,6 +55,15 @@ export class NewPolicyGroupRequest {
     }
 
     fixupFields() {
-        // Nothing to do.
+        if (this.stackMatchRule) {
+            // Lazy import - only evaluated when called
+            const { PermissionBooleanExpression } = require("./PermissionBooleanExpression");
+            PermissionBooleanExpression.fixupPrototype(this.stackMatchRule);
+        }
+        if (this.accountMatchRule) {
+            // Lazy import - only evaluated when called
+            const { PermissionBooleanExpression } = require("./PermissionBooleanExpression");
+            PermissionBooleanExpression.fixupPrototype(this.accountMatchRule);
+        }
     }
 }

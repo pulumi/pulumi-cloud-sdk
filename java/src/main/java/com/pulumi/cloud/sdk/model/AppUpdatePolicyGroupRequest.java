@@ -20,7 +20,7 @@ public class AppUpdatePolicyGroupRequest {
     // A stack to add to the policy group.
     public AppPulumiStackReference addStack;
 
-    // A stack to remove from the policy group.
+    // A stack to remove from the policy group. Only stacks added with `addStack` can be removed.
     public AppPulumiStackReference removeStack;
 
     // A policy pack to enable for the policy group.
@@ -32,6 +32,6 @@ public class AppUpdatePolicyGroupRequest {
     // An Insights account to add to the policy group.
     public AppInsightsAccountReference addInsightsAccount;
 
-    // An Insights account to remove from the policy group.
+    // An Insights account to remove from the policy group. Only accounts added with `addInsightsAccount` can be removed.
     public AppInsightsAccountReference removeInsightsAccount;
 }

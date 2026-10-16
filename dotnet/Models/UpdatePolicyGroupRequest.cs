@@ -15,5 +15,29 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("agentPoolId")]
         public string AgentPoolID { get; set; }
+
+        /// <summary>
+        /// Preview: a stack match rule, a boolean expression over stack tags, that replaces the policy group's current rule. Omit to leave the rule unchanged. Setting a rule requires the tag-based policy groups feature and is refused on the organization's default policy groups.
+        /// </summary>
+        [JsonProperty("stackMatchRule")]
+        public PermissionBooleanExpression StackMatchRule { get; set; }
+
+        /// <summary>
+        /// Preview: set to true to remove the policy group's stack match rule. Cannot be combined with `stackMatchRule` in the same request. Removing the rule is always allowed.
+        /// </summary>
+        [JsonProperty("removeStackMatchRule")]
+        public bool RemoveStackMatchRule { get; set; }
+
+        /// <summary>
+        /// Preview: an account match rule, a boolean expression over Insights account tags, that replaces the policy group's current rule. Omit to leave the rule unchanged. Setting a rule requires the tag-based policy groups feature and is refused on the organization's default policy groups and on preventative groups.
+        /// </summary>
+        [JsonProperty("accountMatchRule")]
+        public PermissionBooleanExpression AccountMatchRule { get; set; }
+
+        /// <summary>
+        /// Preview: set to true to remove the policy group's account match rule. Cannot be combined with `accountMatchRule` in the same request. Removing the rule is always allowed.
+        /// </summary>
+        [JsonProperty("removeAccountMatchRule")]
+        public bool RemoveAccountMatchRule { get; set; }
     }
 }

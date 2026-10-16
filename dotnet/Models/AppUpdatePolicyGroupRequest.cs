@@ -23,7 +23,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public AppPulumiStackReference AddStack { get; set; }
 
         /// <summary>
-        /// A stack to remove from the policy group.
+        /// A stack to remove from the policy group. Only stacks added with `addStack` can be removed.
         /// </summary>
         [JsonProperty("removeStack")]
         public AppPulumiStackReference RemoveStack { get; set; }
@@ -47,7 +47,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public AppInsightsAccountReference AddInsightsAccount { get; set; }
 
         /// <summary>
-        /// An Insights account to remove from the policy group.
+        /// An Insights account to remove from the policy group. Only accounts added with `addInsightsAccount` can be removed.
         /// </summary>
         [JsonProperty("removeInsightsAccount")]
         public AppInsightsAccountReference RemoveInsightsAccount { get; set; }

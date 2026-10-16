@@ -35,7 +35,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public PolicyGroupMode Mode { get; set; }
 
         /// <summary>
-        /// List of stacks that are members of this policy group.
+        /// The stacks added to this policy group individually, with `addStack`.
         /// </summary>
         [JsonProperty("stacks")]
         public System.Collections.Generic.List<AppPulumiStackReference> Stacks { get; set; }
@@ -47,7 +47,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public System.Collections.Generic.List<AppPolicyPackMetadata> AppliedPolicyPacks { get; set; }
 
         /// <summary>
-        /// List of Insights account names that are members of this policy group.
+        /// The Insights accounts added to this policy group individually, with `addInsightsAccount`.
         /// </summary>
         [JsonProperty("accounts")]
         public System.Collections.Generic.List<string> Accounts { get; set; }
@@ -57,5 +57,17 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("agentPoolId")]
         public string AgentPoolID { get; set; }
+
+        /// <summary>
+        /// Preview: the stack match rule, a boolean expression over stack tags. Stacks whose tags satisfy it are members of the group alongside the stacks added individually. Absent when the group has no rule.
+        /// </summary>
+        [JsonProperty("stackMatchRule")]
+        public PermissionBooleanExpression StackMatchRule { get; set; }
+
+        /// <summary>
+        /// Preview: the account match rule, a boolean expression over Insights account tags. Accounts whose tags satisfy it are members of the group alongside the accounts added individually. Absent when the group has no rule.
+        /// </summary>
+        [JsonProperty("accountMatchRule")]
+        public PermissionBooleanExpression AccountMatchRule { get; set; }
     }
 }

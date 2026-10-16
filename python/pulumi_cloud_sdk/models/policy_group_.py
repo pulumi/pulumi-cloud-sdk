@@ -24,6 +24,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
     :var applied_policy_packs: list[AppPolicyPackMetadata] - declared
     :var accounts: list[str] - declared
     :var agent_pool_id: str - declared
+    :var stack_match_rule: PermissionBooleanExpression - declared
+    :var account_match_rule: PermissionBooleanExpression - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
@@ -34,6 +36,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
         'applied_policy_packs': 'list[AppPolicyPackMetadata]',
         'accounts': 'list[str]',
         'agent_pool_id': 'str',
+        'stack_match_rule': 'PermissionBooleanExpression',
+        'account_match_rule': 'PermissionBooleanExpression',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -45,6 +49,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
         'applied_policy_packs': 'appliedPolicyPacks',
         'accounts': 'accounts',
         'agent_pool_id': 'agentPoolId',
+        'stack_match_rule': 'stackMatchRule',
+        'account_match_rule': 'accountMatchRule',
     }
 
     FIELDS_name = 'name'
@@ -55,6 +61,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
     FIELDS_applied_policy_packs = 'appliedPolicyPacks'
     FIELDS_accounts = 'accounts'
     FIELDS_agent_pool_id = 'agentPoolId'
+    FIELDS_stack_match_rule = 'stackMatchRule'
+    FIELDS_account_match_rule = 'accountMatchRule'
 
     _name: 'str'
     _is_org_default: 'bool'
@@ -64,6 +72,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
     _applied_policy_packs: 'list[AppPolicyPackMetadata]'
     _accounts: 'list[str]'
     _agent_pool_id: 'str'
+    _stack_match_rule: 'PermissionBooleanExpression'
+    _account_match_rule: 'PermissionBooleanExpression'
 
     def __init__(
         self,
@@ -75,6 +85,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
         applied_policy_packs: 'list[AppPolicyPackMetadata]',
         accounts: 'list[str]',
         agent_pool_id: 'str' = None,
+        stack_match_rule: 'PermissionBooleanExpression' = None,
+        account_match_rule: 'PermissionBooleanExpression' = None,
     ) -> None:
         super().__init__()
 
@@ -86,6 +98,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
         self.applied_policy_packs = applied_policy_packs
         self.accounts = accounts
         self.agent_pool_id = agent_pool_id
+        self.stack_match_rule = stack_match_rule
+        self.account_match_rule = account_match_rule
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, PolicyGroup):
@@ -97,6 +111,8 @@ class PolicyGroup(PulumiAutoModelEncoder):
             self._applied_policy_packs = source._applied_policy_packs
             self._accounts = source._accounts
             self._agent_pool_id = source._agent_pool_id
+            self._stack_match_rule = source._stack_match_rule
+            self._account_match_rule = source._account_match_rule
 
     @property
     def name(self) -> 'str':
@@ -260,6 +276,22 @@ class PolicyGroup(PulumiAutoModelEncoder):
     @agent_pool_id.setter
     def agent_pool_id(self, agent_pool_id: 'str'):
         self._agent_pool_id = agent_pool_id
+
+    @property
+    def stack_match_rule(self) -> 'PermissionBooleanExpression':
+        return self._stack_match_rule
+
+    @stack_match_rule.setter
+    def stack_match_rule(self, stack_match_rule: 'PermissionBooleanExpression'):
+        self._stack_match_rule = stack_match_rule
+
+    @property
+    def account_match_rule(self) -> 'PermissionBooleanExpression':
+        return self._account_match_rule
+
+    @account_match_rule.setter
+    def account_match_rule(self, account_match_rule: 'PermissionBooleanExpression'):
+        self._account_match_rule = account_match_rule
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, PolicyGroup):

@@ -23,15 +23,21 @@ public class PolicyGroup {
     // The enforcement mode for the policy group (audit or preventative).
     public PolicyGroupMode mode;
 
-    // List of stacks that are members of this policy group.
+    // The stacks added to this policy group individually, with `addStack`.
     public List<AppPulumiStackReference> stacks;
 
     // List of policy packs that are applied to this policy group.
     public List<AppPolicyPackMetadata> appliedPolicyPacks;
 
-    // List of Insights account names that are members of this policy group.
+    // The Insights accounts added to this policy group individually, with `addInsightsAccount`.
     public List<String> accounts;
 
     // Agent pool ID for audit policy evaluation. Defaults to Pulumi hosted pool if not specified.
     public String agentPoolId;
+
+    // Preview: the stack match rule, a boolean expression over stack tags. Stacks whose tags satisfy it are members of the group alongside the stacks added individually. Absent when the group has no rule.
+    public PermissionBooleanExpression stackMatchRule;
+
+    // Preview: the account match rule, a boolean expression over Insights account tags. Accounts whose tags satisfy it are members of the group alongside the accounts added individually. Absent when the group has no rule.
+    public PermissionBooleanExpression accountMatchRule;
 }

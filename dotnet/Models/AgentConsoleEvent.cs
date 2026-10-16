@@ -64,6 +64,12 @@ namespace Pulumi.Cloud.Sdk.Models {
             /// </summary>
             [JsonProperty("eventBody")]
             public AgentUserEvent EventBody { get; set; }
+
+            /// <summary>
+            /// The user who submitted this input. Absent for system-generated inputs and older events.
+            /// </summary>
+            [JsonProperty("actor")]
+            public UserInfo Actor { get; set; }
         }
     }
 }

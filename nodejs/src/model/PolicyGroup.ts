@@ -15,6 +15,7 @@
 
 import type { AppPolicyPackMetadata } from "./AppPolicyPackMetadata";
 import type { AppPulumiStackReference } from "./AppPulumiStackReference";
+import type { PermissionBooleanExpression } from "./PermissionBooleanExpression";
 import type { PolicyGroupEntityType } from "./PolicyGroupEntityType";
 import type { PolicyGroupMode } from "./PolicyGroupMode";
 
@@ -28,6 +29,8 @@ export class PolicyGroup {
     appliedPolicyPacks: AppPolicyPackMetadata[];
     accounts: string[];
     agentPoolId?: string;
+    stackMatchRule?: PermissionBooleanExpression;
+    accountMatchRule?: PermissionBooleanExpression;
 
     getFixupPrototypeFunction() {
         return PolicyGroup.fixupPrototype;
@@ -77,6 +80,16 @@ export class PolicyGroup {
                     AppPolicyPackMetadata.fixupPrototype(val0);
                 }
             }
+        }
+        if (this.stackMatchRule) {
+            // Lazy import - only evaluated when called
+            const { PermissionBooleanExpression } = require("./PermissionBooleanExpression");
+            PermissionBooleanExpression.fixupPrototype(this.stackMatchRule);
+        }
+        if (this.accountMatchRule) {
+            // Lazy import - only evaluated when called
+            const { PermissionBooleanExpression } = require("./PermissionBooleanExpression");
+            PermissionBooleanExpression.fixupPrototype(this.accountMatchRule);
         }
     }
 }
