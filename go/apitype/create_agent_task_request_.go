@@ -38,7 +38,7 @@ type CreateAgentTaskRequest struct {
 	// explicit opt-out (no integration credentials for this task); populated list → whitelist of specific integrations by ID. Modeled as an
 	// object array rather than a bare string array so multi-instance support (instance_name, scope, etc.) can be added later without a wire
 	// break.
-	EnabledIntegrations []AgentTaskIntegrationRef `json:"enabledIntegrations,omitempty" yaml:"enabledIntegrations,omitempty"`
+	EnabledIntegrations []AgentTaskIntegrationRef `json:"enabledIntegrations,omitzero" yaml:"enabledIntegrations,omitempty"`
 	// The origin that triggered this task. Defaults to 'api' if omitted.
 	Source AgentTaskSource `json:"source,omitempty" yaml:"source,omitempty"`
 	// Optional filter for CLI integrations to enable for this task. Semantics: omitted/null → enable all CLI integrations connected for the
@@ -57,7 +57,7 @@ func (m *CreateAgentTaskRequest) UnmarshalJSON(bytes []byte) error {
 		FieldRole                *string                   `json:"role,omitempty"`
 		FieldAgentDefinitionID   *string                   `json:"agentDefinitionId,omitempty"`
 		FieldToolExecutionMode   ToolExecutionMode         `json:"toolExecutionMode,omitempty"`
-		FieldEnabledIntegrations []AgentTaskIntegrationRef `json:"enabledIntegrations,omitempty"`
+		FieldEnabledIntegrations []AgentTaskIntegrationRef `json:"enabledIntegrations,omitzero"`
 		FieldSource              AgentTaskSource           `json:"source,omitempty"`
 		FieldCliIntegrations     []CLIIntegrationRef       `json:"cliIntegrations,omitempty"`
 	}
