@@ -260,7 +260,7 @@ public class OrganizationFeatures {
     // Whether Neo BYOK (bring-your-own-key) model provider configuration is enabled.
     public boolean neoByokEnabled;
 
-    // Whether the create-and-manage-Neo-tasks permission is enforced on Neo task creation for the organization (rollout flag). While unset the permission is evaluated in shadow mode only and denials do not block.
+    // Deprecated. Always true.
     public boolean neoAgentTaskRbacEnforcementEnabled;
 
     // Whether one-click Link express checkout is enabled for adding a payment method.

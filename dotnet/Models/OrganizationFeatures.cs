@@ -509,7 +509,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool NeoByokEnabled { get; set; }
 
         /// <summary>
-        /// Whether the create-and-manage-Neo-tasks permission is enforced on Neo task creation for the organization (rollout flag). While unset the permission is evaluated in shadow mode only and denials do not block.
+        /// Deprecated. Always true.
         /// </summary>
         [JsonProperty("neoAgentTaskRbacEnforcementEnabled")]
         public bool NeoAgentTaskRbacEnforcementEnabled { get; set; }

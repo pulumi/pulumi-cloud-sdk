@@ -177,8 +177,7 @@ type OrganizationFeatures struct {
 	AccessTokenExpiryPolicyEnabled bool `json:"accessTokenExpiryPolicyEnabled,omitzero" yaml:"accessTokenExpiryPolicyEnabled,omitempty"`
 	// Whether Neo BYOK (bring-your-own-key) model provider configuration is enabled.
 	NeoByokEnabled bool `json:"neoByokEnabled" yaml:"neoByokEnabled"`
-	// Whether the create-and-manage-Neo-tasks permission is enforced on Neo task creation for the organization (rollout flag). While unset the
-	// permission is evaluated in shadow mode only and denials do not block.
+	// Deprecated. Always true.
 	NeoAgentTaskRBACEnforcementEnabled bool `json:"neoAgentTaskRbacEnforcementEnabled,omitzero" yaml:"neoAgentTaskRbacEnforcementEnabled,omitempty"`
 	// Whether one-click Link express checkout is enabled for adding a payment method.
 	LinkExpressCheckoutEnabled bool `json:"linkExpressCheckoutEnabled,omitzero" yaml:"linkExpressCheckoutEnabled,omitempty"`
