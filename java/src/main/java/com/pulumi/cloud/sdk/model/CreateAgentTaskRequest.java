@@ -26,7 +26,7 @@ public class CreateAgentTaskRequest {
     // Optional RBAC role the task assumes, identified by role id. When set, the task operates with that role's permissions in place of the creating user's own assignments. You may only assume a role that is assigned to you, directly or through a team; a role you do not hold is rejected with a 403. Omitted/null means no assumed role: the task uses the creating user's full permissions. Orthogonal to permissionMode, which controls the read-only behavior posture independently.
     public String role;
 
-    // Optional Custom Agent definition id to run this task as. When set, the task's role, permission mode, and enabled integrations are taken from the named agent definition instead of from this request, and the task is attributed to that agent. The agent's instructions and approval mode are not copied at creation: they are read from the definition on every turn, so editing the agent applies to the next turn of every run. A preview capability, gated per organization.
+    // Optional Custom Agent definition id to run this task as. When set, the task's role and enabled integrations are taken from the named agent definition instead of from this request, and the task is attributed to that agent. The agent's instructions and approval mode are not copied at creation: they are read from the definition on every turn, so editing the agent applies to the next turn of every run. A preview capability, gated per organization.
     public String agentDefinitionId;
 
     // Where tools should be executed. Defaults to 'cloud' if omitted.
