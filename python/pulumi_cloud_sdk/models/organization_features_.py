@@ -105,6 +105,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var agents_as_team_members_enabled: bool - declared
     :var entity_user_assignments_enabled: bool - declared
     :var policy_exceptions_enabled: bool - declared
+    :var static_default_roles_enabled: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'audit_logs_enabled': 'bool',
@@ -196,6 +197,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'agents_as_team_members_enabled': 'bool',
         'entity_user_assignments_enabled': 'bool',
         'policy_exceptions_enabled': 'bool',
+        'static_default_roles_enabled': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -288,6 +290,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'agents_as_team_members_enabled': 'agentsAsTeamMembersEnabled',
         'entity_user_assignments_enabled': 'entityUserAssignmentsEnabled',
         'policy_exceptions_enabled': 'policyExceptionsEnabled',
+        'static_default_roles_enabled': 'staticDefaultRolesEnabled',
     }
 
     FIELDS_audit_logs_enabled = 'auditLogsEnabled'
@@ -379,6 +382,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_agents_as_team_members_enabled = 'agentsAsTeamMembersEnabled'
     FIELDS_entity_user_assignments_enabled = 'entityUserAssignmentsEnabled'
     FIELDS_policy_exceptions_enabled = 'policyExceptionsEnabled'
+    FIELDS_static_default_roles_enabled = 'staticDefaultRolesEnabled'
 
     _audit_logs_enabled: 'bool'
     _has_terraform_modules: 'bool'
@@ -469,6 +473,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _agents_as_team_members_enabled: 'bool'
     _entity_user_assignments_enabled: 'bool'
     _policy_exceptions_enabled: 'bool'
+    _static_default_roles_enabled: 'bool'
 
     def __init__(
         self,
@@ -532,6 +537,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         neo_byok_enabled: 'bool',
         entity_user_assignments_enabled: 'bool',
         policy_exceptions_enabled: 'bool',
+        static_default_roles_enabled: 'bool',
         has_terraform_modules: 'bool' = False,
         git_hub_enterprise_individual_auth_enabled: 'bool' = False,
         dashboard_onboarding_ui_enabled: 'bool' = False,
@@ -653,6 +659,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.agents_as_team_members_enabled = agents_as_team_members_enabled
         self.entity_user_assignments_enabled = entity_user_assignments_enabled
         self.policy_exceptions_enabled = policy_exceptions_enabled
+        self.static_default_roles_enabled = static_default_roles_enabled
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OrganizationFeatures):
@@ -745,6 +752,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._agents_as_team_members_enabled = source._agents_as_team_members_enabled
             self._entity_user_assignments_enabled = source._entity_user_assignments_enabled
             self._policy_exceptions_enabled = source._policy_exceptions_enabled
+            self._static_default_roles_enabled = source._static_default_roles_enabled
 
     @property
     def audit_logs_enabled(self) -> 'bool':
@@ -1637,6 +1645,17 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `policy_exceptions_enabled`, must not be `None`")
 
         self._policy_exceptions_enabled = policy_exceptions_enabled
+
+    @property
+    def static_default_roles_enabled(self) -> 'bool':
+        return self._static_default_roles_enabled
+
+    @static_default_roles_enabled.setter
+    def static_default_roles_enabled(self, static_default_roles_enabled: 'bool'):
+        if static_default_roles_enabled is None:
+            raise ValueError("Invalid value for `static_default_roles_enabled`, must not be `None`")
+
+        self._static_default_roles_enabled = static_default_roles_enabled
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, OrganizationFeatures):

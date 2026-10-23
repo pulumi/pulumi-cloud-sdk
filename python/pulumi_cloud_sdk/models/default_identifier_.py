@@ -13,6 +13,9 @@ class DefaultIdentifier(AutoEnumEncoder):
     Member = "member"
     Admin = "admin"
     BillingManager = "billing-manager"
+    Reader = "reader"
+    Builder = "builder"
+    Maintainer = "maintainer"
     StackRead = "stack-read"
     StackWrite = "stack-write"
     StackAdmin = "stack-admin"
@@ -30,6 +33,9 @@ class DefaultIdentifier(AutoEnumEncoder):
             DefaultIdentifier.Member,
             DefaultIdentifier.Admin,
             DefaultIdentifier.BillingManager,
+            DefaultIdentifier.Reader,
+            DefaultIdentifier.Builder,
+            DefaultIdentifier.Maintainer,
             DefaultIdentifier.StackRead,
             DefaultIdentifier.StackWrite,
             DefaultIdentifier.StackAdmin,
@@ -48,6 +54,9 @@ class DefaultIdentifier(AutoEnumEncoder):
             DefaultIdentifier.Member.value,
             DefaultIdentifier.Admin.value,
             DefaultIdentifier.BillingManager.value,
+            DefaultIdentifier.Reader.value,
+            DefaultIdentifier.Builder.value,
+            DefaultIdentifier.Maintainer.value,
             DefaultIdentifier.StackRead.value,
             DefaultIdentifier.StackWrite.value,
             DefaultIdentifier.StackAdmin.value,

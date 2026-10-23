@@ -19,6 +19,15 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "billing-manager")]
         BillingManager,
 
+        [EnumMember(Value = "reader")]
+        Reader,
+
+        [EnumMember(Value = "builder")]
+        Builder,
+
+        [EnumMember(Value = "maintainer")]
+        Maintainer,
+
         [EnumMember(Value = "stack-read")]
         StackRead,
 

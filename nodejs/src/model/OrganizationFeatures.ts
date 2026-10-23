@@ -103,6 +103,7 @@ export class OrganizationFeatures {
     agentsAsTeamMembersEnabled?: boolean;
     entityUserAssignmentsEnabled: boolean;
     policyExceptionsEnabled: boolean;
+    staticDefaultRolesEnabled: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationFeatures.fixupPrototype;

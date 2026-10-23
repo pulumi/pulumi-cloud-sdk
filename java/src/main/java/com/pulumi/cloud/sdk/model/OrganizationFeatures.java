@@ -277,4 +277,7 @@ public class OrganizationFeatures {
 
     // Whether policy exceptions are enabled.
     public boolean policyExceptionsEnabled;
+
+    // Whether the organization uses the static default roles: members get their access from a stored default role (Reader, Builder, Maintainer or a custom role) instead of the computed Member role. Derived from the organization's data, not from its plan.
+    public boolean staticDefaultRolesEnabled;
 }

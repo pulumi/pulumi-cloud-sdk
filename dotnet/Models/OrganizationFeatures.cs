@@ -543,5 +543,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("policyExceptionsEnabled")]
         public bool PolicyExceptionsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the organization uses the static default roles: members get their access from a stored default role (Reader, Builder, Maintainer or a custom role) instead of the computed Member role. Derived from the organization's data, not from its plan.
+        /// </summary>
+        [JsonProperty("staticDefaultRolesEnabled")]
+        public bool StaticDefaultRolesEnabled { get; set; }
     }
 }

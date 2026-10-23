@@ -189,4 +189,7 @@ type OrganizationFeatures struct {
 	EntityUserAssignmentsEnabled bool `json:"entityUserAssignmentsEnabled" yaml:"entityUserAssignmentsEnabled"`
 	// Whether policy exceptions are enabled.
 	PolicyExceptionsEnabled bool `json:"policyExceptionsEnabled" yaml:"policyExceptionsEnabled"`
+	// Whether the organization uses the static default roles: members get their access from a stored default role (Reader, Builder, Maintainer
+	// or a custom role) instead of the computed Member role. Derived from the organization's data, not from its plan.
+	StaticDefaultRolesEnabled bool `json:"staticDefaultRolesEnabled" yaml:"staticDefaultRolesEnabled"`
 }
