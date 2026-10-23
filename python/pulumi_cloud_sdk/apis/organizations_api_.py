@@ -5470,6 +5470,8 @@ class OrganizationsApi(object):
         filter: 'str' = None,
         max_results: 'int' = None,
         search: 'str' = None,
+        sort_by: 'AccessTokenSortField' = None,
+        sort_direction: 'SortDirection' = None,
         _request_timeout: int = None,
     ) -> 'ListAccessTokensResponse':
         # verify the required parameter 'org_name' is set
@@ -5491,6 +5493,10 @@ class OrganizationsApi(object):
             query_params['maxResults'] = max_results
         if search is not None:
             query_params['search'] = search
+        if sort_by is not None:
+            query_params['sortBy'] = sort_by
+        if sort_direction is not None:
+            query_params['sortDirection'] = sort_direction
 
         header_params = {}
 
@@ -6212,6 +6218,8 @@ class OrganizationsApi(object):
         filter: 'str' = None,
         max_results: 'int' = None,
         search: 'str' = None,
+        sort_by: 'AccessTokenSortField' = None,
+        sort_direction: 'SortDirection' = None,
         _request_timeout: int = None,
     ) -> 'ListAccessTokensResponse':
         # verify the required parameter 'org_name' is set
@@ -6238,6 +6246,10 @@ class OrganizationsApi(object):
             query_params['maxResults'] = max_results
         if search is not None:
             query_params['search'] = search
+        if sort_by is not None:
+            query_params['sortBy'] = sort_by
+        if sort_direction is not None:
+            query_params['sortDirection'] = sort_direction
 
         header_params = {}
 

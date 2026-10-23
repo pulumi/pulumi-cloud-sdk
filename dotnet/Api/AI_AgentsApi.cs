@@ -105,7 +105,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListAgentTaskEventsResponse>(request);
         }
 
-        public ListAgentTasksResponse ListTasks(string orgName, string agentDefinitionId, string continuationToken, System.Collections.Generic.List<AgentTaskSource> excludeSources, long? pageSize, string query, AgentTaskSortField? sortBy, AgentTaskSortDirection? sortDirection, AgentTaskStatus? status, AgentTaskType? taskType) {
+        public ListAgentTasksResponse ListTasks(string orgName, string agentDefinitionId, string continuationToken, System.Collections.Generic.List<AgentTaskSource> excludeSources, long? pageSize, string policyIssueId, string query, AgentTaskSortField? sortBy, AgentTaskSortDirection? sortDirection, AgentTaskStatus? status, AgentTaskType? taskType) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListTasks");
             }
@@ -115,6 +115,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.QueryParam("continuationToken", continuationToken);
             request.QueryParam("excludeSources", excludeSources);
             request.QueryParam("pageSize", pageSize);
+            request.QueryParam("policyIssueId", policyIssueId);
             request.QueryParam("query", query);
             request.QueryParam("sortBy", sortBy);
             request.QueryParam("sortDirection", sortDirection);

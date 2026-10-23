@@ -274,4 +274,7 @@ public class OrganizationFeatures {
 
     // Whether individual users can be assigned permission sets on stacks, environments and Insights accounts.
     public boolean entityUserAssignmentsEnabled;
+
+    // Whether policy exceptions are enabled.
+    public boolean policyExceptionsEnabled;
 }

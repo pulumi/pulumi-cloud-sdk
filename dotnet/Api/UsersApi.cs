@@ -95,12 +95,14 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListGitHubOrganizationsResponse>(request);
         }
 
-        public ListAccessTokensResponse ListPersonalTokens(string continuationToken, string filter, long? maxResults, string search) {
+        public ListAccessTokensResponse ListPersonalTokens(string continuationToken, string filter, long? maxResults, string search, AccessTokenSortField? sortBy, SortDirection? sortDirection) {
             var request = new ApiRequest("GET", "/api/user/tokens");
             request.QueryParam("continuationToken", continuationToken);
             request.QueryParam("filter", filter);
             request.QueryParam("maxResults", maxResults);
             request.QueryParam("search", search);
+            request.QueryParam("sortBy", sortBy);
+            request.QueryParam("sortDirection", sortDirection);
             request.Produces("application/json");
             return this.client.Call<ListAccessTokensResponse>(request);
         }

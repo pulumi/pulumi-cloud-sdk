@@ -111,7 +111,7 @@ public final class AI_AgentsApi {
         return this.client.call($request, new TypeReference<ListAgentTaskEventsResponse>() {});
     }
 
-    public ListAgentTasksResponse listTasks(String orgName, String agentDefinitionId, String continuationToken, List<AgentTaskSource> excludeSources, Long pageSize, String query, AgentTaskSortField sortBy, AgentTaskSortDirection sortDirection, AgentTaskStatus status, AgentTaskType taskType) {
+    public ListAgentTasksResponse listTasks(String orgName, String agentDefinitionId, String continuationToken, List<AgentTaskSource> excludeSources, Long pageSize, String policyIssueId, String query, AgentTaskSortField sortBy, AgentTaskSortDirection sortDirection, AgentTaskStatus status, AgentTaskType taskType) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listTasks");
         }
@@ -121,6 +121,7 @@ public final class AI_AgentsApi {
         $request.queryParam("continuationToken", continuationToken);
         $request.queryParam("excludeSources", excludeSources);
         $request.queryParam("pageSize", pageSize);
+        $request.queryParam("policyIssueId", policyIssueId);
         $request.queryParam("query", query);
         $request.queryParam("sortBy", sortBy);
         $request.queryParam("sortDirection", sortDirection);

@@ -1528,7 +1528,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListOrganizationInvitesResponse>() {});
     }
 
-    public ListAccessTokensResponse listOrgTokens(String orgName, String continuationToken, String filter, Long maxResults, String search) {
+    public ListAccessTokensResponse listOrgTokens(String orgName, String continuationToken, String filter, Long maxResults, String search, AccessTokenSortField sortBy, SortDirection sortDirection) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listOrgTokens");
         }
@@ -1538,6 +1538,8 @@ public final class OrganizationsApi {
         $request.queryParam("filter", filter);
         $request.queryParam("maxResults", maxResults);
         $request.queryParam("search", search);
+        $request.queryParam("sortBy", sortBy);
+        $request.queryParam("sortDirection", sortDirection);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<ListAccessTokensResponse>() {});
     }
@@ -1712,7 +1714,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListTeamRolesResponse>() {});
     }
 
-    public ListAccessTokensResponse listTeamTokens(String orgName, String teamName, String continuationToken, String filter, Long maxResults, String search) {
+    public ListAccessTokensResponse listTeamTokens(String orgName, String teamName, String continuationToken, String filter, Long maxResults, String search, AccessTokenSortField sortBy, SortDirection sortDirection) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listTeamTokens");
         }
@@ -1726,6 +1728,8 @@ public final class OrganizationsApi {
         $request.queryParam("filter", filter);
         $request.queryParam("maxResults", maxResults);
         $request.queryParam("search", search);
+        $request.queryParam("sortBy", sortBy);
+        $request.queryParam("sortDirection", sortDirection);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<ListAccessTokensResponse>() {});
     }

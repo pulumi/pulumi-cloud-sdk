@@ -1510,7 +1510,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListOrganizationInvitesResponse>(request);
         }
 
-        public ListAccessTokensResponse ListOrgTokens(string orgName, string continuationToken, string filter, long? maxResults, string search) {
+        public ListAccessTokensResponse ListOrgTokens(string orgName, string continuationToken, string filter, long? maxResults, string search, AccessTokenSortField? sortBy, SortDirection? sortDirection) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListOrgTokens");
             }
@@ -1520,6 +1520,8 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.QueryParam("filter", filter);
             request.QueryParam("maxResults", maxResults);
             request.QueryParam("search", search);
+            request.QueryParam("sortBy", sortBy);
+            request.QueryParam("sortDirection", sortDirection);
             request.Produces("application/json");
             return this.client.Call<ListAccessTokensResponse>(request);
         }
@@ -1691,7 +1693,7 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListTeamRolesResponse>(request);
         }
 
-        public ListAccessTokensResponse ListTeamTokens(string orgName, string teamName, string continuationToken, string filter, long? maxResults, string search) {
+        public ListAccessTokensResponse ListTeamTokens(string orgName, string teamName, string continuationToken, string filter, long? maxResults, string search, AccessTokenSortField? sortBy, SortDirection? sortDirection) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListTeamTokens");
             }
@@ -1705,6 +1707,8 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.QueryParam("filter", filter);
             request.QueryParam("maxResults", maxResults);
             request.QueryParam("search", search);
+            request.QueryParam("sortBy", sortBy);
+            request.QueryParam("sortDirection", sortDirection);
             request.Produces("application/json");
             return this.client.Call<ListAccessTokensResponse>(request);
         }

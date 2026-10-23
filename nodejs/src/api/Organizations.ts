@@ -15,6 +15,7 @@
 
 import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
+import { AccessTokenSortField } from "../model/AccessTokenSortField";
 import { AddChangeRequestCommentRequest } from "../model/AddChangeRequestCommentRequest";
 import { AddOrganizationMemberRequest } from "../model/AddOrganizationMemberRequest";
 import { AddServiceItemsRequest } from "../model/AddServiceItemsRequest";
@@ -113,6 +114,7 @@ import { ResponseAuditLogs } from "../model/ResponseAuditLogs";
 import { RestoreDeletedStackRequest } from "../model/RestoreDeletedStackRequest";
 import { SAMLOrganization } from "../model/SAMLOrganization";
 import { Service } from "../model/Service";
+import { SortDirection } from "../model/SortDirection";
 import { SubmitChangeRequestRequest } from "../model/SubmitChangeRequestRequest";
 import { Team } from "../model/Team";
 import { TemplateSource } from "../model/TemplateSource";
@@ -4731,6 +4733,8 @@ export class Organizations {
             filter?: string,
             maxResults?: number,
             search?: string,
+            sortBy?: AccessTokenSortField,
+            sortDirection?: SortDirection,
         },
     ): Promise<ListAccessTokensResponse> {
         if (params === undefined) {
@@ -4757,6 +4761,12 @@ export class Organizations {
         }
         if (params.search !== undefined) {
             __requestOptions.setQueryParam("search", params.search);
+        }
+        if (params.sortBy !== undefined) {
+            __requestOptions.setQueryParam("sortBy", params.sortBy);
+        }
+        if (params.sortDirection !== undefined) {
+            __requestOptions.setQueryParam("sortDirection", params.sortDirection);
         }
         __requestOptions.setProduce("application/json");
         __requestOptions.method = "GET";
@@ -5348,6 +5358,8 @@ export class Organizations {
             filter?: string,
             maxResults?: number,
             search?: string,
+            sortBy?: AccessTokenSortField,
+            sortDirection?: SortDirection,
         },
     ): Promise<ListAccessTokensResponse> {
         if (params === undefined) {
@@ -5379,6 +5391,12 @@ export class Organizations {
         }
         if (params.search !== undefined) {
             __requestOptions.setQueryParam("search", params.search);
+        }
+        if (params.sortBy !== undefined) {
+            __requestOptions.setQueryParam("sortBy", params.sortBy);
+        }
+        if (params.sortDirection !== undefined) {
+            __requestOptions.setQueryParam("sortDirection", params.sortDirection);
         }
         __requestOptions.setProduce("application/json");
         __requestOptions.method = "GET";

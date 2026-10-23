@@ -360,6 +360,7 @@ type InterceptorForListTasks struct {
 	ContinuationToken *string
 	ExcludeSources    *[]apitype.AgentTaskSource
 	PageSize          *int
+	PolicyIssueId     *string
 	Query             *string
 	SortBy            *apitype.AgentTaskSortField
 	SortDirection     *apitype.AgentTaskSortDirection
@@ -375,6 +376,7 @@ func (p *CloudClient) ListTasks(
 	continuationToken *string,
 	excludeSources *[]apitype.AgentTaskSource,
 	pageSize *int,
+	policyIssueId *string,
 	query *string,
 	sortBy *apitype.AgentTaskSortField,
 	sortDirection *apitype.AgentTaskSortDirection,
@@ -389,6 +391,7 @@ func (p *CloudClient) ListTasks(
 			ContinuationToken: continuationToken,
 			ExcludeSources:    excludeSources,
 			PageSize:          pageSize,
+			PolicyIssueId:     policyIssueId,
 			Query:             query,
 			SortBy:            sortBy,
 			SortDirection:     sortDirection,
@@ -421,6 +424,7 @@ func (p *CloudClient) ListTasks(
 			"continuationToken": continuationToken,
 			"excludeSources":    excludeSources,
 			"pageSize":          pageSize,
+			"policyIssueId":     policyIssueId,
 			"query":             query,
 			"sortBy":            sortBy,
 			"sortDirection":     sortDirection,

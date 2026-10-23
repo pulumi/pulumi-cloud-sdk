@@ -187,4 +187,6 @@ type OrganizationFeatures struct {
 	AgentsAsTeamMembersEnabled bool `json:"agentsAsTeamMembersEnabled,omitzero" yaml:"agentsAsTeamMembersEnabled,omitempty"`
 	// Whether individual users can be assigned permission sets on stacks, environments and Insights accounts.
 	EntityUserAssignmentsEnabled bool `json:"entityUserAssignmentsEnabled" yaml:"entityUserAssignmentsEnabled"`
+	// Whether policy exceptions are enabled.
+	PolicyExceptionsEnabled bool `json:"policyExceptionsEnabled" yaml:"policyExceptionsEnabled"`
 }

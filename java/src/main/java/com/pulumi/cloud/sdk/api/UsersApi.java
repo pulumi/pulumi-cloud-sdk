@@ -101,12 +101,14 @@ public final class UsersApi {
         return this.client.call($request, new TypeReference<ListGitHubOrganizationsResponse>() {});
     }
 
-    public ListAccessTokensResponse listPersonalTokens(String continuationToken, String filter, Long maxResults, String search) {
+    public ListAccessTokensResponse listPersonalTokens(String continuationToken, String filter, Long maxResults, String search, AccessTokenSortField sortBy, SortDirection sortDirection) {
         ApiRequest $request = new ApiRequest("GET", "/api/user/tokens");
         $request.queryParam("continuationToken", continuationToken);
         $request.queryParam("filter", filter);
         $request.queryParam("maxResults", maxResults);
         $request.queryParam("search", search);
+        $request.queryParam("sortBy", sortBy);
+        $request.queryParam("sortDirection", sortDirection);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<ListAccessTokensResponse>() {});
     }

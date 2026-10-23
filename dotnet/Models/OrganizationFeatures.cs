@@ -537,5 +537,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("entityUserAssignmentsEnabled")]
         public bool EntityUserAssignmentsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether policy exceptions are enabled.
+        /// </summary>
+        [JsonProperty("policyExceptionsEnabled")]
+        public bool PolicyExceptionsEnabled { get; set; }
     }
 }

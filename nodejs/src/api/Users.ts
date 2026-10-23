@@ -15,6 +15,7 @@
 
 import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
+import { AccessTokenSortField } from "../model/AccessTokenSortField";
 import { AppGetDefaultOrganizationResponse } from "../model/AppGetDefaultOrganizationResponse";
 import { AppListStacksResponse } from "../model/AppListStacksResponse";
 import { CreateAccessTokenResponse } from "../model/CreateAccessTokenResponse";
@@ -25,6 +26,7 @@ import { ListAccessTokensResponse } from "../model/ListAccessTokensResponse";
 import { ListGitHubOrganizationTeamsResponse } from "../model/ListGitHubOrganizationTeamsResponse";
 import { ListGitHubOrganizationsResponse } from "../model/ListGitHubOrganizationsResponse";
 import { ListOrganizationInvitesResponse } from "../model/ListOrganizationInvitesResponse";
+import { SortDirection } from "../model/SortDirection";
 import { User } from "../model/User";
 
 
@@ -316,6 +318,8 @@ export class Users {
             filter?: string,
             maxResults?: number,
             search?: string,
+            sortBy?: AccessTokenSortField,
+            sortDirection?: SortDirection,
         },
     ): Promise<ListAccessTokensResponse> {
         if (params === undefined) {
@@ -337,6 +341,12 @@ export class Users {
         }
         if (params.search !== undefined) {
             __requestOptions.setQueryParam("search", params.search);
+        }
+        if (params.sortBy !== undefined) {
+            __requestOptions.setQueryParam("sortBy", params.sortBy);
+        }
+        if (params.sortDirection !== undefined) {
+            __requestOptions.setQueryParam("sortDirection", params.sortDirection);
         }
         __requestOptions.setProduce("application/json");
         __requestOptions.method = "GET";

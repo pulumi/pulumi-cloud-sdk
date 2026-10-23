@@ -5829,6 +5829,8 @@ type InterceptorForListOrgTokens struct {
 	Filter            *string
 	MaxResults        *int
 	Search            *string
+	SortBy            *apitype.AccessTokenSortField
+	SortDirection     *apitype.SortDirection
 	ExtraHeaders      []http.Header
 }
 
@@ -5839,6 +5841,8 @@ func (p *CloudClient) ListOrgTokens(
 	filter *string,
 	maxResults *int,
 	search *string,
+	sortBy *apitype.AccessTokenSortField,
+	sortDirection *apitype.SortDirection,
 	extraHeaders ...http.Header,
 ) (*apitype.ListAccessTokensResponse, error) {
 	if p.Interceptor != nil {
@@ -5848,6 +5852,8 @@ func (p *CloudClient) ListOrgTokens(
 			Filter:            filter,
 			MaxResults:        maxResults,
 			Search:            search,
+			SortBy:            sortBy,
+			SortDirection:     sortDirection,
 			ExtraHeaders:      extraHeaders,
 		}
 		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
@@ -5875,6 +5881,8 @@ func (p *CloudClient) ListOrgTokens(
 			"filter":            filter,
 			"maxResults":        maxResults,
 			"search":            search,
+			"sortBy":            sortBy,
+			"sortDirection":     sortDirection,
 		},
 	)
 	if err != nil {
@@ -6684,6 +6692,8 @@ type InterceptorForListTeamTokens struct {
 	Filter            *string
 	MaxResults        *int
 	Search            *string
+	SortBy            *apitype.AccessTokenSortField
+	SortDirection     *apitype.SortDirection
 	ExtraHeaders      []http.Header
 }
 
@@ -6695,6 +6705,8 @@ func (p *CloudClient) ListTeamTokens(
 	filter *string,
 	maxResults *int,
 	search *string,
+	sortBy *apitype.AccessTokenSortField,
+	sortDirection *apitype.SortDirection,
 	extraHeaders ...http.Header,
 ) (*apitype.ListAccessTokensResponse, error) {
 	if p.Interceptor != nil {
@@ -6705,6 +6717,8 @@ func (p *CloudClient) ListTeamTokens(
 			Filter:            filter,
 			MaxResults:        maxResults,
 			Search:            search,
+			SortBy:            sortBy,
+			SortDirection:     sortDirection,
 			ExtraHeaders:      extraHeaders,
 		}
 		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
@@ -6733,6 +6747,8 @@ func (p *CloudClient) ListTeamTokens(
 			"filter":            filter,
 			"maxResults":        maxResults,
 			"search":            search,
+			"sortBy":            sortBy,
+			"sortDirection":     sortDirection,
 		},
 	)
 	if err != nil {

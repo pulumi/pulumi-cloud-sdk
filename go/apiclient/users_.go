@@ -541,6 +541,8 @@ type InterceptorForListPersonalTokens struct {
 	Filter            *string
 	MaxResults        *int
 	Search            *string
+	SortBy            *apitype.AccessTokenSortField
+	SortDirection     *apitype.SortDirection
 	ExtraHeaders      []http.Header
 }
 
@@ -550,6 +552,8 @@ func (p *CloudClient) ListPersonalTokens(
 	filter *string,
 	maxResults *int,
 	search *string,
+	sortBy *apitype.AccessTokenSortField,
+	sortDirection *apitype.SortDirection,
 	extraHeaders ...http.Header,
 ) (*apitype.ListAccessTokensResponse, error) {
 	if p.Interceptor != nil {
@@ -558,6 +562,8 @@ func (p *CloudClient) ListPersonalTokens(
 			Filter:            filter,
 			MaxResults:        maxResults,
 			Search:            search,
+			SortBy:            sortBy,
+			SortDirection:     sortDirection,
 			ExtraHeaders:      extraHeaders,
 		}
 		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
@@ -583,6 +589,8 @@ func (p *CloudClient) ListPersonalTokens(
 			"filter":            filter,
 			"maxResults":        maxResults,
 			"search":            search,
+			"sortBy":            sortBy,
+			"sortDirection":     sortDirection,
 		},
 	)
 	if err != nil {

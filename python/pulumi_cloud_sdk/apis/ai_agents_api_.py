@@ -342,6 +342,7 @@ class AI_AgentsApi(object):
         continuation_token: 'str' = None,
         exclude_sources: 'list[AgentTaskSource]' = None,
         page_size: 'int' = None,
+        policy_issue_id: 'str' = None,
         query: 'str' = None,
         sort_by: 'AgentTaskSortField' = None,
         sort_direction: 'AgentTaskSortDirection' = None,
@@ -368,6 +369,8 @@ class AI_AgentsApi(object):
             query_params['excludeSources'] = exclude_sources
         if page_size is not None:
             query_params['pageSize'] = page_size
+        if policy_issue_id is not None:
+            query_params['policyIssueId'] = policy_issue_id
         if query is not None:
             query_params['query'] = query
         if sort_by is not None:

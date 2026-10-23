@@ -326,6 +326,7 @@ export class AI_Agents {
             continuationToken?: string,
             excludeSources?: AgentTaskSource[],
             pageSize?: number,
+            policyIssueId?: string,
             query?: string,
             sortBy?: AgentTaskSortField,
             sortDirection?: AgentTaskSortDirection,
@@ -357,6 +358,9 @@ export class AI_Agents {
         }
         if (params.pageSize !== undefined) {
             __requestOptions.setQueryParam("pageSize", params.pageSize);
+        }
+        if (params.policyIssueId !== undefined) {
+            __requestOptions.setQueryParam("policyIssueId", params.policyIssueId);
         }
         if (params.query !== undefined) {
             __requestOptions.setQueryParam("query", params.query);
