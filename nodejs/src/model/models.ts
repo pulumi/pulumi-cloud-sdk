@@ -163,6 +163,7 @@ export * from "./AppPolicyAnalyzeSummaryEvent";
 export * from "./AppPolicyComplianceFramework";
 export * from "./AppPolicyConfigSchema";
 export * from "./AppPolicyEvent";
+export * from "./AppPolicyEventException";
 export * from "./AppPolicyGroupSummary";
 export * from "./AppPolicyLoadEvent";
 export * from "./AppPolicyPackMetadata";

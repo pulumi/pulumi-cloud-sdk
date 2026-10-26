@@ -31,4 +31,7 @@ public class AppRequiredPolicy {
 
     // References to ESC environments whose resolved values the CLI should inject into the policy pack process.
     public List<String> environments;
+
+    // The active policy exceptions for this Policy Pack, keyed by exception ID. Each value describes one policy exception.
+    public Map<String, JsonNode> exceptions;
 }

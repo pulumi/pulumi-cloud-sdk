@@ -27,5 +27,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("steps")]
         public long Steps { get; set; }
+
+        /// <summary>
+        /// Awaited is true if the failure occurred because the provider could not wait for the operation to complete. Consumers can use this to distinguish a failed wait from a genuine resource failure.
+        /// </summary>
+        [JsonProperty("awaited")]
+        public bool Awaited { get; set; }
     }
 }

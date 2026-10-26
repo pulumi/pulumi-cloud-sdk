@@ -19,44 +19,52 @@ class AppResOpFailedEvent(PulumiAutoModelEncoder):
     :var metadata: AppStepEventMetadata - declared
     :var status: int - declared
     :var steps: int - declared
+    :var awaited: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'metadata': 'AppStepEventMetadata',
         'status': 'int',
         'steps': 'int',
+        'awaited': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'metadata': 'metadata',
         'status': 'status',
         'steps': 'steps',
+        'awaited': 'awaited',
     }
 
     FIELDS_metadata = 'metadata'
     FIELDS_status = 'status'
     FIELDS_steps = 'steps'
+    FIELDS_awaited = 'awaited'
 
     _metadata: 'AppStepEventMetadata'
     _status: 'int'
     _steps: 'int'
+    _awaited: 'bool'
 
     def __init__(
         self,
         metadata: 'AppStepEventMetadata',
         status: 'int',
         steps: 'int',
+        awaited: 'bool' = False,
     ) -> None:
         super().__init__()
 
         self.metadata = metadata
         self.status = status
         self.steps = steps
+        self.awaited = awaited
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppResOpFailedEvent):
             self._metadata = source._metadata
             self._status = source._status
             self._steps = source._steps
+            self._awaited = source._awaited
 
     @property
     def metadata(self) -> 'AppStepEventMetadata':
@@ -117,6 +125,14 @@ class AppResOpFailedEvent(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `steps`, must not be `None`")
 
         self._steps = steps
+
+    @property
+    def awaited(self) -> 'bool':
+        return self._awaited
+
+    @awaited.setter
+    def awaited(self, awaited: 'bool'):
+        self._awaited = awaited
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppResOpFailedEvent):

@@ -63,5 +63,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("severity")]
         public string Severity { get; set; }
+
+        /// <summary>
+        /// Exceptions lists the policy exceptions that matched this violation, lowest ID first. An excepted violation doesn't fail the operation, whatever its enforcement level.
+        /// </summary>
+        [JsonProperty("exceptions")]
+        public System.Collections.Generic.List<AppPolicyEventException> Exceptions { get; set; }
     }
 }

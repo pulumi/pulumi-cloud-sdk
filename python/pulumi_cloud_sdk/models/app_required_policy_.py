@@ -23,6 +23,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
     :var pack_location: str - declared
     :var config: dict[str, Any] - declared
     :var environments: list[str] - declared
+    :var exceptions: dict[str, Any] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
@@ -32,6 +33,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
         'pack_location': 'str',
         'config': 'dict[str, Any]',
         'environments': 'list[str]',
+        'exceptions': 'dict[str, Any]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -42,6 +44,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
         'pack_location': 'packLocation',
         'config': 'config',
         'environments': 'environments',
+        'exceptions': 'exceptions',
     }
 
     FIELDS_name = 'name'
@@ -51,6 +54,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
     FIELDS_pack_location = 'packLocation'
     FIELDS_config = 'config'
     FIELDS_environments = 'environments'
+    FIELDS_exceptions = 'exceptions'
 
     _name: 'str'
     _version: 'int'
@@ -59,6 +63,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
     _pack_location: 'str'
     _config: 'dict[str, Any]'
     _environments: 'list[str]'
+    _exceptions: 'dict[str, Any]'
 
     def __init__(
         self,
@@ -69,6 +74,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
         pack_location: 'str' = None,
         config: 'dict[str, Any]' = None,
         environments: 'list[str]' = None,
+        exceptions: 'dict[str, Any]' = None,
     ) -> None:
         super().__init__()
 
@@ -79,6 +85,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
         self.pack_location = pack_location
         self.config = config
         self.environments = environments
+        self.exceptions = exceptions
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppRequiredPolicy):
@@ -89,6 +96,7 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
             self._pack_location = source._pack_location
             self._config = source._config
             self._environments = source._environments
+            self._exceptions = source._exceptions
 
     @property
     def name(self) -> 'str':
@@ -209,6 +217,40 @@ class AppRequiredPolicy(PulumiAutoModelEncoder):
             return []
 
         return self._environments
+
+    @property
+    def exceptions(self) -> 'dict[str, Any]':
+        return self._exceptions
+
+    @exceptions.setter
+    def exceptions(self, exceptions: 'dict[str, Any]'):
+        self._exceptions = exceptions
+
+    @property
+    def exceptions__autoinit(self) -> 'dict[str, Any]':
+        """Return ``exceptions``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._exceptions``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``exceptions__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._exceptions is None:
+            self._exceptions = self.exceptions__safederef
+
+        return self._exceptions
+
+    @property
+    def exceptions__safederef(self) -> 'dict[str, Any]':
+        """Return ``exceptions``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``exceptions`` stays unset and each
+        call returns a new default. Use ``exceptions__autoinit`` to persist the default on
+        first access.
+        """
+        if self._exceptions is None:
+            return {}
+
+        return self._exceptions
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppRequiredPolicy):

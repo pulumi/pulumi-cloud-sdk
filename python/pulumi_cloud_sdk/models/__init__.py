@@ -153,6 +153,7 @@ from .app_policy_analyze_summary_event_ import AppPolicyAnalyzeSummaryEvent
 from .app_policy_compliance_framework_ import AppPolicyComplianceFramework
 from .app_policy_config_schema_ import AppPolicyConfigSchema
 from .app_policy_event_ import AppPolicyEvent
+from .app_policy_event_exception_ import AppPolicyEventException
 from .app_policy_group_summary_ import AppPolicyGroupSummary
 from .app_policy_load_event_ import AppPolicyLoadEvent
 from .app_policy_pack_metadata_ import AppPolicyPackMetadata

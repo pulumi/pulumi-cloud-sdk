@@ -21,6 +21,7 @@ export class AppRequiredPolicy {
     packLocation?: string;
     config?: { [key: string]: any };
     environments?: string[];
+    exceptions?: { [key: string]: any };
 
     getFixupPrototypeFunction() {
         return AppRequiredPolicy.fixupPrototype;

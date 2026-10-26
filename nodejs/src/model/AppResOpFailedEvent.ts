@@ -20,6 +20,7 @@ export class AppResOpFailedEvent {
     metadata: AppStepEventMetadata;
     status: number;
     steps: number;
+    awaited?: boolean;
 
     getFixupPrototypeFunction() {
         return AppResOpFailedEvent.fixupPrototype;

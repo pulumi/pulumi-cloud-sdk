@@ -13,6 +13,9 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { AppPolicyEventException } from "./AppPolicyEventException";
+
+
 export class AppPolicyEvent {
     resourceUrn?: string;
     message: string;
@@ -23,6 +26,7 @@ export class AppPolicyEvent {
     policyPackVersionTag: string;
     enforcementLevel: string;
     severity?: string;
+    exceptions?: AppPolicyEventException[];
 
     getFixupPrototypeFunction() {
         return AppPolicyEvent.fixupPrototype;
@@ -53,6 +57,15 @@ export class AppPolicyEvent {
     }
 
     fixupFields() {
-        // Nothing to do.
+        if (this.exceptions) {
+            for (let i0 = 0; i0 < this.exceptions.length; i0++) {
+                let val0 = this.exceptions[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { AppPolicyEventException } = require("./AppPolicyEventException");
+                    AppPolicyEventException.fixupPrototype(val0);
+                }
+            }
+        }
     }
 }

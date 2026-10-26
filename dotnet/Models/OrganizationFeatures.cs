@@ -549,5 +549,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("staticDefaultRolesEnabled")]
         public bool StaticDefaultRolesEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the monthly Infrastructure Posture report is available to the organization.
+        /// </summary>
+        [JsonProperty("policyPostureReportEnabled")]
+        public bool PolicyPostureReportEnabled { get; set; }
     }
 }

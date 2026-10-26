@@ -51,5 +51,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("environments")]
         public System.Collections.Generic.List<string> Environments { get; set; }
+
+        /// <summary>
+        /// The active policy exceptions for this Policy Pack, keyed by exception ID. Each value describes one policy exception.
+        /// </summary>
+        [JsonProperty("exceptions")]
+        public System.Collections.Generic.Dictionary<string, JToken> Exceptions { get; set; }
     }
 }

@@ -25,6 +25,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
     :var policy_pack_version_tag: str - declared
     :var enforcement_level: str - declared
     :var severity: str - declared
+    :var exceptions: list[AppPolicyEventException] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'resource_urn': 'str',
@@ -36,6 +37,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
         'policy_pack_version_tag': 'str',
         'enforcement_level': 'str',
         'severity': 'str',
+        'exceptions': 'list[AppPolicyEventException]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -48,6 +50,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
         'policy_pack_version_tag': 'policyPackVersionTag',
         'enforcement_level': 'enforcementLevel',
         'severity': 'severity',
+        'exceptions': 'exceptions',
     }
 
     FIELDS_resource_urn = 'resourceUrn'
@@ -59,6 +62,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
     FIELDS_policy_pack_version_tag = 'policyPackVersionTag'
     FIELDS_enforcement_level = 'enforcementLevel'
     FIELDS_severity = 'severity'
+    FIELDS_exceptions = 'exceptions'
 
     _resource_urn: 'str'
     _message: 'str'
@@ -69,6 +73,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
     _policy_pack_version_tag: 'str'
     _enforcement_level: 'str'
     _severity: 'str'
+    _exceptions: 'list[AppPolicyEventException]'
 
     def __init__(
         self,
@@ -81,6 +86,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
         enforcement_level: 'str',
         resource_urn: 'str' = None,
         severity: 'str' = None,
+        exceptions: 'list[AppPolicyEventException]' = None,
     ) -> None:
         super().__init__()
 
@@ -93,6 +99,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
         self.policy_pack_version_tag = policy_pack_version_tag
         self.enforcement_level = enforcement_level
         self.severity = severity
+        self.exceptions = exceptions
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppPolicyEvent):
@@ -105,6 +112,7 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
             self._policy_pack_version_tag = source._policy_pack_version_tag
             self._enforcement_level = source._enforcement_level
             self._severity = source._severity
+            self._exceptions = source._exceptions
 
     @property
     def resource_urn(self) -> 'str':
@@ -198,6 +206,40 @@ class AppPolicyEvent(PulumiAutoModelEncoder):
     @severity.setter
     def severity(self, severity: 'str'):
         self._severity = severity
+
+    @property
+    def exceptions(self) -> 'list[AppPolicyEventException]':
+        return self._exceptions
+
+    @exceptions.setter
+    def exceptions(self, exceptions: 'list[AppPolicyEventException]'):
+        self._exceptions = exceptions
+
+    @property
+    def exceptions__autoinit(self) -> 'list[AppPolicyEventException]':
+        """Return ``exceptions``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._exceptions``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``exceptions__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._exceptions is None:
+            self._exceptions = self.exceptions__safederef
+
+        return self._exceptions
+
+    @property
+    def exceptions__safederef(self) -> 'list[AppPolicyEventException]':
+        """Return ``exceptions``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``exceptions`` stays unset and each
+        call returns a new default. Use ``exceptions__autoinit`` to persist the default on
+        first access.
+        """
+        if self._exceptions is None:
+            return []
+
+        return self._exceptions
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppPolicyEvent):

@@ -37,4 +37,7 @@ public class AppPolicyEvent {
 
     // Severity is one of "low", "medium", "high", or "critical". An empty string is omitted and represents an unspecified severity.
     public String severity;
+
+    // Exceptions lists the policy exceptions that matched this violation, lowest ID first. An excepted violation doesn't fail the operation, whatever its enforcement level.
+    public List<AppPolicyEventException> exceptions;
 }
