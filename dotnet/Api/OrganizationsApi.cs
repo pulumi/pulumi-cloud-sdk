@@ -1598,6 +1598,40 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListPoliciesComplianceResponse>(apiRequest);
         }
 
+        public ListPolicyGroupAccountsResponse ListPolicyGroupAccounts(string orgName, string policyGroup, string continuationToken, long? count, PolicyGroupMemberSource? source) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyGroupAccounts");
+            }
+            if (policyGroup == null) {
+                throw new ArgumentNullException(nameof(policyGroup), "Missing required parameter 'policyGroup' when calling ListPolicyGroupAccounts");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/policygroups/{policyGroup}/accounts");
+            request.PathParam("orgName", orgName);
+            request.PathParam("policyGroup", policyGroup);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("count", count);
+            request.QueryParam("source", source);
+            request.Produces("application/json");
+            return this.client.Call<ListPolicyGroupAccountsResponse>(request);
+        }
+
+        public ListPolicyGroupStacksResponse ListPolicyGroupStacks(string orgName, string policyGroup, string continuationToken, long? count, PolicyGroupMemberSource? source) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyGroupStacks");
+            }
+            if (policyGroup == null) {
+                throw new ArgumentNullException(nameof(policyGroup), "Missing required parameter 'policyGroup' when calling ListPolicyGroupStacks");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/policygroups/{policyGroup}/stacks");
+            request.PathParam("orgName", orgName);
+            request.PathParam("policyGroup", policyGroup);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("count", count);
+            request.QueryParam("source", source);
+            request.Produces("application/json");
+            return this.client.Call<ListPolicyGroupStacksResponse>(request);
+        }
+
         public AppListPolicyGroupsResponse ListPolicyGroups(string orgName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyGroups");
@@ -1801,6 +1835,40 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("hookName", hookName);
             request.Produces("application/json");
             return this.client.Call<WebhookDelivery>(request);
+        }
+
+        public PreviewAccountMatchRuleResponse PreviewAccountMatchRule(string orgName, PreviewAccountMatchRuleRequest request, string continuationToken, long? count) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling PreviewAccountMatchRule");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling PreviewAccountMatchRule");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policygroups/accountmatchrule/preview");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("continuationToken", continuationToken);
+            apiRequest.QueryParam("count", count);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<PreviewAccountMatchRuleResponse>(apiRequest);
+        }
+
+        public PreviewStackMatchRuleResponse PreviewStackMatchRule(string orgName, PreviewStackMatchRuleRequest request, string continuationToken, long? count) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling PreviewStackMatchRule");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling PreviewStackMatchRule");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policygroups/stackmatchrule/preview");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("continuationToken", continuationToken);
+            apiRequest.QueryParam("count", count);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<PreviewStackMatchRuleResponse>(apiRequest);
         }
 
         public string ProjectExists(string orgName, string projectName) {

@@ -5817,6 +5817,126 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def list_policy_group_accounts(
+        self,
+        org_name: 'str',
+        policy_group: 'str',
+        continuation_token: 'str' = None,
+        count: 'int' = None,
+        source: 'PolicyGroupMemberSource' = None,
+        _request_timeout: int = None,
+    ) -> 'ListPolicyGroupAccountsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_policy_group_accounts`")
+        # verify the required parameter 'policy_group' is set
+        if policy_group is None:
+            raise ValueError("Missing the required parameter `policy_group` when calling `list_policy_group_accounts`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policygroups/{policyGroup}/accounts'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if policy_group is not None:
+            path_params['policyGroup'] = policy_group
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if count is not None:
+            query_params['count'] = count
+        if source is not None:
+            query_params['source'] = source
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListPolicyGroupAccountsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def list_policy_group_stacks(
+        self,
+        org_name: 'str',
+        policy_group: 'str',
+        continuation_token: 'str' = None,
+        count: 'int' = None,
+        source: 'PolicyGroupMemberSource' = None,
+        _request_timeout: int = None,
+    ) -> 'ListPolicyGroupStacksResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_policy_group_stacks`")
+        # verify the required parameter 'policy_group' is set
+        if policy_group is None:
+            raise ValueError("Missing the required parameter `policy_group` when calling `list_policy_group_stacks`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policygroups/{policyGroup}/stacks'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if policy_group is not None:
+            path_params['policyGroup'] = policy_group
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if count is not None:
+            query_params['count'] = count
+        if source is not None:
+            query_params['source'] = source
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListPolicyGroupStacksResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def list_policy_groups(
         self,
         org_name: 'str',
@@ -6626,6 +6746,120 @@ class OrganizationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='WebhookDelivery',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def preview_account_match_rule(
+        self,
+        org_name: 'str',
+        request: 'PreviewAccountMatchRuleRequest',
+        continuation_token: 'str' = None,
+        count: 'int' = None,
+        _request_timeout: int = None,
+    ) -> 'PreviewAccountMatchRuleResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `preview_account_match_rule`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `preview_account_match_rule`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policygroups/accountmatchrule/preview'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if count is not None:
+            query_params['count'] = count
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PreviewAccountMatchRuleResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def preview_stack_match_rule(
+        self,
+        org_name: 'str',
+        request: 'PreviewStackMatchRuleRequest',
+        continuation_token: 'str' = None,
+        count: 'int' = None,
+        _request_timeout: int = None,
+    ) -> 'PreviewStackMatchRuleResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `preview_stack_match_rule`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `preview_stack_match_rule`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policygroups/stackmatchrule/preview'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if count is not None:
+            query_params['count'] = count
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PreviewStackMatchRuleResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

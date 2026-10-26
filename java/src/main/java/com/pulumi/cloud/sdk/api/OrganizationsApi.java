@@ -1616,6 +1616,40 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListPoliciesComplianceResponse>() {});
     }
 
+    public ListPolicyGroupAccountsResponse listPolicyGroupAccounts(String orgName, String policyGroup, String continuationToken, Long count, PolicyGroupMemberSource source) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyGroupAccounts");
+        }
+        if (policyGroup == null) {
+            throw new IllegalArgumentException("Missing required parameter 'policyGroup' when calling listPolicyGroupAccounts");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/policygroups/{policyGroup}/accounts");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("policyGroup", policyGroup);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("count", count);
+        $request.queryParam("source", source);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListPolicyGroupAccountsResponse>() {});
+    }
+
+    public ListPolicyGroupStacksResponse listPolicyGroupStacks(String orgName, String policyGroup, String continuationToken, Long count, PolicyGroupMemberSource source) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyGroupStacks");
+        }
+        if (policyGroup == null) {
+            throw new IllegalArgumentException("Missing required parameter 'policyGroup' when calling listPolicyGroupStacks");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/policygroups/{policyGroup}/stacks");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("policyGroup", policyGroup);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("count", count);
+        $request.queryParam("source", source);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListPolicyGroupStacksResponse>() {});
+    }
+
     public AppListPolicyGroupsResponse listPolicyGroups(String orgName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyGroups");
@@ -1822,6 +1856,40 @@ public final class OrganizationsApi {
         $request.pathParam("hookName", hookName);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<WebhookDelivery>() {});
+    }
+
+    public PreviewAccountMatchRuleResponse previewAccountMatchRule(String orgName, PreviewAccountMatchRuleRequest request, String continuationToken, Long count) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling previewAccountMatchRule");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling previewAccountMatchRule");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policygroups/accountmatchrule/preview");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("count", count);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PreviewAccountMatchRuleResponse>() {});
+    }
+
+    public PreviewStackMatchRuleResponse previewStackMatchRule(String orgName, PreviewStackMatchRuleRequest request, String continuationToken, Long count) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling previewStackMatchRule");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling previewStackMatchRule");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policygroups/stackmatchrule/preview");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("count", count);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PreviewStackMatchRuleResponse>() {});
     }
 
     public String projectExists(String orgName, String projectName) {

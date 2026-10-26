@@ -79,6 +79,8 @@ import { ListOidcIssuersResponse } from "../model/ListOidcIssuersResponse";
 import { ListOrganizationInvitesResponse } from "../model/ListOrganizationInvitesResponse";
 import { ListOrganizationMembersResponse } from "../model/ListOrganizationMembersResponse";
 import { ListPoliciesComplianceResponse } from "../model/ListPoliciesComplianceResponse";
+import { ListPolicyGroupAccountsResponse } from "../model/ListPolicyGroupAccountsResponse";
+import { ListPolicyGroupStacksResponse } from "../model/ListPolicyGroupStacksResponse";
 import { ListPolicyIssuesResponse } from "../model/ListPolicyIssuesResponse";
 import { ListPolicyViolationsV2Response } from "../model/ListPolicyViolationsV2Response";
 import { ListRolesResponse } from "../model/ListRolesResponse";
@@ -103,10 +105,15 @@ import { PermissionDescriptorBase } from "../model/PermissionDescriptorBase";
 import { PermissionDescriptorRecord } from "../model/PermissionDescriptorRecord";
 import { PermissionDescriptorUXPurpose } from "../model/PermissionDescriptorUXPurpose";
 import { PolicyGroup } from "../model/PolicyGroup";
+import { PolicyGroupMemberSource } from "../model/PolicyGroupMemberSource";
 import { PolicyGroupMetadata } from "../model/PolicyGroupMetadata";
 import { PolicyIssueFiltersRequest } from "../model/PolicyIssueFiltersRequest";
 import { PolicyIssueFiltersResponse } from "../model/PolicyIssueFiltersResponse";
 import { PolicyResultsMetadata } from "../model/PolicyResultsMetadata";
+import { PreviewAccountMatchRuleRequest } from "../model/PreviewAccountMatchRuleRequest";
+import { PreviewAccountMatchRuleResponse } from "../model/PreviewAccountMatchRuleResponse";
+import { PreviewStackMatchRuleRequest } from "../model/PreviewStackMatchRuleRequest";
+import { PreviewStackMatchRuleResponse } from "../model/PreviewStackMatchRuleResponse";
 import { RbacScopeGroup } from "../model/RbacScopeGroup";
 import { ResendOrganizationInviteRequest } from "../model/ResendOrganizationInviteRequest";
 import { ResourceSearchResult } from "../model/ResourceSearchResult";
@@ -5025,6 +5032,118 @@ export class Organizations {
         });
     }
 
+    public ListPolicyGroupAccounts__generateUrl(
+        orgName: string,
+        policyGroup: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/policygroups/{policyGroup}/accounts";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{policyGroup}", encodeURIComponent(String(policyGroup)));
+        return url;
+    }
+
+    public ListPolicyGroupAccounts(
+        params: {
+            orgName: string,
+            policyGroup: string,
+            continuationToken?: string,
+            count?: number,
+            source?: PolicyGroupMemberSource,
+        },
+    ): Promise<ListPolicyGroupAccountsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListPolicyGroupAccounts.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListPolicyGroupAccounts.");
+        }
+
+        // verify required parameter 'policyGroup' is not null or undefined
+        if (params.policyGroup === null || params.policyGroup === undefined) {
+            throw new Error("Required parameter policyGroup was null or undefined when calling ListPolicyGroupAccounts.");
+        }
+
+        const __path = this.ListPolicyGroupAccounts__generateUrl(params.orgName, params.policyGroup);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.count !== undefined) {
+            __requestOptions.setQueryParam("count", params.count);
+        }
+        if (params.source !== undefined) {
+            __requestOptions.setQueryParam("source", params.source);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListPolicyGroupAccountsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListPolicyGroupAccountsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListPolicyGroupStacks__generateUrl(
+        orgName: string,
+        policyGroup: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/policygroups/{policyGroup}/stacks";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{policyGroup}", encodeURIComponent(String(policyGroup)));
+        return url;
+    }
+
+    public ListPolicyGroupStacks(
+        params: {
+            orgName: string,
+            policyGroup: string,
+            continuationToken?: string,
+            count?: number,
+            source?: PolicyGroupMemberSource,
+        },
+    ): Promise<ListPolicyGroupStacksResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListPolicyGroupStacks.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListPolicyGroupStacks.");
+        }
+
+        // verify required parameter 'policyGroup' is not null or undefined
+        if (params.policyGroup === null || params.policyGroup === undefined) {
+            throw new Error("Required parameter policyGroup was null or undefined when calling ListPolicyGroupStacks.");
+        }
+
+        const __path = this.ListPolicyGroupStacks__generateUrl(params.orgName, params.policyGroup);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.count !== undefined) {
+            __requestOptions.setQueryParam("count", params.count);
+        }
+        if (params.source !== undefined) {
+            __requestOptions.setQueryParam("source", params.source);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListPolicyGroupStacksResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListPolicyGroupStacksResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public ListPolicyGroups__generateUrl(orgName: string): string {
         let url = this.basePath + "orgs/{orgName}/policygroups";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -5692,6 +5811,108 @@ export class Organizations {
         return this.client.callWithOptions<WebhookDelivery>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 WebhookDelivery.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public PreviewAccountMatchRule__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policygroups/accountmatchrule/preview";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public PreviewAccountMatchRule(
+        params: {
+            orgName: string,
+            continuationToken?: string,
+            count?: number,
+        },
+        request: PreviewAccountMatchRuleRequest,
+    ): Promise<PreviewAccountMatchRuleResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling PreviewAccountMatchRule.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling PreviewAccountMatchRule.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling PreviewAccountMatchRule.");
+        }
+
+        const __path = this.PreviewAccountMatchRule__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.count !== undefined) {
+            __requestOptions.setQueryParam("count", params.count);
+        }
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<PreviewAccountMatchRuleResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PreviewAccountMatchRuleResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public PreviewStackMatchRule__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policygroups/stackmatchrule/preview";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public PreviewStackMatchRule(
+        params: {
+            orgName: string,
+            continuationToken?: string,
+            count?: number,
+        },
+        request: PreviewStackMatchRuleRequest,
+    ): Promise<PreviewStackMatchRuleResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling PreviewStackMatchRule.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling PreviewStackMatchRule.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling PreviewStackMatchRule.");
+        }
+
+        const __path = this.PreviewStackMatchRule__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.count !== undefined) {
+            __requestOptions.setQueryParam("count", params.count);
+        }
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<PreviewStackMatchRuleResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PreviewStackMatchRuleResponse.fixupPrototype(__res0);
             }
         });
     }

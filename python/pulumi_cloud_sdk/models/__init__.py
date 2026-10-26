@@ -12,6 +12,7 @@ from .access_token_ import AccessToken
 from .access_token_role_ import AccessTokenRole
 from .access_token_sort_field_ import AccessTokenSortField
 from .access_token_type_ import AccessTokenType
+from .account_match_rule_preview_account_ import AccountMatchRulePreviewAccount
 from .activity_ import Activity
 from .add_change_request_comment_request_ import AddChangeRequestCommentRequest
 from .add_custom_vcs_repository_request_ import AddCustomVCSRepositoryRequest
@@ -589,6 +590,8 @@ from .list_organization_members_response_ import ListOrganizationMembersResponse
 from .list_organization_projects_responsev3_ import ListOrganizationProjectsResponsev3
 from .list_packages_response_ import ListPackagesResponse
 from .list_policies_compliance_response_ import ListPoliciesComplianceResponse
+from .list_policy_group_accounts_response_ import ListPolicyGroupAccountsResponse
+from .list_policy_group_stacks_response_ import ListPolicyGroupStacksResponse
 from .list_policy_issues_response_ import ListPolicyIssuesResponse
 from .list_policy_packs_for_insights_account_response_ import ListPolicyPacksForInsightsAccountResponse
 from .list_policy_packs_request_ import ListPolicyPacksRequest
@@ -723,9 +726,12 @@ from .policy_compliance_entity_type_ import PolicyComplianceEntityType
 from .policy_compliance_result_ import PolicyComplianceResult
 from .policy_compliance_row_ import PolicyComplianceRow
 from .policy_group_ import PolicyGroup
+from .policy_group_account_ import PolicyGroupAccount
 from .policy_group_entity_type_ import PolicyGroupEntityType
+from .policy_group_member_source_ import PolicyGroupMemberSource
 from .policy_group_metadata_ import PolicyGroupMetadata
 from .policy_group_mode_ import PolicyGroupMode
+from .policy_group_stack_ import PolicyGroupStack
 from .policy_issue_ import PolicyIssue
 from .policy_issue_filter_value_ import PolicyIssueFilterValue
 from .policy_issue_filters_request_ import PolicyIssueFiltersRequest
@@ -737,6 +743,10 @@ from .policy_pack_access_ import PolicyPackAccess
 from .policy_results_metadata_ import PolicyResultsMetadata
 from .policy_violation_v2_ import PolicyViolationV2
 from .preferred_vcs_ import PreferredVCS
+from .preview_account_match_rule_request_ import PreviewAccountMatchRuleRequest
+from .preview_account_match_rule_response_ import PreviewAccountMatchRuleResponse
+from .preview_stack_match_rule_request_ import PreviewStackMatchRuleRequest
+from .preview_stack_match_rule_response_ import PreviewStackMatchRuleResponse
 from .product_category_ import ProductCategory
 from .provider_schema_ import ProviderSchema
 from .publish_package_version_complete_request_ import PublishPackageVersionCompleteRequest
@@ -822,6 +832,7 @@ from .source_context_template_ import SourceContextTemplate
 from .source_context_template_request_ import SourceContextTemplateRequest
 from .stack_deployments_metadata_response_ import StackDeploymentsMetadataResponse
 from .stack_drift_status_ import StackDriftStatus
+from .stack_match_rule_preview_stack_ import StackMatchRulePreviewStack
 from .stack_metadata_ import StackMetadata
 from .stack_notification_settings_ import StackNotificationSettings
 from .stack_outputs_response_ import StackOutputsResponse

@@ -6233,6 +6233,144 @@ func (p *CloudClient) ListPoliciesCompliance(
 	return &result, nil
 }
 
+type InterceptorForListPolicyGroupAccounts struct {
+	OrgName           string
+	PolicyGroup       string
+	ContinuationToken *string
+	Count             *int
+	Source            *apitype.PolicyGroupMemberSource
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) ListPolicyGroupAccounts(
+	ctx context.Context,
+	orgName string,
+	policyGroup string,
+	continuationToken *string,
+	count *int,
+	source *apitype.PolicyGroupMemberSource,
+	extraHeaders ...http.Header,
+) (*apitype.ListPolicyGroupAccountsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListPolicyGroupAccounts{
+			OrgName:           orgName,
+			PolicyGroup:       policyGroup,
+			ContinuationToken: continuationToken,
+			Count:             count,
+			Source:            source,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPolicyGroupAccountsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyGroupAccounts: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/policygroups/{policyGroup}/accounts",
+		map[string]any{
+			"orgName":     orgName,
+			"policyGroup": policyGroup,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"count":             count,
+			"source":            source,
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListPolicyGroupAccountsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForListPolicyGroupStacks struct {
+	OrgName           string
+	PolicyGroup       string
+	ContinuationToken *string
+	Count             *int
+	Source            *apitype.PolicyGroupMemberSource
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) ListPolicyGroupStacks(
+	ctx context.Context,
+	orgName string,
+	policyGroup string,
+	continuationToken *string,
+	count *int,
+	source *apitype.PolicyGroupMemberSource,
+	extraHeaders ...http.Header,
+) (*apitype.ListPolicyGroupStacksResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListPolicyGroupStacks{
+			OrgName:           orgName,
+			PolicyGroup:       policyGroup,
+			ContinuationToken: continuationToken,
+			Count:             count,
+			Source:            source,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPolicyGroupStacksResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyGroupStacks: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/policygroups/{policyGroup}/stacks",
+		map[string]any{
+			"orgName":     orgName,
+			"policyGroup": policyGroup,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"count":             count,
+			"source":            source,
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListPolicyGroupStacksResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListPolicyGroups struct {
 	OrgName      string
 	ExtraHeaders []http.Header
@@ -7147,6 +7285,136 @@ func (p *CloudClient) PingOrganizationWebhook(
 		return nil, err
 	}
 	var result apitype.WebhookDelivery
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForPreviewAccountMatchRule struct {
+	OrgName           string
+	ContinuationToken *string
+	Count             *int
+	Request           apitype.PreviewAccountMatchRuleRequest
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) PreviewAccountMatchRule(
+	ctx context.Context,
+	orgName string,
+	continuationToken *string,
+	count *int,
+	request apitype.PreviewAccountMatchRuleRequest,
+	extraHeaders ...http.Header,
+) (*apitype.PreviewAccountMatchRuleResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForPreviewAccountMatchRule{
+			OrgName:           orgName,
+			ContinuationToken: continuationToken,
+			Count:             count,
+			Request:           request,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PreviewAccountMatchRuleResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for PreviewAccountMatchRule: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policygroups/accountmatchrule/preview",
+		map[string]any{
+			"orgName": orgName,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"count":             count,
+		},
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PreviewAccountMatchRuleResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForPreviewStackMatchRule struct {
+	OrgName           string
+	ContinuationToken *string
+	Count             *int
+	Request           apitype.PreviewStackMatchRuleRequest
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) PreviewStackMatchRule(
+	ctx context.Context,
+	orgName string,
+	continuationToken *string,
+	count *int,
+	request apitype.PreviewStackMatchRuleRequest,
+	extraHeaders ...http.Header,
+) (*apitype.PreviewStackMatchRuleResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForPreviewStackMatchRule{
+			OrgName:           orgName,
+			ContinuationToken: continuationToken,
+			Count:             count,
+			Request:           request,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PreviewStackMatchRuleResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for PreviewStackMatchRule: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policygroups/stackmatchrule/preview",
+		map[string]any{
+			"orgName": orgName,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"count":             count,
+		},
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PreviewStackMatchRuleResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
