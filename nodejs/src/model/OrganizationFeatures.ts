@@ -100,6 +100,8 @@ export class OrganizationFeatures {
     neoAgentTaskRbacEnforcementEnabled?: boolean;
     linkExpressCheckoutEnabled?: boolean;
     multiChangeRequestsEnabled?: boolean;
+    customPolicyGroupsEnabled: boolean;
+    customPolicyPacksEnabled: boolean;
     agentsAsTeamMembersEnabled?: boolean;
     entityUserAssignmentsEnabled: boolean;
     policyExceptionsEnabled: boolean;

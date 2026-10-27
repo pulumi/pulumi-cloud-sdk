@@ -102,6 +102,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var neo_agent_task_rbac_enforcement_enabled: bool - declared
     :var link_express_checkout_enabled: bool - declared
     :var multi_change_requests_enabled: bool - declared
+    :var custom_policy_groups_enabled: bool - declared
+    :var custom_policy_packs_enabled: bool - declared
     :var agents_as_team_members_enabled: bool - declared
     :var entity_user_assignments_enabled: bool - declared
     :var policy_exceptions_enabled: bool - declared
@@ -195,6 +197,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'neo_agent_task_rbac_enforcement_enabled': 'bool',
         'link_express_checkout_enabled': 'bool',
         'multi_change_requests_enabled': 'bool',
+        'custom_policy_groups_enabled': 'bool',
+        'custom_policy_packs_enabled': 'bool',
         'agents_as_team_members_enabled': 'bool',
         'entity_user_assignments_enabled': 'bool',
         'policy_exceptions_enabled': 'bool',
@@ -289,6 +293,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'neo_agent_task_rbac_enforcement_enabled': 'neoAgentTaskRbacEnforcementEnabled',
         'link_express_checkout_enabled': 'linkExpressCheckoutEnabled',
         'multi_change_requests_enabled': 'multiChangeRequestsEnabled',
+        'custom_policy_groups_enabled': 'customPolicyGroupsEnabled',
+        'custom_policy_packs_enabled': 'customPolicyPacksEnabled',
         'agents_as_team_members_enabled': 'agentsAsTeamMembersEnabled',
         'entity_user_assignments_enabled': 'entityUserAssignmentsEnabled',
         'policy_exceptions_enabled': 'policyExceptionsEnabled',
@@ -382,6 +388,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_neo_agent_task_rbac_enforcement_enabled = 'neoAgentTaskRbacEnforcementEnabled'
     FIELDS_link_express_checkout_enabled = 'linkExpressCheckoutEnabled'
     FIELDS_multi_change_requests_enabled = 'multiChangeRequestsEnabled'
+    FIELDS_custom_policy_groups_enabled = 'customPolicyGroupsEnabled'
+    FIELDS_custom_policy_packs_enabled = 'customPolicyPacksEnabled'
     FIELDS_agents_as_team_members_enabled = 'agentsAsTeamMembersEnabled'
     FIELDS_entity_user_assignments_enabled = 'entityUserAssignmentsEnabled'
     FIELDS_policy_exceptions_enabled = 'policyExceptionsEnabled'
@@ -474,6 +482,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _neo_agent_task_rbac_enforcement_enabled: 'bool'
     _link_express_checkout_enabled: 'bool'
     _multi_change_requests_enabled: 'bool'
+    _custom_policy_groups_enabled: 'bool'
+    _custom_policy_packs_enabled: 'bool'
     _agents_as_team_members_enabled: 'bool'
     _entity_user_assignments_enabled: 'bool'
     _policy_exceptions_enabled: 'bool'
@@ -540,6 +550,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         cli_integration_catalog_enabled: 'bool',
         service_backed_config_enabled: 'bool',
         neo_byok_enabled: 'bool',
+        custom_policy_groups_enabled: 'bool',
+        custom_policy_packs_enabled: 'bool',
         entity_user_assignments_enabled: 'bool',
         policy_exceptions_enabled: 'bool',
         static_default_roles_enabled: 'bool',
@@ -662,6 +674,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.neo_agent_task_rbac_enforcement_enabled = neo_agent_task_rbac_enforcement_enabled
         self.link_express_checkout_enabled = link_express_checkout_enabled
         self.multi_change_requests_enabled = multi_change_requests_enabled
+        self.custom_policy_groups_enabled = custom_policy_groups_enabled
+        self.custom_policy_packs_enabled = custom_policy_packs_enabled
         self.agents_as_team_members_enabled = agents_as_team_members_enabled
         self.entity_user_assignments_enabled = entity_user_assignments_enabled
         self.policy_exceptions_enabled = policy_exceptions_enabled
@@ -756,6 +770,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._neo_agent_task_rbac_enforcement_enabled = source._neo_agent_task_rbac_enforcement_enabled
             self._link_express_checkout_enabled = source._link_express_checkout_enabled
             self._multi_change_requests_enabled = source._multi_change_requests_enabled
+            self._custom_policy_groups_enabled = source._custom_policy_groups_enabled
+            self._custom_policy_packs_enabled = source._custom_policy_packs_enabled
             self._agents_as_team_members_enabled = source._agents_as_team_members_enabled
             self._entity_user_assignments_enabled = source._entity_user_assignments_enabled
             self._policy_exceptions_enabled = source._policy_exceptions_enabled
@@ -1623,6 +1639,28 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @multi_change_requests_enabled.setter
     def multi_change_requests_enabled(self, multi_change_requests_enabled: 'bool'):
         self._multi_change_requests_enabled = multi_change_requests_enabled
+
+    @property
+    def custom_policy_groups_enabled(self) -> 'bool':
+        return self._custom_policy_groups_enabled
+
+    @custom_policy_groups_enabled.setter
+    def custom_policy_groups_enabled(self, custom_policy_groups_enabled: 'bool'):
+        if custom_policy_groups_enabled is None:
+            raise ValueError("Invalid value for `custom_policy_groups_enabled`, must not be `None`")
+
+        self._custom_policy_groups_enabled = custom_policy_groups_enabled
+
+    @property
+    def custom_policy_packs_enabled(self) -> 'bool':
+        return self._custom_policy_packs_enabled
+
+    @custom_policy_packs_enabled.setter
+    def custom_policy_packs_enabled(self, custom_policy_packs_enabled: 'bool'):
+        if custom_policy_packs_enabled is None:
+            raise ValueError("Invalid value for `custom_policy_packs_enabled`, must not be `None`")
+
+        self._custom_policy_packs_enabled = custom_policy_packs_enabled
 
     @property
     def agents_as_team_members_enabled(self) -> 'bool':

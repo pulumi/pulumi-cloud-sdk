@@ -269,6 +269,12 @@ public class OrganizationFeatures {
     // Deprecated. Always true: an environment holds one open draft per author.
     public boolean multiChangeRequestsEnabled;
 
+    // Whether the organization may create custom (non-default) policy groups. False on SKUs limited to the default policy groups (Essentials) unless an admin set a per-organization override; groups an organization already has stay manageable either way.
+    public boolean customPolicyGroupsEnabled;
+
+    // Whether the organization may publish new custom (org-authored) policy packs. False on SKUs limited to registry policy packs (Essentials) unless the organization holds a per-organization override: one granted when it was grandfathered in with the packs it already had, or one an admin set as a contracted exception. Either carries a cap on the number of packs. New versions of packs the organization already has can be published either way.
+    public boolean customPolicyPacksEnabled;
+
     // Whether the Pulumi Agents workspace navigation is enabled.
     public boolean agentsAsTeamMembersEnabled;
 

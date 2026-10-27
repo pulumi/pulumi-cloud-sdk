@@ -183,6 +183,14 @@ type OrganizationFeatures struct {
 	LinkExpressCheckoutEnabled bool `json:"linkExpressCheckoutEnabled,omitzero" yaml:"linkExpressCheckoutEnabled,omitempty"`
 	// Deprecated. Always true: an environment holds one open draft per author.
 	MultiChangeRequestsEnabled bool `json:"multiChangeRequestsEnabled,omitzero" yaml:"multiChangeRequestsEnabled,omitempty"`
+	// Whether the organization may create custom (non-default) policy groups. False on SKUs limited to the default policy groups (Essentials)
+	// unless an admin set a per-organization override; groups an organization already has stay manageable either way.
+	CustomPolicyGroupsEnabled bool `json:"customPolicyGroupsEnabled" yaml:"customPolicyGroupsEnabled"`
+	// Whether the organization may publish new custom (org-authored) policy packs. False on SKUs limited to registry policy packs (Essentials)
+	// unless the organization holds a per-organization override: one granted when it was grandfathered in with the packs it already had, or
+	// one an admin set as a contracted exception. Either carries a cap on the number of packs. New versions of packs the organization already
+	// has can be published either way.
+	CustomPolicyPacksEnabled bool `json:"customPolicyPacksEnabled" yaml:"customPolicyPacksEnabled"`
 	// Whether the Pulumi Agents workspace navigation is enabled.
 	AgentsAsTeamMembersEnabled bool `json:"agentsAsTeamMembersEnabled,omitzero" yaml:"agentsAsTeamMembersEnabled,omitempty"`
 	// Whether individual users can be assigned permission sets on stacks, environments and Insights accounts.
