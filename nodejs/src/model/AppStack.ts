@@ -27,6 +27,7 @@ export class AppStack {
     tags?: { [key: string]: string };
     config?: AppStackConfig;
     version: number;
+    managedEnvironment?: string;
 
     getFixupPrototypeFunction() {
         return AppStack.fixupPrototype;

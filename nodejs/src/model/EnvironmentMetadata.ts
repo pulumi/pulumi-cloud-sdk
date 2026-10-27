@@ -24,6 +24,7 @@ export class EnvironmentMetadata {
     gatedActions?: string[];
     openRequestNeeded?: boolean;
     oidcSubjectV2?: string;
+    managedByStack?: string;
 
     getFixupPrototypeFunction() {
         return EnvironmentMetadata.fixupPrototype;

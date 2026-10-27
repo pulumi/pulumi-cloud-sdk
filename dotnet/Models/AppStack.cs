@@ -63,5 +63,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("version")]
         public long Version { get; set; }
+
+        /// <summary>
+        /// The ESC environment this stack manages, which holds the stack's configuration, as &lt;project&gt;/&lt;name&gt;. Read-only; omitted when the stack does not manage an environment. The name stays set after the environment is deleted. Returned to anyone who can read the stack, whether or not they can read the environment.
+        /// </summary>
+        [JsonProperty("managedEnvironment")]
+        public string ManagedEnvironment { get; set; }
     }
 }

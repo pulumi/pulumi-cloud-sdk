@@ -22,6 +22,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     :var gated_actions: list[str] - declared
     :var open_request_needed: bool - declared
     :var oidc_subject_v2: str - declared
+    :var managed_by_stack: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -30,6 +31,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         'gated_actions': 'list[str]',
         'open_request_needed': 'bool',
         'oidc_subject_v2': 'str',
+        'managed_by_stack': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -39,6 +41,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         'gated_actions': 'gatedActions',
         'open_request_needed': 'openRequestNeeded',
         'oidc_subject_v2': 'oidcSubjectV2',
+        'managed_by_stack': 'managedByStack',
     }
 
     FIELDS_id = 'id'
@@ -47,6 +50,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     FIELDS_gated_actions = 'gatedActions'
     FIELDS_open_request_needed = 'openRequestNeeded'
     FIELDS_oidc_subject_v2 = 'oidcSubjectV2'
+    FIELDS_managed_by_stack = 'managedByStack'
 
     _id: 'str'
     _owned_by: 'UserInfo'
@@ -54,6 +58,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     _gated_actions: 'list[str]'
     _open_request_needed: 'bool'
     _oidc_subject_v2: 'str'
+    _managed_by_stack: 'str'
 
     def __init__(
         self,
@@ -63,6 +68,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         gated_actions: 'list[str]' = None,
         open_request_needed: 'bool' = False,
         oidc_subject_v2: 'str' = None,
+        managed_by_stack: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -72,6 +78,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
         self.gated_actions = gated_actions
         self.open_request_needed = open_request_needed
         self.oidc_subject_v2 = oidc_subject_v2
+        self.managed_by_stack = managed_by_stack
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, EnvironmentMetadata):
@@ -81,6 +88,7 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
             self._gated_actions = source._gated_actions
             self._open_request_needed = source._open_request_needed
             self._oidc_subject_v2 = source._oidc_subject_v2
+            self._managed_by_stack = source._managed_by_stack
 
     @property
     def id(self) -> 'str':
@@ -215,6 +223,14 @@ class EnvironmentMetadata(PulumiAutoModelEncoder):
     @oidc_subject_v2.setter
     def oidc_subject_v2(self, oidc_subject_v2: 'str'):
         self._oidc_subject_v2 = oidc_subject_v2
+
+    @property
+    def managed_by_stack(self) -> 'str':
+        return self._managed_by_stack
+
+    @managed_by_stack.setter
+    def managed_by_stack(self, managed_by_stack: 'str'):
+        self._managed_by_stack = managed_by_stack
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, EnvironmentMetadata):

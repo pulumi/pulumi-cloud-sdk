@@ -45,5 +45,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("oidcSubjectV2")]
         public string OidcSubjectV2 { get; set; }
+
+        /// <summary>
+        /// The stack that manages this environment, as &lt;project&gt;/&lt;stack&gt;. Omitted when no stack manages the environment. Returned to anyone who can read the environment, whether or not they can read the stack.
+        /// </summary>
+        [JsonProperty("managedByStack")]
+        public string ManagedByStack { get; set; }
     }
 }

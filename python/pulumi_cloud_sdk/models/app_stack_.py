@@ -25,6 +25,7 @@ class AppStack(PulumiAutoModelEncoder):
     :var tags: dict[str, str] - declared
     :var config: AppStackConfig - declared
     :var version: int - declared
+    :var managed_environment: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -36,6 +37,7 @@ class AppStack(PulumiAutoModelEncoder):
         'tags': 'dict[str, str]',
         'config': 'AppStackConfig',
         'version': 'int',
+        'managed_environment': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -48,6 +50,7 @@ class AppStack(PulumiAutoModelEncoder):
         'tags': 'tags',
         'config': 'config',
         'version': 'version',
+        'managed_environment': 'managedEnvironment',
     }
 
     FIELDS_id = 'id'
@@ -59,6 +62,7 @@ class AppStack(PulumiAutoModelEncoder):
     FIELDS_tags = 'tags'
     FIELDS_config = 'config'
     FIELDS_version = 'version'
+    FIELDS_managed_environment = 'managedEnvironment'
 
     _id: 'str'
     _org_name: 'str'
@@ -69,6 +73,7 @@ class AppStack(PulumiAutoModelEncoder):
     _tags: 'dict[str, str]'
     _config: 'AppStackConfig'
     _version: 'int'
+    _managed_environment: 'str'
 
     def __init__(
         self,
@@ -81,6 +86,7 @@ class AppStack(PulumiAutoModelEncoder):
         current_operation: 'AppOperationStatus' = None,
         tags: 'dict[str, str]' = None,
         config: 'AppStackConfig' = None,
+        managed_environment: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -93,6 +99,7 @@ class AppStack(PulumiAutoModelEncoder):
         self.tags = tags
         self.config = config
         self.version = version
+        self.managed_environment = managed_environment
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppStack):
@@ -105,6 +112,7 @@ class AppStack(PulumiAutoModelEncoder):
             self._tags = source._tags
             self._config = source._config
             self._version = source._version
+            self._managed_environment = source._managed_environment
 
     @property
     def id(self) -> 'str':
@@ -275,6 +283,14 @@ class AppStack(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
+
+    @property
+    def managed_environment(self) -> 'str':
+        return self._managed_environment
+
+    @managed_environment.setter
+    def managed_environment(self, managed_environment: 'str'):
+        self._managed_environment = managed_environment
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppStack):
