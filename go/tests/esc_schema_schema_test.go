@@ -86,8 +86,8 @@ func TestEscSchemaSchemaMarshalUnmarshal_BareBooleanRoundTrip(t *testing.T) {
 		name string
 		json string
 	}{
-		{"true", "true"},
-		{"false", "false"},
+		{name: "true", json: "true"},
+		{name: "false", json: "false"},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()

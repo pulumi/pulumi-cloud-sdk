@@ -7692,6 +7692,57 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def test_audit_log_export_s3_compatible_configuration(
+        self,
+        org_name: 'str',
+        request: 'AuditLogsExportS3CompatibleConfig',
+        _request_timeout: int = None,
+    ) -> 'AuditLogExportResult':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `test_audit_log_export_s3_compatible_configuration`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `test_audit_log_export_s3_compatible_configuration`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/auditlogs/export/config/s3-compatible/test'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AuditLogExportResult',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def transfer_all_stacks(
         self,
         org_name: 'str',

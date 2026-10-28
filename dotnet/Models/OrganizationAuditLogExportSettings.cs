@@ -17,10 +17,16 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// The S3 configuration for exporting audit logs.
+        /// The S3 configuration for exporting audit logs. Set when audit logs export to Amazon S3.
         /// </summary>
         [JsonProperty("s3Config")]
         public AuditLogsExportS3Config S3Config { get; set; }
+
+        /// <summary>
+        /// The S3-compatible configuration for exporting audit logs. Set when audit logs export to an S3-compatible service.
+        /// </summary>
+        [JsonProperty("s3CompatibleConfig")]
+        public AuditLogsExportS3CompatibleConfig S3CompatibleConfig { get; set; }
 
         /// <summary>
         /// The result of the last audit log export attempt.

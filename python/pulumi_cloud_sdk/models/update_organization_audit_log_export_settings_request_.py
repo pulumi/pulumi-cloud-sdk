@@ -18,37 +18,45 @@ class UpdateOrganizationAuditLogExportSettingsRequest(PulumiAutoModelEncoder):
     """
     :var new_enabled: bool - declared
     :var new_s3_configuration: AuditLogsExportS3Config - declared
+    :var new_s3_compatible_configuration: AuditLogsExportS3CompatibleConfig - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'new_enabled': 'bool',
         'new_s3_configuration': 'AuditLogsExportS3Config',
+        'new_s3_compatible_configuration': 'AuditLogsExportS3CompatibleConfig',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'new_enabled': 'newEnabled',
         'new_s3_configuration': 'newS3Configuration',
+        'new_s3_compatible_configuration': 'newS3CompatibleConfiguration',
     }
 
     FIELDS_new_enabled = 'newEnabled'
     FIELDS_new_s3_configuration = 'newS3Configuration'
+    FIELDS_new_s3_compatible_configuration = 'newS3CompatibleConfiguration'
 
     _new_enabled: 'bool'
     _new_s3_configuration: 'AuditLogsExportS3Config'
+    _new_s3_compatible_configuration: 'AuditLogsExportS3CompatibleConfig'
 
     def __init__(
         self,
         new_enabled: 'bool',
         new_s3_configuration: 'AuditLogsExportS3Config',
+        new_s3_compatible_configuration: 'AuditLogsExportS3CompatibleConfig' = None,
     ) -> None:
         super().__init__()
 
         self.new_enabled = new_enabled
         self.new_s3_configuration = new_s3_configuration
+        self.new_s3_compatible_configuration = new_s3_compatible_configuration
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, UpdateOrganizationAuditLogExportSettingsRequest):
             self._new_enabled = source._new_enabled
             self._new_s3_configuration = source._new_s3_configuration
+            self._new_s3_compatible_configuration = source._new_s3_compatible_configuration
 
     @property
     def new_enabled(self) -> 'bool':
@@ -98,6 +106,41 @@ class UpdateOrganizationAuditLogExportSettingsRequest(PulumiAutoModelEncoder):
             return models.AuditLogsExportS3Config._new_empty()
 
         return self._new_s3_configuration
+
+    @property
+    def new_s3_compatible_configuration(self) -> 'AuditLogsExportS3CompatibleConfig':
+        return self._new_s3_compatible_configuration
+
+    @new_s3_compatible_configuration.setter
+    def new_s3_compatible_configuration(self, new_s3_compatible_configuration: 'AuditLogsExportS3CompatibleConfig'):
+        self._new_s3_compatible_configuration = new_s3_compatible_configuration
+
+    @property
+    def new_s3_compatible_configuration__autoinit(self) -> 'AuditLogsExportS3CompatibleConfig':
+        """Return ``new_s3_compatible_configuration``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._new_s3_compatible_configuration``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``new_s3_compatible_configuration__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._new_s3_compatible_configuration is None:
+            self._new_s3_compatible_configuration = self.new_s3_compatible_configuration__safederef
+
+        return self._new_s3_compatible_configuration
+
+    @property
+    def new_s3_compatible_configuration__safederef(self) -> 'AuditLogsExportS3CompatibleConfig':
+        """Return ``new_s3_compatible_configuration``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``new_s3_compatible_configuration`` stays unset and each
+        call returns a new default. Use ``new_s3_compatible_configuration__autoinit`` to persist the default on
+        first access.
+        """
+        if self._new_s3_compatible_configuration is None:
+            from .. import models
+            return models.AuditLogsExportS3CompatibleConfig._new_empty()
+
+        return self._new_s3_compatible_configuration
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, UpdateOrganizationAuditLogExportSettingsRequest):

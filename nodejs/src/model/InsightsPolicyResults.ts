@@ -18,6 +18,7 @@ import type { InsightsPolicyViolation } from "./InsightsPolicyViolation";
 
 export class InsightsPolicyResults {
     succeeded: boolean;
+    results?: InsightsPolicyViolation[];
     violations?: InsightsPolicyViolation[];
 
     getFixupPrototypeFunction() {
@@ -49,6 +50,16 @@ export class InsightsPolicyResults {
     }
 
     fixupFields() {
+        if (this.results) {
+            for (let i0 = 0; i0 < this.results.length; i0++) {
+                let val0 = this.results[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { InsightsPolicyViolation } = require("./InsightsPolicyViolation");
+                    InsightsPolicyViolation.fixupPrototype(val0);
+                }
+            }
+        }
         if (this.violations) {
             for (let i0 = 0; i0 < this.violations.length; i0++) {
                 let val0 = this.violations[i0];

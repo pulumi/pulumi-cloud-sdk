@@ -2120,6 +2120,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<AuditLogExportResult>(apiRequest);
         }
 
+        public AuditLogExportResult TestAuditLogExportS3CompatibleConfiguration(string orgName, AuditLogsExportS3CompatibleConfig request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling TestAuditLogExportS3CompatibleConfiguration");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling TestAuditLogExportS3CompatibleConfiguration");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/auditlogs/export/config/s3-compatible/test");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AuditLogExportResult>(apiRequest);
+        }
+
         public string TransferAllStacks(string orgName, TransferAllStacksRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling TransferAllStacks");

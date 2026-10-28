@@ -17,37 +17,45 @@ from . import *
 class InsightsPolicyResults(PulumiAutoModelEncoder):
     """
     :var succeeded: bool - declared
+    :var results: list[InsightsPolicyViolation] - declared
     :var violations: list[InsightsPolicyViolation] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'succeeded': 'bool',
+        'results': 'list[InsightsPolicyViolation]',
         'violations': 'list[InsightsPolicyViolation]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'succeeded': 'succeeded',
+        'results': 'results',
         'violations': 'violations',
     }
 
     FIELDS_succeeded = 'succeeded'
+    FIELDS_results = 'results'
     FIELDS_violations = 'violations'
 
     _succeeded: 'bool'
+    _results: 'list[InsightsPolicyViolation]'
     _violations: 'list[InsightsPolicyViolation]'
 
     def __init__(
         self,
         succeeded: 'bool',
+        results: 'list[InsightsPolicyViolation]' = None,
         violations: 'list[InsightsPolicyViolation]' = None,
     ) -> None:
         super().__init__()
 
         self.succeeded = succeeded
+        self.results = results
         self.violations = violations
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, InsightsPolicyResults):
             self._succeeded = source._succeeded
+            self._results = source._results
             self._violations = source._violations
 
     @property
@@ -60,6 +68,40 @@ class InsightsPolicyResults(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `succeeded`, must not be `None`")
 
         self._succeeded = succeeded
+
+    @property
+    def results(self) -> 'list[InsightsPolicyViolation]':
+        return self._results
+
+    @results.setter
+    def results(self, results: 'list[InsightsPolicyViolation]'):
+        self._results = results
+
+    @property
+    def results__autoinit(self) -> 'list[InsightsPolicyViolation]':
+        """Return ``results``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._results``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``results__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._results is None:
+            self._results = self.results__safederef
+
+        return self._results
+
+    @property
+    def results__safederef(self) -> 'list[InsightsPolicyViolation]':
+        """Return ``results``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``results`` stays unset and each
+        call returns a new default. Use ``results__autoinit`` to persist the default on
+        first access.
+        """
+        if self._results is None:
+            return []
+
+        return self._results
 
     @property
     def violations(self) -> 'list[InsightsPolicyViolation]':

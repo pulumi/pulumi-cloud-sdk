@@ -8240,6 +8240,62 @@ func (p *CloudClient) TestAuditLogExportConfiguration(
 	return &result, nil
 }
 
+type InterceptorForTestAuditLogExportS3CompatibleConfiguration struct {
+	OrgName      string
+	Request      apitype.AuditLogsExportS3CompatibleConfig
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) TestAuditLogExportS3CompatibleConfiguration(
+	ctx context.Context,
+	orgName string,
+	request apitype.AuditLogsExportS3CompatibleConfig,
+	extraHeaders ...http.Header,
+) (*apitype.AuditLogExportResult, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForTestAuditLogExportS3CompatibleConfiguration{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AuditLogExportResult)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for TestAuditLogExportS3CompatibleConfiguration: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/auditlogs/export/config/s3-compatible/test",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.AuditLogExportResult
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForTransferAllStacks struct {
 	OrgName      string
 	Request      apitype.TransferAllStacksRequest

@@ -223,6 +223,7 @@ from .assignment_team_ import AssignmentTeam
 from .audit_log_event_ import AuditLogEvent
 from .audit_log_event_type_catalog_entry_ import AuditLogEventTypeCatalogEntry
 from .audit_log_export_result_ import AuditLogExportResult
+from .audit_logs_export_s3_compatible_config_ import AuditLogsExportS3CompatibleConfig
 from .audit_logs_export_s3_config_ import AuditLogsExportS3Config
 from .auth_policy_ import AuthPolicy
 from .auth_policy_definition_ import AuthPolicyDefinition

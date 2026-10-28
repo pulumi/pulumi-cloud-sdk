@@ -16,4 +16,7 @@ public class UpdateOrganizationAuditLogExportSettingsRequest {
 
     // The new S3 configuration for audit log export.
     public AuditLogsExportS3Config newS3Configuration;
+
+    // The new S3-compatible configuration for audit log export. Mutually exclusive with newS3Configuration.
+    public AuditLogsExportS3CompatibleConfig newS3CompatibleConfiguration;
 }

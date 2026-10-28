@@ -2141,6 +2141,21 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<AuditLogExportResult>() {});
     }
 
+    public AuditLogExportResult testAuditLogExportS3CompatibleConfiguration(String orgName, AuditLogsExportS3CompatibleConfig request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling testAuditLogExportS3CompatibleConfiguration");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling testAuditLogExportS3CompatibleConfiguration");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/auditlogs/export/config/s3-compatible/test");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AuditLogExportResult>() {});
+    }
+
     public String transferAllStacks(String orgName, TransferAllStacksRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling transferAllStacks");

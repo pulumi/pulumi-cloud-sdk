@@ -14,12 +14,14 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 import type { AuditLogExportResult } from "./AuditLogExportResult";
+import type { AuditLogsExportS3CompatibleConfig } from "./AuditLogsExportS3CompatibleConfig";
 import type { AuditLogsExportS3Config } from "./AuditLogsExportS3Config";
 
 
 export class OrganizationAuditLogExportSettings {
     enabled: boolean;
-    s3Config: AuditLogsExportS3Config;
+    s3Config?: AuditLogsExportS3Config;
+    s3CompatibleConfig?: AuditLogsExportS3CompatibleConfig;
     lastResult: AuditLogExportResult;
 
     getFixupPrototypeFunction() {
@@ -55,6 +57,11 @@ export class OrganizationAuditLogExportSettings {
             // Lazy import - only evaluated when called
             const { AuditLogsExportS3Config } = require("./AuditLogsExportS3Config");
             AuditLogsExportS3Config.fixupPrototype(this.s3Config);
+        }
+        if (this.s3CompatibleConfig) {
+            // Lazy import - only evaluated when called
+            const { AuditLogsExportS3CompatibleConfig } = require("./AuditLogsExportS3CompatibleConfig");
+            AuditLogsExportS3CompatibleConfig.fixupPrototype(this.s3CompatibleConfig);
         }
         if (this.lastResult) {
             // Lazy import - only evaluated when called

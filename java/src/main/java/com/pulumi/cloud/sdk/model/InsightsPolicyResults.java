@@ -14,6 +14,9 @@ public class InsightsPolicyResults {
     // Whether the policy evaluation succeeded without violations
     public boolean succeeded;
 
-    // The list of policy violations found, if any
+    // The list of policy results found, if any. Takes precedence over 'violations' when both are set.
+    public List<InsightsPolicyViolation> results;
+
+    // Superseded by 'results'; still accepted from older clients. The list of policy violations found, if any.
     public List<InsightsPolicyViolation> violations;
 }

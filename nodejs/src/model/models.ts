@@ -233,6 +233,7 @@ export * from "./AssignmentTeam";
 export * from "./AuditLogEvent";
 export * from "./AuditLogEventTypeCatalogEntry";
 export * from "./AuditLogExportResult";
+export * from "./AuditLogsExportS3CompatibleConfig";
 export * from "./AuditLogsExportS3Config";
 export * from "./AuthPolicy";
 export * from "./AuthPolicyDefinition";

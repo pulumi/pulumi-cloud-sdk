@@ -17,7 +17,13 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool Succeeded { get; set; }
 
         /// <summary>
-        /// The list of policy violations found, if any
+        /// The list of policy results found, if any. Takes precedence over 'violations' when both are set.
+        /// </summary>
+        [JsonProperty("results")]
+        public System.Collections.Generic.List<InsightsPolicyViolation> Results { get; set; }
+
+        /// <summary>
+        /// Superseded by 'results'; still accepted from older clients. The list of policy violations found, if any.
         /// </summary>
         [JsonProperty("violations")]
         public System.Collections.Generic.List<InsightsPolicyViolation> Violations { get; set; }

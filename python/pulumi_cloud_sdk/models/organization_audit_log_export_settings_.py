@@ -18,44 +18,52 @@ class OrganizationAuditLogExportSettings(PulumiAutoModelEncoder):
     """
     :var enabled: bool - declared
     :var s3_config: AuditLogsExportS3Config - declared
+    :var s3_compatible_config: AuditLogsExportS3CompatibleConfig - declared
     :var last_result: AuditLogExportResult - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'enabled': 'bool',
         's3_config': 'AuditLogsExportS3Config',
+        's3_compatible_config': 'AuditLogsExportS3CompatibleConfig',
         'last_result': 'AuditLogExportResult',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'enabled': 'enabled',
         's3_config': 's3Config',
+        's3_compatible_config': 's3CompatibleConfig',
         'last_result': 'lastResult',
     }
 
     FIELDS_enabled = 'enabled'
     FIELDS_s3_config = 's3Config'
+    FIELDS_s3_compatible_config = 's3CompatibleConfig'
     FIELDS_last_result = 'lastResult'
 
     _enabled: 'bool'
     _s3_config: 'AuditLogsExportS3Config'
+    _s3_compatible_config: 'AuditLogsExportS3CompatibleConfig'
     _last_result: 'AuditLogExportResult'
 
     def __init__(
         self,
         enabled: 'bool',
-        s3_config: 'AuditLogsExportS3Config',
         last_result: 'AuditLogExportResult',
+        s3_config: 'AuditLogsExportS3Config' = None,
+        s3_compatible_config: 'AuditLogsExportS3CompatibleConfig' = None,
     ) -> None:
         super().__init__()
 
         self.enabled = enabled
         self.s3_config = s3_config
+        self.s3_compatible_config = s3_compatible_config
         self.last_result = last_result
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OrganizationAuditLogExportSettings):
             self._enabled = source._enabled
             self._s3_config = source._s3_config
+            self._s3_compatible_config = source._s3_compatible_config
             self._last_result = source._last_result
 
     @property
@@ -75,9 +83,6 @@ class OrganizationAuditLogExportSettings(PulumiAutoModelEncoder):
 
     @s3_config.setter
     def s3_config(self, s3_config: 'AuditLogsExportS3Config'):
-        if s3_config is None:
-            raise ValueError("Invalid value for `s3_config`, must not be `None`")
-
         self._s3_config = s3_config
 
     @property
@@ -106,6 +111,41 @@ class OrganizationAuditLogExportSettings(PulumiAutoModelEncoder):
             return models.AuditLogsExportS3Config._new_empty()
 
         return self._s3_config
+
+    @property
+    def s3_compatible_config(self) -> 'AuditLogsExportS3CompatibleConfig':
+        return self._s3_compatible_config
+
+    @s3_compatible_config.setter
+    def s3_compatible_config(self, s3_compatible_config: 'AuditLogsExportS3CompatibleConfig'):
+        self._s3_compatible_config = s3_compatible_config
+
+    @property
+    def s3_compatible_config__autoinit(self) -> 'AuditLogsExportS3CompatibleConfig':
+        """Return ``s3_compatible_config``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._s3_compatible_config``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``s3_compatible_config__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._s3_compatible_config is None:
+            self._s3_compatible_config = self.s3_compatible_config__safederef
+
+        return self._s3_compatible_config
+
+    @property
+    def s3_compatible_config__safederef(self) -> 'AuditLogsExportS3CompatibleConfig':
+        """Return ``s3_compatible_config``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``s3_compatible_config`` stays unset and each
+        call returns a new default. Use ``s3_compatible_config__autoinit`` to persist the default on
+        first access.
+        """
+        if self._s3_compatible_config is None:
+            from .. import models
+            return models.AuditLogsExportS3CompatibleConfig._new_empty()
+
+        return self._s3_compatible_config
 
     @property
     def last_result(self) -> 'AuditLogExportResult':

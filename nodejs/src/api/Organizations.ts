@@ -34,6 +34,7 @@ import { AppListPolicyGroupsResponse } from "../model/AppListPolicyGroupsRespons
 import { AppListPolicyPacksResponse } from "../model/AppListPolicyPacksResponse";
 import { ApproveChangeRequestRequest } from "../model/ApproveChangeRequestRequest";
 import { AuditLogExportResult } from "../model/AuditLogExportResult";
+import { AuditLogsExportS3CompatibleConfig } from "../model/AuditLogsExportS3CompatibleConfig";
 import { AuditLogsExportS3Config } from "../model/AuditLogsExportS3Config";
 import { AuthPolicy } from "../model/AuthPolicy";
 import { AuthPolicyUpdateRequest } from "../model/AuthPolicyUpdateRequest";
@@ -6599,6 +6600,49 @@ export class Organizations {
         }
 
         const __path = this.TestAuditLogExportConfiguration__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<AuditLogExportResult>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AuditLogExportResult.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public TestAuditLogExportS3CompatibleConfiguration__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/auditlogs/export/config/s3-compatible/test";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public TestAuditLogExportS3CompatibleConfiguration(
+        params: {
+            orgName: string,
+        },
+        request: AuditLogsExportS3CompatibleConfig,
+    ): Promise<AuditLogExportResult> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling TestAuditLogExportS3CompatibleConfiguration.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling TestAuditLogExportS3CompatibleConfiguration.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling TestAuditLogExportS3CompatibleConfiguration.");
+        }
+
+        const __path = this.TestAuditLogExportS3CompatibleConfiguration__generateUrl(params.orgName);
 
         let __requestOptions = new ApiRequest();
 

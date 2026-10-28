@@ -13,12 +13,14 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { AuditLogsExportS3CompatibleConfig } from "./AuditLogsExportS3CompatibleConfig";
 import type { AuditLogsExportS3Config } from "./AuditLogsExportS3Config";
 
 
 export class UpdateOrganizationAuditLogExportSettingsRequest {
     newEnabled: boolean;
     newS3Configuration: AuditLogsExportS3Config;
+    newS3CompatibleConfiguration?: AuditLogsExportS3CompatibleConfig;
 
     getFixupPrototypeFunction() {
         return UpdateOrganizationAuditLogExportSettingsRequest.fixupPrototype;
@@ -53,6 +55,11 @@ export class UpdateOrganizationAuditLogExportSettingsRequest {
             // Lazy import - only evaluated when called
             const { AuditLogsExportS3Config } = require("./AuditLogsExportS3Config");
             AuditLogsExportS3Config.fixupPrototype(this.newS3Configuration);
+        }
+        if (this.newS3CompatibleConfiguration) {
+            // Lazy import - only evaluated when called
+            const { AuditLogsExportS3CompatibleConfig } = require("./AuditLogsExportS3CompatibleConfig");
+            AuditLogsExportS3CompatibleConfig.fixupPrototype(this.newS3CompatibleConfiguration);
         }
     }
 }

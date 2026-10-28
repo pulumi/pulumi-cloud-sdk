@@ -14,8 +14,11 @@ public class OrganizationAuditLogExportSettings {
     // Whether audit log export is currently active. May be paused automatically if the configured destination repeatedly fails to authenticate.
     public boolean enabled;
 
-    // The S3 configuration for exporting audit logs.
+    // The S3 configuration for exporting audit logs. Set when audit logs export to Amazon S3.
     public AuditLogsExportS3Config s3Config;
+
+    // The S3-compatible configuration for exporting audit logs. Set when audit logs export to an S3-compatible service.
+    public AuditLogsExportS3CompatibleConfig s3CompatibleConfig;
 
     // The result of the last audit log export attempt.
     public AuditLogExportResult lastResult;

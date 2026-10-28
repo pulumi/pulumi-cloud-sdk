@@ -21,5 +21,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("newS3Configuration")]
         public AuditLogsExportS3Config NewS3Configuration { get; set; }
+
+        /// <summary>
+        /// The new S3-compatible configuration for audit log export. Mutually exclusive with newS3Configuration.
+        /// </summary>
+        [JsonProperty("newS3CompatibleConfiguration")]
+        public AuditLogsExportS3CompatibleConfig NewS3CompatibleConfiguration { get; set; }
     }
 }
