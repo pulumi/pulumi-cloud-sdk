@@ -39,5 +39,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("config")]
         public AppStackConfig Config { get; set; }
+
+        /// <summary>
+        /// Whether the service should create an ESC environment that the stack manages.
+        /// </summary>
+        [JsonProperty("createManagedEnvironment")]
+        public bool CreateManagedEnvironment { get; set; }
     }
 }

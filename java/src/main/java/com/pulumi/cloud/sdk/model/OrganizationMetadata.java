@@ -143,6 +143,9 @@ public class OrganizationMetadata {
     // DefaultDeploymentRoleID is the ID of the default role used for deployments when no specific role is configured in the stack's deployment settings. If unset, deployments run using the triggering user's own permissions.
     public String defaultDeploymentRoleId;
 
+    // How strictly the organization limits the permissions of the work it runs on its behalf, such as deployments. Absent when the setting is not available to the organization and the organization is permissive.
+    public OrganizationPermissionMode permissionMode;
+
     // The time when the subscription entered past-due status, if applicable. Present only when the subscription is past due and the auto-lock grace period is active.
     public ZonedDateTime pastDueSince;
 

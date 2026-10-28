@@ -15,5 +15,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("messages")]
         public System.Collections.Generic.List<AppMessage> Messages { get; set; }
+
+        /// <summary>
+        /// The ESC environment created for the stack, as &lt;project&gt;/&lt;name&gt;. Omitted when none was created.
+        /// </summary>
+        [JsonProperty("managedEnvironment")]
+        public string ManagedEnvironment { get; set; }
     }
 }

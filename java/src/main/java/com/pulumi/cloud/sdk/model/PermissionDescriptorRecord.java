@@ -31,4 +31,7 @@ public class PermissionDescriptorRecord extends PermissionDescriptorBase {
 
     // Whether this role is the organization default.
     public boolean isOrgDefault;
+
+    // Whether this role is the organization's Member (legacy) role, a copy of what members could do before the organization moved to built-in roles.
+    public boolean isCompatibilityRole;
 }

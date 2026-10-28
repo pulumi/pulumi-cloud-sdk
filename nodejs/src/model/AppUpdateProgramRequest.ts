@@ -16,6 +16,7 @@
 import type { AppConfigValue } from "./AppConfigValue";
 import type { AppUpdateMetadata } from "./AppUpdateMetadata";
 import type { AppUpdateOptions } from "./AppUpdateOptions";
+import type { AppUpdateProgramEnvironment } from "./AppUpdateProgramEnvironment";
 
 
 export class AppUpdateProgramRequest {
@@ -27,6 +28,7 @@ export class AppUpdateProgramRequest {
     config: { [key: string]: AppConfigValue };
     metadata: AppUpdateMetadata;
     coherenceWindow?: string;
+    environment?: AppUpdateProgramEnvironment;
 
     getFixupPrototypeFunction() {
         return AppUpdateProgramRequest.fixupPrototype;
@@ -76,6 +78,11 @@ export class AppUpdateProgramRequest {
             // Lazy import - only evaluated when called
             const { AppUpdateMetadata } = require("./AppUpdateMetadata");
             AppUpdateMetadata.fixupPrototype(this.metadata);
+        }
+        if (this.environment) {
+            // Lazy import - only evaluated when called
+            const { AppUpdateProgramEnvironment } = require("./AppUpdateProgramEnvironment");
+            AppUpdateProgramEnvironment.fixupPrototype(this.environment);
         }
     }
 }

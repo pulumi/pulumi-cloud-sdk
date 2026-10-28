@@ -51,5 +51,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("isOrgDefault")]
         public bool IsOrgDefault { get; set; }
+
+        /// <summary>
+        /// Whether this role is the organization's Member (legacy) role, a copy of what members could do before the organization moved to built-in roles.
+        /// </summary>
+        [JsonProperty("isCompatibilityRole")]
+        public bool IsCompatibilityRole { get; set; }
     }
 }

@@ -23,6 +23,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
     :var default_identifier: str - declared
     :var version: int - declared
     :var is_org_default: bool - declared
+    :var is_compatibility_role: bool - declared
     :var name: str - inherited
     :var description: str - inherited
     :var resource_type: str - inherited
@@ -42,6 +43,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
         'default_identifier': 'str',
         'version': 'int',
         'is_org_default': 'bool',
+        'is_compatibility_role': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -57,6 +59,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
         'default_identifier': 'defaultIdentifier',
         'version': 'version',
         'is_org_default': 'isOrgDefault',
+        'is_compatibility_role': 'isCompatibilityRole',
     }
 
     FIELDS_created = 'created'
@@ -66,6 +69,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
     FIELDS_default_identifier = 'defaultIdentifier'
     FIELDS_version = 'version'
     FIELDS_is_org_default = 'isOrgDefault'
+    FIELDS_is_compatibility_role = 'isCompatibilityRole'
 
     _created: 'datetime'
     _modified: 'datetime'
@@ -74,6 +78,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
     _default_identifier: 'str'
     _version: 'int'
     _is_org_default: 'bool'
+    _is_compatibility_role: 'bool'
 
     def __init__(
         self,
@@ -89,6 +94,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
         ux_purpose: 'PermissionDescriptorUXPurpose' = None,
         details: 'PermissionDescriptor' = None,
         default_identifier: 'str' = None,
+        is_compatibility_role: 'bool' = False,
     ) -> None:
         super().__init__(name=name, description=description, resource_type=resource_type, ux_purpose=ux_purpose, details=details)
 
@@ -99,6 +105,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
         self.default_identifier = default_identifier
         self.version = version
         self.is_org_default = is_org_default
+        self.is_compatibility_role = is_compatibility_role
 
     def copy_common_fields(self, source: Any, /) -> None:
         super().copy_common_fields(source)
@@ -110,6 +117,7 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
             self._default_identifier = source._default_identifier
             self._version = source._version
             self._is_org_default = source._is_org_default
+            self._is_compatibility_role = source._is_compatibility_role
 
     @property
     def created(self) -> 'datetime':
@@ -184,6 +192,14 @@ class PermissionDescriptorRecord(PermissionDescriptorBase):
             raise ValueError("Invalid value for `is_org_default`, must not be `None`")
 
         self._is_org_default = is_org_default
+
+    @property
+    def is_compatibility_role(self) -> 'bool':
+        return self._is_compatibility_role
+
+    @is_compatibility_role.setter
+    def is_compatibility_role(self, is_compatibility_role: 'bool'):
+        self._is_compatibility_role = is_compatibility_role
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, PermissionDescriptorRecord):

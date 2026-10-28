@@ -17,30 +17,38 @@ from . import *
 class AppCreateStackResponse(PulumiAutoModelEncoder):
     """
     :var messages: list[AppMessage] - declared
+    :var managed_environment: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'messages': 'list[AppMessage]',
+        'managed_environment': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'messages': 'messages',
+        'managed_environment': 'managedEnvironment',
     }
 
     FIELDS_messages = 'messages'
+    FIELDS_managed_environment = 'managedEnvironment'
 
     _messages: 'list[AppMessage]'
+    _managed_environment: 'str'
 
     def __init__(
         self,
         messages: 'list[AppMessage]' = None,
+        managed_environment: 'str' = None,
     ) -> None:
         super().__init__()
 
         self.messages = messages
+        self.managed_environment = managed_environment
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppCreateStackResponse):
             self._messages = source._messages
+            self._managed_environment = source._managed_environment
 
     @property
     def messages(self) -> 'list[AppMessage]':
@@ -75,6 +83,14 @@ class AppCreateStackResponse(PulumiAutoModelEncoder):
             return []
 
         return self._messages
+
+    @property
+    def managed_environment(self) -> 'str':
+        return self._managed_environment
+
+    @managed_environment.setter
+    def managed_environment(self, managed_environment: 'str'):
+        self._managed_environment = managed_environment
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppCreateStackResponse):

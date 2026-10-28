@@ -129,5 +129,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("setMaxAccessTokenExpiryDays")]
         public long? SetMaxAccessTokenExpiryDays { get; set; }
+
+        /// <summary>
+        /// How strictly the organization limits the permissions of the work it runs on its behalf, such as deployments. Leave the field unset to make no change. Only organization admins can change it, and only when the setting is available to the organization.
+        /// </summary>
+        [JsonProperty("setPermissionMode")]
+        public OrganizationPermissionMode? SetPermissionMode { get; set; }
     }
 }

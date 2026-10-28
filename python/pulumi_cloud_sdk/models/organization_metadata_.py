@@ -60,6 +60,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     :var locked: OrganizationLockedStatus - declared
     :var default_role_id: str - declared
     :var default_deployment_role_id: str - declared
+    :var permission_mode: OrganizationPermissionMode - declared
     :var past_due_since: datetime - declared
     :var max_access_token_expiry_days: int - declared
     """
@@ -108,6 +109,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         'locked': 'OrganizationLockedStatus',
         'default_role_id': 'str',
         'default_deployment_role_id': 'str',
+        'permission_mode': 'OrganizationPermissionMode',
         'past_due_since': 'datetime',
         'max_access_token_expiry_days': 'int',
     }
@@ -157,6 +159,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         'locked': 'locked',
         'default_role_id': 'defaultRoleId',
         'default_deployment_role_id': 'defaultDeploymentRoleId',
+        'permission_mode': 'permissionMode',
         'past_due_since': 'pastDueSince',
         'max_access_token_expiry_days': 'maxAccessTokenExpiryDays',
     }
@@ -205,6 +208,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     FIELDS_locked = 'locked'
     FIELDS_default_role_id = 'defaultRoleId'
     FIELDS_default_deployment_role_id = 'defaultDeploymentRoleId'
+    FIELDS_permission_mode = 'permissionMode'
     FIELDS_past_due_since = 'pastDueSince'
     FIELDS_max_access_token_expiry_days = 'maxAccessTokenExpiryDays'
 
@@ -252,6 +256,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     _locked: 'OrganizationLockedStatus'
     _default_role_id: 'str'
     _default_deployment_role_id: 'str'
+    _permission_mode: 'OrganizationPermissionMode'
     _past_due_since: 'datetime'
     _max_access_token_expiry_days: 'int'
 
@@ -301,6 +306,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         locked: 'OrganizationLockedStatus' = None,
         default_role_id: 'str' = None,
         default_deployment_role_id: 'str' = None,
+        permission_mode: 'OrganizationPermissionMode' = None,
         past_due_since: 'datetime' = None,
         max_access_token_expiry_days: 'int' = 0,
     ) -> None:
@@ -350,6 +356,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         self.locked = locked
         self.default_role_id = default_role_id
         self.default_deployment_role_id = default_deployment_role_id
+        self.permission_mode = permission_mode
         self.past_due_since = past_due_since
         self.max_access_token_expiry_days = max_access_token_expiry_days
 
@@ -399,6 +406,7 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
             self._locked = source._locked
             self._default_role_id = source._default_role_id
             self._default_deployment_role_id = source._default_deployment_role_id
+            self._permission_mode = source._permission_mode
             self._past_due_since = source._past_due_since
             self._max_access_token_expiry_days = source._max_access_token_expiry_days
 
@@ -864,6 +872,14 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     @default_deployment_role_id.setter
     def default_deployment_role_id(self, default_deployment_role_id: 'str'):
         self._default_deployment_role_id = default_deployment_role_id
+
+    @property
+    def permission_mode(self) -> 'OrganizationPermissionMode':
+        return self._permission_mode
+
+    @permission_mode.setter
+    def permission_mode(self, permission_mode: 'OrganizationPermissionMode'):
+        self._permission_mode = permission_mode
 
     @property
     def past_due_since(self) -> 'datetime':

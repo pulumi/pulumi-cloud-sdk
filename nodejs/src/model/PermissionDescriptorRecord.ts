@@ -24,6 +24,7 @@ export class PermissionDescriptorRecord extends PermissionDescriptorBase {
     defaultIdentifier?: string;
     version: number;
     isOrgDefault: boolean;
+    isCompatibilityRole?: boolean;
 
     getFixupPrototypeFunction() {
         return PermissionDescriptorRecord.fixupPrototype;

@@ -17,6 +17,7 @@ import type { EnvironmentPermission } from "./EnvironmentPermission";
 import type { InsightsAccountPermission } from "./InsightsAccountPermission";
 import type { NeoApprovalMode } from "./NeoApprovalMode";
 import type { NeoTaskSharingMode } from "./NeoTaskSharingMode";
+import type { OrganizationPermissionMode } from "./OrganizationPermissionMode";
 import type { PreferredVCS } from "./PreferredVCS";
 import type { StackPermission } from "./StackPermission";
 
@@ -42,6 +43,7 @@ export class UpdateOrganizationRequest {
     setDefaultDeploymentRoleId?: string;
     setDefaultAgentPoolID?: string;
     setMaxAccessTokenExpiryDays?: number;
+    setPermissionMode?: OrganizationPermissionMode;
 
     getFixupPrototypeFunction() {
         return UpdateOrganizationRequest.fixupPrototype;

@@ -24,4 +24,6 @@ type AppUpdateProgramRequest struct {
 	// stack it reads, and each stack may contribute at most one update to a window, so an update in a window runs without its preview;
 	// previews join a window of their own, and read what other previews there predicted. Omit it to run the update outside any window.
 	CoherenceWindow string `json:"coherenceWindow,omitempty" yaml:"coherenceWindow,omitempty"`
+	// Pins the managed ESC environment revision the update was evaluated against.
+	Environment *AppUpdateProgramEnvironment `json:"environment,omitempty" yaml:"environment,omitempty"`
 }

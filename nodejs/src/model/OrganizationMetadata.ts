@@ -20,6 +20,7 @@ import type { NeoTaskSharingMode } from "./NeoTaskSharingMode";
 import type { OrganizationFeatures } from "./OrganizationFeatures";
 import type { OrganizationKind } from "./OrganizationKind";
 import type { OrganizationLockedStatus } from "./OrganizationLockedStatus";
+import type { OrganizationPermissionMode } from "./OrganizationPermissionMode";
 import type { OrganizationRole } from "./OrganizationRole";
 import type { PreferredVCS } from "./PreferredVCS";
 import type { SaasOffer } from "./SaasOffer";
@@ -71,6 +72,7 @@ export class OrganizationMetadata {
     locked?: OrganizationLockedStatus;
     defaultRoleId?: string;
     defaultDeploymentRoleId?: string;
+    permissionMode?: OrganizationPermissionMode;
     pastDueSince?: Date;
     maxAccessTokenExpiryDays?: number;
 

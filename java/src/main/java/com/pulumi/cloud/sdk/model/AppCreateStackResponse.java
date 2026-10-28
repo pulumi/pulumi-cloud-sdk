@@ -13,4 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class AppCreateStackResponse {
     // Messages is a list of messages that should be displayed to the user.
     public List<AppMessage> messages;
+
+    // The ESC environment created for the stack, as <project>/<name>. Omitted when none was created.
+    public String managedEnvironment;
 }

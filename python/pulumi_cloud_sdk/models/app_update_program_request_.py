@@ -24,6 +24,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     :var config: dict[str, AppConfigValue] - declared
     :var metadata: AppUpdateMetadata - declared
     :var coherence_window: str - declared
+    :var environment: AppUpdateProgramEnvironment - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
@@ -34,6 +35,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         'config': 'dict[str, AppConfigValue]',
         'metadata': 'AppUpdateMetadata',
         'coherence_window': 'str',
+        'environment': 'AppUpdateProgramEnvironment',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -45,6 +47,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         'config': 'config',
         'metadata': 'metadata',
         'coherence_window': 'coherenceWindow',
+        'environment': 'environment',
     }
 
     FIELDS_name = 'name'
@@ -55,6 +58,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     FIELDS_config = 'config'
     FIELDS_metadata = 'metadata'
     FIELDS_coherence_window = 'coherenceWindow'
+    FIELDS_environment = 'environment'
 
     _name: 'str'
     _runtime: 'str'
@@ -64,6 +68,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     _config: 'dict[str, AppConfigValue]'
     _metadata: 'AppUpdateMetadata'
     _coherence_window: 'str'
+    _environment: 'AppUpdateProgramEnvironment'
 
     def __init__(
         self,
@@ -75,6 +80,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         config: 'dict[str, AppConfigValue]',
         metadata: 'AppUpdateMetadata',
         coherence_window: 'str' = None,
+        environment: 'AppUpdateProgramEnvironment' = None,
     ) -> None:
         super().__init__()
 
@@ -86,6 +92,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
         self.config = config
         self.metadata = metadata
         self.coherence_window = coherence_window
+        self.environment = environment
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppUpdateProgramRequest):
@@ -97,6 +104,7 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
             self._config = source._config
             self._metadata = source._metadata
             self._coherence_window = source._coherence_window
+            self._environment = source._environment
 
     @property
     def name(self) -> 'str':
@@ -262,6 +270,41 @@ class AppUpdateProgramRequest(PulumiAutoModelEncoder):
     @coherence_window.setter
     def coherence_window(self, coherence_window: 'str'):
         self._coherence_window = coherence_window
+
+    @property
+    def environment(self) -> 'AppUpdateProgramEnvironment':
+        return self._environment
+
+    @environment.setter
+    def environment(self, environment: 'AppUpdateProgramEnvironment'):
+        self._environment = environment
+
+    @property
+    def environment__autoinit(self) -> 'AppUpdateProgramEnvironment':
+        """Return ``environment``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._environment``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``environment__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._environment is None:
+            self._environment = self.environment__safederef
+
+        return self._environment
+
+    @property
+    def environment__safederef(self) -> 'AppUpdateProgramEnvironment':
+        """Return ``environment``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``environment`` stays unset and each
+        call returns a new default. Use ``environment__autoinit`` to persist the default on
+        first access.
+        """
+        if self._environment is None:
+            from .. import models
+            return models.AppUpdateProgramEnvironment._new_empty()
+
+        return self._environment
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppUpdateProgramRequest):

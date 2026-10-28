@@ -106,6 +106,7 @@ export class OrganizationFeatures {
     entityUserAssignmentsEnabled: boolean;
     policyExceptionsEnabled: boolean;
     staticDefaultRolesEnabled: boolean;
+    permissionModeEnabled?: boolean;
     policyPostureReportEnabled?: boolean;
 
     getFixupPrototypeFunction() {

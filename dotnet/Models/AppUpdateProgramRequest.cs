@@ -57,5 +57,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("coherenceWindow")]
         public string CoherenceWindow { get; set; }
+
+        /// <summary>
+        /// Pins the managed ESC environment revision the update was evaluated against.
+        /// </summary>
+        [JsonProperty("environment")]
+        public AppUpdateProgramEnvironment Environment { get; set; }
     }
 }

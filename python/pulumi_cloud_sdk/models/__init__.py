@@ -202,6 +202,7 @@ from .app_update_kind_ import AppUpdateKind
 from .app_update_metadata_ import AppUpdateMetadata
 from .app_update_options_ import AppUpdateOptions
 from .app_update_policy_group_request_ import AppUpdatePolicyGroupRequest
+from .app_update_program_environment_ import AppUpdateProgramEnvironment
 from .app_update_program_request_ import AppUpdateProgramRequest
 from .app_update_program_response_ import AppUpdateProgramResponse
 from .app_update_result_ import AppUpdateResult
@@ -664,6 +665,7 @@ from .organization_locked_status_ import OrganizationLockedStatus
 from .organization_member_ import OrganizationMember
 from .organization_member_kind_ import OrganizationMemberKind
 from .organization_metadata_ import OrganizationMetadata
+from .organization_permission_mode_ import OrganizationPermissionMode
 from .organization_role_ import OrganizationRole
 from .organization_summary_ import OrganizationSummary
 from .organization_summary_with_role_ import OrganizationSummaryWithRole

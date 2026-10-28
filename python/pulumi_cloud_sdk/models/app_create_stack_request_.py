@@ -21,6 +21,7 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
     :var teams: list[str] - declared
     :var state: AppUntypedDeployment - declared
     :var config: AppStackConfig - declared
+    :var create_managed_environment: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'stack_name': 'str',
@@ -28,6 +29,7 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
         'teams': 'list[str]',
         'state': 'AppUntypedDeployment',
         'config': 'AppStackConfig',
+        'create_managed_environment': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -36,6 +38,7 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
         'teams': 'teams',
         'state': 'state',
         'config': 'config',
+        'create_managed_environment': 'createManagedEnvironment',
     }
 
     FIELDS_stack_name = 'stackName'
@@ -43,12 +46,14 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
     FIELDS_teams = 'teams'
     FIELDS_state = 'state'
     FIELDS_config = 'config'
+    FIELDS_create_managed_environment = 'createManagedEnvironment'
 
     _stack_name: 'str'
     _tags: 'dict[str, str]'
     _teams: 'list[str]'
     _state: 'AppUntypedDeployment'
     _config: 'AppStackConfig'
+    _create_managed_environment: 'bool'
 
     def __init__(
         self,
@@ -57,6 +62,7 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
         teams: 'list[str]' = None,
         state: 'AppUntypedDeployment' = None,
         config: 'AppStackConfig' = None,
+        create_managed_environment: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -65,6 +71,7 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
         self.teams = teams
         self.state = state
         self.config = config
+        self.create_managed_environment = create_managed_environment
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AppCreateStackRequest):
@@ -73,6 +80,7 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
             self._teams = source._teams
             self._state = source._state
             self._config = source._config
+            self._create_managed_environment = source._create_managed_environment
 
     @property
     def stack_name(self) -> 'str':
@@ -222,6 +230,14 @@ class AppCreateStackRequest(PulumiAutoModelEncoder):
             return models.AppStackConfig._new_empty()
 
         return self._config
+
+    @property
+    def create_managed_environment(self) -> 'bool':
+        return self._create_managed_environment
+
+    @create_managed_environment.setter
+    def create_managed_environment(self, create_managed_environment: 'bool'):
+        self._create_managed_environment = create_managed_environment
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AppCreateStackRequest):

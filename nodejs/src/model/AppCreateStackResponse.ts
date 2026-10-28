@@ -18,6 +18,7 @@ import type { AppMessage } from "./AppMessage";
 
 export class AppCreateStackResponse {
     messages?: AppMessage[];
+    managedEnvironment?: string;
 
     getFixupPrototypeFunction() {
         return AppCreateStackResponse.fixupPrototype;

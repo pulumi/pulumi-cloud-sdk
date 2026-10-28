@@ -23,6 +23,7 @@ export class AppCreateStackRequest {
     teams?: string[];
     state?: AppUntypedDeployment;
     config?: AppStackConfig;
+    createManagedEnvironment?: boolean;
 
     getFixupPrototypeFunction() {
         return AppCreateStackRequest.fixupPrototype;

@@ -108,6 +108,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var entity_user_assignments_enabled: bool - declared
     :var policy_exceptions_enabled: bool - declared
     :var static_default_roles_enabled: bool - declared
+    :var permission_mode_enabled: bool - declared
     :var policy_posture_report_enabled: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
@@ -203,6 +204,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'entity_user_assignments_enabled': 'bool',
         'policy_exceptions_enabled': 'bool',
         'static_default_roles_enabled': 'bool',
+        'permission_mode_enabled': 'bool',
         'policy_posture_report_enabled': 'bool',
     }
 
@@ -299,6 +301,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'entity_user_assignments_enabled': 'entityUserAssignmentsEnabled',
         'policy_exceptions_enabled': 'policyExceptionsEnabled',
         'static_default_roles_enabled': 'staticDefaultRolesEnabled',
+        'permission_mode_enabled': 'permissionModeEnabled',
         'policy_posture_report_enabled': 'policyPostureReportEnabled',
     }
 
@@ -394,6 +397,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_entity_user_assignments_enabled = 'entityUserAssignmentsEnabled'
     FIELDS_policy_exceptions_enabled = 'policyExceptionsEnabled'
     FIELDS_static_default_roles_enabled = 'staticDefaultRolesEnabled'
+    FIELDS_permission_mode_enabled = 'permissionModeEnabled'
     FIELDS_policy_posture_report_enabled = 'policyPostureReportEnabled'
 
     _audit_logs_enabled: 'bool'
@@ -488,6 +492,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _entity_user_assignments_enabled: 'bool'
     _policy_exceptions_enabled: 'bool'
     _static_default_roles_enabled: 'bool'
+    _permission_mode_enabled: 'bool'
     _policy_posture_report_enabled: 'bool'
 
     def __init__(
@@ -584,6 +589,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         link_express_checkout_enabled: 'bool' = False,
         multi_change_requests_enabled: 'bool' = False,
         agents_as_team_members_enabled: 'bool' = False,
+        permission_mode_enabled: 'bool' = False,
         policy_posture_report_enabled: 'bool' = False,
     ) -> None:
         super().__init__()
@@ -680,6 +686,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.entity_user_assignments_enabled = entity_user_assignments_enabled
         self.policy_exceptions_enabled = policy_exceptions_enabled
         self.static_default_roles_enabled = static_default_roles_enabled
+        self.permission_mode_enabled = permission_mode_enabled
         self.policy_posture_report_enabled = policy_posture_report_enabled
 
     def copy_common_fields(self, source: Any, /) -> None:
@@ -776,6 +783,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._entity_user_assignments_enabled = source._entity_user_assignments_enabled
             self._policy_exceptions_enabled = source._policy_exceptions_enabled
             self._static_default_roles_enabled = source._static_default_roles_enabled
+            self._permission_mode_enabled = source._permission_mode_enabled
             self._policy_posture_report_enabled = source._policy_posture_report_enabled
 
     @property
@@ -1702,6 +1710,14 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `static_default_roles_enabled`, must not be `None`")
 
         self._static_default_roles_enabled = static_default_roles_enabled
+
+    @property
+    def permission_mode_enabled(self) -> 'bool':
+        return self._permission_mode_enabled
+
+    @permission_mode_enabled.setter
+    def permission_mode_enabled(self, permission_mode_enabled: 'bool'):
+        self._permission_mode_enabled = permission_mode_enabled
 
     @property
     def policy_posture_report_enabled(self) -> 'bool':

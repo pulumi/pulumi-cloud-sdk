@@ -287,6 +287,9 @@ public class OrganizationFeatures {
     // Whether the organization uses the static default roles: members get their access from a stored default role (Reader, Builder, Maintainer or a custom role) instead of the computed Member role. Derived from the organization's data, not from its plan.
     public boolean staticDefaultRolesEnabled;
 
+    // Whether admins can switch the organization between the permissive and the restricted permission mode. Always false for an organization created restricted, which can never switch.
+    public boolean permissionModeEnabled;
+
     // Whether the monthly Infrastructure Posture report is available to the organization.
     public boolean policyPostureReportEnabled;
 }

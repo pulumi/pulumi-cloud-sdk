@@ -36,6 +36,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
     :var set_default_deployment_role_id: str - declared
     :var set_default_agent_pool_id: str - declared
     :var set_max_access_token_expiry_days: int - declared
+    :var set_permission_mode: OrganizationPermissionMode - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'set_default_stack_permission': 'StackPermission',
@@ -58,6 +59,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
         'set_default_deployment_role_id': 'str',
         'set_default_agent_pool_id': 'str',
         'set_max_access_token_expiry_days': 'int',
+        'set_permission_mode': 'OrganizationPermissionMode',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -81,6 +83,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
         'set_default_deployment_role_id': 'setDefaultDeploymentRoleId',
         'set_default_agent_pool_id': 'setDefaultAgentPoolID',
         'set_max_access_token_expiry_days': 'setMaxAccessTokenExpiryDays',
+        'set_permission_mode': 'setPermissionMode',
     }
 
     FIELDS_set_default_stack_permission = 'setDefaultStackPermission'
@@ -103,6 +106,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
     FIELDS_set_default_deployment_role_id = 'setDefaultDeploymentRoleId'
     FIELDS_set_default_agent_pool_id = 'setDefaultAgentPoolID'
     FIELDS_set_max_access_token_expiry_days = 'setMaxAccessTokenExpiryDays'
+    FIELDS_set_permission_mode = 'setPermissionMode'
 
     _set_default_stack_permission: 'StackPermission'
     _set_default_environment_permission: 'EnvironmentPermission'
@@ -124,6 +128,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
     _set_default_deployment_role_id: 'str'
     _set_default_agent_pool_id: 'str'
     _set_max_access_token_expiry_days: 'int'
+    _set_permission_mode: 'OrganizationPermissionMode'
 
     def __init__(
         self,
@@ -147,6 +152,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
         set_default_deployment_role_id: 'str' = None,
         set_default_agent_pool_id: 'str' = None,
         set_max_access_token_expiry_days: 'int' = 0,
+        set_permission_mode: 'OrganizationPermissionMode' = None,
     ) -> None:
         super().__init__()
 
@@ -170,6 +176,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
         self.set_default_deployment_role_id = set_default_deployment_role_id
         self.set_default_agent_pool_id = set_default_agent_pool_id
         self.set_max_access_token_expiry_days = set_max_access_token_expiry_days
+        self.set_permission_mode = set_permission_mode
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, UpdateOrganizationRequest):
@@ -193,6 +200,7 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
             self._set_default_deployment_role_id = source._set_default_deployment_role_id
             self._set_default_agent_pool_id = source._set_default_agent_pool_id
             self._set_max_access_token_expiry_days = source._set_max_access_token_expiry_days
+            self._set_permission_mode = source._set_permission_mode
 
     @property
     def set_default_stack_permission(self) -> 'StackPermission':
@@ -353,6 +361,14 @@ class UpdateOrganizationRequest(PulumiAutoModelEncoder):
     @set_max_access_token_expiry_days.setter
     def set_max_access_token_expiry_days(self, set_max_access_token_expiry_days: 'int'):
         self._set_max_access_token_expiry_days = set_max_access_token_expiry_days
+
+    @property
+    def set_permission_mode(self) -> 'OrganizationPermissionMode':
+        return self._set_permission_mode
+
+    @set_permission_mode.setter
+    def set_permission_mode(self, set_permission_mode: 'OrganizationPermissionMode'):
+        self._set_permission_mode = set_permission_mode
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, UpdateOrganizationRequest):

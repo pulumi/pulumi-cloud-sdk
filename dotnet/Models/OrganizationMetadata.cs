@@ -275,6 +275,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string DefaultDeploymentRoleID { get; set; }
 
         /// <summary>
+        /// How strictly the organization limits the permissions of the work it runs on its behalf, such as deployments. Absent when the setting is not available to the organization and the organization is permissive.
+        /// </summary>
+        [JsonProperty("permissionMode")]
+        public OrganizationPermissionMode? PermissionMode { get; set; }
+
+        /// <summary>
         /// The time when the subscription entered past-due status, if applicable. Present only when the subscription is past due and the auto-lock grace period is active.
         /// </summary>
         [JsonProperty("pastDueSince")]

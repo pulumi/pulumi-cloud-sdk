@@ -563,6 +563,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool StaticDefaultRolesEnabled { get; set; }
 
         /// <summary>
+        /// Whether admins can switch the organization between the permissive and the restricted permission mode. Always false for an organization created restricted, which can never switch.
+        /// </summary>
+        [JsonProperty("permissionModeEnabled")]
+        public bool PermissionModeEnabled { get; set; }
+
+        /// <summary>
         /// Whether the monthly Infrastructure Posture report is available to the organization.
         /// </summary>
         [JsonProperty("policyPostureReportEnabled")]

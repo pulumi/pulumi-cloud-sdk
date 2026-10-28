@@ -25,4 +25,7 @@ public class AppCreateStackRequest {
 
     // The configuration for the new stack.
     public AppStackConfig config;
+
+    // Whether the service should create an ESC environment that the stack manages.
+    public boolean createManagedEnvironment;
 }
