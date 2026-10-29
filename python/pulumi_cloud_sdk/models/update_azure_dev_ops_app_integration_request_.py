@@ -18,6 +18,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
     """
     :var organization_name: str - declared
     :var project_id: str - declared
+    :var app_client_id: str - declared
     :var disable_pr_comments: bool - declared
     :var disable_neo_summaries: bool - declared
     :var disable_detailed_diff: bool - declared
@@ -26,6 +27,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'organization_name': 'str',
         'project_id': 'str',
+        'app_client_id': 'str',
         'disable_pr_comments': 'bool',
         'disable_neo_summaries': 'bool',
         'disable_detailed_diff': 'bool',
@@ -35,6 +37,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'organization_name': 'organizationName',
         'project_id': 'projectId',
+        'app_client_id': 'appClientId',
         'disable_pr_comments': 'disablePRComments',
         'disable_neo_summaries': 'disableNeoSummaries',
         'disable_detailed_diff': 'disableDetailedDiff',
@@ -43,6 +46,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
 
     FIELDS_organization_name = 'organizationName'
     FIELDS_project_id = 'projectId'
+    FIELDS_app_client_id = 'appClientId'
     FIELDS_disable_pr_comments = 'disablePRComments'
     FIELDS_disable_neo_summaries = 'disableNeoSummaries'
     FIELDS_disable_detailed_diff = 'disableDetailedDiff'
@@ -50,6 +54,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
 
     _organization_name: 'str'
     _project_id: 'str'
+    _app_client_id: 'str'
     _disable_pr_comments: 'bool'
     _disable_neo_summaries: 'bool'
     _disable_detailed_diff: 'bool'
@@ -59,6 +64,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
         self,
         organization_name: 'str' = None,
         project_id: 'str' = None,
+        app_client_id: 'str' = None,
         disable_pr_comments: 'bool' = False,
         disable_neo_summaries: 'bool' = False,
         disable_detailed_diff: 'bool' = False,
@@ -68,6 +74,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
 
         self.organization_name = organization_name
         self.project_id = project_id
+        self.app_client_id = app_client_id
         self.disable_pr_comments = disable_pr_comments
         self.disable_neo_summaries = disable_neo_summaries
         self.disable_detailed_diff = disable_detailed_diff
@@ -77,6 +84,7 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
         if isinstance(source, UpdateAzureDevOpsAppIntegrationRequest):
             self._organization_name = source._organization_name
             self._project_id = source._project_id
+            self._app_client_id = source._app_client_id
             self._disable_pr_comments = source._disable_pr_comments
             self._disable_neo_summaries = source._disable_neo_summaries
             self._disable_detailed_diff = source._disable_detailed_diff
@@ -97,6 +105,14 @@ class UpdateAzureDevOpsAppIntegrationRequest(PulumiAutoModelEncoder):
     @project_id.setter
     def project_id(self, project_id: 'str'):
         self._project_id = project_id
+
+    @property
+    def app_client_id(self) -> 'str':
+        return self._app_client_id
+
+    @app_client_id.setter
+    def app_client_id(self, app_client_id: 'str'):
+        self._app_client_id = app_client_id
 
     @property
     def disable_pr_comments(self) -> 'bool':

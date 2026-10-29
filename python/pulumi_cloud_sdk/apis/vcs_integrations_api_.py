@@ -785,6 +785,57 @@ class VCS_IntegrationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def get_azure_dev_ops_federated_credential_claims(
+        self,
+        org_name: 'str',
+        project_id: 'str',
+        _request_timeout: int = None,
+    ) -> 'AzureDevOpsFederatedCredentialClaims':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_azure_dev_ops_federated_credential_claims`")
+        # verify the required parameter 'project_id' is set
+        if project_id is None:
+            raise ValueError("Missing the required parameter `project_id` when calling `get_azure_dev_ops_federated_credential_claims`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/azure-devops/setup/projects/{projectId}/federated-credential'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if project_id is not None:
+            path_params['projectId'] = project_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AzureDevOpsFederatedCredentialClaims',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def get_azure_dev_ops_integration(
         self,
         org_name: 'str',

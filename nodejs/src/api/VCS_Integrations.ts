@@ -18,6 +18,7 @@ import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } fr
 import { AddCustomVCSRepositoryRequest } from "../model/AddCustomVCSRepositoryRequest";
 import { AzureDevOpsAccessResponse } from "../model/AzureDevOpsAccessResponse";
 import { AzureDevOpsAppIntegrationResponse } from "../model/AzureDevOpsAppIntegrationResponse";
+import { AzureDevOpsFederatedCredentialClaims } from "../model/AzureDevOpsFederatedCredentialClaims";
 import { AzureDevOpsOrganization } from "../model/AzureDevOpsOrganization";
 import { AzureDevOpsProject } from "../model/AzureDevOpsProject";
 import { AzureDevOpsSettingsRequest } from "../model/AzureDevOpsSettingsRequest";
@@ -660,6 +661,50 @@ export class VCS_Integrations {
         return this.client.callWithOptions<AzureDevOpsAccessResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 AzureDevOpsAccessResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetAzureDevOpsFederatedCredentialClaims__generateUrl(
+        orgName: string,
+        projectId: string,
+    ): string {
+        let url = this.basePath + "console/orgs/{orgName}/integrations/azure-devops/setup/projects/{projectId}/federated-credential";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{projectId}", encodeURIComponent(String(projectId)));
+        return url;
+    }
+
+    public GetAzureDevOpsFederatedCredentialClaims(
+        params: {
+            orgName: string,
+            projectId: string,
+        },
+    ): Promise<AzureDevOpsFederatedCredentialClaims> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetAzureDevOpsFederatedCredentialClaims.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetAzureDevOpsFederatedCredentialClaims.");
+        }
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (params.projectId === null || params.projectId === undefined) {
+            throw new Error("Required parameter projectId was null or undefined when calling GetAzureDevOpsFederatedCredentialClaims.");
+        }
+
+        const __path = this.GetAzureDevOpsFederatedCredentialClaims__generateUrl(params.orgName, params.projectId);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<AzureDevOpsFederatedCredentialClaims>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AzureDevOpsFederatedCredentialClaims.fixupPrototype(__res0);
             }
         });
     }

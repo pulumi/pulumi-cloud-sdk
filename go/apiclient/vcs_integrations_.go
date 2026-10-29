@@ -754,6 +754,62 @@ func (p *CloudClient) GetAzureDevOpsAccessStatus(
 	return &result, nil
 }
 
+type InterceptorForGetAzureDevOpsFederatedCredentialClaims struct {
+	OrgName      string
+	ProjectId    string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetAzureDevOpsFederatedCredentialClaims(
+	ctx context.Context,
+	orgName string,
+	projectId string,
+	extraHeaders ...http.Header,
+) (*apitype.AzureDevOpsFederatedCredentialClaims, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetAzureDevOpsFederatedCredentialClaims{
+			OrgName:      orgName,
+			ProjectId:    projectId,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AzureDevOpsFederatedCredentialClaims)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAzureDevOpsFederatedCredentialClaims: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/console/orgs/{orgName}/integrations/azure-devops/setup/projects/{projectId}/federated-credential",
+		map[string]any{
+			"orgName":   orgName,
+			"projectId": projectId,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.AzureDevOpsFederatedCredentialClaims
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForGetAzureDevOpsIntegration struct {
 	OrgName       string
 	IntegrationId string

@@ -228,6 +228,20 @@ public final class VCS_IntegrationsApi {
         return this.client.call($request, new TypeReference<AzureDevOpsAccessResponse>() {});
     }
 
+    public AzureDevOpsFederatedCredentialClaims getAzureDevOpsFederatedCredentialClaims(String orgName, String projectId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getAzureDevOpsFederatedCredentialClaims");
+        }
+        if (projectId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'projectId' when calling getAzureDevOpsFederatedCredentialClaims");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/console/orgs/{orgName}/integrations/azure-devops/setup/projects/{projectId}/federated-credential");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("projectId", projectId);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AzureDevOpsFederatedCredentialClaims>() {});
+    }
+
     public AzureDevOpsAppIntegrationResponse getAzureDevOpsIntegration(String orgName, String integrationId) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getAzureDevOpsIntegration");

@@ -234,6 +234,7 @@ from .aws_kms_config_ import AwsKmsConfig
 from .azure_api_name_ import AzureApiName
 from .azure_dev_ops_access_response_ import AzureDevOpsAccessResponse
 from .azure_dev_ops_app_integration_response_ import AzureDevOpsAppIntegrationResponse
+from .azure_dev_ops_federated_credential_claims_ import AzureDevOpsFederatedCredentialClaims
 from .azure_dev_ops_integration_details_ import AzureDevOpsIntegrationDetails
 from .azure_dev_ops_organization_ import AzureDevOpsOrganization
 from .azure_dev_ops_project_ import AzureDevOpsProject

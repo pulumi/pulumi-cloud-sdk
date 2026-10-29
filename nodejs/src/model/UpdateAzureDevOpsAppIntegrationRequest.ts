@@ -16,6 +16,7 @@
 export class UpdateAzureDevOpsAppIntegrationRequest {
     organizationName?: string;
     projectId?: string;
+    appClientId?: string;
     disablePRComments?: boolean;
     disableNeoSummaries?: boolean;
     disableDetailedDiff?: boolean;

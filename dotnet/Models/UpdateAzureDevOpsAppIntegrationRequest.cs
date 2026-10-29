@@ -23,6 +23,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string ProjectID { get; set; }
 
         /// <summary>
+        /// Client ID of an Entra app registration the organization manages. When set, Pulumi uses this app instead of creating one, so the caller needs no Entra permissions. The app's federated credential must carry the claims returned by GetAzureDevOpsFederatedCredentialClaims for the same project.
+        /// </summary>
+        [JsonProperty("appClientId")]
+        public string AppClientID { get; set; }
+
+        /// <summary>
         /// Whether PR comments are disabled for this integration
         /// </summary>
         [JsonProperty("disablePRComments")]

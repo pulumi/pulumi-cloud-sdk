@@ -244,6 +244,7 @@ export * from "./AwsKmsConfig";
 export * from "./AzureApiName";
 export * from "./AzureDevOpsAccessResponse";
 export * from "./AzureDevOpsAppIntegrationResponse";
+export * from "./AzureDevOpsFederatedCredentialClaims";
 export * from "./AzureDevOpsIntegrationDetails";
 export * from "./AzureDevOpsOrganization";
 export * from "./AzureDevOpsProject";

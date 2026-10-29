@@ -222,6 +222,20 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<AzureDevOpsAccessResponse>(request);
         }
 
+        public AzureDevOpsFederatedCredentialClaims GetAzureDevOpsFederatedCredentialClaims(string orgName, string projectId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetAzureDevOpsFederatedCredentialClaims");
+            }
+            if (projectId == null) {
+                throw new ArgumentNullException(nameof(projectId), "Missing required parameter 'projectId' when calling GetAzureDevOpsFederatedCredentialClaims");
+            }
+            var request = new ApiRequest("GET", "/api/console/orgs/{orgName}/integrations/azure-devops/setup/projects/{projectId}/federated-credential");
+            request.PathParam("orgName", orgName);
+            request.PathParam("projectId", projectId);
+            request.Produces("application/json");
+            return this.client.Call<AzureDevOpsFederatedCredentialClaims>(request);
+        }
+
         public AzureDevOpsAppIntegrationResponse GetAzureDevOpsIntegration(string orgName, string integrationId) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetAzureDevOpsIntegration");
