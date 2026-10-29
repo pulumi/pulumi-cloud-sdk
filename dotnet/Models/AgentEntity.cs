@@ -12,6 +12,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(PolymorphicConverter))]
     [JsonDiscriminator("type")]
     [JsonSubType(typeof(AgentEntity.PR))]
+    [JsonSubType(typeof(AgentEntity.PolicyFinding))]
     [JsonSubType(typeof(AgentEntity.PolicyIssue))]
     [JsonSubType(typeof(AgentEntity.Repository))]
     [JsonSubType(typeof(AgentEntity.Stack))]
@@ -36,6 +37,21 @@ namespace Pulumi.Cloud.Sdk.Models {
             /// </summary>
             [JsonProperty("merged")]
             public bool Merged { get; set; }
+        }
+
+        [JsonSubTypeName("policy_finding")]
+        public class PolicyFinding : AgentEntity {
+            /// <summary>
+            /// The ID of the policy Finding
+            /// </summary>
+            [JsonProperty("id")]
+            public string ID { get; set; }
+
+            /// <summary>
+            /// The name of the policy
+            /// </summary>
+            [JsonProperty("name")]
+            public string Name { get; set; }
         }
 
         [JsonSubTypeName("policy_issue")]

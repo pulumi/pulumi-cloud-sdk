@@ -66,6 +66,7 @@ type targetEntityImpl struct {
 func (m *targetEntityImpl) GetInstancesFromTypeHierarchy() []TargetEntity {
 	return []TargetEntity{
 		&targetEntityEnvironmentImpl{},
+		&targetEntityPolicyExceptionsImpl{},
 	}
 }
 
@@ -98,6 +99,13 @@ func UnmarshalJSONTargetEntity(bytes []byte, res *TargetEntity) error {
 		}
 		*res = &subValue
 		return nil
+	case "policy_exceptions":
+		var subValue targetEntityPolicyExceptionsImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
 	default:
 		return fmt.Errorf("type '%s' not recognized", v.InternalDiscriminator)
 	}
@@ -120,6 +128,13 @@ func UnmarshalYamlTargetEntity(node yaml.Node, res *TargetEntity) error {
 	switch v.InternalDiscriminator {
 	case "environment":
 		var subValue targetEntityEnvironmentImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "policy_exceptions":
+		var subValue targetEntityPolicyExceptionsImpl
 		if err = node.Decode(&subValue); err != nil {
 			return err
 		}

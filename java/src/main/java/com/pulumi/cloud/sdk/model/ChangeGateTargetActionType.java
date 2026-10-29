@@ -9,7 +9,8 @@ import com.fasterxml.jackson.annotation.*;
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum ChangeGateTargetActionType {
     Update("update"),
-    Open("open");
+    Open("open"),
+    Create("create");
 
     private final String value;
 

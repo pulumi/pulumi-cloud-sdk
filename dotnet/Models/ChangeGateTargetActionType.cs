@@ -15,5 +15,8 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [EnumMember(Value = "open")]
         Open,
+
+        [EnumMember(Value = "create")]
+        Create,
     }
 }

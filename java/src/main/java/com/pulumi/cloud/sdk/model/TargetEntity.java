@@ -12,7 +12,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 @javax.annotation.processing.Generated("pulumi-codegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "entityType")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = TargetEntity.Environment.class)
+    @JsonSubTypes.Type(value = TargetEntity.Environment.class),
+    @JsonSubTypes.Type(value = TargetEntity.PolicyExceptions.class)
 })
 public abstract class TargetEntity {
 
@@ -23,5 +24,11 @@ public abstract class TargetEntity {
 
         // The environment name
         public String name;
+    }
+
+    @JsonTypeName("policy_exceptions")
+    public static class PolicyExceptions extends TargetEntity {
+        // The organization name
+        public String organization;
     }
 }

@@ -11,17 +11,20 @@ from .._support import AutoEnumEncoder
 
 class ChangeGateTargetEntityType(AutoEnumEncoder):
     Environment = "environment"
+    PolicyExceptions = "policy_exceptions"
 
     @staticmethod
     def keys() -> list['ChangeGateTargetEntityType']:
         return [
-            ChangeGateTargetEntityType.Environment
+            ChangeGateTargetEntityType.Environment,
+            ChangeGateTargetEntityType.PolicyExceptions
         ]
 
     @staticmethod
     def values() -> list[str]:
         return [
-            ChangeGateTargetEntityType.Environment.value
+            ChangeGateTargetEntityType.Environment.value,
+            ChangeGateTargetEntityType.PolicyExceptions.value
         ]
 
     @staticmethod

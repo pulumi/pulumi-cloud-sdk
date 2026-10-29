@@ -817,6 +817,22 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<string>(request);
         }
 
+        public string ExportPolicyFindings(string orgName, AngularGridGetRowsRequest request, bool? closed) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ExportPolicyFindings");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling ExportPolicyFindings");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/export");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("closed", closed);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("text/plain");
+            return this.client.Call<string>(apiRequest);
+        }
+
         public string ExportPolicyIssues(string orgName, AngularGridGetRowsRequest request, bool? closed) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ExportPolicyIssues");
@@ -1116,6 +1132,61 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<GetPolicyComplianceResultsResponse>(apiRequest);
+        }
+
+        public GetPolicyIssueResponse GetPolicyFinding(string orgName, string findingId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetPolicyFinding");
+            }
+            if (findingId == null) {
+                throw new ArgumentNullException(nameof(findingId), "Missing required parameter 'findingId' when calling GetPolicyFinding");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/findings/{findingId}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("findingId", findingId);
+            request.Produces("application/json");
+            return this.client.Call<GetPolicyIssueResponse>(request);
+        }
+
+        public GetPolicyComplianceResultsResponse GetPolicyFindingsCompliance(string orgName, GetPolicyComplianceResultsRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetPolicyFindingsCompliance");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling GetPolicyFindingsCompliance");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/compliance");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<GetPolicyComplianceResultsResponse>(apiRequest);
+        }
+
+        public PolicyIssueFiltersResponse GetPolicyFindingsFilters(string orgName, PolicyIssueFiltersRequest request, bool? closed) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetPolicyFindingsFilters");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling GetPolicyFindingsFilters");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/filters");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("closed", closed);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<PolicyIssueFiltersResponse>(apiRequest);
+        }
+
+        public PolicyResultsMetadata GetPolicyFindingsMetadata(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetPolicyFindingsMetadata");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/findings/metadata");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<PolicyResultsMetadata>(request);
         }
 
         public PolicyGroup GetPolicyGroup(string orgName, string policyGroup) {
@@ -1591,6 +1662,37 @@ namespace Pulumi.Cloud.Sdk.Api {
                 throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling ListPoliciesCompliance");
             }
             var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policyresults/policies");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<ListPoliciesComplianceResponse>(apiRequest);
+        }
+
+        public ListPolicyIssuesResponse ListPolicyFindings(string orgName, AngularGridGetRowsRequest request, bool? closed) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyFindings");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling ListPolicyFindings");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.QueryParam("closed", closed);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<ListPolicyIssuesResponse>(apiRequest);
+        }
+
+        public ListPoliciesComplianceResponse ListPolicyFindingsPolicies(string orgName, AngularGridGetRowsRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyFindingsPolicies");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling ListPolicyFindingsPolicies");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/policies");
             apiRequest.PathParam("orgName", orgName);
             apiRequest.Body(request);
             apiRequest.Consumes("application/json");
@@ -2354,6 +2456,25 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<WebhookResponse>(apiRequest);
+        }
+
+        public GetPolicyIssueResponse UpdatePolicyFinding(string orgName, string findingId, UpdatePolicyIssueRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdatePolicyFinding");
+            }
+            if (findingId == null) {
+                throw new ArgumentNullException(nameof(findingId), "Missing required parameter 'findingId' when calling UpdatePolicyFinding");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdatePolicyFinding");
+            }
+            var apiRequest = new ApiRequest("PATCH", "/api/orgs/{orgName}/policy/findings/{findingId}");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("findingId", findingId);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<GetPolicyIssueResponse>(apiRequest);
         }
 
         public void UpdatePolicyGroup(string orgName, string policyGroup, UpdatePolicyGroupRequest request) {

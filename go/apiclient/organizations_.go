@@ -2771,6 +2771,63 @@ func (p *CloudClient) ExportOrgResourceSearchQuery(
 	return &result, nil
 }
 
+type InterceptorForExportPolicyFindings struct {
+	OrgName      string
+	Closed       *bool
+	Request      apitype.AngularGridGetRowsRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ExportPolicyFindings(
+	ctx context.Context,
+	orgName string,
+	closed *bool,
+	request apitype.AngularGridGetRowsRequest,
+	extraHeaders ...http.Header,
+) (*string, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForExportPolicyFindings{
+			OrgName:      orgName,
+			Closed:       closed,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(string)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ExportPolicyFindings: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policy/findings/export",
+		map[string]any{
+			"orgName": orgName,
+		},
+		map[string]any{
+			"closed": closed,
+		},
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	rawResult, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	result := string(rawResult)
+	return &result, nil
+}
+
 type InterceptorForExportPolicyIssues struct {
 	OrgName      string
 	Closed       *bool
@@ -4106,6 +4163,231 @@ func (p *CloudClient) GetPolicyComplianceResults(
 		return nil, err
 	}
 	var result apitype.GetPolicyComplianceResultsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForGetPolicyFinding struct {
+	OrgName      string
+	FindingId    string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetPolicyFinding(
+	ctx context.Context,
+	orgName string,
+	findingId string,
+	extraHeaders ...http.Header,
+) (*apitype.GetPolicyIssueResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetPolicyFinding{
+			OrgName:      orgName,
+			FindingId:    findingId,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetPolicyIssueResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyFinding: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/policy/findings/{findingId}",
+		map[string]any{
+			"orgName":   orgName,
+			"findingId": findingId,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.GetPolicyIssueResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForGetPolicyFindingsCompliance struct {
+	OrgName      string
+	Request      apitype.GetPolicyComplianceResultsRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetPolicyFindingsCompliance(
+	ctx context.Context,
+	orgName string,
+	request apitype.GetPolicyComplianceResultsRequest,
+	extraHeaders ...http.Header,
+) (*apitype.GetPolicyComplianceResultsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetPolicyFindingsCompliance{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetPolicyComplianceResultsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyFindingsCompliance: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policy/findings/compliance",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.GetPolicyComplianceResultsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForGetPolicyFindingsFilters struct {
+	OrgName      string
+	Closed       *bool
+	Request      apitype.PolicyIssueFiltersRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetPolicyFindingsFilters(
+	ctx context.Context,
+	orgName string,
+	closed *bool,
+	request apitype.PolicyIssueFiltersRequest,
+	extraHeaders ...http.Header,
+) (*apitype.PolicyIssueFiltersResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetPolicyFindingsFilters{
+			OrgName:      orgName,
+			Closed:       closed,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyIssueFiltersResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyFindingsFilters: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policy/findings/filters",
+		map[string]any{
+			"orgName": orgName,
+		},
+		map[string]any{
+			"closed": closed,
+		},
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PolicyIssueFiltersResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForGetPolicyFindingsMetadata struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetPolicyFindingsMetadata(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.PolicyResultsMetadata, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetPolicyFindingsMetadata{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyResultsMetadata)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyFindingsMetadata: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/policy/findings/metadata",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PolicyResultsMetadata
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -6212,6 +6494,123 @@ func (p *CloudClient) ListPoliciesCompliance(
 		ctx,
 		"POST",
 		"/api/orgs/{orgName}/policyresults/policies",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListPoliciesComplianceResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForListPolicyFindings struct {
+	OrgName      string
+	Closed       *bool
+	Request      apitype.AngularGridGetRowsRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListPolicyFindings(
+	ctx context.Context,
+	orgName string,
+	closed *bool,
+	request apitype.AngularGridGetRowsRequest,
+	extraHeaders ...http.Header,
+) (*apitype.ListPolicyIssuesResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListPolicyFindings{
+			OrgName:      orgName,
+			Closed:       closed,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPolicyIssuesResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyFindings: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policy/findings",
+		map[string]any{
+			"orgName": orgName,
+		},
+		map[string]any{
+			"closed": closed,
+		},
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListPolicyIssuesResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForListPolicyFindingsPolicies struct {
+	OrgName      string
+	Request      apitype.AngularGridGetRowsRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListPolicyFindingsPolicies(
+	ctx context.Context,
+	orgName string,
+	request apitype.AngularGridGetRowsRequest,
+	extraHeaders ...http.Header,
+) (*apitype.ListPoliciesComplianceResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListPolicyFindingsPolicies{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPoliciesComplianceResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyFindingsPolicies: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policy/findings/policies",
 		map[string]any{
 			"orgName": orgName,
 		},
@@ -9000,6 +9399,66 @@ func (p *CloudClient) UpdateOrganizationWebhook(
 		return nil, err
 	}
 	var result apitype.WebhookResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForUpdatePolicyFinding struct {
+	OrgName      string
+	FindingId    string
+	Request      apitype.UpdatePolicyIssueRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) UpdatePolicyFinding(
+	ctx context.Context,
+	orgName string,
+	findingId string,
+	request apitype.UpdatePolicyIssueRequest,
+	extraHeaders ...http.Header,
+) (*apitype.GetPolicyIssueResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForUpdatePolicyFinding{
+			OrgName:      orgName,
+			FindingId:    findingId,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.GetPolicyIssueResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdatePolicyFinding: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"PATCH",
+		"/api/orgs/{orgName}/policy/findings/{findingId}",
+		map[string]any{
+			"orgName":   orgName,
+			"findingId": findingId,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.GetPolicyIssueResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

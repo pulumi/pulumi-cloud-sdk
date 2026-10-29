@@ -48,6 +48,7 @@ from .agent_console_event_user_input_ import AgentConsoleEventUserInput
 from .agent_entity_ import AgentEntity
 from .agent_entity_diff_ import AgentEntityDiff
 from .agent_entity_pr_ import AgentEntityPR
+from .agent_entity_policy_finding_ import AgentEntityPolicyFinding
 from .agent_entity_policy_issue_ import AgentEntityPolicyIssue
 from .agent_entity_repository_ import AgentEntityRepository
 from .agent_entity_stack_ import AgentEntityStack
@@ -855,6 +856,7 @@ from .step_status_ import StepStatus
 from .submit_change_request_request_ import SubmitChangeRequestRequest
 from .target_entity_ import TargetEntity
 from .target_entity_environment_ import TargetEntityEnvironment
+from .target_entity_policy_exceptions_ import TargetEntityPolicyExceptions
 from .team_ import Team
 from .team_account_permission_ import TeamAccountPermission
 from .team_environment_settings_ import TeamEnvironmentSettings

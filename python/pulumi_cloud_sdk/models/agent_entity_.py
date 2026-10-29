@@ -67,6 +67,7 @@ class AgentEntity(PulumiAutoModelEncoder):
         if not switcher:
             from .. import models
             switcher = {
+                "policy_finding": models.AgentEntityPolicyFinding,
                 "policy_issue": models.AgentEntityPolicyIssue,
                 "pull_request": models.AgentEntityPR,
                 "repository": models.AgentEntityRepository,

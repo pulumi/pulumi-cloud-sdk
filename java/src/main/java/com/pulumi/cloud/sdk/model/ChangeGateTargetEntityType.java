@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.*;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum ChangeGateTargetEntityType {
-    Environment("environment");
+    Environment("environment"),
+    PolicyExceptions("policy_exceptions");
 
     private final String value;
 

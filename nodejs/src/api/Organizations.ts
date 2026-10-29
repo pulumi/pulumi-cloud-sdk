@@ -2465,6 +2465,49 @@ export class Organizations {
         return this.client.callWithOptions(__path, __requestOptions);
     }
 
+    public ExportPolicyFindings__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/export";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ExportPolicyFindings(
+        params: {
+            orgName: string,
+            closed?: boolean,
+        },
+        request: AngularGridGetRowsRequest,
+    ): Promise<string> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ExportPolicyFindings.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ExportPolicyFindings.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling ExportPolicyFindings.");
+        }
+
+        const __path = this.ExportPolicyFindings__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.closed !== undefined) {
+            __requestOptions.setQueryParam("closed", params.closed);
+        }
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("text/plain");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions(__path, __requestOptions);
+    }
+
     public ExportPolicyIssues__generateUrl(orgName: string): string {
         let url = this.basePath + "orgs/{orgName}/policyresults/issues/export";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -3445,6 +3488,174 @@ export class Organizations {
         return this.client.callWithOptions<GetPolicyComplianceResultsResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 GetPolicyComplianceResultsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetPolicyFinding__generateUrl(
+        orgName: string,
+        findingId: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/{findingId}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{findingId}", encodeURIComponent(String(findingId)));
+        return url;
+    }
+
+    public GetPolicyFinding(
+        params: {
+            orgName: string,
+            findingId: string,
+        },
+    ): Promise<GetPolicyIssueResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetPolicyFinding.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetPolicyFinding.");
+        }
+
+        // verify required parameter 'findingId' is not null or undefined
+        if (params.findingId === null || params.findingId === undefined) {
+            throw new Error("Required parameter findingId was null or undefined when calling GetPolicyFinding.");
+        }
+
+        const __path = this.GetPolicyFinding__generateUrl(params.orgName, params.findingId);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<GetPolicyIssueResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                GetPolicyIssueResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetPolicyFindingsCompliance__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/compliance";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public GetPolicyFindingsCompliance(
+        params: {
+            orgName: string,
+        },
+        request: GetPolicyComplianceResultsRequest,
+    ): Promise<GetPolicyComplianceResultsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetPolicyFindingsCompliance.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetPolicyFindingsCompliance.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling GetPolicyFindingsCompliance.");
+        }
+
+        const __path = this.GetPolicyFindingsCompliance__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<GetPolicyComplianceResultsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                GetPolicyComplianceResultsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetPolicyFindingsFilters__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/filters";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public GetPolicyFindingsFilters(
+        params: {
+            orgName: string,
+            closed?: boolean,
+        },
+        request: PolicyIssueFiltersRequest,
+    ): Promise<PolicyIssueFiltersResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetPolicyFindingsFilters.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetPolicyFindingsFilters.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling GetPolicyFindingsFilters.");
+        }
+
+        const __path = this.GetPolicyFindingsFilters__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.closed !== undefined) {
+            __requestOptions.setQueryParam("closed", params.closed);
+        }
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<PolicyIssueFiltersResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PolicyIssueFiltersResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetPolicyFindingsMetadata__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/metadata";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public GetPolicyFindingsMetadata(
+        params: {
+            orgName: string,
+        },
+    ): Promise<PolicyResultsMetadata> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetPolicyFindingsMetadata.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetPolicyFindingsMetadata.");
+        }
+
+        const __path = this.GetPolicyFindingsMetadata__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<PolicyResultsMetadata>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PolicyResultsMetadata.fixupPrototype(__res0);
             }
         });
     }
@@ -5017,6 +5228,96 @@ export class Organizations {
         }
 
         const __path = this.ListPoliciesCompliance__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<ListPoliciesComplianceResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListPoliciesComplianceResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListPolicyFindings__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListPolicyFindings(
+        params: {
+            orgName: string,
+            closed?: boolean,
+        },
+        request: AngularGridGetRowsRequest,
+    ): Promise<ListPolicyIssuesResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListPolicyFindings.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListPolicyFindings.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling ListPolicyFindings.");
+        }
+
+        const __path = this.ListPolicyFindings__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.closed !== undefined) {
+            __requestOptions.setQueryParam("closed", params.closed);
+        }
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<ListPolicyIssuesResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListPolicyIssuesResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListPolicyFindingsPolicies__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/policies";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListPolicyFindingsPolicies(
+        params: {
+            orgName: string,
+        },
+        request: AngularGridGetRowsRequest,
+    ): Promise<ListPoliciesComplianceResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListPolicyFindingsPolicies.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListPolicyFindingsPolicies.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling ListPolicyFindingsPolicies.");
+        }
+
+        const __path = this.ListPolicyFindingsPolicies__generateUrl(params.orgName);
 
         let __requestOptions = new ApiRequest();
 
@@ -7266,6 +7567,59 @@ export class Organizations {
         return this.client.callWithOptions<WebhookResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 WebhookResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public UpdatePolicyFinding__generateUrl(
+        orgName: string,
+        findingId: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/policy/findings/{findingId}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{findingId}", encodeURIComponent(String(findingId)));
+        return url;
+    }
+
+    public UpdatePolicyFinding(
+        params: {
+            orgName: string,
+            findingId: string,
+        },
+        request: UpdatePolicyIssueRequest,
+    ): Promise<GetPolicyIssueResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdatePolicyFinding.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdatePolicyFinding.");
+        }
+
+        // verify required parameter 'findingId' is not null or undefined
+        if (params.findingId === null || params.findingId === undefined) {
+            throw new Error("Required parameter findingId was null or undefined when calling UpdatePolicyFinding.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdatePolicyFinding.");
+        }
+
+        const __path = this.UpdatePolicyFinding__generateUrl(params.orgName, params.findingId);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "PATCH";
+
+        return this.client.callWithOptions<GetPolicyIssueResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                GetPolicyIssueResponse.fixupPrototype(__res0);
             }
         });
     }

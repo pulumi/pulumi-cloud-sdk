@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = AgentEntity.PR.class),
+    @JsonSubTypes.Type(value = AgentEntity.PolicyFinding.class),
     @JsonSubTypes.Type(value = AgentEntity.PolicyIssue.class),
     @JsonSubTypes.Type(value = AgentEntity.Repository.class),
     @JsonSubTypes.Type(value = AgentEntity.Stack.class)
@@ -29,6 +30,15 @@ public abstract class AgentEntity {
 
         // If the PR has been merged already
         public boolean merged;
+    }
+
+    @JsonTypeName("policy_finding")
+    public static class PolicyFinding extends AgentEntity {
+        // The ID of the policy Finding
+        public String id;
+
+        // The name of the policy
+        public String name;
     }
 
     @JsonTypeName("policy_issue")

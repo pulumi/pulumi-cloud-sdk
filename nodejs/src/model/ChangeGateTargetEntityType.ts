@@ -15,4 +15,5 @@
 
 export enum ChangeGateTargetEntityType {
     Environment = "environment",
+    PolicyExceptions = "policy_exceptions",
 }

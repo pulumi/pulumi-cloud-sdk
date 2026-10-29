@@ -12,19 +12,22 @@ from .._support import AutoEnumEncoder
 class ChangeGateTargetActionType(AutoEnumEncoder):
     Update = "update"
     Open = "open"
+    Create = "create"
 
     @staticmethod
     def keys() -> list['ChangeGateTargetActionType']:
         return [
             ChangeGateTargetActionType.Update,
-            ChangeGateTargetActionType.Open
+            ChangeGateTargetActionType.Open,
+            ChangeGateTargetActionType.Create
         ]
 
     @staticmethod
     def values() -> list[str]:
         return [
             ChangeGateTargetActionType.Update.value,
-            ChangeGateTargetActionType.Open.value
+            ChangeGateTargetActionType.Open.value,
+            ChangeGateTargetActionType.Create.value
         ]
 
     @staticmethod

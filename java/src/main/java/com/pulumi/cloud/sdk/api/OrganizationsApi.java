@@ -823,6 +823,22 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<String>() {});
     }
 
+    public String exportPolicyFindings(String orgName, AngularGridGetRowsRequest request, Boolean closed) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling exportPolicyFindings");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling exportPolicyFindings");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/export");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.queryParam("closed", closed);
+        $request.consumes("application/json");
+        $request.produces("text/plain");
+        return this.client.call($request, new TypeReference<String>() {});
+    }
+
     public String exportPolicyIssues(String orgName, AngularGridGetRowsRequest request, Boolean closed) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling exportPolicyIssues");
@@ -1122,6 +1138,61 @@ public final class OrganizationsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<GetPolicyComplianceResultsResponse>() {});
+    }
+
+    public GetPolicyIssueResponse getPolicyFinding(String orgName, String findingId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getPolicyFinding");
+        }
+        if (findingId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'findingId' when calling getPolicyFinding");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/findings/{findingId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("findingId", findingId);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<GetPolicyIssueResponse>() {});
+    }
+
+    public GetPolicyComplianceResultsResponse getPolicyFindingsCompliance(String orgName, GetPolicyComplianceResultsRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getPolicyFindingsCompliance");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling getPolicyFindingsCompliance");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/compliance");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<GetPolicyComplianceResultsResponse>() {});
+    }
+
+    public PolicyIssueFiltersResponse getPolicyFindingsFilters(String orgName, PolicyIssueFiltersRequest request, Boolean closed) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getPolicyFindingsFilters");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling getPolicyFindingsFilters");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/filters");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.queryParam("closed", closed);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PolicyIssueFiltersResponse>() {});
+    }
+
+    public PolicyResultsMetadata getPolicyFindingsMetadata(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getPolicyFindingsMetadata");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/findings/metadata");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PolicyResultsMetadata>() {});
     }
 
     public PolicyGroup getPolicyGroup(String orgName, String policyGroup) {
@@ -1609,6 +1680,37 @@ public final class OrganizationsApi {
             throw new IllegalArgumentException("Missing required parameter 'request' when calling listPoliciesCompliance");
         }
         ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policyresults/policies");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListPoliciesComplianceResponse>() {});
+    }
+
+    public ListPolicyIssuesResponse listPolicyFindings(String orgName, AngularGridGetRowsRequest request, Boolean closed) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyFindings");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling listPolicyFindings");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.queryParam("closed", closed);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListPolicyIssuesResponse>() {});
+    }
+
+    public ListPoliciesComplianceResponse listPolicyFindingsPolicies(String orgName, AngularGridGetRowsRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyFindingsPolicies");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling listPolicyFindingsPolicies");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policy/findings/policies");
         $request.pathParam("orgName", orgName);
         $request.body(request);
         $request.consumes("application/json");
@@ -2375,6 +2477,25 @@ public final class OrganizationsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<WebhookResponse>() {});
+    }
+
+    public GetPolicyIssueResponse updatePolicyFinding(String orgName, String findingId, UpdatePolicyIssueRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updatePolicyFinding");
+        }
+        if (findingId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'findingId' when calling updatePolicyFinding");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updatePolicyFinding");
+        }
+        ApiRequest $request = new ApiRequest("PATCH", "/api/orgs/{orgName}/policy/findings/{findingId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("findingId", findingId);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<GetPolicyIssueResponse>() {});
     }
 
     public void updatePolicyGroup(String orgName, String policyGroup, UpdatePolicyGroupRequest request) {

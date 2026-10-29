@@ -12,6 +12,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(PolymorphicConverter))]
     [JsonDiscriminator("entityType")]
     [JsonSubType(typeof(TargetEntity.Environment))]
+    [JsonSubType(typeof(TargetEntity.PolicyExceptions))]
     public abstract class TargetEntity {
 
         [JsonSubTypeName("environment")]
@@ -27,6 +28,15 @@ namespace Pulumi.Cloud.Sdk.Models {
             /// </summary>
             [JsonProperty("name")]
             public string Name { get; set; }
+        }
+
+        [JsonSubTypeName("policy_exceptions")]
+        public class PolicyExceptions : TargetEntity {
+            /// <summary>
+            /// The organization name
+            /// </summary>
+            [JsonProperty("organization")]
+            public string Organization { get; set; }
         }
     }
 }

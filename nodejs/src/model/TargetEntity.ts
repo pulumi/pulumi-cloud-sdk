@@ -50,10 +50,14 @@ export class TargetEntity {
     protected static setPrototype(obj: TargetEntity): boolean {
         // Lazy import - only evaluated when called
         const { TargetEntityEnvironment } = require("./TargetEntityEnvironment");
+        const { TargetEntityPolicyExceptions } = require("./TargetEntityPolicyExceptions");
 
         switch (obj.entityType) {
             case "environment":
                 Object.setPrototypeOf(obj, TargetEntityEnvironment.prototype);
+                break;
+            case "policy_exceptions":
+                Object.setPrototypeOf(obj, TargetEntityPolicyExceptions.prototype);
                 break;
         }
 
@@ -63,9 +67,11 @@ export class TargetEntity {
     static getTypeHierarchy(): (typeof TargetEntity)[] {
         // Lazy import - only evaluated when called
         const { TargetEntityEnvironment } = require("./TargetEntityEnvironment");
+        const { TargetEntityPolicyExceptions } = require("./TargetEntityPolicyExceptions");
 
         return [
             TargetEntityEnvironment,
+            TargetEntityPolicyExceptions,
         ];
     }
 

@@ -2763,6 +2763,60 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def export_policy_findings(
+        self,
+        org_name: 'str',
+        request: 'AngularGridGetRowsRequest',
+        closed: 'bool' = None,
+        _request_timeout: int = None,
+    ) -> 'str':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `export_policy_findings`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `export_policy_findings`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/export'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+        if closed is not None:
+            query_params['closed'] = closed
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['text/plain'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def export_policy_issues(
         self,
         org_name: 'str',
@@ -3941,6 +3995,207 @@ class OrganizationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='GetPolicyComplianceResultsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def get_policy_finding(
+        self,
+        org_name: 'str',
+        finding_id: 'str',
+        _request_timeout: int = None,
+    ) -> 'GetPolicyIssueResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_policy_finding`")
+        # verify the required parameter 'finding_id' is set
+        if finding_id is None:
+            raise ValueError("Missing the required parameter `finding_id` when calling `get_policy_finding`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/{findingId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if finding_id is not None:
+            path_params['findingId'] = finding_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GetPolicyIssueResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def get_policy_findings_compliance(
+        self,
+        org_name: 'str',
+        request: 'GetPolicyComplianceResultsRequest',
+        _request_timeout: int = None,
+    ) -> 'GetPolicyComplianceResultsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_policy_findings_compliance`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `get_policy_findings_compliance`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/compliance'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GetPolicyComplianceResultsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def get_policy_findings_filters(
+        self,
+        org_name: 'str',
+        request: 'PolicyIssueFiltersRequest',
+        closed: 'bool' = None,
+        _request_timeout: int = None,
+    ) -> 'PolicyIssueFiltersResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_policy_findings_filters`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `get_policy_findings_filters`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/filters'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+        if closed is not None:
+            query_params['closed'] = closed
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PolicyIssueFiltersResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def get_policy_findings_metadata(
+        self,
+        org_name: 'str',
+        _request_timeout: int = None,
+    ) -> 'PolicyResultsMetadata':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_policy_findings_metadata`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/metadata'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PolicyResultsMetadata',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
@@ -5781,6 +6036,111 @@ class OrganizationsApi(object):
 
         collection_formats = {}
         resource_path = '/api/orgs/{orgName}/policyresults/policies'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListPoliciesComplianceResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def list_policy_findings(
+        self,
+        org_name: 'str',
+        request: 'AngularGridGetRowsRequest',
+        closed: 'bool' = None,
+        _request_timeout: int = None,
+    ) -> 'ListPolicyIssuesResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_policy_findings`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `list_policy_findings`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+        if closed is not None:
+            query_params['closed'] = closed
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListPolicyIssuesResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def list_policy_findings_policies(
+        self,
+        org_name: 'str',
+        request: 'AngularGridGetRowsRequest',
+        _request_timeout: int = None,
+    ) -> 'ListPoliciesComplianceResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_policy_findings_policies`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `list_policy_findings_policies`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/policies'
         path_params = {}
         if org_name is not None:
             path_params['orgName'] = org_name
@@ -8450,6 +8810,63 @@ class OrganizationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='WebhookResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def update_policy_finding(
+        self,
+        org_name: 'str',
+        finding_id: 'str',
+        request: 'UpdatePolicyIssueRequest',
+        _request_timeout: int = None,
+    ) -> 'GetPolicyIssueResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `update_policy_finding`")
+        # verify the required parameter 'finding_id' is set
+        if finding_id is None:
+            raise ValueError("Missing the required parameter `finding_id` when calling `update_policy_finding`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `update_policy_finding`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/findings/{findingId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if finding_id is not None:
+            path_params['findingId'] = finding_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GetPolicyIssueResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

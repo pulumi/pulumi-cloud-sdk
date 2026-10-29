@@ -68,6 +68,7 @@ class TargetEntity(PulumiAutoModelEncoder):
             from .. import models
             switcher = {
                 "environment": models.TargetEntityEnvironment,
+                "policy_exceptions": models.TargetEntityPolicyExceptions,
             }
             setattr(TargetEntity, "__DISCRIMINATOR_SWITCHER__", switcher)
         return switcher

@@ -49,12 +49,16 @@ export class AgentEntity {
 
     protected static setPrototype(obj: AgentEntity): boolean {
         // Lazy import - only evaluated when called
+        const { AgentEntityPolicyFinding } = require("./AgentEntityPolicyFinding");
         const { AgentEntityPolicyIssue } = require("./AgentEntityPolicyIssue");
         const { AgentEntityPR } = require("./AgentEntityPR");
         const { AgentEntityRepository } = require("./AgentEntityRepository");
         const { AgentEntityStack } = require("./AgentEntityStack");
 
         switch (obj.type) {
+            case "policy_finding":
+                Object.setPrototypeOf(obj, AgentEntityPolicyFinding.prototype);
+                break;
             case "policy_issue":
                 Object.setPrototypeOf(obj, AgentEntityPolicyIssue.prototype);
                 break;
@@ -74,12 +78,14 @@ export class AgentEntity {
 
     static getTypeHierarchy(): (typeof AgentEntity)[] {
         // Lazy import - only evaluated when called
+        const { AgentEntityPolicyFinding } = require("./AgentEntityPolicyFinding");
         const { AgentEntityPolicyIssue } = require("./AgentEntityPolicyIssue");
         const { AgentEntityPR } = require("./AgentEntityPR");
         const { AgentEntityRepository } = require("./AgentEntityRepository");
         const { AgentEntityStack } = require("./AgentEntityStack");
 
         return [
+            AgentEntityPolicyFinding,
             AgentEntityPolicyIssue,
             AgentEntityPR,
             AgentEntityRepository,

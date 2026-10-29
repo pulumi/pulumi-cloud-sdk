@@ -12,5 +12,8 @@ namespace Pulumi.Cloud.Sdk.Models {
     public enum ChangeGateTargetEntityType {
         [EnumMember(Value = "environment")]
         Environment,
+
+        [EnumMember(Value = "policy_exceptions")]
+        PolicyExceptions,
     }
 }

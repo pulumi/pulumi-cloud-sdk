@@ -12,12 +12,14 @@ type ChangeGateTargetActionType string
 const (
 	ChangeGateTargetActionTypeUpdate ChangeGateTargetActionType = "update"
 	ChangeGateTargetActionTypeOpen   ChangeGateTargetActionType = "open"
+	ChangeGateTargetActionTypeCreate ChangeGateTargetActionType = "create"
 )
 
 func (v ChangeGateTargetActionType) AllValues() []ChangeGateTargetActionType {
 	return []ChangeGateTargetActionType{
 		ChangeGateTargetActionTypeUpdate,
 		ChangeGateTargetActionTypeOpen,
+		ChangeGateTargetActionTypeCreate,
 	}
 }
 
@@ -26,6 +28,8 @@ func (v ChangeGateTargetActionType) IsValid() bool {
 	case ChangeGateTargetActionTypeUpdate:
 		return true
 	case ChangeGateTargetActionTypeOpen:
+		return true
+	case ChangeGateTargetActionTypeCreate:
 		return true
 	}
 
@@ -38,6 +42,8 @@ func (v ChangeGateTargetActionType) openapiName() string {
 		return "Update"
 	case ChangeGateTargetActionTypeOpen:
 		return "Open"
+	case ChangeGateTargetActionTypeCreate:
+		return "Create"
 	}
 
 	return ""
