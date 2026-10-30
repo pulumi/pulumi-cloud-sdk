@@ -37,4 +37,7 @@ public class OrganizationMember {
 
     // Suspended indicates that the membership is suspended: the member keeps their place in the organization but has no access until an administrator restores them. Suspended members are only included in responses when explicitly requested.
     public boolean suspended;
+
+    // FollowsDefaultRole is true when the member has no role of their own and gets the organization's default role. A member assigned the default role directly is false.
+    public boolean followsDefaultRole;
 }

@@ -63,5 +63,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("suspended")]
         public bool Suspended { get; set; }
+
+        /// <summary>
+        /// FollowsDefaultRole is true when the member has no role of their own and gets the organization's default role. A member assigned the default role directly is false.
+        /// </summary>
+        [JsonProperty("followsDefaultRole")]
+        public bool FollowsDefaultRole { get; set; }
     }
 }

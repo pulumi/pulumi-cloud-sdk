@@ -25,6 +25,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
     :var fga_role: FGARole - declared
     :var teams: list[str] - declared
     :var suspended: bool - declared
+    :var follows_default_role: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'role': 'OrganizationRole',
@@ -36,6 +37,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
         'fga_role': 'FGARole',
         'teams': 'list[str]',
         'suspended': 'bool',
+        'follows_default_role': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -48,6 +50,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
         'fga_role': 'fgaRole',
         'teams': 'teams',
         'suspended': 'suspended',
+        'follows_default_role': 'followsDefaultRole',
     }
 
     FIELDS_role = 'role'
@@ -59,6 +62,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
     FIELDS_fga_role = 'fgaRole'
     FIELDS_teams = 'teams'
     FIELDS_suspended = 'suspended'
+    FIELDS_follows_default_role = 'followsDefaultRole'
 
     _role: 'OrganizationRole'
     _user: 'UserInfo'
@@ -69,6 +73,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
     _fga_role: 'FGARole'
     _teams: 'list[str]'
     _suspended: 'bool'
+    _follows_default_role: 'bool'
 
     def __init__(
         self,
@@ -81,6 +86,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
         links: 'MemberLinks' = None,
         teams: 'list[str]' = None,
         suspended: 'bool' = False,
+        follows_default_role: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -93,6 +99,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
         self.fga_role = fga_role
         self.teams = teams
         self.suspended = suspended
+        self.follows_default_role = follows_default_role
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OrganizationMember):
@@ -105,6 +112,7 @@ class OrganizationMember(PulumiAutoModelEncoder):
             self._fga_role = source._fga_role
             self._teams = source._teams
             self._suspended = source._suspended
+            self._follows_default_role = source._follows_default_role
 
     @property
     def role(self) -> 'OrganizationRole':
@@ -302,6 +310,14 @@ class OrganizationMember(PulumiAutoModelEncoder):
     @suspended.setter
     def suspended(self, suspended: 'bool'):
         self._suspended = suspended
+
+    @property
+    def follows_default_role(self) -> 'bool':
+        return self._follows_default_role
+
+    @follows_default_role.setter
+    def follows_default_role(self, follows_default_role: 'bool'):
+        self._follows_default_role = follows_default_role
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, OrganizationMember):
