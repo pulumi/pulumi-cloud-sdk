@@ -60,6 +60,36 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<AgentClaimsStatus>(request);
         }
 
+        public AgentAutomationV2 CreateAgentAutomationV2(string orgName, CreateAgentAutomationV2Request request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateAgentAutomationV2");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreateAgentAutomationV2");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/v2/agents/{orgName}/automations");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentAutomationV2>(apiRequest);
+        }
+
+        public AgentAutomationV2EventResponse CreateAgentAutomationV2Event(string automationID, JToken request) {
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling CreateAgentAutomationV2Event");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreateAgentAutomationV2Event");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/v2/agents/triggers/{automationID}/events");
+            apiRequest.PathParam("automationID", automationID);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentAutomationV2EventResponse>(apiRequest);
+        }
+
         public CreateAgentTaskResponse CreateTasks(string orgName, CreateAgentTaskRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateTasks");
@@ -73,6 +103,33 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<CreateAgentTaskResponse>(apiRequest);
+        }
+
+        public void DeleteAgentAutomationV2(string orgName, string automationID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DeleteAgentAutomationV2");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling DeleteAgentAutomationV2");
+            }
+            var request = new ApiRequest("DELETE", "/api/v2/agents/{orgName}/automations/{automationID}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("automationID", automationID);
+            this.client.Call(request);
+        }
+
+        public AgentAutomationV2 GetAgentAutomationV2(string orgName, string automationID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetAgentAutomationV2");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling GetAgentAutomationV2");
+            }
+            var request = new ApiRequest("GET", "/api/v2/agents/{orgName}/automations/{automationID}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("automationID", automationID);
+            request.Produces("application/json");
+            return this.client.Call<AgentAutomationV2>(request);
         }
 
         public AgentTask GetTask(string orgName, string taskID) {
@@ -103,6 +160,38 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.QueryParam("pageSize", pageSize);
             request.Produces("application/json");
             return this.client.Call<ListAgentTaskEventsResponse>(request);
+        }
+
+        public ListAgentTasksResponse ListAgentAutomationV2Tasks(string orgName, string automationID, string continuationToken, long? pageSize, AgentTaskSortField? sortBy, AgentTaskSortDirection? sortDirection) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListAgentAutomationV2Tasks");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling ListAgentAutomationV2Tasks");
+            }
+            var request = new ApiRequest("GET", "/api/v2/agents/{orgName}/automations/{automationID}/tasks");
+            request.PathParam("orgName", orgName);
+            request.PathParam("automationID", automationID);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("pageSize", pageSize);
+            request.QueryParam("sortBy", sortBy);
+            request.QueryParam("sortDirection", sortDirection);
+            request.Produces("application/json");
+            return this.client.Call<ListAgentTasksResponse>(request);
+        }
+
+        public ListAgentAutomationsV2Response ListAgentAutomationsV2(string orgName, string continuationToken, string filter, AgentAutomationKind? kind, long? pageSize) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListAgentAutomationsV2");
+            }
+            var request = new ApiRequest("GET", "/api/v2/agents/{orgName}/automations");
+            request.PathParam("orgName", orgName);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("filter", filter);
+            request.QueryParam("kind", kind);
+            request.QueryParam("pageSize", pageSize);
+            request.Produces("application/json");
+            return this.client.Call<ListAgentAutomationsV2Response>(request);
         }
 
         public ListAgentTasksResponse ListTasks(string orgName, string agentDefinitionId, string continuationToken, System.Collections.Generic.List<AgentTaskSource> excludeSources, long? pageSize, string policyIssueId, string query, AgentTaskSortField? sortBy, AgentTaskSortDirection? sortDirection, AgentTaskStatus? status, AgentTaskType? taskType) {
@@ -141,6 +230,34 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Body(request);
             apiRequest.Consumes("application/json");
             this.client.Call(apiRequest);
+        }
+
+        public AgentAutomationV2TriggerSecretResponse RotateAgentAutomationV2TriggerSecret(string orgName, string automationID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling RotateAgentAutomationV2TriggerSecret");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling RotateAgentAutomationV2TriggerSecret");
+            }
+            var request = new ApiRequest("POST", "/api/v2/agents/{orgName}/automations/{automationID}/trigger-secret");
+            request.PathParam("orgName", orgName);
+            request.PathParam("automationID", automationID);
+            request.Produces("application/json");
+            return this.client.Call<AgentAutomationV2TriggerSecretResponse>(request);
+        }
+
+        public AgentAutomationV2 RunAgentAutomationV2Once(string orgName, string automationID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling RunAgentAutomationV2Once");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling RunAgentAutomationV2Once");
+            }
+            var request = new ApiRequest("POST", "/api/v2/agents/{orgName}/automations/{automationID}/run");
+            request.PathParam("orgName", orgName);
+            request.PathParam("automationID", automationID);
+            request.Produces("application/json");
+            return this.client.Call<AgentAutomationV2>(request);
         }
 
         public AgentSignupResponse Signup(AgentSignupRequest request) {
@@ -182,6 +299,44 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("taskID", taskID);
             request.Produces("text/event-stream");
             return this.client.Call<AgentConsoleEvent>(request);
+        }
+
+        public AgentAutomationV2 UpdateAgentAutomationV2(string orgName, string automationID, CreateAgentAutomationV2Request request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateAgentAutomationV2");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling UpdateAgentAutomationV2");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateAgentAutomationV2");
+            }
+            var apiRequest = new ApiRequest("PATCH", "/api/v2/agents/{orgName}/automations/{automationID}");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("automationID", automationID);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentAutomationV2>(apiRequest);
+        }
+
+        public AgentAutomationV2 UpdateAgentAutomationV2Paused(string orgName, string automationID, UpdateAgentAutomationPausedRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateAgentAutomationV2Paused");
+            }
+            if (automationID == null) {
+                throw new ArgumentNullException(nameof(automationID), "Missing required parameter 'automationID' when calling UpdateAgentAutomationV2Paused");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateAgentAutomationV2Paused");
+            }
+            var apiRequest = new ApiRequest("PATCH", "/api/v2/agents/{orgName}/automations/{automationID}/paused");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("automationID", automationID);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentAutomationV2>(apiRequest);
         }
 
         public AgentTask UpdateTask(string orgName, string taskID, UpdateTaskRequest request) {

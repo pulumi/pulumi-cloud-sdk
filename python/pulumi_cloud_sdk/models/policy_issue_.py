@@ -40,6 +40,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
     :var assigned_to: UserInfo - declared
     :var policy_group_name: str - declared
     :var policy_group_type: PolicyGroupMode - declared
+    :var policy_exception_names: list[str] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -66,6 +67,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
         'assigned_to': 'UserInfo',
         'policy_group_name': 'str',
         'policy_group_type': 'PolicyGroupMode',
+        'policy_exception_names': 'list[str]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -93,6 +95,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
         'assigned_to': 'assignedTo',
         'policy_group_name': 'policyGroupName',
         'policy_group_type': 'policyGroupType',
+        'policy_exception_names': 'policyExceptionNames',
     }
 
     FIELDS_id = 'id'
@@ -119,6 +122,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
     FIELDS_assigned_to = 'assignedTo'
     FIELDS_policy_group_name = 'policyGroupName'
     FIELDS_policy_group_type = 'policyGroupType'
+    FIELDS_policy_exception_names = 'policyExceptionNames'
 
     _id: 'str'
     _entity_type: 'IssueEntityType'
@@ -144,6 +148,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
     _assigned_to: 'UserInfo'
     _policy_group_name: 'str'
     _policy_group_type: 'PolicyGroupMode'
+    _policy_exception_names: 'list[str]'
 
     def __init__(
         self,
@@ -171,6 +176,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
         assigned_to: 'UserInfo' = None,
         policy_group_name: 'str' = None,
         policy_group_type: 'PolicyGroupMode' = None,
+        policy_exception_names: 'list[str]' = None,
     ) -> None:
         super().__init__()
 
@@ -198,6 +204,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
         self.assigned_to = assigned_to
         self.policy_group_name = policy_group_name
         self.policy_group_type = policy_group_type
+        self.policy_exception_names = policy_exception_names
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, PolicyIssue):
@@ -225,6 +232,7 @@ class PolicyIssue(PulumiAutoModelEncoder):
             self._assigned_to = source._assigned_to
             self._policy_group_name = source._policy_group_name
             self._policy_group_type = source._policy_group_type
+            self._policy_exception_names = source._policy_exception_names
 
     @property
     def id(self) -> 'str':
@@ -495,6 +503,40 @@ class PolicyIssue(PulumiAutoModelEncoder):
     @policy_group_type.setter
     def policy_group_type(self, policy_group_type: 'PolicyGroupMode'):
         self._policy_group_type = policy_group_type
+
+    @property
+    def policy_exception_names(self) -> 'list[str]':
+        return self._policy_exception_names
+
+    @policy_exception_names.setter
+    def policy_exception_names(self, policy_exception_names: 'list[str]'):
+        self._policy_exception_names = policy_exception_names
+
+    @property
+    def policy_exception_names__autoinit(self) -> 'list[str]':
+        """Return ``policy_exception_names``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._policy_exception_names``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``policy_exception_names__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._policy_exception_names is None:
+            self._policy_exception_names = self.policy_exception_names__safederef
+
+        return self._policy_exception_names
+
+    @property
+    def policy_exception_names__safederef(self) -> 'list[str]':
+        """Return ``policy_exception_names``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``policy_exception_names`` stays unset and each
+        call returns a new default. Use ``policy_exception_names__autoinit`` to persist the default on
+        first access.
+        """
+        if self._policy_exception_names is None:
+            return []
+
+        return self._policy_exception_names
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, PolicyIssue):

@@ -37,7 +37,9 @@ func (d *DockerImage) UnmarshalJSON(bytes []byte) error {
 		if err := json.Unmarshal(bytes, &image); err != nil {
 			return err
 		}
-		d.Reference, d.IsDefault, d.Credentials = image.Reference, image.IsDefault, image.Credentials
+		d.Reference = image.Reference
+		d.IsDefault = image.IsDefault
+		d.Credentials = image.Credentials
 		return nil
 	}
 
@@ -45,7 +47,9 @@ func (d *DockerImage) UnmarshalJSON(bytes []byte) error {
 	if err := json.Unmarshal(bytes, &reference); err != nil {
 		return err
 	}
-	d.Reference, d.IsDefault, d.Credentials = reference, false, nil
+	d.Reference = reference
+	d.IsDefault = false
+	d.Credentials = nil
 	return nil
 }
 

@@ -1571,6 +1571,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListChangeGatesResponse>(request);
         }
 
+        public ListNotificationDestinationsResponse ListNotificationDestinations(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListNotificationDestinations");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/notifications/destinations");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<ListNotificationDestinationsResponse>(request);
+        }
+
         public ListOrganizationInvitesResponse ListOrgInvites(string orgName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListOrgInvites");

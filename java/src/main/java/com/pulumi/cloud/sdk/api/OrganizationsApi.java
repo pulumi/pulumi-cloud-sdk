@@ -1589,6 +1589,16 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListChangeGatesResponse>() {});
     }
 
+    public ListNotificationDestinationsResponse listNotificationDestinations(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listNotificationDestinations");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/notifications/destinations");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListNotificationDestinationsResponse>() {});
+    }
+
     public ListOrganizationInvitesResponse listOrgInvites(String orgName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listOrgInvites");

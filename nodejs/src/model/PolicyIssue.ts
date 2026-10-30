@@ -47,6 +47,7 @@ export class PolicyIssue {
     assignedTo?: UserInfo;
     policyGroupName?: string;
     policyGroupType?: PolicyGroupMode;
+    policyExceptionNames?: string[];
 
     getFixupPrototypeFunction() {
         return PolicyIssue.fixupPrototype;

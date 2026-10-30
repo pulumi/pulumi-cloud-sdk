@@ -153,5 +153,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("policyGroupType")]
         public PolicyGroupMode? PolicyGroupType { get; set; }
+
+        /// <summary>
+        /// The names of the policy exceptions the CLI reported as allowing the issue in its latest run: organization exception IDs, such as EXC-12, or keys from a local policy config.
+        /// </summary>
+        [JsonProperty("policyExceptionNames")]
+        public System.Collections.Generic.List<string> PolicyExceptionNames { get; set; }
     }
 }

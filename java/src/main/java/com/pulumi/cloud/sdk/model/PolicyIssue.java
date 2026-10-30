@@ -82,4 +82,7 @@ public class PolicyIssue {
 
     // The type of the policy group this issue belongs to.
     public PolicyGroupMode policyGroupType;
+
+    // The names of the policy exceptions the CLI reported as allowing the issue in its latest run: organization exception IDs, such as EXC-12, or keys from a local policy config.
+    public List<String> policyExceptionNames;
 }

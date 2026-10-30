@@ -66,6 +66,36 @@ public final class AI_AgentsApi {
         return this.client.call($request, new TypeReference<AgentClaimsStatus>() {});
     }
 
+    public AgentAutomationV2 createAgentAutomationV2(String orgName, CreateAgentAutomationV2Request request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createAgentAutomationV2");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createAgentAutomationV2");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/v2/agents/{orgName}/automations");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
+    }
+
+    public AgentAutomationV2EventResponse createAgentAutomationV2Event(String automationID, JsonNode request) {
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling createAgentAutomationV2Event");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createAgentAutomationV2Event");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/v2/agents/triggers/{automationID}/events");
+        $request.pathParam("automationID", automationID);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2EventResponse>() {});
+    }
+
     public CreateAgentTaskResponse createTasks(String orgName, CreateAgentTaskRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createTasks");
@@ -79,6 +109,33 @@ public final class AI_AgentsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<CreateAgentTaskResponse>() {});
+    }
+
+    public void deleteAgentAutomationV2(String orgName, String automationID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling deleteAgentAutomationV2");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling deleteAgentAutomationV2");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/v2/agents/{orgName}/automations/{automationID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        this.client.call($request);
+    }
+
+    public AgentAutomationV2 getAgentAutomationV2(String orgName, String automationID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getAgentAutomationV2");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling getAgentAutomationV2");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/v2/agents/{orgName}/automations/{automationID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
     }
 
     public AgentTask getTask(String orgName, String taskID) {
@@ -109,6 +166,38 @@ public final class AI_AgentsApi {
         $request.queryParam("pageSize", pageSize);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<ListAgentTaskEventsResponse>() {});
+    }
+
+    public ListAgentTasksResponse listAgentAutomationV2Tasks(String orgName, String automationID, String continuationToken, Long pageSize, AgentTaskSortField sortBy, AgentTaskSortDirection sortDirection) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listAgentAutomationV2Tasks");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling listAgentAutomationV2Tasks");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/v2/agents/{orgName}/automations/{automationID}/tasks");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("pageSize", pageSize);
+        $request.queryParam("sortBy", sortBy);
+        $request.queryParam("sortDirection", sortDirection);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListAgentTasksResponse>() {});
+    }
+
+    public ListAgentAutomationsV2Response listAgentAutomationsV2(String orgName, String continuationToken, String filter, AgentAutomationKind kind, Long pageSize) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listAgentAutomationsV2");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/v2/agents/{orgName}/automations");
+        $request.pathParam("orgName", orgName);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("filter", filter);
+        $request.queryParam("kind", kind);
+        $request.queryParam("pageSize", pageSize);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListAgentAutomationsV2Response>() {});
     }
 
     public ListAgentTasksResponse listTasks(String orgName, String agentDefinitionId, String continuationToken, List<AgentTaskSource> excludeSources, Long pageSize, String policyIssueId, String query, AgentTaskSortField sortBy, AgentTaskSortDirection sortDirection, AgentTaskStatus status, AgentTaskType taskType) {
@@ -147,6 +236,34 @@ public final class AI_AgentsApi {
         $request.body(request);
         $request.consumes("application/json");
         this.client.call($request);
+    }
+
+    public AgentAutomationV2TriggerSecretResponse rotateAgentAutomationV2TriggerSecret(String orgName, String automationID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling rotateAgentAutomationV2TriggerSecret");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling rotateAgentAutomationV2TriggerSecret");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/v2/agents/{orgName}/automations/{automationID}/trigger-secret");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2TriggerSecretResponse>() {});
+    }
+
+    public AgentAutomationV2 runAgentAutomationV2Once(String orgName, String automationID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling runAgentAutomationV2Once");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling runAgentAutomationV2Once");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/v2/agents/{orgName}/automations/{automationID}/run");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
     }
 
     public AgentSignupResponse signup(AgentSignupRequest request) {
@@ -188,6 +305,44 @@ public final class AI_AgentsApi {
         $request.pathParam("taskID", taskID);
         $request.produces("text/event-stream");
         return this.client.call($request, new TypeReference<AgentConsoleEvent>() {});
+    }
+
+    public AgentAutomationV2 updateAgentAutomationV2(String orgName, String automationID, CreateAgentAutomationV2Request request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateAgentAutomationV2");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling updateAgentAutomationV2");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateAgentAutomationV2");
+        }
+        ApiRequest $request = new ApiRequest("PATCH", "/api/v2/agents/{orgName}/automations/{automationID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
+    }
+
+    public AgentAutomationV2 updateAgentAutomationV2Paused(String orgName, String automationID, UpdateAgentAutomationPausedRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateAgentAutomationV2Paused");
+        }
+        if (automationID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'automationID' when calling updateAgentAutomationV2Paused");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateAgentAutomationV2Paused");
+        }
+        ApiRequest $request = new ApiRequest("PATCH", "/api/v2/agents/{orgName}/automations/{automationID}/paused");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("automationID", automationID);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
     }
 
     public AgentTask updateTask(String orgName, String taskID, UpdateTaskRequest request) {

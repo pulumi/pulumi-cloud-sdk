@@ -76,6 +76,7 @@ import { ListChangeGatesResponse } from "../model/ListChangeGatesResponse";
 import { ListChangeRequestEventsResponse } from "../model/ListChangeRequestEventsResponse";
 import { ListChangeRequestsResponse } from "../model/ListChangeRequestsResponse";
 import { ListDeletedStacksResponse } from "../model/ListDeletedStacksResponse";
+import { ListNotificationDestinationsResponse } from "../model/ListNotificationDestinationsResponse";
 import { ListOidcIssuersResponse } from "../model/ListOidcIssuersResponse";
 import { ListOrganizationInvitesResponse } from "../model/ListOrganizationInvitesResponse";
 import { ListOrganizationMembersResponse } from "../model/ListOrganizationMembersResponse";
@@ -4901,6 +4902,40 @@ export class Organizations {
         return this.client.callWithOptions<ListChangeGatesResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 ListChangeGatesResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListNotificationDestinations__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/notifications/destinations";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListNotificationDestinations(
+        params: {
+            orgName: string,
+        },
+    ): Promise<ListNotificationDestinationsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListNotificationDestinations.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListNotificationDestinations.");
+        }
+
+        const __path = this.ListNotificationDestinations__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListNotificationDestinationsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListNotificationDestinationsResponse.fixupPrototype(__res0);
             }
         });
     }

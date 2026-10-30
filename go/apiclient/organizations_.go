@@ -6053,6 +6053,58 @@ func (p *CloudClient) ListGates(
 	return &result, nil
 }
 
+type InterceptorForListNotificationDestinations struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListNotificationDestinations(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.ListNotificationDestinationsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListNotificationDestinations{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListNotificationDestinationsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListNotificationDestinations: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/notifications/destinations",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListNotificationDestinationsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListOrgInvites struct {
 	OrgName      string
 	ExtraHeaders []http.Header

@@ -15,6 +15,10 @@
 
 import { ApiClient, ApiRequest, ServerSentEventsStream, ResponseWithHeaders } from "../api.client";
 
+import { AgentAutomationKind } from "../model/AgentAutomationKind";
+import { AgentAutomationV2 } from "../model/AgentAutomationV2";
+import { AgentAutomationV2EventResponse } from "../model/AgentAutomationV2EventResponse";
+import { AgentAutomationV2TriggerSecretResponse } from "../model/AgentAutomationV2TriggerSecretResponse";
 import { AgentClaimRequest } from "../model/AgentClaimRequest";
 import { AgentClaimResponse } from "../model/AgentClaimResponse";
 import { AgentClaimsStatus } from "../model/AgentClaimsStatus";
@@ -30,10 +34,13 @@ import { AgentTaskSource } from "../model/AgentTaskSource";
 import { AgentTaskStatus } from "../model/AgentTaskStatus";
 import { AgentTaskType } from "../model/AgentTaskType";
 import { CancelAgentTaskRequest } from "../model/CancelAgentTaskRequest";
+import { CreateAgentAutomationV2Request } from "../model/CreateAgentAutomationV2Request";
 import { CreateAgentTaskRequest } from "../model/CreateAgentTaskRequest";
 import { CreateAgentTaskResponse } from "../model/CreateAgentTaskResponse";
+import { ListAgentAutomationsV2Response } from "../model/ListAgentAutomationsV2Response";
 import { ListAgentTaskEventsResponse } from "../model/ListAgentTaskEventsResponse";
 import { ListAgentTasksResponse } from "../model/ListAgentTasksResponse";
+import { UpdateAgentAutomationPausedRequest } from "../model/UpdateAgentAutomationPausedRequest";
 import { UpdateTaskRequest } from "../model/UpdateTaskRequest";
 
 
@@ -174,6 +181,92 @@ export class AI_Agents {
         });
     }
 
+    public CreateAgentAutomationV2__generateUrl(orgName: string): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public CreateAgentAutomationV2(
+        params: {
+            orgName: string,
+        },
+        request: CreateAgentAutomationV2Request,
+    ): Promise<AgentAutomationV2> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreateAgentAutomationV2.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CreateAgentAutomationV2.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreateAgentAutomationV2.");
+        }
+
+        const __path = this.CreateAgentAutomationV2__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public CreateAgentAutomationV2Event__generateUrl(automationID: string): string {
+        let url = this.basePath + "v2/agents/triggers/{automationID}/events";
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public CreateAgentAutomationV2Event(
+        params: {
+            automationID: string,
+        },
+        request: any,
+    ): Promise<AgentAutomationV2EventResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreateAgentAutomationV2Event.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling CreateAgentAutomationV2Event.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreateAgentAutomationV2Event.");
+        }
+
+        const __path = this.CreateAgentAutomationV2Event__generateUrl(params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<AgentAutomationV2EventResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2EventResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public CreateTasks__generateUrl(orgName: string): string {
         let url = this.basePath + "preview/agents/{orgName}/tasks";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -213,6 +306,89 @@ export class AI_Agents {
         return this.client.callWithOptions<CreateAgentTaskResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 CreateAgentTaskResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public DeleteAgentAutomationV2__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public DeleteAgentAutomationV2(
+        params: {
+            orgName: string,
+            automationID: string,
+        },
+    ): Promise<void> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling DeleteAgentAutomationV2.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling DeleteAgentAutomationV2.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling DeleteAgentAutomationV2.");
+        }
+
+        const __path = this.DeleteAgentAutomationV2__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.method = "DELETE";
+
+        return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public GetAgentAutomationV2__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public GetAgentAutomationV2(
+        params: {
+            orgName: string,
+            automationID: string,
+        },
+    ): Promise<AgentAutomationV2> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetAgentAutomationV2.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetAgentAutomationV2.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling GetAgentAutomationV2.");
+        }
+
+        const __path = this.GetAgentAutomationV2__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2.fixupPrototype(__res0);
             }
         });
     }
@@ -309,6 +485,116 @@ export class AI_Agents {
         return this.client.callWithOptions<ListAgentTaskEventsResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 ListAgentTaskEventsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListAgentAutomationV2Tasks__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}/tasks";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public ListAgentAutomationV2Tasks(
+        params: {
+            orgName: string,
+            automationID: string,
+            continuationToken?: string,
+            pageSize?: number,
+            sortBy?: AgentTaskSortField,
+            sortDirection?: AgentTaskSortDirection,
+        },
+    ): Promise<ListAgentTasksResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListAgentAutomationV2Tasks.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListAgentAutomationV2Tasks.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling ListAgentAutomationV2Tasks.");
+        }
+
+        const __path = this.ListAgentAutomationV2Tasks__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.pageSize !== undefined) {
+            __requestOptions.setQueryParam("pageSize", params.pageSize);
+        }
+        if (params.sortBy !== undefined) {
+            __requestOptions.setQueryParam("sortBy", params.sortBy);
+        }
+        if (params.sortDirection !== undefined) {
+            __requestOptions.setQueryParam("sortDirection", params.sortDirection);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListAgentTasksResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListAgentTasksResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListAgentAutomationsV2__generateUrl(orgName: string): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListAgentAutomationsV2(
+        params: {
+            orgName: string,
+            continuationToken?: string,
+            filter?: string,
+            kind?: AgentAutomationKind,
+            pageSize?: number,
+        },
+    ): Promise<ListAgentAutomationsV2Response> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListAgentAutomationsV2.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListAgentAutomationsV2.");
+        }
+
+        const __path = this.ListAgentAutomationsV2__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.filter !== undefined) {
+            __requestOptions.setQueryParam("filter", params.filter);
+        }
+        if (params.kind !== undefined) {
+            __requestOptions.setQueryParam("kind", params.kind);
+        }
+        if (params.pageSize !== undefined) {
+            __requestOptions.setQueryParam("pageSize", params.pageSize);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListAgentAutomationsV2Response>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListAgentAutomationsV2Response.fixupPrototype(__res0);
             }
         });
     }
@@ -433,6 +719,94 @@ export class AI_Agents {
         __requestOptions.method = "POST";
 
         return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public RotateAgentAutomationV2TriggerSecret__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}/trigger-secret";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public RotateAgentAutomationV2TriggerSecret(
+        params: {
+            orgName: string,
+            automationID: string,
+        },
+    ): Promise<AgentAutomationV2TriggerSecretResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling RotateAgentAutomationV2TriggerSecret.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling RotateAgentAutomationV2TriggerSecret.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling RotateAgentAutomationV2TriggerSecret.");
+        }
+
+        const __path = this.RotateAgentAutomationV2TriggerSecret__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<AgentAutomationV2TriggerSecretResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2TriggerSecretResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public RunAgentAutomationV2Once__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}/run";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public RunAgentAutomationV2Once(
+        params: {
+            orgName: string,
+            automationID: string,
+        },
+    ): Promise<AgentAutomationV2> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling RunAgentAutomationV2Once.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling RunAgentAutomationV2Once.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling RunAgentAutomationV2Once.");
+        }
+
+        const __path = this.RunAgentAutomationV2Once__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2.fixupPrototype(__res0);
+            }
+        });
     }
 
     public Signup__generateUrl(): string {
@@ -562,6 +936,112 @@ export class AI_Agents {
         return this.client.streamWithOptions<AgentConsoleEvent>(__path, __requestOptions, (v0) => {
             if (v0) {
                 AgentConsoleEvent.fixupPrototype(v0);
+            }
+        });
+    }
+
+    public UpdateAgentAutomationV2__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public UpdateAgentAutomationV2(
+        params: {
+            orgName: string,
+            automationID: string,
+        },
+        request: CreateAgentAutomationV2Request,
+    ): Promise<AgentAutomationV2> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdateAgentAutomationV2.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdateAgentAutomationV2.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling UpdateAgentAutomationV2.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdateAgentAutomationV2.");
+        }
+
+        const __path = this.UpdateAgentAutomationV2__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "PATCH";
+
+        return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public UpdateAgentAutomationV2Paused__generateUrl(
+        orgName: string,
+        automationID: string,
+    ): string {
+        let url = this.basePath + "v2/agents/{orgName}/automations/{automationID}/paused";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{automationID}", encodeURIComponent(String(automationID)));
+        return url;
+    }
+
+    public UpdateAgentAutomationV2Paused(
+        params: {
+            orgName: string,
+            automationID: string,
+        },
+        request: UpdateAgentAutomationPausedRequest,
+    ): Promise<AgentAutomationV2> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdateAgentAutomationV2Paused.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdateAgentAutomationV2Paused.");
+        }
+
+        // verify required parameter 'automationID' is not null or undefined
+        if (params.automationID === null || params.automationID === undefined) {
+            throw new Error("Required parameter automationID was null or undefined when calling UpdateAgentAutomationV2Paused.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdateAgentAutomationV2Paused.");
+        }
+
+        const __path = this.UpdateAgentAutomationV2Paused__generateUrl(params.orgName, params.automationID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "PATCH";
+
+        return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentAutomationV2.fixupPrototype(__res0);
             }
         });
     }

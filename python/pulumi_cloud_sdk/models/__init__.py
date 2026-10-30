@@ -21,6 +21,13 @@ from .add_service_item_ import AddServiceItem
 from .add_service_items_request_ import AddServiceItemsRequest
 from .agent_account_summary_ import AgentAccountSummary
 from .agent_async_trigger_type_ import AgentAsyncTriggerType
+from .agent_automation_kind_ import AgentAutomationKind
+from .agent_automation_stack_operation_trigger_ import AgentAutomationStackOperationTrigger
+from .agent_automation_trigger_ import AgentAutomationTrigger
+from .agent_automation_v2_ import AgentAutomationV2
+from .agent_automation_v2_event_response_ import AgentAutomationV2EventResponse
+from .agent_automation_v2_trigger_secret_response_ import AgentAutomationV2TriggerSecretResponse
+from .agent_automation_webhook_trigger_ import AgentAutomationWebhookTrigger
 from .agent_backend_event_ import AgentBackendEvent
 from .agent_backend_event_assistant_message_ import AgentBackendEventAssistantMessage
 from .agent_backend_event_awaiting_approvals_message_ import AgentBackendEventAwaitingApprovalsMessage
@@ -76,6 +83,9 @@ from .agent_user_event_exec_tool_call_ import AgentUserEventExecToolCall
 from .agent_user_event_message_ import AgentUserEventMessage
 from .agent_user_event_tool_result_ import AgentUserEventToolResult
 from .agent_user_event_tool_result_item_ import AgentUserEventToolResultItem
+from .agent_webhook_delivery_status_ import AgentWebhookDeliveryStatus
+from .agent_webhook_preset_ import AgentWebhookPreset
+from .agent_webhook_signature_scheme_ import AgentWebhookSignatureScheme
 from .agent_workflow_definition_ import AgentWorkflowDefinition
 from .aggregation_ import Aggregation
 from .aggregation_bucket_ import AggregationBucket
@@ -314,6 +324,10 @@ from .copilot_request_ import CopilotRequest
 from .copilot_response_ import CopilotResponse
 from .copilot_state_ import CopilotState
 from .create_access_token_response_ import CreateAccessTokenResponse
+from .create_agent_automation_stack_operation_trigger_ import CreateAgentAutomationStackOperationTrigger
+from .create_agent_automation_trigger_ import CreateAgentAutomationTrigger
+from .create_agent_automation_v2_request_ import CreateAgentAutomationV2Request
+from .create_agent_automation_webhook_trigger_ import CreateAgentAutomationWebhookTrigger
 from .create_agent_task_request_ import CreateAgentTaskRequest
 from .create_agent_task_response_ import CreateAgentTaskResponse
 from .create_change_gate_request_ import CreateChangeGateRequest
@@ -338,11 +352,13 @@ from .create_organization_invite_request_ import CreateOrganizationInviteRequest
 from .create_organization_invite_response_ import CreateOrganizationInviteResponse
 from .create_personal_access_token_request_ import CreatePersonalAccessTokenRequest
 from .create_pulumi_team_request_ import CreatePulumiTeamRequest
+from .create_scheduled_agent_automation_v2_request_ import CreateScheduledAgentAutomationV2Request
 from .create_scheduled_deployment_request_ import CreateScheduledDeploymentRequest
 from .create_scheduled_drift_deployment_request_ import CreateScheduledDriftDeploymentRequest
 from .create_scheduled_ttl_deployment_request_ import CreateScheduledTTLDeploymentRequest
 from .create_service_request_ import CreateServiceRequest
 from .create_team_access_token_request_ import CreateTeamAccessTokenRequest
+from .create_triggered_agent_automation_v2_request_ import CreateTriggeredAgentAutomationV2Request
 from .custom_vcs_integration_response_ import CustomVCSIntegrationResponse
 from .custom_vcs_repository_ import CustomVCSRepository
 from .customer_managed_key_ import CustomerManagedKey
@@ -554,6 +570,7 @@ from .job_status_ import JobStatus
 from .key_encryption_key_migration_ import KeyEncryptionKeyMigration
 from .key_type_ import KeyType
 from .list_access_tokens_response_ import ListAccessTokensResponse
+from .list_agent_automations_v2_response_ import ListAgentAutomationsV2Response
 from .list_agent_pools_response_ import ListAgentPoolsResponse
 from .list_agent_task_events_response_ import ListAgentTaskEventsResponse
 from .list_agent_tasks_response_ import ListAgentTasksResponse
@@ -588,6 +605,7 @@ from .list_insights_resource_version_ import ListInsightsResourceVersion
 from .list_insights_resource_version_edges_response_ import ListInsightsResourceVersionEdgesResponse
 from .list_insights_resource_versions_response_ import ListInsightsResourceVersionsResponse
 from .list_member_stack_permissions_response_ import ListMemberStackPermissionsResponse
+from .list_notification_destinations_response_ import ListNotificationDestinationsResponse
 from .list_oidc_issuers_response_ import ListOidcIssuersResponse
 from .list_organization_invites_response_ import ListOrganizationInvitesResponse
 from .list_organization_members_response_ import ListOrganizationMembersResponse
@@ -638,6 +656,8 @@ from .neo_usage_cap_ import NeoUsageCap
 from .net_ip_net_ import NetIPNet
 from .net_url_ import NetURL
 from .new_policy_group_request_ import NewPolicyGroupRequest
+from .notification_destination_ import NotificationDestination
+from .notification_target_ import NotificationTarget
 from .oidc_issuer_registration_request_ import OidcIssuerRegistrationRequest
 from .oidc_issuer_registration_response_ import OidcIssuerRegistrationResponse
 from .oidc_issuer_update_request_ import OidcIssuerUpdateRequest
@@ -826,6 +846,8 @@ from .service_item_update_ import ServiceItemUpdate
 from .service_member_ import ServiceMember
 from .service_property_ import ServiceProperty
 from .set_insight_account_tags_request_ import SetInsightAccountTagsRequest
+from .slack_notification_destination_ import SlackNotificationDestination
+from .slack_notification_target_ import SlackNotificationTarget
 from .sort_direction_ import SortDirection
 from .source_context_ import SourceContext
 from .source_context_git_ import SourceContextGit
@@ -840,6 +862,7 @@ from .stack_drift_status_ import StackDriftStatus
 from .stack_match_rule_preview_stack_ import StackMatchRulePreviewStack
 from .stack_metadata_ import StackMetadata
 from .stack_notification_settings_ import StackNotificationSettings
+from .stack_operation_ import StackOperation
 from .stack_outputs_response_ import StackOutputsResponse
 from .stack_overview_response_ import StackOverviewResponse
 from .stack_permission_ import StackPermission
@@ -903,6 +926,7 @@ from .unit_rate_graduated_v0_ import UnitRateGraduatedV0
 from .unit_rate_graduated_v1_ import UnitRateGraduatedV1
 from .unit_rate_graduated_v2_ import UnitRateGraduatedV2
 from .unit_rate_schema_ import UnitRateSchema
+from .update_agent_automation_paused_request_ import UpdateAgentAutomationPausedRequest
 from .update_azure_dev_ops_app_integration_request_ import UpdateAzureDevOpsAppIntegrationRequest
 from .update_change_gate_request_ import UpdateChangeGateRequest
 from .update_change_request_request_ import UpdateChangeRequestRequest
