@@ -104,6 +104,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var multi_change_requests_enabled: bool - declared
     :var custom_policy_groups_enabled: bool - declared
     :var custom_policy_packs_enabled: bool - declared
+    :var preventative_policies_enabled: bool - declared
     :var agents_as_team_members_enabled: bool - declared
     :var entity_user_assignments_enabled: bool - declared
     :var policy_exceptions_enabled: bool - declared
@@ -200,6 +201,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'multi_change_requests_enabled': 'bool',
         'custom_policy_groups_enabled': 'bool',
         'custom_policy_packs_enabled': 'bool',
+        'preventative_policies_enabled': 'bool',
         'agents_as_team_members_enabled': 'bool',
         'entity_user_assignments_enabled': 'bool',
         'policy_exceptions_enabled': 'bool',
@@ -297,6 +299,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'multi_change_requests_enabled': 'multiChangeRequestsEnabled',
         'custom_policy_groups_enabled': 'customPolicyGroupsEnabled',
         'custom_policy_packs_enabled': 'customPolicyPacksEnabled',
+        'preventative_policies_enabled': 'preventativePoliciesEnabled',
         'agents_as_team_members_enabled': 'agentsAsTeamMembersEnabled',
         'entity_user_assignments_enabled': 'entityUserAssignmentsEnabled',
         'policy_exceptions_enabled': 'policyExceptionsEnabled',
@@ -393,6 +396,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_multi_change_requests_enabled = 'multiChangeRequestsEnabled'
     FIELDS_custom_policy_groups_enabled = 'customPolicyGroupsEnabled'
     FIELDS_custom_policy_packs_enabled = 'customPolicyPacksEnabled'
+    FIELDS_preventative_policies_enabled = 'preventativePoliciesEnabled'
     FIELDS_agents_as_team_members_enabled = 'agentsAsTeamMembersEnabled'
     FIELDS_entity_user_assignments_enabled = 'entityUserAssignmentsEnabled'
     FIELDS_policy_exceptions_enabled = 'policyExceptionsEnabled'
@@ -488,6 +492,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _multi_change_requests_enabled: 'bool'
     _custom_policy_groups_enabled: 'bool'
     _custom_policy_packs_enabled: 'bool'
+    _preventative_policies_enabled: 'bool'
     _agents_as_team_members_enabled: 'bool'
     _entity_user_assignments_enabled: 'bool'
     _policy_exceptions_enabled: 'bool'
@@ -557,6 +562,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         neo_byok_enabled: 'bool',
         custom_policy_groups_enabled: 'bool',
         custom_policy_packs_enabled: 'bool',
+        preventative_policies_enabled: 'bool',
         entity_user_assignments_enabled: 'bool',
         policy_exceptions_enabled: 'bool',
         static_default_roles_enabled: 'bool',
@@ -682,6 +688,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.multi_change_requests_enabled = multi_change_requests_enabled
         self.custom_policy_groups_enabled = custom_policy_groups_enabled
         self.custom_policy_packs_enabled = custom_policy_packs_enabled
+        self.preventative_policies_enabled = preventative_policies_enabled
         self.agents_as_team_members_enabled = agents_as_team_members_enabled
         self.entity_user_assignments_enabled = entity_user_assignments_enabled
         self.policy_exceptions_enabled = policy_exceptions_enabled
@@ -779,6 +786,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._multi_change_requests_enabled = source._multi_change_requests_enabled
             self._custom_policy_groups_enabled = source._custom_policy_groups_enabled
             self._custom_policy_packs_enabled = source._custom_policy_packs_enabled
+            self._preventative_policies_enabled = source._preventative_policies_enabled
             self._agents_as_team_members_enabled = source._agents_as_team_members_enabled
             self._entity_user_assignments_enabled = source._entity_user_assignments_enabled
             self._policy_exceptions_enabled = source._policy_exceptions_enabled
@@ -1669,6 +1677,17 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `custom_policy_packs_enabled`, must not be `None`")
 
         self._custom_policy_packs_enabled = custom_policy_packs_enabled
+
+    @property
+    def preventative_policies_enabled(self) -> 'bool':
+        return self._preventative_policies_enabled
+
+    @preventative_policies_enabled.setter
+    def preventative_policies_enabled(self, preventative_policies_enabled: 'bool'):
+        if preventative_policies_enabled is None:
+            raise ValueError("Invalid value for `preventative_policies_enabled`, must not be `None`")
+
+        self._preventative_policies_enabled = preventative_policies_enabled
 
     @property
     def agents_as_team_members_enabled(self) -> 'bool':

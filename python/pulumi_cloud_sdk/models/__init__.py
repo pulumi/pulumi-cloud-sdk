@@ -52,6 +52,8 @@ from .agent_console_event_ import AgentConsoleEvent
 from .agent_console_event_agent_response_ import AgentConsoleEventAgentResponse
 from .agent_console_event_trigger_user_input_ import AgentConsoleEventTriggerUserInput
 from .agent_console_event_user_input_ import AgentConsoleEventUserInput
+from .agent_definition_ import AgentDefinition
+from .agent_definition_task_counts_ import AgentDefinitionTaskCounts
 from .agent_entity_ import AgentEntity
 from .agent_entity_diff_ import AgentEntityDiff
 from .agent_entity_pr_ import AgentEntityPR
@@ -328,6 +330,7 @@ from .create_agent_automation_stack_operation_trigger_ import CreateAgentAutomat
 from .create_agent_automation_trigger_ import CreateAgentAutomationTrigger
 from .create_agent_automation_v2_request_ import CreateAgentAutomationV2Request
 from .create_agent_automation_webhook_trigger_ import CreateAgentAutomationWebhookTrigger
+from .create_agent_definition_request_ import CreateAgentDefinitionRequest
 from .create_agent_task_request_ import CreateAgentTaskRequest
 from .create_agent_task_response_ import CreateAgentTaskResponse
 from .create_change_gate_request_ import CreateChangeGateRequest
@@ -571,6 +574,7 @@ from .key_encryption_key_migration_ import KeyEncryptionKeyMigration
 from .key_type_ import KeyType
 from .list_access_tokens_response_ import ListAccessTokensResponse
 from .list_agent_automations_v2_response_ import ListAgentAutomationsV2Response
+from .list_agent_definitions_response_ import ListAgentDefinitionsResponse
 from .list_agent_pools_response_ import ListAgentPoolsResponse
 from .list_agent_task_events_response_ import ListAgentTaskEventsResponse
 from .list_agent_tasks_response_ import ListAgentTasksResponse
@@ -927,6 +931,7 @@ from .unit_rate_graduated_v1_ import UnitRateGraduatedV1
 from .unit_rate_graduated_v2_ import UnitRateGraduatedV2
 from .unit_rate_schema_ import UnitRateSchema
 from .update_agent_automation_paused_request_ import UpdateAgentAutomationPausedRequest
+from .update_agent_definition_paused_request_ import UpdateAgentDefinitionPausedRequest
 from .update_azure_dev_ops_app_integration_request_ import UpdateAzureDevOpsAppIntegrationRequest
 from .update_change_gate_request_ import UpdateChangeGateRequest
 from .update_change_request_request_ import UpdateChangeRequestRequest

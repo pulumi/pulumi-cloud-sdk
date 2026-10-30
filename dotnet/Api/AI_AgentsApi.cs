@@ -90,6 +90,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<AgentAutomationV2EventResponse>(apiRequest);
         }
 
+        public AgentDefinition CreateAgentDefinition(string orgName, CreateAgentDefinitionRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateAgentDefinition");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreateAgentDefinition");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/preview/agents/{orgName}/definitions");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentDefinition>(apiRequest);
+        }
+
         public CreateAgentTaskResponse CreateTasks(string orgName, CreateAgentTaskRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateTasks");
@@ -118,6 +133,19 @@ namespace Pulumi.Cloud.Sdk.Api {
             this.client.Call(request);
         }
 
+        public void DeleteAgentDefinition(string orgName, string definitionID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DeleteAgentDefinition");
+            }
+            if (definitionID == null) {
+                throw new ArgumentNullException(nameof(definitionID), "Missing required parameter 'definitionID' when calling DeleteAgentDefinition");
+            }
+            var request = new ApiRequest("DELETE", "/api/preview/agents/{orgName}/definitions/{definitionID}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("definitionID", definitionID);
+            this.client.Call(request);
+        }
+
         public AgentAutomationV2 GetAgentAutomationV2(string orgName, string automationID) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetAgentAutomationV2");
@@ -130,6 +158,20 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("automationID", automationID);
             request.Produces("application/json");
             return this.client.Call<AgentAutomationV2>(request);
+        }
+
+        public AgentDefinition GetAgentDefinition(string orgName, string definitionID) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetAgentDefinition");
+            }
+            if (definitionID == null) {
+                throw new ArgumentNullException(nameof(definitionID), "Missing required parameter 'definitionID' when calling GetAgentDefinition");
+            }
+            var request = new ApiRequest("GET", "/api/preview/agents/{orgName}/definitions/{definitionID}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("definitionID", definitionID);
+            request.Produces("application/json");
+            return this.client.Call<AgentDefinition>(request);
         }
 
         public AgentTask GetTask(string orgName, string taskID) {
@@ -192,6 +234,34 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.QueryParam("pageSize", pageSize);
             request.Produces("application/json");
             return this.client.Call<ListAgentAutomationsV2Response>(request);
+        }
+
+        public ListAgentTasksResponse ListAgentDefinitionTasks(string orgName, string definitionID, string continuationToken, long? pageSize, AgentTaskSortField? sortBy, AgentTaskSortDirection? sortDirection) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListAgentDefinitionTasks");
+            }
+            if (definitionID == null) {
+                throw new ArgumentNullException(nameof(definitionID), "Missing required parameter 'definitionID' when calling ListAgentDefinitionTasks");
+            }
+            var request = new ApiRequest("GET", "/api/preview/agents/{orgName}/definitions/{definitionID}/tasks");
+            request.PathParam("orgName", orgName);
+            request.PathParam("definitionID", definitionID);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("pageSize", pageSize);
+            request.QueryParam("sortBy", sortBy);
+            request.QueryParam("sortDirection", sortDirection);
+            request.Produces("application/json");
+            return this.client.Call<ListAgentTasksResponse>(request);
+        }
+
+        public ListAgentDefinitionsResponse ListAgentDefinitions(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListAgentDefinitions");
+            }
+            var request = new ApiRequest("GET", "/api/preview/agents/{orgName}/definitions");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<ListAgentDefinitionsResponse>(request);
         }
 
         public ListAgentTasksResponse ListTasks(string orgName, string agentDefinitionId, string continuationToken, System.Collections.Generic.List<AgentTaskSource> excludeSources, long? pageSize, string policyIssueId, string query, AgentTaskSortField? sortBy, AgentTaskSortDirection? sortDirection, AgentTaskStatus? status, AgentTaskType? taskType) {
@@ -337,6 +407,44 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<AgentAutomationV2>(apiRequest);
+        }
+
+        public AgentDefinition UpdateAgentDefinition(string orgName, string definitionID, CreateAgentDefinitionRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateAgentDefinition");
+            }
+            if (definitionID == null) {
+                throw new ArgumentNullException(nameof(definitionID), "Missing required parameter 'definitionID' when calling UpdateAgentDefinition");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateAgentDefinition");
+            }
+            var apiRequest = new ApiRequest("PUT", "/api/preview/agents/{orgName}/definitions/{definitionID}");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("definitionID", definitionID);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentDefinition>(apiRequest);
+        }
+
+        public AgentDefinition UpdateAgentDefinitionPaused(string orgName, string definitionID, UpdateAgentDefinitionPausedRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateAgentDefinitionPaused");
+            }
+            if (definitionID == null) {
+                throw new ArgumentNullException(nameof(definitionID), "Missing required parameter 'definitionID' when calling UpdateAgentDefinitionPaused");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateAgentDefinitionPaused");
+            }
+            var apiRequest = new ApiRequest("PATCH", "/api/preview/agents/{orgName}/definitions/{definitionID}/paused");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("definitionID", definitionID);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<AgentDefinition>(apiRequest);
         }
 
         public AgentTask UpdateTask(string orgName, string taskID, UpdateTaskRequest request) {

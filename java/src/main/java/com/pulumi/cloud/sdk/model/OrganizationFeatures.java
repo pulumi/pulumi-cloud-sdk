@@ -275,6 +275,9 @@ public class OrganizationFeatures {
     // Whether the organization may publish new custom (org-authored) policy packs. False on SKUs limited to registry policy packs (Essentials) unless the organization holds a per-organization override: one granted when it was grandfathered in with the packs it already had, or one an admin set as a contracted exception. Either carries a cap on the number of packs. New versions of packs the organization already has can be published either way.
     public boolean customPolicyPacksEnabled;
 
+    // Whether the organization may add new policy packs to its preventative policy groups. False on SKUs without preventative policies (Essentials) unless an admin set a per-organization override. Packs a group already applies keep enforcing and can be removed either way, and can move to another version or configuration unless an admin disabled preventative policies for the organization.
+    public boolean preventativePoliciesEnabled;
+
     // Whether the Pulumi Agents workspace navigation is enabled.
     public boolean agentsAsTeamMembersEnabled;
 

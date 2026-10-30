@@ -539,6 +539,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool CustomPolicyPacksEnabled { get; set; }
 
         /// <summary>
+        /// Whether the organization may add new policy packs to its preventative policy groups. False on SKUs without preventative policies (Essentials) unless an admin set a per-organization override. Packs a group already applies keep enforcing and can be removed either way, and can move to another version or configuration unless an admin disabled preventative policies for the organization.
+        /// </summary>
+        [JsonProperty("preventativePoliciesEnabled")]
+        public bool PreventativePoliciesEnabled { get; set; }
+
+        /// <summary>
         /// Whether the Pulumi Agents workspace navigation is enabled.
         /// </summary>
         [JsonProperty("agentsAsTeamMembersEnabled")]

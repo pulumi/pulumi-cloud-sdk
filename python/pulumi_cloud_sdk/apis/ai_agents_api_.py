@@ -279,6 +279,57 @@ class AI_AgentsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def create_agent_definition(
+        self,
+        org_name: 'str',
+        request: 'CreateAgentDefinitionRequest',
+        _request_timeout: int = None,
+    ) -> 'AgentDefinition':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `create_agent_definition`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `create_agent_definition`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AgentDefinition',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def create_tasks(
         self,
         org_name: 'str',
@@ -381,6 +432,57 @@ class AI_AgentsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def delete_agent_definition(
+        self,
+        org_name: 'str',
+        definition_id: 'str',
+        _request_timeout: int = None,
+    ) -> None:
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `delete_agent_definition`")
+        # verify the required parameter 'definition_id' is set
+        if definition_id is None:
+            raise ValueError("Missing the required parameter `definition_id` when calling `delete_agent_definition`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions/{definitionID}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if definition_id is not None:
+            path_params['definitionID'] = definition_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def get_agent_automation_v2(
         self,
         org_name: 'str',
@@ -428,6 +530,57 @@ class AI_AgentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='AgentAutomationV2',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def get_agent_definition(
+        self,
+        org_name: 'str',
+        definition_id: 'str',
+        _request_timeout: int = None,
+    ) -> 'AgentDefinition':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_agent_definition`")
+        # verify the required parameter 'definition_id' is set
+        if definition_id is None:
+            raise ValueError("Missing the required parameter `definition_id` when calling `get_agent_definition`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions/{definitionID}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if definition_id is not None:
+            path_params['definitionID'] = definition_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AgentDefinition',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
@@ -656,6 +809,114 @@ class AI_AgentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ListAgentAutomationsV2Response',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def list_agent_definition_tasks(
+        self,
+        org_name: 'str',
+        definition_id: 'str',
+        continuation_token: 'str' = None,
+        page_size: 'int' = None,
+        sort_by: 'AgentTaskSortField' = None,
+        sort_direction: 'AgentTaskSortDirection' = None,
+        _request_timeout: int = None,
+    ) -> 'ListAgentTasksResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_agent_definition_tasks`")
+        # verify the required parameter 'definition_id' is set
+        if definition_id is None:
+            raise ValueError("Missing the required parameter `definition_id` when calling `list_agent_definition_tasks`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions/{definitionID}/tasks'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if definition_id is not None:
+            path_params['definitionID'] = definition_id
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if page_size is not None:
+            query_params['pageSize'] = page_size
+        if sort_by is not None:
+            query_params['sortBy'] = sort_by
+        if sort_direction is not None:
+            query_params['sortDirection'] = sort_direction
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListAgentTasksResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def list_agent_definitions(
+        self,
+        org_name: 'str',
+        _request_timeout: int = None,
+    ) -> 'ListAgentDefinitionsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_agent_definitions`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListAgentDefinitionsResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
@@ -1184,6 +1445,120 @@ class AI_AgentsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='AgentAutomationV2',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def update_agent_definition(
+        self,
+        org_name: 'str',
+        definition_id: 'str',
+        request: 'CreateAgentDefinitionRequest',
+        _request_timeout: int = None,
+    ) -> 'AgentDefinition':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `update_agent_definition`")
+        # verify the required parameter 'definition_id' is set
+        if definition_id is None:
+            raise ValueError("Missing the required parameter `definition_id` when calling `update_agent_definition`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `update_agent_definition`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions/{definitionID}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if definition_id is not None:
+            path_params['definitionID'] = definition_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AgentDefinition',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def update_agent_definition_paused(
+        self,
+        org_name: 'str',
+        definition_id: 'str',
+        request: 'UpdateAgentDefinitionPausedRequest',
+        _request_timeout: int = None,
+    ) -> 'AgentDefinition':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `update_agent_definition_paused`")
+        # verify the required parameter 'definition_id' is set
+        if definition_id is None:
+            raise ValueError("Missing the required parameter `definition_id` when calling `update_agent_definition_paused`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `update_agent_definition_paused`")
+
+        collection_formats = {}
+        resource_path = '/api/preview/agents/{orgName}/definitions/{definitionID}/paused'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if definition_id is not None:
+            path_params['definitionID'] = definition_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='AgentDefinition',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

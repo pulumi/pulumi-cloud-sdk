@@ -96,6 +96,21 @@ public final class AI_AgentsApi {
         return this.client.call($request, new TypeReference<AgentAutomationV2EventResponse>() {});
     }
 
+    public AgentDefinition createAgentDefinition(String orgName, CreateAgentDefinitionRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createAgentDefinition");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createAgentDefinition");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/preview/agents/{orgName}/definitions");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentDefinition>() {});
+    }
+
     public CreateAgentTaskResponse createTasks(String orgName, CreateAgentTaskRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createTasks");
@@ -124,6 +139,19 @@ public final class AI_AgentsApi {
         this.client.call($request);
     }
 
+    public void deleteAgentDefinition(String orgName, String definitionID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling deleteAgentDefinition");
+        }
+        if (definitionID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'definitionID' when calling deleteAgentDefinition");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/preview/agents/{orgName}/definitions/{definitionID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("definitionID", definitionID);
+        this.client.call($request);
+    }
+
     public AgentAutomationV2 getAgentAutomationV2(String orgName, String automationID) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getAgentAutomationV2");
@@ -136,6 +164,20 @@ public final class AI_AgentsApi {
         $request.pathParam("automationID", automationID);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
+    }
+
+    public AgentDefinition getAgentDefinition(String orgName, String definitionID) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getAgentDefinition");
+        }
+        if (definitionID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'definitionID' when calling getAgentDefinition");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/preview/agents/{orgName}/definitions/{definitionID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("definitionID", definitionID);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentDefinition>() {});
     }
 
     public AgentTask getTask(String orgName, String taskID) {
@@ -198,6 +240,34 @@ public final class AI_AgentsApi {
         $request.queryParam("pageSize", pageSize);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<ListAgentAutomationsV2Response>() {});
+    }
+
+    public ListAgentTasksResponse listAgentDefinitionTasks(String orgName, String definitionID, String continuationToken, Long pageSize, AgentTaskSortField sortBy, AgentTaskSortDirection sortDirection) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listAgentDefinitionTasks");
+        }
+        if (definitionID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'definitionID' when calling listAgentDefinitionTasks");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/preview/agents/{orgName}/definitions/{definitionID}/tasks");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("definitionID", definitionID);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("pageSize", pageSize);
+        $request.queryParam("sortBy", sortBy);
+        $request.queryParam("sortDirection", sortDirection);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListAgentTasksResponse>() {});
+    }
+
+    public ListAgentDefinitionsResponse listAgentDefinitions(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listAgentDefinitions");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/preview/agents/{orgName}/definitions");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListAgentDefinitionsResponse>() {});
     }
 
     public ListAgentTasksResponse listTasks(String orgName, String agentDefinitionId, String continuationToken, List<AgentTaskSource> excludeSources, Long pageSize, String policyIssueId, String query, AgentTaskSortField sortBy, AgentTaskSortDirection sortDirection, AgentTaskStatus status, AgentTaskType taskType) {
@@ -343,6 +413,44 @@ public final class AI_AgentsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<AgentAutomationV2>() {});
+    }
+
+    public AgentDefinition updateAgentDefinition(String orgName, String definitionID, CreateAgentDefinitionRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateAgentDefinition");
+        }
+        if (definitionID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'definitionID' when calling updateAgentDefinition");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateAgentDefinition");
+        }
+        ApiRequest $request = new ApiRequest("PUT", "/api/preview/agents/{orgName}/definitions/{definitionID}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("definitionID", definitionID);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentDefinition>() {});
+    }
+
+    public AgentDefinition updateAgentDefinitionPaused(String orgName, String definitionID, UpdateAgentDefinitionPausedRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateAgentDefinitionPaused");
+        }
+        if (definitionID == null) {
+            throw new IllegalArgumentException("Missing required parameter 'definitionID' when calling updateAgentDefinitionPaused");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateAgentDefinitionPaused");
+        }
+        ApiRequest $request = new ApiRequest("PATCH", "/api/preview/agents/{orgName}/definitions/{definitionID}/paused");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("definitionID", definitionID);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<AgentDefinition>() {});
     }
 
     public AgentTask updateTask(String orgName, String taskID, UpdateTaskRequest request) {

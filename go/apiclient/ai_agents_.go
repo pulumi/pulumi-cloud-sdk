@@ -289,6 +289,62 @@ func (p *CloudClient) CreateAgentAutomationV2Event(
 	return &result, nil
 }
 
+type InterceptorForCreateAgentDefinition struct {
+	OrgName      string
+	Request      apitype.CreateAgentDefinitionRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CreateAgentDefinition(
+	ctx context.Context,
+	orgName string,
+	request apitype.CreateAgentDefinitionRequest,
+	extraHeaders ...http.Header,
+) (*apitype.AgentDefinition, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCreateAgentDefinition{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentDefinition)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateAgentDefinition: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/preview/agents/{orgName}/definitions",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.AgentDefinition
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForCreateTasks struct {
 	OrgName      string
 	Request      apitype.CreateAgentTaskRequest
@@ -392,6 +448,53 @@ func (p *CloudClient) DeleteAgentAutomationV2(
 	return nil
 }
 
+type InterceptorForDeleteAgentDefinition struct {
+	OrgName      string
+	DefinitionID string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) DeleteAgentDefinition(
+	ctx context.Context,
+	orgName string,
+	definitionID string,
+	extraHeaders ...http.Header,
+) error {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForDeleteAgentDefinition{
+			OrgName:      orgName,
+			DefinitionID: definitionID,
+			ExtraHeaders: extraHeaders,
+		}
+		_, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return err
+		}
+		if intercepted {
+			return nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"DELETE",
+		"/api/preview/agents/{orgName}/definitions/{definitionID}",
+		map[string]any{
+			"orgName":      orgName,
+			"definitionID": definitionID,
+		},
+		nil,
+	)
+	if err != nil {
+		return err
+	}
+	err = p.invoke(req, extraHeaders)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 type InterceptorForGetAgentAutomationV2 struct {
 	OrgName      string
 	AutomationID string
@@ -441,6 +544,62 @@ func (p *CloudClient) GetAgentAutomationV2(
 		return nil, err
 	}
 	var result apitype.AgentAutomationV2
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForGetAgentDefinition struct {
+	OrgName      string
+	DefinitionID string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetAgentDefinition(
+	ctx context.Context,
+	orgName string,
+	definitionID string,
+	extraHeaders ...http.Header,
+) (*apitype.AgentDefinition, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetAgentDefinition{
+			OrgName:      orgName,
+			DefinitionID: definitionID,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentDefinition)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetAgentDefinition: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/preview/agents/{orgName}/definitions/{definitionID}",
+		map[string]any{
+			"orgName":      orgName,
+			"definitionID": definitionID,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.AgentDefinition
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -704,6 +863,131 @@ func (p *CloudClient) ListAgentAutomationsV2(
 		return nil, err
 	}
 	var result apitype.ListAgentAutomationsV2Response
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForListAgentDefinitionTasks struct {
+	OrgName           string
+	DefinitionID      string
+	ContinuationToken *string
+	PageSize          *int
+	SortBy            *apitype.AgentTaskSortField
+	SortDirection     *apitype.AgentTaskSortDirection
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) ListAgentDefinitionTasks(
+	ctx context.Context,
+	orgName string,
+	definitionID string,
+	continuationToken *string,
+	pageSize *int,
+	sortBy *apitype.AgentTaskSortField,
+	sortDirection *apitype.AgentTaskSortDirection,
+	extraHeaders ...http.Header,
+) (*apitype.ListAgentTasksResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListAgentDefinitionTasks{
+			OrgName:           orgName,
+			DefinitionID:      definitionID,
+			ContinuationToken: continuationToken,
+			PageSize:          pageSize,
+			SortBy:            sortBy,
+			SortDirection:     sortDirection,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAgentTasksResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAgentDefinitionTasks: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/preview/agents/{orgName}/definitions/{definitionID}/tasks",
+		map[string]any{
+			"orgName":      orgName,
+			"definitionID": definitionID,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"pageSize":          pageSize,
+			"sortBy":            sortBy,
+			"sortDirection":     sortDirection,
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListAgentTasksResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForListAgentDefinitions struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListAgentDefinitions(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.ListAgentDefinitionsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListAgentDefinitions{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAgentDefinitionsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListAgentDefinitions: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/preview/agents/{orgName}/definitions",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListAgentDefinitionsResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -1283,6 +1567,126 @@ func (p *CloudClient) UpdateAgentAutomationV2Paused(
 		return nil, err
 	}
 	var result apitype.AgentAutomationV2
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForUpdateAgentDefinition struct {
+	OrgName      string
+	DefinitionID string
+	Request      apitype.CreateAgentDefinitionRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) UpdateAgentDefinition(
+	ctx context.Context,
+	orgName string,
+	definitionID string,
+	request apitype.CreateAgentDefinitionRequest,
+	extraHeaders ...http.Header,
+) (*apitype.AgentDefinition, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForUpdateAgentDefinition{
+			OrgName:      orgName,
+			DefinitionID: definitionID,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentDefinition)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateAgentDefinition: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"PUT",
+		"/api/preview/agents/{orgName}/definitions/{definitionID}",
+		map[string]any{
+			"orgName":      orgName,
+			"definitionID": definitionID,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.AgentDefinition
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForUpdateAgentDefinitionPaused struct {
+	OrgName      string
+	DefinitionID string
+	Request      apitype.UpdateAgentDefinitionPausedRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) UpdateAgentDefinitionPaused(
+	ctx context.Context,
+	orgName string,
+	definitionID string,
+	request apitype.UpdateAgentDefinitionPausedRequest,
+	extraHeaders ...http.Header,
+) (*apitype.AgentDefinition, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForUpdateAgentDefinitionPaused{
+			OrgName:      orgName,
+			DefinitionID: definitionID,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.AgentDefinition)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateAgentDefinitionPaused: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"PATCH",
+		"/api/preview/agents/{orgName}/definitions/{definitionID}/paused",
+		map[string]any{
+			"orgName":      orgName,
+			"definitionID": definitionID,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.AgentDefinition
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

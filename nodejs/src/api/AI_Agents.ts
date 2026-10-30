@@ -23,6 +23,7 @@ import { AgentClaimRequest } from "../model/AgentClaimRequest";
 import { AgentClaimResponse } from "../model/AgentClaimResponse";
 import { AgentClaimsStatus } from "../model/AgentClaimsStatus";
 import { AgentConsoleEvent } from "../model/AgentConsoleEvent";
+import { AgentDefinition } from "../model/AgentDefinition";
 import { AgentRespondToTaskRequest } from "../model/AgentRespondToTaskRequest";
 import { AgentSignupChallenge } from "../model/AgentSignupChallenge";
 import { AgentSignupRequest } from "../model/AgentSignupRequest";
@@ -35,12 +36,15 @@ import { AgentTaskStatus } from "../model/AgentTaskStatus";
 import { AgentTaskType } from "../model/AgentTaskType";
 import { CancelAgentTaskRequest } from "../model/CancelAgentTaskRequest";
 import { CreateAgentAutomationV2Request } from "../model/CreateAgentAutomationV2Request";
+import { CreateAgentDefinitionRequest } from "../model/CreateAgentDefinitionRequest";
 import { CreateAgentTaskRequest } from "../model/CreateAgentTaskRequest";
 import { CreateAgentTaskResponse } from "../model/CreateAgentTaskResponse";
 import { ListAgentAutomationsV2Response } from "../model/ListAgentAutomationsV2Response";
+import { ListAgentDefinitionsResponse } from "../model/ListAgentDefinitionsResponse";
 import { ListAgentTaskEventsResponse } from "../model/ListAgentTaskEventsResponse";
 import { ListAgentTasksResponse } from "../model/ListAgentTasksResponse";
 import { UpdateAgentAutomationPausedRequest } from "../model/UpdateAgentAutomationPausedRequest";
+import { UpdateAgentDefinitionPausedRequest } from "../model/UpdateAgentDefinitionPausedRequest";
 import { UpdateTaskRequest } from "../model/UpdateTaskRequest";
 
 
@@ -267,6 +271,49 @@ export class AI_Agents {
         });
     }
 
+    public CreateAgentDefinition__generateUrl(orgName: string): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public CreateAgentDefinition(
+        params: {
+            orgName: string,
+        },
+        request: CreateAgentDefinitionRequest,
+    ): Promise<AgentDefinition> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreateAgentDefinition.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CreateAgentDefinition.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreateAgentDefinition.");
+        }
+
+        const __path = this.CreateAgentDefinition__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<AgentDefinition>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentDefinition.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public CreateTasks__generateUrl(orgName: string): string {
         let url = this.basePath + "preview/agents/{orgName}/tasks";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -349,6 +396,45 @@ export class AI_Agents {
         return this.client.callWithOptions(__path, __requestOptions);
     }
 
+    public DeleteAgentDefinition__generateUrl(
+        orgName: string,
+        definitionID: string,
+    ): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions/{definitionID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{definitionID}", encodeURIComponent(String(definitionID)));
+        return url;
+    }
+
+    public DeleteAgentDefinition(
+        params: {
+            orgName: string,
+            definitionID: string,
+        },
+    ): Promise<void> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling DeleteAgentDefinition.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling DeleteAgentDefinition.");
+        }
+
+        // verify required parameter 'definitionID' is not null or undefined
+        if (params.definitionID === null || params.definitionID === undefined) {
+            throw new Error("Required parameter definitionID was null or undefined when calling DeleteAgentDefinition.");
+        }
+
+        const __path = this.DeleteAgentDefinition__generateUrl(params.orgName, params.definitionID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.method = "DELETE";
+
+        return this.client.callWithOptions(__path, __requestOptions);
+    }
+
     public GetAgentAutomationV2__generateUrl(
         orgName: string,
         automationID: string,
@@ -389,6 +475,50 @@ export class AI_Agents {
         return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 AgentAutomationV2.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public GetAgentDefinition__generateUrl(
+        orgName: string,
+        definitionID: string,
+    ): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions/{definitionID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{definitionID}", encodeURIComponent(String(definitionID)));
+        return url;
+    }
+
+    public GetAgentDefinition(
+        params: {
+            orgName: string,
+            definitionID: string,
+        },
+    ): Promise<AgentDefinition> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetAgentDefinition.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetAgentDefinition.");
+        }
+
+        // verify required parameter 'definitionID' is not null or undefined
+        if (params.definitionID === null || params.definitionID === undefined) {
+            throw new Error("Required parameter definitionID was null or undefined when calling GetAgentDefinition.");
+        }
+
+        const __path = this.GetAgentDefinition__generateUrl(params.orgName, params.definitionID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<AgentDefinition>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentDefinition.fixupPrototype(__res0);
             }
         });
     }
@@ -595,6 +725,100 @@ export class AI_Agents {
         return this.client.callWithOptions<ListAgentAutomationsV2Response>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 ListAgentAutomationsV2Response.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListAgentDefinitionTasks__generateUrl(
+        orgName: string,
+        definitionID: string,
+    ): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions/{definitionID}/tasks";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{definitionID}", encodeURIComponent(String(definitionID)));
+        return url;
+    }
+
+    public ListAgentDefinitionTasks(
+        params: {
+            orgName: string,
+            definitionID: string,
+            continuationToken?: string,
+            pageSize?: number,
+            sortBy?: AgentTaskSortField,
+            sortDirection?: AgentTaskSortDirection,
+        },
+    ): Promise<ListAgentTasksResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListAgentDefinitionTasks.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListAgentDefinitionTasks.");
+        }
+
+        // verify required parameter 'definitionID' is not null or undefined
+        if (params.definitionID === null || params.definitionID === undefined) {
+            throw new Error("Required parameter definitionID was null or undefined when calling ListAgentDefinitionTasks.");
+        }
+
+        const __path = this.ListAgentDefinitionTasks__generateUrl(params.orgName, params.definitionID);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.pageSize !== undefined) {
+            __requestOptions.setQueryParam("pageSize", params.pageSize);
+        }
+        if (params.sortBy !== undefined) {
+            __requestOptions.setQueryParam("sortBy", params.sortBy);
+        }
+        if (params.sortDirection !== undefined) {
+            __requestOptions.setQueryParam("sortDirection", params.sortDirection);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListAgentTasksResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListAgentTasksResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListAgentDefinitions__generateUrl(orgName: string): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListAgentDefinitions(
+        params: {
+            orgName: string,
+        },
+    ): Promise<ListAgentDefinitionsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListAgentDefinitions.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListAgentDefinitions.");
+        }
+
+        const __path = this.ListAgentDefinitions__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListAgentDefinitionsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListAgentDefinitionsResponse.fixupPrototype(__res0);
             }
         });
     }
@@ -1042,6 +1266,112 @@ export class AI_Agents {
         return this.client.callWithOptions<AgentAutomationV2>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 AgentAutomationV2.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public UpdateAgentDefinition__generateUrl(
+        orgName: string,
+        definitionID: string,
+    ): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions/{definitionID}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{definitionID}", encodeURIComponent(String(definitionID)));
+        return url;
+    }
+
+    public UpdateAgentDefinition(
+        params: {
+            orgName: string,
+            definitionID: string,
+        },
+        request: CreateAgentDefinitionRequest,
+    ): Promise<AgentDefinition> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdateAgentDefinition.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdateAgentDefinition.");
+        }
+
+        // verify required parameter 'definitionID' is not null or undefined
+        if (params.definitionID === null || params.definitionID === undefined) {
+            throw new Error("Required parameter definitionID was null or undefined when calling UpdateAgentDefinition.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdateAgentDefinition.");
+        }
+
+        const __path = this.UpdateAgentDefinition__generateUrl(params.orgName, params.definitionID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "PUT";
+
+        return this.client.callWithOptions<AgentDefinition>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentDefinition.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public UpdateAgentDefinitionPaused__generateUrl(
+        orgName: string,
+        definitionID: string,
+    ): string {
+        let url = this.basePath + "preview/agents/{orgName}/definitions/{definitionID}/paused";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{definitionID}", encodeURIComponent(String(definitionID)));
+        return url;
+    }
+
+    public UpdateAgentDefinitionPaused(
+        params: {
+            orgName: string,
+            definitionID: string,
+        },
+        request: UpdateAgentDefinitionPausedRequest,
+    ): Promise<AgentDefinition> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdateAgentDefinitionPaused.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdateAgentDefinitionPaused.");
+        }
+
+        // verify required parameter 'definitionID' is not null or undefined
+        if (params.definitionID === null || params.definitionID === undefined) {
+            throw new Error("Required parameter definitionID was null or undefined when calling UpdateAgentDefinitionPaused.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdateAgentDefinitionPaused.");
+        }
+
+        const __path = this.UpdateAgentDefinitionPaused__generateUrl(params.orgName, params.definitionID);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "PATCH";
+
+        return this.client.callWithOptions<AgentDefinition>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                AgentDefinition.fixupPrototype(__res0);
             }
         });
     }

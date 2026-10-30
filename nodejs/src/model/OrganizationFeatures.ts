@@ -102,6 +102,7 @@ export class OrganizationFeatures {
     multiChangeRequestsEnabled?: boolean;
     customPolicyGroupsEnabled: boolean;
     customPolicyPacksEnabled: boolean;
+    preventativePoliciesEnabled: boolean;
     agentsAsTeamMembersEnabled?: boolean;
     entityUserAssignmentsEnabled: boolean;
     policyExceptionsEnabled: boolean;
