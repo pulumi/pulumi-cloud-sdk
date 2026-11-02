@@ -883,6 +883,7 @@ from .step_run_ import StepRun
 from .step_status_ import StepStatus
 from .submit_change_request_request_ import SubmitChangeRequestRequest
 from .target_entity_ import TargetEntity
+from .target_entity_delivery_gate_ import TargetEntityDeliveryGate
 from .target_entity_environment_ import TargetEntityEnvironment
 from .target_entity_policy_exceptions_ import TargetEntityPolicyExceptions
 from .team_ import Team

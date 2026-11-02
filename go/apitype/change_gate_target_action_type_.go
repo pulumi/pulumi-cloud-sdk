@@ -10,9 +10,10 @@ import "fmt"
 type ChangeGateTargetActionType string
 
 const (
-	ChangeGateTargetActionTypeUpdate ChangeGateTargetActionType = "update"
-	ChangeGateTargetActionTypeOpen   ChangeGateTargetActionType = "open"
-	ChangeGateTargetActionTypeCreate ChangeGateTargetActionType = "create"
+	ChangeGateTargetActionTypeUpdate  ChangeGateTargetActionType = "update"
+	ChangeGateTargetActionTypeOpen    ChangeGateTargetActionType = "open"
+	ChangeGateTargetActionTypeCreate  ChangeGateTargetActionType = "create"
+	ChangeGateTargetActionTypeApprove ChangeGateTargetActionType = "approve"
 )
 
 func (v ChangeGateTargetActionType) AllValues() []ChangeGateTargetActionType {
@@ -20,6 +21,7 @@ func (v ChangeGateTargetActionType) AllValues() []ChangeGateTargetActionType {
 		ChangeGateTargetActionTypeUpdate,
 		ChangeGateTargetActionTypeOpen,
 		ChangeGateTargetActionTypeCreate,
+		ChangeGateTargetActionTypeApprove,
 	}
 }
 
@@ -30,6 +32,8 @@ func (v ChangeGateTargetActionType) IsValid() bool {
 	case ChangeGateTargetActionTypeOpen:
 		return true
 	case ChangeGateTargetActionTypeCreate:
+		return true
+	case ChangeGateTargetActionTypeApprove:
 		return true
 	}
 
@@ -44,6 +48,8 @@ func (v ChangeGateTargetActionType) openapiName() string {
 		return "Open"
 	case ChangeGateTargetActionTypeCreate:
 		return "Create"
+	case ChangeGateTargetActionTypeApprove:
+		return "Approve"
 	}
 
 	return ""

@@ -18,5 +18,8 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [EnumMember(Value = "create")]
         Create,
+
+        [EnumMember(Value = "approve")]
+        Approve,
     }
 }

@@ -109,6 +109,7 @@ export class OrganizationFeatures {
     staticDefaultRolesEnabled: boolean;
     permissionModeEnabled?: boolean;
     policyPostureReportEnabled?: boolean;
+    deliveryEnabled?: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationFeatures.fixupPrototype;

@@ -209,4 +209,6 @@ type OrganizationFeatures struct {
 	PermissionModeEnabled bool `json:"permissionModeEnabled,omitzero" yaml:"permissionModeEnabled,omitempty"`
 	// Whether the monthly Infrastructure Posture report is available to the organization.
 	PolicyPostureReportEnabled bool `json:"policyPostureReportEnabled,omitzero" yaml:"policyPostureReportEnabled,omitempty"`
+	// Whether Delivery is available to the organization.
+	DeliveryEnabled bool `json:"deliveryEnabled,omitzero" yaml:"deliveryEnabled,omitempty"`
 }

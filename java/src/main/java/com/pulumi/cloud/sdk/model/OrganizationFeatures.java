@@ -295,4 +295,7 @@ public class OrganizationFeatures {
 
     // Whether the monthly Infrastructure Posture report is available to the organization.
     public boolean policyPostureReportEnabled;
+
+    // Whether Delivery is available to the organization.
+    public boolean deliveryEnabled;
 }

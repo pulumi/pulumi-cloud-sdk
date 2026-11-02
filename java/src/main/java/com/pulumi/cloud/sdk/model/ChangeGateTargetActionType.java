@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.*;
 public enum ChangeGateTargetActionType {
     Update("update"),
     Open("open"),
-    Create("create");
+    Create("create"),
+    Approve("approve");
 
     private final String value;
 

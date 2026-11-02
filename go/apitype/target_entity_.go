@@ -65,6 +65,7 @@ type targetEntityImpl struct {
 
 func (m *targetEntityImpl) GetInstancesFromTypeHierarchy() []TargetEntity {
 	return []TargetEntity{
+		&targetEntityDeliveryGateImpl{},
 		&targetEntityEnvironmentImpl{},
 		&targetEntityPolicyExceptionsImpl{},
 	}
@@ -92,6 +93,13 @@ func UnmarshalJSONTargetEntity(bytes []byte, res *TargetEntity) error {
 		return err
 	}
 	switch v.InternalDiscriminator {
+	case "delivery_gate":
+		var subValue targetEntityDeliveryGateImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
 	case "environment":
 		var subValue targetEntityEnvironmentImpl
 		if err = json.Unmarshal(bytes, &subValue); err != nil {
@@ -126,6 +134,13 @@ func UnmarshalYamlTargetEntity(node yaml.Node, res *TargetEntity) error {
 		return err
 	}
 	switch v.InternalDiscriminator {
+	case "delivery_gate":
+		var subValue targetEntityDeliveryGateImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
 	case "environment":
 		var subValue targetEntityEnvironmentImpl
 		if err = node.Decode(&subValue); err != nil {

@@ -67,6 +67,7 @@ class TargetEntity(PulumiAutoModelEncoder):
         if not switcher:
             from .. import models
             switcher = {
+                "delivery_gate": models.TargetEntityDeliveryGate,
                 "environment": models.TargetEntityEnvironment,
                 "policy_exceptions": models.TargetEntityPolicyExceptions,
             }

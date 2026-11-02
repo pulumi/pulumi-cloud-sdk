@@ -579,5 +579,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("policyPostureReportEnabled")]
         public bool PolicyPostureReportEnabled { get; set; }
+
+        /// <summary>
+        /// Whether Delivery is available to the organization.
+        /// </summary>
+        [JsonProperty("deliveryEnabled")]
+        public bool DeliveryEnabled { get; set; }
     }
 }

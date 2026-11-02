@@ -898,6 +898,7 @@ export * from "./StepRun";
 export * from "./StepStatus";
 export * from "./SubmitChangeRequestRequest";
 export * from "./TargetEntity";
+export * from "./TargetEntityDeliveryGate";
 export * from "./TargetEntityEnvironment";
 export * from "./TargetEntityPolicyExceptions";
 export * from "./Team";

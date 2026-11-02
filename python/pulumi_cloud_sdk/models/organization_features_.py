@@ -111,6 +111,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var static_default_roles_enabled: bool - declared
     :var permission_mode_enabled: bool - declared
     :var policy_posture_report_enabled: bool - declared
+    :var delivery_enabled: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'audit_logs_enabled': 'bool',
@@ -208,6 +209,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'static_default_roles_enabled': 'bool',
         'permission_mode_enabled': 'bool',
         'policy_posture_report_enabled': 'bool',
+        'delivery_enabled': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -306,6 +308,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'static_default_roles_enabled': 'staticDefaultRolesEnabled',
         'permission_mode_enabled': 'permissionModeEnabled',
         'policy_posture_report_enabled': 'policyPostureReportEnabled',
+        'delivery_enabled': 'deliveryEnabled',
     }
 
     FIELDS_audit_logs_enabled = 'auditLogsEnabled'
@@ -403,6 +406,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_static_default_roles_enabled = 'staticDefaultRolesEnabled'
     FIELDS_permission_mode_enabled = 'permissionModeEnabled'
     FIELDS_policy_posture_report_enabled = 'policyPostureReportEnabled'
+    FIELDS_delivery_enabled = 'deliveryEnabled'
 
     _audit_logs_enabled: 'bool'
     _has_terraform_modules: 'bool'
@@ -499,6 +503,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _static_default_roles_enabled: 'bool'
     _permission_mode_enabled: 'bool'
     _policy_posture_report_enabled: 'bool'
+    _delivery_enabled: 'bool'
 
     def __init__(
         self,
@@ -597,6 +602,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         agents_as_team_members_enabled: 'bool' = False,
         permission_mode_enabled: 'bool' = False,
         policy_posture_report_enabled: 'bool' = False,
+        delivery_enabled: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -695,6 +701,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.static_default_roles_enabled = static_default_roles_enabled
         self.permission_mode_enabled = permission_mode_enabled
         self.policy_posture_report_enabled = policy_posture_report_enabled
+        self.delivery_enabled = delivery_enabled
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OrganizationFeatures):
@@ -793,6 +800,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._static_default_roles_enabled = source._static_default_roles_enabled
             self._permission_mode_enabled = source._permission_mode_enabled
             self._policy_posture_report_enabled = source._policy_posture_report_enabled
+            self._delivery_enabled = source._delivery_enabled
 
     @property
     def audit_logs_enabled(self) -> 'bool':
@@ -1745,6 +1753,14 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @policy_posture_report_enabled.setter
     def policy_posture_report_enabled(self, policy_posture_report_enabled: 'bool'):
         self._policy_posture_report_enabled = policy_posture_report_enabled
+
+    @property
+    def delivery_enabled(self) -> 'bool':
+        return self._delivery_enabled
+
+    @delivery_enabled.setter
+    def delivery_enabled(self, delivery_enabled: 'bool'):
+        self._delivery_enabled = delivery_enabled
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, OrganizationFeatures):

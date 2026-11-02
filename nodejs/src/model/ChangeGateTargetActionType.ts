@@ -17,4 +17,5 @@ export enum ChangeGateTargetActionType {
     Update = "update",
     Open = "open",
     Create = "create",
+    Approve = "approve",
 }

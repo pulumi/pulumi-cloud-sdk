@@ -12,10 +12,29 @@ import com.fasterxml.jackson.databind.JsonNode;
 @javax.annotation.processing.Generated("pulumi-codegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "entityType")
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = TargetEntity.DeliveryGate.class),
     @JsonSubTypes.Type(value = TargetEntity.Environment.class),
     @JsonSubTypes.Type(value = TargetEntity.PolicyExceptions.class)
 })
 public abstract class TargetEntity {
+
+    @JsonTypeName("delivery_gate")
+    public static class DeliveryGate extends TargetEntity {
+        // The project of the stack
+        public String project;
+
+        // The name of the stack
+        public String stack;
+
+        // The number of the run
+        public long runNumber;
+
+        // The ID of the gate
+        public String gateId;
+
+        // The display name of the gate
+        public String name;
+    }
 
     @JsonTypeName("environment")
     public static class Environment extends TargetEntity {

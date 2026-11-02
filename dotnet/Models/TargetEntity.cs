@@ -11,9 +11,43 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(PolymorphicConverter))]
     [JsonDiscriminator("entityType")]
+    [JsonSubType(typeof(TargetEntity.DeliveryGate))]
     [JsonSubType(typeof(TargetEntity.Environment))]
     [JsonSubType(typeof(TargetEntity.PolicyExceptions))]
     public abstract class TargetEntity {
+
+        [JsonSubTypeName("delivery_gate")]
+        public class DeliveryGate : TargetEntity {
+            /// <summary>
+            /// The project of the stack
+            /// </summary>
+            [JsonProperty("project")]
+            public string Project { get; set; }
+
+            /// <summary>
+            /// The name of the stack
+            /// </summary>
+            [JsonProperty("stack")]
+            public string Stack { get; set; }
+
+            /// <summary>
+            /// The number of the run
+            /// </summary>
+            [JsonProperty("runNumber")]
+            public long RunNumber { get; set; }
+
+            /// <summary>
+            /// The ID of the gate
+            /// </summary>
+            [JsonProperty("gateId")]
+            public string GateID { get; set; }
+
+            /// <summary>
+            /// The display name of the gate
+            /// </summary>
+            [JsonProperty("name")]
+            public string Name { get; set; }
+        }
 
         [JsonSubTypeName("environment")]
         public class Environment : TargetEntity {
