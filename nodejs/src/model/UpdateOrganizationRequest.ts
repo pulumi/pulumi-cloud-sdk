@@ -63,6 +63,10 @@ export class UpdateOrganizationRequest {
     static fixupPrototype(obj: UpdateOrganizationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateOrganizationRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateOrganizationRequest.setPrototype(obj);
 
         obj.fixupFields();

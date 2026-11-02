@@ -43,6 +43,10 @@ export class TargetEntityEnvironment extends TargetEntity {
     static fixupPrototype(obj: TargetEntityEnvironment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TargetEntityEnvironment: expected an object, got ${typeof obj}`);
+        }
+
         TargetEntityEnvironment.setPrototype(obj);
 
         obj.fixupFields();

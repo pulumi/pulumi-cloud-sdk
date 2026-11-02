@@ -35,6 +35,10 @@ export class GraphPath {
     static fixupPrototype(obj: GraphPath) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphPath: expected an object, got ${typeof obj}`);
+        }
+
         GraphPath.setPrototype(obj);
 
         obj.fixupFields();

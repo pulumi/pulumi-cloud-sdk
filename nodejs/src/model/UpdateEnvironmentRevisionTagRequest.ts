@@ -34,6 +34,10 @@ export class UpdateEnvironmentRevisionTagRequest {
     static fixupPrototype(obj: UpdateEnvironmentRevisionTagRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateEnvironmentRevisionTagRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateEnvironmentRevisionTagRequest.setPrototype(obj);
 
         obj.fixupFields();

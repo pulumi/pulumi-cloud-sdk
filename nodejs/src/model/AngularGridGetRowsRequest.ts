@@ -45,6 +45,10 @@ export class AngularGridGetRowsRequest {
     static fixupPrototype(obj: AngularGridGetRowsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AngularGridGetRowsRequest: expected an object, got ${typeof obj}`);
+        }
+
         AngularGridGetRowsRequest.setPrototype(obj);
 
         obj.fixupFields();

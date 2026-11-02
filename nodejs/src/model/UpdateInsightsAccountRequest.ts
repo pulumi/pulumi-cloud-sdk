@@ -40,6 +40,10 @@ export class UpdateInsightsAccountRequest {
     static fixupPrototype(obj: UpdateInsightsAccountRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateInsightsAccountRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateInsightsAccountRequest.setPrototype(obj);
 
         obj.fixupFields();

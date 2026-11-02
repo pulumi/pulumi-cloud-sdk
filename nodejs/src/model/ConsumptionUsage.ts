@@ -49,6 +49,10 @@ export class ConsumptionUsage {
     static fixupPrototype(obj: ConsumptionUsage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ConsumptionUsage: expected an object, got ${typeof obj}`);
+        }
+
         ConsumptionUsage.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class ListInsightsResourceVersionsResponse {
     static fixupPrototype(obj: ListInsightsResourceVersionsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListInsightsResourceVersionsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListInsightsResourceVersionsResponse.setPrototype(obj);
 
         obj.fixupFields();

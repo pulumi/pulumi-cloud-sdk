@@ -35,6 +35,10 @@ export class TransferAllStacksRequest {
     static fixupPrototype(obj: TransferAllStacksRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferAllStacksRequest: expected an object, got ${typeof obj}`);
+        }
+
         TransferAllStacksRequest.setPrototype(obj);
 
         obj.fixupFields();

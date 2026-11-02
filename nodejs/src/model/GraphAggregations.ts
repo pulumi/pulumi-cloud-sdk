@@ -37,6 +37,10 @@ export class GraphAggregations {
     static fixupPrototype(obj: GraphAggregations) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphAggregations: expected an object, got ${typeof obj}`);
+        }
+
         GraphAggregations.setPrototype(obj);
 
         obj.fixupFields();

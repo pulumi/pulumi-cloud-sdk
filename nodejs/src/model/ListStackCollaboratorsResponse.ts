@@ -38,6 +38,10 @@ export class ListStackCollaboratorsResponse {
     static fixupPrototype(obj: ListStackCollaboratorsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListStackCollaboratorsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListStackCollaboratorsResponse.setPrototype(obj);
 
         obj.fixupFields();

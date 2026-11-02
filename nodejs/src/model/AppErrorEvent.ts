@@ -34,6 +34,10 @@ export class AppErrorEvent {
     static fixupPrototype(obj: AppErrorEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppErrorEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppErrorEvent.setPrototype(obj);
 
         obj.fixupFields();

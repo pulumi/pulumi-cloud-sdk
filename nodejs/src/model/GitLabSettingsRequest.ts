@@ -36,6 +36,10 @@ export class GitLabSettingsRequest {
     static fixupPrototype(obj: GitLabSettingsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitLabSettingsRequest: expected an object, got ${typeof obj}`);
+        }
+
         GitLabSettingsRequest.setPrototype(obj);
 
         obj.fixupFields();

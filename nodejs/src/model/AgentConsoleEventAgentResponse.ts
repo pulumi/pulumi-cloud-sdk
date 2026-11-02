@@ -43,6 +43,10 @@ export class AgentConsoleEventAgentResponse extends AgentConsoleEvent {
     static fixupPrototype(obj: AgentConsoleEventAgentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentConsoleEventAgentResponse: expected an object, got ${typeof obj}`);
+        }
+
         AgentConsoleEventAgentResponse.setPrototype(obj);
 
         obj.fixupFields();

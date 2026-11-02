@@ -44,6 +44,10 @@ export class PermissionDescriptorRecord extends PermissionDescriptorBase {
     static fixupPrototype(obj: PermissionDescriptorRecord) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionDescriptorRecord: expected an object, got ${typeof obj}`);
+        }
+
         PermissionDescriptorRecord.setPrototype(obj);
 
         obj.fixupFields();

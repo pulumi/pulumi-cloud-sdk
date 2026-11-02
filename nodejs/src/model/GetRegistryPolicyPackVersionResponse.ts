@@ -39,6 +39,10 @@ export class GetRegistryPolicyPackVersionResponse {
     static fixupPrototype(obj: GetRegistryPolicyPackVersionResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetRegistryPolicyPackVersionResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetRegistryPolicyPackVersionResponse.setPrototype(obj);
 
         obj.fixupFields();

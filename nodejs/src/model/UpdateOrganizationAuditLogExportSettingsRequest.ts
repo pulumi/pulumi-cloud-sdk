@@ -40,6 +40,10 @@ export class UpdateOrganizationAuditLogExportSettingsRequest {
     static fixupPrototype(obj: UpdateOrganizationAuditLogExportSettingsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateOrganizationAuditLogExportSettingsRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateOrganizationAuditLogExportSettingsRequest.setPrototype(obj);
 
         obj.fixupFields();

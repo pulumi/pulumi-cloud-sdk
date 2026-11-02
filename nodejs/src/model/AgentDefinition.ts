@@ -53,6 +53,10 @@ export class AgentDefinition {
     static fixupPrototype(obj: AgentDefinition) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentDefinition: expected an object, got ${typeof obj}`);
+        }
+
         AgentDefinition.setPrototype(obj);
 
         obj.fixupFields();

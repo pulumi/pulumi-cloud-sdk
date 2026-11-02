@@ -34,6 +34,10 @@ export class AppPreludeEvent {
     static fixupPrototype(obj: AppPreludeEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPreludeEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppPreludeEvent.setPrototype(obj);
 
         obj.fixupFields();

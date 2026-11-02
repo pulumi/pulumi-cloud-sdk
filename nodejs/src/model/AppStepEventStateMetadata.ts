@@ -48,6 +48,10 @@ export class AppStepEventStateMetadata {
     static fixupPrototype(obj: AppStepEventStateMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStepEventStateMetadata: expected an object, got ${typeof obj}`);
+        }
+
         AppStepEventStateMetadata.setPrototype(obj);
 
         obj.fixupFields();

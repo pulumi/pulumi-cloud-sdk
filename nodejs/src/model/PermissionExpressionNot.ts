@@ -40,6 +40,10 @@ export class PermissionExpressionNot extends PermissionBooleanExpressionUnary {
     static fixupPrototype(obj: PermissionExpressionNot) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionNot: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionNot.setPrototype(obj);
 
         obj.fixupFields();

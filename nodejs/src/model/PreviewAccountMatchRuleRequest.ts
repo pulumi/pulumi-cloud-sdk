@@ -38,6 +38,10 @@ export class PreviewAccountMatchRuleRequest {
     static fixupPrototype(obj: PreviewAccountMatchRuleRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PreviewAccountMatchRuleRequest: expected an object, got ${typeof obj}`);
+        }
+
         PreviewAccountMatchRuleRequest.setPrototype(obj);
 
         obj.fixupFields();

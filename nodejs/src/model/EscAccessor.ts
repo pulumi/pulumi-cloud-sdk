@@ -39,6 +39,10 @@ export class EscAccessor {
     static fixupPrototype(obj: EscAccessor) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscAccessor: expected an object, got ${typeof obj}`);
+        }
+
         EscAccessor.setPrototype(obj);
 
         obj.fixupFields();

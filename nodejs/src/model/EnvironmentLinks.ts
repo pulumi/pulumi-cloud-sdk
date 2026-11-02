@@ -34,6 +34,10 @@ export class EnvironmentLinks {
     static fixupPrototype(obj: EnvironmentLinks) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentLinks: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentLinks.setPrototype(obj);
 
         obj.fixupFields();

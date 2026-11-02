@@ -42,6 +42,10 @@ export class PermissionDescriptorGroup extends PermissionDescriptor {
     static fixupPrototype(obj: PermissionDescriptorGroup) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionDescriptorGroup: expected an object, got ${typeof obj}`);
+        }
+
         PermissionDescriptorGroup.setPrototype(obj);
 
         obj.fixupFields();

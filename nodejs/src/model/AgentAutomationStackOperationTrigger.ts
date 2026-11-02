@@ -47,6 +47,10 @@ export class AgentAutomationStackOperationTrigger extends AgentAutomationTrigger
     static fixupPrototype(obj: AgentAutomationStackOperationTrigger) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAutomationStackOperationTrigger: expected an object, got ${typeof obj}`);
+        }
+
         AgentAutomationStackOperationTrigger.setPrototype(obj);
 
         obj.fixupFields();

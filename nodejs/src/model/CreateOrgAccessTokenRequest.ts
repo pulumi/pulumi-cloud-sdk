@@ -39,6 +39,10 @@ export class CreateOrgAccessTokenRequest extends BaseCreateAccessTokenRequest {
     static fixupPrototype(obj: CreateOrgAccessTokenRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateOrgAccessTokenRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateOrgAccessTokenRequest.setPrototype(obj);
 
         obj.fixupFields();

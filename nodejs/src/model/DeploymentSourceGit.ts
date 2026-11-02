@@ -37,6 +37,10 @@ export class DeploymentSourceGit {
     static fixupPrototype(obj: DeploymentSourceGit) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSourceGit: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSourceGit.setPrototype(obj);
 
         obj.fixupFields();

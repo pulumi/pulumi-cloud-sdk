@@ -41,6 +41,10 @@ export class SourceContextRequest {
     static fixupPrototype(obj: SourceContextRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SourceContextRequest: expected an object, got ${typeof obj}`);
+        }
+
         SourceContextRequest.setPrototype(obj);
 
         obj.fixupFields();

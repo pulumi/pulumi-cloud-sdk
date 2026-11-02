@@ -41,6 +41,10 @@ export class GetPackageInstallationResponse {
     static fixupPrototype(obj: GetPackageInstallationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetPackageInstallationResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetPackageInstallationResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class DeploymentSettingsVCSGitLab extends DeploymentSettingsVCS {
     static fixupPrototype(obj: DeploymentSettingsVCSGitLab) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsVCSGitLab: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsVCSGitLab.setPrototype(obj);
 
         obj.fixupFields();

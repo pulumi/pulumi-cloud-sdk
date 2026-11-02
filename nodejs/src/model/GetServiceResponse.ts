@@ -40,6 +40,10 @@ export class GetServiceResponse {
     static fixupPrototype(obj: GetServiceResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetServiceResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetServiceResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -43,6 +43,10 @@ export class BulkCreateInsightsAccountItem {
     static fixupPrototype(obj: BulkCreateInsightsAccountItem) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BulkCreateInsightsAccountItem: expected an object, got ${typeof obj}`);
+        }
+
         BulkCreateInsightsAccountItem.setPrototype(obj);
 
         obj.fixupFields();

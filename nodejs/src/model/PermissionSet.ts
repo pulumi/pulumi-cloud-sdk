@@ -37,6 +37,10 @@ export class PermissionSet {
     static fixupPrototype(obj: PermissionSet) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionSet: expected an object, got ${typeof obj}`);
+        }
+
         PermissionSet.setPrototype(obj);
 
         obj.fixupFields();

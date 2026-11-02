@@ -38,6 +38,10 @@ export class UpdateEntityAssignmentRequest extends EntityInstance {
     static fixupPrototype(obj: UpdateEntityAssignmentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateEntityAssignmentRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateEntityAssignmentRequest.setPrototype(obj);
 
         obj.fixupFields();

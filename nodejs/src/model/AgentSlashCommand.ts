@@ -39,6 +39,10 @@ export class AgentSlashCommand {
     static fixupPrototype(obj: AgentSlashCommand) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentSlashCommand: expected an object, got ${typeof obj}`);
+        }
+
         AgentSlashCommand.setPrototype(obj);
 
         obj.fixupFields();

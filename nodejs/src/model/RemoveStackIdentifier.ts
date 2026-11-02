@@ -35,6 +35,10 @@ export class RemoveStackIdentifier {
     static fixupPrototype(obj: RemoveStackIdentifier) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RemoveStackIdentifier: expected an object, got ${typeof obj}`);
+        }
+
         RemoveStackIdentifier.setPrototype(obj);
 
         obj.fixupFields();

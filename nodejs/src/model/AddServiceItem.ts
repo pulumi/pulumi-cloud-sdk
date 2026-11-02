@@ -35,6 +35,10 @@ export class AddServiceItem {
     static fixupPrototype(obj: AddServiceItem) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AddServiceItem: expected an object, got ${typeof obj}`);
+        }
+
         AddServiceItem.setPrototype(obj);
 
         obj.fixupFields();

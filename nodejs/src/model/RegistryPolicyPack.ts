@@ -45,6 +45,10 @@ export class RegistryPolicyPack {
     static fixupPrototype(obj: RegistryPolicyPack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryPolicyPack: expected an object, got ${typeof obj}`);
+        }
+
         RegistryPolicyPack.setPrototype(obj);
 
         obj.fixupFields();

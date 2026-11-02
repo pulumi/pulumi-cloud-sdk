@@ -38,6 +38,10 @@ export class EnvironmentRevisionRetracted {
     static fixupPrototype(obj: EnvironmentRevisionRetracted) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentRevisionRetracted: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentRevisionRetracted.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class TerraformModuleInput {
     static fixupPrototype(obj: TerraformModuleInput) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TerraformModuleInput: expected an object, got ${typeof obj}`);
+        }
+
         TerraformModuleInput.setPrototype(obj);
 
         obj.fixupFields();

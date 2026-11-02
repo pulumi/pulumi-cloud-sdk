@@ -50,6 +50,10 @@ export class GitLabIntegrationDetails {
     static fixupPrototype(obj: GitLabIntegrationDetails) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitLabIntegrationDetails: expected an object, got ${typeof obj}`);
+        }
+
         GitLabIntegrationDetails.setPrototype(obj);
 
         obj.fixupFields();

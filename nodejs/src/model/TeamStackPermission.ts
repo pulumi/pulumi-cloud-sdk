@@ -40,6 +40,10 @@ export class TeamStackPermission {
     static fixupPrototype(obj: TeamStackPermission) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TeamStackPermission: expected an object, got ${typeof obj}`);
+        }
+
         TeamStackPermission.setPrototype(obj);
 
         obj.fixupFields();

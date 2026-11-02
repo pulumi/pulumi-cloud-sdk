@@ -40,6 +40,10 @@ export class StackOverviewResponse {
     static fixupPrototype(obj: StackOverviewResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackOverviewResponse: expected an object, got ${typeof obj}`);
+        }
+
         StackOverviewResponse.setPrototype(obj);
 
         obj.fixupFields();

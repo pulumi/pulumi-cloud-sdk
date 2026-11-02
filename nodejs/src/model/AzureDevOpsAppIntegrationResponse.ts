@@ -46,6 +46,10 @@ export class AzureDevOpsAppIntegrationResponse {
     static fixupPrototype(obj: AzureDevOpsAppIntegrationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureDevOpsAppIntegrationResponse: expected an object, got ${typeof obj}`);
+        }
+
         AzureDevOpsAppIntegrationResponse.setPrototype(obj);
 
         obj.fixupFields();

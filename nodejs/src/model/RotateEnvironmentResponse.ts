@@ -40,6 +40,10 @@ export class RotateEnvironmentResponse {
     static fixupPrototype(obj: RotateEnvironmentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RotateEnvironmentResponse: expected an object, got ${typeof obj}`);
+        }
+
         RotateEnvironmentResponse.setPrototype(obj);
 
         obj.fixupFields();

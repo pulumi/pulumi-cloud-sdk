@@ -41,6 +41,10 @@ export class GitAuthConfigRequest {
     static fixupPrototype(obj: GitAuthConfigRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitAuthConfigRequest: expected an object, got ${typeof obj}`);
+        }
+
         GitAuthConfigRequest.setPrototype(obj);
 
         obj.fixupFields();

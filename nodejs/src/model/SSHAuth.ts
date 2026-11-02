@@ -38,6 +38,10 @@ export class SSHAuth {
     static fixupPrototype(obj: SSHAuth) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SSHAuth: expected an object, got ${typeof obj}`);
+        }
+
         SSHAuth.setPrototype(obj);
 
         obj.fixupFields();

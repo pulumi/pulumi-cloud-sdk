@@ -36,6 +36,10 @@ export class AzureDevOpsFederatedCredentialClaims {
     static fixupPrototype(obj: AzureDevOpsFederatedCredentialClaims) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureDevOpsFederatedCredentialClaims: expected an object, got ${typeof obj}`);
+        }
+
         AzureDevOpsFederatedCredentialClaims.setPrototype(obj);
 
         obj.fixupFields();

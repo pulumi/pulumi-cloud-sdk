@@ -38,6 +38,10 @@ export class ListDiscoveredStackResourcesResponse {
     static fixupPrototype(obj: ListDiscoveredStackResourcesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDiscoveredStackResourcesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListDiscoveredStackResourcesResponse.setPrototype(obj);
 
         obj.fixupFields();

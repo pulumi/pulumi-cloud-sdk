@@ -34,6 +34,10 @@ export class UpdateNeoMemberUsageCapRequest {
     static fixupPrototype(obj: UpdateNeoMemberUsageCapRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateNeoMemberUsageCapRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateNeoMemberUsageCapRequest.setPrototype(obj);
 
         obj.fixupFields();

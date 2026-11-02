@@ -35,6 +35,10 @@ export class AppBatchEncryptResponse {
     static fixupPrototype(obj: AppBatchEncryptResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppBatchEncryptResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppBatchEncryptResponse.setPrototype(obj);
 
         obj.fixupFields();

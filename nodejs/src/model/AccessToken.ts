@@ -47,6 +47,10 @@ export class AccessToken {
     static fixupPrototype(obj: AccessToken) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AccessToken: expected an object, got ${typeof obj}`);
+        }
+
         AccessToken.setPrototype(obj);
 
         obj.fixupFields();

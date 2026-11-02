@@ -38,6 +38,10 @@ export class EscPropertyAccessor extends EscAccessor {
     static fixupPrototype(obj: EscPropertyAccessor) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscPropertyAccessor: expected an object, got ${typeof obj}`);
+        }
+
         EscPropertyAccessor.setPrototype(obj);
 
         obj.fixupFields();

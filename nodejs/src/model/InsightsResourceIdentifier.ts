@@ -37,6 +37,10 @@ export class InsightsResourceIdentifier {
     static fixupPrototype(obj: InsightsResourceIdentifier) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsResourceIdentifier: expected an object, got ${typeof obj}`);
+        }
+
         InsightsResourceIdentifier.setPrototype(obj);
 
         obj.fixupFields();

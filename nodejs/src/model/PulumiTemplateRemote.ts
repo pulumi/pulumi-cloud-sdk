@@ -42,6 +42,10 @@ export class PulumiTemplateRemote extends WorkspaceProjectTemplate {
     static fixupPrototype(obj: PulumiTemplateRemote) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PulumiTemplateRemote: expected an object, got ${typeof obj}`);
+        }
+
         PulumiTemplateRemote.setPrototype(obj);
 
         obj.fixupFields();

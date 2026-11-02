@@ -36,6 +36,10 @@ export class OperationContextAzureOIDCConfigurationRequest {
     static fixupPrototype(obj: OperationContextAzureOIDCConfigurationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OperationContextAzureOIDCConfigurationRequest: expected an object, got ${typeof obj}`);
+        }
+
         OperationContextAzureOIDCConfigurationRequest.setPrototype(obj);
 
         obj.fixupFields();

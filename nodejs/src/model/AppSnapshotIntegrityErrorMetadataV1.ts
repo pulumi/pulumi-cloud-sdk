@@ -37,6 +37,10 @@ export class AppSnapshotIntegrityErrorMetadataV1 {
     static fixupPrototype(obj: AppSnapshotIntegrityErrorMetadataV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppSnapshotIntegrityErrorMetadataV1: expected an object, got ${typeof obj}`);
+        }
+
         AppSnapshotIntegrityErrorMetadataV1.setPrototype(obj);
 
         obj.fixupFields();

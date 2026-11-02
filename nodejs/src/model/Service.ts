@@ -45,6 +45,10 @@ export class Service {
     static fixupPrototype(obj: Service) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`Service: expected an object, got ${typeof obj}`);
+        }
+
         Service.setPrototype(obj);
 
         obj.fixupFields();

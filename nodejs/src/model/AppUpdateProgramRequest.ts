@@ -48,6 +48,10 @@ export class AppUpdateProgramRequest {
     static fixupPrototype(obj: AppUpdateProgramRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppUpdateProgramRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppUpdateProgramRequest.setPrototype(obj);
 
         obj.fixupFields();

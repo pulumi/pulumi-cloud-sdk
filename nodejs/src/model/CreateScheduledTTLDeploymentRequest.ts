@@ -35,6 +35,10 @@ export class CreateScheduledTTLDeploymentRequest {
     static fixupPrototype(obj: CreateScheduledTTLDeploymentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateScheduledTTLDeploymentRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateScheduledTTLDeploymentRequest.setPrototype(obj);
 
         obj.fixupFields();

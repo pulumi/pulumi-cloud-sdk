@@ -39,6 +39,10 @@ export class AccessTokenRole {
     static fixupPrototype(obj: AccessTokenRole) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AccessTokenRole: expected an object, got ${typeof obj}`);
+        }
+
         AccessTokenRole.setPrototype(obj);
 
         obj.fixupFields();

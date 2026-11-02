@@ -44,6 +44,10 @@ export class NetURL {
     static fixupPrototype(obj: NetURL) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`NetURL: expected an object, got ${typeof obj}`);
+        }
+
         NetURL.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class AppJournalEntries {
     static fixupPrototype(obj: AppJournalEntries) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppJournalEntries: expected an object, got ${typeof obj}`);
+        }
+
         AppJournalEntries.setPrototype(obj);
 
         obj.fixupFields();

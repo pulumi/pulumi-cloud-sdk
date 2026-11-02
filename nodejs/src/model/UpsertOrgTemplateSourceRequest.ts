@@ -40,6 +40,10 @@ export class UpsertOrgTemplateSourceRequest {
     static fixupPrototype(obj: UpsertOrgTemplateSourceRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpsertOrgTemplateSourceRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpsertOrgTemplateSourceRequest.setPrototype(obj);
 
         obj.fixupFields();

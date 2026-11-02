@@ -40,6 +40,10 @@ export class CopilotMessage {
     static fixupPrototype(obj: CopilotMessage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotMessage: expected an object, got ${typeof obj}`);
+        }
+
         CopilotMessage.setPrototype(obj);
 
         obj.fixupFields();

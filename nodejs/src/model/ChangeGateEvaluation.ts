@@ -40,6 +40,10 @@ export class ChangeGateEvaluation {
     static fixupPrototype(obj: ChangeGateEvaluation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeGateEvaluation: expected an object, got ${typeof obj}`);
+        }
+
         ChangeGateEvaluation.setPrototype(obj);
 
         obj.fixupFields();

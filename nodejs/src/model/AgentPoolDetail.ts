@@ -41,6 +41,10 @@ export class AgentPoolDetail {
     static fixupPrototype(obj: AgentPoolDetail) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentPoolDetail: expected an object, got ${typeof obj}`);
+        }
+
         AgentPoolDetail.setPrototype(obj);
 
         obj.fixupFields();

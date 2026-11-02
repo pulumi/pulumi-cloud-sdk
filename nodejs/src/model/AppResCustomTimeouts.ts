@@ -37,6 +37,10 @@ export class AppResCustomTimeouts {
     static fixupPrototype(obj: AppResCustomTimeouts) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppResCustomTimeouts: expected an object, got ${typeof obj}`);
+        }
+
         AppResCustomTimeouts.setPrototype(obj);
 
         obj.fixupFields();

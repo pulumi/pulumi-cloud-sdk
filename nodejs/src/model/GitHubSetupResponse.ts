@@ -34,6 +34,10 @@ export class GitHubSetupResponse {
     static fixupPrototype(obj: GitHubSetupResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubSetupResponse: expected an object, got ${typeof obj}`);
+        }
+
         GitHubSetupResponse.setPrototype(obj);
 
         obj.fixupFields();

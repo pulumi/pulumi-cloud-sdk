@@ -37,6 +37,10 @@ export class ListEnvironmentSecretRotationHistoryResponse {
     static fixupPrototype(obj: ListEnvironmentSecretRotationHistoryResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListEnvironmentSecretRotationHistoryResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListEnvironmentSecretRotationHistoryResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -34,6 +34,10 @@ export class AppImportStackResponse {
     static fixupPrototype(obj: AppImportStackResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppImportStackResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppImportStackResponse.setPrototype(obj);
 
         obj.fixupFields();

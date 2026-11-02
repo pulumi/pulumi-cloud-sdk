@@ -36,6 +36,10 @@ export class CreatePulumiTeamRequest {
     static fixupPrototype(obj: CreatePulumiTeamRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreatePulumiTeamRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreatePulumiTeamRequest.setPrototype(obj);
 
         obj.fixupFields();

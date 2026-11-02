@@ -34,6 +34,10 @@ export class UpdateSAMLOrganizationRequest {
     static fixupPrototype(obj: UpdateSAMLOrganizationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateSAMLOrganizationRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateSAMLOrganizationRequest.setPrototype(obj);
 
         obj.fixupFields();

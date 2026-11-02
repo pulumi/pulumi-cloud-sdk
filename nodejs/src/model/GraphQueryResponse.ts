@@ -47,6 +47,10 @@ export class GraphQueryResponse {
     static fixupPrototype(obj: GraphQueryResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphQueryResponse: expected an object, got ${typeof obj}`);
+        }
+
         GraphQueryResponse.setPrototype(obj);
 
         obj.fixupFields();

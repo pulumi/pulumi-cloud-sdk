@@ -35,6 +35,10 @@ export class ListOrganizationProjectsResponsev3 {
     static fixupPrototype(obj: ListOrganizationProjectsResponsev3) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListOrganizationProjectsResponsev3: expected an object, got ${typeof obj}`);
+        }
+
         ListOrganizationProjectsResponsev3.setPrototype(obj);
 
         obj.fixupFields();

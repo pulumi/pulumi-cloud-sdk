@@ -37,6 +37,10 @@ export class ArtifactVersionNameSpec {
     static fixupPrototype(obj: ArtifactVersionNameSpec) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ArtifactVersionNameSpec: expected an object, got ${typeof obj}`);
+        }
+
         ArtifactVersionNameSpec.setPrototype(obj);
 
         obj.fixupFields();

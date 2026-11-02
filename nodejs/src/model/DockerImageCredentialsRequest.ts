@@ -38,6 +38,10 @@ export class DockerImageCredentialsRequest {
     static fixupPrototype(obj: DockerImageCredentialsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DockerImageCredentialsRequest: expected an object, got ${typeof obj}`);
+        }
+
         DockerImageCredentialsRequest.setPrototype(obj);
 
         obj.fixupFields();

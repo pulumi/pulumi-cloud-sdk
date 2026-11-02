@@ -36,6 +36,10 @@ export class GitHubEnterpriseUserIdentityResponse {
     static fixupPrototype(obj: GitHubEnterpriseUserIdentityResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubEnterpriseUserIdentityResponse: expected an object, got ${typeof obj}`);
+        }
+
         GitHubEnterpriseUserIdentityResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -42,6 +42,10 @@ export class PermissionExpression {
     static fixupPrototype(obj: PermissionExpression) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpression: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpression.setPrototype(obj);
 
         obj.fixupFields();

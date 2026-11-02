@@ -37,6 +37,10 @@ export class UpdateCustomVCSIntegrationRequest {
     static fixupPrototype(obj: UpdateCustomVCSIntegrationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateCustomVCSIntegrationRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateCustomVCSIntegrationRequest.setPrototype(obj);
 
         obj.fixupFields();

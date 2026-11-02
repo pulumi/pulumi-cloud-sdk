@@ -40,6 +40,10 @@ export class AppCompleteUpdateRequest {
     static fixupPrototype(obj: AppCompleteUpdateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppCompleteUpdateRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppCompleteUpdateRequest.setPrototype(obj);
 
         obj.fixupFields();

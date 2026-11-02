@@ -34,6 +34,10 @@ export class TemplateDestination {
     static fixupPrototype(obj: TemplateDestination) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TemplateDestination: expected an object, got ${typeof obj}`);
+        }
+
         TemplateDestination.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ListTeamsResponse {
     static fixupPrototype(obj: ListTeamsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListTeamsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListTeamsResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ListScheduledActionsResponse {
     static fixupPrototype(obj: ListScheduledActionsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListScheduledActionsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListScheduledActionsResponse.setPrototype(obj);
 
         obj.fixupFields();

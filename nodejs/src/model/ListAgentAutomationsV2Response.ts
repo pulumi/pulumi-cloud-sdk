@@ -38,6 +38,10 @@ export class ListAgentAutomationsV2Response {
     static fixupPrototype(obj: ListAgentAutomationsV2Response) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListAgentAutomationsV2Response: expected an object, got ${typeof obj}`);
+        }
+
         ListAgentAutomationsV2Response.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class GetTemplateResponse extends Template {
     static fixupPrototype(obj: GetTemplateResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetTemplateResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetTemplateResponse.setPrototype(obj);
 
         obj.fixupFields();

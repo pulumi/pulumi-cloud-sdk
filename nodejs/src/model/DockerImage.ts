@@ -39,6 +39,10 @@ export class DockerImage {
     static fixupPrototype(obj: DockerImage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DockerImage: expected an object, got ${typeof obj}`);
+        }
+
         DockerImage.setPrototype(obj);
 
         obj.fixupFields();

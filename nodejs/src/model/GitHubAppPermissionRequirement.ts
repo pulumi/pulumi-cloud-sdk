@@ -41,6 +41,10 @@ export class GitHubAppPermissionRequirement {
     static fixupPrototype(obj: GitHubAppPermissionRequirement) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubAppPermissionRequirement: expected an object, got ${typeof obj}`);
+        }
+
         GitHubAppPermissionRequirement.setPrototype(obj);
 
         obj.fixupFields();

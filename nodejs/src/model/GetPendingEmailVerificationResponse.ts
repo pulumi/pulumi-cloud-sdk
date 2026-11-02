@@ -34,6 +34,10 @@ export class GetPendingEmailVerificationResponse {
     static fixupPrototype(obj: GetPendingEmailVerificationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetPendingEmailVerificationResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetPendingEmailVerificationResponse.setPrototype(obj);
 
         obj.fixupFields();

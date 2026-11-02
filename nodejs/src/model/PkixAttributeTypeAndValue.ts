@@ -35,6 +35,10 @@ export class PkixAttributeTypeAndValue {
     static fixupPrototype(obj: PkixAttributeTypeAndValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PkixAttributeTypeAndValue: expected an object, got ${typeof obj}`);
+        }
+
         PkixAttributeTypeAndValue.setPrototype(obj);
 
         obj.fixupFields();

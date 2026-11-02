@@ -38,6 +38,10 @@ export class ListScanStatusResponse {
     static fixupPrototype(obj: ListScanStatusResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListScanStatusResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListScanStatusResponse.setPrototype(obj);
 
         obj.fixupFields();

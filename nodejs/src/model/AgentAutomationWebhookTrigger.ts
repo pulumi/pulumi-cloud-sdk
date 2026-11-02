@@ -52,6 +52,10 @@ export class AgentAutomationWebhookTrigger extends AgentAutomationTrigger {
     static fixupPrototype(obj: AgentAutomationWebhookTrigger) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAutomationWebhookTrigger: expected an object, got ${typeof obj}`);
+        }
+
         AgentAutomationWebhookTrigger.setPrototype(obj);
 
         obj.fixupFields();

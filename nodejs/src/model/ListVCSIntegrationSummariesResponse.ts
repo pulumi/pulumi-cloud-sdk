@@ -37,6 +37,10 @@ export class ListVCSIntegrationSummariesResponse {
     static fixupPrototype(obj: ListVCSIntegrationSummariesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListVCSIntegrationSummariesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListVCSIntegrationSummariesResponse.setPrototype(obj);
 
         obj.fixupFields();

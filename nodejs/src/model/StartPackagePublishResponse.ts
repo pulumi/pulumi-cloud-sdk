@@ -38,6 +38,10 @@ export class StartPackagePublishResponse {
     static fixupPrototype(obj: StartPackagePublishResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StartPackagePublishResponse: expected an object, got ${typeof obj}`);
+        }
+
         StartPackagePublishResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -128,6 +128,10 @@ export class OrganizationFeatures {
     static fixupPrototype(obj: OrganizationFeatures) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrganizationFeatures: expected an object, got ${typeof obj}`);
+        }
+
         OrganizationFeatures.setPrototype(obj);
 
         obj.fixupFields();

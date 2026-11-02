@@ -35,6 +35,10 @@ export class AppSecretsProvidersV1 {
     static fixupPrototype(obj: AppSecretsProvidersV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppSecretsProvidersV1: expected an object, got ${typeof obj}`);
+        }
+
         AppSecretsProvidersV1.setPrototype(obj);
 
         obj.fixupFields();

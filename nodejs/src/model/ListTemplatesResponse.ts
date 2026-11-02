@@ -41,6 +41,10 @@ export class ListTemplatesResponse {
     static fixupPrototype(obj: ListTemplatesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListTemplatesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListTemplatesResponse.setPrototype(obj);
 
         obj.fixupFields();

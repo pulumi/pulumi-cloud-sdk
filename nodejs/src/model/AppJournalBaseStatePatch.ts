@@ -38,6 +38,10 @@ export class AppJournalBaseStatePatch {
     static fixupPrototype(obj: AppJournalBaseStatePatch) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppJournalBaseStatePatch: expected an object, got ${typeof obj}`);
+        }
+
         AppJournalBaseStatePatch.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class UpdateStackPolicyResultsRequest {
     static fixupPrototype(obj: UpdateStackPolicyResultsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateStackPolicyResultsRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateStackPolicyResultsRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -36,6 +36,10 @@ export class StackDriftStatus {
     static fixupPrototype(obj: StackDriftStatus) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackDriftStatus: expected an object, got ${typeof obj}`);
+        }
+
         StackDriftStatus.setPrototype(obj);
 
         obj.fixupFields();

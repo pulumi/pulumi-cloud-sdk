@@ -38,6 +38,10 @@ export class AngularGridFilterModel {
     static fixupPrototype(obj: AngularGridFilterModel) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AngularGridFilterModel: expected an object, got ${typeof obj}`);
+        }
+
         AngularGridFilterModel.setPrototype(obj);
 
         obj.fixupFields();

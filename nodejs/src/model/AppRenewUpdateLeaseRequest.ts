@@ -35,6 +35,10 @@ export class AppRenewUpdateLeaseRequest {
     static fixupPrototype(obj: AppRenewUpdateLeaseRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppRenewUpdateLeaseRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppRenewUpdateLeaseRequest.setPrototype(obj);
 
         obj.fixupFields();

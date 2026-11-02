@@ -34,6 +34,10 @@ export class DisableCustomerManagedKeyRequest {
     static fixupPrototype(obj: DisableCustomerManagedKeyRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DisableCustomerManagedKeyRequest: expected an object, got ${typeof obj}`);
+        }
+
         DisableCustomerManagedKeyRequest.setPrototype(obj);
 
         obj.fixupFields();

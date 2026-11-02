@@ -39,6 +39,10 @@ export class ResourceMigrationAnnotation {
     static fixupPrototype(obj: ResourceMigrationAnnotation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResourceMigrationAnnotation: expected an object, got ${typeof obj}`);
+        }
+
         ResourceMigrationAnnotation.setPrototype(obj);
 
         obj.fixupFields();

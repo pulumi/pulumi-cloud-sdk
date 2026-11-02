@@ -40,6 +40,10 @@ export class InsightsResourceWithVersion {
     static fixupPrototype(obj: InsightsResourceWithVersion) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsResourceWithVersion: expected an object, got ${typeof obj}`);
+        }
+
         InsightsResourceWithVersion.setPrototype(obj);
 
         obj.fixupFields();

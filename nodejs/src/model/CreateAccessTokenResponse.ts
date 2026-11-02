@@ -35,6 +35,10 @@ export class CreateAccessTokenResponse {
     static fixupPrototype(obj: CreateAccessTokenResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateAccessTokenResponse: expected an object, got ${typeof obj}`);
+        }
+
         CreateAccessTokenResponse.setPrototype(obj);
 
         obj.fixupFields();

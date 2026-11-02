@@ -37,6 +37,10 @@ export class PkixExtension {
     static fixupPrototype(obj: PkixExtension) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PkixExtension: expected an object, got ${typeof obj}`);
+        }
+
         PkixExtension.setPrototype(obj);
 
         obj.fixupFields();

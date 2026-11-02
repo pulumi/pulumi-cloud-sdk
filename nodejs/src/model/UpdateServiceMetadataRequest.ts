@@ -39,6 +39,10 @@ export class UpdateServiceMetadataRequest {
     static fixupPrototype(obj: UpdateServiceMetadataRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateServiceMetadataRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateServiceMetadataRequest.setPrototype(obj);
 
         obj.fixupFields();

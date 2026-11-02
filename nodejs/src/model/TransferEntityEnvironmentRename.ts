@@ -42,6 +42,10 @@ export class TransferEntityEnvironmentRename extends TransferEntityEnvironment {
     static fixupPrototype(obj: TransferEntityEnvironmentRename) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityEnvironmentRename: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityEnvironmentRename.setPrototype(obj);
 
         obj.fixupFields();

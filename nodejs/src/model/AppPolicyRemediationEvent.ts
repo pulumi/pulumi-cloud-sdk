@@ -41,6 +41,10 @@ export class AppPolicyRemediationEvent {
     static fixupPrototype(obj: AppPolicyRemediationEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyRemediationEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyRemediationEvent.setPrototype(obj);
 
         obj.fixupFields();

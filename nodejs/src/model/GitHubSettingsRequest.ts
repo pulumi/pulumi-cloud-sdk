@@ -39,6 +39,10 @@ export class GitHubSettingsRequest {
     static fixupPrototype(obj: GitHubSettingsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubSettingsRequest: expected an object, got ${typeof obj}`);
+        }
+
         GitHubSettingsRequest.setPrototype(obj);
 
         obj.fixupFields();

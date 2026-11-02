@@ -42,6 +42,10 @@ export class AzureSetupRequest {
     static fixupPrototype(obj: AzureSetupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureSetupRequest: expected an object, got ${typeof obj}`);
+        }
+
         AzureSetupRequest.setPrototype(obj);
 
         obj.fixupFields();

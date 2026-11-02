@@ -42,6 +42,10 @@ export class DeploymentSettingsVCSGitHub extends DeploymentSettingsVCS {
     static fixupPrototype(obj: DeploymentSettingsVCSGitHub) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsVCSGitHub: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsVCSGitHub.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class GetChangeRequestResponse extends ChangeRequest {
     static fixupPrototype(obj: GetChangeRequestResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetChangeRequestResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetChangeRequestResponse.setPrototype(obj);
 
         obj.fixupFields();

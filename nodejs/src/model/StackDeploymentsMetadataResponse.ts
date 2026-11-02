@@ -41,6 +41,10 @@ export class StackDeploymentsMetadataResponse {
     static fixupPrototype(obj: StackDeploymentsMetadataResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackDeploymentsMetadataResponse: expected an object, got ${typeof obj}`);
+        }
+
         StackDeploymentsMetadataResponse.setPrototype(obj);
 
         obj.fixupFields();

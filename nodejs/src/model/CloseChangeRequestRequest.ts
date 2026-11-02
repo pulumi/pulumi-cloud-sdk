@@ -34,6 +34,10 @@ export class CloseChangeRequestRequest {
     static fixupPrototype(obj: CloseChangeRequestRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CloseChangeRequestRequest: expected an object, got ${typeof obj}`);
+        }
+
         CloseChangeRequestRequest.setPrototype(obj);
 
         obj.fixupFields();

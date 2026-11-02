@@ -37,6 +37,10 @@ export class OrganizationSummary {
     static fixupPrototype(obj: OrganizationSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrganizationSummary: expected an object, got ${typeof obj}`);
+        }
+
         OrganizationSummary.setPrototype(obj);
 
         obj.fixupFields();

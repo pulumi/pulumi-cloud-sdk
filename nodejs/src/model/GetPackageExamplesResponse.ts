@@ -41,6 +41,10 @@ export class GetPackageExamplesResponse {
     static fixupPrototype(obj: GetPackageExamplesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetPackageExamplesResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetPackageExamplesResponse.setPrototype(obj);
 
         obj.fixupFields();

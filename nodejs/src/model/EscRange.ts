@@ -39,6 +39,10 @@ export class EscRange {
     static fixupPrototype(obj: EscRange) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscRange: expected an object, got ${typeof obj}`);
+        }
+
         EscRange.setPrototype(obj);
 
         obj.fixupFields();

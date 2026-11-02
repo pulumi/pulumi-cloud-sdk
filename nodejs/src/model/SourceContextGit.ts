@@ -42,6 +42,10 @@ export class SourceContextGit {
     static fixupPrototype(obj: SourceContextGit) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SourceContextGit: expected an object, got ${typeof obj}`);
+        }
+
         SourceContextGit.setPrototype(obj);
 
         obj.fixupFields();

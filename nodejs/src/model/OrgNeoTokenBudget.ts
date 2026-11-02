@@ -45,6 +45,10 @@ export class OrgNeoTokenBudget {
     static fixupPrototype(obj: OrgNeoTokenBudget) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrgNeoTokenBudget: expected an object, got ${typeof obj}`);
+        }
+
         OrgNeoTokenBudget.setPrototype(obj);
 
         obj.fixupFields();

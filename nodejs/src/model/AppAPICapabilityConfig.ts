@@ -39,6 +39,10 @@ export class AppAPICapabilityConfig {
     static fixupPrototype(obj: AppAPICapabilityConfig) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppAPICapabilityConfig: expected an object, got ${typeof obj}`);
+        }
+
         AppAPICapabilityConfig.setPrototype(obj);
 
         obj.fixupFields();

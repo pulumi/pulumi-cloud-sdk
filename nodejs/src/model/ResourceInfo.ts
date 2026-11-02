@@ -37,6 +37,10 @@ export class ResourceInfo {
     static fixupPrototype(obj: ResourceInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResourceInfo: expected an object, got ${typeof obj}`);
+        }
+
         ResourceInfo.setPrototype(obj);
 
         obj.fixupFields();

@@ -61,6 +61,10 @@ export class ResourceResult {
     static fixupPrototype(obj: ResourceResult) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResourceResult: expected an object, got ${typeof obj}`);
+        }
+
         ResourceResult.setPrototype(obj);
 
         obj.fixupFields();

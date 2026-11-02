@@ -37,6 +37,10 @@ export class ListAgentDefinitionsResponse {
     static fixupPrototype(obj: ListAgentDefinitionsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListAgentDefinitionsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListAgentDefinitionsResponse.setPrototype(obj);
 
         obj.fixupFields();

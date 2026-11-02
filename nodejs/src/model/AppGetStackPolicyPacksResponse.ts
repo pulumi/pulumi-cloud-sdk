@@ -37,6 +37,10 @@ export class AppGetStackPolicyPacksResponse {
     static fixupPrototype(obj: AppGetStackPolicyPacksResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppGetStackPolicyPacksResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppGetStackPolicyPacksResponse.setPrototype(obj);
 
         obj.fixupFields();

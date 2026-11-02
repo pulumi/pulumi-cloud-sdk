@@ -34,6 +34,10 @@ export class AgentAutomationV2EventResponse {
     static fixupPrototype(obj: AgentAutomationV2EventResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAutomationV2EventResponse: expected an object, got ${typeof obj}`);
+        }
+
         AgentAutomationV2EventResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class GCPEnvironmentInfo {
     static fixupPrototype(obj: GCPEnvironmentInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GCPEnvironmentInfo: expected an object, got ${typeof obj}`);
+        }
+
         GCPEnvironmentInfo.setPrototype(obj);
 
         obj.fixupFields();

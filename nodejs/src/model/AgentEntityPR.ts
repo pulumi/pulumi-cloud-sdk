@@ -45,6 +45,10 @@ export class AgentEntityPR extends AgentEntity {
     static fixupPrototype(obj: AgentEntityPR) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentEntityPR: expected an object, got ${typeof obj}`);
+        }
+
         AgentEntityPR.setPrototype(obj);
 
         obj.fixupFields();

@@ -71,6 +71,10 @@ export class EngineEvent {
     static fixupPrototype(obj: EngineEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EngineEvent: expected an object, got ${typeof obj}`);
+        }
+
         EngineEvent.setPrototype(obj);
 
         obj.fixupFields();

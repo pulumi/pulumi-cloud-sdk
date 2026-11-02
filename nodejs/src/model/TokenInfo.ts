@@ -36,6 +36,10 @@ export class TokenInfo {
     static fixupPrototype(obj: TokenInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TokenInfo: expected an object, got ${typeof obj}`);
+        }
+
         TokenInfo.setPrototype(obj);
 
         obj.fixupFields();

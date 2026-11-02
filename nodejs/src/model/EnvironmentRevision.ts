@@ -44,6 +44,10 @@ export class EnvironmentRevision {
     static fixupPrototype(obj: EnvironmentRevision) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentRevision: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentRevision.setPrototype(obj);
 
         obj.fixupFields();

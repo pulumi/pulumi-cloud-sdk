@@ -37,6 +37,10 @@ export class GraphEdge {
     static fixupPrototype(obj: GraphEdge) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphEdge: expected an object, got ${typeof obj}`);
+        }
+
         GraphEdge.setPrototype(obj);
 
         obj.fixupFields();

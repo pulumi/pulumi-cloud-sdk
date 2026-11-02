@@ -42,6 +42,10 @@ export class TargetEntity {
     static fixupPrototype(obj: TargetEntity) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TargetEntity: expected an object, got ${typeof obj}`);
+        }
+
         TargetEntity.setPrototype(obj);
 
         obj.fixupFields();

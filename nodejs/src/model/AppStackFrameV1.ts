@@ -34,6 +34,10 @@ export class AppStackFrameV1 {
     static fixupPrototype(obj: AppStackFrameV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStackFrameV1: expected an object, got ${typeof obj}`);
+        }
+
         AppStackFrameV1.setPrototype(obj);
 
         obj.fixupFields();

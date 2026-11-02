@@ -41,6 +41,10 @@ export class EntityAssignment {
     static fixupPrototype(obj: EntityAssignment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EntityAssignment: expected an object, got ${typeof obj}`);
+        }
+
         EntityAssignment.setPrototype(obj);
 
         obj.fixupFields();

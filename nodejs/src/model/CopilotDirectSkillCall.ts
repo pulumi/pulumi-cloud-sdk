@@ -42,6 +42,10 @@ export class CopilotDirectSkillCall {
     static fixupPrototype(obj: CopilotDirectSkillCall) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotDirectSkillCall: expected an object, got ${typeof obj}`);
+        }
+
         CopilotDirectSkillCall.setPrototype(obj);
 
         obj.fixupFields();

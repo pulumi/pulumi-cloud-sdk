@@ -34,6 +34,10 @@ export class CacheOptionsRequest {
     static fixupPrototype(obj: CacheOptionsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CacheOptionsRequest: expected an object, got ${typeof obj}`);
+        }
+
         CacheOptionsRequest.setPrototype(obj);
 
         obj.fixupFields();

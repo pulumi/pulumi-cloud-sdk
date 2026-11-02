@@ -38,6 +38,10 @@ export class ListEnvironmentRevisionTagsResponse {
     static fixupPrototype(obj: ListEnvironmentRevisionTagsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListEnvironmentRevisionTagsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListEnvironmentRevisionTagsResponse.setPrototype(obj);
 
         obj.fixupFields();

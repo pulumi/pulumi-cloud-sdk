@@ -40,6 +40,10 @@ export class GetTemplateReadmeResponse {
     static fixupPrototype(obj: GetTemplateReadmeResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetTemplateReadmeResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetTemplateReadmeResponse.setPrototype(obj);
 
         obj.fixupFields();

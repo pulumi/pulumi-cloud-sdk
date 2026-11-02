@@ -39,6 +39,10 @@ export class Activity {
     static fixupPrototype(obj: Activity) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`Activity: expected an object, got ${typeof obj}`);
+        }
+
         Activity.setPrototype(obj);
 
         obj.fixupFields();

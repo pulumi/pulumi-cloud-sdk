@@ -38,6 +38,10 @@ export class AppGetDefaultOrganizationResponse {
     static fixupPrototype(obj: AppGetDefaultOrganizationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppGetDefaultOrganizationResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppGetDefaultOrganizationResponse.setPrototype(obj);
 
         obj.fixupFields();

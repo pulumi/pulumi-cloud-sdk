@@ -40,6 +40,10 @@ export class AppPackageDescriptorV1 {
     static fixupPrototype(obj: AppPackageDescriptorV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPackageDescriptorV1: expected an object, got ${typeof obj}`);
+        }
+
         AppPackageDescriptorV1.setPrototype(obj);
 
         obj.fixupFields();

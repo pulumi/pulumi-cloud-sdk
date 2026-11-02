@@ -37,6 +37,10 @@ export class TemplateVersion extends Template {
     static fixupPrototype(obj: TemplateVersion) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TemplateVersion: expected an object, got ${typeof obj}`);
+        }
+
         TemplateVersion.setPrototype(obj);
 
         obj.fixupFields();

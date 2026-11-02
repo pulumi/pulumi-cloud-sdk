@@ -38,6 +38,10 @@ export class ExecutorSettingsRequest {
     static fixupPrototype(obj: ExecutorSettingsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ExecutorSettingsRequest: expected an object, got ${typeof obj}`);
+        }
+
         ExecutorSettingsRequest.setPrototype(obj);
 
         obj.fixupFields();

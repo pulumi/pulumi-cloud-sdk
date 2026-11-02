@@ -40,6 +40,10 @@ export class AppResOpFailedEvent {
     static fixupPrototype(obj: AppResOpFailedEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppResOpFailedEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppResOpFailedEvent.setPrototype(obj);
 
         obj.fixupFields();

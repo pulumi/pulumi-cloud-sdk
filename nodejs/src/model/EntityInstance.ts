@@ -38,6 +38,10 @@ export class EntityInstance {
     static fixupPrototype(obj: EntityInstance) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EntityInstance: expected an object, got ${typeof obj}`);
+        }
+
         EntityInstance.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class AgentBackendEventTokenUsage {
     static fixupPrototype(obj: AgentBackendEventTokenUsage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventTokenUsage: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventTokenUsage.setPrototype(obj);
 
         obj.fixupFields();

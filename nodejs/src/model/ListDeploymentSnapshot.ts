@@ -48,6 +48,10 @@ export class ListDeploymentSnapshot extends ListDeploymentResponse {
     static fixupPrototype(obj: ListDeploymentSnapshot) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDeploymentSnapshot: expected an object, got ${typeof obj}`);
+        }
+
         ListDeploymentSnapshot.setPrototype(obj);
 
         obj.fixupFields();

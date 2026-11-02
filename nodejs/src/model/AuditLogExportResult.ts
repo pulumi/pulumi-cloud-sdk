@@ -35,6 +35,10 @@ export class AuditLogExportResult {
     static fixupPrototype(obj: AuditLogExportResult) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AuditLogExportResult: expected an object, got ${typeof obj}`);
+        }
+
         AuditLogExportResult.setPrototype(obj);
 
         obj.fixupFields();

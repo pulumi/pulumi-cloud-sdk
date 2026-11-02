@@ -35,6 +35,10 @@ export class PermissionLiteralExpression extends PermissionExpression {
     static fixupPrototype(obj: PermissionLiteralExpression) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionLiteralExpression: expected an object, got ${typeof obj}`);
+        }
+
         PermissionLiteralExpression.setPrototype(obj);
 
         obj.fixupFields();

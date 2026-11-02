@@ -42,6 +42,10 @@ export class UpsertInsightsResource {
     static fixupPrototype(obj: UpsertInsightsResource) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpsertInsightsResource: expected an object, got ${typeof obj}`);
+        }
+
         UpsertInsightsResource.setPrototype(obj);
 
         obj.fixupFields();

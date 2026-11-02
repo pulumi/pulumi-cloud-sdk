@@ -44,6 +44,10 @@ export class GraphSchemaLimits {
     static fixupPrototype(obj: GraphSchemaLimits) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphSchemaLimits: expected an object, got ${typeof obj}`);
+        }
+
         GraphSchemaLimits.setPrototype(obj);
 
         obj.fixupFields();

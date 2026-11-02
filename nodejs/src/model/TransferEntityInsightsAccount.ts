@@ -42,6 +42,10 @@ export class TransferEntityInsightsAccount extends TransferEntity {
     static fixupPrototype(obj: TransferEntityInsightsAccount) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityInsightsAccount: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityInsightsAccount.setPrototype(obj);
 
         obj.fixupFields();

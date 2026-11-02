@@ -45,6 +45,10 @@ export class GraphSchemaEdgeType {
     static fixupPrototype(obj: GraphSchemaEdgeType) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphSchemaEdgeType: expected an object, got ${typeof obj}`);
+        }
+
         GraphSchemaEdgeType.setPrototype(obj);
 
         obj.fixupFields();

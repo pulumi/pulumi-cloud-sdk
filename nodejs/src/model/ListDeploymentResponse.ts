@@ -43,6 +43,10 @@ export class ListDeploymentResponse {
     static fixupPrototype(obj: ListDeploymentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDeploymentResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListDeploymentResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class RegistryExample {
     static fixupPrototype(obj: RegistryExample) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryExample: expected an object, got ${typeof obj}`);
+        }
+
         RegistryExample.setPrototype(obj);
 
         obj.fixupFields();

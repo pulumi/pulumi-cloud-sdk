@@ -40,6 +40,10 @@ export class AgentBackendEventAwaitingApprovalsMessage extends AgentBackendEvent
     static fixupPrototype(obj: AgentBackendEventAwaitingApprovalsMessage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventAwaitingApprovalsMessage: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventAwaitingApprovalsMessage.setPrototype(obj);
 
         obj.fixupFields();

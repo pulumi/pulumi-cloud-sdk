@@ -37,6 +37,10 @@ export class JSONWebKeySet {
     static fixupPrototype(obj: JSONWebKeySet) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`JSONWebKeySet: expected an object, got ${typeof obj}`);
+        }
+
         JSONWebKeySet.setPrototype(obj);
 
         obj.fixupFields();

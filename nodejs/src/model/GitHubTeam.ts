@@ -38,6 +38,10 @@ export class GitHubTeam {
     static fixupPrototype(obj: GitHubTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubTeam: expected an object, got ${typeof obj}`);
+        }
+
         GitHubTeam.setPrototype(obj);
 
         obj.fixupFields();

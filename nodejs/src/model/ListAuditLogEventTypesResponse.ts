@@ -37,6 +37,10 @@ export class ListAuditLogEventTypesResponse {
     static fixupPrototype(obj: ListAuditLogEventTypesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListAuditLogEventTypesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListAuditLogEventTypesResponse.setPrototype(obj);
 
         obj.fixupFields();

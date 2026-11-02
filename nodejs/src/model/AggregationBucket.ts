@@ -39,6 +39,10 @@ export class AggregationBucket {
     static fixupPrototype(obj: AggregationBucket) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AggregationBucket: expected an object, got ${typeof obj}`);
+        }
+
         AggregationBucket.setPrototype(obj);
 
         obj.fixupFields();

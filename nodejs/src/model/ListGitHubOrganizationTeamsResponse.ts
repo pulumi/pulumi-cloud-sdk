@@ -37,6 +37,10 @@ export class ListGitHubOrganizationTeamsResponse {
     static fixupPrototype(obj: ListGitHubOrganizationTeamsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListGitHubOrganizationTeamsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListGitHubOrganizationTeamsResponse.setPrototype(obj);
 
         obj.fixupFields();

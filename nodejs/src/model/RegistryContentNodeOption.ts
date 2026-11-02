@@ -39,6 +39,10 @@ export class RegistryContentNodeOption {
     static fixupPrototype(obj: RegistryContentNodeOption) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryContentNodeOption: expected an object, got ${typeof obj}`);
+        }
+
         RegistryContentNodeOption.setPrototype(obj);
 
         obj.fixupFields();

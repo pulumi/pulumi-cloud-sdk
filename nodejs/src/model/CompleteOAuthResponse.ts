@@ -32,6 +32,10 @@ export class CompleteOAuthResponse {
     static fixupPrototype(obj: CompleteOAuthResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CompleteOAuthResponse: expected an object, got ${typeof obj}`);
+        }
+
         CompleteOAuthResponse.setPrototype(obj);
 
         obj.fixupFields();

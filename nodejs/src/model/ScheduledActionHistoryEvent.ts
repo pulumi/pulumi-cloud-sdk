@@ -38,6 +38,10 @@ export class ScheduledActionHistoryEvent {
     static fixupPrototype(obj: ScheduledActionHistoryEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ScheduledActionHistoryEvent: expected an object, got ${typeof obj}`);
+        }
+
         ScheduledActionHistoryEvent.setPrototype(obj);
 
         obj.fixupFields();

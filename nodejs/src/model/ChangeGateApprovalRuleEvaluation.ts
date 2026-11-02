@@ -44,6 +44,10 @@ export class ChangeGateApprovalRuleEvaluation extends ChangeGateRuleEvaluation {
     static fixupPrototype(obj: ChangeGateApprovalRuleEvaluation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeGateApprovalRuleEvaluation: expected an object, got ${typeof obj}`);
+        }
+
         ChangeGateApprovalRuleEvaluation.setPrototype(obj);
 
         obj.fixupFields();

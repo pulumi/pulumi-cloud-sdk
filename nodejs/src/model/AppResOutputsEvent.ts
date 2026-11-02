@@ -38,6 +38,10 @@ export class AppResOutputsEvent {
     static fixupPrototype(obj: AppResOutputsEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppResOutputsEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppResOutputsEvent.setPrototype(obj);
 
         obj.fixupFields();

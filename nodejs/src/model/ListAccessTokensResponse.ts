@@ -38,6 +38,10 @@ export class ListAccessTokensResponse {
     static fixupPrototype(obj: ListAccessTokensResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListAccessTokensResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListAccessTokensResponse.setPrototype(obj);
 
         obj.fixupFields();

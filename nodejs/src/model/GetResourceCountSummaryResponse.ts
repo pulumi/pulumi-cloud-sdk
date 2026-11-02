@@ -38,6 +38,10 @@ export class GetResourceCountSummaryResponse {
     static fixupPrototype(obj: GetResourceCountSummaryResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetResourceCountSummaryResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetResourceCountSummaryResponse.setPrototype(obj);
 
         obj.fixupFields();

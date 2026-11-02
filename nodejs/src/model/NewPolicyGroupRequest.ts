@@ -44,6 +44,10 @@ export class NewPolicyGroupRequest {
     static fixupPrototype(obj: NewPolicyGroupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`NewPolicyGroupRequest: expected an object, got ${typeof obj}`);
+        }
+
         NewPolicyGroupRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class CreatePersonalAccessTokenRequest extends BaseCreateAccessTokenReque
     static fixupPrototype(obj: CreatePersonalAccessTokenRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreatePersonalAccessTokenRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreatePersonalAccessTokenRequest.setPrototype(obj);
 
         obj.fixupFields();

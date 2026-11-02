@@ -44,6 +44,10 @@ export class InsightsPolicyViolation {
     static fixupPrototype(obj: InsightsPolicyViolation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsPolicyViolation: expected an object, got ${typeof obj}`);
+        }
+
         InsightsPolicyViolation.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class EscTrace {
     static fixupPrototype(obj: EscTrace) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscTrace: expected an object, got ${typeof obj}`);
+        }
+
         EscTrace.setPrototype(obj);
 
         obj.fixupFields();

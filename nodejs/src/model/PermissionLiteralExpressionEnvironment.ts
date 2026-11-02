@@ -42,6 +42,10 @@ export class PermissionLiteralExpressionEnvironment extends PermissionLiteralExp
     static fixupPrototype(obj: PermissionLiteralExpressionEnvironment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionLiteralExpressionEnvironment: expected an object, got ${typeof obj}`);
+        }
+
         PermissionLiteralExpressionEnvironment.setPrototype(obj);
 
         obj.fixupFields();

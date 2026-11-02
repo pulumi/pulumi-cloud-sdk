@@ -42,6 +42,10 @@ export class UpdateTaskRequest {
     static fixupPrototype(obj: UpdateTaskRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateTaskRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateTaskRequest.setPrototype(obj);
 
         obj.fixupFields();

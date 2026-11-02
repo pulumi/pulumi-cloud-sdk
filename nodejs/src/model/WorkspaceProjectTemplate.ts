@@ -42,6 +42,10 @@ export class WorkspaceProjectTemplate {
     static fixupPrototype(obj: WorkspaceProjectTemplate) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`WorkspaceProjectTemplate: expected an object, got ${typeof obj}`);
+        }
+
         WorkspaceProjectTemplate.setPrototype(obj);
 
         obj.fixupFields();

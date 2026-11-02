@@ -43,6 +43,10 @@ export class GraphTraverseStep {
     static fixupPrototype(obj: GraphTraverseStep) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphTraverseStep: expected an object, got ${typeof obj}`);
+        }
+
         GraphTraverseStep.setPrototype(obj);
 
         obj.fixupFields();

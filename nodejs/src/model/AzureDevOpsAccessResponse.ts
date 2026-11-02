@@ -39,6 +39,10 @@ export class AzureDevOpsAccessResponse {
     static fixupPrototype(obj: AzureDevOpsAccessResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureDevOpsAccessResponse: expected an object, got ${typeof obj}`);
+        }
+
         AzureDevOpsAccessResponse.setPrototype(obj);
 
         obj.fixupFields();

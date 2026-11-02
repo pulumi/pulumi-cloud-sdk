@@ -37,6 +37,10 @@ export class AppPatchUpdateCheckpointDeltaRequest {
     static fixupPrototype(obj: AppPatchUpdateCheckpointDeltaRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPatchUpdateCheckpointDeltaRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppPatchUpdateCheckpointDeltaRequest.setPrototype(obj);
 
         obj.fixupFields();

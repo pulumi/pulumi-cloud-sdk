@@ -38,6 +38,10 @@ export class WebhookResponse extends Webhook {
     static fixupPrototype(obj: WebhookResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`WebhookResponse: expected an object, got ${typeof obj}`);
+        }
+
         WebhookResponse.setPrototype(obj);
 
         obj.fixupFields();

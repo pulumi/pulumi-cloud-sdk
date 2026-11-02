@@ -34,6 +34,10 @@ export class ConsoleUpdateSummary {
     static fixupPrototype(obj: ConsoleUpdateSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ConsoleUpdateSummary: expected an object, got ${typeof obj}`);
+        }
+
         ConsoleUpdateSummary.setPrototype(obj);
 
         obj.fixupFields();

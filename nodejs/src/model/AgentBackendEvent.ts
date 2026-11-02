@@ -43,6 +43,10 @@ export class AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEvent: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEvent.setPrototype(obj);
 
         obj.fixupFields();

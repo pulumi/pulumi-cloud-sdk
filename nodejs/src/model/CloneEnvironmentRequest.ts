@@ -40,6 +40,10 @@ export class CloneEnvironmentRequest {
     static fixupPrototype(obj: CloneEnvironmentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CloneEnvironmentRequest: expected an object, got ${typeof obj}`);
+        }
+
         CloneEnvironmentRequest.setPrototype(obj);
 
         obj.fixupFields();

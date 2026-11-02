@@ -35,6 +35,10 @@ export class GraphQueryPage {
     static fixupPrototype(obj: GraphQueryPage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphQueryPage: expected an object, got ${typeof obj}`);
+        }
+
         GraphQueryPage.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class DeploymentSettingsVCSCustom extends DeploymentSettingsVCS {
     static fixupPrototype(obj: DeploymentSettingsVCSCustom) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsVCSCustom: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsVCSCustom.setPrototype(obj);
 
         obj.fixupFields();

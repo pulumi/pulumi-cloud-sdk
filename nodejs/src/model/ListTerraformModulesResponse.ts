@@ -38,6 +38,10 @@ export class ListTerraformModulesResponse {
     static fixupPrototype(obj: ListTerraformModulesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListTerraformModulesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListTerraformModulesResponse.setPrototype(obj);
 
         obj.fixupFields();

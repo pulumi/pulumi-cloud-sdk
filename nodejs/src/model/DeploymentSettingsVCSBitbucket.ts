@@ -40,6 +40,10 @@ export class DeploymentSettingsVCSBitbucket extends DeploymentSettingsVCS {
     static fixupPrototype(obj: DeploymentSettingsVCSBitbucket) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsVCSBitbucket: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsVCSBitbucket.setPrototype(obj);
 
         obj.fixupFields();

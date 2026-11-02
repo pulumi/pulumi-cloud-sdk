@@ -37,6 +37,10 @@ export class BitBucketSetupRequest {
     static fixupPrototype(obj: BitBucketSetupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BitBucketSetupRequest: expected an object, got ${typeof obj}`);
+        }
+
         BitBucketSetupRequest.setPrototype(obj);
 
         obj.fixupFields();

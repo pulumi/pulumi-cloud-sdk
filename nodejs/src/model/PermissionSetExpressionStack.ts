@@ -42,6 +42,10 @@ export class PermissionSetExpressionStack extends PermissionSetExpression {
     static fixupPrototype(obj: PermissionSetExpressionStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionSetExpressionStack: expected an object, got ${typeof obj}`);
+        }
+
         PermissionSetExpressionStack.setPrototype(obj);
 
         obj.fixupFields();

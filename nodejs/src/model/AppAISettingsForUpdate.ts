@@ -34,6 +34,10 @@ export class AppAISettingsForUpdate {
     static fixupPrototype(obj: AppAISettingsForUpdate) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppAISettingsForUpdate: expected an object, got ${typeof obj}`);
+        }
+
         AppAISettingsForUpdate.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class GetPackageNavItem {
     static fixupPrototype(obj: GetPackageNavItem) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetPackageNavItem: expected an object, got ${typeof obj}`);
+        }
+
         GetPackageNavItem.setPrototype(obj);
 
         obj.fixupFields();

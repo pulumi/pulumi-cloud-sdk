@@ -34,6 +34,10 @@ export class AppStackLinks {
     static fixupPrototype(obj: AppStackLinks) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStackLinks: expected an object, got ${typeof obj}`);
+        }
+
         AppStackLinks.setPrototype(obj);
 
         obj.fixupFields();

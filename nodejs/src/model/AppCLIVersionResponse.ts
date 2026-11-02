@@ -36,6 +36,10 @@ export class AppCLIVersionResponse {
     static fixupPrototype(obj: AppCLIVersionResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppCLIVersionResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppCLIVersionResponse.setPrototype(obj);
 
         obj.fixupFields();

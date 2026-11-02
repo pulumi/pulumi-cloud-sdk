@@ -35,6 +35,10 @@ export class CopilotCloudContext {
     static fixupPrototype(obj: CopilotCloudContext) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotCloudContext: expected an object, got ${typeof obj}`);
+        }
+
         CopilotCloudContext.setPrototype(obj);
 
         obj.fixupFields();

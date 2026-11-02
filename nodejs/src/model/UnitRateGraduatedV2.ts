@@ -37,6 +37,10 @@ export class UnitRateGraduatedV2 {
     static fixupPrototype(obj: UnitRateGraduatedV2) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UnitRateGraduatedV2: expected an object, got ${typeof obj}`);
+        }
+
         UnitRateGraduatedV2.setPrototype(obj);
 
         obj.fixupFields();

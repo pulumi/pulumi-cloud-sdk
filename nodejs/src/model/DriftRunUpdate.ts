@@ -40,6 +40,10 @@ export class DriftRunUpdate {
     static fixupPrototype(obj: DriftRunUpdate) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DriftRunUpdate: expected an object, got ${typeof obj}`);
+        }
+
         DriftRunUpdate.setPrototype(obj);
 
         obj.fixupFields();

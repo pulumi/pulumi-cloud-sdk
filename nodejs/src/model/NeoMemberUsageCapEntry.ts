@@ -41,6 +41,10 @@ export class NeoMemberUsageCapEntry {
     static fixupPrototype(obj: NeoMemberUsageCapEntry) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`NeoMemberUsageCapEntry: expected an object, got ${typeof obj}`);
+        }
+
         NeoMemberUsageCapEntry.setPrototype(obj);
 
         obj.fixupFields();

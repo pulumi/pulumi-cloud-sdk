@@ -50,6 +50,10 @@ export class UpdateTeamRequest {
     static fixupPrototype(obj: UpdateTeamRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateTeamRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateTeamRequest.setPrototype(obj);
 
         obj.fixupFields();

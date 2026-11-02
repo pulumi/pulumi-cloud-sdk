@@ -42,6 +42,10 @@ export class GitHubCommitInfo {
     static fixupPrototype(obj: GitHubCommitInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubCommitInfo: expected an object, got ${typeof obj}`);
+        }
+
         GitHubCommitInfo.setPrototype(obj);
 
         obj.fixupFields();

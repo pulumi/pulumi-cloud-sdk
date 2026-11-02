@@ -34,6 +34,10 @@ export class ListProvidersResponse {
     static fixupPrototype(obj: ListProvidersResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListProvidersResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListProvidersResponse.setPrototype(obj);
 
         obj.fixupFields();

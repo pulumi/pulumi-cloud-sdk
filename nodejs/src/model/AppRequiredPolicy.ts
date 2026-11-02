@@ -41,6 +41,10 @@ export class AppRequiredPolicy {
     static fixupPrototype(obj: AppRequiredPolicy) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppRequiredPolicy: expected an object, got ${typeof obj}`);
+        }
+
         AppRequiredPolicy.setPrototype(obj);
 
         obj.fixupFields();

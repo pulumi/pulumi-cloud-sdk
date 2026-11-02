@@ -36,6 +36,10 @@ export class AppUntypedDeployment {
     static fixupPrototype(obj: AppUntypedDeployment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppUntypedDeployment: expected an object, got ${typeof obj}`);
+        }
+
         AppUntypedDeployment.setPrototype(obj);
 
         obj.fixupFields();

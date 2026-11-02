@@ -37,6 +37,10 @@ export class GetInsightAccountTagsResponse {
     static fixupPrototype(obj: GetInsightAccountTagsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetInsightAccountTagsResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetInsightAccountTagsResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class CreateOrganizationInviteRequest {
     static fixupPrototype(obj: CreateOrganizationInviteRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateOrganizationInviteRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateOrganizationInviteRequest.setPrototype(obj);
 
         obj.fixupFields();

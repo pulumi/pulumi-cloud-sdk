@@ -35,6 +35,10 @@ export class BaseCreateAccessTokenRequest {
     static fixupPrototype(obj: BaseCreateAccessTokenRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BaseCreateAccessTokenRequest: expected an object, got ${typeof obj}`);
+        }
+
         BaseCreateAccessTokenRequest.setPrototype(obj);
 
         obj.fixupFields();

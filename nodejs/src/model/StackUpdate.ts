@@ -35,6 +35,10 @@ export class StackUpdate {
     static fixupPrototype(obj: StackUpdate) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackUpdate: expected an object, got ${typeof obj}`);
+        }
+
         StackUpdate.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class StepRun {
     static fixupPrototype(obj: StepRun) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StepRun: expected an object, got ${typeof obj}`);
+        }
+
         StepRun.setPrototype(obj);
 
         obj.fixupFields();

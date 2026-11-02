@@ -35,6 +35,10 @@ export class GraphPageInfo {
     static fixupPrototype(obj: GraphPageInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphPageInfo: expected an object, got ${typeof obj}`);
+        }
+
         GraphPageInfo.setPrototype(obj);
 
         obj.fixupFields();

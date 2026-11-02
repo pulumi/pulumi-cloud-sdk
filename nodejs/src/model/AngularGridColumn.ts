@@ -37,6 +37,10 @@ export class AngularGridColumn {
     static fixupPrototype(obj: AngularGridColumn) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AngularGridColumn: expected an object, got ${typeof obj}`);
+        }
+
         AngularGridColumn.setPrototype(obj);
 
         obj.fixupFields();

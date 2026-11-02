@@ -38,6 +38,10 @@ export class ListGitHubIntegrationsResponse {
     static fixupPrototype(obj: ListGitHubIntegrationsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListGitHubIntegrationsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListGitHubIntegrationsResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -50,6 +50,10 @@ export class AppBeginUpdateResponse {
     static fixupPrototype(obj: AppBeginUpdateResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppBeginUpdateResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppBeginUpdateResponse.setPrototype(obj);
 
         obj.fixupFields();

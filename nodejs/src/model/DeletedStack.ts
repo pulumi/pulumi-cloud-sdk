@@ -43,6 +43,10 @@ export class DeletedStack {
     static fixupPrototype(obj: DeletedStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeletedStack: expected an object, got ${typeof obj}`);
+        }
+
         DeletedStack.setPrototype(obj);
 
         obj.fixupFields();

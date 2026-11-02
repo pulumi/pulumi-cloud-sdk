@@ -34,6 +34,10 @@ export class GitHubEnterpriseLinkedMembersResponse {
     static fixupPrototype(obj: GitHubEnterpriseLinkedMembersResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubEnterpriseLinkedMembersResponse: expected an object, got ${typeof obj}`);
+        }
+
         GitHubEnterpriseLinkedMembersResponse.setPrototype(obj);
 
         obj.fixupFields();

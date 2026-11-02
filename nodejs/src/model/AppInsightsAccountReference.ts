@@ -34,6 +34,10 @@ export class AppInsightsAccountReference {
     static fixupPrototype(obj: AppInsightsAccountReference) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppInsightsAccountReference: expected an object, got ${typeof obj}`);
+        }
+
         AppInsightsAccountReference.setPrototype(obj);
 
         obj.fixupFields();

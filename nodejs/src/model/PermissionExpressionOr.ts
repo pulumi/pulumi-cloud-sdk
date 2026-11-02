@@ -40,6 +40,10 @@ export class PermissionExpressionOr extends PermissionBooleanExpressionBinary {
     static fixupPrototype(obj: PermissionExpressionOr) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionOr: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionOr.setPrototype(obj);
 
         obj.fixupFields();

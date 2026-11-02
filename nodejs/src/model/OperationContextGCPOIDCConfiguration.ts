@@ -39,6 +39,10 @@ export class OperationContextGCPOIDCConfiguration {
     static fixupPrototype(obj: OperationContextGCPOIDCConfiguration) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OperationContextGCPOIDCConfiguration: expected an object, got ${typeof obj}`);
+        }
+
         OperationContextGCPOIDCConfiguration.setPrototype(obj);
 
         obj.fixupFields();

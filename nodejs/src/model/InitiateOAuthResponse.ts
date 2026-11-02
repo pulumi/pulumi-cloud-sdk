@@ -35,6 +35,10 @@ export class InitiateOAuthResponse {
     static fixupPrototype(obj: InitiateOAuthResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InitiateOAuthResponse: expected an object, got ${typeof obj}`);
+        }
+
         InitiateOAuthResponse.setPrototype(obj);
 
         obj.fixupFields();

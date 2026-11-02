@@ -42,6 +42,10 @@ export class NotificationDestination {
     static fixupPrototype(obj: NotificationDestination) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`NotificationDestination: expected an object, got ${typeof obj}`);
+        }
+
         NotificationDestination.setPrototype(obj);
 
         obj.fixupFields();

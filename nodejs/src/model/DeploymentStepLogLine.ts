@@ -35,6 +35,10 @@ export class DeploymentStepLogLine {
     static fixupPrototype(obj: DeploymentStepLogLine) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentStepLogLine: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentStepLogLine.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ListDownstreamStackReferencesResponse {
     static fixupPrototype(obj: ListDownstreamStackReferencesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDownstreamStackReferencesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListDownstreamStackReferencesResponse.setPrototype(obj);
 
         obj.fixupFields();

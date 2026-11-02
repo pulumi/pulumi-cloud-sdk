@@ -35,6 +35,10 @@ export class AppEncryptValueResponse {
     static fixupPrototype(obj: AppEncryptValueResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppEncryptValueResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppEncryptValueResponse.setPrototype(obj);
 
         obj.fixupFields();

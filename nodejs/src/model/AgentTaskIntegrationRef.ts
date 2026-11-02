@@ -34,6 +34,10 @@ export class AgentTaskIntegrationRef {
     static fixupPrototype(obj: AgentTaskIntegrationRef) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentTaskIntegrationRef: expected an object, got ${typeof obj}`);
+        }
+
         AgentTaskIntegrationRef.setPrototype(obj);
 
         obj.fixupFields();

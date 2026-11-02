@@ -40,6 +40,10 @@ export class PolicyGroupStack {
     static fixupPrototype(obj: PolicyGroupStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PolicyGroupStack: expected an object, got ${typeof obj}`);
+        }
+
         PolicyGroupStack.setPrototype(obj);
 
         obj.fixupFields();

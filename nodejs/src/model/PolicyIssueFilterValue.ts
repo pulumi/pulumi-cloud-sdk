@@ -35,6 +35,10 @@ export class PolicyIssueFilterValue {
     static fixupPrototype(obj: PolicyIssueFilterValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PolicyIssueFilterValue: expected an object, got ${typeof obj}`);
+        }
+
         PolicyIssueFilterValue.setPrototype(obj);
 
         obj.fixupFields();

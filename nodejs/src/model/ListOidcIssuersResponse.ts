@@ -37,6 +37,10 @@ export class ListOidcIssuersResponse {
     static fixupPrototype(obj: ListOidcIssuersResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListOidcIssuersResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListOidcIssuersResponse.setPrototype(obj);
 
         obj.fixupFields();

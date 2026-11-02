@@ -39,6 +39,10 @@ export class RbacScope {
     static fixupPrototype(obj: RbacScope) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RbacScope: expected an object, got ${typeof obj}`);
+        }
+
         RbacScope.setPrototype(obj);
 
         obj.fixupFields();

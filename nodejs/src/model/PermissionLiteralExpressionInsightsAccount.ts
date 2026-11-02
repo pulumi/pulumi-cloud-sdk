@@ -42,6 +42,10 @@ export class PermissionLiteralExpressionInsightsAccount extends PermissionLitera
     static fixupPrototype(obj: PermissionLiteralExpressionInsightsAccount) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionLiteralExpressionInsightsAccount: expected an object, got ${typeof obj}`);
+        }
+
         PermissionLiteralExpressionInsightsAccount.setPrototype(obj);
 
         obj.fixupFields();

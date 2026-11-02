@@ -39,6 +39,10 @@ export class EnvironmentRevisionTag {
     static fixupPrototype(obj: EnvironmentRevisionTag) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentRevisionTag: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentRevisionTag.setPrototype(obj);
 
         obj.fixupFields();

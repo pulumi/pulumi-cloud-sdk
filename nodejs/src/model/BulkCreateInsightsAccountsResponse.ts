@@ -39,6 +39,10 @@ export class BulkCreateInsightsAccountsResponse {
     static fixupPrototype(obj: BulkCreateInsightsAccountsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BulkCreateInsightsAccountsResponse: expected an object, got ${typeof obj}`);
+        }
+
         BulkCreateInsightsAccountsResponse.setPrototype(obj);
 
         obj.fixupFields();

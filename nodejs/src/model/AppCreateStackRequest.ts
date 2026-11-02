@@ -43,6 +43,10 @@ export class AppCreateStackRequest {
     static fixupPrototype(obj: AppCreateStackRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppCreateStackRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppCreateStackRequest.setPrototype(obj);
 
         obj.fixupFields();

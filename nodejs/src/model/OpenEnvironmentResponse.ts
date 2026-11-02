@@ -38,6 +38,10 @@ export class OpenEnvironmentResponse {
     static fixupPrototype(obj: OpenEnvironmentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OpenEnvironmentResponse: expected an object, got ${typeof obj}`);
+        }
+
         OpenEnvironmentResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -42,6 +42,10 @@ export class UpdatePolicyGroupRequest extends AppUpdatePolicyGroupRequest {
     static fixupPrototype(obj: UpdatePolicyGroupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdatePolicyGroupRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdatePolicyGroupRequest.setPrototype(obj);
 
         obj.fixupFields();

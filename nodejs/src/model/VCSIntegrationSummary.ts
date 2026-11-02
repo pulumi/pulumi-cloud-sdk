@@ -43,6 +43,10 @@ export class VCSIntegrationSummary {
     static fixupPrototype(obj: VCSIntegrationSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`VCSIntegrationSummary: expected an object, got ${typeof obj}`);
+        }
+
         VCSIntegrationSummary.setPrototype(obj);
 
         obj.fixupFields();

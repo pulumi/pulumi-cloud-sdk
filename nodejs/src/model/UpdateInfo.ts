@@ -47,6 +47,10 @@ export class UpdateInfo {
     static fixupPrototype(obj: UpdateInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateInfo: expected an object, got ${typeof obj}`);
+        }
+
         UpdateInfo.setPrototype(obj);
 
         obj.fixupFields();

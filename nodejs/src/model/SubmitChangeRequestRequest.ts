@@ -34,6 +34,10 @@ export class SubmitChangeRequestRequest {
     static fixupPrototype(obj: SubmitChangeRequestRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SubmitChangeRequestRequest: expected an object, got ${typeof obj}`);
+        }
+
         SubmitChangeRequestRequest.setPrototype(obj);
 
         obj.fixupFields();

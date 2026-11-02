@@ -52,6 +52,10 @@ export class AgentAutomationV2 {
     static fixupPrototype(obj: AgentAutomationV2) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAutomationV2: expected an object, got ${typeof obj}`);
+        }
+
         AgentAutomationV2.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class UpdateRoleRequest {
     static fixupPrototype(obj: UpdateRoleRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateRoleRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateRoleRequest.setPrototype(obj);
 
         obj.fixupFields();

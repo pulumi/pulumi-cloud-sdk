@@ -44,6 +44,10 @@ export class TransferEntityRegistryPackage extends TransferEntity {
     static fixupPrototype(obj: TransferEntityRegistryPackage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityRegistryPackage: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityRegistryPackage.setPrototype(obj);
 
         obj.fixupFields();

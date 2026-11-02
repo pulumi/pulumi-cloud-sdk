@@ -38,6 +38,10 @@ export class TrialUsageSummary {
     static fixupPrototype(obj: TrialUsageSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TrialUsageSummary: expected an object, got ${typeof obj}`);
+        }
+
         TrialUsageSummary.setPrototype(obj);
 
         obj.fixupFields();

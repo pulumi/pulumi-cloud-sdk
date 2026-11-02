@@ -35,6 +35,10 @@ export class InsightsResourceStackEdge {
     static fixupPrototype(obj: InsightsResourceStackEdge) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsResourceStackEdge: expected an object, got ${typeof obj}`);
+        }
+
         InsightsResourceStackEdge.setPrototype(obj);
 
         obj.fixupFields();

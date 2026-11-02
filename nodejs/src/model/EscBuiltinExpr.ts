@@ -42,6 +42,10 @@ export class EscBuiltinExpr {
     static fixupPrototype(obj: EscBuiltinExpr) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscBuiltinExpr: expected an object, got ${typeof obj}`);
+        }
+
         EscBuiltinExpr.setPrototype(obj);
 
         obj.fixupFields();

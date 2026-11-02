@@ -52,6 +52,10 @@ export class EscExpr {
     static fixupPrototype(obj: EscExpr) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscExpr: expected an object, got ${typeof obj}`);
+        }
+
         EscExpr.setPrototype(obj);
 
         obj.fixupFields();

@@ -36,6 +36,10 @@ export class VCSRepo {
     static fixupPrototype(obj: VCSRepo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`VCSRepo: expected an object, got ${typeof obj}`);
+        }
+
         VCSRepo.setPrototype(obj);
 
         obj.fixupFields();

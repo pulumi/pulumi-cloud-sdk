@@ -39,6 +39,10 @@ export class CloudSetupResult {
     static fixupPrototype(obj: CloudSetupResult) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CloudSetupResult: expected an object, got ${typeof obj}`);
+        }
+
         CloudSetupResult.setPrototype(obj);
 
         obj.fixupFields();

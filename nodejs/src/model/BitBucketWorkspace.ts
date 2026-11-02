@@ -37,6 +37,10 @@ export class BitBucketWorkspace {
     static fixupPrototype(obj: BitBucketWorkspace) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BitBucketWorkspace: expected an object, got ${typeof obj}`);
+        }
+
         BitBucketWorkspace.setPrototype(obj);
 
         obj.fixupFields();

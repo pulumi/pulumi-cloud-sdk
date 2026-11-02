@@ -45,6 +45,10 @@ export class PulumiStack {
     static fixupPrototype(obj: PulumiStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PulumiStack: expected an object, got ${typeof obj}`);
+        }
+
         PulumiStack.setPrototype(obj);
 
         obj.fixupFields();

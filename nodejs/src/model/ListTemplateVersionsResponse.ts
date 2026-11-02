@@ -38,6 +38,10 @@ export class ListTemplateVersionsResponse {
     static fixupPrototype(obj: ListTemplateVersionsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListTemplateVersionsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListTemplateVersionsResponse.setPrototype(obj);
 
         obj.fixupFields();

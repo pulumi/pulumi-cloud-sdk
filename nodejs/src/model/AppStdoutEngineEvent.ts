@@ -35,6 +35,10 @@ export class AppStdoutEngineEvent {
     static fixupPrototype(obj: AppStdoutEngineEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStdoutEngineEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppStdoutEngineEvent.setPrototype(obj);
 
         obj.fixupFields();

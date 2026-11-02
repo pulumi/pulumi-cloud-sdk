@@ -46,6 +46,10 @@ export class GraphNode {
     static fixupPrototype(obj: GraphNode) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphNode: expected an object, got ${typeof obj}`);
+        }
+
         GraphNode.setPrototype(obj);
 
         obj.fixupFields();

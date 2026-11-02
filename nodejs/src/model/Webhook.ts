@@ -45,6 +45,10 @@ export class Webhook {
     static fixupPrototype(obj: Webhook) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`Webhook: expected an object, got ${typeof obj}`);
+        }
+
         Webhook.setPrototype(obj);
 
         obj.fixupFields();

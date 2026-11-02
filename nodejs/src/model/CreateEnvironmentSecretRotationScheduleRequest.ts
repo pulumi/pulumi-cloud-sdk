@@ -34,6 +34,10 @@ export class CreateEnvironmentSecretRotationScheduleRequest {
     static fixupPrototype(obj: CreateEnvironmentSecretRotationScheduleRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateEnvironmentSecretRotationScheduleRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateEnvironmentSecretRotationScheduleRequest.setPrototype(obj);
 
         obj.fixupFields();

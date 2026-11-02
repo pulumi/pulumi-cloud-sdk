@@ -37,6 +37,10 @@ export class AppParameterizationDescriptorV1 {
     static fixupPrototype(obj: AppParameterizationDescriptorV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppParameterizationDescriptorV1: expected an object, got ${typeof obj}`);
+        }
+
         AppParameterizationDescriptorV1.setPrototype(obj);
 
         obj.fixupFields();

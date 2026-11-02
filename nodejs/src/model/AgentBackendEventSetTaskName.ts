@@ -42,6 +42,10 @@ export class AgentBackendEventSetTaskName extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventSetTaskName) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventSetTaskName: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventSetTaskName.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class OperationContextOptions {
     static fixupPrototype(obj: OperationContextOptions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OperationContextOptions: expected an object, got ${typeof obj}`);
+        }
+
         OperationContextOptions.setPrototype(obj);
 
         obj.fixupFields();

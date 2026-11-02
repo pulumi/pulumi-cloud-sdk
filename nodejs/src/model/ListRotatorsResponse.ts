@@ -34,6 +34,10 @@ export class ListRotatorsResponse {
     static fixupPrototype(obj: ListRotatorsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListRotatorsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListRotatorsResponse.setPrototype(obj);
 
         obj.fixupFields();

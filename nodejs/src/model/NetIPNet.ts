@@ -37,6 +37,10 @@ export class NetIPNet {
     static fixupPrototype(obj: NetIPNet) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`NetIPNet: expected an object, got ${typeof obj}`);
+        }
+
         NetIPNet.setPrototype(obj);
 
         obj.fixupFields();

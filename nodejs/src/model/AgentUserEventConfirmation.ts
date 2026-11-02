@@ -44,6 +44,10 @@ export class AgentUserEventConfirmation extends AgentUserEvent {
     static fixupPrototype(obj: AgentUserEventConfirmation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentUserEventConfirmation: expected an object, got ${typeof obj}`);
+        }
+
         AgentUserEventConfirmation.setPrototype(obj);
 
         obj.fixupFields();

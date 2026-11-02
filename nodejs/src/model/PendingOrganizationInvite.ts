@@ -46,6 +46,10 @@ export class PendingOrganizationInvite {
     static fixupPrototype(obj: PendingOrganizationInvite) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PendingOrganizationInvite: expected an object, got ${typeof obj}`);
+        }
+
         PendingOrganizationInvite.setPrototype(obj);
 
         obj.fixupFields();

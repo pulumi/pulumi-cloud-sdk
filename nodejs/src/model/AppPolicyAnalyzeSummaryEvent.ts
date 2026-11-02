@@ -39,6 +39,10 @@ export class AppPolicyAnalyzeSummaryEvent {
     static fixupPrototype(obj: AppPolicyAnalyzeSummaryEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyAnalyzeSummaryEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyAnalyzeSummaryEvent.setPrototype(obj);
 
         obj.fixupFields();

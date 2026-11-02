@@ -38,6 +38,10 @@ export class ScheduledInsightsScanSettingsResponse extends ScanOptions {
     static fixupPrototype(obj: ScheduledInsightsScanSettingsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ScheduledInsightsScanSettingsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ScheduledInsightsScanSettingsResponse.setPrototype(obj);
 
         obj.fixupFields();

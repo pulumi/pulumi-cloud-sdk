@@ -50,6 +50,10 @@ export class Resource {
     static fixupPrototype(obj: Resource) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`Resource: expected an object, got ${typeof obj}`);
+        }
+
         Resource.setPrototype(obj);
 
         obj.fixupFields();

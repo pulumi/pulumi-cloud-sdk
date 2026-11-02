@@ -38,6 +38,10 @@ export class AppResourcePreEvent {
     static fixupPrototype(obj: AppResourcePreEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppResourcePreEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppResourcePreEvent.setPrototype(obj);
 
         obj.fixupFields();

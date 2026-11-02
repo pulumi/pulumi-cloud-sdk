@@ -37,6 +37,10 @@ export class AppStackConfig {
     static fixupPrototype(obj: AppStackConfig) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStackConfig: expected an object, got ${typeof obj}`);
+        }
+
         AppStackConfig.setPrototype(obj);
 
         obj.fixupFields();

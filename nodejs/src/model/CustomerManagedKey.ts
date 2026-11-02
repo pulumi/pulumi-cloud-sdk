@@ -42,6 +42,10 @@ export class CustomerManagedKey {
     static fixupPrototype(obj: CustomerManagedKey) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CustomerManagedKey: expected an object, got ${typeof obj}`);
+        }
+
         CustomerManagedKey.setPrototype(obj);
 
         obj.fixupFields();

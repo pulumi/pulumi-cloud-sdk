@@ -42,6 +42,10 @@ export class AgentBackendEventProvidePulumiAccessToken extends AgentBackendEvent
     static fixupPrototype(obj: AgentBackendEventProvidePulumiAccessToken) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventProvidePulumiAccessToken: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventProvidePulumiAccessToken.setPrototype(obj);
 
         obj.fixupFields();

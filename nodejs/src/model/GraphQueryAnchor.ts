@@ -41,6 +41,10 @@ export class GraphQueryAnchor {
     static fixupPrototype(obj: GraphQueryAnchor) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphQueryAnchor: expected an object, got ${typeof obj}`);
+        }
+
         GraphQueryAnchor.setPrototype(obj);
 
         obj.fixupFields();

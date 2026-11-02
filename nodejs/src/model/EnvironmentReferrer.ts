@@ -41,6 +41,10 @@ export class EnvironmentReferrer {
     static fixupPrototype(obj: EnvironmentReferrer) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentReferrer: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentReferrer.setPrototype(obj);
 
         obj.fixupFields();

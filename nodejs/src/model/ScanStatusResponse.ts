@@ -37,6 +37,10 @@ export class ScanStatusResponse extends WorkflowRun {
     static fixupPrototype(obj: ScanStatusResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ScanStatusResponse: expected an object, got ${typeof obj}`);
+        }
+
         ScanStatusResponse.setPrototype(obj);
 
         obj.fixupFields();

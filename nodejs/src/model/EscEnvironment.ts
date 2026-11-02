@@ -43,6 +43,10 @@ export class EscEnvironment {
     static fixupPrototype(obj: EscEnvironment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscEnvironment: expected an object, got ${typeof obj}`);
+        }
+
         EscEnvironment.setPrototype(obj);
 
         obj.fixupFields();

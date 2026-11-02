@@ -40,6 +40,10 @@ export class VCSGitHubAccessResponse {
     static fixupPrototype(obj: VCSGitHubAccessResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`VCSGitHubAccessResponse: expected an object, got ${typeof obj}`);
+        }
+
         VCSGitHubAccessResponse.setPrototype(obj);
 
         obj.fixupFields();

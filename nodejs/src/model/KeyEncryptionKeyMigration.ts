@@ -35,6 +35,10 @@ export class KeyEncryptionKeyMigration {
     static fixupPrototype(obj: KeyEncryptionKeyMigration) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`KeyEncryptionKeyMigration: expected an object, got ${typeof obj}`);
+        }
+
         KeyEncryptionKeyMigration.setPrototype(obj);
 
         obj.fixupFields();

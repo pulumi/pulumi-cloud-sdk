@@ -34,6 +34,10 @@ export class RemoveCustomVCSRepositoryRequest {
     static fixupPrototype(obj: RemoveCustomVCSRepositoryRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RemoveCustomVCSRepositoryRequest: expected an object, got ${typeof obj}`);
+        }
+
         RemoveCustomVCSRepositoryRequest.setPrototype(obj);
 
         obj.fixupFields();

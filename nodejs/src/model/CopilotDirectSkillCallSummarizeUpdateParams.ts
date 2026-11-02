@@ -44,6 +44,10 @@ export class CopilotDirectSkillCallSummarizeUpdateParams extends CopilotDirectSk
     static fixupPrototype(obj: CopilotDirectSkillCallSummarizeUpdateParams) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotDirectSkillCallSummarizeUpdateParams: expected an object, got ${typeof obj}`);
+        }
+
         CopilotDirectSkillCallSummarizeUpdateParams.setPrototype(obj);
 
         obj.fixupFields();

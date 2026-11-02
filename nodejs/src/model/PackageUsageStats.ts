@@ -37,6 +37,10 @@ export class PackageUsageStats {
     static fixupPrototype(obj: PackageUsageStats) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PackageUsageStats: expected an object, got ${typeof obj}`);
+        }
+
         PackageUsageStats.setPrototype(obj);
 
         obj.fixupFields();

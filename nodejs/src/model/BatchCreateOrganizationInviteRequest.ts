@@ -38,6 +38,10 @@ export class BatchCreateOrganizationInviteRequest {
     static fixupPrototype(obj: BatchCreateOrganizationInviteRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BatchCreateOrganizationInviteRequest: expected an object, got ${typeof obj}`);
+        }
+
         BatchCreateOrganizationInviteRequest.setPrototype(obj);
 
         obj.fixupFields();

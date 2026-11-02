@@ -43,6 +43,10 @@ export class AgentEntityStack extends AgentEntity {
     static fixupPrototype(obj: AgentEntityStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentEntityStack: expected an object, got ${typeof obj}`);
+        }
+
         AgentEntityStack.setPrototype(obj);
 
         obj.fixupFields();

@@ -43,6 +43,10 @@ export class AgentEntityPolicyFinding extends AgentEntity {
     static fixupPrototype(obj: AgentEntityPolicyFinding) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentEntityPolicyFinding: expected an object, got ${typeof obj}`);
+        }
+
         AgentEntityPolicyFinding.setPrototype(obj);
 
         obj.fixupFields();

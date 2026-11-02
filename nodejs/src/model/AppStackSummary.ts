@@ -43,6 +43,10 @@ export class AppStackSummary {
     static fixupPrototype(obj: AppStackSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStackSummary: expected an object, got ${typeof obj}`);
+        }
+
         AppStackSummary.setPrototype(obj);
 
         obj.fixupFields();

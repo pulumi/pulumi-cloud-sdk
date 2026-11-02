@@ -37,6 +37,10 @@ export class ClaimableGitHubIntegration {
     static fixupPrototype(obj: ClaimableGitHubIntegration) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ClaimableGitHubIntegration: expected an object, got ${typeof obj}`);
+        }
+
         ClaimableGitHubIntegration.setPrototype(obj);
 
         obj.fixupFields();

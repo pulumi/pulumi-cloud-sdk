@@ -47,6 +47,10 @@ export class CreateAgentDefinitionRequest {
     static fixupPrototype(obj: CreateAgentDefinitionRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateAgentDefinitionRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateAgentDefinitionRequest.setPrototype(obj);
 
         obj.fixupFields();

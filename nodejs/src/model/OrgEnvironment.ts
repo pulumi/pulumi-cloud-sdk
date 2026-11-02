@@ -51,6 +51,10 @@ export class OrgEnvironment {
     static fixupPrototype(obj: OrgEnvironment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrgEnvironment: expected an object, got ${typeof obj}`);
+        }
+
         OrgEnvironment.setPrototype(obj);
 
         obj.fixupFields();

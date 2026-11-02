@@ -42,6 +42,10 @@ export class ChangeGateRuleInput {
     static fixupPrototype(obj: ChangeGateRuleInput) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeGateRuleInput: expected an object, got ${typeof obj}`);
+        }
+
         ChangeGateRuleInput.setPrototype(obj);
 
         obj.fixupFields();

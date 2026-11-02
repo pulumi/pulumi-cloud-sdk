@@ -45,6 +45,10 @@ export class AgentConsoleEventUserInput extends AgentConsoleEvent {
     static fixupPrototype(obj: AgentConsoleEventUserInput) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentConsoleEventUserInput: expected an object, got ${typeof obj}`);
+        }
+
         AgentConsoleEventUserInput.setPrototype(obj);
 
         obj.fixupFields();

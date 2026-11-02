@@ -37,6 +37,10 @@ export class PermissionBooleanExpressionUnary extends PermissionBooleanExpressio
     static fixupPrototype(obj: PermissionBooleanExpressionUnary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionBooleanExpressionUnary: expected an object, got ${typeof obj}`);
+        }
+
         PermissionBooleanExpressionUnary.setPrototype(obj);
 
         obj.fixupFields();

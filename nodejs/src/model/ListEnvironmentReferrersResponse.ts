@@ -38,6 +38,10 @@ export class ListEnvironmentReferrersResponse {
     static fixupPrototype(obj: ListEnvironmentReferrersResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListEnvironmentReferrersResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListEnvironmentReferrersResponse.setPrototype(obj);
 
         obj.fixupFields();

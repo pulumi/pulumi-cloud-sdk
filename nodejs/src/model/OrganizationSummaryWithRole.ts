@@ -38,6 +38,10 @@ export class OrganizationSummaryWithRole extends OrganizationSummary {
     static fixupPrototype(obj: OrganizationSummaryWithRole) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrganizationSummaryWithRole: expected an object, got ${typeof obj}`);
+        }
+
         OrganizationSummaryWithRole.setPrototype(obj);
 
         obj.fixupFields();

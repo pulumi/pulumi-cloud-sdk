@@ -40,6 +40,10 @@ export class CheckEnvironmentResponse extends EscEnvironment {
     static fixupPrototype(obj: CheckEnvironmentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CheckEnvironmentResponse: expected an object, got ${typeof obj}`);
+        }
+
         CheckEnvironmentResponse.setPrototype(obj);
 
         obj.fixupFields();

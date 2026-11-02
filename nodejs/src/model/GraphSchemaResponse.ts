@@ -44,6 +44,10 @@ export class GraphSchemaResponse {
     static fixupPrototype(obj: GraphSchemaResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphSchemaResponse: expected an object, got ${typeof obj}`);
+        }
+
         GraphSchemaResponse.setPrototype(obj);
 
         obj.fixupFields();

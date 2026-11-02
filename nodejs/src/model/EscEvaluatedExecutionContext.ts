@@ -39,6 +39,10 @@ export class EscEvaluatedExecutionContext {
     static fixupPrototype(obj: EscEvaluatedExecutionContext) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscEvaluatedExecutionContext: expected an object, got ${typeof obj}`);
+        }
+
         EscEvaluatedExecutionContext.setPrototype(obj);
 
         obj.fixupFields();

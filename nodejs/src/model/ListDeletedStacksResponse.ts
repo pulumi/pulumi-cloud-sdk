@@ -37,6 +37,10 @@ export class ListDeletedStacksResponse {
     static fixupPrototype(obj: ListDeletedStacksResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDeletedStacksResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListDeletedStacksResponse.setPrototype(obj);
 
         obj.fixupFields();

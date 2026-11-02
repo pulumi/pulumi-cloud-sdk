@@ -38,6 +38,10 @@ export class NeoMemberUsageCaps {
     static fixupPrototype(obj: NeoMemberUsageCaps) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`NeoMemberUsageCaps: expected an object, got ${typeof obj}`);
+        }
+
         NeoMemberUsageCaps.setPrototype(obj);
 
         obj.fixupFields();

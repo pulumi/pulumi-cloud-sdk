@@ -35,6 +35,10 @@ export class UpdateAgentDefinitionPausedRequest {
     static fixupPrototype(obj: UpdateAgentDefinitionPausedRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateAgentDefinitionPausedRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateAgentDefinitionPausedRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -44,6 +44,10 @@ export class DeploymentLogs extends DeploymentLogsBase {
     static fixupPrototype(obj: DeploymentLogs) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentLogs: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentLogs.setPrototype(obj);
 
         obj.fixupFields();

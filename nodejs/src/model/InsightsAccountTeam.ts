@@ -41,6 +41,10 @@ export class InsightsAccountTeam {
     static fixupPrototype(obj: InsightsAccountTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsAccountTeam: expected an object, got ${typeof obj}`);
+        }
+
         InsightsAccountTeam.setPrototype(obj);
 
         obj.fixupFields();

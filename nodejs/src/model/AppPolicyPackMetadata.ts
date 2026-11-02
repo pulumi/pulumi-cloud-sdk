@@ -39,6 +39,10 @@ export class AppPolicyPackMetadata {
     static fixupPrototype(obj: AppPolicyPackMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyPackMetadata: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyPackMetadata.setPrototype(obj);
 
         obj.fixupFields();

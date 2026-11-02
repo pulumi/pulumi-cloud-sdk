@@ -35,6 +35,10 @@ export class StackNotificationSettings {
     static fixupPrototype(obj: StackNotificationSettings) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackNotificationSettings: expected an object, got ${typeof obj}`);
+        }
+
         StackNotificationSettings.setPrototype(obj);
 
         obj.fixupFields();

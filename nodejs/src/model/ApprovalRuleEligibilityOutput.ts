@@ -42,6 +42,10 @@ export class ApprovalRuleEligibilityOutput {
     static fixupPrototype(obj: ApprovalRuleEligibilityOutput) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ApprovalRuleEligibilityOutput: expected an object, got ${typeof obj}`);
+        }
+
         ApprovalRuleEligibilityOutput.setPrototype(obj);
 
         obj.fixupFields();

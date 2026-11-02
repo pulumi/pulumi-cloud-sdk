@@ -36,6 +36,10 @@ export class StackMatchRulePreviewStack {
     static fixupPrototype(obj: StackMatchRulePreviewStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackMatchRulePreviewStack: expected an object, got ${typeof obj}`);
+        }
+
         StackMatchRulePreviewStack.setPrototype(obj);
 
         obj.fixupFields();

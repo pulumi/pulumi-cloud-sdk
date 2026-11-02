@@ -32,6 +32,10 @@ export class AppCancelEvent {
     static fixupPrototype(obj: AppCancelEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppCancelEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppCancelEvent.setPrototype(obj);
 
         obj.fixupFields();

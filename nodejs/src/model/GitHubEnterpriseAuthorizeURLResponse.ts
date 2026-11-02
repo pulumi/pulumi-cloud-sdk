@@ -34,6 +34,10 @@ export class GitHubEnterpriseAuthorizeURLResponse {
     static fixupPrototype(obj: GitHubEnterpriseAuthorizeURLResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubEnterpriseAuthorizeURLResponse: expected an object, got ${typeof obj}`);
+        }
+
         GitHubEnterpriseAuthorizeURLResponse.setPrototype(obj);
 
         obj.fixupFields();

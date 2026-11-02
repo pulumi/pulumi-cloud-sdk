@@ -42,6 +42,10 @@ export class InsightsResourceWithReferences {
     static fixupPrototype(obj: InsightsResourceWithReferences) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsResourceWithReferences: expected an object, got ${typeof obj}`);
+        }
+
         InsightsResourceWithReferences.setPrototype(obj);
 
         obj.fixupFields();

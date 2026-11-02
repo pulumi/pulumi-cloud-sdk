@@ -44,6 +44,10 @@ export class PermissionExpressionHasTag extends PermissionBooleanExpressionUnary
     static fixupPrototype(obj: PermissionExpressionHasTag) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionHasTag: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionHasTag.setPrototype(obj);
 
         obj.fixupFields();

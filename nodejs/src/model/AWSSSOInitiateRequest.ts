@@ -35,6 +35,10 @@ export class AWSSSOInitiateRequest {
     static fixupPrototype(obj: AWSSSOInitiateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AWSSSOInitiateRequest: expected an object, got ${typeof obj}`);
+        }
+
         AWSSSOInitiateRequest.setPrototype(obj);
 
         obj.fixupFields();

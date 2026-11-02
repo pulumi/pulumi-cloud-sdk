@@ -34,6 +34,10 @@ export class CancelAgentTaskRequest {
     static fixupPrototype(obj: CancelAgentTaskRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CancelAgentTaskRequest: expected an object, got ${typeof obj}`);
+        }
+
         CancelAgentTaskRequest.setPrototype(obj);
 
         obj.fixupFields();

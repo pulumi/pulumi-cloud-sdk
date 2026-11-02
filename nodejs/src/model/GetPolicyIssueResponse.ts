@@ -41,6 +41,10 @@ export class GetPolicyIssueResponse {
     static fixupPrototype(obj: GetPolicyIssueResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetPolicyIssueResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetPolicyIssueResponse.setPrototype(obj);
 
         obj.fixupFields();

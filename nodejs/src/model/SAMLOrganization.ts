@@ -43,6 +43,10 @@ export class SAMLOrganization {
     static fixupPrototype(obj: SAMLOrganization) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SAMLOrganization: expected an object, got ${typeof obj}`);
+        }
+
         SAMLOrganization.setPrototype(obj);
 
         obj.fixupFields();

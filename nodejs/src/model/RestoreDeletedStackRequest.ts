@@ -34,6 +34,10 @@ export class RestoreDeletedStackRequest {
     static fixupPrototype(obj: RestoreDeletedStackRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RestoreDeletedStackRequest: expected an object, got ${typeof obj}`);
+        }
+
         RestoreDeletedStackRequest.setPrototype(obj);
 
         obj.fixupFields();

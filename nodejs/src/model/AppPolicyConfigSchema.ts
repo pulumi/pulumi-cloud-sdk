@@ -39,6 +39,10 @@ export class AppPolicyConfigSchema {
     static fixupPrototype(obj: AppPolicyConfigSchema) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyConfigSchema: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyConfigSchema.setPrototype(obj);
 
         obj.fixupFields();

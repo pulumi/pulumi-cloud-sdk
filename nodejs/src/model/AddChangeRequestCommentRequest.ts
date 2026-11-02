@@ -34,6 +34,10 @@ export class AddChangeRequestCommentRequest {
     static fixupPrototype(obj: AddChangeRequestCommentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AddChangeRequestCommentRequest: expected an object, got ${typeof obj}`);
+        }
+
         AddChangeRequestCommentRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class ListResourcesWithReferencesRequest {
     static fixupPrototype(obj: ListResourcesWithReferencesRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListResourcesWithReferencesRequest: expected an object, got ${typeof obj}`);
+        }
+
         ListResourcesWithReferencesRequest.setPrototype(obj);
 
         obj.fixupFields();

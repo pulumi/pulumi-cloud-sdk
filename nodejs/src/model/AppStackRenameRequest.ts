@@ -35,6 +35,10 @@ export class AppStackRenameRequest {
     static fixupPrototype(obj: AppStackRenameRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStackRenameRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppStackRenameRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class StackTag {
     static fixupPrototype(obj: StackTag) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackTag: expected an object, got ${typeof obj}`);
+        }
+
         StackTag.setPrototype(obj);
 
         obj.fixupFields();

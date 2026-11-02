@@ -43,6 +43,10 @@ export class CreateInsightsAccountRequest {
     static fixupPrototype(obj: CreateInsightsAccountRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateInsightsAccountRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateInsightsAccountRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class AITemplateRequest {
     static fixupPrototype(obj: AITemplateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AITemplateRequest: expected an object, got ${typeof obj}`);
+        }
+
         AITemplateRequest.setPrototype(obj);
 
         obj.fixupFields();

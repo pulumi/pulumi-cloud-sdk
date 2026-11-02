@@ -40,6 +40,10 @@ export class ProviderSchema {
     static fixupPrototype(obj: ProviderSchema) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ProviderSchema: expected an object, got ${typeof obj}`);
+        }
+
         ProviderSchema.setPrototype(obj);
 
         obj.fixupFields();

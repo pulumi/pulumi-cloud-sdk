@@ -38,6 +38,10 @@ export class ResponseAuditLogs {
     static fixupPrototype(obj: ResponseAuditLogs) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResponseAuditLogs: expected an object, got ${typeof obj}`);
+        }
+
         ResponseAuditLogs.setPrototype(obj);
 
         obj.fixupFields();

@@ -43,6 +43,10 @@ export class TemplateSource {
     static fixupPrototype(obj: TemplateSource) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TemplateSource: expected an object, got ${typeof obj}`);
+        }
+
         TemplateSource.setPrototype(obj);
 
         obj.fixupFields();

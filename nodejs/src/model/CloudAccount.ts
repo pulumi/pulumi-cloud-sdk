@@ -37,6 +37,10 @@ export class CloudAccount {
     static fixupPrototype(obj: CloudAccount) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CloudAccount: expected an object, got ${typeof obj}`);
+        }
+
         CloudAccount.setPrototype(obj);
 
         obj.fixupFields();

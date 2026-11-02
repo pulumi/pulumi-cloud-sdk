@@ -40,6 +40,10 @@ export class AgentUserEventCancel extends AgentUserEvent {
     static fixupPrototype(obj: AgentUserEventCancel) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentUserEventCancel: expected an object, got ${typeof obj}`);
+        }
+
         AgentUserEventCancel.setPrototype(obj);
 
         obj.fixupFields();

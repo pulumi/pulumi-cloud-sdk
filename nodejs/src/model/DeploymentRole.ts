@@ -36,6 +36,10 @@ export class DeploymentRole {
     static fixupPrototype(obj: DeploymentRole) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentRole: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentRole.setPrototype(obj);
 
         obj.fixupFields();

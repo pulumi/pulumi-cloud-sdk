@@ -38,6 +38,10 @@ export class AppPropertyDiff {
     static fixupPrototype(obj: AppPropertyDiff) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPropertyDiff: expected an object, got ${typeof obj}`);
+        }
+
         AppPropertyDiff.setPrototype(obj);
 
         obj.fixupFields();

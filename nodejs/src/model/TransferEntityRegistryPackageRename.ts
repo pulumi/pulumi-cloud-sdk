@@ -42,6 +42,10 @@ export class TransferEntityRegistryPackageRename extends TransferEntityRegistryP
     static fixupPrototype(obj: TransferEntityRegistryPackageRename) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityRegistryPackageRename: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityRegistryPackageRename.setPrototype(obj);
 
         obj.fixupFields();

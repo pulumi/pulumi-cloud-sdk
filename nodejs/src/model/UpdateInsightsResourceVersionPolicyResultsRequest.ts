@@ -38,6 +38,10 @@ export class UpdateInsightsResourceVersionPolicyResultsRequest {
     static fixupPrototype(obj: UpdateInsightsResourceVersionPolicyResultsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateInsightsResourceVersionPolicyResultsRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateInsightsResourceVersionPolicyResultsRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -45,6 +45,10 @@ export class TransferEntityStack extends TransferEntity {
     static fixupPrototype(obj: TransferEntityStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityStack: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityStack.setPrototype(obj);
 
         obj.fixupFields();

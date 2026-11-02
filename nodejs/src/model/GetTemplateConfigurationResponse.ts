@@ -37,6 +37,10 @@ export class GetTemplateConfigurationResponse {
     static fixupPrototype(obj: GetTemplateConfigurationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetTemplateConfigurationResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetTemplateConfigurationResponse.setPrototype(obj);
 
         obj.fixupFields();

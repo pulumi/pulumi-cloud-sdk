@@ -41,6 +41,10 @@ export class AgentSignupResponse {
     static fixupPrototype(obj: AgentSignupResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentSignupResponse: expected an object, got ${typeof obj}`);
+        }
+
         AgentSignupResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class GetStackResourceCountResponse {
     static fixupPrototype(obj: GetStackResourceCountResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetStackResourceCountResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetStackResourceCountResponse.setPrototype(obj);
 
         obj.fixupFields();

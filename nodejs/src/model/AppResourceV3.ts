@@ -73,6 +73,10 @@ export class AppResourceV3 {
     static fixupPrototype(obj: AppResourceV3) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppResourceV3: expected an object, got ${typeof obj}`);
+        }
+
         AppResourceV3.setPrototype(obj);
 
         obj.fixupFields();

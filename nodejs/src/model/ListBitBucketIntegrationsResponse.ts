@@ -37,6 +37,10 @@ export class ListBitBucketIntegrationsResponse {
     static fixupPrototype(obj: ListBitBucketIntegrationsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListBitBucketIntegrationsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListBitBucketIntegrationsResponse.setPrototype(obj);
 
         obj.fixupFields();

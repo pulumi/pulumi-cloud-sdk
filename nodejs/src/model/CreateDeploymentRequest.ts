@@ -39,6 +39,10 @@ export class CreateDeploymentRequest extends DeploymentSettingsRequest {
     static fixupPrototype(obj: CreateDeploymentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateDeploymentRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateDeploymentRequest.setPrototype(obj);
 
         obj.fixupFields();

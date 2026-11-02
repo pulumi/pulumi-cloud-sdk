@@ -46,6 +46,10 @@ export class OperationContextRequest {
     static fixupPrototype(obj: OperationContextRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OperationContextRequest: expected an object, got ${typeof obj}`);
+        }
+
         OperationContextRequest.setPrototype(obj);
 
         obj.fixupFields();

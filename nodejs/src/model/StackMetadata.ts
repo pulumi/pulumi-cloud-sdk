@@ -43,6 +43,10 @@ export class StackMetadata {
     static fixupPrototype(obj: StackMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackMetadata: expected an object, got ${typeof obj}`);
+        }
+
         StackMetadata.setPrototype(obj);
 
         obj.fixupFields();

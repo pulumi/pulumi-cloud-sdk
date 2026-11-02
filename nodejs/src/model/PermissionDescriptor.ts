@@ -42,6 +42,10 @@ export class PermissionDescriptor {
     static fixupPrototype(obj: PermissionDescriptor) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionDescriptor: expected an object, got ${typeof obj}`);
+        }
+
         PermissionDescriptor.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class AssignmentPrincipal {
     static fixupPrototype(obj: AssignmentPrincipal) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AssignmentPrincipal: expected an object, got ${typeof obj}`);
+        }
+
         AssignmentPrincipal.setPrototype(obj);
 
         obj.fixupFields();

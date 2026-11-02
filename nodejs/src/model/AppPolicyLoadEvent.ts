@@ -32,6 +32,10 @@ export class AppPolicyLoadEvent {
     static fixupPrototype(obj: AppPolicyLoadEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyLoadEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyLoadEvent.setPrototype(obj);
 
         obj.fixupFields();

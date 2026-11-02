@@ -42,6 +42,10 @@ export class RegistryDocsSupportingType {
     static fixupPrototype(obj: RegistryDocsSupportingType) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryDocsSupportingType: expected an object, got ${typeof obj}`);
+        }
+
         RegistryDocsSupportingType.setPrototype(obj);
 
         obj.fixupFields();

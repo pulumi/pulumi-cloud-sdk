@@ -36,6 +36,10 @@ export class AgentAccountSummary {
     static fixupPrototype(obj: AgentAccountSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAccountSummary: expected an object, got ${typeof obj}`);
+        }
+
         AgentAccountSummary.setPrototype(obj);
 
         obj.fixupFields();

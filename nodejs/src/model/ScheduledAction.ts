@@ -47,6 +47,10 @@ export class ScheduledAction {
     static fixupPrototype(obj: ScheduledAction) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ScheduledAction: expected an object, got ${typeof obj}`);
+        }
+
         ScheduledAction.setPrototype(obj);
 
         obj.fixupFields();

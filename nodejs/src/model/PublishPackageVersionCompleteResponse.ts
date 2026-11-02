@@ -32,6 +32,10 @@ export class PublishPackageVersionCompleteResponse {
     static fixupPrototype(obj: PublishPackageVersionCompleteResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PublishPackageVersionCompleteResponse: expected an object, got ${typeof obj}`);
+        }
+
         PublishPackageVersionCompleteResponse.setPrototype(obj);
 
         obj.fixupFields();

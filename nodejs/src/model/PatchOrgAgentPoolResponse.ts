@@ -35,6 +35,10 @@ export class PatchOrgAgentPoolResponse {
     static fixupPrototype(obj: PatchOrgAgentPoolResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PatchOrgAgentPoolResponse: expected an object, got ${typeof obj}`);
+        }
+
         PatchOrgAgentPoolResponse.setPrototype(obj);
 
         obj.fixupFields();

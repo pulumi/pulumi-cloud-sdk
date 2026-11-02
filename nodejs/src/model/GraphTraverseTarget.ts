@@ -38,6 +38,10 @@ export class GraphTraverseTarget {
     static fixupPrototype(obj: GraphTraverseTarget) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphTraverseTarget: expected an object, got ${typeof obj}`);
+        }
+
         GraphTraverseTarget.setPrototype(obj);
 
         obj.fixupFields();

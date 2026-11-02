@@ -45,6 +45,10 @@ export class PolicyGroupMetadata {
     static fixupPrototype(obj: PolicyGroupMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PolicyGroupMetadata: expected an object, got ${typeof obj}`);
+        }
+
         PolicyGroupMetadata.setPrototype(obj);
 
         obj.fixupFields();

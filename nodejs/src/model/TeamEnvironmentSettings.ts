@@ -41,6 +41,10 @@ export class TeamEnvironmentSettings {
     static fixupPrototype(obj: TeamEnvironmentSettings) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TeamEnvironmentSettings: expected an object, got ${typeof obj}`);
+        }
+
         TeamEnvironmentSettings.setPrototype(obj);
 
         obj.fixupFields();

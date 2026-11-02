@@ -35,6 +35,10 @@ export class AngularGridSortModelItem {
     static fixupPrototype(obj: AngularGridSortModelItem) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AngularGridSortModelItem: expected an object, got ${typeof obj}`);
+        }
+
         AngularGridSortModelItem.setPrototype(obj);
 
         obj.fixupFields();

@@ -34,6 +34,10 @@ export class StartTemplatePublishRequest {
     static fixupPrototype(obj: StartTemplatePublishRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StartTemplatePublishRequest: expected an object, got ${typeof obj}`);
+        }
+
         StartTemplatePublishRequest.setPrototype(obj);
 
         obj.fixupFields();

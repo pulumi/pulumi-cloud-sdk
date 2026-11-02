@@ -37,6 +37,10 @@ export class AppPolicyPackWithVersions {
     static fixupPrototype(obj: AppPolicyPackWithVersions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyPackWithVersions: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyPackWithVersions.setPrototype(obj);
 
         obj.fixupFields();

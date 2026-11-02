@@ -37,6 +37,10 @@ export class UsageRecord extends BaseUsageRecord {
     static fixupPrototype(obj: UsageRecord) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UsageRecord: expected an object, got ${typeof obj}`);
+        }
+
         UsageRecord.setPrototype(obj);
 
         obj.fixupFields();

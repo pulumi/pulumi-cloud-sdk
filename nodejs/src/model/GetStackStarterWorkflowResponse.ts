@@ -34,6 +34,10 @@ export class GetStackStarterWorkflowResponse {
     static fixupPrototype(obj: GetStackStarterWorkflowResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetStackStarterWorkflowResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetStackStarterWorkflowResponse.setPrototype(obj);
 
         obj.fixupFields();

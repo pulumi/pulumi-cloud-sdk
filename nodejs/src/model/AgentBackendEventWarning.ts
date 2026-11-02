@@ -42,6 +42,10 @@ export class AgentBackendEventWarning extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventWarning) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventWarning: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventWarning.setPrototype(obj);
 
         obj.fixupFields();

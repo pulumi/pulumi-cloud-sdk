@@ -47,6 +47,10 @@ export class CustomVCSIntegrationResponse {
     static fixupPrototype(obj: CustomVCSIntegrationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CustomVCSIntegrationResponse: expected an object, got ${typeof obj}`);
+        }
+
         CustomVCSIntegrationResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ContextSchema {
     static fixupPrototype(obj: ContextSchema) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ContextSchema: expected an object, got ${typeof obj}`);
+        }
+
         ContextSchema.setPrototype(obj);
 
         obj.fixupFields();

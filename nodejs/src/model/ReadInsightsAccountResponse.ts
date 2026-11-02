@@ -35,6 +35,10 @@ export class ReadInsightsAccountResponse extends InsightsAccount {
     static fixupPrototype(obj: ReadInsightsAccountResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ReadInsightsAccountResponse: expected an object, got ${typeof obj}`);
+        }
+
         ReadInsightsAccountResponse.setPrototype(obj);
 
         obj.fixupFields();

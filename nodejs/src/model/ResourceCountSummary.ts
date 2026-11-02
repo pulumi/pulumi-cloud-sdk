@@ -41,6 +41,10 @@ export class ResourceCountSummary {
     static fixupPrototype(obj: ResourceCountSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResourceCountSummary: expected an object, got ${typeof obj}`);
+        }
+
         ResourceCountSummary.setPrototype(obj);
 
         obj.fixupFields();

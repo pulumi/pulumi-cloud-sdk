@@ -34,6 +34,10 @@ export class EnvironmentInsightsAccountReferrer {
     static fixupPrototype(obj: EnvironmentInsightsAccountReferrer) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentInsightsAccountReferrer: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentInsightsAccountReferrer.setPrototype(obj);
 
         obj.fixupFields();

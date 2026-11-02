@@ -44,6 +44,10 @@ export class PermissionExpressionTag extends PermissionExpression {
     static fixupPrototype(obj: PermissionExpressionTag) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionTag: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionTag.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ListCloudAccountsResponse {
     static fixupPrototype(obj: ListCloudAccountsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListCloudAccountsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListCloudAccountsResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class Organization {
     static fixupPrototype(obj: Organization) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`Organization: expected an object, got ${typeof obj}`);
+        }
+
         Organization.setPrototype(obj);
 
         obj.fixupFields();

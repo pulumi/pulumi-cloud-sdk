@@ -40,6 +40,10 @@ export class GraphQueryMeta {
     static fixupPrototype(obj: GraphQueryMeta) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphQueryMeta: expected an object, got ${typeof obj}`);
+        }
+
         GraphQueryMeta.setPrototype(obj);
 
         obj.fixupFields();

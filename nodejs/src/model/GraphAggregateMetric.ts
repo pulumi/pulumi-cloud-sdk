@@ -38,6 +38,10 @@ export class GraphAggregateMetric {
     static fixupPrototype(obj: GraphAggregateMetric) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphAggregateMetric: expected an object, got ${typeof obj}`);
+        }
+
         GraphAggregateMetric.setPrototype(obj);
 
         obj.fixupFields();

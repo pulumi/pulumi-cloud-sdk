@@ -40,6 +40,10 @@ export class DeploymentSettingsVCSAzureDevOps extends DeploymentSettingsVCS {
     static fixupPrototype(obj: DeploymentSettingsVCSAzureDevOps) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsVCSAzureDevOps: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsVCSAzureDevOps.setPrototype(obj);
 
         obj.fixupFields();

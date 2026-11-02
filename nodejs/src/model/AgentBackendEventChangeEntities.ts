@@ -43,6 +43,10 @@ export class AgentBackendEventChangeEntities extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventChangeEntities) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventChangeEntities: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventChangeEntities.setPrototype(obj);
 
         obj.fixupFields();

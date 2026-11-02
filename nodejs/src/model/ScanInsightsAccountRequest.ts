@@ -37,6 +37,10 @@ export class ScanInsightsAccountRequest extends ScanOptions {
     static fixupPrototype(obj: ScanInsightsAccountRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ScanInsightsAccountRequest: expected an object, got ${typeof obj}`);
+        }
+
         ScanInsightsAccountRequest.setPrototype(obj);
 
         obj.fixupFields();

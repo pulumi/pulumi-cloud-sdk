@@ -36,6 +36,10 @@ export class ResourceSearchPagination {
     static fixupPrototype(obj: ResourceSearchPagination) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResourceSearchPagination: expected an object, got ${typeof obj}`);
+        }
+
         ResourceSearchPagination.setPrototype(obj);
 
         obj.fixupFields();

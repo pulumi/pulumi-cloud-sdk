@@ -37,6 +37,10 @@ export class RestoreEnvironmentRequest extends CreateEnvironmentRequest {
     static fixupPrototype(obj: RestoreEnvironmentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RestoreEnvironmentRequest: expected an object, got ${typeof obj}`);
+        }
+
         RestoreEnvironmentRequest.setPrototype(obj);
 
         obj.fixupFields();

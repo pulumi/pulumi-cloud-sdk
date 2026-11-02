@@ -36,6 +36,10 @@ export class GraphQueryScope {
     static fixupPrototype(obj: GraphQueryScope) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphQueryScope: expected an object, got ${typeof obj}`);
+        }
+
         GraphQueryScope.setPrototype(obj);
 
         obj.fixupFields();

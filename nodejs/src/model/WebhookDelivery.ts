@@ -43,6 +43,10 @@ export class WebhookDelivery {
     static fixupPrototype(obj: WebhookDelivery) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`WebhookDelivery: expected an object, got ${typeof obj}`);
+        }
+
         WebhookDelivery.setPrototype(obj);
 
         obj.fixupFields();

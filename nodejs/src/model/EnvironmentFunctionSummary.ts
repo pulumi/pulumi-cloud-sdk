@@ -35,6 +35,10 @@ export class EnvironmentFunctionSummary {
     static fixupPrototype(obj: EnvironmentFunctionSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentFunctionSummary: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentFunctionSummary.setPrototype(obj);
 
         obj.fixupFields();

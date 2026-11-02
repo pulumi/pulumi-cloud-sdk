@@ -38,6 +38,10 @@ export class CreateEnvironmentOpenRequestResult {
     static fixupPrototype(obj: CreateEnvironmentOpenRequestResult) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateEnvironmentOpenRequestResult: expected an object, got ${typeof obj}`);
+        }
+
         CreateEnvironmentOpenRequestResult.setPrototype(obj);
 
         obj.fixupFields();

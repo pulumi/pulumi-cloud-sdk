@@ -38,6 +38,10 @@ export class ListAgentTaskEventsResponse {
     static fixupPrototype(obj: ListAgentTaskEventsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListAgentTaskEventsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListAgentTaskEventsResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class ChangeRequestCommentedEvent extends ChangeRequestEvent {
     static fixupPrototype(obj: ChangeRequestCommentedEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeRequestCommentedEvent: expected an object, got ${typeof obj}`);
+        }
+
         ChangeRequestCommentedEvent.setPrototype(obj);
 
         obj.fixupFields();

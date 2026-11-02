@@ -40,6 +40,10 @@ export class ChangeRequestApprovedEvent extends ChangeRequestEvent {
     static fixupPrototype(obj: ChangeRequestApprovedEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeRequestApprovedEvent: expected an object, got ${typeof obj}`);
+        }
+
         ChangeRequestApprovedEvent.setPrototype(obj);
 
         obj.fixupFields();

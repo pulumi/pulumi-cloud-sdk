@@ -38,6 +38,10 @@ export class Aggregation {
     static fixupPrototype(obj: Aggregation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`Aggregation: expected an object, got ${typeof obj}`);
+        }
+
         Aggregation.setPrototype(obj);
 
         obj.fixupFields();

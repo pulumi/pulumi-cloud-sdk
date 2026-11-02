@@ -34,6 +34,10 @@ export class CreateCoherenceWindowSubgroupRequest {
     static fixupPrototype(obj: CreateCoherenceWindowSubgroupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateCoherenceWindowSubgroupRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateCoherenceWindowSubgroupRequest.setPrototype(obj);
 
         obj.fixupFields();

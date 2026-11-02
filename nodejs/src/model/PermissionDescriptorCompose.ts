@@ -42,6 +42,10 @@ export class PermissionDescriptorCompose extends PermissionDescriptor {
     static fixupPrototype(obj: PermissionDescriptorCompose) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionDescriptorCompose: expected an object, got ${typeof obj}`);
+        }
+
         PermissionDescriptorCompose.setPrototype(obj);
 
         obj.fixupFields();

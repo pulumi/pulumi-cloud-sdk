@@ -42,6 +42,10 @@ export class AgentBackendEventCancelledMessage extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventCancelledMessage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventCancelledMessage: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventCancelledMessage.setPrototype(obj);
 
         obj.fixupFields();

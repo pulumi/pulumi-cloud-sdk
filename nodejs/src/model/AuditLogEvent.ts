@@ -48,6 +48,10 @@ export class AuditLogEvent {
     static fixupPrototype(obj: AuditLogEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AuditLogEvent: expected an object, got ${typeof obj}`);
+        }
+
         AuditLogEvent.setPrototype(obj);
 
         obj.fixupFields();

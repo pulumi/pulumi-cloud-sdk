@@ -37,6 +37,10 @@ export class GetOrgTemplateSourcesResponse {
     static fixupPrototype(obj: GetOrgTemplateSourcesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetOrgTemplateSourcesResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetOrgTemplateSourcesResponse.setPrototype(obj);
 
         obj.fixupFields();

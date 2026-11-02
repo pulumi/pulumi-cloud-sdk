@@ -38,6 +38,10 @@ export class AgentEntityDiff {
     static fixupPrototype(obj: AgentEntityDiff) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentEntityDiff: expected an object, got ${typeof obj}`);
+        }
+
         AgentEntityDiff.setPrototype(obj);
 
         obj.fixupFields();

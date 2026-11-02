@@ -42,6 +42,10 @@ export class PermissionSetExpressionInsightsAccount extends PermissionSetExpress
     static fixupPrototype(obj: PermissionSetExpressionInsightsAccount) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionSetExpressionInsightsAccount: expected an object, got ${typeof obj}`);
+        }
+
         PermissionSetExpressionInsightsAccount.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ListPolicyPacksForInsightsAccountResponse {
     static fixupPrototype(obj: ListPolicyPacksForInsightsAccountResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListPolicyPacksForInsightsAccountResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListPolicyPacksForInsightsAccountResponse.setPrototype(obj);
 
         obj.fixupFields();

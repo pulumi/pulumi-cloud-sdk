@@ -43,6 +43,10 @@ export class ApprovalRuleEligibilityOutputPermission extends ApprovalRuleEligibi
     static fixupPrototype(obj: ApprovalRuleEligibilityOutputPermission) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ApprovalRuleEligibilityOutputPermission: expected an object, got ${typeof obj}`);
+        }
+
         ApprovalRuleEligibilityOutputPermission.setPrototype(obj);
 
         obj.fixupFields();

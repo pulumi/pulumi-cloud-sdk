@@ -41,6 +41,10 @@ export class AppBeginUpdateRequest {
     static fixupPrototype(obj: AppBeginUpdateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppBeginUpdateRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppBeginUpdateRequest.setPrototype(obj);
 
         obj.fixupFields();

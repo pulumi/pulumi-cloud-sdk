@@ -40,6 +40,10 @@ export class PermissionExpressionEnvironment extends PermissionContextExpression
     static fixupPrototype(obj: PermissionExpressionEnvironment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionEnvironment: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionEnvironment.setPrototype(obj);
 
         obj.fixupFields();

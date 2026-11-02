@@ -35,6 +35,10 @@ export class AppPulumiStackReference {
     static fixupPrototype(obj: AppPulumiStackReference) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPulumiStackReference: expected an object, got ${typeof obj}`);
+        }
+
         AppPulumiStackReference.setPrototype(obj);
 
         obj.fixupFields();

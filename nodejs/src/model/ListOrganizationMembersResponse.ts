@@ -38,6 +38,10 @@ export class ListOrganizationMembersResponse {
     static fixupPrototype(obj: ListOrganizationMembersResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListOrganizationMembersResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListOrganizationMembersResponse.setPrototype(obj);
 
         obj.fixupFields();

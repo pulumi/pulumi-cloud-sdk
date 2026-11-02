@@ -39,6 +39,10 @@ export class CreateScheduledDeploymentRequest {
     static fixupPrototype(obj: CreateScheduledDeploymentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateScheduledDeploymentRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateScheduledDeploymentRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class ListServicesResponse {
     static fixupPrototype(obj: ListServicesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListServicesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListServicesResponse.setPrototype(obj);
 
         obj.fixupFields();

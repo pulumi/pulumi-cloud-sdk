@@ -42,6 +42,10 @@ export class TransferEntityStackRename extends TransferEntityStack {
     static fixupPrototype(obj: TransferEntityStackRename) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityStackRename: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityStackRename.setPrototype(obj);
 
         obj.fixupFields();

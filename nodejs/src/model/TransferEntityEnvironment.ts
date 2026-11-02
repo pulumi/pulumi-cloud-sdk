@@ -43,6 +43,10 @@ export class TransferEntityEnvironment extends TransferEntity {
     static fixupPrototype(obj: TransferEntityEnvironment) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityEnvironment: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityEnvironment.setPrototype(obj);
 
         obj.fixupFields();

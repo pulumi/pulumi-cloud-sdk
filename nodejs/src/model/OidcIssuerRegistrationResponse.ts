@@ -46,6 +46,10 @@ export class OidcIssuerRegistrationResponse {
     static fixupPrototype(obj: OidcIssuerRegistrationResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OidcIssuerRegistrationResponse: expected an object, got ${typeof obj}`);
+        }
+
         OidcIssuerRegistrationResponse.setPrototype(obj);
 
         obj.fixupFields();

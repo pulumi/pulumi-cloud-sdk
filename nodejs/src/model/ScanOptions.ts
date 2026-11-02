@@ -37,6 +37,10 @@ export class ScanOptions {
     static fixupPrototype(obj: ScanOptions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ScanOptions: expected an object, got ${typeof obj}`);
+        }
+
         ScanOptions.setPrototype(obj);
 
         obj.fixupFields();

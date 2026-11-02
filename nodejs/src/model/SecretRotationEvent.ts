@@ -47,6 +47,10 @@ export class SecretRotationEvent {
     static fixupPrototype(obj: SecretRotationEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SecretRotationEvent: expected an object, got ${typeof obj}`);
+        }
+
         SecretRotationEvent.setPrototype(obj);
 
         obj.fixupFields();

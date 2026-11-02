@@ -38,6 +38,10 @@ export class GetDiscoveredProjectResponse {
     static fixupPrototype(obj: GetDiscoveredProjectResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetDiscoveredProjectResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetDiscoveredProjectResponse.setPrototype(obj);
 
         obj.fixupFields();

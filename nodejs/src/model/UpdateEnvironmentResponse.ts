@@ -35,6 +35,10 @@ export class UpdateEnvironmentResponse extends EnvironmentDiagnosticsResponse {
     static fixupPrototype(obj: UpdateEnvironmentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateEnvironmentResponse: expected an object, got ${typeof obj}`);
+        }
+
         UpdateEnvironmentResponse.setPrototype(obj);
 
         obj.fixupFields();

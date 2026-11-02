@@ -39,6 +39,10 @@ export class PackageParameterization {
     static fixupPrototype(obj: PackageParameterization) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PackageParameterization: expected an object, got ${typeof obj}`);
+        }
+
         PackageParameterization.setPrototype(obj);
 
         obj.fixupFields();

@@ -43,6 +43,10 @@ export class RegistryDocsProperty {
     static fixupPrototype(obj: RegistryDocsProperty) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryDocsProperty: expected an object, got ${typeof obj}`);
+        }
+
         RegistryDocsProperty.setPrototype(obj);
 
         obj.fixupFields();

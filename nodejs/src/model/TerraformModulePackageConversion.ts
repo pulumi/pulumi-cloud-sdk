@@ -37,6 +37,10 @@ export class TerraformModulePackageConversion {
     static fixupPrototype(obj: TerraformModulePackageConversion) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TerraformModulePackageConversion: expected an object, got ${typeof obj}`);
+        }
+
         TerraformModulePackageConversion.setPrototype(obj);
 
         obj.fixupFields();

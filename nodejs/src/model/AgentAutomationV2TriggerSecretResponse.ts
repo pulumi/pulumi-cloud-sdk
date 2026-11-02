@@ -38,6 +38,10 @@ export class AgentAutomationV2TriggerSecretResponse {
     static fixupPrototype(obj: AgentAutomationV2TriggerSecretResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAutomationV2TriggerSecretResponse: expected an object, got ${typeof obj}`);
+        }
+
         AgentAutomationV2TriggerSecretResponse.setPrototype(obj);
 
         obj.fixupFields();

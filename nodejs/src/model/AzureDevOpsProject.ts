@@ -35,6 +35,10 @@ export class AzureDevOpsProject {
     static fixupPrototype(obj: AzureDevOpsProject) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureDevOpsProject: expected an object, got ${typeof obj}`);
+        }
+
         AzureDevOpsProject.setPrototype(obj);
 
         obj.fixupFields();

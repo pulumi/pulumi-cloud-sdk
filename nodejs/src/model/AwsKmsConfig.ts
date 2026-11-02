@@ -35,6 +35,10 @@ export class AwsKmsConfig {
     static fixupPrototype(obj: AwsKmsConfig) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AwsKmsConfig: expected an object, got ${typeof obj}`);
+        }
+
         AwsKmsConfig.setPrototype(obj);
 
         obj.fixupFields();

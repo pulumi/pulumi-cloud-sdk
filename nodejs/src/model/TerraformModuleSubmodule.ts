@@ -43,6 +43,10 @@ export class TerraformModuleSubmodule {
     static fixupPrototype(obj: TerraformModuleSubmodule) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TerraformModuleSubmodule: expected an object, got ${typeof obj}`);
+        }
+
         TerraformModuleSubmodule.setPrototype(obj);
 
         obj.fixupFields();

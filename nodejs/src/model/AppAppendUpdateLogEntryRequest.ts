@@ -35,6 +35,10 @@ export class AppAppendUpdateLogEntryRequest {
     static fixupPrototype(obj: AppAppendUpdateLogEntryRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppAppendUpdateLogEntryRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppAppendUpdateLogEntryRequest.setPrototype(obj);
 
         obj.fixupFields();

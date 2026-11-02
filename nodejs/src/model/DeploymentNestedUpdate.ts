@@ -46,6 +46,10 @@ export class DeploymentNestedUpdate {
     static fixupPrototype(obj: DeploymentNestedUpdate) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentNestedUpdate: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentNestedUpdate.setPrototype(obj);
 
         obj.fixupFields();

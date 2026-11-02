@@ -34,6 +34,10 @@ export class InsightsImportCodeResponse {
     static fixupPrototype(obj: InsightsImportCodeResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`InsightsImportCodeResponse: expected an object, got ${typeof obj}`);
+        }
+
         InsightsImportCodeResponse.setPrototype(obj);
 
         obj.fixupFields();

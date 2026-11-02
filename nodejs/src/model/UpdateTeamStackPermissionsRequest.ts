@@ -37,6 +37,10 @@ export class UpdateTeamStackPermissionsRequest {
     static fixupPrototype(obj: UpdateTeamStackPermissionsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateTeamStackPermissionsRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateTeamStackPermissionsRequest.setPrototype(obj);
 
         obj.fixupFields();

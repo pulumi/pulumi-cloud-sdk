@@ -39,6 +39,10 @@ export class ListDriftRunsResponse {
     static fixupPrototype(obj: ListDriftRunsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDriftRunsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListDriftRunsResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class ListVCSReposResponse {
     static fixupPrototype(obj: ListVCSReposResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListVCSReposResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListVCSReposResponse.setPrototype(obj);
 
         obj.fixupFields();

@@ -36,6 +36,10 @@ export class RegistryDocsEnumValue {
     static fixupPrototype(obj: RegistryDocsEnumValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryDocsEnumValue: expected an object, got ${typeof obj}`);
+        }
+
         RegistryDocsEnumValue.setPrototype(obj);
 
         obj.fixupFields();

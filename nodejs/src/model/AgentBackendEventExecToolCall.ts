@@ -46,6 +46,10 @@ export class AgentBackendEventExecToolCall extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventExecToolCall) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventExecToolCall: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventExecToolCall.setPrototype(obj);
 
         obj.fixupFields();

@@ -41,6 +41,10 @@ export class CreateChangeGateRequest {
     static fixupPrototype(obj: CreateChangeGateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateChangeGateRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateChangeGateRequest.setPrototype(obj);
 
         obj.fixupFields();

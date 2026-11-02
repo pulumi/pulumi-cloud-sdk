@@ -40,6 +40,10 @@ export class EscValue {
     static fixupPrototype(obj: EscValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscValue: expected an object, got ${typeof obj}`);
+        }
+
         EscValue.setPrototype(obj);
 
         obj.fixupFields();

@@ -41,6 +41,10 @@ export class GetUpdateTimelineResponse {
     static fixupPrototype(obj: GetUpdateTimelineResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetUpdateTimelineResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetUpdateTimelineResponse.setPrototype(obj);
 
         obj.fixupFields();

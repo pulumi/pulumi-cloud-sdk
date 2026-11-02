@@ -37,6 +37,10 @@ export class OperationContextAWSOIDCConfigurationRequest {
     static fixupPrototype(obj: OperationContextAWSOIDCConfigurationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OperationContextAWSOIDCConfigurationRequest: expected an object, got ${typeof obj}`);
+        }
+
         OperationContextAWSOIDCConfigurationRequest.setPrototype(obj);
 
         obj.fixupFields();

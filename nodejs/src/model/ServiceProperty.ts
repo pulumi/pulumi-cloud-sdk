@@ -37,6 +37,10 @@ export class ServiceProperty {
     static fixupPrototype(obj: ServiceProperty) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ServiceProperty: expected an object, got ${typeof obj}`);
+        }
+
         ServiceProperty.setPrototype(obj);
 
         obj.fixupFields();

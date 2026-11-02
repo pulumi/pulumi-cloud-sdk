@@ -40,6 +40,10 @@ export class AppUpdateResults {
     static fixupPrototype(obj: AppUpdateResults) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppUpdateResults: expected an object, got ${typeof obj}`);
+        }
+
         AppUpdateResults.setPrototype(obj);
 
         obj.fixupFields();

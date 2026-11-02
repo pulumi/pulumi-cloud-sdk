@@ -34,6 +34,10 @@ export class TemplateUploadURLs {
     static fixupPrototype(obj: TemplateUploadURLs) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TemplateUploadURLs: expected an object, got ${typeof obj}`);
+        }
+
         TemplateUploadURLs.setPrototype(obj);
 
         obj.fixupFields();

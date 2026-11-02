@@ -41,6 +41,10 @@ export class AuditLogEventTypeCatalogEntry {
     static fixupPrototype(obj: AuditLogEventTypeCatalogEntry) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AuditLogEventTypeCatalogEntry: expected an object, got ${typeof obj}`);
+        }
+
         AuditLogEventTypeCatalogEntry.setPrototype(obj);
 
         obj.fixupFields();

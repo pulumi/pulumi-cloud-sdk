@@ -40,6 +40,10 @@ export class AppPluginInfoV1 {
     static fixupPrototype(obj: AppPluginInfoV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPluginInfoV1: expected an object, got ${typeof obj}`);
+        }
+
         AppPluginInfoV1.setPrototype(obj);
 
         obj.fixupFields();

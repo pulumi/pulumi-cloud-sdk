@@ -42,6 +42,10 @@ export class AppSnippetV1 {
     static fixupPrototype(obj: AppSnippetV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppSnippetV1: expected an object, got ${typeof obj}`);
+        }
+
         AppSnippetV1.setPrototype(obj);
 
         obj.fixupFields();

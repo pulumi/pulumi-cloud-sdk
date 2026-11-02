@@ -35,6 +35,10 @@ export class CreateOrgAgentPoolRequest {
     static fixupPrototype(obj: CreateOrgAgentPoolRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateOrgAgentPoolRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateOrgAgentPoolRequest.setPrototype(obj);
 
         obj.fixupFields();

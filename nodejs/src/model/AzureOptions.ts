@@ -38,6 +38,10 @@ export class AzureOptions {
     static fixupPrototype(obj: AzureOptions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureOptions: expected an object, got ${typeof obj}`);
+        }
+
         AzureOptions.setPrototype(obj);
 
         obj.fixupFields();

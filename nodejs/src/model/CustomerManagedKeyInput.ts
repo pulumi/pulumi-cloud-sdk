@@ -40,6 +40,10 @@ export class CustomerManagedKeyInput {
     static fixupPrototype(obj: CustomerManagedKeyInput) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CustomerManagedKeyInput: expected an object, got ${typeof obj}`);
+        }
+
         CustomerManagedKeyInput.setPrototype(obj);
 
         obj.fixupFields();

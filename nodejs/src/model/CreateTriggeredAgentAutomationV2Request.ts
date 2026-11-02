@@ -43,6 +43,10 @@ export class CreateTriggeredAgentAutomationV2Request extends CreateAgentAutomati
     static fixupPrototype(obj: CreateTriggeredAgentAutomationV2Request) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateTriggeredAgentAutomationV2Request: expected an object, got ${typeof obj}`);
+        }
+
         CreateTriggeredAgentAutomationV2Request.setPrototype(obj);
 
         obj.fixupFields();

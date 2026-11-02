@@ -42,6 +42,10 @@ export class TargetEntityPolicyExceptions extends TargetEntity {
     static fixupPrototype(obj: TargetEntityPolicyExceptions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TargetEntityPolicyExceptions: expected an object, got ${typeof obj}`);
+        }
+
         TargetEntityPolicyExceptions.setPrototype(obj);
 
         obj.fixupFields();

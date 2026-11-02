@@ -35,6 +35,10 @@ export class CLIIntegrationRef {
     static fixupPrototype(obj: CLIIntegrationRef) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CLIIntegrationRef: expected an object, got ${typeof obj}`);
+        }
+
         CLIIntegrationRef.setPrototype(obj);
 
         obj.fixupFields();

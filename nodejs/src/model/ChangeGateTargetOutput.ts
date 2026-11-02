@@ -42,6 +42,10 @@ export class ChangeGateTargetOutput {
     static fixupPrototype(obj: ChangeGateTargetOutput) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeGateTargetOutput: expected an object, got ${typeof obj}`);
+        }
+
         ChangeGateTargetOutput.setPrototype(obj);
 
         obj.fixupFields();

@@ -47,6 +47,10 @@ export class PkixName {
     static fixupPrototype(obj: PkixName) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PkixName: expected an object, got ${typeof obj}`);
+        }
+
         PkixName.setPrototype(obj);
 
         obj.fixupFields();

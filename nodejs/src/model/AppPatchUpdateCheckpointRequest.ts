@@ -37,6 +37,10 @@ export class AppPatchUpdateCheckpointRequest {
     static fixupPrototype(obj: AppPatchUpdateCheckpointRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPatchUpdateCheckpointRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppPatchUpdateCheckpointRequest.setPrototype(obj);
 
         obj.fixupFields();

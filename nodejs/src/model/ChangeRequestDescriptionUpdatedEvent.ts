@@ -43,6 +43,10 @@ export class ChangeRequestDescriptionUpdatedEvent extends ChangeRequestEvent {
     static fixupPrototype(obj: ChangeRequestDescriptionUpdatedEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeRequestDescriptionUpdatedEvent: expected an object, got ${typeof obj}`);
+        }
+
         ChangeRequestDescriptionUpdatedEvent.setPrototype(obj);
 
         obj.fixupFields();

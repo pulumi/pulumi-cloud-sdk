@@ -40,6 +40,10 @@ export class OidcIssuerUpdateRequest {
     static fixupPrototype(obj: OidcIssuerUpdateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OidcIssuerUpdateRequest: expected an object, got ${typeof obj}`);
+        }
+
         OidcIssuerUpdateRequest.setPrototype(obj);
 
         obj.fixupFields();

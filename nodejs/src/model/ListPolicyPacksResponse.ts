@@ -38,6 +38,10 @@ export class ListPolicyPacksResponse {
     static fixupPrototype(obj: ListPolicyPacksResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListPolicyPacksResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListPolicyPacksResponse.setPrototype(obj);
 
         obj.fixupFields();

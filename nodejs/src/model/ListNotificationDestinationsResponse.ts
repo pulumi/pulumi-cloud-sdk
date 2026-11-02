@@ -37,6 +37,10 @@ export class ListNotificationDestinationsResponse {
     static fixupPrototype(obj: ListNotificationDestinationsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListNotificationDestinationsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListNotificationDestinationsResponse.setPrototype(obj);
 
         obj.fixupFields();

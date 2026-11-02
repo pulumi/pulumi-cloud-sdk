@@ -38,6 +38,10 @@ export class BasicAuth {
     static fixupPrototype(obj: BasicAuth) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BasicAuth: expected an object, got ${typeof obj}`);
+        }
+
         BasicAuth.setPrototype(obj);
 
         obj.fixupFields();

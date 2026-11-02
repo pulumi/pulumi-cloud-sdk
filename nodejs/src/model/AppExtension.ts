@@ -37,6 +37,10 @@ export class AppExtension {
     static fixupPrototype(obj: AppExtension) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppExtension: expected an object, got ${typeof obj}`);
+        }
+
         AppExtension.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class GetStackActivityResponse {
     static fixupPrototype(obj: GetStackActivityResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetStackActivityResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetStackActivityResponse.setPrototype(obj);
 
         obj.fixupFields();

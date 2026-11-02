@@ -45,6 +45,10 @@ export class PolicyComplianceRow {
     static fixupPrototype(obj: PolicyComplianceRow) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PolicyComplianceRow: expected an object, got ${typeof obj}`);
+        }
+
         PolicyComplianceRow.setPrototype(obj);
 
         obj.fixupFields();

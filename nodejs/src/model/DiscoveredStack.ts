@@ -39,6 +39,10 @@ export class DiscoveredStack {
     static fixupPrototype(obj: DiscoveredStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DiscoveredStack: expected an object, got ${typeof obj}`);
+        }
+
         DiscoveredStack.setPrototype(obj);
 
         obj.fixupFields();

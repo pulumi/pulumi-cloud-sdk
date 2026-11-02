@@ -36,6 +36,10 @@ export class AuditLogsExportS3Config {
     static fixupPrototype(obj: AuditLogsExportS3Config) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AuditLogsExportS3Config: expected an object, got ${typeof obj}`);
+        }
+
         AuditLogsExportS3Config.setPrototype(obj);
 
         obj.fixupFields();

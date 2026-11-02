@@ -42,6 +42,10 @@ export class GitHubPullRequest {
     static fixupPrototype(obj: GitHubPullRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubPullRequest: expected an object, got ${typeof obj}`);
+        }
+
         GitHubPullRequest.setPrototype(obj);
 
         obj.fixupFields();

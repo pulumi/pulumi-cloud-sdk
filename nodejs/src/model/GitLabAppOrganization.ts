@@ -37,6 +37,10 @@ export class GitLabAppOrganization {
     static fixupPrototype(obj: GitLabAppOrganization) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitLabAppOrganization: expected an object, got ${typeof obj}`);
+        }
+
         GitLabAppOrganization.setPrototype(obj);
 
         obj.fixupFields();

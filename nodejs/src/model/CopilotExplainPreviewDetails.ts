@@ -37,6 +37,10 @@ export class CopilotExplainPreviewDetails {
     static fixupPrototype(obj: CopilotExplainPreviewDetails) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotExplainPreviewDetails: expected an object, got ${typeof obj}`);
+        }
+
         CopilotExplainPreviewDetails.setPrototype(obj);
 
         obj.fixupFields();

@@ -36,6 +36,10 @@ export class AppProjectTemplateConfigValue {
     static fixupPrototype(obj: AppProjectTemplateConfigValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppProjectTemplateConfigValue: expected an object, got ${typeof obj}`);
+        }
+
         AppProjectTemplateConfigValue.setPrototype(obj);
 
         obj.fixupFields();

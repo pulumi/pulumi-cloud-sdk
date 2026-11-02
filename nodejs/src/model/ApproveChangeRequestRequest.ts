@@ -35,6 +35,10 @@ export class ApproveChangeRequestRequest {
     static fixupPrototype(obj: ApproveChangeRequestRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ApproveChangeRequestRequest: expected an object, got ${typeof obj}`);
+        }
+
         ApproveChangeRequestRequest.setPrototype(obj);
 
         obj.fixupFields();

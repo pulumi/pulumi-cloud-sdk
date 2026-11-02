@@ -48,6 +48,10 @@ export class BitBucketIntegrationDetails {
     static fixupPrototype(obj: BitBucketIntegrationDetails) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BitBucketIntegrationDetails: expected an object, got ${typeof obj}`);
+        }
+
         BitBucketIntegrationDetails.setPrototype(obj);
 
         obj.fixupFields();

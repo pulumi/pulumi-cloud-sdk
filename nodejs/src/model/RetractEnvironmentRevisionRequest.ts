@@ -35,6 +35,10 @@ export class RetractEnvironmentRevisionRequest {
     static fixupPrototype(obj: RetractEnvironmentRevisionRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RetractEnvironmentRevisionRequest: expected an object, got ${typeof obj}`);
+        }
+
         RetractEnvironmentRevisionRequest.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class ListInsightsResourceVersion {
     static fixupPrototype(obj: ListInsightsResourceVersion) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListInsightsResourceVersion: expected an object, got ${typeof obj}`);
+        }
+
         ListInsightsResourceVersion.setPrototype(obj);
 
         obj.fixupFields();

@@ -42,6 +42,10 @@ export class AppUpdateOptions {
     static fixupPrototype(obj: AppUpdateOptions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppUpdateOptions: expected an object, got ${typeof obj}`);
+        }
+
         AppUpdateOptions.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class GraphDepthRange {
     static fixupPrototype(obj: GraphDepthRange) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphDepthRange: expected an object, got ${typeof obj}`);
+        }
+
         GraphDepthRange.setPrototype(obj);
 
         obj.fixupFields();

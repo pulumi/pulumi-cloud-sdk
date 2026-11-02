@@ -38,6 +38,10 @@ export class TransferEntityFailure {
     static fixupPrototype(obj: TransferEntityFailure) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityFailure: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityFailure.setPrototype(obj);
 
         obj.fixupFields();

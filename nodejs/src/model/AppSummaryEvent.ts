@@ -42,6 +42,10 @@ export class AppSummaryEvent {
     static fixupPrototype(obj: AppSummaryEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppSummaryEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppSummaryEvent.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class ListVCSBranchesResponse {
     static fixupPrototype(obj: ListVCSBranchesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListVCSBranchesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListVCSBranchesResponse.setPrototype(obj);
 
         obj.fixupFields();

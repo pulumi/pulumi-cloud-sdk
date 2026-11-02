@@ -37,6 +37,10 @@ export class StackReference {
     static fixupPrototype(obj: StackReference) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackReference: expected an object, got ${typeof obj}`);
+        }
+
         StackReference.setPrototype(obj);
 
         obj.fixupFields();

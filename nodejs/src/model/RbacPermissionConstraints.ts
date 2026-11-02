@@ -34,6 +34,10 @@ export class RbacPermissionConstraints {
     static fixupPrototype(obj: RbacPermissionConstraints) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RbacPermissionConstraints: expected an object, got ${typeof obj}`);
+        }
+
         RbacPermissionConstraints.setPrototype(obj);
 
         obj.fixupFields();

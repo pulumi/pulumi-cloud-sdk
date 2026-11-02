@@ -42,6 +42,10 @@ export class PermissionLiteralExpressionTeam extends PermissionLiteralExpression
     static fixupPrototype(obj: PermissionLiteralExpressionTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionLiteralExpressionTeam: expected an object, got ${typeof obj}`);
+        }
+
         PermissionLiteralExpressionTeam.setPrototype(obj);
 
         obj.fixupFields();

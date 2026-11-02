@@ -36,6 +36,10 @@ export class VCSInfo {
     static fixupPrototype(obj: VCSInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`VCSInfo: expected an object, got ${typeof obj}`);
+        }
+
         VCSInfo.setPrototype(obj);
 
         obj.fixupFields();

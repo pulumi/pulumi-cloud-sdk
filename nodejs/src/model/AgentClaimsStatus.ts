@@ -37,6 +37,10 @@ export class AgentClaimsStatus {
     static fixupPrototype(obj: AgentClaimsStatus) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentClaimsStatus: expected an object, got ${typeof obj}`);
+        }
+
         AgentClaimsStatus.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class ChangeRequestRevisionAddedEvent extends ChangeRequestEvent {
     static fixupPrototype(obj: ChangeRequestRevisionAddedEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ChangeRequestRevisionAddedEvent: expected an object, got ${typeof obj}`);
+        }
+
         ChangeRequestRevisionAddedEvent.setPrototype(obj);
 
         obj.fixupFields();

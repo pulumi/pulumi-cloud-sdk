@@ -40,6 +40,10 @@ export class UpsertResourceMigrationAnnotationRequest {
     static fixupPrototype(obj: UpsertResourceMigrationAnnotationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpsertResourceMigrationAnnotationRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpsertResourceMigrationAnnotationRequest.setPrototype(obj);
 
         obj.fixupFields();

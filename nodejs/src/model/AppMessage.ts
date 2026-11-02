@@ -38,6 +38,10 @@ export class AppMessage {
     static fixupPrototype(obj: AppMessage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppMessage: expected an object, got ${typeof obj}`);
+        }
+
         AppMessage.setPrototype(obj);
 
         obj.fixupFields();

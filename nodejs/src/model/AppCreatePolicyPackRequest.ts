@@ -47,6 +47,10 @@ export class AppCreatePolicyPackRequest {
     static fixupPrototype(obj: AppCreatePolicyPackRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppCreatePolicyPackRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppCreatePolicyPackRequest.setPrototype(obj);
 
         obj.fixupFields();

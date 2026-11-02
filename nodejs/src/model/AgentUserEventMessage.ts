@@ -44,6 +44,10 @@ export class AgentUserEventMessage extends AgentUserEvent {
     static fixupPrototype(obj: AgentUserEventMessage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentUserEventMessage: expected an object, got ${typeof obj}`);
+        }
+
         AgentUserEventMessage.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class PermissionBooleanExpressionBinary extends PermissionBooleanExpressi
     static fixupPrototype(obj: PermissionBooleanExpressionBinary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionBooleanExpressionBinary: expected an object, got ${typeof obj}`);
+        }
+
         PermissionBooleanExpressionBinary.setPrototype(obj);
 
         obj.fixupFields();

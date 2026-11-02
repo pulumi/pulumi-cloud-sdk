@@ -52,6 +52,10 @@ export class PolicyViolationV2 {
     static fixupPrototype(obj: PolicyViolationV2) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PolicyViolationV2: expected an object, got ${typeof obj}`);
+        }
+
         PolicyViolationV2.setPrototype(obj);
 
         obj.fixupFields();

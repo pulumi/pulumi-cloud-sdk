@@ -40,6 +40,10 @@ export class PackageUsageResponse {
     static fixupPrototype(obj: PackageUsageResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PackageUsageResponse: expected an object, got ${typeof obj}`);
+        }
+
         PackageUsageResponse.setPrototype(obj);
 
         obj.fixupFields();

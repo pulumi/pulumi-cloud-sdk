@@ -34,6 +34,10 @@ export class RbacScopeMetadata {
     static fixupPrototype(obj: RbacScopeMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RbacScopeMetadata: expected an object, got ${typeof obj}`);
+        }
+
         RbacScopeMetadata.setPrototype(obj);
 
         obj.fixupFields();

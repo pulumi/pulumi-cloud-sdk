@@ -43,6 +43,10 @@ export class AgentAutomationTrigger {
     static fixupPrototype(obj: AgentAutomationTrigger) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentAutomationTrigger: expected an object, got ${typeof obj}`);
+        }
+
         AgentAutomationTrigger.setPrototype(obj);
 
         obj.fixupFields();

@@ -43,6 +43,10 @@ export class DeploymentAgentMetadata {
     static fixupPrototype(obj: DeploymentAgentMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentAgentMetadata: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentAgentMetadata.setPrototype(obj);
 
         obj.fixupFields();

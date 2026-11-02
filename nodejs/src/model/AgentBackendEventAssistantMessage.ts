@@ -48,6 +48,10 @@ export class AgentBackendEventAssistantMessage extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventAssistantMessage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventAssistantMessage: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventAssistantMessage.setPrototype(obj);
 
         obj.fixupFields();

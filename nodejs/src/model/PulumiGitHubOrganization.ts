@@ -40,6 +40,10 @@ export class PulumiGitHubOrganization {
     static fixupPrototype(obj: PulumiGitHubOrganization) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PulumiGitHubOrganization: expected an object, got ${typeof obj}`);
+        }
+
         PulumiGitHubOrganization.setPrototype(obj);
 
         obj.fixupFields();

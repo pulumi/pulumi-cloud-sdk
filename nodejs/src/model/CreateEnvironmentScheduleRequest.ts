@@ -39,6 +39,10 @@ export class CreateEnvironmentScheduleRequest {
     static fixupPrototype(obj: CreateEnvironmentScheduleRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateEnvironmentScheduleRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateEnvironmentScheduleRequest.setPrototype(obj);
 
         obj.fixupFields();

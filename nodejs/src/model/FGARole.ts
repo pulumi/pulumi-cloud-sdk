@@ -36,6 +36,10 @@ export class FGARole {
     static fixupPrototype(obj: FGARole) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`FGARole: expected an object, got ${typeof obj}`);
+        }
+
         FGARole.setPrototype(obj);
 
         obj.fixupFields();

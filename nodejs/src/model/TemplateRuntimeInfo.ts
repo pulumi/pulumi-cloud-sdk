@@ -35,6 +35,10 @@ export class TemplateRuntimeInfo {
     static fixupPrototype(obj: TemplateRuntimeInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TemplateRuntimeInfo: expected an object, got ${typeof obj}`);
+        }
+
         TemplateRuntimeInfo.setPrototype(obj);
 
         obj.fixupFields();

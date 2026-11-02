@@ -43,6 +43,10 @@ export class AgentUserEventExecToolCall extends AgentUserEvent {
     static fixupPrototype(obj: AgentUserEventExecToolCall) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentUserEventExecToolCall: expected an object, got ${typeof obj}`);
+        }
+
         AgentUserEventExecToolCall.setPrototype(obj);
 
         obj.fixupFields();

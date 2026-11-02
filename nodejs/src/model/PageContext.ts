@@ -36,6 +36,10 @@ export class PageContext {
     static fixupPrototype(obj: PageContext) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PageContext: expected an object, got ${typeof obj}`);
+        }
+
         PageContext.setPrototype(obj);
 
         obj.fixupFields();

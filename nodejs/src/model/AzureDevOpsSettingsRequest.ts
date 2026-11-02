@@ -36,6 +36,10 @@ export class AzureDevOpsSettingsRequest {
     static fixupPrototype(obj: AzureDevOpsSettingsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureDevOpsSettingsRequest: expected an object, got ${typeof obj}`);
+        }
+
         AzureDevOpsSettingsRequest.setPrototype(obj);
 
         obj.fixupFields();

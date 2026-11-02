@@ -36,6 +36,10 @@ export class PackageUploadURLs {
     static fixupPrototype(obj: PackageUploadURLs) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PackageUploadURLs: expected an object, got ${typeof obj}`);
+        }
+
         PackageUploadURLs.setPrototype(obj);
 
         obj.fixupFields();

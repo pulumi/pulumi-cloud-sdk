@@ -38,6 +38,10 @@ export class ListChangeRequestsResponse {
     static fixupPrototype(obj: ListChangeRequestsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListChangeRequestsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListChangeRequestsResponse.setPrototype(obj);
 
         obj.fixupFields();

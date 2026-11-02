@@ -36,6 +36,10 @@ export class EnvironmentVariable {
     static fixupPrototype(obj: EnvironmentVariable) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentVariable: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentVariable.setPrototype(obj);
 
         obj.fixupFields();

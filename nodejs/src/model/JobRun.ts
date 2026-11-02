@@ -43,6 +43,10 @@ export class JobRun {
     static fixupPrototype(obj: JobRun) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`JobRun: expected an object, got ${typeof obj}`);
+        }
+
         JobRun.setPrototype(obj);
 
         obj.fixupFields();

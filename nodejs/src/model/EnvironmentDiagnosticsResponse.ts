@@ -37,6 +37,10 @@ export class EnvironmentDiagnosticsResponse {
     static fixupPrototype(obj: EnvironmentDiagnosticsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentDiagnosticsResponse: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentDiagnosticsResponse.setPrototype(obj);
 
         obj.fixupFields();

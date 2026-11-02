@@ -44,6 +44,10 @@ export class AgentBackendEventExecToolCallProgress extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventExecToolCallProgress) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventExecToolCallProgress: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventExecToolCallProgress.setPrototype(obj);
 
         obj.fixupFields();

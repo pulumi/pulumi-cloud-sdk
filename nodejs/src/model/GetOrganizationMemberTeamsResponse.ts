@@ -34,6 +34,10 @@ export class GetOrganizationMemberTeamsResponse {
     static fixupPrototype(obj: GetOrganizationMemberTeamsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetOrganizationMemberTeamsResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetOrganizationMemberTeamsResponse.setPrototype(obj);
 
         obj.fixupFields();

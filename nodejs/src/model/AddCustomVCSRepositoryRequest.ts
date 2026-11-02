@@ -35,6 +35,10 @@ export class AddCustomVCSRepositoryRequest {
     static fixupPrototype(obj: AddCustomVCSRepositoryRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AddCustomVCSRepositoryRequest: expected an object, got ${typeof obj}`);
+        }
+
         AddCustomVCSRepositoryRequest.setPrototype(obj);
 
         obj.fixupFields();

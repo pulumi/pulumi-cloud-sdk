@@ -42,6 +42,10 @@ export class ApprovalRuleEligibilityInputTeam extends ApprovalRuleEligibilityInp
     static fixupPrototype(obj: ApprovalRuleEligibilityInputTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ApprovalRuleEligibilityInputTeam: expected an object, got ${typeof obj}`);
+        }
+
         ApprovalRuleEligibilityInputTeam.setPrototype(obj);
 
         obj.fixupFields();

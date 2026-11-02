@@ -36,6 +36,10 @@ export class RegistryDocsTypeRef {
     static fixupPrototype(obj: RegistryDocsTypeRef) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RegistryDocsTypeRef: expected an object, got ${typeof obj}`);
+        }
+
         RegistryDocsTypeRef.setPrototype(obj);
 
         obj.fixupFields();

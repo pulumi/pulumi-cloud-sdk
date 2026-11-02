@@ -37,6 +37,10 @@ export class AgentRespondToTaskRequest {
     static fixupPrototype(obj: AgentRespondToTaskRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentRespondToTaskRequest: expected an object, got ${typeof obj}`);
+        }
+
         AgentRespondToTaskRequest.setPrototype(obj);
 
         obj.fixupFields();

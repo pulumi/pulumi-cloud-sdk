@@ -34,6 +34,10 @@ export class DecryptEnvironmentSecretsResponse {
     static fixupPrototype(obj: DecryptEnvironmentSecretsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DecryptEnvironmentSecretsResponse: expected an object, got ${typeof obj}`);
+        }
+
         DecryptEnvironmentSecretsResponse.setPrototype(obj);
 
         obj.fixupFields();

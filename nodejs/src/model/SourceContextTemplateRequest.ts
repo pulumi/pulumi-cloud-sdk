@@ -38,6 +38,10 @@ export class SourceContextTemplateRequest {
     static fixupPrototype(obj: SourceContextTemplateRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SourceContextTemplateRequest: expected an object, got ${typeof obj}`);
+        }
+
         SourceContextTemplateRequest.setPrototype(obj);
 
         obj.fixupFields();

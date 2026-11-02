@@ -37,6 +37,10 @@ export class CopilotState {
     static fixupPrototype(obj: CopilotState) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotState: expected an object, got ${typeof obj}`);
+        }
+
         CopilotState.setPrototype(obj);
 
         obj.fixupFields();

@@ -45,6 +45,10 @@ export class PermissionExpressionIn extends PermissionBooleanExpression {
     static fixupPrototype(obj: PermissionExpressionIn) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionIn: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionIn.setPrototype(obj);
 
         obj.fixupFields();

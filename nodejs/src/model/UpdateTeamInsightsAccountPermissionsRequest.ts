@@ -37,6 +37,10 @@ export class UpdateTeamInsightsAccountPermissionsRequest {
     static fixupPrototype(obj: UpdateTeamInsightsAccountPermissionsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateTeamInsightsAccountPermissionsRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateTeamInsightsAccountPermissionsRequest.setPrototype(obj);
 
         obj.fixupFields();

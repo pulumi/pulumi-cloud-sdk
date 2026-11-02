@@ -39,6 +39,10 @@ export class GitHubIntegrationPermissions {
     static fixupPrototype(obj: GitHubIntegrationPermissions) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubIntegrationPermissions: expected an object, got ${typeof obj}`);
+        }
+
         GitHubIntegrationPermissions.setPrototype(obj);
 
         obj.fixupFields();

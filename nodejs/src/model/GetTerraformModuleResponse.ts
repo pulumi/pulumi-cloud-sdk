@@ -37,6 +37,10 @@ export class GetTerraformModuleResponse extends TerraformModuleVersion {
     static fixupPrototype(obj: GetTerraformModuleResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetTerraformModuleResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetTerraformModuleResponse.setPrototype(obj);
 
         obj.fixupFields();

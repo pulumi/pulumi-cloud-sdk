@@ -36,6 +36,10 @@ export class EscPos {
     static fixupPrototype(obj: EscPos) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscPos: expected an object, got ${typeof obj}`);
+        }
+
         EscPos.setPrototype(obj);
 
         obj.fixupFields();

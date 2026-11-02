@@ -37,6 +37,10 @@ export class CreateTeamAccessTokenRequest extends BaseCreateAccessTokenRequest {
     static fixupPrototype(obj: CreateTeamAccessTokenRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateTeamAccessTokenRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateTeamAccessTokenRequest.setPrototype(obj);
 
         obj.fixupFields();

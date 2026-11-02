@@ -34,6 +34,10 @@ export class CreateCoherenceWindowSubgroupResponse {
     static fixupPrototype(obj: CreateCoherenceWindowSubgroupResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateCoherenceWindowSubgroupResponse: expected an object, got ${typeof obj}`);
+        }
+
         CreateCoherenceWindowSubgroupResponse.setPrototype(obj);
 
         obj.fixupFields();

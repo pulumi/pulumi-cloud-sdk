@@ -48,6 +48,10 @@ export class AgentTriggerEvent {
     static fixupPrototype(obj: AgentTriggerEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentTriggerEvent: expected an object, got ${typeof obj}`);
+        }
+
         AgentTriggerEvent.setPrototype(obj);
 
         obj.fixupFields();

@@ -62,6 +62,10 @@ export class PackageMetadata {
     static fixupPrototype(obj: PackageMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PackageMetadata: expected an object, got ${typeof obj}`);
+        }
+
         PackageMetadata.setPrototype(obj);
 
         obj.fixupFields();

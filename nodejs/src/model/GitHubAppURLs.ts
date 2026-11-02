@@ -37,6 +37,10 @@ export class GitHubAppURLs {
     static fixupPrototype(obj: GitHubAppURLs) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubAppURLs: expected an object, got ${typeof obj}`);
+        }
+
         GitHubAppURLs.setPrototype(obj);
 
         obj.fixupFields();

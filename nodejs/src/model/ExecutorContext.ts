@@ -38,6 +38,10 @@ export class ExecutorContext {
     static fixupPrototype(obj: ExecutorContext) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ExecutorContext: expected an object, got ${typeof obj}`);
+        }
+
         ExecutorContext.setPrototype(obj);
 
         obj.fixupFields();

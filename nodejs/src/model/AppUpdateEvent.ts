@@ -39,6 +39,10 @@ export class AppUpdateEvent {
     static fixupPrototype(obj: AppUpdateEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppUpdateEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppUpdateEvent.setPrototype(obj);
 
         obj.fixupFields();

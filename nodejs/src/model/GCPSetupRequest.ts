@@ -38,6 +38,10 @@ export class GCPSetupRequest {
     static fixupPrototype(obj: GCPSetupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GCPSetupRequest: expected an object, got ${typeof obj}`);
+        }
+
         GCPSetupRequest.setPrototype(obj);
 
         obj.fixupFields();

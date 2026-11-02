@@ -39,6 +39,10 @@ export class GetPolicyComplianceResultsRequest {
     static fixupPrototype(obj: GetPolicyComplianceResultsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetPolicyComplianceResultsRequest: expected an object, got ${typeof obj}`);
+        }
+
         GetPolicyComplianceResultsRequest.setPrototype(obj);
 
         obj.fixupFields();

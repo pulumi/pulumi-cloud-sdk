@@ -42,6 +42,10 @@ export class PermissionLiteralExpressionNumber extends PermissionLiteralExpressi
     static fixupPrototype(obj: PermissionLiteralExpressionNumber) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionLiteralExpressionNumber: expected an object, got ${typeof obj}`);
+        }
+
         PermissionLiteralExpressionNumber.setPrototype(obj);
 
         obj.fixupFields();

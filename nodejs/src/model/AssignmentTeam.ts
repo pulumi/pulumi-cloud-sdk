@@ -35,6 +35,10 @@ export class AssignmentTeam {
     static fixupPrototype(obj: AssignmentTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AssignmentTeam: expected an object, got ${typeof obj}`);
+        }
+
         AssignmentTeam.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class UserPermission {
     static fixupPrototype(obj: UserPermission) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UserPermission: expected an object, got ${typeof obj}`);
+        }
+
         UserPermission.setPrototype(obj);
 
         obj.fixupFields();

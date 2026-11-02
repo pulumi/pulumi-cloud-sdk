@@ -34,6 +34,10 @@ export class GetNaturalLanguageQueryResponse {
     static fixupPrototype(obj: GetNaturalLanguageQueryResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetNaturalLanguageQueryResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetNaturalLanguageQueryResponse.setPrototype(obj);
 
         obj.fixupFields();

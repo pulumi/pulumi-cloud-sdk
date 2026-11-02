@@ -45,6 +45,10 @@ export class AzureDevOpsIntegrationDetails {
     static fixupPrototype(obj: AzureDevOpsIntegrationDetails) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AzureDevOpsIntegrationDetails: expected an object, got ${typeof obj}`);
+        }
+
         AzureDevOpsIntegrationDetails.setPrototype(obj);
 
         obj.fixupFields();

@@ -42,6 +42,10 @@ export class CreateScheduledAgentAutomationV2Request extends CreateAgentAutomati
     static fixupPrototype(obj: CreateScheduledAgentAutomationV2Request) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateScheduledAgentAutomationV2Request: expected an object, got ${typeof obj}`);
+        }
+
         CreateScheduledAgentAutomationV2Request.setPrototype(obj);
 
         obj.fixupFields();

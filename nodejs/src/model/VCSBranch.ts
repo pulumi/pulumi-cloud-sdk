@@ -35,6 +35,10 @@ export class VCSBranch {
     static fixupPrototype(obj: VCSBranch) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`VCSBranch: expected an object, got ${typeof obj}`);
+        }
+
         VCSBranch.setPrototype(obj);
 
         obj.fixupFields();

@@ -40,6 +40,10 @@ export class PolicyGroupAccount {
     static fixupPrototype(obj: PolicyGroupAccount) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PolicyGroupAccount: expected an object, got ${typeof obj}`);
+        }
+
         PolicyGroupAccount.setPrototype(obj);
 
         obj.fixupFields();

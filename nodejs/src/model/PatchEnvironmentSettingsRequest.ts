@@ -34,6 +34,10 @@ export class PatchEnvironmentSettingsRequest {
     static fixupPrototype(obj: PatchEnvironmentSettingsRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PatchEnvironmentSettingsRequest: expected an object, got ${typeof obj}`);
+        }
+
         PatchEnvironmentSettingsRequest.setPrototype(obj);
 
         obj.fixupFields();

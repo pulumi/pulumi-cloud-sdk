@@ -34,6 +34,10 @@ export class MemberLinks {
     static fixupPrototype(obj: MemberLinks) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`MemberLinks: expected an object, got ${typeof obj}`);
+        }
+
         MemberLinks.setPrototype(obj);
 
         obj.fixupFields();

@@ -34,6 +34,10 @@ export class CreateGitHubTeamRequest {
     static fixupPrototype(obj: CreateGitHubTeamRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateGitHubTeamRequest: expected an object, got ${typeof obj}`);
+        }
+
         CreateGitHubTeamRequest.setPrototype(obj);
 
         obj.fixupFields();

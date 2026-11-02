@@ -44,6 +44,10 @@ export class EnvironmentMetadata {
     static fixupPrototype(obj: EnvironmentMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentMetadata: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentMetadata.setPrototype(obj);
 
         obj.fixupFields();

@@ -42,6 +42,10 @@ export class StackUsage {
     static fixupPrototype(obj: StackUsage) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackUsage: expected an object, got ${typeof obj}`);
+        }
+
         StackUsage.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class TeamPermission {
     static fixupPrototype(obj: TeamPermission) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TeamPermission: expected an object, got ${typeof obj}`);
+        }
+
         TeamPermission.setPrototype(obj);
 
         obj.fixupFields();

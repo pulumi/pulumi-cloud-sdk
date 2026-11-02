@@ -35,6 +35,10 @@ export class RemoveEnvironmentIdentifier {
     static fixupPrototype(obj: RemoveEnvironmentIdentifier) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RemoveEnvironmentIdentifier: expected an object, got ${typeof obj}`);
+        }
+
         RemoveEnvironmentIdentifier.setPrototype(obj);
 
         obj.fixupFields();

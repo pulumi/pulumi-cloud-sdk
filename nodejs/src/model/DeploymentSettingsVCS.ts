@@ -51,6 +51,10 @@ export class DeploymentSettingsVCS {
     static fixupPrototype(obj: DeploymentSettingsVCS) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsVCS: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsVCS.setPrototype(obj);
 
         obj.fixupFields();

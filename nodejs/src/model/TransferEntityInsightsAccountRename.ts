@@ -42,6 +42,10 @@ export class TransferEntityInsightsAccountRename extends TransferEntityInsightsA
     static fixupPrototype(obj: TransferEntityInsightsAccountRename) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TransferEntityInsightsAccountRename: expected an object, got ${typeof obj}`);
+        }
+
         TransferEntityInsightsAccountRename.setPrototype(obj);
 
         obj.fixupFields();

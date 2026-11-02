@@ -39,6 +39,10 @@ export class GetStackUpdatesResponse {
     static fixupPrototype(obj: GetStackUpdatesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetStackUpdatesResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetStackUpdatesResponse.setPrototype(obj);
 
         obj.fixupFields();

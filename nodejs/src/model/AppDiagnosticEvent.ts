@@ -40,6 +40,10 @@ export class AppDiagnosticEvent {
     static fixupPrototype(obj: AppDiagnosticEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppDiagnosticEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppDiagnosticEvent.setPrototype(obj);
 
         obj.fixupFields();

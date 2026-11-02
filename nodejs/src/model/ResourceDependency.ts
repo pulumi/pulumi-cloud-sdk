@@ -35,6 +35,10 @@ export class ResourceDependency {
     static fixupPrototype(obj: ResourceDependency) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ResourceDependency: expected an object, got ${typeof obj}`);
+        }
+
         ResourceDependency.setPrototype(obj);
 
         obj.fixupFields();

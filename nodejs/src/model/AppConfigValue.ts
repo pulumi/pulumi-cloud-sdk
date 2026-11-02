@@ -36,6 +36,10 @@ export class AppConfigValue {
     static fixupPrototype(obj: AppConfigValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppConfigValue: expected an object, got ${typeof obj}`);
+        }
+
         AppConfigValue.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class GetUpdateEventsResponse {
     static fixupPrototype(obj: GetUpdateEventsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GetUpdateEventsResponse: expected an object, got ${typeof obj}`);
+        }
+
         GetUpdateEventsResponse.setPrototype(obj);
 
         obj.fixupFields();

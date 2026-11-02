@@ -35,6 +35,10 @@ export class X509PolicyMapping {
     static fixupPrototype(obj: X509PolicyMapping) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`X509PolicyMapping: expected an object, got ${typeof obj}`);
+        }
+
         X509PolicyMapping.setPrototype(obj);
 
         obj.fixupFields();

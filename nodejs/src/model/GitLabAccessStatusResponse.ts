@@ -38,6 +38,10 @@ export class GitLabAccessStatusResponse {
     static fixupPrototype(obj: GitLabAccessStatusResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitLabAccessStatusResponse: expected an object, got ${typeof obj}`);
+        }
+
         GitLabAccessStatusResponse.setPrototype(obj);
 
         obj.fixupFields();

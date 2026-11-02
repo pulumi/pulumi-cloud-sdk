@@ -44,6 +44,10 @@ export class AgentClaimResponse {
     static fixupPrototype(obj: AgentClaimResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentClaimResponse: expected an object, got ${typeof obj}`);
+        }
+
         AgentClaimResponse.setPrototype(obj);
 
         obj.fixupFields();

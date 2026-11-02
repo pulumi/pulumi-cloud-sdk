@@ -40,6 +40,10 @@ export class UpdateSummary {
     static fixupPrototype(obj: UpdateSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateSummary: expected an object, got ${typeof obj}`);
+        }
+
         UpdateSummary.setPrototype(obj);
 
         obj.fixupFields();

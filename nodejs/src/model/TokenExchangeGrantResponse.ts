@@ -39,6 +39,10 @@ export class TokenExchangeGrantResponse {
     static fixupPrototype(obj: TokenExchangeGrantResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TokenExchangeGrantResponse: expected an object, got ${typeof obj}`);
+        }
+
         TokenExchangeGrantResponse.setPrototype(obj);
 
         obj.fixupFields();

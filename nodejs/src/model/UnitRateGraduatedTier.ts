@@ -37,6 +37,10 @@ export class UnitRateGraduatedTier {
     static fixupPrototype(obj: UnitRateGraduatedTier) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UnitRateGraduatedTier: expected an object, got ${typeof obj}`);
+        }
+
         UnitRateGraduatedTier.setPrototype(obj);
 
         obj.fixupFields();

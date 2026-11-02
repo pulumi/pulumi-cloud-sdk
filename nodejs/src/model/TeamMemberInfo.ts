@@ -38,6 +38,10 @@ export class TeamMemberInfo extends UserInfo {
     static fixupPrototype(obj: TeamMemberInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`TeamMemberInfo: expected an object, got ${typeof obj}`);
+        }
+
         TeamMemberInfo.setPrototype(obj);
 
         obj.fixupFields();

@@ -55,6 +55,10 @@ export class GitHubIntegrationDetails {
     static fixupPrototype(obj: GitHubIntegrationDetails) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GitHubIntegrationDetails: expected an object, got ${typeof obj}`);
+        }
+
         GitHubIntegrationDetails.setPrototype(obj);
 
         obj.fixupFields();

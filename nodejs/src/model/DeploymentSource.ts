@@ -39,6 +39,10 @@ export class DeploymentSource {
     static fixupPrototype(obj: DeploymentSource) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSource: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSource.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class AppOperationV2 {
     static fixupPrototype(obj: AppOperationV2) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppOperationV2: expected an object, got ${typeof obj}`);
+        }
+
         AppOperationV2.setPrototype(obj);
 
         obj.fixupFields();

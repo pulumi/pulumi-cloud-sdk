@@ -38,6 +38,10 @@ export class GraphNodeMatch {
     static fixupPrototype(obj: GraphNodeMatch) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphNodeMatch: expected an object, got ${typeof obj}`);
+        }
+
         GraphNodeMatch.setPrototype(obj);
 
         obj.fixupFields();

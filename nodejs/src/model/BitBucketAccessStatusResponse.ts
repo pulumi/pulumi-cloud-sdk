@@ -38,6 +38,10 @@ export class BitBucketAccessStatusResponse {
     static fixupPrototype(obj: BitBucketAccessStatusResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BitBucketAccessStatusResponse: expected an object, got ${typeof obj}`);
+        }
+
         BitBucketAccessStatusResponse.setPrototype(obj);
 
         obj.fixupFields();

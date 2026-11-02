@@ -40,6 +40,10 @@ export class DeploymentCounts {
     static fixupPrototype(obj: DeploymentCounts) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentCounts: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentCounts.setPrototype(obj);
 
         obj.fixupFields();

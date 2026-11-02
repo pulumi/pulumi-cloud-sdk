@@ -39,6 +39,10 @@ export class PermissionSelectvalue {
     static fixupPrototype(obj: PermissionSelectvalue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionSelectvalue: expected an object, got ${typeof obj}`);
+        }
+
         PermissionSelectvalue.setPrototype(obj);
 
         obj.fixupFields();

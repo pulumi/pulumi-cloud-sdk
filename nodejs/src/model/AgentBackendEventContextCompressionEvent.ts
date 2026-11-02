@@ -45,6 +45,10 @@ export class AgentBackendEventContextCompressionEvent extends AgentBackendEvent 
     static fixupPrototype(obj: AgentBackendEventContextCompressionEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventContextCompressionEvent: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventContextCompressionEvent.setPrototype(obj);
 
         obj.fixupFields();

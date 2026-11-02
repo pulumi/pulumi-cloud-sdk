@@ -35,6 +35,10 @@ export class OrgVcsTemplateSourceTotal {
     static fixupPrototype(obj: OrgVcsTemplateSourceTotal) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrgVcsTemplateSourceTotal: expected an object, got ${typeof obj}`);
+        }
+
         OrgVcsTemplateSourceTotal.setPrototype(obj);
 
         obj.fixupFields();

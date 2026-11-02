@@ -49,6 +49,10 @@ export class AppDeploymentV3 {
     static fixupPrototype(obj: AppDeploymentV3) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppDeploymentV3: expected an object, got ${typeof obj}`);
+        }
+
         AppDeploymentV3.setPrototype(obj);
 
         obj.fixupFields();

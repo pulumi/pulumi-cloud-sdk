@@ -46,6 +46,10 @@ export class WorkflowRun {
     static fixupPrototype(obj: WorkflowRun) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`WorkflowRun: expected an object, got ${typeof obj}`);
+        }
+
         WorkflowRun.setPrototype(obj);
 
         obj.fixupFields();

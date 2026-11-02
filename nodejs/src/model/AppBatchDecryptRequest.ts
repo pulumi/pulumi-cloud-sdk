@@ -35,6 +35,10 @@ export class AppBatchDecryptRequest {
     static fixupPrototype(obj: AppBatchDecryptRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppBatchDecryptRequest: expected an object, got ${typeof obj}`);
+        }
+
         AppBatchDecryptRequest.setPrototype(obj);
 
         obj.fixupFields();

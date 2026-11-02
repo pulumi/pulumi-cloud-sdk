@@ -37,6 +37,10 @@ export class ListSAMLOrganizationAdminsResponse {
     static fixupPrototype(obj: ListSAMLOrganizationAdminsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListSAMLOrganizationAdminsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListSAMLOrganizationAdminsResponse.setPrototype(obj);
 
         obj.fixupFields();

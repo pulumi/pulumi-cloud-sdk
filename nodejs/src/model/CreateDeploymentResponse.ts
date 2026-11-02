@@ -36,6 +36,10 @@ export class CreateDeploymentResponse {
     static fixupPrototype(obj: CreateDeploymentResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CreateDeploymentResponse: expected an object, got ${typeof obj}`);
+        }
+
         CreateDeploymentResponse.setPrototype(obj);
 
         obj.fixupFields();

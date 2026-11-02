@@ -42,6 +42,10 @@ export class ApprovalRuleEligibilityInputUser extends ApprovalRuleEligibilityInp
     static fixupPrototype(obj: ApprovalRuleEligibilityInputUser) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ApprovalRuleEligibilityInputUser: expected an object, got ${typeof obj}`);
+        }
+
         ApprovalRuleEligibilityInputUser.setPrototype(obj);
 
         obj.fixupFields();

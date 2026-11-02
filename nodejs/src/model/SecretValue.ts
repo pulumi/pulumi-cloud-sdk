@@ -37,6 +37,10 @@ export class SecretValue {
     static fixupPrototype(obj: SecretValue) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SecretValue: expected an object, got ${typeof obj}`);
+        }
+
         SecretValue.setPrototype(obj);
 
         obj.fixupFields();

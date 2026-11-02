@@ -41,6 +41,10 @@ export class AuthPolicy {
     static fixupPrototype(obj: AuthPolicy) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AuthPolicy: expected an object, got ${typeof obj}`);
+        }
+
         AuthPolicy.setPrototype(obj);
 
         obj.fixupFields();

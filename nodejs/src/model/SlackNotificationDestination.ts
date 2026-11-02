@@ -45,6 +45,10 @@ export class SlackNotificationDestination extends NotificationDestination {
     static fixupPrototype(obj: SlackNotificationDestination) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`SlackNotificationDestination: expected an object, got ${typeof obj}`);
+        }
+
         SlackNotificationDestination.setPrototype(obj);
 
         obj.fixupFields();

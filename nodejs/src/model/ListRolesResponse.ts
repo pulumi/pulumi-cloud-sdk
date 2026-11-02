@@ -37,6 +37,10 @@ export class ListRolesResponse {
     static fixupPrototype(obj: ListRolesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListRolesResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListRolesResponse.setPrototype(obj);
 
         obj.fixupFields();

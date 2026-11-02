@@ -37,6 +37,10 @@ export class AppEngineEventBatch {
     static fixupPrototype(obj: AppEngineEventBatch) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppEngineEventBatch: expected an object, got ${typeof obj}`);
+        }
+
         AppEngineEventBatch.setPrototype(obj);
 
         obj.fixupFields();

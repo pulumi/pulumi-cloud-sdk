@@ -41,6 +41,10 @@ export class StackTeam {
     static fixupPrototype(obj: StackTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`StackTeam: expected an object, got ${typeof obj}`);
+        }
+
         StackTeam.setPrototype(obj);
 
         obj.fixupFields();

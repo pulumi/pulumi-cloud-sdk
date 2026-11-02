@@ -35,6 +35,10 @@ export class AgentDefinitionTaskCounts {
     static fixupPrototype(obj: AgentDefinitionTaskCounts) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentDefinitionTaskCounts: expected an object, got ${typeof obj}`);
+        }
+
         AgentDefinitionTaskCounts.setPrototype(obj);
 
         obj.fixupFields();

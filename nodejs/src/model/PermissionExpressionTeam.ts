@@ -40,6 +40,10 @@ export class PermissionExpressionTeam extends PermissionContextExpression {
     static fixupPrototype(obj: PermissionExpressionTeam) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionExpressionTeam: expected an object, got ${typeof obj}`);
+        }
+
         PermissionExpressionTeam.setPrototype(obj);
 
         obj.fixupFields();

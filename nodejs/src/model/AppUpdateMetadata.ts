@@ -35,6 +35,10 @@ export class AppUpdateMetadata {
     static fixupPrototype(obj: AppUpdateMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppUpdateMetadata: expected an object, got ${typeof obj}`);
+        }
+
         AppUpdateMetadata.setPrototype(obj);
 
         obj.fixupFields();

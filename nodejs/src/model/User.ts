@@ -53,6 +53,10 @@ export class User {
     static fixupPrototype(obj: User) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`User: expected an object, got ${typeof obj}`);
+        }
+
         User.setPrototype(obj);
 
         obj.fixupFields();

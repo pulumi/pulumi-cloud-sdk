@@ -34,6 +34,10 @@ export class AppStartDebuggingEvent {
     static fixupPrototype(obj: AppStartDebuggingEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppStartDebuggingEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppStartDebuggingEvent.setPrototype(obj);
 
         obj.fixupFields();

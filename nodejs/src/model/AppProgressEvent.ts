@@ -42,6 +42,10 @@ export class AppProgressEvent {
     static fixupPrototype(obj: AppProgressEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppProgressEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppProgressEvent.setPrototype(obj);
 
         obj.fixupFields();

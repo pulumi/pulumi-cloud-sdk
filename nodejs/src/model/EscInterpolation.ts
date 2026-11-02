@@ -38,6 +38,10 @@ export class EscInterpolation {
     static fixupPrototype(obj: EscInterpolation) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscInterpolation: expected an object, got ${typeof obj}`);
+        }
+
         EscInterpolation.setPrototype(obj);
 
         obj.fixupFields();

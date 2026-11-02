@@ -38,6 +38,10 @@ export class AgentBackendEventUserApprovalRequestContext {
     static fixupPrototype(obj: AgentBackendEventUserApprovalRequestContext) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventUserApprovalRequestContext: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventUserApprovalRequestContext.setPrototype(obj);
 
         obj.fixupFields();

@@ -48,6 +48,10 @@ export class DiscoveredResourceInfo {
     static fixupPrototype(obj: DiscoveredResourceInfo) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DiscoveredResourceInfo: expected an object, got ${typeof obj}`);
+        }
+
         DiscoveredResourceInfo.setPrototype(obj);
 
         obj.fixupFields();

@@ -50,6 +50,10 @@ export class AgentBackendEventUserApprovalRequest extends AgentBackendEvent {
     static fixupPrototype(obj: AgentBackendEventUserApprovalRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentBackendEventUserApprovalRequest: expected an object, got ${typeof obj}`);
+        }
+
         AgentBackendEventUserApprovalRequest.setPrototype(obj);
 
         obj.fixupFields();

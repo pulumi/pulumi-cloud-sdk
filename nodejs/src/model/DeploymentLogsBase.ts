@@ -42,6 +42,10 @@ export class DeploymentLogsBase {
     static fixupPrototype(obj: DeploymentLogsBase) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentLogsBase: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentLogsBase.setPrototype(obj);
 
         obj.fixupFields();

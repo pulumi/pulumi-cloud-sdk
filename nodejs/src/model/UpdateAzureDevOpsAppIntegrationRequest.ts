@@ -40,6 +40,10 @@ export class UpdateAzureDevOpsAppIntegrationRequest {
     static fixupPrototype(obj: UpdateAzureDevOpsAppIntegrationRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`UpdateAzureDevOpsAppIntegrationRequest: expected an object, got ${typeof obj}`);
+        }
+
         UpdateAzureDevOpsAppIntegrationRequest.setPrototype(obj);
 
         obj.fixupFields();

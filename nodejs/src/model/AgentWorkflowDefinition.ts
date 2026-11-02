@@ -39,6 +39,10 @@ export class AgentWorkflowDefinition {
     static fixupPrototype(obj: AgentWorkflowDefinition) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AgentWorkflowDefinition: expected an object, got ${typeof obj}`);
+        }
+
         AgentWorkflowDefinition.setPrototype(obj);
 
         obj.fixupFields();

@@ -39,6 +39,10 @@ export class IncludeMapKeyTypes {
     static fixupPrototype(obj: IncludeMapKeyTypes) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`IncludeMapKeyTypes: expected an object, got ${typeof obj}`);
+        }
+
         IncludeMapKeyTypes.setPrototype(obj);
 
         obj.fixupFields();

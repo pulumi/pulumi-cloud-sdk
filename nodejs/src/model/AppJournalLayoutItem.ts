@@ -35,6 +35,10 @@ export class AppJournalLayoutItem {
     static fixupPrototype(obj: AppJournalLayoutItem) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppJournalLayoutItem: expected an object, got ${typeof obj}`);
+        }
+
         AppJournalLayoutItem.setPrototype(obj);
 
         obj.fixupFields();

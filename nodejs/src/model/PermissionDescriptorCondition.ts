@@ -44,6 +44,10 @@ export class PermissionDescriptorCondition extends PermissionDescriptor {
     static fixupPrototype(obj: PermissionDescriptorCondition) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionDescriptorCondition: expected an object, got ${typeof obj}`);
+        }
+
         PermissionDescriptorCondition.setPrototype(obj);
 
         obj.fixupFields();

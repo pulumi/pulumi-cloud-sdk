@@ -36,6 +36,10 @@ export class ServiceMember {
     static fixupPrototype(obj: ServiceMember) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ServiceMember: expected an object, got ${typeof obj}`);
+        }
+
         ServiceMember.setPrototype(obj);
 
         obj.fixupFields();

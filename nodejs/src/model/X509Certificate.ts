@@ -101,6 +101,10 @@ export class X509Certificate {
     static fixupPrototype(obj: X509Certificate) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`X509Certificate: expected an object, got ${typeof obj}`);
+        }
+
         X509Certificate.setPrototype(obj);
 
         obj.fixupFields();

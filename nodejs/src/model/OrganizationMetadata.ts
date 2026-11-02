@@ -94,6 +94,10 @@ export class OrganizationMetadata {
     static fixupPrototype(obj: OrganizationMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`OrganizationMetadata: expected an object, got ${typeof obj}`);
+        }
+
         OrganizationMetadata.setPrototype(obj);
 
         obj.fixupFields();

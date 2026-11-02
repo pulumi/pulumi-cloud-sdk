@@ -38,6 +38,10 @@ export class DeploymentWithRelatedUpdates extends GetDeploymentResponse {
     static fixupPrototype(obj: DeploymentWithRelatedUpdates) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentWithRelatedUpdates: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentWithRelatedUpdates.setPrototype(obj);
 
         obj.fixupFields();

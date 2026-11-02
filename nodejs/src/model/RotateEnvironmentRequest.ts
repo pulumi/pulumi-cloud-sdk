@@ -34,6 +34,10 @@ export class RotateEnvironmentRequest {
     static fixupPrototype(obj: RotateEnvironmentRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`RotateEnvironmentRequest: expected an object, got ${typeof obj}`);
+        }
+
         RotateEnvironmentRequest.setPrototype(obj);
 
         obj.fixupFields();

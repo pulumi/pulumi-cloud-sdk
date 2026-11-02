@@ -44,6 +44,10 @@ export class AppPolicyGroupSummary {
     static fixupPrototype(obj: AppPolicyGroupSummary) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppPolicyGroupSummary: expected an object, got ${typeof obj}`);
+        }
+
         AppPolicyGroupSummary.setPrototype(obj);
 
         obj.fixupFields();

@@ -37,6 +37,10 @@ export class AppCapabilitiesResponse {
     static fixupPrototype(obj: AppCapabilitiesResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppCapabilitiesResponse: expected an object, got ${typeof obj}`);
+        }
+
         AppCapabilitiesResponse.setPrototype(obj);
 
         obj.fixupFields();

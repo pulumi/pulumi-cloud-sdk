@@ -42,6 +42,10 @@ export class GraphFieldPredicateGte extends GraphFieldPredicate {
     static fixupPrototype(obj: GraphFieldPredicateGte) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphFieldPredicateGte: expected an object, got ${typeof obj}`);
+        }
+
         GraphFieldPredicateGte.setPrototype(obj);
 
         obj.fixupFields();

@@ -38,6 +38,10 @@ export class ListAzureDevOpsIntegrationsResponse {
     static fixupPrototype(obj: ListAzureDevOpsIntegrationsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListAzureDevOpsIntegrationsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListAzureDevOpsIntegrationsResponse.setPrototype(obj);
 
         obj.fixupFields();

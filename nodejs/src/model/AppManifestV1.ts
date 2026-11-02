@@ -40,6 +40,10 @@ export class AppManifestV1 {
     static fixupPrototype(obj: AppManifestV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppManifestV1: expected an object, got ${typeof obj}`);
+        }
+
         AppManifestV1.setPrototype(obj);
 
         obj.fixupFields();

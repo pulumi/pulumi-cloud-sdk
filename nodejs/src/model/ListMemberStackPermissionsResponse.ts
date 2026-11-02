@@ -44,6 +44,10 @@ export class ListMemberStackPermissionsResponse {
     static fixupPrototype(obj: ListMemberStackPermissionsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListMemberStackPermissionsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListMemberStackPermissionsResponse.setPrototype(obj);
 
         obj.fixupFields();

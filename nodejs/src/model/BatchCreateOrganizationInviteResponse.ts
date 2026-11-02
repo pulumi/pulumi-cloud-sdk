@@ -39,6 +39,10 @@ export class BatchCreateOrganizationInviteResponse {
     static fixupPrototype(obj: BatchCreateOrganizationInviteResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`BatchCreateOrganizationInviteResponse: expected an object, got ${typeof obj}`);
+        }
+
         BatchCreateOrganizationInviteResponse.setPrototype(obj);
 
         obj.fixupFields();

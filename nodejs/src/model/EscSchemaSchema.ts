@@ -78,6 +78,10 @@ export class EscSchemaSchema {
     static fixupPrototype(obj: EscSchemaSchema) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EscSchemaSchema: expected an object, got ${typeof obj}`);
+        }
+
         EscSchemaSchema.setPrototype(obj);
 
         obj.fixupFields();

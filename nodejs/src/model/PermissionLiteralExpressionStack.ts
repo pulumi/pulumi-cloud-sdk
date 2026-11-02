@@ -42,6 +42,10 @@ export class PermissionLiteralExpressionStack extends PermissionLiteralExpressio
     static fixupPrototype(obj: PermissionLiteralExpressionStack) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`PermissionLiteralExpressionStack: expected an object, got ${typeof obj}`);
+        }
+
         PermissionLiteralExpressionStack.setPrototype(obj);
 
         obj.fixupFields();

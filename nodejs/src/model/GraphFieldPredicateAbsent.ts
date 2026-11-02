@@ -40,6 +40,10 @@ export class GraphFieldPredicateAbsent extends GraphFieldPredicate {
     static fixupPrototype(obj: GraphFieldPredicateAbsent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphFieldPredicateAbsent: expected an object, got ${typeof obj}`);
+        }
+
         GraphFieldPredicateAbsent.setPrototype(obj);
 
         obj.fixupFields();

@@ -35,6 +35,10 @@ export class ListDeploymentSnapshotAgentPool {
     static fixupPrototype(obj: ListDeploymentSnapshotAgentPool) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListDeploymentSnapshotAgentPool: expected an object, got ${typeof obj}`);
+        }
+
         ListDeploymentSnapshotAgentPool.setPrototype(obj);
 
         obj.fixupFields();

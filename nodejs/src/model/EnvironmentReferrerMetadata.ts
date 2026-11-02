@@ -36,6 +36,10 @@ export class EnvironmentReferrerMetadata {
     static fixupPrototype(obj: EnvironmentReferrerMetadata) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`EnvironmentReferrerMetadata: expected an object, got ${typeof obj}`);
+        }
+
         EnvironmentReferrerMetadata.setPrototype(obj);
 
         obj.fixupFields();

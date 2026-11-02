@@ -40,6 +40,10 @@ export class AWSSetupRequest {
     static fixupPrototype(obj: AWSSetupRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AWSSetupRequest: expected an object, got ${typeof obj}`);
+        }
+
         AWSSetupRequest.setPrototype(obj);
 
         obj.fixupFields();

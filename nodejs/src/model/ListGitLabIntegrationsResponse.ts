@@ -37,6 +37,10 @@ export class ListGitLabIntegrationsResponse {
     static fixupPrototype(obj: ListGitLabIntegrationsResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListGitLabIntegrationsResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListGitLabIntegrationsResponse.setPrototype(obj);
 
         obj.fixupFields();

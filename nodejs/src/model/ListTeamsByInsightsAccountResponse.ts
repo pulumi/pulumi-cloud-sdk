@@ -38,6 +38,10 @@ export class ListTeamsByInsightsAccountResponse {
     static fixupPrototype(obj: ListTeamsByInsightsAccountResponse) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`ListTeamsByInsightsAccountResponse: expected an object, got ${typeof obj}`);
+        }
+
         ListTeamsByInsightsAccountResponse.setPrototype(obj);
 
         obj.fixupFields();

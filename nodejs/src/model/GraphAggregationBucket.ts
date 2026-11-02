@@ -35,6 +35,10 @@ export class GraphAggregationBucket {
     static fixupPrototype(obj: GraphAggregationBucket) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`GraphAggregationBucket: expected an object, got ${typeof obj}`);
+        }
+
         GraphAggregationBucket.setPrototype(obj);
 
         obj.fixupFields();

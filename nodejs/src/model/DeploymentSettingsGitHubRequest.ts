@@ -43,6 +43,10 @@ export class DeploymentSettingsGitHubRequest {
     static fixupPrototype(obj: DeploymentSettingsGitHubRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DeploymentSettingsGitHubRequest: expected an object, got ${typeof obj}`);
+        }
+
         DeploymentSettingsGitHubRequest.setPrototype(obj);
 
         obj.fixupFields();

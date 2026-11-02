@@ -38,6 +38,10 @@ export class DockerImageRequest {
     static fixupPrototype(obj: DockerImageRequest) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`DockerImageRequest: expected an object, got ${typeof obj}`);
+        }
+
         DockerImageRequest.setPrototype(obj);
 
         obj.fixupFields();

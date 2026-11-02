@@ -37,6 +37,10 @@ export class AppSnapshotMetadataV1 {
     static fixupPrototype(obj: AppSnapshotMetadataV1) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppSnapshotMetadataV1: expected an object, got ${typeof obj}`);
+        }
+
         AppSnapshotMetadataV1.setPrototype(obj);
 
         obj.fixupFields();

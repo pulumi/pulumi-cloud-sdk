@@ -46,6 +46,10 @@ export class CopilotDirectSkillCallExplainPreview extends CopilotDirectSkillCall
     static fixupPrototype(obj: CopilotDirectSkillCallExplainPreview) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`CopilotDirectSkillCallExplainPreview: expected an object, got ${typeof obj}`);
+        }
+
         CopilotDirectSkillCallExplainPreview.setPrototype(obj);
 
         obj.fixupFields();

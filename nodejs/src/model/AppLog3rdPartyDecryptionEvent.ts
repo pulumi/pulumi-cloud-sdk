@@ -35,6 +35,10 @@ export class AppLog3rdPartyDecryptionEvent {
     static fixupPrototype(obj: AppLog3rdPartyDecryptionEvent) {
         if (!obj) return;
 
+        if (typeof obj !== "object") {
+            throw new Error(`AppLog3rdPartyDecryptionEvent: expected an object, got ${typeof obj}`);
+        }
+
         AppLog3rdPartyDecryptionEvent.setPrototype(obj);
 
         obj.fixupFields();
