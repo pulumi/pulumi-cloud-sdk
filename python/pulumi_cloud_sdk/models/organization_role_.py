@@ -16,6 +16,9 @@ class OrganizationRole(AutoEnumEncoder):
     PotentialMember = "potential-member"
     StackCollaborator = "stack-collaborator"
     BillingManager = "billing-manager"
+    Reader = "reader"
+    Builder = "builder"
+    Maintainer = "maintainer"
 
     @staticmethod
     def keys() -> list['OrganizationRole']:
@@ -25,7 +28,10 @@ class OrganizationRole(AutoEnumEncoder):
             OrganizationRole.Admin,
             OrganizationRole.PotentialMember,
             OrganizationRole.StackCollaborator,
-            OrganizationRole.BillingManager
+            OrganizationRole.BillingManager,
+            OrganizationRole.Reader,
+            OrganizationRole.Builder,
+            OrganizationRole.Maintainer
         ]
 
     @staticmethod
@@ -36,7 +42,10 @@ class OrganizationRole(AutoEnumEncoder):
             OrganizationRole.Admin.value,
             OrganizationRole.PotentialMember.value,
             OrganizationRole.StackCollaborator.value,
-            OrganizationRole.BillingManager.value
+            OrganizationRole.BillingManager.value,
+            OrganizationRole.Reader.value,
+            OrganizationRole.Builder.value,
+            OrganizationRole.Maintainer.value
         ]
 
     @staticmethod

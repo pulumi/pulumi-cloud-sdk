@@ -298,4 +298,10 @@ public class OrganizationFeatures {
 
     // Whether Delivery is available to the organization.
     public boolean deliveryEnabled;
+
+    // Whether the Cursor Origin VCS integration is available to the organization.
+    public boolean cursorOriginVCSEnabled;
+
+    // Whether the organization can buy the Enterprise plan self-serve at its monthly price. When false, Enterprise is available self-serve only as a trial and is bought through sales.
+    public boolean enterpriseSelfServeEnabled;
 }

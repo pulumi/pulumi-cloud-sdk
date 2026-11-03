@@ -19,7 +19,9 @@ public enum VCSProvider {
     // Custom version control system
     Custom("custom"),
     // GitHub Enterprise Server version control system
-    GitHubEnterprise("github_enterprise");
+    GitHubEnterprise("github_enterprise"),
+    // Cursor Origin version control system
+    Origin("origin");
 
     private final String value;
 

@@ -176,6 +176,62 @@ func (p *CloudClient) CompleteAzureDevOpsOAuth(
 	return &result, nil
 }
 
+type InterceptorForCompleteOriginSetup struct {
+	OrgName      string
+	Request      apitype.CompleteOriginSetupRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CompleteOriginSetup(
+	ctx context.Context,
+	orgName string,
+	request apitype.CompleteOriginSetupRequest,
+	extraHeaders ...http.Header,
+) (*apitype.OriginIntegrationDetails, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCompleteOriginSetup{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OriginIntegrationDetails)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CompleteOriginSetup: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/console/orgs/{orgName}/integrations/origin/complete",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.OriginIntegrationDetails
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForCreateAzureDevOpsSetup struct {
 	OrgName      string
 	Request      apitype.UpdateAzureDevOpsAppIntegrationRequest
@@ -686,6 +742,53 @@ func (p *CloudClient) DeleteGitLabIntegration(
 		ctx,
 		"DELETE",
 		"/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}",
+		map[string]any{
+			"orgName":       orgName,
+			"integrationId": integrationId,
+		},
+		nil,
+	)
+	if err != nil {
+		return err
+	}
+	err = p.invoke(req, extraHeaders)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type InterceptorForDeleteOriginIntegration struct {
+	OrgName       string
+	IntegrationId string
+	ExtraHeaders  []http.Header
+}
+
+func (p *CloudClient) DeleteOriginIntegration(
+	ctx context.Context,
+	orgName string,
+	integrationId string,
+	extraHeaders ...http.Header,
+) error {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForDeleteOriginIntegration{
+			OrgName:       orgName,
+			IntegrationId: integrationId,
+			ExtraHeaders:  extraHeaders,
+		}
+		_, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return err
+		}
+		if intercepted {
+			return nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"DELETE",
+		"/api/console/orgs/{orgName}/integrations/origin/{integrationId}",
 		map[string]any{
 			"orgName":       orgName,
 			"integrationId": integrationId,
@@ -2050,6 +2153,58 @@ func (p *CloudClient) ListGitLabIntegrations(
 	return &result, nil
 }
 
+type InterceptorForListOriginIntegrations struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListOriginIntegrations(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.ListOriginIntegrationsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListOriginIntegrations{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListOriginIntegrationsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListOriginIntegrations: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/console/orgs/{orgName}/integrations/origin",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListOriginIntegrationsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListVCSBranches struct {
 	OrgName       string
 	Provider      apitype.VCSProvider
@@ -2335,6 +2490,58 @@ func (p *CloudClient) StartGitHubSetup(
 		return nil, err
 	}
 	var result apitype.GitHubSetupResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForStartOriginSetup struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) StartOriginSetup(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.OriginSetupResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForStartOriginSetup{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OriginSetupResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for StartOriginSetup: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"POST",
+		"/api/console/orgs/{orgName}/integrations/origin",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.OriginSetupResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
@@ -2640,6 +2847,57 @@ func (p *CloudClient) UpdateGitLabIntegration(
 		ctx,
 		"PATCH",
 		"/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}",
+		map[string]any{
+			"orgName":       orgName,
+			"integrationId": integrationId,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return err
+	}
+	err = p.invoke(req, extraHeaders)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type InterceptorForUpdateOriginIntegration struct {
+	OrgName       string
+	IntegrationId string
+	Request       apitype.OriginIntegrationSettings
+	ExtraHeaders  []http.Header
+}
+
+func (p *CloudClient) UpdateOriginIntegration(
+	ctx context.Context,
+	orgName string,
+	integrationId string,
+	request apitype.OriginIntegrationSettings,
+	extraHeaders ...http.Header,
+) error {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForUpdateOriginIntegration{
+			OrgName:       orgName,
+			IntegrationId: integrationId,
+			Request:       request,
+			ExtraHeaders:  extraHeaders,
+		}
+		_, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return err
+		}
+		if intercepted {
+			return nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"PUT",
+		"/api/console/orgs/{orgName}/integrations/origin/{integrationId}",
 		map[string]any{
 			"orgName":       orgName,
 			"integrationId": integrationId,

@@ -16,7 +16,8 @@ import com.fasterxml.jackson.databind.JsonNode;
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.Bitbucket.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.Custom.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.GitHub.class),
-    @JsonSubTypes.Type(value = DeploymentSettingsVCS.GitLab.class)
+    @JsonSubTypes.Type(value = DeploymentSettingsVCS.GitLab.class),
+    @JsonSubTypes.Type(value = DeploymentSettingsVCS.Origin.class)
 })
 public abstract class DeploymentSettingsVCS {
     // The VCS repository reference (format varies by provider)
@@ -66,5 +67,9 @@ public abstract class DeploymentSettingsVCS {
 
     @JsonTypeName("gitlab")
     public static class GitLab extends DeploymentSettingsVCS {
+    }
+
+    @JsonTypeName("origin")
+    public static class Origin extends DeploymentSettingsVCS {
     }
 }

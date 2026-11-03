@@ -148,6 +148,7 @@ class DeploymentSettingsVCS(PulumiAutoModelEncoder):
                 "custom": models.DeploymentSettingsVCSCustom,
                 "github": models.DeploymentSettingsVCSGitHub,
                 "gitlab": models.DeploymentSettingsVCSGitLab,
+                "origin": models.DeploymentSettingsVCSOrigin,
             }
             setattr(DeploymentSettingsVCS, "__DISCRIMINATOR_SWITCHER__", switcher)
         return switcher

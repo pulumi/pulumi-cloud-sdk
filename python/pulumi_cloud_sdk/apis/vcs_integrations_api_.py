@@ -179,6 +179,57 @@ class VCS_IntegrationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def complete_origin_setup(
+        self,
+        org_name: 'str',
+        request: 'CompleteOriginSetupRequest',
+        _request_timeout: int = None,
+    ) -> 'OriginIntegrationDetails':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `complete_origin_setup`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `complete_origin_setup`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/origin/complete'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='OriginIntegrationDetails',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def create_azure_dev_ops_setup(
         self,
         org_name: 'str',
@@ -704,6 +755,57 @@ class VCS_IntegrationsApi(object):
 
         collection_formats = {}
         resource_path = '/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if integration_id is not None:
+            path_params['integrationId'] = integration_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def delete_origin_integration(
+        self,
+        org_name: 'str',
+        integration_id: 'str',
+        _request_timeout: int = None,
+    ) -> None:
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `delete_origin_integration`")
+        # verify the required parameter 'integration_id' is set
+        if integration_id is None:
+            raise ValueError("Missing the required parameter `integration_id` when calling `delete_origin_integration`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/origin/{integrationId}'
         path_params = {}
         if org_name is not None:
             path_params['orgName'] = org_name
@@ -1937,6 +2039,51 @@ class VCS_IntegrationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def list_origin_integrations(
+        self,
+        org_name: 'str',
+        _request_timeout: int = None,
+    ) -> 'ListOriginIntegrationsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_origin_integrations`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/origin'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListOriginIntegrationsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def list_vcs_branches(
         self,
         org_name: 'str',
@@ -2215,6 +2362,51 @@ class VCS_IntegrationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='GitHubSetupResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def start_origin_setup(
+        self,
+        org_name: 'str',
+        _request_timeout: int = None,
+    ) -> 'OriginSetupResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `start_origin_setup`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/origin'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='OriginSetupResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
@@ -2550,6 +2742,63 @@ class VCS_IntegrationsApi(object):
         auth_settings = ['auth_token']
 
         return self.api_client.call_api(resource_path, 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def update_origin_integration(
+        self,
+        org_name: 'str',
+        integration_id: 'str',
+        request: 'OriginIntegrationSettings',
+        _request_timeout: int = None,
+    ) -> None:
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `update_origin_integration`")
+        # verify the required parameter 'integration_id' is set
+        if integration_id is None:
+            raise ValueError("Missing the required parameter `integration_id` when calling `update_origin_integration`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `update_origin_integration`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/origin/{integrationId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if integration_id is not None:
+            path_params['integrationId'] = integration_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'PUT',
             path_params,
             query_params,
             header_params,

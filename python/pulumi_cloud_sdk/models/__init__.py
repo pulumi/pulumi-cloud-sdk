@@ -308,6 +308,7 @@ from .cloud_setup_resource_ import CloudSetupResource
 from .cloud_setup_result_ import CloudSetupResult
 from .complete_o_auth_request_ import CompleteOAuthRequest
 from .complete_o_auth_response_ import CompleteOAuthResponse
+from .complete_origin_setup_request_ import CompleteOriginSetupRequest
 from .console_update_summary_ import ConsoleUpdateSummary
 from .consumption_usage_ import ConsumptionUsage
 from .consumption_usage_stats_v0_ import ConsumptionUsageStatsV0
@@ -393,6 +394,7 @@ from .deployment_settings_vcs_bitbucket_ import DeploymentSettingsVCSBitbucket
 from .deployment_settings_vcs_custom_ import DeploymentSettingsVCSCustom
 from .deployment_settings_vcs_git_hub_ import DeploymentSettingsVCSGitHub
 from .deployment_settings_vcs_git_lab_ import DeploymentSettingsVCSGitLab
+from .deployment_settings_vcs_origin_ import DeploymentSettingsVCSOrigin
 from .deployment_source_ import DeploymentSource
 from .deployment_source_git_ import DeploymentSourceGit
 from .deployment_source_template_ import DeploymentSourceTemplate
@@ -614,6 +616,7 @@ from .list_oidc_issuers_response_ import ListOidcIssuersResponse
 from .list_organization_invites_response_ import ListOrganizationInvitesResponse
 from .list_organization_members_response_ import ListOrganizationMembersResponse
 from .list_organization_projects_responsev3_ import ListOrganizationProjectsResponsev3
+from .list_origin_integrations_response_ import ListOriginIntegrationsResponse
 from .list_packages_response_ import ListPackagesResponse
 from .list_policies_compliance_response_ import ListPoliciesComplianceResponse
 from .list_policy_group_accounts_response_ import ListPolicyGroupAccountsResponse
@@ -695,6 +698,9 @@ from .organization_permission_mode_ import OrganizationPermissionMode
 from .organization_role_ import OrganizationRole
 from .organization_summary_ import OrganizationSummary
 from .organization_summary_with_role_ import OrganizationSummaryWithRole
+from .origin_integration_details_ import OriginIntegrationDetails
+from .origin_integration_settings_ import OriginIntegrationSettings
+from .origin_setup_response_ import OriginSetupResponse
 from .package_metadata_ import PackageMetadata
 from .package_parameterization_ import PackageParameterization
 from .package_status_ import PackageStatus

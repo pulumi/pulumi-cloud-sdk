@@ -13,13 +13,19 @@ class OrganizationInviteRole(AutoEnumEncoder):
     Member = "member"
     Admin = "admin"
     BillingManager = "billing-manager"
+    Reader = "reader"
+    Builder = "builder"
+    Maintainer = "maintainer"
 
     @staticmethod
     def keys() -> list['OrganizationInviteRole']:
         return [
             OrganizationInviteRole.Member,
             OrganizationInviteRole.Admin,
-            OrganizationInviteRole.BillingManager
+            OrganizationInviteRole.BillingManager,
+            OrganizationInviteRole.Reader,
+            OrganizationInviteRole.Builder,
+            OrganizationInviteRole.Maintainer
         ]
 
     @staticmethod
@@ -27,7 +33,10 @@ class OrganizationInviteRole(AutoEnumEncoder):
         return [
             OrganizationInviteRole.Member.value,
             OrganizationInviteRole.Admin.value,
-            OrganizationInviteRole.BillingManager.value
+            OrganizationInviteRole.BillingManager.value,
+            OrganizationInviteRole.Reader.value,
+            OrganizationInviteRole.Builder.value,
+            OrganizationInviteRole.Maintainer.value
         ]
 
     @staticmethod

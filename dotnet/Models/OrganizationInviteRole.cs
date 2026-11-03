@@ -27,5 +27,23 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "billing-manager")]
         BillingManager,
+
+        /// <summary>
+        /// Reader role. Available only in organizations with a default role.
+        /// </summary>
+        [EnumMember(Value = "reader")]
+        Reader,
+
+        /// <summary>
+        /// Builder role. Available only in organizations with a default role.
+        /// </summary>
+        [EnumMember(Value = "builder")]
+        Builder,
+
+        /// <summary>
+        /// Maintainer role. Available only in organizations with a default role.
+        /// </summary>
+        [EnumMember(Value = "maintainer")]
+        Maintainer,
     }
 }

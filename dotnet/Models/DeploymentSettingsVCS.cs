@@ -16,6 +16,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonSubType(typeof(DeploymentSettingsVCS.Custom))]
     [JsonSubType(typeof(DeploymentSettingsVCS.GitHub))]
     [JsonSubType(typeof(DeploymentSettingsVCS.GitLab))]
+    [JsonSubType(typeof(DeploymentSettingsVCS.Origin))]
     public abstract class DeploymentSettingsVCS {
         /// <summary>
         /// The VCS repository reference (format varies by provider)
@@ -94,6 +95,10 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [JsonSubTypeName("gitlab")]
         public class GitLab : DeploymentSettingsVCS {
+        }
+
+        [JsonSubTypeName("origin")]
+        public class Origin : DeploymentSettingsVCS {
         }
     }
 }

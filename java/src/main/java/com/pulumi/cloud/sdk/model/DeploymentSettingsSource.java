@@ -15,7 +15,8 @@ public enum DeploymentSettingsSource {
     AzureDevOpsReviewStack("azure-devops-review-stack"),
     GitLabReviewStack("gitlab-review-stack"),
     BitBucketReviewStack("bitbucket-review-stack"),
-    GitHubGitOps("github-gitops");
+    GitHubGitOps("github-gitops"),
+    OriginReviewStack("origin-review-stack");
 
     private final String value;
 

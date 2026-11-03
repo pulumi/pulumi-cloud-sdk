@@ -18,6 +18,7 @@ class DeploymentSettingsSource(AutoEnumEncoder):
     GitLabReviewStack = "gitlab-review-stack"
     BitBucketReviewStack = "bitbucket-review-stack"
     GitHubGitOps = "github-gitops"
+    OriginReviewStack = "origin-review-stack"
 
     @staticmethod
     def keys() -> list['DeploymentSettingsSource']:
@@ -29,7 +30,8 @@ class DeploymentSettingsSource(AutoEnumEncoder):
             DeploymentSettingsSource.AzureDevOpsReviewStack,
             DeploymentSettingsSource.GitLabReviewStack,
             DeploymentSettingsSource.BitBucketReviewStack,
-            DeploymentSettingsSource.GitHubGitOps
+            DeploymentSettingsSource.GitHubGitOps,
+            DeploymentSettingsSource.OriginReviewStack
         ]
 
     @staticmethod
@@ -42,7 +44,8 @@ class DeploymentSettingsSource(AutoEnumEncoder):
             DeploymentSettingsSource.AzureDevOpsReviewStack.value,
             DeploymentSettingsSource.GitLabReviewStack.value,
             DeploymentSettingsSource.BitBucketReviewStack.value,
-            DeploymentSettingsSource.GitHubGitOps.value
+            DeploymentSettingsSource.GitHubGitOps.value,
+            DeploymentSettingsSource.OriginReviewStack.value
         ]
 
     @staticmethod

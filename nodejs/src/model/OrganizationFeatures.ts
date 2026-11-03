@@ -110,6 +110,8 @@ export class OrganizationFeatures {
     permissionModeEnabled?: boolean;
     policyPostureReportEnabled?: boolean;
     deliveryEnabled?: boolean;
+    cursorOriginVCSEnabled?: boolean;
+    enterpriseSelfServeEnabled?: boolean;
 
     getFixupPrototypeFunction() {
         return OrganizationFeatures.fixupPrototype;

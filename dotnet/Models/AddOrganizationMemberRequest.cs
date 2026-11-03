@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class AddOrganizationMemberRequest {
         /// <summary>
-        /// The built-in role assigned to the new member. Must be `member`, `admin`, or `billingManager`.
+        /// The built-in role assigned to the new member. Must be `member`, `admin`, `billing-manager`, `reader`, `builder` or `maintainer`. In an organization with a default role, `member` puts the new member on the default role, and the member follows it when an admin changes it. `reader`, `builder` and `maintainer` assign the Reader, Builder or Maintainer role to the new member explicitly, so the member keeps it when the default role changes; they are available only in organizations with a default role.
         /// </summary>
         [JsonProperty("role")]
         public OrganizationRole Role { get; set; }

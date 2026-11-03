@@ -45,5 +45,23 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "billing-manager")]
         BillingManager,
+
+        /// <summary>
+        /// OrganizationRoleReader is the name of the Reader role. It is accepted as input when adding or updating a member in an organization with a default role, and is never returned as a member's role.
+        /// </summary>
+        [EnumMember(Value = "reader")]
+        Reader,
+
+        /// <summary>
+        /// OrganizationRoleBuilder is the name of the Builder role. It is accepted as input when adding or updating a member in an organization with a default role, and is never returned as a member's role.
+        /// </summary>
+        [EnumMember(Value = "builder")]
+        Builder,
+
+        /// <summary>
+        /// OrganizationRoleMaintainer is the name of the Maintainer role. It is accepted as input when adding or updating a member in an organization with a default role, and is never returned as a member's role.
+        /// </summary>
+        [EnumMember(Value = "maintainer")]
+        Maintainer,
     }
 }

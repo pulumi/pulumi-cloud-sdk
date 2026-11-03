@@ -67,6 +67,7 @@ export class DeploymentSettingsVCS {
         const { DeploymentSettingsVCSCustom } = require("./DeploymentSettingsVCSCustom");
         const { DeploymentSettingsVCSGitHub } = require("./DeploymentSettingsVCSGitHub");
         const { DeploymentSettingsVCSGitLab } = require("./DeploymentSettingsVCSGitLab");
+        const { DeploymentSettingsVCSOrigin } = require("./DeploymentSettingsVCSOrigin");
 
         switch (obj.provider) {
             case "azure_devops":
@@ -84,6 +85,9 @@ export class DeploymentSettingsVCS {
             case "gitlab":
                 Object.setPrototypeOf(obj, DeploymentSettingsVCSGitLab.prototype);
                 break;
+            case "origin":
+                Object.setPrototypeOf(obj, DeploymentSettingsVCSOrigin.prototype);
+                break;
         }
 
         return true; // Tell the caller this is a polymorphic type, it should not overwrite the prototype.
@@ -96,6 +100,7 @@ export class DeploymentSettingsVCS {
         const { DeploymentSettingsVCSCustom } = require("./DeploymentSettingsVCSCustom");
         const { DeploymentSettingsVCSGitHub } = require("./DeploymentSettingsVCSGitHub");
         const { DeploymentSettingsVCSGitLab } = require("./DeploymentSettingsVCSGitLab");
+        const { DeploymentSettingsVCSOrigin } = require("./DeploymentSettingsVCSOrigin");
 
         return [
             DeploymentSettingsVCSAzureDevOps,
@@ -103,6 +108,7 @@ export class DeploymentSettingsVCS {
             DeploymentSettingsVCSCustom,
             DeploymentSettingsVCSGitHub,
             DeploymentSettingsVCSGitLab,
+            DeploymentSettingsVCSOrigin,
         ];
     }
 

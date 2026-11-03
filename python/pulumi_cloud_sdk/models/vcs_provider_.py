@@ -16,6 +16,7 @@ class VCSProvider(AutoEnumEncoder):
     AzureDevOps = "azure_devops"
     Custom = "custom"
     GitHubEnterprise = "github_enterprise"
+    Origin = "origin"
 
     @staticmethod
     def keys() -> list['VCSProvider']:
@@ -25,7 +26,8 @@ class VCSProvider(AutoEnumEncoder):
             VCSProvider.Bitbucket,
             VCSProvider.AzureDevOps,
             VCSProvider.Custom,
-            VCSProvider.GitHubEnterprise
+            VCSProvider.GitHubEnterprise,
+            VCSProvider.Origin
         ]
 
     @staticmethod
@@ -36,7 +38,8 @@ class VCSProvider(AutoEnumEncoder):
             VCSProvider.Bitbucket.value,
             VCSProvider.AzureDevOps.value,
             VCSProvider.Custom.value,
-            VCSProvider.GitHubEnterprise.value
+            VCSProvider.GitHubEnterprise.value,
+            VCSProvider.Origin.value
         ]
 
     @staticmethod

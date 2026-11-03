@@ -33,5 +33,8 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [EnumMember(Value = "github-gitops")]
         GitHubGitOps,
+
+        [EnumMember(Value = "origin-review-stack")]
+        OriginReviewStack,
     }
 }

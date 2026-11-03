@@ -64,6 +64,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<CompleteOAuthResponse>(apiRequest);
         }
 
+        public OriginIntegrationDetails CompleteOriginSetup(string orgName, CompleteOriginSetupRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CompleteOriginSetup");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CompleteOriginSetup");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/origin/complete");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<OriginIntegrationDetails>(apiRequest);
+        }
+
         public void CreateAzureDevOpsSetup(string orgName, UpdateAzureDevOpsAppIntegrationRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateAzureDevOpsSetup");
@@ -207,6 +222,19 @@ namespace Pulumi.Cloud.Sdk.Api {
                 throw new ArgumentNullException(nameof(integrationId), "Missing required parameter 'integrationId' when calling DeleteGitLabIntegration");
             }
             var request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("integrationId", integrationId);
+            this.client.Call(request);
+        }
+
+        public void DeleteOriginIntegration(string orgName, string integrationId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DeleteOriginIntegration");
+            }
+            if (integrationId == null) {
+                throw new ArgumentNullException(nameof(integrationId), "Missing required parameter 'integrationId' when calling DeleteOriginIntegration");
+            }
+            var request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/origin/{integrationId}");
             request.PathParam("orgName", orgName);
             request.PathParam("integrationId", integrationId);
             this.client.Call(request);
@@ -511,6 +539,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListGitLabIntegrationsResponse>(request);
         }
 
+        public ListOriginIntegrationsResponse ListOriginIntegrations(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListOriginIntegrations");
+            }
+            var request = new ApiRequest("GET", "/api/console/orgs/{orgName}/integrations/origin");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<ListOriginIntegrationsResponse>(request);
+        }
+
         public ListVCSBranchesResponse ListVCSBranches(string orgName, VCSProvider provider, string integrationId, string repoId) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListVCSBranches");
@@ -587,6 +625,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("orgName", orgName);
             request.Produces("application/json");
             return this.client.Call<GitHubSetupResponse>(request);
+        }
+
+        public OriginSetupResponse StartOriginSetup(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling StartOriginSetup");
+            }
+            var request = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/origin");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<OriginSetupResponse>(request);
         }
 
         public void UpdateAzureDevOpsIntegration(string orgName, string integrationId, AzureDevOpsSettingsRequest request) {
@@ -691,6 +739,24 @@ namespace Pulumi.Cloud.Sdk.Api {
                 throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateGitLabIntegration");
             }
             var apiRequest = new ApiRequest("PATCH", "/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("integrationId", integrationId);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            this.client.Call(apiRequest);
+        }
+
+        public void UpdateOriginIntegration(string orgName, string integrationId, OriginIntegrationSettings request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateOriginIntegration");
+            }
+            if (integrationId == null) {
+                throw new ArgumentNullException(nameof(integrationId), "Missing required parameter 'integrationId' when calling UpdateOriginIntegration");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateOriginIntegration");
+            }
+            var apiRequest = new ApiRequest("PUT", "/api/console/orgs/{orgName}/integrations/origin/{integrationId}");
             apiRequest.PathParam("orgName", orgName);
             apiRequest.PathParam("integrationId", integrationId);
             apiRequest.Body(request);

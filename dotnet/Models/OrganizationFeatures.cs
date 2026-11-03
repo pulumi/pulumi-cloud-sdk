@@ -585,5 +585,17 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("deliveryEnabled")]
         public bool DeliveryEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the Cursor Origin VCS integration is available to the organization.
+        /// </summary>
+        [JsonProperty("cursorOriginVCSEnabled")]
+        public bool CursorOriginVCSEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the organization can buy the Enterprise plan self-serve at its monthly price. When false, Enterprise is available self-serve only as a trial and is bought through sales.
+        /// </summary>
+        [JsonProperty("enterpriseSelfServeEnabled")]
+        public bool EnterpriseSelfServeEnabled { get; set; }
     }
 }

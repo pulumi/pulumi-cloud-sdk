@@ -20,4 +20,5 @@ export enum VCSProvider {
     AzureDevOps = "azure_devops",
     Custom = "custom",
     GitHubEnterprise = "github_enterprise",
+    Origin = "origin",
 }

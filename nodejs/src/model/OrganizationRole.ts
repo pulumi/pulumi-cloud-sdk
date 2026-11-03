@@ -20,4 +20,7 @@ export enum OrganizationRole {
     PotentialMember = "potential-member",
     StackCollaborator = "stack-collaborator",
     BillingManager = "billing-manager",
+    Reader = "reader",
+    Builder = "builder",
+    Maintainer = "maintainer",
 }

@@ -19,7 +19,13 @@ public enum OrganizationRole {
     // OrganizationRoleStackCollaborator is the role for users who are not a member of an organization, but have been explicitly granted access to some of the organization's stacks. So they have limited permissions to access the org's data.
     StackCollaborator("stack-collaborator"),
     // OrganizationRoleBillingManager is the role for billing admins.
-    BillingManager("billing-manager");
+    BillingManager("billing-manager"),
+    // OrganizationRoleReader is the name of the Reader role. It is accepted as input when adding or updating a member in an organization with a default role, and is never returned as a member's role.
+    Reader("reader"),
+    // OrganizationRoleBuilder is the name of the Builder role. It is accepted as input when adding or updating a member in an organization with a default role, and is never returned as a member's role.
+    Builder("builder"),
+    // OrganizationRoleMaintainer is the name of the Maintainer role. It is accepted as input when adding or updating a member in an organization with a default role, and is never returned as a member's role.
+    Maintainer("maintainer");
 
     private final String value;
 

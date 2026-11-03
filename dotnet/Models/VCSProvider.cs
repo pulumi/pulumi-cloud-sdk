@@ -45,5 +45,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "github_enterprise")]
         GitHubEnterprise,
+
+        /// <summary>
+        /// Cursor Origin version control system
+        /// </summary>
+        [EnumMember(Value = "origin")]
+        Origin,
     }
 }

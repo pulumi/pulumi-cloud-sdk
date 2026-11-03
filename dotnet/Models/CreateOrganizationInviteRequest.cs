@@ -17,7 +17,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Email { get; set; }
 
         /// <summary>
-        /// Built-in role to assign to the invited member. When 'roleId' is also supplied it takes precedence and this field is ignored; prefer 'roleId' for new integrations.
+        /// Built-in role to assign to the invited member. When 'roleId' is also supplied it takes precedence and this field is ignored. Use 'member', 'admin' or 'billing-manager', or 'reader', 'builder' or 'maintainer' in an organization with a default role. 'member' puts the invited member on the default role, while 'reader', 'builder' and 'maintainer' assign that role explicitly.
         /// </summary>
         [JsonProperty("role")]
         public OrganizationInviteRole Role { get; set; }

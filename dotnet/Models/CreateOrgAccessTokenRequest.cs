@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class CreateOrgAccessTokenRequest : BaseCreateAccessTokenRequest {
         /// <summary>
-        /// The name
+        /// The display name of the token. Must be between 1 and 40 characters.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

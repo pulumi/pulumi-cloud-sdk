@@ -17,4 +17,7 @@ export enum OrganizationInviteRole {
     Member = "member",
     Admin = "admin",
     BillingManager = "billing-manager",
+    Reader = "reader",
+    Builder = "builder",
+    Maintainer = "maintainer",
 }

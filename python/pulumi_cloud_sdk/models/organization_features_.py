@@ -112,6 +112,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var permission_mode_enabled: bool - declared
     :var policy_posture_report_enabled: bool - declared
     :var delivery_enabled: bool - declared
+    :var cursor_origin_vcs_enabled: bool - declared
+    :var enterprise_self_serve_enabled: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'audit_logs_enabled': 'bool',
@@ -210,6 +212,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'permission_mode_enabled': 'bool',
         'policy_posture_report_enabled': 'bool',
         'delivery_enabled': 'bool',
+        'cursor_origin_vcs_enabled': 'bool',
+        'enterprise_self_serve_enabled': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -309,6 +313,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'permission_mode_enabled': 'permissionModeEnabled',
         'policy_posture_report_enabled': 'policyPostureReportEnabled',
         'delivery_enabled': 'deliveryEnabled',
+        'cursor_origin_vcs_enabled': 'cursorOriginVCSEnabled',
+        'enterprise_self_serve_enabled': 'enterpriseSelfServeEnabled',
     }
 
     FIELDS_audit_logs_enabled = 'auditLogsEnabled'
@@ -407,6 +413,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_permission_mode_enabled = 'permissionModeEnabled'
     FIELDS_policy_posture_report_enabled = 'policyPostureReportEnabled'
     FIELDS_delivery_enabled = 'deliveryEnabled'
+    FIELDS_cursor_origin_vcs_enabled = 'cursorOriginVCSEnabled'
+    FIELDS_enterprise_self_serve_enabled = 'enterpriseSelfServeEnabled'
 
     _audit_logs_enabled: 'bool'
     _has_terraform_modules: 'bool'
@@ -504,6 +512,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _permission_mode_enabled: 'bool'
     _policy_posture_report_enabled: 'bool'
     _delivery_enabled: 'bool'
+    _cursor_origin_vcs_enabled: 'bool'
+    _enterprise_self_serve_enabled: 'bool'
 
     def __init__(
         self,
@@ -603,6 +613,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         permission_mode_enabled: 'bool' = False,
         policy_posture_report_enabled: 'bool' = False,
         delivery_enabled: 'bool' = False,
+        cursor_origin_vcs_enabled: 'bool' = False,
+        enterprise_self_serve_enabled: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -702,6 +714,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.permission_mode_enabled = permission_mode_enabled
         self.policy_posture_report_enabled = policy_posture_report_enabled
         self.delivery_enabled = delivery_enabled
+        self.cursor_origin_vcs_enabled = cursor_origin_vcs_enabled
+        self.enterprise_self_serve_enabled = enterprise_self_serve_enabled
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OrganizationFeatures):
@@ -801,6 +815,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._permission_mode_enabled = source._permission_mode_enabled
             self._policy_posture_report_enabled = source._policy_posture_report_enabled
             self._delivery_enabled = source._delivery_enabled
+            self._cursor_origin_vcs_enabled = source._cursor_origin_vcs_enabled
+            self._enterprise_self_serve_enabled = source._enterprise_self_serve_enabled
 
     @property
     def audit_logs_enabled(self) -> 'bool':
@@ -1761,6 +1777,22 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @delivery_enabled.setter
     def delivery_enabled(self, delivery_enabled: 'bool'):
         self._delivery_enabled = delivery_enabled
+
+    @property
+    def cursor_origin_vcs_enabled(self) -> 'bool':
+        return self._cursor_origin_vcs_enabled
+
+    @cursor_origin_vcs_enabled.setter
+    def cursor_origin_vcs_enabled(self, cursor_origin_vcs_enabled: 'bool'):
+        self._cursor_origin_vcs_enabled = cursor_origin_vcs_enabled
+
+    @property
+    def enterprise_self_serve_enabled(self) -> 'bool':
+        return self._enterprise_self_serve_enabled
+
+    @enterprise_self_serve_enabled.setter
+    def enterprise_self_serve_enabled(self, enterprise_self_serve_enabled: 'bool'):
+        self._enterprise_self_serve_enabled = enterprise_self_serve_enabled
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, OrganizationFeatures):

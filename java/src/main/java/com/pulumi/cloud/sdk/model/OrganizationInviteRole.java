@@ -13,7 +13,13 @@ public enum OrganizationInviteRole {
     // Organization administrator.
     Admin("admin"),
     // Billing administrator.
-    BillingManager("billing-manager");
+    BillingManager("billing-manager"),
+    // Reader role. Available only in organizations with a default role.
+    Reader("reader"),
+    // Builder role. Available only in organizations with a default role.
+    Builder("builder"),
+    // Maintainer role. Available only in organizations with a default role.
+    Maintainer("maintainer");
 
     private final String value;
 

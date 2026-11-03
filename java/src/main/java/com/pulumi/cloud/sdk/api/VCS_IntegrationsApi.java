@@ -70,6 +70,21 @@ public final class VCS_IntegrationsApi {
         return this.client.call($request, new TypeReference<CompleteOAuthResponse>() {});
     }
 
+    public OriginIntegrationDetails completeOriginSetup(String orgName, CompleteOriginSetupRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling completeOriginSetup");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling completeOriginSetup");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/origin/complete");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<OriginIntegrationDetails>() {});
+    }
+
     public void createAzureDevOpsSetup(String orgName, UpdateAzureDevOpsAppIntegrationRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createAzureDevOpsSetup");
@@ -213,6 +228,19 @@ public final class VCS_IntegrationsApi {
             throw new IllegalArgumentException("Missing required parameter 'integrationId' when calling deleteGitLabIntegration");
         }
         ApiRequest $request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("integrationId", integrationId);
+        this.client.call($request);
+    }
+
+    public void deleteOriginIntegration(String orgName, String integrationId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling deleteOriginIntegration");
+        }
+        if (integrationId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'integrationId' when calling deleteOriginIntegration");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/origin/{integrationId}");
         $request.pathParam("orgName", orgName);
         $request.pathParam("integrationId", integrationId);
         this.client.call($request);
@@ -517,6 +545,16 @@ public final class VCS_IntegrationsApi {
         return this.client.call($request, new TypeReference<ListGitLabIntegrationsResponse>() {});
     }
 
+    public ListOriginIntegrationsResponse listOriginIntegrations(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listOriginIntegrations");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/console/orgs/{orgName}/integrations/origin");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListOriginIntegrationsResponse>() {});
+    }
+
     public ListVCSBranchesResponse listVCSBranches(String orgName, VCSProvider provider, String integrationId, String repoId) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listVCSBranches");
@@ -602,6 +640,16 @@ public final class VCS_IntegrationsApi {
         $request.pathParam("orgName", orgName);
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<GitHubSetupResponse>() {});
+    }
+
+    public OriginSetupResponse startOriginSetup(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling startOriginSetup");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/origin");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<OriginSetupResponse>() {});
     }
 
     public void updateAzureDevOpsIntegration(String orgName, String integrationId, AzureDevOpsSettingsRequest request) {
@@ -706,6 +754,24 @@ public final class VCS_IntegrationsApi {
             throw new IllegalArgumentException("Missing required parameter 'request' when calling updateGitLabIntegration");
         }
         ApiRequest $request = new ApiRequest("PATCH", "/api/console/orgs/{orgName}/integrations/gitlab/{integrationId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("integrationId", integrationId);
+        $request.body(request);
+        $request.consumes("application/json");
+        this.client.call($request);
+    }
+
+    public void updateOriginIntegration(String orgName, String integrationId, OriginIntegrationSettings request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateOriginIntegration");
+        }
+        if (integrationId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'integrationId' when calling updateOriginIntegration");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateOriginIntegration");
+        }
+        ApiRequest $request = new ApiRequest("PUT", "/api/console/orgs/{orgName}/integrations/origin/{integrationId}");
         $request.pathParam("orgName", orgName);
         $request.pathParam("integrationId", integrationId);
         $request.body(request);
