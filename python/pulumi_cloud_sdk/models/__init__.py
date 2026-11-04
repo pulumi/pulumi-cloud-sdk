@@ -355,6 +355,7 @@ from .create_org_agent_pool_request_ import CreateOrgAgentPoolRequest
 from .create_organization_invite_request_ import CreateOrganizationInviteRequest
 from .create_organization_invite_response_ import CreateOrganizationInviteResponse
 from .create_personal_access_token_request_ import CreatePersonalAccessTokenRequest
+from .create_policy_exception_request_ import CreatePolicyExceptionRequest
 from .create_pulumi_team_request_ import CreatePulumiTeamRequest
 from .create_scheduled_agent_automation_v2_request_ import CreateScheduledAgentAutomationV2Request
 from .create_scheduled_deployment_request_ import CreateScheduledDeploymentRequest
@@ -619,6 +620,7 @@ from .list_organization_projects_responsev3_ import ListOrganizationProjectsResp
 from .list_origin_integrations_response_ import ListOriginIntegrationsResponse
 from .list_packages_response_ import ListPackagesResponse
 from .list_policies_compliance_response_ import ListPoliciesComplianceResponse
+from .list_policy_exceptions_response_ import ListPolicyExceptionsResponse
 from .list_policy_group_accounts_response_ import ListPolicyGroupAccountsResponse
 from .list_policy_group_stacks_response_ import ListPolicyGroupStacksResponse
 from .list_policy_issues_response_ import ListPolicyIssuesResponse
@@ -760,6 +762,9 @@ from .pkix_name_ import PkixName
 from .policy_compliance_entity_type_ import PolicyComplianceEntityType
 from .policy_compliance_result_ import PolicyComplianceResult
 from .policy_compliance_row_ import PolicyComplianceRow
+from .policy_exception_ import PolicyException
+from .policy_exception_match_ import PolicyExceptionMatch
+from .policy_exception_status_ import PolicyExceptionStatus
 from .policy_group_ import PolicyGroup
 from .policy_group_account_ import PolicyGroupAccount
 from .policy_group_entity_type_ import PolicyGroupEntityType

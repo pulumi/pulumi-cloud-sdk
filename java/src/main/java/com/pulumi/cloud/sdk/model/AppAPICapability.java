@@ -29,7 +29,9 @@ public enum AppAPICapability {
     // Indicates that the service supports the combined begin-update endpoint.
     BeginUpdate("begin-update"),
     // Indicates that the service supports /api/stacks/{org}/{project}/{stack}/outputs.
-    StackOutputs("stack-outputs");
+    StackOutputs("stack-outputs"),
+    // Indicates that the service supports stack update coherence windows.
+    CoherenceWindows("coherence-windows");
 
     private final String value;
 

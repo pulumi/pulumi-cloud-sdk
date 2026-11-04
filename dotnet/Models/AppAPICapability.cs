@@ -75,5 +75,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "stack-outputs")]
         StackOutputs,
+
+        /// <summary>
+        /// Indicates that the service supports stack update coherence windows.
+        /// </summary>
+        [EnumMember(Value = "coherence-windows")]
+        CoherenceWindows,
     }
 }

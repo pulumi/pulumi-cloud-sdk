@@ -85,4 +85,28 @@ public class PolicyIssue {
 
     // The names of the policy exceptions the CLI reported as allowing the issue in its latest run: organization exception IDs, such as EXC-12, or keys from a local policy config.
     public List<String> policyExceptionNames;
+
+    // When the finding was first seen. Not set for findings that do not yet have a stable identity.
+    public ZonedDateTime firstSeenAt;
+
+    // The policy pack version tag that first produced the finding. Not set for findings that do not yet have a stable identity.
+    public String firstSeenPackTag;
+
+    // When an evaluation last reported the finding. Not set for findings that do not yet have a stable identity.
+    public ZonedDateTime lastSeenAt;
+
+    // When the finding was resolved. Not set while it is open, or when it does not yet have a stable identity.
+    public ZonedDateTime resolvedAt;
+
+    // How many times the finding came back after being resolved. Not set for findings that do not yet have a stable identity.
+    public Long reopenCount;
+
+    // The kinds of evaluation that have reported the finding. Not set for findings that do not yet have a stable identity.
+    public List<PolicyIssueKind> kindsSeen;
+
+    // The messages the latest evaluation reported for the finding, up to 100 messages or 32 KB. Not set for findings that do not yet have a stable identity.
+    public List<String> messages;
+
+    // Whether the latest evaluation reported a policy exception for the finding. Not set for findings that do not yet have a stable identity.
+    public Boolean exempt;
 }

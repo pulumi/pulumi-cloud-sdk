@@ -1180,6 +1180,62 @@ func (p *CloudClient) CreateOrganizationWebhook(
 	return &result, nil
 }
 
+type InterceptorForCreatePolicyException struct {
+	OrgName      string
+	Request      apitype.CreatePolicyExceptionRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CreatePolicyException(
+	ctx context.Context,
+	orgName string,
+	request apitype.CreatePolicyExceptionRequest,
+	extraHeaders ...http.Header,
+) (*apitype.PolicyException, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCreatePolicyException{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyException)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CreatePolicyException: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/policy/exceptions",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PolicyException
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForCreatePolicyPack struct {
 	OrgName      string
 	Request      apitype.AppCreatePolicyPackRequest
@@ -4170,6 +4226,62 @@ func (p *CloudClient) GetPolicyComplianceResults(
 	return &result, nil
 }
 
+type InterceptorForGetPolicyException struct {
+	OrgName      string
+	ExceptionId  string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) GetPolicyException(
+	ctx context.Context,
+	orgName string,
+	exceptionId string,
+	extraHeaders ...http.Header,
+) (*apitype.PolicyException, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForGetPolicyException{
+			OrgName:      orgName,
+			ExceptionId:  exceptionId,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyException)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for GetPolicyException: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/policy/exceptions/{exceptionId}",
+		map[string]any{
+			"orgName":     orgName,
+			"exceptionId": exceptionId,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PolicyException
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForGetPolicyFinding struct {
 	OrgName      string
 	FindingId    string
@@ -6567,6 +6679,83 @@ func (p *CloudClient) ListPoliciesCompliance(
 	return &result, nil
 }
 
+type InterceptorForListPolicyExceptions struct {
+	OrgName           string
+	ContinuationToken *string
+	MaxResults        *int
+	Policy            *string
+	PolicyPack        *string
+	Stack             *string
+	Status            *[]apitype.PolicyExceptionStatus
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) ListPolicyExceptions(
+	ctx context.Context,
+	orgName string,
+	continuationToken *string,
+	maxResults *int,
+	policy *string,
+	policyPack *string,
+	stack *string,
+	status *[]apitype.PolicyExceptionStatus,
+	extraHeaders ...http.Header,
+) (*apitype.ListPolicyExceptionsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListPolicyExceptions{
+			OrgName:           orgName,
+			ContinuationToken: continuationToken,
+			MaxResults:        maxResults,
+			Policy:            policy,
+			PolicyPack:        policyPack,
+			Stack:             stack,
+			Status:            status,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListPolicyExceptionsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListPolicyExceptions: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/policy/exceptions",
+		map[string]any{
+			"orgName": orgName,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"maxResults":        maxResults,
+			"policy":            policy,
+			"policyPack":        policyPack,
+			"stack":             stack,
+			"status":            status,
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListPolicyExceptionsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListPolicyFindings struct {
 	OrgName      string
 	Closed       *bool
@@ -8146,6 +8335,62 @@ func (p *CloudClient) RegisterOidcIssuer(
 		return nil, err
 	}
 	var result apitype.OidcIssuerRegistrationResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForRemovePolicyException struct {
+	OrgName      string
+	ExceptionId  string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) RemovePolicyException(
+	ctx context.Context,
+	orgName string,
+	exceptionId string,
+	extraHeaders ...http.Header,
+) (*apitype.PolicyException, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForRemovePolicyException{
+			OrgName:      orgName,
+			ExceptionId:  exceptionId,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.PolicyException)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for RemovePolicyException: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"DELETE",
+		"/api/orgs/{orgName}/policy/exceptions/{exceptionId}",
+		map[string]any{
+			"orgName":     orgName,
+			"exceptionId": exceptionId,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.PolicyException
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

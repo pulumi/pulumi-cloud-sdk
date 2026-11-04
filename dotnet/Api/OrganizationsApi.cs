@@ -373,6 +373,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<WebhookResponse>(apiRequest);
         }
 
+        public PolicyException CreatePolicyException(string orgName, CreatePolicyExceptionRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreatePolicyException");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreatePolicyException");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/policy/exceptions");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<PolicyException>(apiRequest);
+        }
+
         public AppCreatePolicyPackResponse CreatePolicyPack(string orgName, AppCreatePolicyPackRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreatePolicyPack");
@@ -1134,6 +1149,20 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<GetPolicyComplianceResultsResponse>(apiRequest);
         }
 
+        public PolicyException GetPolicyException(string orgName, string exceptionId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetPolicyException");
+            }
+            if (exceptionId == null) {
+                throw new ArgumentNullException(nameof(exceptionId), "Missing required parameter 'exceptionId' when calling GetPolicyException");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/exceptions/{exceptionId}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("exceptionId", exceptionId);
+            request.Produces("application/json");
+            return this.client.Call<PolicyException>(request);
+        }
+
         public GetPolicyIssueResponse GetPolicyFinding(string orgName, string findingId) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetPolicyFinding");
@@ -1679,6 +1708,22 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListPoliciesComplianceResponse>(apiRequest);
         }
 
+        public ListPolicyExceptionsResponse ListPolicyExceptions(string orgName, string continuationToken, long? maxResults, string policy, string policyPack, string stack, System.Collections.Generic.List<PolicyExceptionStatus> status) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyExceptions");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/exceptions");
+            request.PathParam("orgName", orgName);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("maxResults", maxResults);
+            request.QueryParam("policy", policy);
+            request.QueryParam("policyPack", policyPack);
+            request.QueryParam("stack", stack);
+            request.QueryParam("status", status);
+            request.Produces("application/json");
+            return this.client.Call<ListPolicyExceptionsResponse>(request);
+        }
+
         public ListPolicyIssuesResponse ListPolicyFindings(string orgName, AngularGridGetRowsRequest request, bool? closed) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListPolicyFindings");
@@ -2056,6 +2101,20 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<OidcIssuerRegistrationResponse>(apiRequest);
+        }
+
+        public PolicyException RemovePolicyException(string orgName, string exceptionId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling RemovePolicyException");
+            }
+            if (exceptionId == null) {
+                throw new ArgumentNullException(nameof(exceptionId), "Missing required parameter 'exceptionId' when calling RemovePolicyException");
+            }
+            var request = new ApiRequest("DELETE", "/api/orgs/{orgName}/policy/exceptions/{exceptionId}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("exceptionId", exceptionId);
+            request.Produces("application/json");
+            return this.client.Call<PolicyException>(request);
         }
 
         public GetServiceResponse RemoveServiceItem(string orgName, string ownerType, string ownerName, string serviceName, string itemType, string itemName, long? maxResults) {

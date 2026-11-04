@@ -1176,6 +1176,57 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def create_policy_exception(
+        self,
+        org_name: 'str',
+        request: 'CreatePolicyExceptionRequest',
+        _request_timeout: int = None,
+    ) -> 'PolicyException':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `create_policy_exception`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `create_policy_exception`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/exceptions'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PolicyException',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def create_policy_pack(
         self,
         org_name: 'str',
@@ -3999,6 +4050,57 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def get_policy_exception(
+        self,
+        org_name: 'str',
+        exception_id: 'str',
+        _request_timeout: int = None,
+    ) -> 'PolicyException':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `get_policy_exception`")
+        # verify the required parameter 'exception_id' is set
+        if exception_id is None:
+            raise ValueError("Missing the required parameter `exception_id` when calling `get_policy_exception`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/exceptions/{exceptionId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if exception_id is not None:
+            path_params['exceptionId'] = exception_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PolicyException',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def get_policy_finding(
         self,
         org_name: 'str',
@@ -6117,6 +6219,69 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def list_policy_exceptions(
+        self,
+        org_name: 'str',
+        continuation_token: 'str' = None,
+        max_results: 'int' = None,
+        policy: 'str' = None,
+        policy_pack: 'str' = None,
+        stack: 'str' = None,
+        status: 'list[PolicyExceptionStatus]' = None,
+        _request_timeout: int = None,
+    ) -> 'ListPolicyExceptionsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_policy_exceptions`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/exceptions'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if max_results is not None:
+            query_params['maxResults'] = max_results
+        if policy is not None:
+            query_params['policy'] = policy
+        if policy_pack is not None:
+            query_params['policyPack'] = policy_pack
+        if stack is not None:
+            query_params['stack'] = stack
+        if status is not None:
+            query_params['status'] = status
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListPolicyExceptionsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def list_policy_findings(
         self,
         org_name: 'str',
@@ -7526,6 +7691,57 @@ class OrganizationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='OidcIssuerRegistrationResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def remove_policy_exception(
+        self,
+        org_name: 'str',
+        exception_id: 'str',
+        _request_timeout: int = None,
+    ) -> 'PolicyException':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `remove_policy_exception`")
+        # verify the required parameter 'exception_id' is set
+        if exception_id is None:
+            raise ValueError("Missing the required parameter `exception_id` when calling `remove_policy_exception`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/policy/exceptions/{exceptionId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if exception_id is not None:
+            path_params['exceptionId'] = exception_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PolicyException',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

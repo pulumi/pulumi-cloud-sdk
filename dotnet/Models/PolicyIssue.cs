@@ -159,5 +159,53 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("policyExceptionNames")]
         public System.Collections.Generic.List<string> PolicyExceptionNames { get; set; }
+
+        /// <summary>
+        /// When the finding was first seen. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("firstSeenAt")]
+        public DateTimeOffset? FirstSeenAt { get; set; }
+
+        /// <summary>
+        /// The policy pack version tag that first produced the finding. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("firstSeenPackTag")]
+        public string FirstSeenPackTag { get; set; }
+
+        /// <summary>
+        /// When an evaluation last reported the finding. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("lastSeenAt")]
+        public DateTimeOffset? LastSeenAt { get; set; }
+
+        /// <summary>
+        /// When the finding was resolved. Not set while it is open, or when it does not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("resolvedAt")]
+        public DateTimeOffset? ResolvedAt { get; set; }
+
+        /// <summary>
+        /// How many times the finding came back after being resolved. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("reopenCount")]
+        public long? ReopenCount { get; set; }
+
+        /// <summary>
+        /// The kinds of evaluation that have reported the finding. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("kindsSeen")]
+        public System.Collections.Generic.List<PolicyIssueKind> KindsSeen { get; set; }
+
+        /// <summary>
+        /// The messages the latest evaluation reported for the finding, up to 100 messages or 32 KB. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("messages")]
+        public System.Collections.Generic.List<string> Messages { get; set; }
+
+        /// <summary>
+        /// Whether the latest evaluation reported a policy exception for the finding. Not set for findings that do not yet have a stable identity.
+        /// </summary>
+        [JsonProperty("exempt")]
+        public bool? Exempt { get; set; }
     }
 }

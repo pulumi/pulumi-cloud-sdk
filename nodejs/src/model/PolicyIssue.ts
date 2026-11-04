@@ -48,6 +48,14 @@ export class PolicyIssue {
     policyGroupName?: string;
     policyGroupType?: PolicyGroupMode;
     policyExceptionNames?: string[];
+    firstSeenAt?: Date;
+    firstSeenPackTag?: string;
+    lastSeenAt?: Date;
+    resolvedAt?: Date;
+    reopenCount?: number;
+    kindsSeen?: PolicyIssueKind[];
+    messages?: string[];
+    exempt?: boolean;
 
     getFixupPrototypeFunction() {
         return PolicyIssue.fixupPrototype;
@@ -92,6 +100,15 @@ export class PolicyIssue {
             // Lazy import - only evaluated when called
             const { UserInfo } = require("./UserInfo");
             UserInfo.fixupPrototype(this.assignedTo);
+        }
+        if (typeof this.firstSeenAt === "string") {
+            this.firstSeenAt = new Date(this.firstSeenAt);
+        }
+        if (typeof this.lastSeenAt === "string") {
+            this.lastSeenAt = new Date(this.lastSeenAt);
+        }
+        if (typeof this.resolvedAt === "string") {
+            this.resolvedAt = new Date(this.resolvedAt);
         }
     }
 }

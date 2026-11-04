@@ -25,4 +25,5 @@ export enum AppAPICapability {
     NeoCLIMode = "neo-cli-mode",
     BeginUpdate = "begin-update",
     StackOutputs = "stack-outputs",
+    CoherenceWindows = "coherence-windows",
 }

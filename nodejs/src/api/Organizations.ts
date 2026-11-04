@@ -49,6 +49,7 @@ import { CreateGitHubTeamRequest } from "../model/CreateGitHubTeamRequest";
 import { CreateOrgAccessTokenRequest } from "../model/CreateOrgAccessTokenRequest";
 import { CreateOrganizationInviteRequest } from "../model/CreateOrganizationInviteRequest";
 import { CreateOrganizationInviteResponse } from "../model/CreateOrganizationInviteResponse";
+import { CreatePolicyExceptionRequest } from "../model/CreatePolicyExceptionRequest";
 import { CreatePulumiTeamRequest } from "../model/CreatePulumiTeamRequest";
 import { CreateServiceRequest } from "../model/CreateServiceRequest";
 import { CreateTeamAccessTokenRequest } from "../model/CreateTeamAccessTokenRequest";
@@ -81,6 +82,7 @@ import { ListOidcIssuersResponse } from "../model/ListOidcIssuersResponse";
 import { ListOrganizationInvitesResponse } from "../model/ListOrganizationInvitesResponse";
 import { ListOrganizationMembersResponse } from "../model/ListOrganizationMembersResponse";
 import { ListPoliciesComplianceResponse } from "../model/ListPoliciesComplianceResponse";
+import { ListPolicyExceptionsResponse } from "../model/ListPolicyExceptionsResponse";
 import { ListPolicyGroupAccountsResponse } from "../model/ListPolicyGroupAccountsResponse";
 import { ListPolicyGroupStacksResponse } from "../model/ListPolicyGroupStacksResponse";
 import { ListPolicyIssuesResponse } from "../model/ListPolicyIssuesResponse";
@@ -106,6 +108,8 @@ import { PackageUsageResponse } from "../model/PackageUsageResponse";
 import { PermissionDescriptorBase } from "../model/PermissionDescriptorBase";
 import { PermissionDescriptorRecord } from "../model/PermissionDescriptorRecord";
 import { PermissionDescriptorUXPurpose } from "../model/PermissionDescriptorUXPurpose";
+import { PolicyException } from "../model/PolicyException";
+import { PolicyExceptionStatus } from "../model/PolicyExceptionStatus";
 import { PolicyGroup } from "../model/PolicyGroup";
 import { PolicyGroupMemberSource } from "../model/PolicyGroupMemberSource";
 import { PolicyGroupMetadata } from "../model/PolicyGroupMetadata";
@@ -1148,6 +1152,49 @@ export class Organizations {
         return this.client.callWithOptions<WebhookResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 WebhookResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public CreatePolicyException__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/exceptions";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public CreatePolicyException(
+        params: {
+            orgName: string,
+        },
+        request: CreatePolicyExceptionRequest,
+    ): Promise<PolicyException> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreatePolicyException.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CreatePolicyException.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreatePolicyException.");
+        }
+
+        const __path = this.CreatePolicyException__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<PolicyException>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PolicyException.fixupPrototype(__res0);
             }
         });
     }
@@ -3493,6 +3540,50 @@ export class Organizations {
         });
     }
 
+    public GetPolicyException__generateUrl(
+        orgName: string,
+        exceptionId: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/policy/exceptions/{exceptionId}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{exceptionId}", encodeURIComponent(String(exceptionId)));
+        return url;
+    }
+
+    public GetPolicyException(
+        params: {
+            orgName: string,
+            exceptionId: string,
+        },
+    ): Promise<PolicyException> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling GetPolicyException.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling GetPolicyException.");
+        }
+
+        // verify required parameter 'exceptionId' is not null or undefined
+        if (params.exceptionId === null || params.exceptionId === undefined) {
+            throw new Error("Required parameter exceptionId was null or undefined when calling GetPolicyException.");
+        }
+
+        const __path = this.GetPolicyException__generateUrl(params.orgName, params.exceptionId);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<PolicyException>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PolicyException.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public GetPolicyFinding__generateUrl(
         orgName: string,
         findingId: string,
@@ -5279,6 +5370,64 @@ export class Organizations {
         });
     }
 
+    public ListPolicyExceptions__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/policy/exceptions";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListPolicyExceptions(
+        params: {
+            orgName: string,
+            continuationToken?: string,
+            maxResults?: number,
+            policy?: string,
+            policyPack?: string,
+            stack?: string,
+            status?: PolicyExceptionStatus[],
+        },
+    ): Promise<ListPolicyExceptionsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListPolicyExceptions.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListPolicyExceptions.");
+        }
+
+        const __path = this.ListPolicyExceptions__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.maxResults !== undefined) {
+            __requestOptions.setQueryParam("maxResults", params.maxResults);
+        }
+        if (params.policy !== undefined) {
+            __requestOptions.setQueryParam("policy", params.policy);
+        }
+        if (params.policyPack !== undefined) {
+            __requestOptions.setQueryParam("policyPack", params.policyPack);
+        }
+        if (params.stack !== undefined) {
+            __requestOptions.setQueryParam("stack", params.stack);
+        }
+        if (params.status !== undefined) {
+            __requestOptions.setQueryParam("status", params.status);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListPolicyExceptionsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListPolicyExceptionsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public ListPolicyFindings__generateUrl(orgName: string): string {
         let url = this.basePath + "orgs/{orgName}/policy/findings";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -6473,6 +6622,50 @@ export class Organizations {
         return this.client.callWithOptions<OidcIssuerRegistrationResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 OidcIssuerRegistrationResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public RemovePolicyException__generateUrl(
+        orgName: string,
+        exceptionId: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/policy/exceptions/{exceptionId}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{exceptionId}", encodeURIComponent(String(exceptionId)));
+        return url;
+    }
+
+    public RemovePolicyException(
+        params: {
+            orgName: string,
+            exceptionId: string,
+        },
+    ): Promise<PolicyException> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling RemovePolicyException.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling RemovePolicyException.");
+        }
+
+        // verify required parameter 'exceptionId' is not null or undefined
+        if (params.exceptionId === null || params.exceptionId === undefined) {
+            throw new Error("Required parameter exceptionId was null or undefined when calling RemovePolicyException.");
+        }
+
+        const __path = this.RemovePolicyException__generateUrl(params.orgName, params.exceptionId);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "DELETE";
+
+        return this.client.callWithOptions<PolicyException>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                PolicyException.fixupPrototype(__res0);
             }
         });
     }

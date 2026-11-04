@@ -41,6 +41,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
     :var policy_group_name: str - declared
     :var policy_group_type: PolicyGroupMode - declared
     :var policy_exception_names: list[str] - declared
+    :var first_seen_at: datetime - declared
+    :var first_seen_pack_tag: str - declared
+    :var last_seen_at: datetime - declared
+    :var resolved_at: datetime - declared
+    :var reopen_count: int - declared
+    :var kinds_seen: list[PolicyIssueKind] - declared
+    :var messages: list[str] - declared
+    :var exempt: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -68,6 +76,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
         'policy_group_name': 'str',
         'policy_group_type': 'PolicyGroupMode',
         'policy_exception_names': 'list[str]',
+        'first_seen_at': 'datetime',
+        'first_seen_pack_tag': 'str',
+        'last_seen_at': 'datetime',
+        'resolved_at': 'datetime',
+        'reopen_count': 'int',
+        'kinds_seen': 'list[PolicyIssueKind]',
+        'messages': 'list[str]',
+        'exempt': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -96,6 +112,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
         'policy_group_name': 'policyGroupName',
         'policy_group_type': 'policyGroupType',
         'policy_exception_names': 'policyExceptionNames',
+        'first_seen_at': 'firstSeenAt',
+        'first_seen_pack_tag': 'firstSeenPackTag',
+        'last_seen_at': 'lastSeenAt',
+        'resolved_at': 'resolvedAt',
+        'reopen_count': 'reopenCount',
+        'kinds_seen': 'kindsSeen',
+        'messages': 'messages',
+        'exempt': 'exempt',
     }
 
     FIELDS_id = 'id'
@@ -123,6 +147,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
     FIELDS_policy_group_name = 'policyGroupName'
     FIELDS_policy_group_type = 'policyGroupType'
     FIELDS_policy_exception_names = 'policyExceptionNames'
+    FIELDS_first_seen_at = 'firstSeenAt'
+    FIELDS_first_seen_pack_tag = 'firstSeenPackTag'
+    FIELDS_last_seen_at = 'lastSeenAt'
+    FIELDS_resolved_at = 'resolvedAt'
+    FIELDS_reopen_count = 'reopenCount'
+    FIELDS_kinds_seen = 'kindsSeen'
+    FIELDS_messages = 'messages'
+    FIELDS_exempt = 'exempt'
 
     _id: 'str'
     _entity_type: 'IssueEntityType'
@@ -149,6 +181,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
     _policy_group_name: 'str'
     _policy_group_type: 'PolicyGroupMode'
     _policy_exception_names: 'list[str]'
+    _first_seen_at: 'datetime'
+    _first_seen_pack_tag: 'str'
+    _last_seen_at: 'datetime'
+    _resolved_at: 'datetime'
+    _reopen_count: 'int'
+    _kinds_seen: 'list[PolicyIssueKind]'
+    _messages: 'list[str]'
+    _exempt: 'bool'
 
     def __init__(
         self,
@@ -177,6 +217,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
         policy_group_name: 'str' = None,
         policy_group_type: 'PolicyGroupMode' = None,
         policy_exception_names: 'list[str]' = None,
+        first_seen_at: 'datetime' = None,
+        first_seen_pack_tag: 'str' = None,
+        last_seen_at: 'datetime' = None,
+        resolved_at: 'datetime' = None,
+        reopen_count: 'int' = 0,
+        kinds_seen: 'list[PolicyIssueKind]' = None,
+        messages: 'list[str]' = None,
+        exempt: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -205,6 +253,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
         self.policy_group_name = policy_group_name
         self.policy_group_type = policy_group_type
         self.policy_exception_names = policy_exception_names
+        self.first_seen_at = first_seen_at
+        self.first_seen_pack_tag = first_seen_pack_tag
+        self.last_seen_at = last_seen_at
+        self.resolved_at = resolved_at
+        self.reopen_count = reopen_count
+        self.kinds_seen = kinds_seen
+        self.messages = messages
+        self.exempt = exempt
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, PolicyIssue):
@@ -233,6 +289,14 @@ class PolicyIssue(PulumiAutoModelEncoder):
             self._policy_group_name = source._policy_group_name
             self._policy_group_type = source._policy_group_type
             self._policy_exception_names = source._policy_exception_names
+            self._first_seen_at = source._first_seen_at
+            self._first_seen_pack_tag = source._first_seen_pack_tag
+            self._last_seen_at = source._last_seen_at
+            self._resolved_at = source._resolved_at
+            self._reopen_count = source._reopen_count
+            self._kinds_seen = source._kinds_seen
+            self._messages = source._messages
+            self._exempt = source._exempt
 
     @property
     def id(self) -> 'str':
@@ -537,6 +601,122 @@ class PolicyIssue(PulumiAutoModelEncoder):
             return []
 
         return self._policy_exception_names
+
+    @property
+    def first_seen_at(self) -> 'datetime':
+        return self._first_seen_at
+
+    @first_seen_at.setter
+    def first_seen_at(self, first_seen_at: 'datetime'):
+        self._first_seen_at = first_seen_at
+
+    @property
+    def first_seen_pack_tag(self) -> 'str':
+        return self._first_seen_pack_tag
+
+    @first_seen_pack_tag.setter
+    def first_seen_pack_tag(self, first_seen_pack_tag: 'str'):
+        self._first_seen_pack_tag = first_seen_pack_tag
+
+    @property
+    def last_seen_at(self) -> 'datetime':
+        return self._last_seen_at
+
+    @last_seen_at.setter
+    def last_seen_at(self, last_seen_at: 'datetime'):
+        self._last_seen_at = last_seen_at
+
+    @property
+    def resolved_at(self) -> 'datetime':
+        return self._resolved_at
+
+    @resolved_at.setter
+    def resolved_at(self, resolved_at: 'datetime'):
+        self._resolved_at = resolved_at
+
+    @property
+    def reopen_count(self) -> 'int':
+        return self._reopen_count
+
+    @reopen_count.setter
+    def reopen_count(self, reopen_count: 'int'):
+        self._reopen_count = reopen_count
+
+    @property
+    def kinds_seen(self) -> 'list[PolicyIssueKind]':
+        return self._kinds_seen
+
+    @kinds_seen.setter
+    def kinds_seen(self, kinds_seen: 'list[PolicyIssueKind]'):
+        self._kinds_seen = kinds_seen
+
+    @property
+    def kinds_seen__autoinit(self) -> 'list[PolicyIssueKind]':
+        """Return ``kinds_seen``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._kinds_seen``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``kinds_seen__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._kinds_seen is None:
+            self._kinds_seen = self.kinds_seen__safederef
+
+        return self._kinds_seen
+
+    @property
+    def kinds_seen__safederef(self) -> 'list[PolicyIssueKind]':
+        """Return ``kinds_seen``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``kinds_seen`` stays unset and each
+        call returns a new default. Use ``kinds_seen__autoinit`` to persist the default on
+        first access.
+        """
+        if self._kinds_seen is None:
+            return []
+
+        return self._kinds_seen
+
+    @property
+    def messages(self) -> 'list[str]':
+        return self._messages
+
+    @messages.setter
+    def messages(self, messages: 'list[str]'):
+        self._messages = messages
+
+    @property
+    def messages__autoinit(self) -> 'list[str]':
+        """Return ``messages``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._messages``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``messages__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._messages is None:
+            self._messages = self.messages__safederef
+
+        return self._messages
+
+    @property
+    def messages__safederef(self) -> 'list[str]':
+        """Return ``messages``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``messages`` stays unset and each
+        call returns a new default. Use ``messages__autoinit`` to persist the default on
+        first access.
+        """
+        if self._messages is None:
+            return []
+
+        return self._messages
+
+    @property
+    def exempt(self) -> 'bool':
+        return self._exempt
+
+    @exempt.setter
+    def exempt(self, exempt: 'bool'):
+        self._exempt = exempt
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, PolicyIssue):

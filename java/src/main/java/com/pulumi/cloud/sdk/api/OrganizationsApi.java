@@ -379,6 +379,21 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<WebhookResponse>() {});
     }
 
+    public PolicyException createPolicyException(String orgName, CreatePolicyExceptionRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createPolicyException");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createPolicyException");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/policy/exceptions");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PolicyException>() {});
+    }
+
     public AppCreatePolicyPackResponse createPolicyPack(String orgName, AppCreatePolicyPackRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createPolicyPack");
@@ -1140,6 +1155,20 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<GetPolicyComplianceResultsResponse>() {});
     }
 
+    public PolicyException getPolicyException(String orgName, String exceptionId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getPolicyException");
+        }
+        if (exceptionId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'exceptionId' when calling getPolicyException");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/exceptions/{exceptionId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("exceptionId", exceptionId);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PolicyException>() {});
+    }
+
     public GetPolicyIssueResponse getPolicyFinding(String orgName, String findingId) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getPolicyFinding");
@@ -1697,6 +1726,22 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListPoliciesComplianceResponse>() {});
     }
 
+    public ListPolicyExceptionsResponse listPolicyExceptions(String orgName, String continuationToken, Long maxResults, String policy, String policyPack, String stack, List<PolicyExceptionStatus> status) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyExceptions");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/policy/exceptions");
+        $request.pathParam("orgName", orgName);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("maxResults", maxResults);
+        $request.queryParam("policy", policy);
+        $request.queryParam("policyPack", policyPack);
+        $request.queryParam("stack", stack);
+        $request.queryParam("status", status);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListPolicyExceptionsResponse>() {});
+    }
+
     public ListPolicyIssuesResponse listPolicyFindings(String orgName, AngularGridGetRowsRequest request, Boolean closed) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listPolicyFindings");
@@ -2077,6 +2122,20 @@ public final class OrganizationsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<OidcIssuerRegistrationResponse>() {});
+    }
+
+    public PolicyException removePolicyException(String orgName, String exceptionId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling removePolicyException");
+        }
+        if (exceptionId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'exceptionId' when calling removePolicyException");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/orgs/{orgName}/policy/exceptions/{exceptionId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("exceptionId", exceptionId);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<PolicyException>() {});
     }
 
     public GetServiceResponse removeServiceItem(String orgName, String ownerType, String ownerName, String serviceName, String itemType, String itemName, Long maxResults) {
