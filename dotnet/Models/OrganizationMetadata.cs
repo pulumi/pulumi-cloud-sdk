@@ -257,6 +257,18 @@ namespace Pulumi.Cloud.Sdk.Models {
         public long? MaxMembers { get; set; }
 
         /// <summary>
+        /// MaxAdmins is the maximum number of administrators the organization can have based on the plan in effect. An active retrial puts its plan in effect. Will be nil/omitted if there is no limit.
+        /// </summary>
+        [JsonProperty("maxAdmins")]
+        public long? MaxAdmins { get; set; }
+
+        /// <summary>
+        /// MaxBillingManagers is the maximum number of billing managers the organization can have based on the plan in effect. Zero means the plan does not offer the billing manager role. An active retrial puts its plan in effect. Will be nil/omitted if there is no limit.
+        /// </summary>
+        [JsonProperty("maxBillingManagers")]
+        public long? MaxBillingManagers { get; set; }
+
+        /// <summary>
         /// Locked is non-nil if an organization is locked, indicating the specific reason why it was locked. (Which may determine which actions are available in the Console.)
         /// </summary>
         [JsonProperty("locked")]

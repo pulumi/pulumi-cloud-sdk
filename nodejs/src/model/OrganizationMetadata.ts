@@ -69,6 +69,8 @@ export class OrganizationMetadata {
     maxStacks?: number;
     memberCount: number;
     maxMembers?: number;
+    maxAdmins?: number;
+    maxBillingManagers?: number;
     locked?: OrganizationLockedStatus;
     defaultRoleId?: string;
     defaultDeploymentRoleId?: string;

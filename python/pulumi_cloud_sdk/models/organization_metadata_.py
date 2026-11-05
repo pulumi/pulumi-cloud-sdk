@@ -57,6 +57,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     :var max_stacks: int - declared
     :var member_count: int - declared
     :var max_members: int - declared
+    :var max_admins: int - declared
+    :var max_billing_managers: int - declared
     :var locked: OrganizationLockedStatus - declared
     :var default_role_id: str - declared
     :var default_deployment_role_id: str - declared
@@ -106,6 +108,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         'max_stacks': 'int',
         'member_count': 'int',
         'max_members': 'int',
+        'max_admins': 'int',
+        'max_billing_managers': 'int',
         'locked': 'OrganizationLockedStatus',
         'default_role_id': 'str',
         'default_deployment_role_id': 'str',
@@ -156,6 +160,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         'max_stacks': 'maxStacks',
         'member_count': 'memberCount',
         'max_members': 'maxMembers',
+        'max_admins': 'maxAdmins',
+        'max_billing_managers': 'maxBillingManagers',
         'locked': 'locked',
         'default_role_id': 'defaultRoleId',
         'default_deployment_role_id': 'defaultDeploymentRoleId',
@@ -205,6 +211,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     FIELDS_max_stacks = 'maxStacks'
     FIELDS_member_count = 'memberCount'
     FIELDS_max_members = 'maxMembers'
+    FIELDS_max_admins = 'maxAdmins'
+    FIELDS_max_billing_managers = 'maxBillingManagers'
     FIELDS_locked = 'locked'
     FIELDS_default_role_id = 'defaultRoleId'
     FIELDS_default_deployment_role_id = 'defaultDeploymentRoleId'
@@ -253,6 +261,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     _max_stacks: 'int'
     _member_count: 'int'
     _max_members: 'int'
+    _max_admins: 'int'
+    _max_billing_managers: 'int'
     _locked: 'OrganizationLockedStatus'
     _default_role_id: 'str'
     _default_deployment_role_id: 'str'
@@ -303,6 +313,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         insights_billing_accepted: 'bool' = False,
         max_stacks: 'int' = 0,
         max_members: 'int' = 0,
+        max_admins: 'int' = 0,
+        max_billing_managers: 'int' = 0,
         locked: 'OrganizationLockedStatus' = None,
         default_role_id: 'str' = None,
         default_deployment_role_id: 'str' = None,
@@ -353,6 +365,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
         self.max_stacks = max_stacks
         self.member_count = member_count
         self.max_members = max_members
+        self.max_admins = max_admins
+        self.max_billing_managers = max_billing_managers
         self.locked = locked
         self.default_role_id = default_role_id
         self.default_deployment_role_id = default_deployment_role_id
@@ -403,6 +417,8 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
             self._max_stacks = source._max_stacks
             self._member_count = source._member_count
             self._max_members = source._max_members
+            self._max_admins = source._max_admins
+            self._max_billing_managers = source._max_billing_managers
             self._locked = source._locked
             self._default_role_id = source._default_role_id
             self._default_deployment_role_id = source._default_deployment_role_id
@@ -848,6 +864,22 @@ class OrganizationMetadata(PulumiAutoModelEncoder):
     @max_members.setter
     def max_members(self, max_members: 'int'):
         self._max_members = max_members
+
+    @property
+    def max_admins(self) -> 'int':
+        return self._max_admins
+
+    @max_admins.setter
+    def max_admins(self, max_admins: 'int'):
+        self._max_admins = max_admins
+
+    @property
+    def max_billing_managers(self) -> 'int':
+        return self._max_billing_managers
+
+    @max_billing_managers.setter
+    def max_billing_managers(self, max_billing_managers: 'int'):
+        self._max_billing_managers = max_billing_managers
 
     @property
     def locked(self) -> 'OrganizationLockedStatus':
