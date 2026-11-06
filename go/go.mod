@@ -4,6 +4,6 @@ go 1.26.6
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/go-jose/go-jose/v4 v4.1.6
+	github.com/go-jose/go-jose/v4 v4.1.8
 	gopkg.in/yaml.v3 v3.0.1
 )

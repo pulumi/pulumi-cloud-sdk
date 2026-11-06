@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class UpdateServiceMetadataRequest {
         /// <summary>
-        /// the name of the service
+        /// The new name of the service. Between 1 and 80 characters.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

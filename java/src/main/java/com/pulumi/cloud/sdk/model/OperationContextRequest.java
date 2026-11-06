@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class OperationContextRequest {
-    // The OIDC configuration for the operation.
+    // The Deployments OIDC configuration for obtaining temporary cloud credentials during the operation. Pulumi ESC is the recommended way to supply cloud credentials to Pulumi Deployments. Deployments OIDC still fits when a customer-managed runner can't reach Pulumi Cloud to use ESC, or when pre-run commands need credentials and aren't wrapped in `pulumi env run`. See https://www.pulumi.com/docs/deployments/guides/cloud-credentials/.
     public OperationContextOIDCConfigurationRequest oidc;
 
     // Optional list of commands to run before Pulumi is invoked.

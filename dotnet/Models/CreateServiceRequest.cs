@@ -23,7 +23,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string OwnerName { get; set; }
 
         /// <summary>
-        /// the name of the service
+        /// The name of the service. Between 1 and 80 characters.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

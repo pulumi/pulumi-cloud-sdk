@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class OperationContextRequest {
         /// <summary>
-        /// The OIDC configuration for the operation.
+        /// The Deployments OIDC configuration for obtaining temporary cloud credentials during the operation. Pulumi ESC is the recommended way to supply cloud credentials to Pulumi Deployments. Deployments OIDC still fits when a customer-managed runner can't reach Pulumi Cloud to use ESC, or when pre-run commands need credentials and aren't wrapped in `pulumi env run`. See https://www.pulumi.com/docs/deployments/guides/cloud-credentials/.
         /// </summary>
         [JsonProperty("oidc")]
         public OperationContextOIDCConfigurationRequest Oidc { get; set; }

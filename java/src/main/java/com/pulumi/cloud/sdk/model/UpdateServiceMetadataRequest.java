@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class UpdateServiceMetadataRequest {
-    // the name of the service
+    // The new name of the service. Between 1 and 80 characters.
     public String name;
 
     // an optional description of the service
