@@ -581,6 +581,18 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool PolicyPostureReportEnabled { get; set; }
 
         /// <summary>
+        /// Whether user-defined service principals can be created and managed.
+        /// </summary>
+        [JsonProperty("userDefinedServicePrincipalsEnabled")]
+        public bool UserDefinedServicePrincipalsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether access tokens can be created for user-defined service principals.
+        /// </summary>
+        [JsonProperty("servicePrincipalTokensEnabled")]
+        public bool ServicePrincipalTokensEnabled { get; set; }
+
+        /// <summary>
         /// Whether Delivery is available to the organization.
         /// </summary>
         [JsonProperty("deliveryEnabled")]

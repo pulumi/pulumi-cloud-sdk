@@ -16,7 +16,7 @@ public class ServiceItem {
 
     // the type of the item
     @JsonProperty("type")
-    public String type_;
+    public ServiceItemType type_;
 
     // the name (including any namespacing) of the item
     public String name;

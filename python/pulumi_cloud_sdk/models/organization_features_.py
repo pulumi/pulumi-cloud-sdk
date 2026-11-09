@@ -111,6 +111,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var static_default_roles_enabled: bool - declared
     :var permission_mode_enabled: bool - declared
     :var policy_posture_report_enabled: bool - declared
+    :var user_defined_service_principals_enabled: bool - declared
+    :var service_principal_tokens_enabled: bool - declared
     :var delivery_enabled: bool - declared
     :var cursor_origin_vcs_enabled: bool - declared
     :var enterprise_self_serve_enabled: bool - declared
@@ -211,6 +213,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'static_default_roles_enabled': 'bool',
         'permission_mode_enabled': 'bool',
         'policy_posture_report_enabled': 'bool',
+        'user_defined_service_principals_enabled': 'bool',
+        'service_principal_tokens_enabled': 'bool',
         'delivery_enabled': 'bool',
         'cursor_origin_vcs_enabled': 'bool',
         'enterprise_self_serve_enabled': 'bool',
@@ -312,6 +316,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'static_default_roles_enabled': 'staticDefaultRolesEnabled',
         'permission_mode_enabled': 'permissionModeEnabled',
         'policy_posture_report_enabled': 'policyPostureReportEnabled',
+        'user_defined_service_principals_enabled': 'userDefinedServicePrincipalsEnabled',
+        'service_principal_tokens_enabled': 'servicePrincipalTokensEnabled',
         'delivery_enabled': 'deliveryEnabled',
         'cursor_origin_vcs_enabled': 'cursorOriginVCSEnabled',
         'enterprise_self_serve_enabled': 'enterpriseSelfServeEnabled',
@@ -412,6 +418,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_static_default_roles_enabled = 'staticDefaultRolesEnabled'
     FIELDS_permission_mode_enabled = 'permissionModeEnabled'
     FIELDS_policy_posture_report_enabled = 'policyPostureReportEnabled'
+    FIELDS_user_defined_service_principals_enabled = 'userDefinedServicePrincipalsEnabled'
+    FIELDS_service_principal_tokens_enabled = 'servicePrincipalTokensEnabled'
     FIELDS_delivery_enabled = 'deliveryEnabled'
     FIELDS_cursor_origin_vcs_enabled = 'cursorOriginVCSEnabled'
     FIELDS_enterprise_self_serve_enabled = 'enterpriseSelfServeEnabled'
@@ -511,6 +519,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _static_default_roles_enabled: 'bool'
     _permission_mode_enabled: 'bool'
     _policy_posture_report_enabled: 'bool'
+    _user_defined_service_principals_enabled: 'bool'
+    _service_principal_tokens_enabled: 'bool'
     _delivery_enabled: 'bool'
     _cursor_origin_vcs_enabled: 'bool'
     _enterprise_self_serve_enabled: 'bool'
@@ -612,6 +622,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         agents_as_team_members_enabled: 'bool' = False,
         permission_mode_enabled: 'bool' = False,
         policy_posture_report_enabled: 'bool' = False,
+        user_defined_service_principals_enabled: 'bool' = False,
+        service_principal_tokens_enabled: 'bool' = False,
         delivery_enabled: 'bool' = False,
         cursor_origin_vcs_enabled: 'bool' = False,
         enterprise_self_serve_enabled: 'bool' = False,
@@ -713,6 +725,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.static_default_roles_enabled = static_default_roles_enabled
         self.permission_mode_enabled = permission_mode_enabled
         self.policy_posture_report_enabled = policy_posture_report_enabled
+        self.user_defined_service_principals_enabled = user_defined_service_principals_enabled
+        self.service_principal_tokens_enabled = service_principal_tokens_enabled
         self.delivery_enabled = delivery_enabled
         self.cursor_origin_vcs_enabled = cursor_origin_vcs_enabled
         self.enterprise_self_serve_enabled = enterprise_self_serve_enabled
@@ -814,6 +828,8 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._static_default_roles_enabled = source._static_default_roles_enabled
             self._permission_mode_enabled = source._permission_mode_enabled
             self._policy_posture_report_enabled = source._policy_posture_report_enabled
+            self._user_defined_service_principals_enabled = source._user_defined_service_principals_enabled
+            self._service_principal_tokens_enabled = source._service_principal_tokens_enabled
             self._delivery_enabled = source._delivery_enabled
             self._cursor_origin_vcs_enabled = source._cursor_origin_vcs_enabled
             self._enterprise_self_serve_enabled = source._enterprise_self_serve_enabled
@@ -1769,6 +1785,22 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @policy_posture_report_enabled.setter
     def policy_posture_report_enabled(self, policy_posture_report_enabled: 'bool'):
         self._policy_posture_report_enabled = policy_posture_report_enabled
+
+    @property
+    def user_defined_service_principals_enabled(self) -> 'bool':
+        return self._user_defined_service_principals_enabled
+
+    @user_defined_service_principals_enabled.setter
+    def user_defined_service_principals_enabled(self, user_defined_service_principals_enabled: 'bool'):
+        self._user_defined_service_principals_enabled = user_defined_service_principals_enabled
+
+    @property
+    def service_principal_tokens_enabled(self) -> 'bool':
+        return self._service_principal_tokens_enabled
+
+    @service_principal_tokens_enabled.setter
+    def service_principal_tokens_enabled(self, service_principal_tokens_enabled: 'bool'):
+        self._service_principal_tokens_enabled = service_principal_tokens_enabled
 
     @property
     def delivery_enabled(self) -> 'bool':

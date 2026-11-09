@@ -13,8 +13,11 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { ServiceMemberType } from "./ServiceMemberType";
+
+
 export class ServiceMember {
-    type: string;
+    type: ServiceMemberType;
     name: string;
     avatarUrl: string;
 

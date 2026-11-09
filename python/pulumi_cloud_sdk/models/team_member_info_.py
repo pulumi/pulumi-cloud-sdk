@@ -21,12 +21,14 @@ class TeamMemberInfo(UserInfo):
     :var github_login: str - inherited
     :var avatar_url: str - inherited
     :var email: str - inherited
+    :var service_principal_kind: ServicePrincipalKind - inherited
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
         'github_login': 'str',
         'avatar_url': 'str',
         'email': 'str',
+        'service_principal_kind': 'ServicePrincipalKind',
         'role': 'TeamRole',
     }
 
@@ -35,6 +37,7 @@ class TeamMemberInfo(UserInfo):
         'github_login': 'githubLogin',
         'avatar_url': 'avatarUrl',
         'email': 'email',
+        'service_principal_kind': 'servicePrincipalKind',
         'role': 'role',
     }
 
@@ -49,8 +52,9 @@ class TeamMemberInfo(UserInfo):
         avatar_url: 'str',
         role: 'TeamRole',
         email: 'str' = None,
+        service_principal_kind: 'ServicePrincipalKind' = None,
     ) -> None:
-        super().__init__(name=name, github_login=github_login, avatar_url=avatar_url, email=email)
+        super().__init__(name=name, github_login=github_login, avatar_url=avatar_url, email=email, service_principal_kind=service_principal_kind)
 
         self.role = role
 

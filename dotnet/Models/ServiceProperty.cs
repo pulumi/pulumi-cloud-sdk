@@ -26,7 +26,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// the type of the property
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public ServicePropertyType Type { get; set; }
 
         /// <summary>
         /// the position of the property

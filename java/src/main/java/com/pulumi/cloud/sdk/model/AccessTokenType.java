@@ -15,7 +15,9 @@ public enum AccessTokenType {
     // A machine token bound to an organization's robot user.
     Organization("organization"),
     // A machine token bound to a team's robot user within an organization.
-    Team("team");
+    Team("team"),
+    // A machine token that authenticates as a user-defined service principal of an organization.
+    ServicePrincipal("service-principal");
 
     private final String value;
 

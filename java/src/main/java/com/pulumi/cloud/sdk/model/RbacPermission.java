@@ -82,6 +82,7 @@ public enum RbacPermission {
     OrgTokenRead("org_token:read"),
     OrgTokenCreate("org_token:create"),
     OrgTokenDelete("org_token:delete"),
+    ServicePrincipalCreate("service_principal:create"),
     AuthPoliciesRead("auth_policies:read"),
     AuthPoliciesUpdate("auth_policies:update"),
     OidcIssuersRead("oidc_issuers:read"),

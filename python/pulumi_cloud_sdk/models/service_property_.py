@@ -18,13 +18,13 @@ class ServiceProperty(PulumiAutoModelEncoder):
     """
     :var key: str - declared
     :var value: str - declared
-    :var type: str - declared
+    :var type: ServicePropertyType - declared
     :var order: int - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'key': 'str',
         'value': 'str',
-        'type': 'str',
+        'type': 'ServicePropertyType',
         'order': 'int',
     }
 
@@ -42,14 +42,14 @@ class ServiceProperty(PulumiAutoModelEncoder):
 
     _key: 'str'
     _value: 'str'
-    _type: 'str'
+    _type: 'ServicePropertyType'
     _order: 'int'
 
     def __init__(
         self,
         key: 'str',
         value: 'str',
-        type: 'str',
+        type: 'ServicePropertyType',
         order: 'int',
     ) -> None:
         super().__init__()
@@ -89,11 +89,11 @@ class ServiceProperty(PulumiAutoModelEncoder):
         self._value = value
 
     @property
-    def type(self) -> 'str':
+    def type(self) -> 'ServicePropertyType':
         return self._type
 
     @type.setter
-    def type(self, type: 'str'):
+    def type(self, type: 'ServicePropertyType'):
         if type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")
 

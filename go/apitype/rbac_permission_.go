@@ -89,6 +89,7 @@ const (
 	RbacPermissionOrgTokenRead                       RbacPermission = "org_token:read"
 	RbacPermissionOrgTokenCreate                     RbacPermission = "org_token:create"
 	RbacPermissionOrgTokenDelete                     RbacPermission = "org_token:delete"
+	RbacPermissionServicePrincipalCreate             RbacPermission = "service_principal:create"
 	RbacPermissionAuthPoliciesRead                   RbacPermission = "auth_policies:read"
 	RbacPermissionAuthPoliciesUpdate                 RbacPermission = "auth_policies:update"
 	RbacPermissionOidcIssuersRead                    RbacPermission = "oidc_issuers:read"
@@ -300,6 +301,7 @@ func (v RbacPermission) AllValues() []RbacPermission {
 		RbacPermissionOrgTokenRead,
 		RbacPermissionOrgTokenCreate,
 		RbacPermissionOrgTokenDelete,
+		RbacPermissionServicePrincipalCreate,
 		RbacPermissionAuthPoliciesRead,
 		RbacPermissionAuthPoliciesUpdate,
 		RbacPermissionOidcIssuersRead,
@@ -584,6 +586,8 @@ func (v RbacPermission) IsValid() bool {
 	case RbacPermissionOrgTokenCreate:
 		return true
 	case RbacPermissionOrgTokenDelete:
+		return true
+	case RbacPermissionServicePrincipalCreate:
 		return true
 	case RbacPermissionAuthPoliciesRead:
 		return true
@@ -1006,6 +1010,8 @@ func (v RbacPermission) openapiName() string {
 		return "OrgTokenCreate"
 	case RbacPermissionOrgTokenDelete:
 		return "OrgTokenDelete"
+	case RbacPermissionServicePrincipalCreate:
+		return "ServicePrincipalCreate"
 	case RbacPermissionAuthPoliciesRead:
 		return "AuthPoliciesRead"
 	case RbacPermissionAuthPoliciesUpdate:

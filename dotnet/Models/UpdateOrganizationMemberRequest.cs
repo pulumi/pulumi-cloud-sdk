@@ -21,5 +21,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("fgaRoleId")]
         public string FgaRoleID { get; set; }
+
+        /// <summary>
+        /// A new name for the member. Only user-defined service principals can be renamed; the name must be unique among the organization's service principals. When only `name` is set, the member's role is left unchanged.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }

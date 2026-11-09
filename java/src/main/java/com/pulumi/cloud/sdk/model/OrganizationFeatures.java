@@ -296,6 +296,12 @@ public class OrganizationFeatures {
     // Whether the monthly Infrastructure Posture report is available to the organization.
     public boolean policyPostureReportEnabled;
 
+    // Whether user-defined service principals can be created and managed.
+    public boolean userDefinedServicePrincipalsEnabled;
+
+    // Whether access tokens can be created for user-defined service principals.
+    public boolean servicePrincipalTokensEnabled;
+
     // Whether Delivery is available to the organization.
     public boolean deliveryEnabled;
 

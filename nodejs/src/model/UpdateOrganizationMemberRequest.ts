@@ -19,6 +19,7 @@ import type { OrganizationRole } from "./OrganizationRole";
 export class UpdateOrganizationMemberRequest {
     role?: OrganizationRole;
     fgaRoleId?: string;
+    name?: string;
 
     getFixupPrototypeFunction() {
         return UpdateOrganizationMemberRequest.fixupPrototype;

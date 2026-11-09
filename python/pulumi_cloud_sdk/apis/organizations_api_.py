@@ -189,7 +189,7 @@ class OrganizationsApi(object):
     def add_service_items(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
         request: 'AddServiceItemsRequest',
@@ -261,7 +261,7 @@ class OrganizationsApi(object):
     def add_service_items_v2(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
         request: 'AddServiceItemsRequest',
@@ -2175,7 +2175,7 @@ class OrganizationsApi(object):
     def delete_service(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
         force: 'bool' = None,
@@ -4947,7 +4947,7 @@ class OrganizationsApi(object):
     def get_service(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
         continuation_token: 'str' = None,
@@ -5298,7 +5298,7 @@ class OrganizationsApi(object):
     def head_service(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
         _request_timeout: int = None,
@@ -7749,10 +7749,10 @@ class OrganizationsApi(object):
     def remove_service_item(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
-        item_type: 'str',
+        item_type: 'ServiceItemType',
         item_name: 'str',
         max_results: 'int' = None,
         _request_timeout: int = None,
@@ -7827,10 +7827,10 @@ class OrganizationsApi(object):
     def remove_service_item_v2(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
-        item_type: 'str',
+        item_type: 'ServiceItemType',
         item_name: 'str',
         _request_timeout: int = None,
     ) -> None:
@@ -9408,7 +9408,7 @@ class OrganizationsApi(object):
     def update_service(
         self,
         org_name: 'str',
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         service_name: 'str',
         request: 'UpdateServiceMetadataRequest',

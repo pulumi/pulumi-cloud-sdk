@@ -17,7 +17,7 @@ from . import *
 class ServiceItem(PulumiAutoModelEncoder):
     """
     :var organization_name: str - declared
-    :var type: str - declared
+    :var type: ServiceItemType - declared
     :var name: str - declared
     :var version: str - declared
     :var created: datetime - declared
@@ -27,7 +27,7 @@ class ServiceItem(PulumiAutoModelEncoder):
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'organization_name': 'str',
-        'type': 'str',
+        'type': 'ServiceItemType',
         'name': 'str',
         'version': 'str',
         'created': 'datetime',
@@ -57,7 +57,7 @@ class ServiceItem(PulumiAutoModelEncoder):
     FIELDS_cloud_count = 'cloudCount'
 
     _organization_name: 'str'
-    _type: 'str'
+    _type: 'ServiceItemType'
     _name: 'str'
     _version: 'str'
     _created: 'datetime'
@@ -68,7 +68,7 @@ class ServiceItem(PulumiAutoModelEncoder):
     def __init__(
         self,
         organization_name: 'str',
-        type: 'str',
+        type: 'ServiceItemType',
         name: 'str',
         created: 'datetime',
         cloud_count: 'int',
@@ -110,11 +110,11 @@ class ServiceItem(PulumiAutoModelEncoder):
         self._organization_name = organization_name
 
     @property
-    def type(self) -> 'str':
+    def type(self) -> 'ServiceItemType':
         return self._type
 
     @type.setter
-    def type(self, type: 'str'):
+    def type(self, type: 'ServiceItemType'):
         if type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")
 

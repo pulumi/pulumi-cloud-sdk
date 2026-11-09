@@ -16,4 +16,5 @@
 export enum OrganizationMemberKind {
     Backend = "backend",
     Frontend = "frontend",
+    ServicePrincipal = "service-principal",
 }

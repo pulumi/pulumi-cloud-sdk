@@ -66,12 +66,9 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<OrganizationMember>(apiRequest);
         }
 
-        public GetServiceResponse AddServiceItems(string orgName, string ownerType, string ownerName, string serviceName, AddServiceItemsRequest request, long? maxResults) {
+        public GetServiceResponse AddServiceItems(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, AddServiceItemsRequest request, long? maxResults) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling AddServiceItems");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling AddServiceItems");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling AddServiceItems");
@@ -94,12 +91,9 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<GetServiceResponse>(apiRequest);
         }
 
-        public void AddServiceItemsV2(string orgName, string ownerType, string ownerName, string serviceName, AddServiceItemsRequest request) {
+        public void AddServiceItemsV2(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, AddServiceItemsRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling AddServiceItemsV2");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling AddServiceItemsV2");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling AddServiceItemsV2");
@@ -651,12 +645,9 @@ namespace Pulumi.Cloud.Sdk.Api {
             this.client.Call(request);
         }
 
-        public void DeleteService(string orgName, string ownerType, string ownerName, string serviceName, bool? force) {
+        public void DeleteService(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, bool? force) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DeleteService");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling DeleteService");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling DeleteService");
@@ -1384,12 +1375,9 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<SAMLOrganization>(request);
         }
 
-        public GetServiceResponse GetService(string orgName, string ownerType, string ownerName, string serviceName, string continuationToken, long? maxResults) {
+        public GetServiceResponse GetService(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, string continuationToken, long? maxResults) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling GetService");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling GetService");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling GetService");
@@ -1475,12 +1463,9 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<GetResourceCountSummaryResponse>(request);
         }
 
-        public void HeadService(string orgName, string ownerType, string ownerName, string serviceName) {
+        public void HeadService(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling HeadService");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling HeadService");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling HeadService");
@@ -2117,21 +2102,15 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<PolicyException>(request);
         }
 
-        public GetServiceResponse RemoveServiceItem(string orgName, string ownerType, string ownerName, string serviceName, string itemType, string itemName, long? maxResults) {
+        public GetServiceResponse RemoveServiceItem(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, ServiceItemType itemType, string itemName, long? maxResults) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling RemoveServiceItem");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling RemoveServiceItem");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling RemoveServiceItem");
             }
             if (serviceName == null) {
                 throw new ArgumentNullException(nameof(serviceName), "Missing required parameter 'serviceName' when calling RemoveServiceItem");
-            }
-            if (itemType == null) {
-                throw new ArgumentNullException(nameof(itemType), "Missing required parameter 'itemType' when calling RemoveServiceItem");
             }
             if (itemName == null) {
                 throw new ArgumentNullException(nameof(itemName), "Missing required parameter 'itemName' when calling RemoveServiceItem");
@@ -2148,21 +2127,15 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<GetServiceResponse>(request);
         }
 
-        public void RemoveServiceItemV2(string orgName, string ownerType, string ownerName, string serviceName, string itemType, string itemName) {
+        public void RemoveServiceItemV2(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, ServiceItemType itemType, string itemName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling RemoveServiceItemV2");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling RemoveServiceItemV2");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling RemoveServiceItemV2");
             }
             if (serviceName == null) {
                 throw new ArgumentNullException(nameof(serviceName), "Missing required parameter 'serviceName' when calling RemoveServiceItemV2");
-            }
-            if (itemType == null) {
-                throw new ArgumentNullException(nameof(itemType), "Missing required parameter 'itemType' when calling RemoveServiceItemV2");
             }
             if (itemName == null) {
                 throw new ArgumentNullException(nameof(itemName), "Missing required parameter 'itemName' when calling RemoveServiceItemV2");
@@ -2630,12 +2603,9 @@ namespace Pulumi.Cloud.Sdk.Api {
             this.client.Call(request);
         }
 
-        public Service UpdateService(string orgName, string ownerType, string ownerName, string serviceName, UpdateServiceMetadataRequest request) {
+        public Service UpdateService(string orgName, ServiceMemberType ownerType, string ownerName, string serviceName, UpdateServiceMetadataRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateService");
-            }
-            if (ownerType == null) {
-                throw new ArgumentNullException(nameof(ownerType), "Missing required parameter 'ownerType' when calling UpdateService");
             }
             if (ownerName == null) {
                 throw new ArgumentNullException(nameof(ownerName), "Missing required parameter 'ownerName' when calling UpdateService");

@@ -72,7 +72,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<OrganizationMember>() {});
     }
 
-    public GetServiceResponse addServiceItems(String orgName, String ownerType, String ownerName, String serviceName, AddServiceItemsRequest request, Long maxResults) {
+    public GetServiceResponse addServiceItems(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, AddServiceItemsRequest request, Long maxResults) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling addServiceItems");
         }
@@ -100,7 +100,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<GetServiceResponse>() {});
     }
 
-    public void addServiceItemsV2(String orgName, String ownerType, String ownerName, String serviceName, AddServiceItemsRequest request) {
+    public void addServiceItemsV2(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, AddServiceItemsRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling addServiceItemsV2");
         }
@@ -657,7 +657,7 @@ public final class OrganizationsApi {
         this.client.call($request);
     }
 
-    public void deleteService(String orgName, String ownerType, String ownerName, String serviceName, Boolean force) {
+    public void deleteService(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, Boolean force) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling deleteService");
         }
@@ -1390,7 +1390,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<SAMLOrganization>() {});
     }
 
-    public GetServiceResponse getService(String orgName, String ownerType, String ownerName, String serviceName, String continuationToken, Long maxResults) {
+    public GetServiceResponse getService(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, String continuationToken, Long maxResults) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling getService");
         }
@@ -1493,7 +1493,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<GetResourceCountSummaryResponse>() {});
     }
 
-    public void headService(String orgName, String ownerType, String ownerName, String serviceName) {
+    public void headService(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling headService");
         }
@@ -2138,7 +2138,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<PolicyException>() {});
     }
 
-    public GetServiceResponse removeServiceItem(String orgName, String ownerType, String ownerName, String serviceName, String itemType, String itemName, Long maxResults) {
+    public GetServiceResponse removeServiceItem(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, ServiceItemType itemType, String itemName, Long maxResults) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling removeServiceItem");
         }
@@ -2169,7 +2169,7 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<GetServiceResponse>() {});
     }
 
-    public void removeServiceItemV2(String orgName, String ownerType, String ownerName, String serviceName, String itemType, String itemName) {
+    public void removeServiceItemV2(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, ServiceItemType itemType, String itemName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling removeServiceItemV2");
         }
@@ -2651,7 +2651,7 @@ public final class OrganizationsApi {
         this.client.call($request);
     }
 
-    public Service updateService(String orgName, String ownerType, String ownerName, String serviceName, UpdateServiceMetadataRequest request) {
+    public Service updateService(String orgName, ServiceMemberType ownerType, String ownerName, String serviceName, UpdateServiceMetadataRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateService");
         }

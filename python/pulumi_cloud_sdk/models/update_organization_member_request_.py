@@ -18,37 +18,45 @@ class UpdateOrganizationMemberRequest(PulumiAutoModelEncoder):
     """
     :var role: OrganizationRole - declared
     :var fga_role_id: str - declared
+    :var name: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'role': 'OrganizationRole',
         'fga_role_id': 'str',
+        'name': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'role': 'role',
         'fga_role_id': 'fgaRoleId',
+        'name': 'name',
     }
 
     FIELDS_role = 'role'
     FIELDS_fga_role_id = 'fgaRoleId'
+    FIELDS_name = 'name'
 
     _role: 'OrganizationRole'
     _fga_role_id: 'str'
+    _name: 'str'
 
     def __init__(
         self,
         role: 'OrganizationRole' = None,
         fga_role_id: 'str' = None,
+        name: 'str' = None,
     ) -> None:
         super().__init__()
 
         self.role = role
         self.fga_role_id = fga_role_id
+        self.name = name
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, UpdateOrganizationMemberRequest):
             self._role = source._role
             self._fga_role_id = source._fga_role_id
+            self._name = source._name
 
     @property
     def role(self) -> 'OrganizationRole':
@@ -65,6 +73,14 @@ class UpdateOrganizationMemberRequest(PulumiAutoModelEncoder):
     @fga_role_id.setter
     def fga_role_id(self, fga_role_id: 'str'):
         self._fga_role_id = fga_role_id
+
+    @property
+    def name(self) -> 'str':
+        return self._name
+
+    @name.setter
+    def name(self, name: 'str'):
+        self._name = name
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, UpdateOrganizationMemberRequest):

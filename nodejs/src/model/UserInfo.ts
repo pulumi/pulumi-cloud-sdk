@@ -13,11 +13,15 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { ServicePrincipalKind } from "./ServicePrincipalKind";
+
+
 export class UserInfo {
     name: string;
     githubLogin: string;
     avatarUrl: string;
     email?: string;
+    servicePrincipalKind?: ServicePrincipalKind;
 
     getFixupPrototypeFunction() {
         return UserInfo.fixupPrototype;

@@ -16,7 +16,7 @@ from . import *
 # noinspection PyShadowingBuiltins,PyShadowingNames
 class CreateServiceRequest(PulumiAutoModelEncoder):
     """
-    :var owner_type: str - declared
+    :var owner_type: ServiceMemberType - declared
     :var owner_name: str - declared
     :var name: str - declared
     :var description: str - declared
@@ -24,7 +24,7 @@ class CreateServiceRequest(PulumiAutoModelEncoder):
     :var properties: list[ServiceProperty] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
-        'owner_type': 'str',
+        'owner_type': 'ServiceMemberType',
         'owner_name': 'str',
         'name': 'str',
         'description': 'str',
@@ -48,7 +48,7 @@ class CreateServiceRequest(PulumiAutoModelEncoder):
     FIELDS_items = 'items'
     FIELDS_properties = 'properties'
 
-    _owner_type: 'str'
+    _owner_type: 'ServiceMemberType'
     _owner_name: 'str'
     _name: 'str'
     _description: 'str'
@@ -57,7 +57,7 @@ class CreateServiceRequest(PulumiAutoModelEncoder):
 
     def __init__(
         self,
-        owner_type: 'str',
+        owner_type: 'ServiceMemberType',
         owner_name: 'str',
         name: 'str',
         description: 'str',
@@ -83,11 +83,11 @@ class CreateServiceRequest(PulumiAutoModelEncoder):
             self._properties = source._properties
 
     @property
-    def owner_type(self) -> 'str':
+    def owner_type(self) -> 'ServiceMemberType':
         return self._owner_type
 
     @owner_type.setter
-    def owner_type(self, owner_type: 'str'):
+    def owner_type(self, owner_type: 'ServiceMemberType'):
         if owner_type is None:
             raise ValueError("Invalid value for `owner_type`, must not be `None`")
 

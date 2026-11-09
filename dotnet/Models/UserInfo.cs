@@ -33,5 +33,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// The type of service principal the user is. Set only where service principals are listed next to people, such as an organization's members and the access granted on an entity.
+        /// </summary>
+        [JsonProperty("servicePrincipalKind")]
+        public ServicePrincipalKind? ServicePrincipalKind { get; set; }
     }
 }

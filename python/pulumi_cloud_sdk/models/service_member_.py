@@ -16,12 +16,12 @@ from . import *
 # noinspection PyShadowingBuiltins,PyShadowingNames
 class ServiceMember(PulumiAutoModelEncoder):
     """
-    :var type: str - declared
+    :var type: ServiceMemberType - declared
     :var name: str - declared
     :var avatar_url: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
-        'type': 'str',
+        'type': 'ServiceMemberType',
         'name': 'str',
         'avatar_url': 'str',
     }
@@ -36,13 +36,13 @@ class ServiceMember(PulumiAutoModelEncoder):
     FIELDS_name = 'name'
     FIELDS_avatar_url = 'avatarUrl'
 
-    _type: 'str'
+    _type: 'ServiceMemberType'
     _name: 'str'
     _avatar_url: 'str'
 
     def __init__(
         self,
-        type: 'str',
+        type: 'ServiceMemberType',
         name: 'str',
         avatar_url: 'str',
     ) -> None:
@@ -59,11 +59,11 @@ class ServiceMember(PulumiAutoModelEncoder):
             self._avatar_url = source._avatar_url
 
     @property
-    def type(self) -> 'str':
+    def type(self) -> 'ServiceMemberType':
         return self._type
 
     @type.setter
-    def type(self, type: 'str'):
+    def type(self, type: 'ServiceMemberType'):
         if type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")
 

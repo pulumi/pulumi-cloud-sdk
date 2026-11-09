@@ -19,7 +19,7 @@ public class ServiceProperty {
 
     // the type of the property
     @JsonProperty("type")
-    public String type_;
+    public ServicePropertyType type_;
 
     // the position of the property
     public long order;

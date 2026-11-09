@@ -21,5 +21,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "frontend")]
         Frontend,
+
+        /// <summary>
+        /// List the organization's service principals, other than those that act for a team.
+        /// </summary>
+        [EnumMember(Value = "service-principal")]
+        ServicePrincipal,
     }
 }

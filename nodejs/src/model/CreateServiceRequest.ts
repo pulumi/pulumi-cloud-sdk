@@ -14,11 +14,12 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 import type { AddServiceItem } from "./AddServiceItem";
+import type { ServiceMemberType } from "./ServiceMemberType";
 import type { ServiceProperty } from "./ServiceProperty";
 
 
 export class CreateServiceRequest {
-    ownerType: string;
+    ownerType: ServiceMemberType;
     ownerName: string;
     name: string;
     description: string;

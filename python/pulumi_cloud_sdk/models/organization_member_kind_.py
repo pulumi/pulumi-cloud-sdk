@@ -12,19 +12,22 @@ from .._support import AutoEnumEncoder
 class OrganizationMemberKind(AutoEnumEncoder):
     Backend = "backend"
     Frontend = "frontend"
+    ServicePrincipal = "service-principal"
 
     @staticmethod
     def keys() -> list['OrganizationMemberKind']:
         return [
             OrganizationMemberKind.Backend,
-            OrganizationMemberKind.Frontend
+            OrganizationMemberKind.Frontend,
+            OrganizationMemberKind.ServicePrincipal
         ]
 
     @staticmethod
     def values() -> list[str]:
         return [
             OrganizationMemberKind.Backend.value,
-            OrganizationMemberKind.Frontend.value
+            OrganizationMemberKind.Frontend.value,
+            OrganizationMemberKind.ServicePrincipal.value
         ]
 
     @staticmethod

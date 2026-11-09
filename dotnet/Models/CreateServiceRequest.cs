@@ -14,7 +14,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// the service owner type
         /// </summary>
         [JsonProperty("ownerType")]
-        public string OwnerType { get; set; }
+        public ServiceMemberType OwnerType { get; set; }
 
         /// <summary>
         /// the service owner name

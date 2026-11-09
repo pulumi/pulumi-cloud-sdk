@@ -25,4 +25,7 @@ public class UserInfo {
 
     // The user's email address. It is only populated on selected endpoints and is omitted from most responses. Treat it as sensitive information.
     public String email;
+
+    // The type of service principal the user is. Set only where service principals are listed next to people, such as an organization's members and the access granted on an entity.
+    public ServicePrincipalKind servicePrincipalKind;
 }

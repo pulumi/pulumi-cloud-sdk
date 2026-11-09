@@ -209,6 +209,10 @@ type OrganizationFeatures struct {
 	PermissionModeEnabled bool `json:"permissionModeEnabled,omitzero" yaml:"permissionModeEnabled,omitempty"`
 	// Whether the monthly Infrastructure Posture report is available to the organization.
 	PolicyPostureReportEnabled bool `json:"policyPostureReportEnabled,omitzero" yaml:"policyPostureReportEnabled,omitempty"`
+	// Whether user-defined service principals can be created and managed.
+	UserDefinedServicePrincipalsEnabled bool `json:"userDefinedServicePrincipalsEnabled,omitzero" yaml:"userDefinedServicePrincipalsEnabled,omitempty"`
+	// Whether access tokens can be created for user-defined service principals.
+	ServicePrincipalTokensEnabled bool `json:"servicePrincipalTokensEnabled,omitzero" yaml:"servicePrincipalTokensEnabled,omitempty"`
 	// Whether Delivery is available to the organization.
 	DeliveryEnabled bool `json:"deliveryEnabled,omitzero" yaml:"deliveryEnabled,omitempty"`
 	// Whether the Cursor Origin VCS integration is available to the organization.

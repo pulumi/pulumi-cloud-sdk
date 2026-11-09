@@ -109,6 +109,8 @@ export class OrganizationFeatures {
     staticDefaultRolesEnabled: boolean;
     permissionModeEnabled?: boolean;
     policyPostureReportEnabled?: boolean;
+    userDefinedServicePrincipalsEnabled?: boolean;
+    servicePrincipalTokensEnabled?: boolean;
     deliveryEnabled?: boolean;
     cursorOriginVCSEnabled?: boolean;
     enterpriseSelfServeEnabled?: boolean;

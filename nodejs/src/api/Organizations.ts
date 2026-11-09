@@ -127,6 +127,8 @@ import { ResponseAuditLogs } from "../model/ResponseAuditLogs";
 import { RestoreDeletedStackRequest } from "../model/RestoreDeletedStackRequest";
 import { SAMLOrganization } from "../model/SAMLOrganization";
 import { Service } from "../model/Service";
+import { ServiceItemType } from "../model/ServiceItemType";
+import { ServiceMemberType } from "../model/ServiceMemberType";
 import { SortDirection } from "../model/SortDirection";
 import { SubmitChangeRequestRequest } from "../model/SubmitChangeRequestRequest";
 import { Team } from "../model/Team";
@@ -303,7 +305,7 @@ export class Organizations {
 
     public AddServiceItems__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
     ): string {
@@ -318,7 +320,7 @@ export class Organizations {
     public AddServiceItems(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
             maxResults?: number,
@@ -376,7 +378,7 @@ export class Organizations {
 
     public AddServiceItemsV2__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
     ): string {
@@ -391,7 +393,7 @@ export class Organizations {
     public AddServiceItemsV2(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
         },
@@ -1971,7 +1973,7 @@ export class Organizations {
 
     public DeleteService__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
     ): string {
@@ -1986,7 +1988,7 @@ export class Organizations {
     public DeleteService(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
             force?: boolean,
@@ -4284,7 +4286,7 @@ export class Organizations {
 
     public GetService__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
     ): string {
@@ -4299,7 +4301,7 @@ export class Organizations {
     public GetService(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
             continuationToken?: string,
@@ -4584,7 +4586,7 @@ export class Organizations {
 
     public HeadService__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
     ): string {
@@ -4599,7 +4601,7 @@ export class Organizations {
     public HeadService(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
         },
@@ -6672,10 +6674,10 @@ export class Organizations {
 
     public RemoveServiceItem__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
-        itemType: string,
+        itemType: ServiceItemType,
         itemName: string,
     ): string {
         let url = this.basePath + "orgs/{orgName}/services/{ownerType}/{ownerName}/{serviceName}/items/{itemType}/{itemName}";
@@ -6691,10 +6693,10 @@ export class Organizations {
     public RemoveServiceItem(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
-            itemType: string,
+            itemType: ServiceItemType,
             itemName: string,
             maxResults?: number,
         },
@@ -6752,10 +6754,10 @@ export class Organizations {
 
     public RemoveServiceItemV2__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
-        itemType: string,
+        itemType: ServiceItemType,
         itemName: string,
     ): string {
         let url = this.basePath + "orgs/{orgName}/services/{ownerType}/{ownerName}/{serviceName}/v2/items/{itemType}/{itemName}";
@@ -6771,10 +6773,10 @@ export class Organizations {
     public RemoveServiceItemV2(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
-            itemType: string,
+            itemType: ServiceItemType,
             itemName: string,
         },
     ): Promise<void> {
@@ -8090,7 +8092,7 @@ export class Organizations {
 
     public UpdateService__generateUrl(
         orgName: string,
-        ownerType: string,
+        ownerType: ServiceMemberType,
         ownerName: string,
         serviceName: string,
     ): string {
@@ -8105,7 +8107,7 @@ export class Organizations {
     public UpdateService(
         params: {
             orgName: string,
-            ownerType: string,
+            ownerType: ServiceMemberType,
             ownerName: string,
             serviceName: string,
         },

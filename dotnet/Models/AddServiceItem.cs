@@ -14,7 +14,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// the type of the item to add
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public ServiceItemType Type { get; set; }
 
         /// <summary>
         /// the name (including any namespacing) of the item

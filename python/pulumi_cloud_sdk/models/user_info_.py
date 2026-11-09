@@ -20,12 +20,14 @@ class UserInfo(PulumiAutoModelEncoder):
     :var github_login: str - declared
     :var avatar_url: str - declared
     :var email: str - declared
+    :var service_principal_kind: ServicePrincipalKind - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
         'github_login': 'str',
         'avatar_url': 'str',
         'email': 'str',
+        'service_principal_kind': 'ServicePrincipalKind',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -33,17 +35,20 @@ class UserInfo(PulumiAutoModelEncoder):
         'github_login': 'githubLogin',
         'avatar_url': 'avatarUrl',
         'email': 'email',
+        'service_principal_kind': 'servicePrincipalKind',
     }
 
     FIELDS_name = 'name'
     FIELDS_github_login = 'githubLogin'
     FIELDS_avatar_url = 'avatarUrl'
     FIELDS_email = 'email'
+    FIELDS_service_principal_kind = 'servicePrincipalKind'
 
     _name: 'str'
     _github_login: 'str'
     _avatar_url: 'str'
     _email: 'str'
+    _service_principal_kind: 'ServicePrincipalKind'
 
     def __init__(
         self,
@@ -51,6 +56,7 @@ class UserInfo(PulumiAutoModelEncoder):
         github_login: 'str',
         avatar_url: 'str',
         email: 'str' = None,
+        service_principal_kind: 'ServicePrincipalKind' = None,
     ) -> None:
         super().__init__()
 
@@ -58,6 +64,7 @@ class UserInfo(PulumiAutoModelEncoder):
         self.github_login = github_login
         self.avatar_url = avatar_url
         self.email = email
+        self.service_principal_kind = service_principal_kind
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, UserInfo):
@@ -65,6 +72,7 @@ class UserInfo(PulumiAutoModelEncoder):
             self._github_login = source._github_login
             self._avatar_url = source._avatar_url
             self._email = source._email
+            self._service_principal_kind = source._service_principal_kind
 
     @property
     def name(self) -> 'str':
@@ -106,6 +114,14 @@ class UserInfo(PulumiAutoModelEncoder):
     @email.setter
     def email(self, email: 'str'):
         self._email = email
+
+    @property
+    def service_principal_kind(self) -> 'ServicePrincipalKind':
+        return self._service_principal_kind
+
+    @service_principal_kind.setter
+    def service_principal_kind(self, service_principal_kind: 'ServicePrincipalKind'):
+        self._service_principal_kind = service_principal_kind
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, UserInfo):

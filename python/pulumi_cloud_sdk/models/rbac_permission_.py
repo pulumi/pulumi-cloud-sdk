@@ -83,6 +83,7 @@ class RbacPermission(AutoEnumEncoder):
     OrgTokenRead = "org_token:read"
     OrgTokenCreate = "org_token:create"
     OrgTokenDelete = "org_token:delete"
+    ServicePrincipalCreate = "service_principal:create"
     AuthPoliciesRead = "auth_policies:read"
     AuthPoliciesUpdate = "auth_policies:update"
     OidcIssuersRead = "oidc_issuers:read"
@@ -294,6 +295,7 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.OrgTokenRead,
             RbacPermission.OrgTokenCreate,
             RbacPermission.OrgTokenDelete,
+            RbacPermission.ServicePrincipalCreate,
             RbacPermission.AuthPoliciesRead,
             RbacPermission.AuthPoliciesUpdate,
             RbacPermission.OidcIssuersRead,
@@ -506,6 +508,7 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.OrgTokenRead.value,
             RbacPermission.OrgTokenCreate.value,
             RbacPermission.OrgTokenDelete.value,
+            RbacPermission.ServicePrincipalCreate.value,
             RbacPermission.AuthPoliciesRead.value,
             RbacPermission.AuthPoliciesUpdate.value,
             RbacPermission.OidcIssuersRead.value,

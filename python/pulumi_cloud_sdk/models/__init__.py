@@ -857,9 +857,13 @@ from .secret_value_ import SecretValue
 from .sensitivity_ import Sensitivity
 from .service_ import Service
 from .service_item_ import ServiceItem
+from .service_item_type_ import ServiceItemType
 from .service_item_update_ import ServiceItemUpdate
 from .service_member_ import ServiceMember
+from .service_member_type_ import ServiceMemberType
+from .service_principal_kind_ import ServicePrincipalKind
 from .service_property_ import ServiceProperty
+from .service_property_type_ import ServicePropertyType
 from .set_insight_account_tags_request_ import SetInsightAccountTagsRequest
 from .slack_notification_destination_ import SlackNotificationDestination
 from .slack_notification_target_ import SlackNotificationTarget

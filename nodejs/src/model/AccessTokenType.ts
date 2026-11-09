@@ -18,4 +18,5 @@ export enum AccessTokenType {
     Refresh = "refresh",
     Organization = "organization",
     Team = "team",
+    ServicePrincipal = "service-principal",
 }

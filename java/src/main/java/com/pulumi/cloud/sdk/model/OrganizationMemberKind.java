@@ -11,7 +11,9 @@ public enum OrganizationMemberKind {
     // List members known to the organization's identity-provider backend.
     Backend("backend"),
     // List members registered in the Pulumi Service frontend.
-    Frontend("frontend");
+    Frontend("frontend"),
+    // List the organization's service principals, other than those that act for a team.
+    ServicePrincipal("service-principal");
 
     private final String value;
 

@@ -33,5 +33,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "team")]
         Team,
+
+        /// <summary>
+        /// A machine token that authenticates as a user-defined service principal of an organization.
+        /// </summary>
+        [EnumMember(Value = "service-principal")]
+        ServicePrincipal,
     }
 }

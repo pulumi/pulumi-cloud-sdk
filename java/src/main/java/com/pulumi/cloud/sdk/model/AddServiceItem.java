@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class AddServiceItem {
     // the type of the item to add
     @JsonProperty("type")
-    public String type_;
+    public ServiceItemType type_;
 
     // the name (including any namespacing) of the item
     public String name;

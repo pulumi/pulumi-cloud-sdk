@@ -16,11 +16,11 @@ from . import *
 # noinspection PyShadowingBuiltins,PyShadowingNames
 class AddServiceItem(PulumiAutoModelEncoder):
     """
-    :var type: str - declared
+    :var type: ServiceItemType - declared
     :var name: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
-        'type': 'str',
+        'type': 'ServiceItemType',
         'name': 'str',
     }
 
@@ -32,12 +32,12 @@ class AddServiceItem(PulumiAutoModelEncoder):
     FIELDS_type = 'type'
     FIELDS_name = 'name'
 
-    _type: 'str'
+    _type: 'ServiceItemType'
     _name: 'str'
 
     def __init__(
         self,
-        type: 'str',
+        type: 'ServiceItemType',
         name: 'str',
     ) -> None:
         super().__init__()
@@ -51,11 +51,11 @@ class AddServiceItem(PulumiAutoModelEncoder):
             self._name = source._name
 
     @property
-    def type(self) -> 'str':
+    def type(self) -> 'ServiceItemType':
         return self._type
 
     @type.setter
-    def type(self, type: 'str'):
+    def type(self, type: 'ServiceItemType'):
         if type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")
 

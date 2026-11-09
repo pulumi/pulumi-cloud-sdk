@@ -232,6 +232,9 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "org_token:delete")]
         OrgTokenDelete,
 
+        [EnumMember(Value = "service_principal:create")]
+        ServicePrincipalCreate,
+
         [EnumMember(Value = "auth_policies:read")]
         AuthPoliciesRead,
 

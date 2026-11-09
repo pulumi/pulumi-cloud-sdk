@@ -13,13 +13,14 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { ServiceItemType } from "./ServiceItemType";
 import type { ServiceItemUpdate } from "./ServiceItemUpdate";
 import type { ServiceMember } from "./ServiceMember";
 
 
 export class ServiceItem {
     organizationName: string;
-    type: string;
+    type: ServiceItemType;
     name: string;
     version?: string;
     created: Date;

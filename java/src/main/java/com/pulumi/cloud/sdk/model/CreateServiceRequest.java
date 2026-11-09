@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class CreateServiceRequest {
     // the service owner type
-    public String ownerType;
+    public ServiceMemberType ownerType;
 
     // the service owner name
     public String ownerName;

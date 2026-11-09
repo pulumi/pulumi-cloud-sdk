@@ -14,6 +14,7 @@ class AccessTokenType(AutoEnumEncoder):
     Refresh = "refresh"
     Organization = "organization"
     Team = "team"
+    ServicePrincipal = "service-principal"
 
     @staticmethod
     def keys() -> list['AccessTokenType']:
@@ -21,7 +22,8 @@ class AccessTokenType(AutoEnumEncoder):
             AccessTokenType.Personal,
             AccessTokenType.Refresh,
             AccessTokenType.Organization,
-            AccessTokenType.Team
+            AccessTokenType.Team,
+            AccessTokenType.ServicePrincipal
         ]
 
     @staticmethod
@@ -30,7 +32,8 @@ class AccessTokenType(AutoEnumEncoder):
             AccessTokenType.Personal.value,
             AccessTokenType.Refresh.value,
             AccessTokenType.Organization.value,
-            AccessTokenType.Team.value
+            AccessTokenType.Team.value,
+            AccessTokenType.ServicePrincipal.value
         ]
 
     @staticmethod

@@ -13,8 +13,11 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { ServiceItemType } from "./ServiceItemType";
+
+
 export class AddServiceItem {
-    type: string;
+    type: ServiceItemType;
     name: string;
 
     getFixupPrototypeFunction() {

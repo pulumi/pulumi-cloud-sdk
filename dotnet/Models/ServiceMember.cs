@@ -14,7 +14,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// the type of the member (e.g. team / user)
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public ServiceMemberType Type { get; set; }
 
         /// <summary>
         /// the login name of the member within Pulumi

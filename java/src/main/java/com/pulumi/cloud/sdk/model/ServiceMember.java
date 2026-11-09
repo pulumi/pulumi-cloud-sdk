@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class ServiceMember {
     // the type of the member (e.g. team / user)
     @JsonProperty("type")
-    public String type_;
+    public ServiceMemberType type_;
 
     // the login name of the member within Pulumi
     public String name;

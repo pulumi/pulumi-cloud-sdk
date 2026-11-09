@@ -13,10 +13,13 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { ServicePropertyType } from "./ServicePropertyType";
+
+
 export class ServiceProperty {
     key: string;
     value: string;
-    type: string;
+    type: ServicePropertyType;
     order: number;
 
     getFixupPrototypeFunction() {

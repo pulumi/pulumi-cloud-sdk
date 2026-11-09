@@ -174,7 +174,7 @@ func (p *CloudClient) AddOrganizationMember(
 
 type InterceptorForAddServiceItems struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
 	MaxResults   *int
@@ -185,7 +185,7 @@ type InterceptorForAddServiceItems struct {
 func (p *CloudClient) AddServiceItems(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
 	maxResults *int,
@@ -247,7 +247,7 @@ func (p *CloudClient) AddServiceItems(
 
 type InterceptorForAddServiceItemsV2 struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
 	Request      apitype.AddServiceItemsRequest
@@ -257,7 +257,7 @@ type InterceptorForAddServiceItemsV2 struct {
 func (p *CloudClient) AddServiceItemsV2(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
 	request apitype.AddServiceItemsRequest,
@@ -2174,7 +2174,7 @@ func (p *CloudClient) DeleteRole(
 
 type InterceptorForDeleteService struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
 	Force        *bool
@@ -2184,7 +2184,7 @@ type InterceptorForDeleteService struct {
 func (p *CloudClient) DeleteService(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
 	force *bool,
@@ -5231,7 +5231,7 @@ func (p *CloudClient) GetSAMLOrganization(
 
 type InterceptorForGetService struct {
 	OrgName           string
-	OwnerType         string
+	OwnerType         apitype.ServiceMemberType
 	OwnerName         string
 	ServiceName       string
 	ContinuationToken *string
@@ -5242,7 +5242,7 @@ type InterceptorForGetService struct {
 func (p *CloudClient) GetService(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
 	continuationToken *string,
@@ -5624,7 +5624,7 @@ func (p *CloudClient) GetUsageSummaryResourceHours(
 
 type InterceptorForHeadService struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
 	ExtraHeaders []http.Header
@@ -5633,7 +5633,7 @@ type InterceptorForHeadService struct {
 func (p *CloudClient) HeadService(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
 	extraHeaders ...http.Header,
@@ -8400,10 +8400,10 @@ func (p *CloudClient) RemovePolicyException(
 
 type InterceptorForRemoveServiceItem struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
-	ItemType     string
+	ItemType     apitype.ServiceItemType
 	ItemName     string
 	MaxResults   *int
 	ExtraHeaders []http.Header
@@ -8412,10 +8412,10 @@ type InterceptorForRemoveServiceItem struct {
 func (p *CloudClient) RemoveServiceItem(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
-	itemType string,
+	itemType apitype.ServiceItemType,
 	itemName string,
 	maxResults *int,
 	extraHeaders ...http.Header,
@@ -8477,10 +8477,10 @@ func (p *CloudClient) RemoveServiceItem(
 
 type InterceptorForRemoveServiceItemV2 struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
-	ItemType     string
+	ItemType     apitype.ServiceItemType
 	ItemName     string
 	ExtraHeaders []http.Header
 }
@@ -8488,10 +8488,10 @@ type InterceptorForRemoveServiceItemV2 struct {
 func (p *CloudClient) RemoveServiceItemV2(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
-	itemType string,
+	itemType apitype.ServiceItemType,
 	itemName string,
 	extraHeaders ...http.Header,
 ) error {
@@ -10039,7 +10039,7 @@ func (p *CloudClient) UpdateSAMLOrganizationAdmins(
 
 type InterceptorForUpdateService struct {
 	OrgName      string
-	OwnerType    string
+	OwnerType    apitype.ServiceMemberType
 	OwnerName    string
 	ServiceName  string
 	Request      apitype.UpdateServiceMetadataRequest
@@ -10049,7 +10049,7 @@ type InterceptorForUpdateService struct {
 func (p *CloudClient) UpdateService(
 	ctx context.Context,
 	orgName string,
-	ownerType string,
+	ownerType apitype.ServiceMemberType,
 	ownerName string,
 	serviceName string,
 	request apitype.UpdateServiceMetadataRequest,
