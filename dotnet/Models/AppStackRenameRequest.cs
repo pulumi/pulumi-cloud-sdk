@@ -11,13 +11,13 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class AppStackRenameRequest {
         /// <summary>
-        /// The new name
+        /// The new stack name. Up to 100 characters of letters, numbers, hyphens, underscores, and periods. An empty string keeps the current name.
         /// </summary>
         [JsonProperty("newName")]
         public string NewName { get; set; }
 
         /// <summary>
-        /// The new project
+        /// The new project name. Up to 100 characters of letters, numbers, hyphens, underscores, and periods. An empty string keeps the current project.
         /// </summary>
         [JsonProperty("newProject")]
         public string NewProject { get; set; }

@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class CreateCoherenceWindowSubgroupRequest {
         /// <summary>
-        /// How many stacks will take part in the subgroup. Reads of a stack that could still join the subgroup wait for it rather than fixing the stack at its current state, until this many stacks have joined.
+        /// How many stacks will take part in the subgroup. Reads of a stack that could still join the subgroup wait for it rather than fixing the stack at its current state, until this many stacks have joined. Must be at least 1.
         /// </summary>
         [JsonProperty("size")]
         public int Size { get; set; }

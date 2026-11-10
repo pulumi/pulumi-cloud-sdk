@@ -28,6 +28,9 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "neo")]
         Neo,
 
+        [EnumMember(Value = "delivery_pipelines")]
+        DeliveryPipelines,
+
         [EnumMember(Value = "")]
         Invalid,
     }

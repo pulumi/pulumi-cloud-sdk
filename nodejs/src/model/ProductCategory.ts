@@ -20,5 +20,6 @@ export enum ProductCategory {
     DiscoveredResources = "discovered_resources",
     InsightsScans = "insights_scans",
     Neo = "neo",
+    DeliveryPipelines = "delivery_pipelines",
     Invalid = "",
 }

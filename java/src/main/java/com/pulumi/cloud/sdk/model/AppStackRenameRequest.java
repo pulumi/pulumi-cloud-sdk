@@ -11,9 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class AppStackRenameRequest {
-    // The new name
+    // The new stack name. Up to 100 characters of letters, numbers, hyphens, underscores, and periods. An empty string keeps the current name.
     public String newName;
 
-    // The new project
+    // The new project name. Up to 100 characters of letters, numbers, hyphens, underscores, and periods. An empty string keeps the current project.
     public String newProject;
 }

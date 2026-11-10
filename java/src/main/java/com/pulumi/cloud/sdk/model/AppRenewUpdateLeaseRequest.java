@@ -14,6 +14,6 @@ public class AppRenewUpdateLeaseRequest {
     // The current, valid lease token. DEPRECATED as of Pulumi API version 5+. Pulumi API will expect the update token in the Authorization header instead of this property. This property will be removed when the minimum supported API version on the service is raised to 5.
     public String token;
 
-    // The duration for which to renew the lease in seconds (maximum 300).
+    // The duration for which to renew the lease in seconds. Between 0 and 300.
     public Long duration;
 }

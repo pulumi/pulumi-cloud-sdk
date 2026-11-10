@@ -16,6 +16,7 @@ class ProductCategory(AutoEnumEncoder):
     DiscoveredResources = "discovered_resources"
     InsightsScans = "insights_scans"
     Neo = "neo"
+    DeliveryPipelines = "delivery_pipelines"
     Invalid = ""
 
     @staticmethod
@@ -27,6 +28,7 @@ class ProductCategory(AutoEnumEncoder):
             ProductCategory.DiscoveredResources,
             ProductCategory.InsightsScans,
             ProductCategory.Neo,
+            ProductCategory.DeliveryPipelines,
             ProductCategory.Invalid
         ]
 
@@ -39,6 +41,7 @@ class ProductCategory(AutoEnumEncoder):
             ProductCategory.DiscoveredResources.value,
             ProductCategory.InsightsScans.value,
             ProductCategory.Neo.value,
+            ProductCategory.DeliveryPipelines.value,
             ProductCategory.Invalid.value
         ]
 

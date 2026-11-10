@@ -17,7 +17,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Token { get; set; }
 
         /// <summary>
-        /// The duration for which to renew the lease in seconds (maximum 300).
+        /// The duration for which to renew the lease in seconds. Between 0 and 300.
         /// </summary>
         [JsonProperty("duration")]
         public long Duration { get; set; }
