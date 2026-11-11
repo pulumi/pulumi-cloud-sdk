@@ -12,5 +12,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class CreateTeamAccessTokenRequest extends BaseCreateAccessTokenRequest {
     // The display name of the token. Must be between 1 and 40 characters.
+    // Constraints: minLength 1, maxLength 40
     public String name;
 }

@@ -14,7 +14,9 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 export class AppStackRenameRequest {
+    /** Constraints: maxLength 100, pattern ^[a-zA-Z0-9-_.]*$ */
     newName: string;
+    /** Constraints: maxLength 100, pattern ^[a-zA-Z0-9-_.]*$ */
     newProject: string;
 
     getFixupPrototypeFunction() {

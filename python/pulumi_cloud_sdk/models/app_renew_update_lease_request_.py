@@ -61,6 +61,7 @@ class AppRenewUpdateLeaseRequest(PulumiAutoModelEncoder):
 
         self._token = token
 
+    # Constraints: minimum 0, maximum 300
     @property
     def duration(self) -> 'int':
         return self._duration

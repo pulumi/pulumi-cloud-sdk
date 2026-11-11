@@ -12,5 +12,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class CreateCoherenceWindowSubgroupRequest {
     // How many stacks will take part in the subgroup. Reads of a stack that could still join the subgroup wait for it rather than fixing the stack at its current state, until this many stacks have joined. Must be at least 1.
+    // Constraints: minimum 1
     public int size;
 }

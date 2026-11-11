@@ -17,6 +17,7 @@ import { BaseCreateAccessTokenRequest } from "./BaseCreateAccessTokenRequest";
 
 
 export class CreateOrgAccessTokenRequest extends BaseCreateAccessTokenRequest {
+    /** Constraints: minLength 1, maxLength 40 */
     name: string;
     admin: boolean;
     roleID?: string;

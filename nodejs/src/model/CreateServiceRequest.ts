@@ -21,6 +21,7 @@ import type { ServiceProperty } from "./ServiceProperty";
 export class CreateServiceRequest {
     ownerType: ServiceMemberType;
     ownerName: string;
+    /** Constraints: minLength 1, maxLength 80 */
     name: string;
     description: string;
     items: AddServiceItem[];

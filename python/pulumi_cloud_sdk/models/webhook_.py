@@ -165,6 +165,7 @@ class Webhook(PulumiAutoModelEncoder):
     def env_name(self, env_name: 'str'):
         self._env_name = env_name
 
+    # Constraints: maxLength 32, pattern ^[a-zA-Z0-9-_.]*$
     @property
     def name(self) -> 'str':
         return self._name

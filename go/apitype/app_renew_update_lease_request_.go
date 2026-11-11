@@ -12,5 +12,6 @@ type AppRenewUpdateLeaseRequest struct {
 	// when the minimum supported API version on the service is raised to 5.
 	Token string `json:"token" yaml:"token"`
 	// The duration for which to renew the lease in seconds. Between 0 and 300.
+	// Constraints: minimum 0, maximum 300
 	Duration int `json:"duration" yaml:"duration"`
 }

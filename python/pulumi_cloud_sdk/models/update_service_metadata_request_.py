@@ -58,6 +58,7 @@ class UpdateServiceMetadataRequest(PulumiAutoModelEncoder):
             self._description = source._description
             self._properties = source._properties
 
+    # Constraints: minLength 1, maxLength 80
     @property
     def name(self) -> 'str':
         return self._name

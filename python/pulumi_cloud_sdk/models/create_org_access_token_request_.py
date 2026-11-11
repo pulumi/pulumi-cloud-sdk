@@ -67,6 +67,7 @@ class CreateOrgAccessTokenRequest(BaseCreateAccessTokenRequest):
             self._admin = source._admin
             self._role_id = source._role_id
 
+    # Constraints: minLength 1, maxLength 40
     @property
     def name(self) -> 'str':
         return self._name

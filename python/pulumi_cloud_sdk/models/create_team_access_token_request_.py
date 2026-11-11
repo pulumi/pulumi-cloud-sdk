@@ -51,6 +51,7 @@ class CreateTeamAccessTokenRequest(BaseCreateAccessTokenRequest):
         if isinstance(source, CreateTeamAccessTokenRequest):
             self._name = source._name
 
+    # Constraints: minLength 1, maxLength 40
     @property
     def name(self) -> 'str':
         return self._name

@@ -104,6 +104,7 @@ class CreateServiceRequest(PulumiAutoModelEncoder):
 
         self._owner_name = owner_name
 
+    # Constraints: minLength 1, maxLength 80
     @property
     def name(self) -> 'str':
         return self._name

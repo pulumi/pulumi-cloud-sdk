@@ -15,5 +15,6 @@ public class AppRenewUpdateLeaseRequest {
     public String token;
 
     // The duration for which to renew the lease in seconds. Between 0 and 300.
+    // Constraints: minimum 0, maximum 300
     public Long duration;
 }

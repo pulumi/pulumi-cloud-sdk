@@ -13,6 +13,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// <summary>
         /// The display name of the token. Must be between 1 and 40 characters.
         /// </summary>
+        /// <remarks>Constraints: minLength 1, maxLength 40</remarks>
         [JsonProperty("name")]
         public string Name { get; set; }
     }

@@ -37,6 +37,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// <summary>
         /// The unique identifier name for the webhook within its scope. Optional on creation; if omitted, the service generates a short random name. Always populated in responses. Up to 32 characters of letters, numbers, hyphens, underscores, and periods. On update, the name comes from the URL and this field is ignored.
         /// </summary>
+        /// <remarks>Constraints: maxLength 32, pattern ^[a-zA-Z0-9-_.]*$</remarks>
         [JsonProperty("name")]
         public string Name { get; set; }
 

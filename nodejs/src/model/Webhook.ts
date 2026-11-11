@@ -18,6 +18,7 @@ export class Webhook {
     projectName?: string;
     stackName?: string;
     envName?: string;
+    /** Constraints: maxLength 32, pattern ^[a-zA-Z0-9-_.]*$ */
     name?: string;
     displayName: string;
     payloadUrl: string;

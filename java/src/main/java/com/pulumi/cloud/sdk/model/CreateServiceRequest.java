@@ -18,6 +18,7 @@ public class CreateServiceRequest {
     public String ownerName;
 
     // The name of the service. Between 1 and 80 characters.
+    // Constraints: minLength 1, maxLength 80
     public String name;
 
     // an optional description of the service

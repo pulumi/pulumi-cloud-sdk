@@ -13,12 +13,14 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// <summary>
         /// The new stack name. Up to 100 characters of letters, numbers, hyphens, underscores, and periods. An empty string keeps the current name.
         /// </summary>
+        /// <remarks>Constraints: maxLength 100, pattern ^[a-zA-Z0-9-_.]*$</remarks>
         [JsonProperty("newName")]
         public string NewName { get; set; }
 
         /// <summary>
         /// The new project name. Up to 100 characters of letters, numbers, hyphens, underscores, and periods. An empty string keeps the current project.
         /// </summary>
+        /// <remarks>Constraints: maxLength 100, pattern ^[a-zA-Z0-9-_.]*$</remarks>
         [JsonProperty("newProject")]
         public string NewProject { get; set; }
     }

@@ -42,6 +42,7 @@ class CreateCoherenceWindowSubgroupRequest(PulumiAutoModelEncoder):
         if isinstance(source, CreateCoherenceWindowSubgroupRequest):
             self._size = source._size
 
+    # Constraints: minimum 1
     @property
     def size(self) -> 'int':
         return self._size

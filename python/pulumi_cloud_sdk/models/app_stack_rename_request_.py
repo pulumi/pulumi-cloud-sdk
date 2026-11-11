@@ -50,6 +50,7 @@ class AppStackRenameRequest(PulumiAutoModelEncoder):
             self._new_name = source._new_name
             self._new_project = source._new_project
 
+    # Constraints: maxLength 100, pattern ^[a-zA-Z0-9-_.]*$
     @property
     def new_name(self) -> 'str':
         return self._new_name
@@ -61,6 +62,7 @@ class AppStackRenameRequest(PulumiAutoModelEncoder):
 
         self._new_name = new_name
 
+    # Constraints: maxLength 100, pattern ^[a-zA-Z0-9-_.]*$
     @property
     def new_project(self) -> 'str':
         return self._new_project

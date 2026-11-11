@@ -17,6 +17,7 @@ import { BaseCreateAccessTokenRequest } from "./BaseCreateAccessTokenRequest";
 
 
 export class CreateTeamAccessTokenRequest extends BaseCreateAccessTokenRequest {
+    /** Constraints: minLength 1, maxLength 40 */
     name: string;
 
     getFixupPrototypeFunction() {

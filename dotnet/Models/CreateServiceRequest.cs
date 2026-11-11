@@ -25,6 +25,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// <summary>
         /// The name of the service. Between 1 and 80 characters.
         /// </summary>
+        /// <remarks>Constraints: minLength 1, maxLength 80</remarks>
         [JsonProperty("name")]
         public string Name { get; set; }
 

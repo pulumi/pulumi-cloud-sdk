@@ -17,6 +17,7 @@ import type { ServiceProperty } from "./ServiceProperty";
 
 
 export class UpdateServiceMetadataRequest {
+    /** Constraints: minLength 1, maxLength 80 */
     name?: string;
     description?: string;
     properties?: ServiceProperty[];

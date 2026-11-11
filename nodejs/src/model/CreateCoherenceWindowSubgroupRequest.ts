@@ -14,6 +14,7 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 export class CreateCoherenceWindowSubgroupRequest {
+    /** Constraints: minimum 1 */
     size: number;
 
     getFixupPrototypeFunction() {

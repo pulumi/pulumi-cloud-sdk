@@ -15,6 +15,7 @@
 
 export class AppRenewUpdateLeaseRequest {
     token: string;
+    /** Constraints: minimum 0, maximum 300 */
     duration: number;
 
     getFixupPrototypeFunction() {
