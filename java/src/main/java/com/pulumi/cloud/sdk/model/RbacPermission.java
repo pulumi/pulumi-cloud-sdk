@@ -48,6 +48,22 @@ public enum RbacPermission {
     StackScheduleDelete("stack_schedule:delete"),
     StackSchedulePause("stack_schedule:pause"),
     StackScheduleResume("stack_schedule:resume"),
+    // Start a run of a Delivery pipeline.
+    PipelineDispatch("pipeline:dispatch"),
+    // Cancel a run of a Delivery pipeline.
+    PipelineCancel("pipeline:cancel"),
+    // Retry a failed run of a Delivery pipeline.
+    PipelineRetry("pipeline:retry"),
+    // Deploy the current release of a Delivery pipeline stage again.
+    PipelineRedeploy("pipeline:redeploy"),
+    // Roll a Delivery pipeline stage back to an earlier release.
+    PipelineRollback("pipeline:rollback"),
+    // Deploy a ready release to a Delivery pipeline stage without waiting for its gate.
+    PipelineForcePromote("pipeline:force_promote"),
+    // Continue the manual condition of a Delivery gate, and approve or reject Delivery approvals that name no approvers.
+    PipelineApprove("pipeline:approve"),
+    // Pause and resume a Delivery pipeline stage.
+    PipelinePause("pipeline:pause"),
     OrganizationReadUsage("organization:read_usage"),
     OrganizationUpdate("organization:update"),
     OrganizationRename("organization:rename"),

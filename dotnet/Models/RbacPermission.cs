@@ -130,6 +130,54 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "stack_schedule:resume")]
         StackScheduleResume,
 
+        /// <summary>
+        /// Start a run of a Delivery pipeline.
+        /// </summary>
+        [EnumMember(Value = "pipeline:dispatch")]
+        PipelineDispatch,
+
+        /// <summary>
+        /// Cancel a run of a Delivery pipeline.
+        /// </summary>
+        [EnumMember(Value = "pipeline:cancel")]
+        PipelineCancel,
+
+        /// <summary>
+        /// Retry a failed run of a Delivery pipeline.
+        /// </summary>
+        [EnumMember(Value = "pipeline:retry")]
+        PipelineRetry,
+
+        /// <summary>
+        /// Deploy the current release of a Delivery pipeline stage again.
+        /// </summary>
+        [EnumMember(Value = "pipeline:redeploy")]
+        PipelineRedeploy,
+
+        /// <summary>
+        /// Roll a Delivery pipeline stage back to an earlier release.
+        /// </summary>
+        [EnumMember(Value = "pipeline:rollback")]
+        PipelineRollback,
+
+        /// <summary>
+        /// Deploy a ready release to a Delivery pipeline stage without waiting for its gate.
+        /// </summary>
+        [EnumMember(Value = "pipeline:force_promote")]
+        PipelineForcePromote,
+
+        /// <summary>
+        /// Continue the manual condition of a Delivery gate, and approve or reject Delivery approvals that name no approvers.
+        /// </summary>
+        [EnumMember(Value = "pipeline:approve")]
+        PipelineApprove,
+
+        /// <summary>
+        /// Pause and resume a Delivery pipeline stage.
+        /// </summary>
+        [EnumMember(Value = "pipeline:pause")]
+        PipelinePause,
+
         [EnumMember(Value = "organization:read_usage")]
         OrganizationReadUsage,
 

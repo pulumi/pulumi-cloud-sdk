@@ -19,6 +19,7 @@ export enum RbacScopeGroupName {
     StackWebhooks = "Stack webhooks",
     StackTags = "Stack tags",
     StackDeploySchedules = "Stack deployment schedules",
+    StackDeliveryPipelines = "Delivery pipelines",
     AgentPools = "Agent pools",
     Environments = "Environments",
     EnvironmentWebhooks = "Environment webhooks",

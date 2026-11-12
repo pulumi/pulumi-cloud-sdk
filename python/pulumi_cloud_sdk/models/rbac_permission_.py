@@ -50,6 +50,14 @@ class RbacPermission(AutoEnumEncoder):
     StackScheduleDelete = "stack_schedule:delete"
     StackSchedulePause = "stack_schedule:pause"
     StackScheduleResume = "stack_schedule:resume"
+    PipelineDispatch = "pipeline:dispatch"
+    PipelineCancel = "pipeline:cancel"
+    PipelineRetry = "pipeline:retry"
+    PipelineRedeploy = "pipeline:redeploy"
+    PipelineRollback = "pipeline:rollback"
+    PipelineForcePromote = "pipeline:force_promote"
+    PipelineApprove = "pipeline:approve"
+    PipelinePause = "pipeline:pause"
     OrganizationReadUsage = "organization:read_usage"
     OrganizationUpdate = "organization:update"
     OrganizationRename = "organization:rename"
@@ -262,6 +270,14 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.StackScheduleDelete,
             RbacPermission.StackSchedulePause,
             RbacPermission.StackScheduleResume,
+            RbacPermission.PipelineDispatch,
+            RbacPermission.PipelineCancel,
+            RbacPermission.PipelineRetry,
+            RbacPermission.PipelineRedeploy,
+            RbacPermission.PipelineRollback,
+            RbacPermission.PipelineForcePromote,
+            RbacPermission.PipelineApprove,
+            RbacPermission.PipelinePause,
             RbacPermission.OrganizationReadUsage,
             RbacPermission.OrganizationUpdate,
             RbacPermission.OrganizationRename,
@@ -475,6 +491,14 @@ class RbacPermission(AutoEnumEncoder):
             RbacPermission.StackScheduleDelete.value,
             RbacPermission.StackSchedulePause.value,
             RbacPermission.StackScheduleResume.value,
+            RbacPermission.PipelineDispatch.value,
+            RbacPermission.PipelineCancel.value,
+            RbacPermission.PipelineRetry.value,
+            RbacPermission.PipelineRedeploy.value,
+            RbacPermission.PipelineRollback.value,
+            RbacPermission.PipelineForcePromote.value,
+            RbacPermission.PipelineApprove.value,
+            RbacPermission.PipelinePause.value,
             RbacPermission.OrganizationReadUsage.value,
             RbacPermission.OrganizationUpdate.value,
             RbacPermission.OrganizationRename.value,

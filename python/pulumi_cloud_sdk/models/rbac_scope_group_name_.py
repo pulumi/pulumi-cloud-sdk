@@ -15,6 +15,7 @@ class RbacScopeGroupName(AutoEnumEncoder):
     StackWebhooks = "Stack webhooks"
     StackTags = "Stack tags"
     StackDeploySchedules = "Stack deployment schedules"
+    StackDeliveryPipelines = "Delivery pipelines"
     AgentPools = "Agent pools"
     Environments = "Environments"
     EnvironmentWebhooks = "Environment webhooks"
@@ -55,6 +56,7 @@ class RbacScopeGroupName(AutoEnumEncoder):
             RbacScopeGroupName.StackWebhooks,
             RbacScopeGroupName.StackTags,
             RbacScopeGroupName.StackDeploySchedules,
+            RbacScopeGroupName.StackDeliveryPipelines,
             RbacScopeGroupName.AgentPools,
             RbacScopeGroupName.Environments,
             RbacScopeGroupName.EnvironmentWebhooks,
@@ -96,6 +98,7 @@ class RbacScopeGroupName(AutoEnumEncoder):
             RbacScopeGroupName.StackWebhooks.value,
             RbacScopeGroupName.StackTags.value,
             RbacScopeGroupName.StackDeploySchedules.value,
+            RbacScopeGroupName.StackDeliveryPipelines.value,
             RbacScopeGroupName.AgentPools.value,
             RbacScopeGroupName.Environments.value,
             RbacScopeGroupName.EnvironmentWebhooks.value,

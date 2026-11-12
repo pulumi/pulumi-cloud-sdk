@@ -25,6 +25,9 @@ namespace Pulumi.Cloud.Sdk.Models {
         [EnumMember(Value = "Stack deployment schedules")]
         StackDeploySchedules,
 
+        [EnumMember(Value = "Delivery pipelines")]
+        StackDeliveryPipelines,
+
         [EnumMember(Value = "Agent pools")]
         AgentPools,
 
