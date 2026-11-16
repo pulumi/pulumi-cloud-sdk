@@ -15,5 +15,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "pagerduty_v3")]
         PagerDutyV3,
+
+        /// <summary>
+        /// Sentry V1 HMAC-SHA256 request signatures.
+        /// </summary>
+        [EnumMember(Value = "sentry_v1")]
+        SentryHmacSha256,
     }
 }

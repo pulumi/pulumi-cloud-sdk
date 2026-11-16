@@ -11,17 +11,20 @@ from .._support import AutoEnumEncoder
 
 class AgentWebhookSignatureScheme(AutoEnumEncoder):
     PagerDutyV3 = "pagerduty_v3"
+    SentryHmacSha256 = "sentry_v1"
 
     @staticmethod
     def keys() -> list['AgentWebhookSignatureScheme']:
         return [
-            AgentWebhookSignatureScheme.PagerDutyV3
+            AgentWebhookSignatureScheme.PagerDutyV3,
+            AgentWebhookSignatureScheme.SentryHmacSha256
         ]
 
     @staticmethod
     def values() -> list[str]:
         return [
-            AgentWebhookSignatureScheme.PagerDutyV3.value
+            AgentWebhookSignatureScheme.PagerDutyV3.value,
+            AgentWebhookSignatureScheme.SentryHmacSha256.value
         ]
 
     @staticmethod

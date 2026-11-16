@@ -17,7 +17,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string RoleArn { get; set; }
 
         /// <summary>
-        /// ARN of the KMS key to use for encrypting/decrypting secrets.
+        /// Key ARN of the KMS key to use for encrypting/decrypting secrets. Alias ARNs are not accepted.
         /// </summary>
         [JsonProperty("keyArn")]
         public string KeyArn { get; set; }

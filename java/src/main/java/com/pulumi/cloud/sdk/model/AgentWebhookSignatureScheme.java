@@ -9,7 +9,9 @@ import com.fasterxml.jackson.annotation.*;
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum AgentWebhookSignatureScheme {
     // PagerDuty V3 HMAC-SHA256 request signatures.
-    PagerDutyV3("pagerduty_v3");
+    PagerDutyV3("pagerduty_v3"),
+    // Sentry V1 HMAC-SHA256 request signatures.
+    SentryHmacSha256("sentry_v1");
 
     private final String value;
 

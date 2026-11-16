@@ -14,6 +14,6 @@ public class AwsKmsConfig {
     // ARN of the IAM role to assume for KMS operations.
     public String roleArn;
 
-    // ARN of the KMS key to use for encrypting/decrypting secrets.
+    // Key ARN of the KMS key to use for encrypting/decrypting secrets. Alias ARNs are not accepted.
     public String keyArn;
 }

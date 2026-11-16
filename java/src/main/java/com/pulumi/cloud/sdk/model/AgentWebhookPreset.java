@@ -11,7 +11,13 @@ public enum AgentWebhookPreset {
     // A generic webhook authenticated with Pulumi's generated secret header.
     Generic("generic"),
     // A PagerDuty V3 webhook with optional signature verification.
-    PagerDuty("pagerduty");
+    PagerDuty("pagerduty"),
+    // A Datadog monitor webhook authenticated with Pulumi's generated secret header.
+    Datadog("datadog"),
+    // A Honeycomb trigger webhook authenticated with Pulumi's generated secret header.
+    Honeycomb("honeycomb"),
+    // A Sentry integration webhook with optional signature verification.
+    Sentry("sentry");
 
     private final String value;
 

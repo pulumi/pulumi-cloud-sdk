@@ -21,5 +21,23 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "pagerduty")]
         PagerDuty,
+
+        /// <summary>
+        /// A Datadog monitor webhook authenticated with Pulumi's generated secret header.
+        /// </summary>
+        [EnumMember(Value = "datadog")]
+        Datadog,
+
+        /// <summary>
+        /// A Honeycomb trigger webhook authenticated with Pulumi's generated secret header.
+        /// </summary>
+        [EnumMember(Value = "honeycomb")]
+        Honeycomb,
+
+        /// <summary>
+        /// A Sentry integration webhook with optional signature verification.
+        /// </summary>
+        [EnumMember(Value = "sentry")]
+        Sentry,
     }
 }

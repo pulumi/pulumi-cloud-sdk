@@ -18,9 +18,9 @@ public class CreateAgentAutomationWebhookTrigger extends CreateAgentAutomationTr
     // Whether Pulumi must verify the webhook signature before accepting an event. Defaults to true for signed webhook presets. When false, payloads are accepted without signature verification.
     public Boolean verifyWebhookSignature;
 
-    // The signature scheme used to authenticate webhook requests. PagerDuty presets default to pagerduty_v3 when omitted.
+    // The signature scheme used to authenticate webhook requests. PagerDuty presets default to pagerduty_v3 and Sentry presets default to sentry_v1 when omitted.
     public AgentWebhookSignatureScheme webhookSignatureScheme;
 
-    // The verification credential for the selected webhook signature scheme. For PagerDuty V3 this is the shared signing secret generated after creating the subscription. It may be omitted while obtaining the Pulumi webhook URL. When updating, omit it to retain the current credential or provide a new value to rotate it.
+    // The verification credential for the selected webhook signature scheme. For PagerDuty V3 this is the shared signing secret generated after creating the subscription. For Sentry this is the client secret of the integration. It may be omitted while obtaining the Pulumi webhook URL. When updating, omit it to retain the current credential or provide a new value to rotate it.
     public String webhookSignatureCredential;
 }

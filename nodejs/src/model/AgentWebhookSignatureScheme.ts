@@ -15,4 +15,5 @@
 
 export enum AgentWebhookSignatureScheme {
     PagerDutyV3 = "pagerduty_v3",
+    SentryHmacSha256 = "sentry_v1",
 }

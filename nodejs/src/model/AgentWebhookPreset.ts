@@ -16,4 +16,7 @@
 export enum AgentWebhookPreset {
     Generic = "generic",
     PagerDuty = "pagerduty",
+    Datadog = "datadog",
+    Honeycomb = "honeycomb",
+    Sentry = "sentry",
 }

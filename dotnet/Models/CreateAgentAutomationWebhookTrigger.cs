@@ -24,13 +24,13 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool? VerifyWebhookSignature { get; set; }
 
         /// <summary>
-        /// The signature scheme used to authenticate webhook requests. PagerDuty presets default to pagerduty_v3 when omitted.
+        /// The signature scheme used to authenticate webhook requests. PagerDuty presets default to pagerduty_v3 and Sentry presets default to sentry_v1 when omitted.
         /// </summary>
         [JsonProperty("webhookSignatureScheme")]
         public AgentWebhookSignatureScheme WebhookSignatureScheme { get; set; }
 
         /// <summary>
-        /// The verification credential for the selected webhook signature scheme. For PagerDuty V3 this is the shared signing secret generated after creating the subscription. It may be omitted while obtaining the Pulumi webhook URL. When updating, omit it to retain the current credential or provide a new value to rotate it.
+        /// The verification credential for the selected webhook signature scheme. For PagerDuty V3 this is the shared signing secret generated after creating the subscription. For Sentry this is the client secret of the integration. It may be omitted while obtaining the Pulumi webhook URL. When updating, omit it to retain the current credential or provide a new value to rotate it.
         /// </summary>
         [JsonProperty("webhookSignatureCredential")]
         public string WebhookSignatureCredential { get; set; }

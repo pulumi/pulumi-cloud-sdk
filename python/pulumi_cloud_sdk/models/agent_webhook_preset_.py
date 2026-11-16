@@ -12,19 +12,28 @@ from .._support import AutoEnumEncoder
 class AgentWebhookPreset(AutoEnumEncoder):
     Generic = "generic"
     PagerDuty = "pagerduty"
+    Datadog = "datadog"
+    Honeycomb = "honeycomb"
+    Sentry = "sentry"
 
     @staticmethod
     def keys() -> list['AgentWebhookPreset']:
         return [
             AgentWebhookPreset.Generic,
-            AgentWebhookPreset.PagerDuty
+            AgentWebhookPreset.PagerDuty,
+            AgentWebhookPreset.Datadog,
+            AgentWebhookPreset.Honeycomb,
+            AgentWebhookPreset.Sentry
         ]
 
     @staticmethod
     def values() -> list[str]:
         return [
             AgentWebhookPreset.Generic.value,
-            AgentWebhookPreset.PagerDuty.value
+            AgentWebhookPreset.PagerDuty.value,
+            AgentWebhookPreset.Datadog.value,
+            AgentWebhookPreset.Honeycomb.value,
+            AgentWebhookPreset.Sentry.value
         ]
 
     @staticmethod
