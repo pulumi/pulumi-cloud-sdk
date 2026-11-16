@@ -97,6 +97,7 @@ export class OrganizationFeatures {
     unlinkedGitHubAppRecoveryEnabled?: boolean;
     accessTokenExpiryPolicyEnabled?: boolean;
     neoByokEnabled: boolean;
+    agentsByomEnabled?: boolean;
     neoAgentTaskRbacEnforcementEnabled?: boolean;
     linkExpressCheckoutEnabled?: boolean;
     multiChangeRequestsEnabled?: boolean;

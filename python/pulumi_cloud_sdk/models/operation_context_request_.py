@@ -22,6 +22,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
     :var environment_variables: dict[str, SecretValue] - declared
     :var options: OperationContextOptionsRequest - declared
     :var role: DeploymentRoleRequest - declared
+    :var service_principal: DeploymentServicePrincipalRequest - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'oidc': 'OperationContextOIDCConfigurationRequest',
@@ -30,6 +31,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
         'environment_variables': 'dict[str, SecretValue]',
         'options': 'OperationContextOptionsRequest',
         'role': 'DeploymentRoleRequest',
+        'service_principal': 'DeploymentServicePrincipalRequest',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -39,6 +41,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
         'environment_variables': 'environmentVariables',
         'options': 'options',
         'role': 'role',
+        'service_principal': 'servicePrincipal',
     }
 
     FIELDS_oidc = 'oidc'
@@ -47,6 +50,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
     FIELDS_environment_variables = 'environmentVariables'
     FIELDS_options = 'options'
     FIELDS_role = 'role'
+    FIELDS_service_principal = 'servicePrincipal'
 
     _oidc: 'OperationContextOIDCConfigurationRequest'
     _pre_run_commands: 'list[str]'
@@ -54,6 +58,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
     _environment_variables: 'dict[str, SecretValue]'
     _options: 'OperationContextOptionsRequest'
     _role: 'DeploymentRoleRequest'
+    _service_principal: 'DeploymentServicePrincipalRequest'
 
     def __init__(
         self,
@@ -63,6 +68,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
         environment_variables: 'dict[str, SecretValue]' = None,
         options: 'OperationContextOptionsRequest' = None,
         role: 'DeploymentRoleRequest' = None,
+        service_principal: 'DeploymentServicePrincipalRequest' = None,
     ) -> None:
         super().__init__()
 
@@ -72,6 +78,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
         self.environment_variables = environment_variables
         self.options = options
         self.role = role
+        self.service_principal = service_principal
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, OperationContextRequest):
@@ -81,6 +88,7 @@ class OperationContextRequest(PulumiAutoModelEncoder):
             self._environment_variables = source._environment_variables
             self._options = source._options
             self._role = source._role
+            self._service_principal = source._service_principal
 
     @property
     def oidc(self) -> 'OperationContextOIDCConfigurationRequest':
@@ -262,6 +270,41 @@ class OperationContextRequest(PulumiAutoModelEncoder):
             return models.DeploymentRoleRequest._new_empty()
 
         return self._role
+
+    @property
+    def service_principal(self) -> 'DeploymentServicePrincipalRequest':
+        return self._service_principal
+
+    @service_principal.setter
+    def service_principal(self, service_principal: 'DeploymentServicePrincipalRequest'):
+        self._service_principal = service_principal
+
+    @property
+    def service_principal__autoinit(self) -> 'DeploymentServicePrincipalRequest':
+        """Return ``service_principal``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._service_principal``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``service_principal__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._service_principal is None:
+            self._service_principal = self.service_principal__safederef
+
+        return self._service_principal
+
+    @property
+    def service_principal__safederef(self) -> 'DeploymentServicePrincipalRequest':
+        """Return ``service_principal``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``service_principal`` stays unset and each
+        call returns a new default. Use ``service_principal__autoinit`` to persist the default on
+        first access.
+        """
+        if self._service_principal is None:
+            from .. import models
+            return models.DeploymentServicePrincipalRequest._new_empty()
+
+        return self._service_principal
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, OperationContextRequest):

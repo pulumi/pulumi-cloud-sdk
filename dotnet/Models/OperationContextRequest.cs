@@ -45,5 +45,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("role")]
         public DeploymentRoleRequest Role { get; set; }
+
+        /// <summary>
+        /// The service principal the operation runs as. Mutually exclusive with role. Only deployment settings can select one; a deployment request that sets it is rejected.
+        /// </summary>
+        [JsonProperty("servicePrincipal")]
+        public DeploymentServicePrincipalRequest ServicePrincipal { get; set; }
     }
 }

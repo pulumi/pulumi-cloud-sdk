@@ -177,6 +177,8 @@ type OrganizationFeatures struct {
 	AccessTokenExpiryPolicyEnabled bool `json:"accessTokenExpiryPolicyEnabled,omitzero" yaml:"accessTokenExpiryPolicyEnabled,omitempty"`
 	// Whether Neo BYOK (bring-your-own-key) model provider configuration is enabled.
 	NeoByokEnabled bool `json:"neoByokEnabled" yaml:"neoByokEnabled"`
+	// Whether Neo can run on OpenAI and other Chat Completions model providers.
+	AgentsByomEnabled bool `json:"agentsByomEnabled,omitzero" yaml:"agentsByomEnabled,omitempty"`
 	// Deprecated. Always true.
 	NeoAgentTaskRBACEnforcementEnabled bool `json:"neoAgentTaskRbacEnforcementEnabled,omitzero" yaml:"neoAgentTaskRbacEnforcementEnabled,omitempty"`
 	// Whether one-click Link express checkout is enabled for adding a payment method.

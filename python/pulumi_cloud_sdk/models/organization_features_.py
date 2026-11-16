@@ -99,6 +99,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var unlinked_git_hub_app_recovery_enabled: bool - declared
     :var access_token_expiry_policy_enabled: bool - declared
     :var neo_byok_enabled: bool - declared
+    :var agents_byom_enabled: bool - declared
     :var neo_agent_task_rbac_enforcement_enabled: bool - declared
     :var link_express_checkout_enabled: bool - declared
     :var multi_change_requests_enabled: bool - declared
@@ -201,6 +202,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'unlinked_git_hub_app_recovery_enabled': 'bool',
         'access_token_expiry_policy_enabled': 'bool',
         'neo_byok_enabled': 'bool',
+        'agents_byom_enabled': 'bool',
         'neo_agent_task_rbac_enforcement_enabled': 'bool',
         'link_express_checkout_enabled': 'bool',
         'multi_change_requests_enabled': 'bool',
@@ -304,6 +306,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'unlinked_git_hub_app_recovery_enabled': 'unlinkedGitHubAppRecoveryEnabled',
         'access_token_expiry_policy_enabled': 'accessTokenExpiryPolicyEnabled',
         'neo_byok_enabled': 'neoByokEnabled',
+        'agents_byom_enabled': 'agentsByomEnabled',
         'neo_agent_task_rbac_enforcement_enabled': 'neoAgentTaskRbacEnforcementEnabled',
         'link_express_checkout_enabled': 'linkExpressCheckoutEnabled',
         'multi_change_requests_enabled': 'multiChangeRequestsEnabled',
@@ -406,6 +409,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_unlinked_git_hub_app_recovery_enabled = 'unlinkedGitHubAppRecoveryEnabled'
     FIELDS_access_token_expiry_policy_enabled = 'accessTokenExpiryPolicyEnabled'
     FIELDS_neo_byok_enabled = 'neoByokEnabled'
+    FIELDS_agents_byom_enabled = 'agentsByomEnabled'
     FIELDS_neo_agent_task_rbac_enforcement_enabled = 'neoAgentTaskRbacEnforcementEnabled'
     FIELDS_link_express_checkout_enabled = 'linkExpressCheckoutEnabled'
     FIELDS_multi_change_requests_enabled = 'multiChangeRequestsEnabled'
@@ -507,6 +511,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _unlinked_git_hub_app_recovery_enabled: 'bool'
     _access_token_expiry_policy_enabled: 'bool'
     _neo_byok_enabled: 'bool'
+    _agents_byom_enabled: 'bool'
     _neo_agent_task_rbac_enforcement_enabled: 'bool'
     _link_express_checkout_enabled: 'bool'
     _multi_change_requests_enabled: 'bool'
@@ -616,6 +621,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         neo_usage_limits_enabled: 'bool' = False,
         unlinked_git_hub_app_recovery_enabled: 'bool' = False,
         access_token_expiry_policy_enabled: 'bool' = False,
+        agents_byom_enabled: 'bool' = False,
         neo_agent_task_rbac_enforcement_enabled: 'bool' = False,
         link_express_checkout_enabled: 'bool' = False,
         multi_change_requests_enabled: 'bool' = False,
@@ -713,6 +719,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.unlinked_git_hub_app_recovery_enabled = unlinked_git_hub_app_recovery_enabled
         self.access_token_expiry_policy_enabled = access_token_expiry_policy_enabled
         self.neo_byok_enabled = neo_byok_enabled
+        self.agents_byom_enabled = agents_byom_enabled
         self.neo_agent_task_rbac_enforcement_enabled = neo_agent_task_rbac_enforcement_enabled
         self.link_express_checkout_enabled = link_express_checkout_enabled
         self.multi_change_requests_enabled = multi_change_requests_enabled
@@ -816,6 +823,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._unlinked_git_hub_app_recovery_enabled = source._unlinked_git_hub_app_recovery_enabled
             self._access_token_expiry_policy_enabled = source._access_token_expiry_policy_enabled
             self._neo_byok_enabled = source._neo_byok_enabled
+            self._agents_byom_enabled = source._agents_byom_enabled
             self._neo_agent_task_rbac_enforcement_enabled = source._neo_agent_task_rbac_enforcement_enabled
             self._link_express_checkout_enabled = source._link_express_checkout_enabled
             self._multi_change_requests_enabled = source._multi_change_requests_enabled
@@ -1671,6 +1679,14 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `neo_byok_enabled`, must not be `None`")
 
         self._neo_byok_enabled = neo_byok_enabled
+
+    @property
+    def agents_byom_enabled(self) -> 'bool':
+        return self._agents_byom_enabled
+
+    @agents_byom_enabled.setter
+    def agents_byom_enabled(self, agents_byom_enabled: 'bool'):
+        self._agents_byom_enabled = agents_byom_enabled
 
     @property
     def neo_agent_task_rbac_enforcement_enabled(self) -> 'bool':

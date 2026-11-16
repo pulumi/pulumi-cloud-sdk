@@ -260,6 +260,9 @@ public class OrganizationFeatures {
     // Whether Neo BYOK (bring-your-own-key) model provider configuration is enabled.
     public boolean neoByokEnabled;
 
+    // Whether Neo can run on OpenAI and other Chat Completions model providers.
+    public boolean agentsByomEnabled;
+
     // Deprecated. Always true.
     public boolean neoAgentTaskRbacEnforcementEnabled;
 

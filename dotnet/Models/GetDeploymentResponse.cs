@@ -75,5 +75,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("pulumiOperation")]
         public PulumiOperation PulumiOperation { get; set; }
+
+        /// <summary>
+        /// What the deployment executes as, recorded when it was queued. Omitted for deployments queued before this was recorded, or by organizations that do not select what their deployments run as.
+        /// </summary>
+        [JsonProperty("runsAs")]
+        public DeploymentRunsAs RunsAs { get; set; }
     }
 }

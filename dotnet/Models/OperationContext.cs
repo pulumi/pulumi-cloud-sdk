@@ -45,5 +45,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("role")]
         public DeploymentRole Role { get; set; }
+
+        /// <summary>
+        /// The service principal the operation runs as: a user-defined service principal, or a team whose service principal runs with the team's roles. Mutually exclusive with role.
+        /// </summary>
+        [JsonProperty("servicePrincipal")]
+        public AssignmentPrincipal ServicePrincipal { get; set; }
     }
 }

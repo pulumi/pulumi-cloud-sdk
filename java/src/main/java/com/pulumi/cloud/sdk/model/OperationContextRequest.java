@@ -28,4 +28,7 @@ public class OperationContextRequest {
 
     // The deployment role to assume for the operation.
     public DeploymentRoleRequest role;
+
+    // The service principal the operation runs as. Mutually exclusive with role. Only deployment settings can select one; a deployment request that sets it is rejected.
+    public DeploymentServicePrincipalRequest servicePrincipal;
 }

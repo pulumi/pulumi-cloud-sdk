@@ -509,6 +509,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool NeoByokEnabled { get; set; }
 
         /// <summary>
+        /// Whether Neo can run on OpenAI and other Chat Completions model providers.
+        /// </summary>
+        [JsonProperty("agentsByomEnabled")]
+        public bool AgentsByomEnabled { get; set; }
+
+        /// <summary>
         /// Deprecated. Always true.
         /// </summary>
         [JsonProperty("neoAgentTaskRbacEnforcementEnabled")]

@@ -15,6 +15,7 @@
 
 import type { DeploymentConfiguration } from "./DeploymentConfiguration";
 import type { DeploymentJob } from "./DeploymentJob";
+import type { DeploymentRunsAs } from "./DeploymentRunsAs";
 import type { JobStatus } from "./JobStatus";
 import type { PulumiOperation } from "./PulumiOperation";
 import type { UserInfo } from "./UserInfo";
@@ -32,6 +33,7 @@ export class GetDeploymentResponse {
     configuration?: DeploymentConfiguration;
     initiator?: string;
     pulumiOperation?: PulumiOperation;
+    runsAs?: DeploymentRunsAs;
 
     getFixupPrototypeFunction() {
         return GetDeploymentResponse.fixupPrototype;
@@ -100,6 +102,11 @@ export class GetDeploymentResponse {
             // Lazy import - only evaluated when called
             const { DeploymentConfiguration } = require("./DeploymentConfiguration");
             DeploymentConfiguration.fixupPrototype(this.configuration);
+        }
+        if (this.runsAs) {
+            // Lazy import - only evaluated when called
+            const { DeploymentRunsAs } = require("./DeploymentRunsAs");
+            DeploymentRunsAs.fixupPrototype(this.runsAs);
         }
     }
 }

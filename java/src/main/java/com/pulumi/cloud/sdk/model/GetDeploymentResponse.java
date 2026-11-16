@@ -46,4 +46,7 @@ public class GetDeploymentResponse {
 
     // PulumiOperation is the operation that was performed. Omitted for historical deployments that predate this field.
     public PulumiOperation pulumiOperation;
+
+    // What the deployment executes as, recorded when it was queued. Omitted for deployments queued before this was recorded, or by organizations that do not select what their deployments run as.
+    public DeploymentRunsAs runsAs;
 }

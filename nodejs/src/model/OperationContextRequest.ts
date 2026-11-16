@@ -14,6 +14,7 @@
 /* eslint-disable unused-imports/no-unused-imports */
 
 import type { DeploymentRoleRequest } from "./DeploymentRoleRequest";
+import type { DeploymentServicePrincipalRequest } from "./DeploymentServicePrincipalRequest";
 import type { OperationContextOIDCConfigurationRequest } from "./OperationContextOIDCConfigurationRequest";
 import type { OperationContextOptionsRequest } from "./OperationContextOptionsRequest";
 import type { PulumiOperation } from "./PulumiOperation";
@@ -27,6 +28,7 @@ export class OperationContextRequest {
     environmentVariables?: { [key: string]: SecretValue };
     options?: OperationContextOptionsRequest;
     role?: DeploymentRoleRequest;
+    servicePrincipal?: DeploymentServicePrincipalRequest;
 
     getFixupPrototypeFunction() {
         return OperationContextRequest.fixupPrototype;
@@ -89,6 +91,11 @@ export class OperationContextRequest {
             // Lazy import - only evaluated when called
             const { DeploymentRoleRequest } = require("./DeploymentRoleRequest");
             DeploymentRoleRequest.fixupPrototype(this.role);
+        }
+        if (this.servicePrincipal) {
+            // Lazy import - only evaluated when called
+            const { DeploymentServicePrincipalRequest } = require("./DeploymentServicePrincipalRequest");
+            DeploymentServicePrincipalRequest.fixupPrototype(this.servicePrincipal);
         }
     }
 }

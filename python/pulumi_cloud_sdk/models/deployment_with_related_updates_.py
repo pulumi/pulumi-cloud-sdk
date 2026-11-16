@@ -28,6 +28,7 @@ class DeploymentWithRelatedUpdates(GetDeploymentResponse):
     :var configuration: DeploymentConfiguration - inherited
     :var initiator: str - inherited
     :var pulumi_operation: PulumiOperation - inherited
+    :var runs_as: DeploymentRunsAs - inherited
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -41,6 +42,7 @@ class DeploymentWithRelatedUpdates(GetDeploymentResponse):
         'configuration': 'DeploymentConfiguration',
         'initiator': 'str',
         'pulumi_operation': 'PulumiOperation',
+        'runs_as': 'DeploymentRunsAs',
         'updates': 'list[UpdateInfo]',
     }
 
@@ -56,6 +58,7 @@ class DeploymentWithRelatedUpdates(GetDeploymentResponse):
         'configuration': 'configuration',
         'initiator': 'initiator',
         'pulumi_operation': 'pulumiOperation',
+        'runs_as': 'runsAs',
         'updates': 'updates',
     }
 
@@ -77,8 +80,9 @@ class DeploymentWithRelatedUpdates(GetDeploymentResponse):
         configuration: 'DeploymentConfiguration' = None,
         initiator: 'str' = None,
         pulumi_operation: 'PulumiOperation' = None,
+        runs_as: 'DeploymentRunsAs' = None,
     ) -> None:
-        super().__init__(id=id, created=created, modified=modified, status=status, version=version, requested_by=requested_by, jobs=jobs, latest_version=latest_version, configuration=configuration, initiator=initiator, pulumi_operation=pulumi_operation)
+        super().__init__(id=id, created=created, modified=modified, status=status, version=version, requested_by=requested_by, jobs=jobs, latest_version=latest_version, configuration=configuration, initiator=initiator, pulumi_operation=pulumi_operation, runs_as=runs_as)
 
         self.updates = updates
 

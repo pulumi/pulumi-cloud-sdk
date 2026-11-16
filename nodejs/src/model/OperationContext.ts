@@ -13,6 +13,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { AssignmentPrincipal } from "./AssignmentPrincipal";
 import type { DeploymentRole } from "./DeploymentRole";
 import type { OperationContextOIDCConfiguration } from "./OperationContextOIDCConfiguration";
 import type { OperationContextOptions } from "./OperationContextOptions";
@@ -27,6 +28,7 @@ export class OperationContext {
     environmentVariables?: { [key: string]: SecretValue };
     options?: OperationContextOptions;
     role?: DeploymentRole;
+    servicePrincipal?: AssignmentPrincipal;
 
     getFixupPrototypeFunction() {
         return OperationContext.fixupPrototype;
@@ -89,6 +91,11 @@ export class OperationContext {
             // Lazy import - only evaluated when called
             const { DeploymentRole } = require("./DeploymentRole");
             DeploymentRole.fixupPrototype(this.role);
+        }
+        if (this.servicePrincipal) {
+            // Lazy import - only evaluated when called
+            const { AssignmentPrincipal } = require("./AssignmentPrincipal");
+            AssignmentPrincipal.fixupPrototype(this.servicePrincipal);
         }
     }
 }

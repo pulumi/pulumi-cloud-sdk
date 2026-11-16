@@ -27,6 +27,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
     :var configuration: DeploymentConfiguration - declared
     :var initiator: str - declared
     :var pulumi_operation: PulumiOperation - declared
+    :var runs_as: DeploymentRunsAs - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -40,6 +41,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
         'configuration': 'DeploymentConfiguration',
         'initiator': 'str',
         'pulumi_operation': 'PulumiOperation',
+        'runs_as': 'DeploymentRunsAs',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -54,6 +56,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
         'configuration': 'configuration',
         'initiator': 'initiator',
         'pulumi_operation': 'pulumiOperation',
+        'runs_as': 'runsAs',
     }
 
     FIELDS_id = 'id'
@@ -67,6 +70,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
     FIELDS_configuration = 'configuration'
     FIELDS_initiator = 'initiator'
     FIELDS_pulumi_operation = 'pulumiOperation'
+    FIELDS_runs_as = 'runsAs'
 
     _id: 'str'
     _created: 'str'
@@ -79,6 +83,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
     _configuration: 'DeploymentConfiguration'
     _initiator: 'str'
     _pulumi_operation: 'PulumiOperation'
+    _runs_as: 'DeploymentRunsAs'
 
     def __init__(
         self,
@@ -93,6 +98,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
         configuration: 'DeploymentConfiguration' = None,
         initiator: 'str' = None,
         pulumi_operation: 'PulumiOperation' = None,
+        runs_as: 'DeploymentRunsAs' = None,
     ) -> None:
         super().__init__()
 
@@ -107,6 +113,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
         self.configuration = configuration
         self.initiator = initiator
         self.pulumi_operation = pulumi_operation
+        self.runs_as = runs_as
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, GetDeploymentResponse):
@@ -121,6 +128,7 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
             self._configuration = source._configuration
             self._initiator = source._initiator
             self._pulumi_operation = source._pulumi_operation
+            self._runs_as = source._runs_as
 
     @property
     def id(self) -> 'str':
@@ -310,6 +318,41 @@ class GetDeploymentResponse(PulumiAutoModelEncoder):
     @pulumi_operation.setter
     def pulumi_operation(self, pulumi_operation: 'PulumiOperation'):
         self._pulumi_operation = pulumi_operation
+
+    @property
+    def runs_as(self) -> 'DeploymentRunsAs':
+        return self._runs_as
+
+    @runs_as.setter
+    def runs_as(self, runs_as: 'DeploymentRunsAs'):
+        self._runs_as = runs_as
+
+    @property
+    def runs_as__autoinit(self) -> 'DeploymentRunsAs':
+        """Return ``runs_as``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._runs_as``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``runs_as__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._runs_as is None:
+            self._runs_as = self.runs_as__safederef
+
+        return self._runs_as
+
+    @property
+    def runs_as__safederef(self) -> 'DeploymentRunsAs':
+        """Return ``runs_as``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``runs_as`` stays unset and each
+        call returns a new default. Use ``runs_as__autoinit`` to persist the default on
+        first access.
+        """
+        if self._runs_as is None:
+            from .. import models
+            return models.DeploymentRunsAs._new_empty()
+
+        return self._runs_as
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, GetDeploymentResponse):

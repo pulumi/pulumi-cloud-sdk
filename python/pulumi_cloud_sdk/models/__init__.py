@@ -384,6 +384,9 @@ from .deployment_logs_step_ import DeploymentLogsStep
 from .deployment_nested_update_ import DeploymentNestedUpdate
 from .deployment_role_ import DeploymentRole
 from .deployment_role_request_ import DeploymentRoleRequest
+from .deployment_runs_as_ import DeploymentRunsAs
+from .deployment_runs_as_kind_ import DeploymentRunsAsKind
+from .deployment_service_principal_request_ import DeploymentServicePrincipalRequest
 from .deployment_settings_ import DeploymentSettings
 from .deployment_settings_git_hub_ import DeploymentSettingsGitHub
 from .deployment_settings_git_hub_request_ import DeploymentSettingsGitHubRequest

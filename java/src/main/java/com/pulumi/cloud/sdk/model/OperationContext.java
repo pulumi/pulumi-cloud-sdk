@@ -28,4 +28,7 @@ public class OperationContext {
 
     // Role defines the deployment role to assume for the operation.
     public DeploymentRole role;
+
+    // The service principal the operation runs as: a user-defined service principal, or a team whose service principal runs with the team's roles. Mutually exclusive with role.
+    public AssignmentPrincipal servicePrincipal;
 }
