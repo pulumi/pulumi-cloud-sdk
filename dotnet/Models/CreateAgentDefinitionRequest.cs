@@ -63,5 +63,17 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("approvalMode")]
         public NeoApprovalMode ApprovalMode { get; set; }
+
+        /// <summary>
+        /// The model provider the agent's tasks run on: a provider name, or 'pulumi' for Pulumi's built-in models. On creation, omitted, null, or empty uses the organization's default provider; on update, omitted or null keeps the stored provider and empty returns to that default.
+        /// </summary>
+        [JsonProperty("modelProvider")]
+        public string ModelProvider { get; set; }
+
+        /// <summary>
+        /// Effort the agent's models reason or think at: 'low', 'medium', or 'high', for this agent only. On an 'openai-responses' provider it overrides the provider's reasoning effort; on an 'anthropic-messages' provider it sets the thinking effort of models that support adaptive thinking. With no provider it applies to whichever of these the organization's default is. Refused for 'pulumi' and a named 'openai-chat' provider, and ignored on a run whose provider cannot reason. On creation, omitted, null, or empty uses the provider's; on update, omitted or null keeps the stored effort and empty returns to the provider's.
+        /// </summary>
+        [JsonProperty("reasoningEffort")]
+        public string ReasoningEffort { get; set; }
     }
 }

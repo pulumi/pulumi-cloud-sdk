@@ -57,5 +57,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("statsV1")]
         public ConsumptionUsageStatsV1 StatsV1 { get; set; }
+
+        /// <summary>
+        /// Periods breaks the consumption down into the periods its price applies to on its own, oldest first, the last being the current one; totalConsumed is their sum. Set for Delivery pipelines, which a sales-led contract counts per month of the contract, each month with its own free pipeline.
+        /// </summary>
+        [JsonProperty("periods")]
+        public System.Collections.Generic.List<ConsumptionUsagePeriod> Periods { get; set; }
     }
 }

@@ -25,6 +25,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
     :var purpose: str - declared
     :var avatar: str - declared
     :var approval_mode: NeoApprovalMode - declared
+    :var model_provider: str - declared
+    :var reasoning_effort: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
@@ -36,6 +38,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
         'purpose': 'str',
         'avatar': 'str',
         'approval_mode': 'NeoApprovalMode',
+        'model_provider': 'str',
+        'reasoning_effort': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -48,6 +52,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
         'purpose': 'purpose',
         'avatar': 'avatar',
         'approval_mode': 'approvalMode',
+        'model_provider': 'modelProvider',
+        'reasoning_effort': 'reasoningEffort',
     }
 
     FIELDS_name = 'name'
@@ -59,6 +65,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
     FIELDS_purpose = 'purpose'
     FIELDS_avatar = 'avatar'
     FIELDS_approval_mode = 'approvalMode'
+    FIELDS_model_provider = 'modelProvider'
+    FIELDS_reasoning_effort = 'reasoningEffort'
 
     _name: 'str'
     _display_name: 'str'
@@ -69,6 +77,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
     _purpose: 'str'
     _avatar: 'str'
     _approval_mode: 'NeoApprovalMode'
+    _model_provider: 'str'
+    _reasoning_effort: 'str'
 
     def __init__(
         self,
@@ -81,6 +91,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
         purpose: 'str' = None,
         avatar: 'str' = None,
         approval_mode: 'NeoApprovalMode' = None,
+        model_provider: 'str' = None,
+        reasoning_effort: 'str' = None,
     ) -> None:
         super().__init__()
 
@@ -93,6 +105,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
         self.purpose = purpose
         self.avatar = avatar
         self.approval_mode = approval_mode
+        self.model_provider = model_provider
+        self.reasoning_effort = reasoning_effort
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, CreateAgentDefinitionRequest):
@@ -105,6 +119,8 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
             self._purpose = source._purpose
             self._avatar = source._avatar
             self._approval_mode = source._approval_mode
+            self._model_provider = source._model_provider
+            self._reasoning_effort = source._reasoning_effort
 
     @property
     def name(self) -> 'str':
@@ -203,6 +219,22 @@ class CreateAgentDefinitionRequest(PulumiAutoModelEncoder):
     @approval_mode.setter
     def approval_mode(self, approval_mode: 'NeoApprovalMode'):
         self._approval_mode = approval_mode
+
+    @property
+    def model_provider(self) -> 'str':
+        return self._model_provider
+
+    @model_provider.setter
+    def model_provider(self, model_provider: 'str'):
+        self._model_provider = model_provider
+
+    @property
+    def reasoning_effort(self) -> 'str':
+        return self._reasoning_effort
+
+    @reasoning_effort.setter
+    def reasoning_effort(self, reasoning_effort: 'str'):
+        self._reasoning_effort = reasoning_effort
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, CreateAgentDefinitionRequest):

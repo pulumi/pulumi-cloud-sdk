@@ -16,6 +16,7 @@ const (
 	ServicePrincipalKindTeam                  ServicePrincipalKind = "team"
 	ServicePrincipalKindUserDefined           ServicePrincipalKind = "user-defined"
 	ServicePrincipalKindCustomAgentDefinition ServicePrincipalKind = "custom-agent-definition"
+	ServicePrincipalKindDelivery              ServicePrincipalKind = "delivery"
 )
 
 func (v ServicePrincipalKind) AllValues() []ServicePrincipalKind {
@@ -23,6 +24,7 @@ func (v ServicePrincipalKind) AllValues() []ServicePrincipalKind {
 		ServicePrincipalKindTeam,
 		ServicePrincipalKindUserDefined,
 		ServicePrincipalKindCustomAgentDefinition,
+		ServicePrincipalKindDelivery,
 	}
 }
 
@@ -33,6 +35,8 @@ func (v ServicePrincipalKind) IsValid() bool {
 	case ServicePrincipalKindUserDefined:
 		return true
 	case ServicePrincipalKindCustomAgentDefinition:
+		return true
+	case ServicePrincipalKindDelivery:
 		return true
 	}
 
@@ -47,6 +51,8 @@ func (v ServicePrincipalKind) openapiName() string {
 		return "UserDefined"
 	case ServicePrincipalKindCustomAgentDefinition:
 		return "CustomAgentDefinition"
+	case ServicePrincipalKindDelivery:
+		return "Delivery"
 	}
 
 	return ""

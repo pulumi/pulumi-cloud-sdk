@@ -18,5 +18,8 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [EnumMember(Value = "custom-agent-definition")]
         CustomAgentDefinition,
+
+        [EnumMember(Value = "delivery")]
+        Delivery,
     }
 }

@@ -26,6 +26,7 @@ class AgentTask(PulumiAutoModelEncoder):
     :var entities: list[AgentEntity] - declared
     :var plan_mode: bool - declared
     :var is_shared: bool - declared
+    :var interaction_mode: AgentTaskInteractionMode - declared
     :var shared_at: datetime - declared
     :var created_by: UserInfo - declared
     :var permission_mode: NeoPermissionMode - declared
@@ -43,6 +44,9 @@ class AgentTask(PulumiAutoModelEncoder):
     :var pending_input_count: int - declared
     :var source: AgentTaskSource - declared
     :var vcs_provider: VCSProvider - declared
+    :var model_provider: str - declared
+    :var model: str - declared
+    :var archived_at: datetime - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'id': 'str',
@@ -55,6 +59,7 @@ class AgentTask(PulumiAutoModelEncoder):
         'entities': 'list[AgentEntity]',
         'plan_mode': 'bool',
         'is_shared': 'bool',
+        'interaction_mode': 'AgentTaskInteractionMode',
         'shared_at': 'datetime',
         'created_by': 'UserInfo',
         'permission_mode': 'NeoPermissionMode',
@@ -72,6 +77,9 @@ class AgentTask(PulumiAutoModelEncoder):
         'pending_input_count': 'int',
         'source': 'AgentTaskSource',
         'vcs_provider': 'VCSProvider',
+        'model_provider': 'str',
+        'model': 'str',
+        'archived_at': 'datetime',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -85,6 +93,7 @@ class AgentTask(PulumiAutoModelEncoder):
         'entities': 'entities',
         'plan_mode': 'planMode',
         'is_shared': 'isShared',
+        'interaction_mode': 'interactionMode',
         'shared_at': 'sharedAt',
         'created_by': 'createdBy',
         'permission_mode': 'permissionMode',
@@ -102,6 +111,9 @@ class AgentTask(PulumiAutoModelEncoder):
         'pending_input_count': 'pendingInputCount',
         'source': 'source',
         'vcs_provider': 'vcsProvider',
+        'model_provider': 'modelProvider',
+        'model': 'model',
+        'archived_at': 'archivedAt',
     }
 
     FIELDS_id = 'id'
@@ -114,6 +126,7 @@ class AgentTask(PulumiAutoModelEncoder):
     FIELDS_entities = 'entities'
     FIELDS_plan_mode = 'planMode'
     FIELDS_is_shared = 'isShared'
+    FIELDS_interaction_mode = 'interactionMode'
     FIELDS_shared_at = 'sharedAt'
     FIELDS_created_by = 'createdBy'
     FIELDS_permission_mode = 'permissionMode'
@@ -131,6 +144,9 @@ class AgentTask(PulumiAutoModelEncoder):
     FIELDS_pending_input_count = 'pendingInputCount'
     FIELDS_source = 'source'
     FIELDS_vcs_provider = 'vcsProvider'
+    FIELDS_model_provider = 'modelProvider'
+    FIELDS_model = 'model'
+    FIELDS_archived_at = 'archivedAt'
 
     _id: 'str'
     _name: 'str'
@@ -142,6 +158,7 @@ class AgentTask(PulumiAutoModelEncoder):
     _entities: 'list[AgentEntity]'
     _plan_mode: 'bool'
     _is_shared: 'bool'
+    _interaction_mode: 'AgentTaskInteractionMode'
     _shared_at: 'datetime'
     _created_by: 'UserInfo'
     _permission_mode: 'NeoPermissionMode'
@@ -159,6 +176,9 @@ class AgentTask(PulumiAutoModelEncoder):
     _pending_input_count: 'int'
     _source: 'AgentTaskSource'
     _vcs_provider: 'VCSProvider'
+    _model_provider: 'str'
+    _model: 'str'
+    _archived_at: 'datetime'
 
     def __init__(
         self,
@@ -174,6 +194,7 @@ class AgentTask(PulumiAutoModelEncoder):
         created_by: 'UserInfo',
         tokens_used: 'int',
         async_trigger_type: 'AgentAsyncTriggerType' = None,
+        interaction_mode: 'AgentTaskInteractionMode' = None,
         shared_at: 'datetime' = None,
         permission_mode: 'NeoPermissionMode' = None,
         role: 'str' = None,
@@ -189,6 +210,9 @@ class AgentTask(PulumiAutoModelEncoder):
         pending_input_count: 'int' = 0,
         source: 'AgentTaskSource' = None,
         vcs_provider: 'VCSProvider' = None,
+        model_provider: 'str' = None,
+        model: 'str' = None,
+        archived_at: 'datetime' = None,
     ) -> None:
         super().__init__()
 
@@ -202,6 +226,7 @@ class AgentTask(PulumiAutoModelEncoder):
         self.entities = entities
         self.plan_mode = plan_mode
         self.is_shared = is_shared
+        self.interaction_mode = interaction_mode
         self.shared_at = shared_at
         self.created_by = created_by
         self.permission_mode = permission_mode
@@ -219,6 +244,9 @@ class AgentTask(PulumiAutoModelEncoder):
         self.pending_input_count = pending_input_count
         self.source = source
         self.vcs_provider = vcs_provider
+        self.model_provider = model_provider
+        self.model = model
+        self.archived_at = archived_at
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, AgentTask):
@@ -232,6 +260,7 @@ class AgentTask(PulumiAutoModelEncoder):
             self._entities = source._entities
             self._plan_mode = source._plan_mode
             self._is_shared = source._is_shared
+            self._interaction_mode = source._interaction_mode
             self._shared_at = source._shared_at
             self._created_by = source._created_by
             self._permission_mode = source._permission_mode
@@ -249,6 +278,9 @@ class AgentTask(PulumiAutoModelEncoder):
             self._pending_input_count = source._pending_input_count
             self._source = source._source
             self._vcs_provider = source._vcs_provider
+            self._model_provider = source._model_provider
+            self._model = source._model
+            self._archived_at = source._archived_at
 
     @property
     def id(self) -> 'str':
@@ -382,6 +414,14 @@ class AgentTask(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `is_shared`, must not be `None`")
 
         self._is_shared = is_shared
+
+    @property
+    def interaction_mode(self) -> 'AgentTaskInteractionMode':
+        return self._interaction_mode
+
+    @interaction_mode.setter
+    def interaction_mode(self, interaction_mode: 'AgentTaskInteractionMode'):
+        self._interaction_mode = interaction_mode
 
     @property
     def shared_at(self) -> 'datetime':
@@ -551,6 +591,30 @@ class AgentTask(PulumiAutoModelEncoder):
     @vcs_provider.setter
     def vcs_provider(self, vcs_provider: 'VCSProvider'):
         self._vcs_provider = vcs_provider
+
+    @property
+    def model_provider(self) -> 'str':
+        return self._model_provider
+
+    @model_provider.setter
+    def model_provider(self, model_provider: 'str'):
+        self._model_provider = model_provider
+
+    @property
+    def model(self) -> 'str':
+        return self._model
+
+    @model.setter
+    def model(self, model: 'str'):
+        self._model = model
+
+    @property
+    def archived_at(self) -> 'datetime':
+        return self._archived_at
+
+    @archived_at.setter
+    def archived_at(self, archived_at: 'datetime'):
+        self._archived_at = archived_at
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, AgentTask):

@@ -260,8 +260,11 @@ public class OrganizationFeatures {
     // Whether Neo BYOK (bring-your-own-key) model provider configuration is enabled.
     public boolean neoByokEnabled;
 
-    // Whether Neo can run on OpenAI and other Chat Completions model providers.
+    // Whether Neo can run on OpenAI-format and customer-owned Amazon Bedrock model providers.
     public boolean agentsByomEnabled;
+
+    // Whether Neo can run on custom model providers.
+    public boolean customModelProviderEnabled;
 
     // Deprecated. Always true.
     public boolean neoAgentTaskRbacEnforcementEnabled;
@@ -307,6 +310,9 @@ public class OrganizationFeatures {
 
     // Whether Delivery is available to the organization.
     public boolean deliveryEnabled;
+
+    // Whether the organization is billed for Delivery, and so sees its Delivery usage on the billing page.
+    public boolean deliveryBillingEnabled;
 
     // Whether the Cursor Origin VCS integration is available to the organization.
     public boolean cursorOriginVCSEnabled;

@@ -15,6 +15,7 @@
 
 import type { AgentAsyncTriggerType } from "./AgentAsyncTriggerType";
 import type { AgentEntity } from "./AgentEntity";
+import type { AgentTaskInteractionMode } from "./AgentTaskInteractionMode";
 import type { AgentTaskRuntimePhase } from "./AgentTaskRuntimePhase";
 import type { AgentTaskSource } from "./AgentTaskSource";
 import type { AgentTaskStatus } from "./AgentTaskStatus";
@@ -37,6 +38,7 @@ export class AgentTask {
     entities: AgentEntity[];
     planMode: boolean;
     isShared: boolean;
+    interactionMode?: AgentTaskInteractionMode;
     sharedAt?: Date;
     createdBy: UserInfo;
     permissionMode?: NeoPermissionMode;
@@ -54,6 +56,9 @@ export class AgentTask {
     pendingInputCount?: number;
     source?: AgentTaskSource;
     vcsProvider?: VCSProvider;
+    modelProvider?: string;
+    model?: string;
+    archivedAt?: Date;
 
     getFixupPrototypeFunction() {
         return AgentTask.fixupPrototype;
@@ -114,6 +119,9 @@ export class AgentTask {
         }
         if (this.tokensUsed === undefined) {
             this.tokensUsed = 0;
+        }
+        if (typeof this.archivedAt === "string") {
+            this.archivedAt = new Date(this.archivedAt);
         }
     }
 }

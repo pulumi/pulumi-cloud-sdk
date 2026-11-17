@@ -30,6 +30,8 @@ export class AgentDefinition {
     purpose?: string;
     avatar?: string;
     approvalMode?: NeoApprovalMode;
+    modelProvider?: string;
+    reasoningEffort?: string;
     pausedAt?: string;
     pausedBy?: string;
     pausedReason?: string;

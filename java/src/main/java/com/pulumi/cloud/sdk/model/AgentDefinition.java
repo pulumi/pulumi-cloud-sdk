@@ -41,6 +41,12 @@ public class AgentDefinition {
     // The approval posture the agent's runs inherit. When omitted, runs are auto-approved, matching scheduled automations.
     public NeoApprovalMode approvalMode;
 
+    // The model provider the agent's tasks run on: a provider name, or 'pulumi' for Pulumi's built-in models. Omitted or null uses the organization's default provider.
+    public String modelProvider;
+
+    // Effort the agent's models reason or think at: 'low', 'medium', or 'high', for this agent only. On an 'openai-responses' provider it overrides the provider's reasoning effort; on an 'anthropic-messages' provider it sets the thinking effort of models that support adaptive thinking. With no provider it applies to whichever of these the organization's default is. Refused for 'pulumi' and a named 'openai-chat' provider, and ignored on a run whose provider cannot reason. Omitted or null uses the provider's.
+    public String reasoningEffort;
+
     // When the agent was paused, or null if it is not paused. A paused agent starts no new runs from any source -- console, schedule, or trigger -- until it is resumed; runs already in flight continue.
     public String pausedAt;
 

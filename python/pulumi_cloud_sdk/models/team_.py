@@ -27,6 +27,7 @@ class Team(PulumiAutoModelEncoder):
     :var list_members_error: str - declared
     :var user_role: TeamRole - declared
     :var role_ids: list[str] - declared
+    :var everyone: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'kind': 'TeamKind',
@@ -40,6 +41,7 @@ class Team(PulumiAutoModelEncoder):
         'list_members_error': 'str',
         'user_role': 'TeamRole',
         'role_ids': 'list[str]',
+        'everyone': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -54,6 +56,7 @@ class Team(PulumiAutoModelEncoder):
         'list_members_error': 'listMembersError',
         'user_role': 'userRole',
         'role_ids': 'roleIds',
+        'everyone': 'everyone',
     }
 
     FIELDS_kind = 'kind'
@@ -67,6 +70,7 @@ class Team(PulumiAutoModelEncoder):
     FIELDS_list_members_error = 'listMembersError'
     FIELDS_user_role = 'userRole'
     FIELDS_role_ids = 'roleIds'
+    FIELDS_everyone = 'everyone'
 
     _kind: 'TeamKind'
     _name: 'str'
@@ -79,6 +83,7 @@ class Team(PulumiAutoModelEncoder):
     _list_members_error: 'str'
     _user_role: 'TeamRole'
     _role_ids: 'list[str]'
+    _everyone: 'bool'
 
     def __init__(
         self,
@@ -93,6 +98,7 @@ class Team(PulumiAutoModelEncoder):
         list_members_error: 'str' = None,
         user_role: 'TeamRole' = None,
         role_ids: 'list[str]' = None,
+        everyone: 'bool' = False,
     ) -> None:
         super().__init__()
 
@@ -107,6 +113,7 @@ class Team(PulumiAutoModelEncoder):
         self.list_members_error = list_members_error
         self.user_role = user_role
         self.role_ids = role_ids
+        self.everyone = everyone
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, Team):
@@ -121,6 +128,7 @@ class Team(PulumiAutoModelEncoder):
             self._list_members_error = source._list_members_error
             self._user_role = source._user_role
             self._role_ids = source._role_ids
+            self._everyone = source._everyone
 
     @property
     def kind(self) -> 'TeamKind':
@@ -351,6 +359,14 @@ class Team(PulumiAutoModelEncoder):
             return []
 
         return self._role_ids
+
+    @property
+    def everyone(self) -> 'bool':
+        return self._everyone
+
+    @everyone.setter
+    def everyone(self, everyone: 'bool'):
+        self._everyone = everyone
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, Team):

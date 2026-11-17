@@ -43,4 +43,7 @@ public class Team {
 
     // RoleIDs are the IDs of the FGA roles assigned to the team, if any. Currently only one role per team is supported.
     public List<String> roleIds;
+
+    // Whether this is the Everyone team: every admin and member of the organization is in it, but no billing manager. Pulumi manages it, so its name, description, members and roles cannot change.
+    public boolean everyone;
 }

@@ -13,13 +13,15 @@ class ServicePrincipalKind(AutoEnumEncoder):
     Team = "team"
     UserDefined = "user-defined"
     CustomAgentDefinition = "custom-agent-definition"
+    Delivery = "delivery"
 
     @staticmethod
     def keys() -> list['ServicePrincipalKind']:
         return [
             ServicePrincipalKind.Team,
             ServicePrincipalKind.UserDefined,
-            ServicePrincipalKind.CustomAgentDefinition
+            ServicePrincipalKind.CustomAgentDefinition,
+            ServicePrincipalKind.Delivery
         ]
 
     @staticmethod
@@ -27,7 +29,8 @@ class ServicePrincipalKind(AutoEnumEncoder):
         return [
             ServicePrincipalKind.Team.value,
             ServicePrincipalKind.UserDefined.value,
-            ServicePrincipalKind.CustomAgentDefinition.value
+            ServicePrincipalKind.CustomAgentDefinition.value,
+            ServicePrincipalKind.Delivery.value
         ]
 
     @staticmethod

@@ -70,6 +70,7 @@ from .agent_signup_response_ import AgentSignupResponse
 from .agent_slash_command_ import AgentSlashCommand
 from .agent_task_ import AgentTask
 from .agent_task_integration_ref_ import AgentTaskIntegrationRef
+from .agent_task_interaction_mode_ import AgentTaskInteractionMode
 from .agent_task_runtime_phase_ import AgentTaskRuntimePhase
 from .agent_task_sort_direction_ import AgentTaskSortDirection
 from .agent_task_sort_field_ import AgentTaskSortField
@@ -270,6 +271,8 @@ from .bulk_create_insights_account_item_ import BulkCreateInsightsAccountItem
 from .bulk_create_insights_accounts_request_ import BulkCreateInsightsAccountsRequest
 from .bulk_create_insights_accounts_response_ import BulkCreateInsightsAccountsResponse
 from .cli_integration_ref_ import CLIIntegrationRef
+from .cli_telemetry_event_ import CLITelemetryEvent
+from .cli_telemetry_request_ import CLITelemetryRequest
 from .cache_options_ import CacheOptions
 from .cache_options_request_ import CacheOptionsRequest
 from .cancel_agent_task_request_ import CancelAgentTaskRequest
@@ -311,6 +314,7 @@ from .complete_o_auth_response_ import CompleteOAuthResponse
 from .complete_origin_setup_request_ import CompleteOriginSetupRequest
 from .console_update_summary_ import ConsoleUpdateSummary
 from .consumption_usage_ import ConsumptionUsage
+from .consumption_usage_period_ import ConsumptionUsagePeriod
 from .consumption_usage_stats_v0_ import ConsumptionUsageStatsV0
 from .consumption_usage_stats_v1_ import ConsumptionUsageStatsV1
 from .context_schema_ import ContextSchema

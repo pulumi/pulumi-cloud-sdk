@@ -33,6 +33,7 @@ export class Team {
     listMembersError?: string;
     userRole?: TeamRole;
     roleIds?: string[];
+    everyone?: boolean;
 
     getFixupPrototypeFunction() {
         return Team.fixupPrototype;

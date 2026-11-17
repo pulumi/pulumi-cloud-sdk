@@ -71,6 +71,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool IsShared { get; set; }
 
         /// <summary>
+        /// Whether the task accepts user interaction. Read-only tasks do not accept follow-up input.
+        /// </summary>
+        [JsonProperty("interactionMode")]
+        public AgentTaskInteractionMode InteractionMode { get; set; }
+
+        /// <summary>
         /// When the task was first shared. Null if never shared.
         /// </summary>
         [JsonProperty("sharedAt")]
@@ -171,5 +177,23 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("vcsProvider")]
         public VCSProvider? VcsProvider { get; set; }
+
+        /// <summary>
+        /// The model provider the task's turns run on, pinned at its first turn: 'pulumi' for Pulumi's built-in models, or the name of one of the organization's model providers. Null until the first turn.
+        /// </summary>
+        [JsonProperty("modelProvider")]
+        public string ModelProvider { get; set; }
+
+        /// <summary>
+        /// The model the task's main loop last ran on, as its provider reported it. Null until the task has used a model.
+        /// </summary>
+        [JsonProperty("model")]
+        public string Model { get; set; }
+
+        /// <summary>
+        /// When the task was archived. Null while the task remains active.
+        /// </summary>
+        [JsonProperty("archivedAt")]
+        public DateTimeOffset? ArchivedAt { get; set; }
     }
 }

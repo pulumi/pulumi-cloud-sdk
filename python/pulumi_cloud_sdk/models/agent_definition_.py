@@ -26,6 +26,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
     :var purpose: str - declared
     :var avatar: str - declared
     :var approval_mode: NeoApprovalMode - declared
+    :var model_provider: str - declared
+    :var reasoning_effort: str - declared
     :var paused_at: str - declared
     :var paused_by: str - declared
     :var paused_reason: str - declared
@@ -42,6 +44,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
         'purpose': 'str',
         'avatar': 'str',
         'approval_mode': 'NeoApprovalMode',
+        'model_provider': 'str',
+        'reasoning_effort': 'str',
         'paused_at': 'str',
         'paused_by': 'str',
         'paused_reason': 'str',
@@ -59,6 +63,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
         'purpose': 'purpose',
         'avatar': 'avatar',
         'approval_mode': 'approvalMode',
+        'model_provider': 'modelProvider',
+        'reasoning_effort': 'reasoningEffort',
         'paused_at': 'pausedAt',
         'paused_by': 'pausedBy',
         'paused_reason': 'pausedReason',
@@ -75,6 +81,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
     FIELDS_purpose = 'purpose'
     FIELDS_avatar = 'avatar'
     FIELDS_approval_mode = 'approvalMode'
+    FIELDS_model_provider = 'modelProvider'
+    FIELDS_reasoning_effort = 'reasoningEffort'
     FIELDS_paused_at = 'pausedAt'
     FIELDS_paused_by = 'pausedBy'
     FIELDS_paused_reason = 'pausedReason'
@@ -90,6 +98,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
     _purpose: 'str'
     _avatar: 'str'
     _approval_mode: 'NeoApprovalMode'
+    _model_provider: 'str'
+    _reasoning_effort: 'str'
     _paused_at: 'str'
     _paused_by: 'str'
     _paused_reason: 'str'
@@ -107,6 +117,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
         purpose: 'str' = None,
         avatar: 'str' = None,
         approval_mode: 'NeoApprovalMode' = None,
+        model_provider: 'str' = None,
+        reasoning_effort: 'str' = None,
         paused_at: 'str' = None,
         paused_by: 'str' = None,
         paused_reason: 'str' = None,
@@ -124,6 +136,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
         self.purpose = purpose
         self.avatar = avatar
         self.approval_mode = approval_mode
+        self.model_provider = model_provider
+        self.reasoning_effort = reasoning_effort
         self.paused_at = paused_at
         self.paused_by = paused_by
         self.paused_reason = paused_reason
@@ -141,6 +155,8 @@ class AgentDefinition(PulumiAutoModelEncoder):
             self._purpose = source._purpose
             self._avatar = source._avatar
             self._approval_mode = source._approval_mode
+            self._model_provider = source._model_provider
+            self._reasoning_effort = source._reasoning_effort
             self._paused_at = source._paused_at
             self._paused_by = source._paused_by
             self._paused_reason = source._paused_reason
@@ -260,6 +276,22 @@ class AgentDefinition(PulumiAutoModelEncoder):
     @approval_mode.setter
     def approval_mode(self, approval_mode: 'NeoApprovalMode'):
         self._approval_mode = approval_mode
+
+    @property
+    def model_provider(self) -> 'str':
+        return self._model_provider
+
+    @model_provider.setter
+    def model_provider(self, model_provider: 'str'):
+        self._model_provider = model_provider
+
+    @property
+    def reasoning_effort(self) -> 'str':
+        return self._reasoning_effort
+
+    @reasoning_effort.setter
+    def reasoning_effort(self, reasoning_effort: 'str'):
+        self._reasoning_effort = reasoning_effort
 
     @property
     def paused_at(self) -> 'str':

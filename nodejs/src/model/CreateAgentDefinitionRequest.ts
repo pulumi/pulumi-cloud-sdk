@@ -28,6 +28,8 @@ export class CreateAgentDefinitionRequest {
     purpose?: string;
     avatar?: string;
     approvalMode?: NeoApprovalMode;
+    modelProvider?: string;
+    reasoningEffort?: string;
 
     getFixupPrototypeFunction() {
         return CreateAgentDefinitionRequest.fixupPrototype;

@@ -13,6 +13,7 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { ConsumptionUsagePeriod } from "./ConsumptionUsagePeriod";
 import type { ConsumptionUsageStatsV0 } from "./ConsumptionUsageStatsV0";
 import type { ConsumptionUsageStatsV1 } from "./ConsumptionUsageStatsV1";
 import type { UnitRateGraduatedV0 } from "./UnitRateGraduatedV0";
@@ -30,6 +31,7 @@ export class ConsumptionUsage {
     unitRateGraduatedV2?: UnitRateGraduatedV2;
     statsV0?: ConsumptionUsageStatsV0;
     statsV1?: ConsumptionUsageStatsV1;
+    periods?: ConsumptionUsagePeriod[];
 
     getFixupPrototypeFunction() {
         return ConsumptionUsage.fixupPrototype;
@@ -91,6 +93,16 @@ export class ConsumptionUsage {
             // Lazy import - only evaluated when called
             const { ConsumptionUsageStatsV1 } = require("./ConsumptionUsageStatsV1");
             ConsumptionUsageStatsV1.fixupPrototype(this.statsV1);
+        }
+        if (this.periods) {
+            for (let i0 = 0; i0 < this.periods.length; i0++) {
+                let val0 = this.periods[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { ConsumptionUsagePeriod } = require("./ConsumptionUsagePeriod");
+                    ConsumptionUsagePeriod.fixupPrototype(val0);
+                }
+            }
         }
     }
 }

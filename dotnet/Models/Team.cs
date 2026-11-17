@@ -75,5 +75,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("roleIds")]
         public System.Collections.Generic.List<string> RoleIDs { get; set; }
+
+        /// <summary>
+        /// Whether this is the Everyone team: every admin and member of the organization is in it, but no billing manager. Pulumi manages it, so its name, description, members and roles cannot change.
+        /// </summary>
+        [JsonProperty("everyone")]
+        public bool Everyone { get; set; }
     }
 }

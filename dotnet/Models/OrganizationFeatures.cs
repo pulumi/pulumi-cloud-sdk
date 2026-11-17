@@ -509,10 +509,16 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool NeoByokEnabled { get; set; }
 
         /// <summary>
-        /// Whether Neo can run on OpenAI and other Chat Completions model providers.
+        /// Whether Neo can run on OpenAI-format and customer-owned Amazon Bedrock model providers.
         /// </summary>
         [JsonProperty("agentsByomEnabled")]
         public bool AgentsByomEnabled { get; set; }
+
+        /// <summary>
+        /// Whether Neo can run on custom model providers.
+        /// </summary>
+        [JsonProperty("customModelProviderEnabled")]
+        public bool CustomModelProviderEnabled { get; set; }
 
         /// <summary>
         /// Deprecated. Always true.
@@ -603,6 +609,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("deliveryEnabled")]
         public bool DeliveryEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the organization is billed for Delivery, and so sees its Delivery usage on the billing page.
+        /// </summary>
+        [JsonProperty("deliveryBillingEnabled")]
+        public bool DeliveryBillingEnabled { get; set; }
 
         /// <summary>
         /// Whether the Cursor Origin VCS integration is available to the organization.

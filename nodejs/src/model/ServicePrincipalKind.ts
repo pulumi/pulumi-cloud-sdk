@@ -17,4 +17,5 @@ export enum ServicePrincipalKind {
     Team = "team",
     UserDefined = "user-defined",
     CustomAgentDefinition = "custom-agent-definition",
+    Delivery = "delivery",
 }

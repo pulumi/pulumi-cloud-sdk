@@ -24,6 +24,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
     :var unit_rate_graduated_v2: UnitRateGraduatedV2 - declared
     :var stats_v0: ConsumptionUsageStatsV0 - declared
     :var stats_v1: ConsumptionUsageStatsV1 - declared
+    :var periods: list[ConsumptionUsagePeriod] - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'total_consumed': 'int',
@@ -34,6 +35,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
         'unit_rate_graduated_v2': 'UnitRateGraduatedV2',
         'stats_v0': 'ConsumptionUsageStatsV0',
         'stats_v1': 'ConsumptionUsageStatsV1',
+        'periods': 'list[ConsumptionUsagePeriod]',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
@@ -45,6 +47,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
         'unit_rate_graduated_v2': 'unitRateGraduatedV2',
         'stats_v0': 'statsV0',
         'stats_v1': 'statsV1',
+        'periods': 'periods',
     }
 
     FIELDS_total_consumed = 'totalConsumed'
@@ -55,6 +58,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
     FIELDS_unit_rate_graduated_v2 = 'unitRateGraduatedV2'
     FIELDS_stats_v0 = 'statsV0'
     FIELDS_stats_v1 = 'statsV1'
+    FIELDS_periods = 'periods'
 
     _total_consumed: 'int'
     _consumed: 'dict[str, int]'
@@ -64,6 +68,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
     _unit_rate_graduated_v2: 'UnitRateGraduatedV2'
     _stats_v0: 'ConsumptionUsageStatsV0'
     _stats_v1: 'ConsumptionUsageStatsV1'
+    _periods: 'list[ConsumptionUsagePeriod]'
 
     def __init__(
         self,
@@ -75,6 +80,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
         unit_rate_graduated_v2: 'UnitRateGraduatedV2' = None,
         stats_v0: 'ConsumptionUsageStatsV0' = None,
         stats_v1: 'ConsumptionUsageStatsV1' = None,
+        periods: 'list[ConsumptionUsagePeriod]' = None,
     ) -> None:
         super().__init__()
 
@@ -86,6 +92,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
         self.unit_rate_graduated_v2 = unit_rate_graduated_v2
         self.stats_v0 = stats_v0
         self.stats_v1 = stats_v1
+        self.periods = periods
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, ConsumptionUsage):
@@ -97,6 +104,7 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
             self._unit_rate_graduated_v2 = source._unit_rate_graduated_v2
             self._stats_v0 = source._stats_v0
             self._stats_v1 = source._stats_v1
+            self._periods = source._periods
 
     @property
     def total_consumed(self) -> 'int':
@@ -331,6 +339,40 @@ class ConsumptionUsage(PulumiAutoModelEncoder):
             return models.ConsumptionUsageStatsV1._new_empty()
 
         return self._stats_v1
+
+    @property
+    def periods(self) -> 'list[ConsumptionUsagePeriod]':
+        return self._periods
+
+    @periods.setter
+    def periods(self, periods: 'list[ConsumptionUsagePeriod]'):
+        self._periods = periods
+
+    @property
+    def periods__autoinit(self) -> 'list[ConsumptionUsagePeriod]':
+        """Return ``periods``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._periods``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``periods__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._periods is None:
+            self._periods = self.periods__safederef
+
+        return self._periods
+
+    @property
+    def periods__safederef(self) -> 'list[ConsumptionUsagePeriod]':
+        """Return ``periods``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``periods`` stays unset and each
+        call returns a new default. Use ``periods__autoinit`` to persist the default on
+        first access.
+        """
+        if self._periods is None:
+            return []
+
+        return self._periods
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, ConsumptionUsage):

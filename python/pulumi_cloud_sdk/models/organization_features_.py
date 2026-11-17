@@ -100,6 +100,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var access_token_expiry_policy_enabled: bool - declared
     :var neo_byok_enabled: bool - declared
     :var agents_byom_enabled: bool - declared
+    :var custom_model_provider_enabled: bool - declared
     :var neo_agent_task_rbac_enforcement_enabled: bool - declared
     :var link_express_checkout_enabled: bool - declared
     :var multi_change_requests_enabled: bool - declared
@@ -115,6 +116,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var user_defined_service_principals_enabled: bool - declared
     :var service_principal_tokens_enabled: bool - declared
     :var delivery_enabled: bool - declared
+    :var delivery_billing_enabled: bool - declared
     :var cursor_origin_vcs_enabled: bool - declared
     :var enterprise_self_serve_enabled: bool - declared
     """
@@ -203,6 +205,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'access_token_expiry_policy_enabled': 'bool',
         'neo_byok_enabled': 'bool',
         'agents_byom_enabled': 'bool',
+        'custom_model_provider_enabled': 'bool',
         'neo_agent_task_rbac_enforcement_enabled': 'bool',
         'link_express_checkout_enabled': 'bool',
         'multi_change_requests_enabled': 'bool',
@@ -218,6 +221,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'user_defined_service_principals_enabled': 'bool',
         'service_principal_tokens_enabled': 'bool',
         'delivery_enabled': 'bool',
+        'delivery_billing_enabled': 'bool',
         'cursor_origin_vcs_enabled': 'bool',
         'enterprise_self_serve_enabled': 'bool',
     }
@@ -307,6 +311,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'access_token_expiry_policy_enabled': 'accessTokenExpiryPolicyEnabled',
         'neo_byok_enabled': 'neoByokEnabled',
         'agents_byom_enabled': 'agentsByomEnabled',
+        'custom_model_provider_enabled': 'customModelProviderEnabled',
         'neo_agent_task_rbac_enforcement_enabled': 'neoAgentTaskRbacEnforcementEnabled',
         'link_express_checkout_enabled': 'linkExpressCheckoutEnabled',
         'multi_change_requests_enabled': 'multiChangeRequestsEnabled',
@@ -322,6 +327,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'user_defined_service_principals_enabled': 'userDefinedServicePrincipalsEnabled',
         'service_principal_tokens_enabled': 'servicePrincipalTokensEnabled',
         'delivery_enabled': 'deliveryEnabled',
+        'delivery_billing_enabled': 'deliveryBillingEnabled',
         'cursor_origin_vcs_enabled': 'cursorOriginVCSEnabled',
         'enterprise_self_serve_enabled': 'enterpriseSelfServeEnabled',
     }
@@ -410,6 +416,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_access_token_expiry_policy_enabled = 'accessTokenExpiryPolicyEnabled'
     FIELDS_neo_byok_enabled = 'neoByokEnabled'
     FIELDS_agents_byom_enabled = 'agentsByomEnabled'
+    FIELDS_custom_model_provider_enabled = 'customModelProviderEnabled'
     FIELDS_neo_agent_task_rbac_enforcement_enabled = 'neoAgentTaskRbacEnforcementEnabled'
     FIELDS_link_express_checkout_enabled = 'linkExpressCheckoutEnabled'
     FIELDS_multi_change_requests_enabled = 'multiChangeRequestsEnabled'
@@ -425,6 +432,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_user_defined_service_principals_enabled = 'userDefinedServicePrincipalsEnabled'
     FIELDS_service_principal_tokens_enabled = 'servicePrincipalTokensEnabled'
     FIELDS_delivery_enabled = 'deliveryEnabled'
+    FIELDS_delivery_billing_enabled = 'deliveryBillingEnabled'
     FIELDS_cursor_origin_vcs_enabled = 'cursorOriginVCSEnabled'
     FIELDS_enterprise_self_serve_enabled = 'enterpriseSelfServeEnabled'
 
@@ -512,6 +520,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _access_token_expiry_policy_enabled: 'bool'
     _neo_byok_enabled: 'bool'
     _agents_byom_enabled: 'bool'
+    _custom_model_provider_enabled: 'bool'
     _neo_agent_task_rbac_enforcement_enabled: 'bool'
     _link_express_checkout_enabled: 'bool'
     _multi_change_requests_enabled: 'bool'
@@ -527,6 +536,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _user_defined_service_principals_enabled: 'bool'
     _service_principal_tokens_enabled: 'bool'
     _delivery_enabled: 'bool'
+    _delivery_billing_enabled: 'bool'
     _cursor_origin_vcs_enabled: 'bool'
     _enterprise_self_serve_enabled: 'bool'
 
@@ -622,6 +632,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         unlinked_git_hub_app_recovery_enabled: 'bool' = False,
         access_token_expiry_policy_enabled: 'bool' = False,
         agents_byom_enabled: 'bool' = False,
+        custom_model_provider_enabled: 'bool' = False,
         neo_agent_task_rbac_enforcement_enabled: 'bool' = False,
         link_express_checkout_enabled: 'bool' = False,
         multi_change_requests_enabled: 'bool' = False,
@@ -631,6 +642,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         user_defined_service_principals_enabled: 'bool' = False,
         service_principal_tokens_enabled: 'bool' = False,
         delivery_enabled: 'bool' = False,
+        delivery_billing_enabled: 'bool' = False,
         cursor_origin_vcs_enabled: 'bool' = False,
         enterprise_self_serve_enabled: 'bool' = False,
     ) -> None:
@@ -720,6 +732,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.access_token_expiry_policy_enabled = access_token_expiry_policy_enabled
         self.neo_byok_enabled = neo_byok_enabled
         self.agents_byom_enabled = agents_byom_enabled
+        self.custom_model_provider_enabled = custom_model_provider_enabled
         self.neo_agent_task_rbac_enforcement_enabled = neo_agent_task_rbac_enforcement_enabled
         self.link_express_checkout_enabled = link_express_checkout_enabled
         self.multi_change_requests_enabled = multi_change_requests_enabled
@@ -735,6 +748,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.user_defined_service_principals_enabled = user_defined_service_principals_enabled
         self.service_principal_tokens_enabled = service_principal_tokens_enabled
         self.delivery_enabled = delivery_enabled
+        self.delivery_billing_enabled = delivery_billing_enabled
         self.cursor_origin_vcs_enabled = cursor_origin_vcs_enabled
         self.enterprise_self_serve_enabled = enterprise_self_serve_enabled
 
@@ -824,6 +838,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._access_token_expiry_policy_enabled = source._access_token_expiry_policy_enabled
             self._neo_byok_enabled = source._neo_byok_enabled
             self._agents_byom_enabled = source._agents_byom_enabled
+            self._custom_model_provider_enabled = source._custom_model_provider_enabled
             self._neo_agent_task_rbac_enforcement_enabled = source._neo_agent_task_rbac_enforcement_enabled
             self._link_express_checkout_enabled = source._link_express_checkout_enabled
             self._multi_change_requests_enabled = source._multi_change_requests_enabled
@@ -839,6 +854,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._user_defined_service_principals_enabled = source._user_defined_service_principals_enabled
             self._service_principal_tokens_enabled = source._service_principal_tokens_enabled
             self._delivery_enabled = source._delivery_enabled
+            self._delivery_billing_enabled = source._delivery_billing_enabled
             self._cursor_origin_vcs_enabled = source._cursor_origin_vcs_enabled
             self._enterprise_self_serve_enabled = source._enterprise_self_serve_enabled
 
@@ -1689,6 +1705,14 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self._agents_byom_enabled = agents_byom_enabled
 
     @property
+    def custom_model_provider_enabled(self) -> 'bool':
+        return self._custom_model_provider_enabled
+
+    @custom_model_provider_enabled.setter
+    def custom_model_provider_enabled(self, custom_model_provider_enabled: 'bool'):
+        self._custom_model_provider_enabled = custom_model_provider_enabled
+
+    @property
     def neo_agent_task_rbac_enforcement_enabled(self) -> 'bool':
         return self._neo_agent_task_rbac_enforcement_enabled
 
@@ -1825,6 +1849,14 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @delivery_enabled.setter
     def delivery_enabled(self, delivery_enabled: 'bool'):
         self._delivery_enabled = delivery_enabled
+
+    @property
+    def delivery_billing_enabled(self) -> 'bool':
+        return self._delivery_billing_enabled
+
+    @delivery_billing_enabled.setter
+    def delivery_billing_enabled(self, delivery_billing_enabled: 'bool'):
+        self._delivery_billing_enabled = delivery_billing_enabled
 
     @property
     def cursor_origin_vcs_enabled(self) -> 'bool':

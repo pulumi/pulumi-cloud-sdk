@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.*;
 public enum ServicePrincipalKind {
     Team("team"),
     UserDefined("user-defined"),
-    CustomAgentDefinition("custom-agent-definition");
+    CustomAgentDefinition("custom-agent-definition"),
+    Delivery("delivery");
 
     private final String value;
 

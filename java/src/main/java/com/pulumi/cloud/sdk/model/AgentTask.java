@@ -41,6 +41,9 @@ public class AgentTask {
     // Whether this task is shared with other org members.
     public boolean isShared;
 
+    // Whether the task accepts user interaction. Read-only tasks do not accept follow-up input.
+    public AgentTaskInteractionMode interactionMode;
+
     // When the task was first shared. Null if never shared.
     public ZonedDateTime sharedAt;
 
@@ -91,4 +94,13 @@ public class AgentTask {
 
     // The version control system this task operates against. Set for tasks that target a specific VCS platform (e.g. code reviews). Null for tasks with no VCS context.
     public VCSProvider vcsProvider;
+
+    // The model provider the task's turns run on, pinned at its first turn: 'pulumi' for Pulumi's built-in models, or the name of one of the organization's model providers. Null until the first turn.
+    public String modelProvider;
+
+    // The model the task's main loop last ran on, as its provider reported it. Null until the task has used a model.
+    public String model;
+
+    // When the task was archived. Null while the task remains active.
+    public ZonedDateTime archivedAt;
 }

@@ -98,6 +98,7 @@ export class OrganizationFeatures {
     accessTokenExpiryPolicyEnabled?: boolean;
     neoByokEnabled: boolean;
     agentsByomEnabled?: boolean;
+    customModelProviderEnabled?: boolean;
     neoAgentTaskRbacEnforcementEnabled?: boolean;
     linkExpressCheckoutEnabled?: boolean;
     multiChangeRequestsEnabled?: boolean;
@@ -113,6 +114,7 @@ export class OrganizationFeatures {
     userDefinedServicePrincipalsEnabled?: boolean;
     servicePrincipalTokensEnabled?: boolean;
     deliveryEnabled?: boolean;
+    deliveryBillingEnabled?: boolean;
     cursorOriginVCSEnabled?: boolean;
     enterpriseSelfServeEnabled?: boolean;
 

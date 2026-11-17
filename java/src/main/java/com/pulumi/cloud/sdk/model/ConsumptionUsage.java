@@ -34,4 +34,7 @@ public class ConsumptionUsage {
 
     // StatsV1 are the usage statistics, and will be populated for graduated-v1 plans.
     public ConsumptionUsageStatsV1 statsV1;
+
+    // Periods breaks the consumption down into the periods its price applies to on its own, oldest first, the last being the current one; totalConsumed is their sum. Set for Delivery pipelines, which a sales-led contract counts per month of the contract, each month with its own free pipeline.
+    public List<ConsumptionUsagePeriod> periods;
 }

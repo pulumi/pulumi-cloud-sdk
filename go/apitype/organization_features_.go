@@ -177,8 +177,10 @@ type OrganizationFeatures struct {
 	AccessTokenExpiryPolicyEnabled bool `json:"accessTokenExpiryPolicyEnabled,omitzero" yaml:"accessTokenExpiryPolicyEnabled,omitempty"`
 	// Whether Neo BYOK (bring-your-own-key) model provider configuration is enabled.
 	NeoByokEnabled bool `json:"neoByokEnabled" yaml:"neoByokEnabled"`
-	// Whether Neo can run on OpenAI and other Chat Completions model providers.
+	// Whether Neo can run on OpenAI-format and customer-owned Amazon Bedrock model providers.
 	AgentsByomEnabled bool `json:"agentsByomEnabled,omitzero" yaml:"agentsByomEnabled,omitempty"`
+	// Whether Neo can run on custom model providers.
+	CustomModelProviderEnabled bool `json:"customModelProviderEnabled,omitzero" yaml:"customModelProviderEnabled,omitempty"`
 	// Deprecated. Always true.
 	NeoAgentTaskRBACEnforcementEnabled bool `json:"neoAgentTaskRbacEnforcementEnabled,omitzero" yaml:"neoAgentTaskRbacEnforcementEnabled,omitempty"`
 	// Whether one-click Link express checkout is enabled for adding a payment method.
@@ -217,6 +219,8 @@ type OrganizationFeatures struct {
 	ServicePrincipalTokensEnabled bool `json:"servicePrincipalTokensEnabled,omitzero" yaml:"servicePrincipalTokensEnabled,omitempty"`
 	// Whether Delivery is available to the organization.
 	DeliveryEnabled bool `json:"deliveryEnabled,omitzero" yaml:"deliveryEnabled,omitempty"`
+	// Whether the organization is billed for Delivery, and so sees its Delivery usage on the billing page.
+	DeliveryBillingEnabled bool `json:"deliveryBillingEnabled,omitzero" yaml:"deliveryBillingEnabled,omitempty"`
 	// Whether the Cursor Origin VCS integration is available to the organization.
 	CursorOriginVCSEnabled bool `json:"cursorOriginVCSEnabled,omitzero" yaml:"cursorOriginVCSEnabled,omitempty"`
 	// Whether the organization can buy the Enterprise plan self-serve at its monthly price. When false, Enterprise is available self-serve
