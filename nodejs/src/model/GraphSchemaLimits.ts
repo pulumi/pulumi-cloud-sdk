@@ -18,6 +18,7 @@ export class GraphSchemaLimits {
     maxTraverseSteps: number;
     maxScopeAccounts: number;
     maxScopeStacks: number;
+    maxScopeStages: number;
     maxGroupByFields: number;
     maxAnchorNodes: number;
     maxFanout: number;
@@ -70,6 +71,9 @@ export class GraphSchemaLimits {
         }
         if (this.maxScopeStacks === undefined) {
             this.maxScopeStacks = 0;
+        }
+        if (this.maxScopeStages === undefined) {
+            this.maxScopeStages = 0;
         }
         if (this.maxGroupByFields === undefined) {
             this.maxGroupByFields = 0;

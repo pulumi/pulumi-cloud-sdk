@@ -13,9 +13,13 @@
 /* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable unused-imports/no-unused-imports */
 
+import type { GraphQueryScopeStage } from "./GraphQueryScopeStage";
+
+
 export class GraphQueryScope {
     accounts?: string[];
     stacks?: string[];
+    stages?: GraphQueryScopeStage[];
     includeDiscovered?: boolean;
 
     getFixupPrototypeFunction() {
@@ -51,6 +55,15 @@ export class GraphQueryScope {
     }
 
     fixupFields() {
-        // Nothing to do.
+        if (this.stages) {
+            for (let i0 = 0; i0 < this.stages.length; i0++) {
+                let val0 = this.stages[i0];
+                if (val0) {
+                    // Lazy import - only evaluated when called
+                    const { GraphQueryScopeStage } = require("./GraphQueryScopeStage");
+                    GraphQueryScopeStage.fixupPrototype(val0);
+                }
+            }
+        }
     }
 }

@@ -35,6 +35,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public long MaxScopeStacks { get; set; }
 
         /// <summary>
+        /// Maximum number of Delivery stages scope.stages may list. A selector limit: a longer list is rejected.
+        /// </summary>
+        [JsonProperty("maxScopeStages")]
+        public long MaxScopeStages { get; set; }
+
+        /// <summary>
         /// Maximum number of fields aggregate.groupBy may name. A selector limit: naming more is rejected.
         /// </summary>
         [JsonProperty("maxGroupByFields")]

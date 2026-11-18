@@ -20,6 +20,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
     :var max_traverse_steps: int - declared
     :var max_scope_accounts: int - declared
     :var max_scope_stacks: int - declared
+    :var max_scope_stages: int - declared
     :var max_group_by_fields: int - declared
     :var max_anchor_nodes: int - declared
     :var max_fanout: int - declared
@@ -33,6 +34,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
         'max_traverse_steps': 'int',
         'max_scope_accounts': 'int',
         'max_scope_stacks': 'int',
+        'max_scope_stages': 'int',
         'max_group_by_fields': 'int',
         'max_anchor_nodes': 'int',
         'max_fanout': 'int',
@@ -47,6 +49,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
         'max_traverse_steps': 'maxTraverseSteps',
         'max_scope_accounts': 'maxScopeAccounts',
         'max_scope_stacks': 'maxScopeStacks',
+        'max_scope_stages': 'maxScopeStages',
         'max_group_by_fields': 'maxGroupByFields',
         'max_anchor_nodes': 'maxAnchorNodes',
         'max_fanout': 'maxFanout',
@@ -60,6 +63,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
     FIELDS_max_traverse_steps = 'maxTraverseSteps'
     FIELDS_max_scope_accounts = 'maxScopeAccounts'
     FIELDS_max_scope_stacks = 'maxScopeStacks'
+    FIELDS_max_scope_stages = 'maxScopeStages'
     FIELDS_max_group_by_fields = 'maxGroupByFields'
     FIELDS_max_anchor_nodes = 'maxAnchorNodes'
     FIELDS_max_fanout = 'maxFanout'
@@ -72,6 +76,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
     _max_traverse_steps: 'int'
     _max_scope_accounts: 'int'
     _max_scope_stacks: 'int'
+    _max_scope_stages: 'int'
     _max_group_by_fields: 'int'
     _max_anchor_nodes: 'int'
     _max_fanout: 'int'
@@ -86,6 +91,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
         max_traverse_steps: 'int',
         max_scope_accounts: 'int',
         max_scope_stacks: 'int',
+        max_scope_stages: 'int',
         max_group_by_fields: 'int',
         max_anchor_nodes: 'int',
         max_fanout: 'int',
@@ -100,6 +106,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
         self.max_traverse_steps = max_traverse_steps
         self.max_scope_accounts = max_scope_accounts
         self.max_scope_stacks = max_scope_stacks
+        self.max_scope_stages = max_scope_stages
         self.max_group_by_fields = max_group_by_fields
         self.max_anchor_nodes = max_anchor_nodes
         self.max_fanout = max_fanout
@@ -114,6 +121,7 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
             self._max_traverse_steps = source._max_traverse_steps
             self._max_scope_accounts = source._max_scope_accounts
             self._max_scope_stacks = source._max_scope_stacks
+            self._max_scope_stages = source._max_scope_stages
             self._max_group_by_fields = source._max_group_by_fields
             self._max_anchor_nodes = source._max_anchor_nodes
             self._max_fanout = source._max_fanout
@@ -165,6 +173,17 @@ class GraphSchemaLimits(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `max_scope_stacks`, must not be `None`")
 
         self._max_scope_stacks = max_scope_stacks
+
+    @property
+    def max_scope_stages(self) -> 'int':
+        return self._max_scope_stages
+
+    @max_scope_stages.setter
+    def max_scope_stages(self, max_scope_stages: 'int'):
+        if max_scope_stages is None:
+            raise ValueError("Invalid value for `max_scope_stages`, must not be `None`")
+
+        self._max_scope_stages = max_scope_stages
 
     @property
     def max_group_by_fields(self) -> 'int':

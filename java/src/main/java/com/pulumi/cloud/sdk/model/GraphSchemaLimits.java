@@ -23,6 +23,9 @@ public class GraphSchemaLimits {
     // Maximum number of stacks scope.stacks may list. A selector limit: a longer list is rejected.
     public Long maxScopeStacks;
 
+    // Maximum number of Delivery stages scope.stages may list. A selector limit: a longer list is rejected.
+    public Long maxScopeStages;
+
     // Maximum number of fields aggregate.groupBy may name. A selector limit: naming more is rejected.
     public Long maxGroupByFields;
 

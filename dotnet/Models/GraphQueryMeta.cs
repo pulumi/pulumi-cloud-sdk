@@ -23,7 +23,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string SchemaVersion { get; set; }
 
         /// <summary>
-        /// Whether the caller's permissions limited what the traversal could see. Always present for traversal queries; absent for aggregations, which are always scoped to the caller's permissions. Anchor selection is likewise caller-scoped and not reported here. Independent of resultMode, which reports engine-side clipping.
+        /// Whether the caller's permissions hid anything from the answer: nodes the traversal could not see, or stacks dropped from what scope.stages resolved to. Always present for traversal queries. Absent for aggregations, which are always scoped to the caller's permissions, unless scope.stages is set. Other anchor selection is likewise caller-scoped and not reported here. Independent of resultMode, which reports engine-side clipping.
         /// </summary>
         [JsonProperty("visibility")]
         public GraphVisibility? Visibility { get; set; }

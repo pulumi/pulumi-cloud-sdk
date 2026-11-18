@@ -23,6 +23,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public System.Collections.Generic.List<string> Stacks { get; set; }
 
         /// <summary>
+        /// Delivery stages to select anchors from. Each resolves to the stacks the stage deployed in the run it last converged with, and the union is applied as if listed in 'stacks'; combined with 'stacks', the two intersect. Available only in organizations with Delivery. Omitted means no stage bound.
+        /// </summary>
+        [JsonProperty("stages")]
+        public System.Collections.Generic.List<GraphQueryScopeStage> Stages { get; set; }
+
+        /// <summary>
         /// Whether discovered (non-IaC) resources are included in anchor selection. Defaults to true.
         /// </summary>
         [JsonProperty("includeDiscovered")]

@@ -565,6 +565,7 @@ export * from "./GraphQueryRequest";
 export * from "./GraphQueryResponse";
 export * from "./GraphQueryReturn";
 export * from "./GraphQueryScope";
+export * from "./GraphQueryScopeStage";
 export * from "./GraphResultMode";
 export * from "./GraphSchemaEdgeType";
 export * from "./GraphSchemaLimits";

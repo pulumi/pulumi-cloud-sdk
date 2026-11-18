@@ -18,44 +18,52 @@ class GraphQueryScope(PulumiAutoModelEncoder):
     """
     :var accounts: list[str] - declared
     :var stacks: list[str] - declared
+    :var stages: list[GraphQueryScopeStage] - declared
     :var include_discovered: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'accounts': 'list[str]',
         'stacks': 'list[str]',
+        'stages': 'list[GraphQueryScopeStage]',
         'include_discovered': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'accounts': 'accounts',
         'stacks': 'stacks',
+        'stages': 'stages',
         'include_discovered': 'includeDiscovered',
     }
 
     FIELDS_accounts = 'accounts'
     FIELDS_stacks = 'stacks'
+    FIELDS_stages = 'stages'
     FIELDS_include_discovered = 'includeDiscovered'
 
     _accounts: 'list[str]'
     _stacks: 'list[str]'
+    _stages: 'list[GraphQueryScopeStage]'
     _include_discovered: 'bool'
 
     def __init__(
         self,
         accounts: 'list[str]' = None,
         stacks: 'list[str]' = None,
+        stages: 'list[GraphQueryScopeStage]' = None,
         include_discovered: 'bool' = False,
     ) -> None:
         super().__init__()
 
         self.accounts = accounts
         self.stacks = stacks
+        self.stages = stages
         self.include_discovered = include_discovered
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, GraphQueryScope):
             self._accounts = source._accounts
             self._stacks = source._stacks
+            self._stages = source._stages
             self._include_discovered = source._include_discovered
 
     @property
@@ -125,6 +133,40 @@ class GraphQueryScope(PulumiAutoModelEncoder):
             return []
 
         return self._stacks
+
+    @property
+    def stages(self) -> 'list[GraphQueryScopeStage]':
+        return self._stages
+
+    @stages.setter
+    def stages(self, stages: 'list[GraphQueryScopeStage]'):
+        self._stages = stages
+
+    @property
+    def stages__autoinit(self) -> 'list[GraphQueryScopeStage]':
+        """Return ``stages``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._stages``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``stages__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._stages is None:
+            self._stages = self.stages__safederef
+
+        return self._stages
+
+    @property
+    def stages__safederef(self) -> 'list[GraphQueryScopeStage]':
+        """Return ``stages``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``stages`` stays unset and each
+        call returns a new default. Use ``stages__autoinit`` to persist the default on
+        first access.
+        """
+        if self._stages is None:
+            return []
+
+        return self._stages
 
     @property
     def include_discovered(self) -> 'bool':

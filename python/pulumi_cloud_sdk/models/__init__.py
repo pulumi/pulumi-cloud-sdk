@@ -552,6 +552,7 @@ from .graph_query_request_ import GraphQueryRequest
 from .graph_query_response_ import GraphQueryResponse
 from .graph_query_return_ import GraphQueryReturn
 from .graph_query_scope_ import GraphQueryScope
+from .graph_query_scope_stage_ import GraphQueryScopeStage
 from .graph_result_mode_ import GraphResultMode
 from .graph_schema_edge_type_ import GraphSchemaEdgeType
 from .graph_schema_limits_ import GraphSchemaLimits

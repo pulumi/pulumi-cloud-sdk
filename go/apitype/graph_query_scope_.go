@@ -14,6 +14,10 @@ type GraphQueryScope struct {
 	// org-qualified: a query already runs inside one organization, so the 'org/project/stack' form used elsewhere in the API — and reported
 	// as a stack node's id — is rejected here with a 400. Omitted means all stacks visible to the caller.
 	Stacks []string `json:"stacks,omitempty" yaml:"stacks,omitempty"`
+	// Delivery stages to select anchors from. Each resolves to the stacks the stage deployed in the run it last converged with, and the union
+	// is applied as if listed in 'stacks'; combined with 'stacks', the two intersect. Available only in organizations with Delivery. Omitted
+	// means no stage bound.
+	Stages []GraphQueryScopeStage `json:"stages,omitempty" yaml:"stages,omitempty"`
 	// Whether discovered (non-IaC) resources are included in anchor selection. Defaults to true.
 	IncludeDiscovered *bool `json:"includeDiscovered,omitzero" yaml:"includeDiscovered,omitempty"`
 }

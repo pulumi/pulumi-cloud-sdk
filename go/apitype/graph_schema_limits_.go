@@ -15,6 +15,8 @@ type GraphSchemaLimits struct {
 	MaxScopeAccounts int `json:"maxScopeAccounts" yaml:"maxScopeAccounts"`
 	// Maximum number of stacks scope.stacks may list. A selector limit: a longer list is rejected.
 	MaxScopeStacks int `json:"maxScopeStacks" yaml:"maxScopeStacks"`
+	// Maximum number of Delivery stages scope.stages may list. A selector limit: a longer list is rejected.
+	MaxScopeStages int `json:"maxScopeStages" yaml:"maxScopeStages"`
 	// Maximum number of fields aggregate.groupBy may name. A selector limit: naming more is rejected.
 	MaxGroupByFields int `json:"maxGroupByFields" yaml:"maxGroupByFields"`
 	// Maximum number of anchor nodes one query resolves, and the upper bound on anchor.limit. When more nodes match, the result is clipped and
