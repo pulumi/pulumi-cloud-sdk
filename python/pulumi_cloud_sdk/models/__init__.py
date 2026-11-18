@@ -45,6 +45,8 @@ from .agent_backend_event_tool_response_ import AgentBackendEventToolResponse
 from .agent_backend_event_user_approval_request_ import AgentBackendEventUserApprovalRequest
 from .agent_backend_event_user_approval_request_context_ import AgentBackendEventUserApprovalRequestContext
 from .agent_backend_event_warning_ import AgentBackendEventWarning
+from .agent_cli_catalog_entry_ import AgentCLICatalogEntry
+from .agent_cli_integration_response_ import AgentCLIIntegrationResponse
 from .agent_claim_request_ import AgentClaimRequest
 from .agent_claim_response_ import AgentClaimResponse
 from .agent_claims_status_ import AgentClaimsStatus
@@ -61,6 +63,7 @@ from .agent_entity_policy_finding_ import AgentEntityPolicyFinding
 from .agent_entity_policy_issue_ import AgentEntityPolicyIssue
 from .agent_entity_repository_ import AgentEntityRepository
 from .agent_entity_stack_ import AgentEntityStack
+from .agent_integration_response_ import AgentIntegrationResponse
 from .agent_pool_ import AgentPool
 from .agent_pool_detail_ import AgentPoolDetail
 from .agent_respond_to_task_request_ import AgentRespondToTaskRequest
@@ -368,6 +371,7 @@ from .create_scheduled_ttl_deployment_request_ import CreateScheduledTTLDeployme
 from .create_service_request_ import CreateServiceRequest
 from .create_team_access_token_request_ import CreateTeamAccessTokenRequest
 from .create_triggered_agent_automation_v2_request_ import CreateTriggeredAgentAutomationV2Request
+from .credential_field_response_ import CredentialFieldResponse
 from .custom_vcs_integration_response_ import CustomVCSIntegrationResponse
 from .custom_vcs_repository_ import CustomVCSRepository
 from .customer_managed_key_ import CustomerManagedKey
@@ -584,7 +588,9 @@ from .key_encryption_key_migration_ import KeyEncryptionKeyMigration
 from .key_type_ import KeyType
 from .list_access_tokens_response_ import ListAccessTokensResponse
 from .list_agent_automations_v2_response_ import ListAgentAutomationsV2Response
+from .list_agent_cli_integrations_response_ import ListAgentCLIIntegrationsResponse
 from .list_agent_definitions_response_ import ListAgentDefinitionsResponse
+from .list_agent_integrations_response_ import ListAgentIntegrationsResponse
 from .list_agent_pools_response_ import ListAgentPoolsResponse
 from .list_agent_task_events_response_ import ListAgentTaskEventsResponse
 from .list_agent_tasks_response_ import ListAgentTasksResponse

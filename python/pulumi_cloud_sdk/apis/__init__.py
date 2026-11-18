@@ -5,6 +5,7 @@
 
 from .ai_api_ import AIApi
 from .ai_agents_api_ import AI_AgentsApi
+from .agent_integration_catalog_api_ import Agent_Integration_CatalogApi
 from .cloud_setup_api_ import CloudSetupApi
 from .deployments_api_ import DeploymentsApi
 from .environments_api_ import EnvironmentsApi
