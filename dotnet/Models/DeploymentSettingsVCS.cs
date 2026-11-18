@@ -14,6 +14,7 @@ namespace Pulumi.Cloud.Sdk.Models {
     [JsonSubType(typeof(DeploymentSettingsVCS.AzureDevOps))]
     [JsonSubType(typeof(DeploymentSettingsVCS.Bitbucket))]
     [JsonSubType(typeof(DeploymentSettingsVCS.Custom))]
+    [JsonSubType(typeof(DeploymentSettingsVCS.Entire))]
     [JsonSubType(typeof(DeploymentSettingsVCS.GitHub))]
     [JsonSubType(typeof(DeploymentSettingsVCS.GitLab))]
     [JsonSubType(typeof(DeploymentSettingsVCS.Origin))]
@@ -82,6 +83,10 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [JsonSubTypeName("custom")]
         public class Custom : DeploymentSettingsVCS {
+        }
+
+        [JsonSubTypeName("entire")]
+        public class Entire : DeploymentSettingsVCS {
         }
 
         [JsonSubTypeName("github")]

@@ -64,6 +64,21 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<CompleteOAuthResponse>(apiRequest);
         }
 
+        public EntireIntegrationDetails CompleteEntireSetup(string orgName, CompleteEntireSetupRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CompleteEntireSetup");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CompleteEntireSetup");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/entire/complete");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<EntireIntegrationDetails>(apiRequest);
+        }
+
         public OriginIntegrationDetails CompleteOriginSetup(string orgName, CompleteOriginSetupRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CompleteOriginSetup");
@@ -170,6 +185,19 @@ namespace Pulumi.Cloud.Sdk.Api {
                 throw new ArgumentNullException(nameof(integrationId), "Missing required parameter 'integrationId' when calling DeleteCustomVCSIntegration");
             }
             var request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/custom/{integrationId}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("integrationId", integrationId);
+            this.client.Call(request);
+        }
+
+        public void DeleteEntireIntegration(string orgName, string integrationId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DeleteEntireIntegration");
+            }
+            if (integrationId == null) {
+                throw new ArgumentNullException(nameof(integrationId), "Missing required parameter 'integrationId' when calling DeleteEntireIntegration");
+            }
+            var request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/entire/{integrationId}");
             request.PathParam("orgName", orgName);
             request.PathParam("integrationId", integrationId);
             this.client.Call(request);
@@ -495,6 +523,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListCustomVCSIntegrationsResponse>(request);
         }
 
+        public ListEntireIntegrationsResponse ListEntireIntegrations(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListEntireIntegrations");
+            }
+            var request = new ApiRequest("GET", "/api/console/orgs/{orgName}/integrations/entire");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<ListEntireIntegrationsResponse>(request);
+        }
+
         public ListGitHubIntegrationsResponse ListGitHubEnterpriseIntegrations(string orgName) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListGitHubEnterpriseIntegrations");
@@ -615,6 +653,16 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Body(request);
             apiRequest.Consumes("application/json");
             this.client.Call(apiRequest);
+        }
+
+        public EntireSetupResponse StartEntireSetup(string orgName) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling StartEntireSetup");
+            }
+            var request = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/entire");
+            request.PathParam("orgName", orgName);
+            request.Produces("application/json");
+            return this.client.Call<EntireSetupResponse>(request);
         }
 
         public GitHubSetupResponse StartGitHubSetup(string orgName) {

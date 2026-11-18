@@ -179,6 +179,57 @@ class VCS_IntegrationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def complete_entire_setup(
+        self,
+        org_name: 'str',
+        request: 'CompleteEntireSetupRequest',
+        _request_timeout: int = None,
+    ) -> 'EntireIntegrationDetails':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `complete_entire_setup`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `complete_entire_setup`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/entire/complete'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='EntireIntegrationDetails',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def complete_origin_setup(
         self,
         org_name: 'str',
@@ -551,6 +602,57 @@ class VCS_IntegrationsApi(object):
 
         collection_formats = {}
         resource_path = '/api/console/orgs/{orgName}/integrations/custom/{integrationId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if integration_id is not None:
+            path_params['integrationId'] = integration_id
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def delete_entire_integration(
+        self,
+        org_name: 'str',
+        integration_id: 'str',
+        _request_timeout: int = None,
+    ) -> None:
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `delete_entire_integration`")
+        # verify the required parameter 'integration_id' is set
+        if integration_id is None:
+            raise ValueError("Missing the required parameter `integration_id` when calling `delete_entire_integration`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/entire/{integrationId}'
         path_params = {}
         if org_name is not None:
             path_params['orgName'] = org_name
@@ -1853,6 +1955,51 @@ class VCS_IntegrationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def list_entire_integrations(
+        self,
+        org_name: 'str',
+        _request_timeout: int = None,
+    ) -> 'ListEntireIntegrationsResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_entire_integrations`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/entire'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListEntireIntegrationsResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def list_git_hub_enterprise_integrations(
         self,
         org_name: 'str',
@@ -2317,6 +2464,51 @@ class VCS_IntegrationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def start_entire_setup(
+        self,
+        org_name: 'str',
+        _request_timeout: int = None,
+    ) -> 'EntireSetupResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `start_entire_setup`")
+
+        collection_formats = {}
+        resource_path = '/api/console/orgs/{orgName}/integrations/entire'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='EntireSetupResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

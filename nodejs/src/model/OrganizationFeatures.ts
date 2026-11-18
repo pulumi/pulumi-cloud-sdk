@@ -116,6 +116,7 @@ export class OrganizationFeatures {
     deliveryEnabled?: boolean;
     deliveryBillingEnabled?: boolean;
     cursorOriginVCSEnabled?: boolean;
+    entireVCSEnabled?: boolean;
     enterpriseSelfServeEnabled?: boolean;
 
     getFixupPrototypeFunction() {

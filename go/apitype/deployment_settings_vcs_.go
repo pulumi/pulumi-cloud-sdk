@@ -124,6 +124,7 @@ func (m *deploymentSettingsVCSImpl) GetInstancesFromTypeHierarchy() []Deployment
 		&deploymentSettingsVCSAzureDevOpsImpl{},
 		&deploymentSettingsVCSBitbucketImpl{},
 		&deploymentSettingsVCSCustomImpl{},
+		&deploymentSettingsVCSEntireImpl{},
 		&deploymentSettingsVCSGitHubImpl{},
 		&deploymentSettingsVCSGitLabImpl{},
 		&deploymentSettingsVCSOriginImpl{},
@@ -268,6 +269,13 @@ func UnmarshalJSONDeploymentSettingsVCS(bytes []byte, res *DeploymentSettingsVCS
 		}
 		*res = &subValue
 		return nil
+	case "entire":
+		var subValue deploymentSettingsVCSEntireImpl
+		if err = json.Unmarshal(bytes, &subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
 	case "github":
 		var subValue deploymentSettingsVCSGitHubImpl
 		if err = json.Unmarshal(bytes, &subValue); err != nil {
@@ -325,6 +333,13 @@ func UnmarshalYamlDeploymentSettingsVCS(node yaml.Node, res *DeploymentSettingsV
 		return nil
 	case "custom":
 		var subValue deploymentSettingsVCSCustomImpl
+		if err = node.Decode(&subValue); err != nil {
+			return err
+		}
+		*res = &subValue
+		return nil
+	case "entire":
+		var subValue deploymentSettingsVCSEntireImpl
 		if err = node.Decode(&subValue); err != nil {
 			return err
 		}

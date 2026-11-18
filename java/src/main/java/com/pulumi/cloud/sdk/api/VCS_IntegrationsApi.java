@@ -70,6 +70,21 @@ public final class VCS_IntegrationsApi {
         return this.client.call($request, new TypeReference<CompleteOAuthResponse>() {});
     }
 
+    public EntireIntegrationDetails completeEntireSetup(String orgName, CompleteEntireSetupRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling completeEntireSetup");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling completeEntireSetup");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/entire/complete");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<EntireIntegrationDetails>() {});
+    }
+
     public OriginIntegrationDetails completeOriginSetup(String orgName, CompleteOriginSetupRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling completeOriginSetup");
@@ -176,6 +191,19 @@ public final class VCS_IntegrationsApi {
             throw new IllegalArgumentException("Missing required parameter 'integrationId' when calling deleteCustomVCSIntegration");
         }
         ApiRequest $request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/custom/{integrationId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("integrationId", integrationId);
+        this.client.call($request);
+    }
+
+    public void deleteEntireIntegration(String orgName, String integrationId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling deleteEntireIntegration");
+        }
+        if (integrationId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'integrationId' when calling deleteEntireIntegration");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/console/orgs/{orgName}/integrations/entire/{integrationId}");
         $request.pathParam("orgName", orgName);
         $request.pathParam("integrationId", integrationId);
         this.client.call($request);
@@ -501,6 +529,16 @@ public final class VCS_IntegrationsApi {
         return this.client.call($request, new TypeReference<ListCustomVCSIntegrationsResponse>() {});
     }
 
+    public ListEntireIntegrationsResponse listEntireIntegrations(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listEntireIntegrations");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/console/orgs/{orgName}/integrations/entire");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListEntireIntegrationsResponse>() {});
+    }
+
     public ListGitHubIntegrationsResponse listGitHubEnterpriseIntegrations(String orgName) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listGitHubEnterpriseIntegrations");
@@ -630,6 +668,16 @@ public final class VCS_IntegrationsApi {
         $request.body(request);
         $request.consumes("application/json");
         this.client.call($request);
+    }
+
+    public EntireSetupResponse startEntireSetup(String orgName) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling startEntireSetup");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/console/orgs/{orgName}/integrations/entire");
+        $request.pathParam("orgName", orgName);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<EntireSetupResponse>() {});
     }
 
     public GitHubSetupResponse startGitHubSetup(String orgName) {

@@ -21,7 +21,9 @@ public enum VCSProvider {
     // GitHub Enterprise Server version control system
     GitHubEnterprise("github_enterprise"),
     // Cursor Origin version control system
-    Origin("origin");
+    Origin("origin"),
+    // Entire version control system
+    Entire("entire");
 
     private final String value;
 

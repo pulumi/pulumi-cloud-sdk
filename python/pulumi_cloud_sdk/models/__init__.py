@@ -312,6 +312,7 @@ from .cloud_account_ import CloudAccount
 from .cloud_setup_provider_ import CloudSetupProvider
 from .cloud_setup_resource_ import CloudSetupResource
 from .cloud_setup_result_ import CloudSetupResult
+from .complete_entire_setup_request_ import CompleteEntireSetupRequest
 from .complete_o_auth_request_ import CompleteOAuthRequest
 from .complete_o_auth_response_ import CompleteOAuthResponse
 from .complete_origin_setup_request_ import CompleteOriginSetupRequest
@@ -404,6 +405,7 @@ from .deployment_settings_vcs_ import DeploymentSettingsVCS
 from .deployment_settings_vcs_azure_dev_ops_ import DeploymentSettingsVCSAzureDevOps
 from .deployment_settings_vcs_bitbucket_ import DeploymentSettingsVCSBitbucket
 from .deployment_settings_vcs_custom_ import DeploymentSettingsVCSCustom
+from .deployment_settings_vcs_entire_ import DeploymentSettingsVCSEntire
 from .deployment_settings_vcs_git_hub_ import DeploymentSettingsVCSGitHub
 from .deployment_settings_vcs_git_lab_ import DeploymentSettingsVCSGitLab
 from .deployment_settings_vcs_origin_ import DeploymentSettingsVCSOrigin
@@ -426,6 +428,8 @@ from .drift_run_update_ import DriftRunUpdate
 from .encrypt_environment_secrets_request_ import EncryptEnvironmentSecretsRequest
 from .encrypt_environment_secrets_response_ import EncryptEnvironmentSecretsResponse
 from .engine_event_ import EngineEvent
+from .entire_integration_details_ import EntireIntegrationDetails
+from .entire_setup_response_ import EntireSetupResponse
 from .entity_assignment_ import EntityAssignment
 from .entity_assignments_response_ import EntityAssignmentsResponse
 from .entity_instance_ import EntityInstance
@@ -611,6 +615,7 @@ from .list_deployment_snapshot_agent_pool_ import ListDeploymentSnapshotAgentPoo
 from .list_discovered_stack_resources_response_ import ListDiscoveredStackResourcesResponse
 from .list_downstream_stack_references_response_ import ListDownstreamStackReferencesResponse
 from .list_drift_runs_response_ import ListDriftRunsResponse
+from .list_entire_integrations_response_ import ListEntireIntegrationsResponse
 from .list_environment_referrers_response_ import ListEnvironmentReferrersResponse
 from .list_environment_revision_tags_response_ import ListEnvironmentRevisionTagsResponse
 from .list_environment_secret_rotation_history_response_ import ListEnvironmentSecretRotationHistoryResponse

@@ -36,5 +36,8 @@ namespace Pulumi.Cloud.Sdk.Models {
 
         [EnumMember(Value = "origin-review-stack")]
         OriginReviewStack,
+
+        [EnumMember(Value = "entire-review-stack")]
+        EntireReviewStack,
     }
 }

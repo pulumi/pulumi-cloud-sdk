@@ -51,5 +51,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "origin")]
         Origin,
+
+        /// <summary>
+        /// Entire version control system
+        /// </summary>
+        [EnumMember(Value = "entire")]
+        Entire,
     }
 }

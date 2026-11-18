@@ -223,6 +223,8 @@ type OrganizationFeatures struct {
 	DeliveryBillingEnabled bool `json:"deliveryBillingEnabled,omitzero" yaml:"deliveryBillingEnabled,omitempty"`
 	// Whether the Cursor Origin VCS integration is available to the organization.
 	CursorOriginVCSEnabled bool `json:"cursorOriginVCSEnabled,omitzero" yaml:"cursorOriginVCSEnabled,omitempty"`
+	// Whether the Entire VCS integration is available to the organization.
+	EntireVCSEnabled bool `json:"entireVCSEnabled,omitzero" yaml:"entireVCSEnabled,omitempty"`
 	// Whether the organization can buy the Enterprise plan self-serve at its monthly price. When false, Enterprise is available self-serve
 	// only as a trial and is bought through sales.
 	EnterpriseSelfServeEnabled bool `json:"enterpriseSelfServeEnabled,omitzero" yaml:"enterpriseSelfServeEnabled,omitempty"`

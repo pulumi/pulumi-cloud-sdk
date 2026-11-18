@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.AzureDevOps.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.Bitbucket.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.Custom.class),
+    @JsonSubTypes.Type(value = DeploymentSettingsVCS.Entire.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.GitHub.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.GitLab.class),
     @JsonSubTypes.Type(value = DeploymentSettingsVCS.Origin.class)
@@ -57,6 +58,10 @@ public abstract class DeploymentSettingsVCS {
 
     @JsonTypeName("custom")
     public static class Custom extends DeploymentSettingsVCS {
+    }
+
+    @JsonTypeName("entire")
+    public static class Entire extends DeploymentSettingsVCS {
     }
 
     @JsonTypeName("github")

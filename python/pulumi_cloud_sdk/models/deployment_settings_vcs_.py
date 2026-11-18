@@ -146,6 +146,7 @@ class DeploymentSettingsVCS(PulumiAutoModelEncoder):
                 "azure_devops": models.DeploymentSettingsVCSAzureDevOps,
                 "bitbucket": models.DeploymentSettingsVCSBitbucket,
                 "custom": models.DeploymentSettingsVCSCustom,
+                "entire": models.DeploymentSettingsVCSEntire,
                 "github": models.DeploymentSettingsVCSGitHub,
                 "gitlab": models.DeploymentSettingsVCSGitLab,
                 "origin": models.DeploymentSettingsVCSOrigin,

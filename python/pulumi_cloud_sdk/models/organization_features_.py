@@ -118,6 +118,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     :var delivery_enabled: bool - declared
     :var delivery_billing_enabled: bool - declared
     :var cursor_origin_vcs_enabled: bool - declared
+    :var entire_vcs_enabled: bool - declared
     :var enterprise_self_serve_enabled: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
@@ -223,6 +224,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'delivery_enabled': 'bool',
         'delivery_billing_enabled': 'bool',
         'cursor_origin_vcs_enabled': 'bool',
+        'entire_vcs_enabled': 'bool',
         'enterprise_self_serve_enabled': 'bool',
     }
 
@@ -329,6 +331,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         'delivery_enabled': 'deliveryEnabled',
         'delivery_billing_enabled': 'deliveryBillingEnabled',
         'cursor_origin_vcs_enabled': 'cursorOriginVCSEnabled',
+        'entire_vcs_enabled': 'entireVCSEnabled',
         'enterprise_self_serve_enabled': 'enterpriseSelfServeEnabled',
     }
 
@@ -434,6 +437,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     FIELDS_delivery_enabled = 'deliveryEnabled'
     FIELDS_delivery_billing_enabled = 'deliveryBillingEnabled'
     FIELDS_cursor_origin_vcs_enabled = 'cursorOriginVCSEnabled'
+    FIELDS_entire_vcs_enabled = 'entireVCSEnabled'
     FIELDS_enterprise_self_serve_enabled = 'enterpriseSelfServeEnabled'
 
     _audit_logs_enabled: 'bool'
@@ -538,6 +542,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     _delivery_enabled: 'bool'
     _delivery_billing_enabled: 'bool'
     _cursor_origin_vcs_enabled: 'bool'
+    _entire_vcs_enabled: 'bool'
     _enterprise_self_serve_enabled: 'bool'
 
     def __init__(
@@ -644,6 +649,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         delivery_enabled: 'bool' = False,
         delivery_billing_enabled: 'bool' = False,
         cursor_origin_vcs_enabled: 'bool' = False,
+        entire_vcs_enabled: 'bool' = False,
         enterprise_self_serve_enabled: 'bool' = False,
     ) -> None:
         super().__init__()
@@ -750,6 +756,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
         self.delivery_enabled = delivery_enabled
         self.delivery_billing_enabled = delivery_billing_enabled
         self.cursor_origin_vcs_enabled = cursor_origin_vcs_enabled
+        self.entire_vcs_enabled = entire_vcs_enabled
         self.enterprise_self_serve_enabled = enterprise_self_serve_enabled
 
     def copy_common_fields(self, source: Any, /) -> None:
@@ -856,6 +863,7 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
             self._delivery_enabled = source._delivery_enabled
             self._delivery_billing_enabled = source._delivery_billing_enabled
             self._cursor_origin_vcs_enabled = source._cursor_origin_vcs_enabled
+            self._entire_vcs_enabled = source._entire_vcs_enabled
             self._enterprise_self_serve_enabled = source._enterprise_self_serve_enabled
 
     @property
@@ -1865,6 +1873,14 @@ class OrganizationFeatures(PulumiAutoModelEncoder):
     @cursor_origin_vcs_enabled.setter
     def cursor_origin_vcs_enabled(self, cursor_origin_vcs_enabled: 'bool'):
         self._cursor_origin_vcs_enabled = cursor_origin_vcs_enabled
+
+    @property
+    def entire_vcs_enabled(self) -> 'bool':
+        return self._entire_vcs_enabled
+
+    @entire_vcs_enabled.setter
+    def entire_vcs_enabled(self, entire_vcs_enabled: 'bool'):
+        self._entire_vcs_enabled = entire_vcs_enabled
 
     @property
     def enterprise_self_serve_enabled(self) -> 'bool':

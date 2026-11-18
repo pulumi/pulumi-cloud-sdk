@@ -65,6 +65,7 @@ export class DeploymentSettingsVCS {
         const { DeploymentSettingsVCSAzureDevOps } = require("./DeploymentSettingsVCSAzureDevOps");
         const { DeploymentSettingsVCSBitbucket } = require("./DeploymentSettingsVCSBitbucket");
         const { DeploymentSettingsVCSCustom } = require("./DeploymentSettingsVCSCustom");
+        const { DeploymentSettingsVCSEntire } = require("./DeploymentSettingsVCSEntire");
         const { DeploymentSettingsVCSGitHub } = require("./DeploymentSettingsVCSGitHub");
         const { DeploymentSettingsVCSGitLab } = require("./DeploymentSettingsVCSGitLab");
         const { DeploymentSettingsVCSOrigin } = require("./DeploymentSettingsVCSOrigin");
@@ -78,6 +79,9 @@ export class DeploymentSettingsVCS {
                 break;
             case "custom":
                 Object.setPrototypeOf(obj, DeploymentSettingsVCSCustom.prototype);
+                break;
+            case "entire":
+                Object.setPrototypeOf(obj, DeploymentSettingsVCSEntire.prototype);
                 break;
             case "github":
                 Object.setPrototypeOf(obj, DeploymentSettingsVCSGitHub.prototype);
@@ -98,6 +102,7 @@ export class DeploymentSettingsVCS {
         const { DeploymentSettingsVCSAzureDevOps } = require("./DeploymentSettingsVCSAzureDevOps");
         const { DeploymentSettingsVCSBitbucket } = require("./DeploymentSettingsVCSBitbucket");
         const { DeploymentSettingsVCSCustom } = require("./DeploymentSettingsVCSCustom");
+        const { DeploymentSettingsVCSEntire } = require("./DeploymentSettingsVCSEntire");
         const { DeploymentSettingsVCSGitHub } = require("./DeploymentSettingsVCSGitHub");
         const { DeploymentSettingsVCSGitLab } = require("./DeploymentSettingsVCSGitLab");
         const { DeploymentSettingsVCSOrigin } = require("./DeploymentSettingsVCSOrigin");
@@ -106,6 +111,7 @@ export class DeploymentSettingsVCS {
             DeploymentSettingsVCSAzureDevOps,
             DeploymentSettingsVCSBitbucket,
             DeploymentSettingsVCSCustom,
+            DeploymentSettingsVCSEntire,
             DeploymentSettingsVCSGitHub,
             DeploymentSettingsVCSGitLab,
             DeploymentSettingsVCSOrigin,

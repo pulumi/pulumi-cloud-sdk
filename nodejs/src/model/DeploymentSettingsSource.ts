@@ -23,4 +23,5 @@ export enum DeploymentSettingsSource {
     BitBucketReviewStack = "bitbucket-review-stack",
     GitHubGitOps = "github-gitops",
     OriginReviewStack = "origin-review-stack",
+    EntireReviewStack = "entire-review-stack",
 }

@@ -623,6 +623,12 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool CursorOriginVCSEnabled { get; set; }
 
         /// <summary>
+        /// Whether the Entire VCS integration is available to the organization.
+        /// </summary>
+        [JsonProperty("entireVCSEnabled")]
+        public bool EntireVCSEnabled { get; set; }
+
+        /// <summary>
         /// Whether the organization can buy the Enterprise plan self-serve at its monthly price. When false, Enterprise is available self-serve only as a trial and is bought through sales.
         /// </summary>
         [JsonProperty("enterpriseSelfServeEnabled")]

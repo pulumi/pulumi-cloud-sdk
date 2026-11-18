@@ -19,6 +19,7 @@ const (
 	DeploymentSettingsSourceBitBucketReviewStack   DeploymentSettingsSource = "bitbucket-review-stack"
 	DeploymentSettingsSourceGitHubGitOps           DeploymentSettingsSource = "github-gitops"
 	DeploymentSettingsSourceOriginReviewStack      DeploymentSettingsSource = "origin-review-stack"
+	DeploymentSettingsSourceEntireReviewStack      DeploymentSettingsSource = "entire-review-stack"
 )
 
 func (v DeploymentSettingsSource) AllValues() []DeploymentSettingsSource {
@@ -32,6 +33,7 @@ func (v DeploymentSettingsSource) AllValues() []DeploymentSettingsSource {
 		DeploymentSettingsSourceBitBucketReviewStack,
 		DeploymentSettingsSourceGitHubGitOps,
 		DeploymentSettingsSourceOriginReviewStack,
+		DeploymentSettingsSourceEntireReviewStack,
 	}
 }
 
@@ -54,6 +56,8 @@ func (v DeploymentSettingsSource) IsValid() bool {
 	case DeploymentSettingsSourceGitHubGitOps:
 		return true
 	case DeploymentSettingsSourceOriginReviewStack:
+		return true
+	case DeploymentSettingsSourceEntireReviewStack:
 		return true
 	}
 
@@ -80,6 +84,8 @@ func (v DeploymentSettingsSource) openapiName() string {
 		return "GitHubGitOps"
 	case DeploymentSettingsSourceOriginReviewStack:
 		return "OriginReviewStack"
+	case DeploymentSettingsSourceEntireReviewStack:
+		return "EntireReviewStack"
 	}
 
 	return ""

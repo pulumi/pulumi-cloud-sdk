@@ -21,4 +21,5 @@ export enum VCSProvider {
     Custom = "custom",
     GitHubEnterprise = "github_enterprise",
     Origin = "origin",
+    Entire = "entire",
 }

@@ -28,11 +28,14 @@ import { BitBucketSettingsRequest } from "../model/BitBucketSettingsRequest";
 import { BitBucketSetupRequest } from "../model/BitBucketSetupRequest";
 import { ClaimGitHubIntegrationRequest } from "../model/ClaimGitHubIntegrationRequest";
 import { ClaimableGitHubIntegrationsResponse } from "../model/ClaimableGitHubIntegrationsResponse";
+import { CompleteEntireSetupRequest } from "../model/CompleteEntireSetupRequest";
 import { CompleteOAuthRequest } from "../model/CompleteOAuthRequest";
 import { CompleteOAuthResponse } from "../model/CompleteOAuthResponse";
 import { CompleteOriginSetupRequest } from "../model/CompleteOriginSetupRequest";
 import { CreateCustomVCSIntegrationRequest } from "../model/CreateCustomVCSIntegrationRequest";
 import { CustomVCSIntegrationResponse } from "../model/CustomVCSIntegrationResponse";
+import { EntireIntegrationDetails } from "../model/EntireIntegrationDetails";
+import { EntireSetupResponse } from "../model/EntireSetupResponse";
 import { GitHubEnterpriseAuthorizeURLResponse } from "../model/GitHubEnterpriseAuthorizeURLResponse";
 import { GitHubEnterpriseLinkedMembersResponse } from "../model/GitHubEnterpriseLinkedMembersResponse";
 import { GitHubEnterpriseUserIdentityResponse } from "../model/GitHubEnterpriseUserIdentityResponse";
@@ -48,6 +51,7 @@ import { InitiateOAuthResponse } from "../model/InitiateOAuthResponse";
 import { ListAzureDevOpsIntegrationsResponse } from "../model/ListAzureDevOpsIntegrationsResponse";
 import { ListBitBucketIntegrationsResponse } from "../model/ListBitBucketIntegrationsResponse";
 import { ListCustomVCSIntegrationsResponse } from "../model/ListCustomVCSIntegrationsResponse";
+import { ListEntireIntegrationsResponse } from "../model/ListEntireIntegrationsResponse";
 import { ListGitHubIntegrationsResponse } from "../model/ListGitHubIntegrationsResponse";
 import { ListGitLabIntegrationsResponse } from "../model/ListGitLabIntegrationsResponse";
 import { ListOriginIntegrationsResponse } from "../model/ListOriginIntegrationsResponse";
@@ -202,6 +206,49 @@ export class VCS_Integrations {
         return this.client.callWithOptions<CompleteOAuthResponse>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 CompleteOAuthResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public CompleteEntireSetup__generateUrl(orgName: string): string {
+        let url = this.basePath + "console/orgs/{orgName}/integrations/entire/complete";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public CompleteEntireSetup(
+        params: {
+            orgName: string,
+        },
+        request: CompleteEntireSetupRequest,
+    ): Promise<EntireIntegrationDetails> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CompleteEntireSetup.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CompleteEntireSetup.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CompleteEntireSetup.");
+        }
+
+        const __path = this.CompleteEntireSetup__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<EntireIntegrationDetails>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                EntireIntegrationDetails.fixupPrototype(__res0);
             }
         });
     }
@@ -515,6 +562,45 @@ export class VCS_Integrations {
         }
 
         const __path = this.DeleteCustomVCSIntegration__generateUrl(params.orgName, params.integrationId);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.method = "DELETE";
+
+        return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public DeleteEntireIntegration__generateUrl(
+        orgName: string,
+        integrationId: string,
+    ): string {
+        let url = this.basePath + "console/orgs/{orgName}/integrations/entire/{integrationId}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{integrationId}", encodeURIComponent(String(integrationId)));
+        return url;
+    }
+
+    public DeleteEntireIntegration(
+        params: {
+            orgName: string,
+            integrationId: string,
+        },
+    ): Promise<void> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling DeleteEntireIntegration.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling DeleteEntireIntegration.");
+        }
+
+        // verify required parameter 'integrationId' is not null or undefined
+        if (params.integrationId === null || params.integrationId === undefined) {
+            throw new Error("Required parameter integrationId was null or undefined when calling DeleteEntireIntegration.");
+        }
+
+        const __path = this.DeleteEntireIntegration__generateUrl(params.orgName, params.integrationId);
 
         let __requestOptions = new ApiRequest();
 
@@ -1549,6 +1635,40 @@ export class VCS_Integrations {
         });
     }
 
+    public ListEntireIntegrations__generateUrl(orgName: string): string {
+        let url = this.basePath + "console/orgs/{orgName}/integrations/entire";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public ListEntireIntegrations(
+        params: {
+            orgName: string,
+        },
+    ): Promise<ListEntireIntegrationsResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListEntireIntegrations.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListEntireIntegrations.");
+        }
+
+        const __path = this.ListEntireIntegrations__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListEntireIntegrationsResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListEntireIntegrationsResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public ListGitHubEnterpriseIntegrations__generateUrl(orgName: string): string {
         let url = this.basePath + "console/orgs/{orgName}/integrations/github-enterprise";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -1943,6 +2063,40 @@ export class VCS_Integrations {
         __requestOptions.method = "DELETE";
 
         return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public StartEntireSetup__generateUrl(orgName: string): string {
+        let url = this.basePath + "console/orgs/{orgName}/integrations/entire";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public StartEntireSetup(
+        params: {
+            orgName: string,
+        },
+    ): Promise<EntireSetupResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling StartEntireSetup.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling StartEntireSetup.");
+        }
+
+        const __path = this.StartEntireSetup__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<EntireSetupResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                EntireSetupResponse.fixupPrototype(__res0);
+            }
+        });
     }
 
     public StartGitHubSetup__generateUrl(orgName: string): string {

@@ -176,6 +176,62 @@ func (p *CloudClient) CompleteAzureDevOpsOAuth(
 	return &result, nil
 }
 
+type InterceptorForCompleteEntireSetup struct {
+	OrgName      string
+	Request      apitype.CompleteEntireSetupRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CompleteEntireSetup(
+	ctx context.Context,
+	orgName string,
+	request apitype.CompleteEntireSetupRequest,
+	extraHeaders ...http.Header,
+) (*apitype.EntireIntegrationDetails, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCompleteEntireSetup{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EntireIntegrationDetails)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CompleteEntireSetup: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/console/orgs/{orgName}/integrations/entire/complete",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.EntireIntegrationDetails
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForCompleteOriginSetup struct {
 	OrgName      string
 	Request      apitype.CompleteOriginSetupRequest
@@ -554,6 +610,53 @@ func (p *CloudClient) DeleteCustomVCSIntegration(
 		ctx,
 		"DELETE",
 		"/api/console/orgs/{orgName}/integrations/custom/{integrationId}",
+		map[string]any{
+			"orgName":       orgName,
+			"integrationId": integrationId,
+		},
+		nil,
+	)
+	if err != nil {
+		return err
+	}
+	err = p.invoke(req, extraHeaders)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type InterceptorForDeleteEntireIntegration struct {
+	OrgName       string
+	IntegrationId string
+	ExtraHeaders  []http.Header
+}
+
+func (p *CloudClient) DeleteEntireIntegration(
+	ctx context.Context,
+	orgName string,
+	integrationId string,
+	extraHeaders ...http.Header,
+) error {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForDeleteEntireIntegration{
+			OrgName:       orgName,
+			IntegrationId: integrationId,
+			ExtraHeaders:  extraHeaders,
+		}
+		_, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return err
+		}
+		if intercepted {
+			return nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"DELETE",
+		"/api/console/orgs/{orgName}/integrations/entire/{integrationId}",
 		map[string]any{
 			"orgName":       orgName,
 			"integrationId": integrationId,
@@ -1941,6 +2044,58 @@ func (p *CloudClient) ListCustomVCSIntegrations(
 	return &result, nil
 }
 
+type InterceptorForListEntireIntegrations struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListEntireIntegrations(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.ListEntireIntegrationsResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListEntireIntegrations{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListEntireIntegrationsResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListEntireIntegrations: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/console/orgs/{orgName}/integrations/entire",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListEntireIntegrationsResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListGitHubEnterpriseIntegrations struct {
 	OrgName      string
 	ExtraHeaders []http.Header
@@ -2443,6 +2598,58 @@ func (p *CloudClient) RemoveCustomVCSRepository(
 		return err
 	}
 	return nil
+}
+
+type InterceptorForStartEntireSetup struct {
+	OrgName      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) StartEntireSetup(
+	ctx context.Context,
+	orgName string,
+	extraHeaders ...http.Header,
+) (*apitype.EntireSetupResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForStartEntireSetup{
+			OrgName:      orgName,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.EntireSetupResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for StartEntireSetup: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"POST",
+		"/api/console/orgs/{orgName}/integrations/entire",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.EntireSetupResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
 }
 
 type InterceptorForStartGitHubSetup struct {
