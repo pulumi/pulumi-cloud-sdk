@@ -29,6 +29,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
     :var deployed: DeliveryStageRun - declared
     :var last_cloud_deployed: DeliveryStageRun - declared
     :var lock_holder: DeliveryStageRun - declared
+    :var last_run: DeliveryStageRun - declared
     :var open_gate: DeliveryStageGate - declared
     :var members: list[DeliveryStageMember] - declared
     """
@@ -46,6 +47,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
         'deployed': 'DeliveryStageRun',
         'last_cloud_deployed': 'DeliveryStageRun',
         'lock_holder': 'DeliveryStageRun',
+        'last_run': 'DeliveryStageRun',
         'open_gate': 'DeliveryStageGate',
         'members': 'list[DeliveryStageMember]',
     }
@@ -64,6 +66,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
         'deployed': 'deployed',
         'last_cloud_deployed': 'lastCloudDeployed',
         'lock_holder': 'lockHolder',
+        'last_run': 'lastRun',
         'open_gate': 'openGate',
         'members': 'members',
     }
@@ -81,6 +84,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
     FIELDS_deployed = 'deployed'
     FIELDS_last_cloud_deployed = 'lastCloudDeployed'
     FIELDS_lock_holder = 'lockHolder'
+    FIELDS_last_run = 'lastRun'
     FIELDS_open_gate = 'openGate'
     FIELDS_members = 'members'
 
@@ -97,6 +101,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
     _deployed: 'DeliveryStageRun'
     _last_cloud_deployed: 'DeliveryStageRun'
     _lock_holder: 'DeliveryStageRun'
+    _last_run: 'DeliveryStageRun'
     _open_gate: 'DeliveryStageGate'
     _members: 'list[DeliveryStageMember]'
 
@@ -115,6 +120,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
         deployed: 'DeliveryStageRun' = None,
         last_cloud_deployed: 'DeliveryStageRun' = None,
         lock_holder: 'DeliveryStageRun' = None,
+        last_run: 'DeliveryStageRun' = None,
         open_gate: 'DeliveryStageGate' = None,
         members: 'list[DeliveryStageMember]' = None,
     ) -> None:
@@ -133,6 +139,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
         self.deployed = deployed
         self.last_cloud_deployed = last_cloud_deployed
         self.lock_holder = lock_holder
+        self.last_run = last_run
         self.open_gate = open_gate
         self.members = members
 
@@ -151,6 +158,7 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
             self._deployed = source._deployed
             self._last_cloud_deployed = source._last_cloud_deployed
             self._lock_holder = source._lock_holder
+            self._last_run = source._last_run
             self._open_gate = source._open_gate
             self._members = source._members
 
@@ -399,6 +407,41 @@ class DeliveryStageSummary(PulumiAutoModelEncoder):
             return models.DeliveryStageRun._new_empty()
 
         return self._lock_holder
+
+    @property
+    def last_run(self) -> 'DeliveryStageRun':
+        return self._last_run
+
+    @last_run.setter
+    def last_run(self, last_run: 'DeliveryStageRun'):
+        self._last_run = last_run
+
+    @property
+    def last_run__autoinit(self) -> 'DeliveryStageRun':
+        """Return ``last_run``, creating and storing an empty default when it is unset.
+
+        Side effect: the created default is written back to ``self._last_run``, so it
+        persists on the model and is included when the model is serialized. Prefer
+        ``last_run__safederef`` when you only want to read a default without mutating self.
+        """
+        if self._last_run is None:
+            self._last_run = self.last_run__safederef
+
+        return self._last_run
+
+    @property
+    def last_run__safederef(self) -> 'DeliveryStageRun':
+        """Return ``last_run``, or a freshly built empty default when it is unset.
+
+        No side effect: the default is not stored, so ``last_run`` stays unset and each
+        call returns a new default. Use ``last_run__autoinit`` to persist the default on
+        first access.
+        """
+        if self._last_run is None:
+            from .. import models
+            return models.DeliveryStageRun._new_empty()
+
+        return self._last_run
 
     @property
     def open_gate(self) -> 'DeliveryStageGate':

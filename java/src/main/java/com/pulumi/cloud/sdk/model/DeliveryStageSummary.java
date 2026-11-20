@@ -50,6 +50,9 @@ public class DeliveryStageSummary {
     // The run that holds the lock of the stage, with the status of the stage in it. A normal run and an operator run can hold it.
     public DeliveryStageRun lockHolder;
 
+    // The run that last held the stage, with the status of the stage in it. It is the lock holder while a run holds the stage. Absent when no run has held the stage since the service started to record it.
+    public DeliveryStageRun lastRun;
+
     // The newest open gate of the stage over all runs in progress.
     public DeliveryStageGate openGate;
 

@@ -299,7 +299,7 @@ public class OrganizationFeatures {
     // Whether admins can switch the organization between the permissive and the restricted permission mode. Always false for an organization created restricted, which can never switch.
     public boolean permissionModeEnabled;
 
-    // Whether the monthly Infrastructure Posture report is available to the organization.
+    // Whether the monthly Infrastructure posture report is available to the organization.
     public boolean policyPostureReportEnabled;
 
     // Whether user-defined service principals can be created and managed.

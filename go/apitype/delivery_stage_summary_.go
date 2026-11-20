@@ -37,6 +37,9 @@ type DeliveryStageSummary struct {
 	LastCloudDeployed *DeliveryStageRun `json:"lastCloudDeployed,omitempty" yaml:"lastCloudDeployed,omitempty"`
 	// The run that holds the lock of the stage, with the status of the stage in it. A normal run and an operator run can hold it.
 	LockHolder *DeliveryStageRun `json:"lockHolder,omitempty" yaml:"lockHolder,omitempty"`
+	// The run that last held the stage, with the status of the stage in it. It is the lock holder while a run holds the stage. Absent when no
+	// run has held the stage since the service started to record it.
+	LastRun *DeliveryStageRun `json:"lastRun,omitempty" yaml:"lastRun,omitempty"`
 	// The newest open gate of the stage over all runs in progress.
 	OpenGate *DeliveryStageGate `json:"openGate,omitempty" yaml:"openGate,omitempty"`
 	// The members of the stage in the active registration, at most 1000.

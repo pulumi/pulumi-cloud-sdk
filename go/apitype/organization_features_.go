@@ -211,7 +211,7 @@ type OrganizationFeatures struct {
 	// Whether admins can switch the organization between the permissive and the restricted permission mode. Always false for an organization
 	// created restricted, which can never switch.
 	PermissionModeEnabled bool `json:"permissionModeEnabled,omitzero" yaml:"permissionModeEnabled,omitempty"`
-	// Whether the monthly Infrastructure Posture report is available to the organization.
+	// Whether the monthly Infrastructure posture report is available to the organization.
 	PolicyPostureReportEnabled bool `json:"policyPostureReportEnabled,omitzero" yaml:"policyPostureReportEnabled,omitempty"`
 	// Whether user-defined service principals can be created and managed.
 	UserDefinedServicePrincipalsEnabled bool `json:"userDefinedServicePrincipalsEnabled,omitzero" yaml:"userDefinedServicePrincipalsEnabled,omitempty"`

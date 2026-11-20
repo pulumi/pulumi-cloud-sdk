@@ -587,7 +587,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool PermissionModeEnabled { get; set; }
 
         /// <summary>
-        /// Whether the monthly Infrastructure Posture report is available to the organization.
+        /// Whether the monthly Infrastructure posture report is available to the organization.
         /// </summary>
         [JsonProperty("policyPostureReportEnabled")]
         public bool PolicyPostureReportEnabled { get; set; }

@@ -32,6 +32,7 @@ export class DeliveryStageSummary {
     deployed?: DeliveryStageRun;
     lastCloudDeployed?: DeliveryStageRun;
     lockHolder?: DeliveryStageRun;
+    lastRun?: DeliveryStageRun;
     openGate?: DeliveryStageGate;
     members?: DeliveryStageMember[];
 
@@ -88,6 +89,11 @@ export class DeliveryStageSummary {
             // Lazy import - only evaluated when called
             const { DeliveryStageRun } = require("./DeliveryStageRun");
             DeliveryStageRun.fixupPrototype(this.lockHolder);
+        }
+        if (this.lastRun) {
+            // Lazy import - only evaluated when called
+            const { DeliveryStageRun } = require("./DeliveryStageRun");
+            DeliveryStageRun.fixupPrototype(this.lastRun);
         }
         if (this.openGate) {
             // Lazy import - only evaluated when called
