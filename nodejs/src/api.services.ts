@@ -19,6 +19,7 @@ import { AI } from "./api/AI";
 import { AI_Agents } from "./api/AI_Agents";
 import { Agent_Integration_Catalog } from "./api/Agent_Integration_Catalog";
 import { CloudSetup } from "./api/CloudSetup";
+import { Delivery } from "./api/Delivery";
 import { Deployments } from "./api/Deployments";
 import { Environments } from "./api/Environments";
 import { Insights } from "./api/Insights";
@@ -39,6 +40,7 @@ export class ApiService {
     AI_Agents: AI_Agents;
     Agent_Integration_Catalog: Agent_Integration_Catalog;
     CloudSetup: CloudSetup;
+    Delivery: Delivery;
     Deployments: Deployments;
     Environments: Environments;
     Insights: Insights;
@@ -62,6 +64,8 @@ export class ApiService {
         this.Agent_Integration_Catalog = new Agent_Integration_Catalog(client, this.basePath);
 
         this.CloudSetup = new CloudSetup(client, this.basePath);
+
+        this.Delivery = new Delivery(client, this.basePath);
 
         this.Deployments = new Deployments(client, this.basePath);
 
