@@ -8,4 +8,6 @@ package apitype
 type ListOrganizationInvitesResponse struct {
 	// The list of pending organization invites
 	Invites []PendingOrganizationInvite `json:"invites" yaml:"invites"`
+	// Whether an invite must name the email address of the person invited. True when email delivery is configured.
+	EmailRequired bool `json:"emailRequired" yaml:"emailRequired"`
 }

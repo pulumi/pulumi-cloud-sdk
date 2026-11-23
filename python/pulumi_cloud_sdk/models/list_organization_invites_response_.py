@@ -17,30 +17,38 @@ from . import *
 class ListOrganizationInvitesResponse(PulumiAutoModelEncoder):
     """
     :var invites: list[PendingOrganizationInvite] - declared
+    :var email_required: bool - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'invites': 'list[PendingOrganizationInvite]',
+        'email_required': 'bool',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'invites': 'invites',
+        'email_required': 'emailRequired',
     }
 
     FIELDS_invites = 'invites'
+    FIELDS_email_required = 'emailRequired'
 
     _invites: 'list[PendingOrganizationInvite]'
+    _email_required: 'bool'
 
     def __init__(
         self,
         invites: 'list[PendingOrganizationInvite]',
+        email_required: 'bool',
     ) -> None:
         super().__init__()
 
         self.invites = invites
+        self.email_required = email_required
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, ListOrganizationInvitesResponse):
             self._invites = source._invites
+            self._email_required = source._email_required
 
     @property
     def invites(self) -> 'list[PendingOrganizationInvite]':
@@ -78,6 +86,17 @@ class ListOrganizationInvitesResponse(PulumiAutoModelEncoder):
             return []
 
         return self._invites
+
+    @property
+    def email_required(self) -> 'bool':
+        return self._email_required
+
+    @email_required.setter
+    def email_required(self, email_required: 'bool'):
+        if email_required is None:
+            raise ValueError("Invalid value for `email_required`, must not be `None`")
+
+        self._email_required = email_required
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, ListOrganizationInvitesResponse):

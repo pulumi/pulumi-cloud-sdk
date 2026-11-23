@@ -26,9 +26,6 @@ public class InsightsAccount {
     // The cloud provider for the account (e.g., aws, gcp, azure-native).
     public String provider;
 
-    // Deprecated: no longer populated. Omitted from responses, and ignored if sent. The provider version used for discovery is now recorded per resource.
-    public String providerVersion;
-
     // Reference to an ESC environment containing provider credentials, in the format 'project/environment' with an optional @version suffix.
     public String providerEnvRef;
 

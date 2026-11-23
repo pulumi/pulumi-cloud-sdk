@@ -20,7 +20,6 @@ class ReadInsightsAccountResponse(InsightsAccount):
     :var name: str - inherited
     :var owned_by: UserInfo - inherited
     :var provider: str - inherited
-    :var provider_version: str - inherited
     :var provider_env_ref: str - inherited
     :var scheduled_scan_enabled: bool - inherited
     :var agent_pool_id: str - inherited
@@ -32,7 +31,6 @@ class ReadInsightsAccountResponse(InsightsAccount):
         'name': 'str',
         'owned_by': 'UserInfo',
         'provider': 'str',
-        'provider_version': 'str',
         'provider_env_ref': 'str',
         'scheduled_scan_enabled': 'bool',
         'agent_pool_id': 'str',
@@ -45,7 +43,6 @@ class ReadInsightsAccountResponse(InsightsAccount):
         'name': 'name',
         'owned_by': 'ownedBy',
         'provider': 'provider',
-        'provider_version': 'providerVersion',
         'provider_env_ref': 'providerEnvRef',
         'scheduled_scan_enabled': 'scheduledScanEnabled',
         'agent_pool_id': 'agentPoolID',
@@ -60,13 +57,12 @@ class ReadInsightsAccountResponse(InsightsAccount):
         owned_by: 'UserInfo',
         provider: 'str',
         scheduled_scan_enabled: 'bool',
-        provider_version: 'str' = None,
         provider_env_ref: 'str' = None,
         agent_pool_id: 'str' = None,
         provider_config: 'Any' = None,
         scan_status: 'ScanStatus' = None,
     ) -> None:
-        super().__init__(id=id, name=name, owned_by=owned_by, provider=provider, provider_version=provider_version, provider_env_ref=provider_env_ref, scheduled_scan_enabled=scheduled_scan_enabled, agent_pool_id=agent_pool_id, provider_config=provider_config, scan_status=scan_status)
+        super().__init__(id=id, name=name, owned_by=owned_by, provider=provider, provider_env_ref=provider_env_ref, scheduled_scan_enabled=scheduled_scan_enabled, agent_pool_id=agent_pool_id, provider_config=provider_config, scan_status=scan_status)
 
     def copy_common_fields(self, source: Any, /) -> None:
         super().copy_common_fields(source)

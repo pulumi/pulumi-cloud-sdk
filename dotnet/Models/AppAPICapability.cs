@@ -81,5 +81,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [EnumMember(Value = "coherence-windows")]
         CoherenceWindows,
+
+        /// <summary>
+        /// Indicates that the service can send email, such as organization invitations.
+        /// </summary>
+        [EnumMember(Value = "email-delivery")]
+        EmailDelivery,
     }
 }

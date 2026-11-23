@@ -22,7 +22,6 @@ export class InsightsAccount {
     name: string;
     ownedBy: UserInfo;
     provider: string;
-    providerVersion?: string;
     providerEnvRef?: string;
     scheduledScanEnabled: boolean;
     agentPoolID?: string;

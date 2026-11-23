@@ -48,6 +48,9 @@ const (
 
 	// Indicates that the service supports stack update coherence windows.
 	AppAPICapabilityCoherenceWindows AppAPICapability = "coherence-windows"
+
+	// Indicates that the service can send email, such as organization invitations.
+	AppAPICapabilityEmailDelivery AppAPICapability = "email-delivery"
 )
 
 func (v AppAPICapability) AllValues() []AppAPICapability {
@@ -64,6 +67,7 @@ func (v AppAPICapability) AllValues() []AppAPICapability {
 		AppAPICapabilityBeginUpdate,
 		AppAPICapabilityStackOutputs,
 		AppAPICapabilityCoherenceWindows,
+		AppAPICapabilityEmailDelivery,
 	}
 }
 
@@ -92,6 +96,8 @@ func (v AppAPICapability) IsValid() bool {
 	case AppAPICapabilityStackOutputs:
 		return true
 	case AppAPICapabilityCoherenceWindows:
+		return true
+	case AppAPICapabilityEmailDelivery:
 		return true
 	}
 
@@ -124,6 +130,8 @@ func (v AppAPICapability) openapiName() string {
 		return "StackOutputs"
 	case AppAPICapabilityCoherenceWindows:
 		return "CoherenceWindows"
+	case AppAPICapabilityEmailDelivery:
+		return "EmailDelivery"
 	}
 
 	return ""

@@ -26,4 +26,5 @@ export enum AppAPICapability {
     BeginUpdate = "begin-update",
     StackOutputs = "stack-outputs",
     CoherenceWindows = "coherence-windows",
+    EmailDelivery = "email-delivery",
 }

@@ -15,5 +15,11 @@ namespace Pulumi.Cloud.Sdk.Models {
         /// </summary>
         [JsonProperty("invites")]
         public System.Collections.Generic.List<PendingOrganizationInvite> Invites { get; set; }
+
+        /// <summary>
+        /// Whether an invite must name the email address of the person invited. True when email delivery is configured.
+        /// </summary>
+        [JsonProperty("emailRequired")]
+        public bool EmailRequired { get; set; }
     }
 }

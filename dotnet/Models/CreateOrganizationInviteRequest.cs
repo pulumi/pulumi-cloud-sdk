@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 namespace Pulumi.Cloud.Sdk.Models {
     public class CreateOrganizationInviteRequest {
         /// <summary>
-        /// The email address. Required for email-based invites, omitted when creating shareable invite links.
+        /// The email address of the person invited. Required: an invite without an email is deprecated. It is refused when the service can send email, and from 2027-02-22 in every case.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }

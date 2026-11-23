@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public class CreateOrganizationInviteRequest {
-    // The email address. Required for email-based invites, omitted when creating shareable invite links.
+    // The email address of the person invited. Required: an invite without an email is deprecated. It is refused when the service can send email, and from 2027-02-22 in every case.
     public String email;
 
     // Built-in role to assign to the invited member. When 'roleId' is also supplied it takes precedence and this field is ignored. Use 'member', 'admin' or 'billing-manager', or 'reader', 'builder' or 'maintainer' in an organization with a default role. 'member' puts the invited member on the default role, while 'reader', 'builder' and 'maintainer' assign that role explicitly.

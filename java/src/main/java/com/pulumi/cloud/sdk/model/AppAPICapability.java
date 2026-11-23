@@ -31,7 +31,9 @@ public enum AppAPICapability {
     // Indicates that the service supports /api/stacks/{org}/{project}/{stack}/outputs.
     StackOutputs("stack-outputs"),
     // Indicates that the service supports stack update coherence windows.
-    CoherenceWindows("coherence-windows");
+    CoherenceWindows("coherence-windows"),
+    // Indicates that the service can send email, such as organization invitations.
+    EmailDelivery("email-delivery");
 
     private final String value;
 

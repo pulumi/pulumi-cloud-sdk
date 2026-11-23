@@ -14,9 +14,6 @@ type InsightsAccount struct {
 	OwnedBy UserInfo `json:"ownedBy" yaml:"ownedBy"`
 	// The cloud provider for the account (e.g., aws, gcp, azure-native).
 	Provider string `json:"provider" yaml:"provider"`
-	// Deprecated: no longer populated. Omitted from responses, and ignored if sent.
-	// The provider version used for discovery is now recorded per resource.
-	ProviderVersion string `json:"providerVersion,omitempty" yaml:"providerVersion,omitempty"`
 	// Reference to an ESC environment containing provider credentials,
 	// in the format 'project/environment' with an optional @version suffix.
 	Environment string `json:"providerEnvRef,omitempty" yaml:"providerEnvRef,omitempty"`

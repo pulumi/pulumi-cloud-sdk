@@ -35,12 +35,6 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Provider { get; set; }
 
         /// <summary>
-        /// Deprecated: no longer populated. Omitted from responses, and ignored if sent. The provider version used for discovery is now recorded per resource.
-        /// </summary>
-        [JsonProperty("providerVersion")]
-        public string ProviderVersion { get; set; }
-
-        /// <summary>
         /// Reference to an ESC environment containing provider credentials, in the format 'project/environment' with an optional @version suffix.
         /// </summary>
         [JsonProperty("providerEnvRef")]

@@ -22,6 +22,7 @@ class AppAPICapability(AutoEnumEncoder):
     BeginUpdate = "begin-update"
     StackOutputs = "stack-outputs"
     CoherenceWindows = "coherence-windows"
+    EmailDelivery = "email-delivery"
 
     @staticmethod
     def keys() -> list['AppAPICapability']:
@@ -37,7 +38,8 @@ class AppAPICapability(AutoEnumEncoder):
             AppAPICapability.NeoCLIMode,
             AppAPICapability.BeginUpdate,
             AppAPICapability.StackOutputs,
-            AppAPICapability.CoherenceWindows
+            AppAPICapability.CoherenceWindows,
+            AppAPICapability.EmailDelivery
         ]
 
     @staticmethod
@@ -54,7 +56,8 @@ class AppAPICapability(AutoEnumEncoder):
             AppAPICapability.NeoCLIMode.value,
             AppAPICapability.BeginUpdate.value,
             AppAPICapability.StackOutputs.value,
-            AppAPICapability.CoherenceWindows.value
+            AppAPICapability.CoherenceWindows.value,
+            AppAPICapability.EmailDelivery.value
         ]
 
     @staticmethod

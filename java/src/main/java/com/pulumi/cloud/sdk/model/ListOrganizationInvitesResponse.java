@@ -13,4 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class ListOrganizationInvitesResponse {
     // The list of pending organization invites
     public List<PendingOrganizationInvite> invites;
+
+    // Whether an invite must name the email address of the person invited. True when email delivery is configured.
+    public boolean emailRequired;
 }

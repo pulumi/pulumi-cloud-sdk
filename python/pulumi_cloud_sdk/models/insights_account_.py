@@ -20,7 +20,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
     :var name: str - declared
     :var owned_by: UserInfo - declared
     :var provider: str - declared
-    :var provider_version: str - declared
     :var provider_env_ref: str - declared
     :var scheduled_scan_enabled: bool - declared
     :var agent_pool_id: str - declared
@@ -32,7 +31,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
         'name': 'str',
         'owned_by': 'UserInfo',
         'provider': 'str',
-        'provider_version': 'str',
         'provider_env_ref': 'str',
         'scheduled_scan_enabled': 'bool',
         'agent_pool_id': 'str',
@@ -45,7 +43,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
         'name': 'name',
         'owned_by': 'ownedBy',
         'provider': 'provider',
-        'provider_version': 'providerVersion',
         'provider_env_ref': 'providerEnvRef',
         'scheduled_scan_enabled': 'scheduledScanEnabled',
         'agent_pool_id': 'agentPoolID',
@@ -57,7 +54,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
     FIELDS_name = 'name'
     FIELDS_owned_by = 'ownedBy'
     FIELDS_provider = 'provider'
-    FIELDS_provider_version = 'providerVersion'
     FIELDS_provider_env_ref = 'providerEnvRef'
     FIELDS_scheduled_scan_enabled = 'scheduledScanEnabled'
     FIELDS_agent_pool_id = 'agentPoolID'
@@ -68,7 +64,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
     _name: 'str'
     _owned_by: 'UserInfo'
     _provider: 'str'
-    _provider_version: 'str'
     _provider_env_ref: 'str'
     _scheduled_scan_enabled: 'bool'
     _agent_pool_id: 'str'
@@ -82,7 +77,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
         owned_by: 'UserInfo',
         provider: 'str',
         scheduled_scan_enabled: 'bool',
-        provider_version: 'str' = None,
         provider_env_ref: 'str' = None,
         agent_pool_id: 'str' = None,
         provider_config: 'Any' = None,
@@ -94,7 +88,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
         self.name = name
         self.owned_by = owned_by
         self.provider = provider
-        self.provider_version = provider_version
         self.provider_env_ref = provider_env_ref
         self.scheduled_scan_enabled = scheduled_scan_enabled
         self.agent_pool_id = agent_pool_id
@@ -107,7 +100,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
             self._name = source._name
             self._owned_by = source._owned_by
             self._provider = source._provider
-            self._provider_version = source._provider_version
             self._provider_env_ref = source._provider_env_ref
             self._scheduled_scan_enabled = source._scheduled_scan_enabled
             self._agent_pool_id = source._agent_pool_id
@@ -184,14 +176,6 @@ class InsightsAccount(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `provider`, must not be `None`")
 
         self._provider = provider
-
-    @property
-    def provider_version(self) -> 'str':
-        return self._provider_version
-
-    @provider_version.setter
-    def provider_version(self, provider_version: 'str'):
-        self._provider_version = provider_version
 
     @property
     def provider_env_ref(self) -> 'str':

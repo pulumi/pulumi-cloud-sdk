@@ -18,6 +18,7 @@ import type { PendingOrganizationInvite } from "./PendingOrganizationInvite";
 
 export class ListOrganizationInvitesResponse {
     invites: PendingOrganizationInvite[];
+    emailRequired: boolean;
 
     getFixupPrototypeFunction() {
         return ListOrganizationInvitesResponse.fixupPrototype;
