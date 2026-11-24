@@ -443,6 +443,40 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<Service>(apiRequest);
         }
 
+        public OrganizationMember CreateServicePrincipal(string orgName, CreateServicePrincipalRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateServicePrincipal");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreateServicePrincipal");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/service-principals/create");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<OrganizationMember>(apiRequest);
+        }
+
+        public CreateAccessTokenResponse CreateServicePrincipalToken(string orgName, string userLogin, CreateServicePrincipalTokenRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateServicePrincipalToken");
+            }
+            if (userLogin == null) {
+                throw new ArgumentNullException(nameof(userLogin), "Missing required parameter 'userLogin' when calling CreateServicePrincipalToken");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling CreateServicePrincipalToken");
+            }
+            var apiRequest = new ApiRequest("POST", "/api/orgs/{orgName}/service-principals/{userLogin}/tokens");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("userLogin", userLogin);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<CreateAccessTokenResponse>(apiRequest);
+        }
+
         public AppCreateStackResponse CreateStack(string orgName, string projectName, AppCreateStackRequest request) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling CreateStack");
@@ -661,6 +695,23 @@ namespace Pulumi.Cloud.Sdk.Api {
             request.PathParam("ownerName", ownerName);
             request.PathParam("serviceName", serviceName);
             request.QueryParam("force", force);
+            this.client.Call(request);
+        }
+
+        public void DeleteServicePrincipalToken(string orgName, string userLogin, string tokenId) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling DeleteServicePrincipalToken");
+            }
+            if (userLogin == null) {
+                throw new ArgumentNullException(nameof(userLogin), "Missing required parameter 'userLogin' when calling DeleteServicePrincipalToken");
+            }
+            if (tokenId == null) {
+                throw new ArgumentNullException(nameof(tokenId), "Missing required parameter 'tokenId' when calling DeleteServicePrincipalToken");
+            }
+            var request = new ApiRequest("DELETE", "/api/orgs/{orgName}/service-principals/{userLogin}/tokens/{tokenId}");
+            request.PathParam("orgName", orgName);
+            request.PathParam("userLogin", userLogin);
+            request.PathParam("tokenId", tokenId);
             this.client.Call(request);
         }
 
@@ -1843,6 +1894,40 @@ namespace Pulumi.Cloud.Sdk.Api {
             return this.client.Call<ListSAMLOrganizationAdminsResponse>(request);
         }
 
+        public ListServicePrincipalRolesResponse ListServicePrincipalRoles(string orgName, string userLogin) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListServicePrincipalRoles");
+            }
+            if (userLogin == null) {
+                throw new ArgumentNullException(nameof(userLogin), "Missing required parameter 'userLogin' when calling ListServicePrincipalRoles");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/service-principals/{userLogin}/roles");
+            request.PathParam("orgName", orgName);
+            request.PathParam("userLogin", userLogin);
+            request.Produces("application/json");
+            return this.client.Call<ListServicePrincipalRolesResponse>(request);
+        }
+
+        public ListAccessTokensResponse ListServicePrincipalTokens(string orgName, string userLogin, string continuationToken, string filter, long? maxResults, string search, AccessTokenSortField? sortBy, SortDirection? sortDirection) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListServicePrincipalTokens");
+            }
+            if (userLogin == null) {
+                throw new ArgumentNullException(nameof(userLogin), "Missing required parameter 'userLogin' when calling ListServicePrincipalTokens");
+            }
+            var request = new ApiRequest("GET", "/api/orgs/{orgName}/service-principals/{userLogin}/tokens");
+            request.PathParam("orgName", orgName);
+            request.PathParam("userLogin", userLogin);
+            request.QueryParam("continuationToken", continuationToken);
+            request.QueryParam("filter", filter);
+            request.QueryParam("maxResults", maxResults);
+            request.QueryParam("search", search);
+            request.QueryParam("sortBy", sortBy);
+            request.QueryParam("sortDirection", sortDirection);
+            request.Produces("application/json");
+            return this.client.Call<ListAccessTokensResponse>(request);
+        }
+
         public ListServicesResponse ListServices(string orgName, string continuationToken, long? maxResults) {
             if (orgName == null) {
                 throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling ListServices");
@@ -2625,6 +2710,25 @@ namespace Pulumi.Cloud.Sdk.Api {
             apiRequest.Consumes("application/json");
             apiRequest.Produces("application/json");
             return this.client.Call<Service>(apiRequest);
+        }
+
+        public ListServicePrincipalRolesResponse UpdateServicePrincipalRoles(string orgName, string userLogin, UpdateServicePrincipalRolesRequest request) {
+            if (orgName == null) {
+                throw new ArgumentNullException(nameof(orgName), "Missing required parameter 'orgName' when calling UpdateServicePrincipalRoles");
+            }
+            if (userLogin == null) {
+                throw new ArgumentNullException(nameof(userLogin), "Missing required parameter 'userLogin' when calling UpdateServicePrincipalRoles");
+            }
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request), "Missing required parameter 'request' when calling UpdateServicePrincipalRoles");
+            }
+            var apiRequest = new ApiRequest("PUT", "/api/orgs/{orgName}/service-principals/{userLogin}/roles");
+            apiRequest.PathParam("orgName", orgName);
+            apiRequest.PathParam("userLogin", userLogin);
+            apiRequest.Body(request);
+            apiRequest.Consumes("application/json");
+            apiRequest.Produces("application/json");
+            return this.client.Call<ListServicePrincipalRolesResponse>(apiRequest);
         }
 
         public void UpdateTeam(string orgName, string teamName, UpdateTeamRequest request) {

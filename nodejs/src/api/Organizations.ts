@@ -51,6 +51,8 @@ import { CreateOrganizationInviteRequest } from "../model/CreateOrganizationInvi
 import { CreateOrganizationInviteResponse } from "../model/CreateOrganizationInviteResponse";
 import { CreatePolicyExceptionRequest } from "../model/CreatePolicyExceptionRequest";
 import { CreatePulumiTeamRequest } from "../model/CreatePulumiTeamRequest";
+import { CreateServicePrincipalRequest } from "../model/CreateServicePrincipalRequest";
+import { CreateServicePrincipalTokenRequest } from "../model/CreateServicePrincipalTokenRequest";
 import { CreateServiceRequest } from "../model/CreateServiceRequest";
 import { CreateTeamAccessTokenRequest } from "../model/CreateTeamAccessTokenRequest";
 import { CustomerManagedKey } from "../model/CustomerManagedKey";
@@ -89,6 +91,7 @@ import { ListPolicyIssuesResponse } from "../model/ListPolicyIssuesResponse";
 import { ListPolicyViolationsV2Response } from "../model/ListPolicyViolationsV2Response";
 import { ListRolesResponse } from "../model/ListRolesResponse";
 import { ListSAMLOrganizationAdminsResponse } from "../model/ListSAMLOrganizationAdminsResponse";
+import { ListServicePrincipalRolesResponse } from "../model/ListServicePrincipalRolesResponse";
 import { ListServicesResponse } from "../model/ListServicesResponse";
 import { ListTeamRolesResponse } from "../model/ListTeamRolesResponse";
 import { ListTeamsResponse } from "../model/ListTeamsResponse";
@@ -147,6 +150,7 @@ import { UpdatePolicyIssueRequest } from "../model/UpdatePolicyIssueRequest";
 import { UpdateRoleRequest } from "../model/UpdateRoleRequest";
 import { UpdateSAMLOrganizationRequest } from "../model/UpdateSAMLOrganizationRequest";
 import { UpdateServiceMetadataRequest } from "../model/UpdateServiceMetadataRequest";
+import { UpdateServicePrincipalRolesRequest } from "../model/UpdateServicePrincipalRolesRequest";
 import { UpdateTeamRequest } from "../model/UpdateTeamRequest";
 import { UpsertOrgTemplateSourceRequest } from "../model/UpsertOrgTemplateSourceRequest";
 import { UsageSummaryTimeUnit } from "../model/UsageSummaryTimeUnit";
@@ -1377,6 +1381,102 @@ export class Organizations {
         });
     }
 
+    public CreateServicePrincipal__generateUrl(orgName: string): string {
+        let url = this.basePath + "orgs/{orgName}/service-principals/create";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        return url;
+    }
+
+    public CreateServicePrincipal(
+        params: {
+            orgName: string,
+        },
+        request: CreateServicePrincipalRequest,
+    ): Promise<OrganizationMember> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreateServicePrincipal.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CreateServicePrincipal.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreateServicePrincipal.");
+        }
+
+        const __path = this.CreateServicePrincipal__generateUrl(params.orgName);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<OrganizationMember>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                OrganizationMember.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public CreateServicePrincipalToken__generateUrl(
+        orgName: string,
+        userLogin: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/service-principals/{userLogin}/tokens";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{userLogin}", encodeURIComponent(String(userLogin)));
+        return url;
+    }
+
+    public CreateServicePrincipalToken(
+        params: {
+            orgName: string,
+            userLogin: string,
+        },
+        request: CreateServicePrincipalTokenRequest,
+    ): Promise<CreateAccessTokenResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling CreateServicePrincipalToken.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling CreateServicePrincipalToken.");
+        }
+
+        // verify required parameter 'userLogin' is not null or undefined
+        if (params.userLogin === null || params.userLogin === undefined) {
+            throw new Error("Required parameter userLogin was null or undefined when calling CreateServicePrincipalToken.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling CreateServicePrincipalToken.");
+        }
+
+        const __path = this.CreateServicePrincipalToken__generateUrl(params.orgName, params.userLogin);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "POST";
+
+        return this.client.callWithOptions<CreateAccessTokenResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                CreateAccessTokenResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public CreateStack__generateUrl(
         orgName: string,
         projectName: string,
@@ -2025,6 +2125,53 @@ export class Organizations {
         if (params.force !== undefined) {
             __requestOptions.setQueryParam("force", params.force);
         }
+        __requestOptions.method = "DELETE";
+
+        return this.client.callWithOptions(__path, __requestOptions);
+    }
+
+    public DeleteServicePrincipalToken__generateUrl(
+        orgName: string,
+        userLogin: string,
+        tokenId: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/service-principals/{userLogin}/tokens/{tokenId}";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{userLogin}", encodeURIComponent(String(userLogin)));
+        url = url.replace("{tokenId}", encodeURIComponent(String(tokenId)));
+        return url;
+    }
+
+    public DeleteServicePrincipalToken(
+        params: {
+            orgName: string,
+            userLogin: string,
+            tokenId: string,
+        },
+    ): Promise<void> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling DeleteServicePrincipalToken.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling DeleteServicePrincipalToken.");
+        }
+
+        // verify required parameter 'userLogin' is not null or undefined
+        if (params.userLogin === null || params.userLogin === undefined) {
+            throw new Error("Required parameter userLogin was null or undefined when calling DeleteServicePrincipalToken.");
+        }
+
+        // verify required parameter 'tokenId' is not null or undefined
+        if (params.tokenId === null || params.tokenId === undefined) {
+            throw new Error("Required parameter tokenId was null or undefined when calling DeleteServicePrincipalToken.");
+        }
+
+        const __path = this.DeleteServicePrincipalToken__generateUrl(params.orgName, params.userLogin, params.tokenId);
+
+        let __requestOptions = new ApiRequest();
+
         __requestOptions.method = "DELETE";
 
         return this.client.callWithOptions(__path, __requestOptions);
@@ -5861,6 +6008,118 @@ export class Organizations {
         });
     }
 
+    public ListServicePrincipalRoles__generateUrl(
+        orgName: string,
+        userLogin: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/service-principals/{userLogin}/roles";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{userLogin}", encodeURIComponent(String(userLogin)));
+        return url;
+    }
+
+    public ListServicePrincipalRoles(
+        params: {
+            orgName: string,
+            userLogin: string,
+        },
+    ): Promise<ListServicePrincipalRolesResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListServicePrincipalRoles.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListServicePrincipalRoles.");
+        }
+
+        // verify required parameter 'userLogin' is not null or undefined
+        if (params.userLogin === null || params.userLogin === undefined) {
+            throw new Error("Required parameter userLogin was null or undefined when calling ListServicePrincipalRoles.");
+        }
+
+        const __path = this.ListServicePrincipalRoles__generateUrl(params.orgName, params.userLogin);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListServicePrincipalRolesResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListServicePrincipalRolesResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public ListServicePrincipalTokens__generateUrl(
+        orgName: string,
+        userLogin: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/service-principals/{userLogin}/tokens";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{userLogin}", encodeURIComponent(String(userLogin)));
+        return url;
+    }
+
+    public ListServicePrincipalTokens(
+        params: {
+            orgName: string,
+            userLogin: string,
+            continuationToken?: string,
+            filter?: string,
+            maxResults?: number,
+            search?: string,
+            sortBy?: AccessTokenSortField,
+            sortDirection?: SortDirection,
+        },
+    ): Promise<ListAccessTokensResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling ListServicePrincipalTokens.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling ListServicePrincipalTokens.");
+        }
+
+        // verify required parameter 'userLogin' is not null or undefined
+        if (params.userLogin === null || params.userLogin === undefined) {
+            throw new Error("Required parameter userLogin was null or undefined when calling ListServicePrincipalTokens.");
+        }
+
+        const __path = this.ListServicePrincipalTokens__generateUrl(params.orgName, params.userLogin);
+
+        let __requestOptions = new ApiRequest();
+
+        if (params.continuationToken !== undefined) {
+            __requestOptions.setQueryParam("continuationToken", params.continuationToken);
+        }
+        if (params.filter !== undefined) {
+            __requestOptions.setQueryParam("filter", params.filter);
+        }
+        if (params.maxResults !== undefined) {
+            __requestOptions.setQueryParam("maxResults", params.maxResults);
+        }
+        if (params.search !== undefined) {
+            __requestOptions.setQueryParam("search", params.search);
+        }
+        if (params.sortBy !== undefined) {
+            __requestOptions.setQueryParam("sortBy", params.sortBy);
+        }
+        if (params.sortDirection !== undefined) {
+            __requestOptions.setQueryParam("sortDirection", params.sortDirection);
+        }
+        __requestOptions.setProduce("application/json");
+        __requestOptions.method = "GET";
+
+        return this.client.callWithOptions<ListAccessTokensResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListAccessTokensResponse.fixupPrototype(__res0);
+            }
+        });
+    }
+
     public ListServices__generateUrl(orgName: string): string {
         let url = this.basePath + "orgs/{orgName}/services";
         url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
@@ -8155,6 +8414,59 @@ export class Organizations {
         return this.client.callWithOptions<Service>(__path, __requestOptions, (__res0) => {
             if (__res0) {
                 Service.fixupPrototype(__res0);
+            }
+        });
+    }
+
+    public UpdateServicePrincipalRoles__generateUrl(
+        orgName: string,
+        userLogin: string,
+    ): string {
+        let url = this.basePath + "orgs/{orgName}/service-principals/{userLogin}/roles";
+        url = url.replace("{orgName}", encodeURIComponent(String(orgName)));
+        url = url.replace("{userLogin}", encodeURIComponent(String(userLogin)));
+        return url;
+    }
+
+    public UpdateServicePrincipalRoles(
+        params: {
+            orgName: string,
+            userLogin: string,
+        },
+        request: UpdateServicePrincipalRolesRequest,
+    ): Promise<ListServicePrincipalRolesResponse> {
+        if (params === undefined) {
+            throw new Error("Required parameter params was null or undefined when calling UpdateServicePrincipalRoles.");
+        }
+
+        // verify required parameter 'orgName' is not null or undefined
+        if (params.orgName === null || params.orgName === undefined) {
+            throw new Error("Required parameter orgName was null or undefined when calling UpdateServicePrincipalRoles.");
+        }
+
+        // verify required parameter 'userLogin' is not null or undefined
+        if (params.userLogin === null || params.userLogin === undefined) {
+            throw new Error("Required parameter userLogin was null or undefined when calling UpdateServicePrincipalRoles.");
+        }
+
+        // verify required parameter 'request' is not null or undefined
+        if (request === null || request === undefined) {
+            throw new Error("Required parameter request was null or undefined when calling UpdateServicePrincipalRoles.");
+        }
+
+        const __path = this.UpdateServicePrincipalRoles__generateUrl(params.orgName, params.userLogin);
+
+        let __requestOptions = new ApiRequest();
+
+        __requestOptions.setConsume("application/json");
+        __requestOptions.setProduce("application/json");
+        __requestOptions.body = request;
+        __requestOptions.hasBodyParam = true;
+        __requestOptions.method = "PUT";
+
+        return this.client.callWithOptions<ListServicePrincipalRolesResponse>(__path, __requestOptions, (__res0) => {
+            if (__res0) {
+                ListServicePrincipalRolesResponse.fixupPrototype(__res0);
             }
         });
     }

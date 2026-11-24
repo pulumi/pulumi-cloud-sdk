@@ -9,14 +9,21 @@ import (
 	"fmt"
 )
 
-// The type of service principal, a system-managed user
+// The kind of a service principal, a non-human identity of an organization
 type ServicePrincipalKind string
 
 const (
-	ServicePrincipalKindTeam                  ServicePrincipalKind = "team"
-	ServicePrincipalKindUserDefined           ServicePrincipalKind = "user-defined"
+	// The service principal of a team, which the team's access tokens authenticate as.
+	ServicePrincipalKindTeam ServicePrincipalKind = "team"
+
+	// A service principal created by a member of the organization, with its own roles, entity access and access tokens.
+	ServicePrincipalKindUserDefined ServicePrincipalKind = "user-defined"
+
+	// The service principal of a custom Neo agent, which gets its access from the agent's settings.
 	ServicePrincipalKindCustomAgentDefinition ServicePrincipalKind = "custom-agent-definition"
-	ServicePrincipalKindDelivery              ServicePrincipalKind = "delivery"
+
+	// The service principal Pulumi Delivery creates for a pipeline that names no identity of its own.
+	ServicePrincipalKindDelivery ServicePrincipalKind = "delivery"
 )
 
 func (v ServicePrincipalKind) AllValues() []ServicePrincipalKind {

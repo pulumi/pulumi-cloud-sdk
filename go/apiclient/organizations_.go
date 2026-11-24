@@ -1465,6 +1465,122 @@ func (p *CloudClient) CreateService(
 	return &result, nil
 }
 
+type InterceptorForCreateServicePrincipal struct {
+	OrgName      string
+	Request      apitype.CreateServicePrincipalRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CreateServicePrincipal(
+	ctx context.Context,
+	orgName string,
+	request apitype.CreateServicePrincipalRequest,
+	extraHeaders ...http.Header,
+) (*apitype.OrganizationMember, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCreateServicePrincipal{
+			OrgName:      orgName,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.OrganizationMember)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateServicePrincipal: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/service-principals/create",
+		map[string]any{
+			"orgName": orgName,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.OrganizationMember
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForCreateServicePrincipalToken struct {
+	OrgName      string
+	UserLogin    string
+	Request      apitype.CreateServicePrincipalTokenRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) CreateServicePrincipalToken(
+	ctx context.Context,
+	orgName string,
+	userLogin string,
+	request apitype.CreateServicePrincipalTokenRequest,
+	extraHeaders ...http.Header,
+) (*apitype.CreateAccessTokenResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForCreateServicePrincipalToken{
+			OrgName:      orgName,
+			UserLogin:    userLogin,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.CreateAccessTokenResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for CreateServicePrincipalToken: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"POST",
+		"/api/orgs/{orgName}/service-principals/{userLogin}/tokens",
+		map[string]any{
+			"orgName":   orgName,
+			"userLogin": userLogin,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.CreateAccessTokenResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForCreateStack struct {
 	OrgName      string
 	ProjectName  string
@@ -2221,6 +2337,57 @@ func (p *CloudClient) DeleteService(
 		map[string]any{
 			"force": force,
 		},
+	)
+	if err != nil {
+		return err
+	}
+	err = p.invoke(req, extraHeaders)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+type InterceptorForDeleteServicePrincipalToken struct {
+	OrgName      string
+	UserLogin    string
+	TokenId      string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) DeleteServicePrincipalToken(
+	ctx context.Context,
+	orgName string,
+	userLogin string,
+	tokenId string,
+	extraHeaders ...http.Header,
+) error {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForDeleteServicePrincipalToken{
+			OrgName:      orgName,
+			UserLogin:    userLogin,
+			TokenId:      tokenId,
+			ExtraHeaders: extraHeaders,
+		}
+		_, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return err
+		}
+		if intercepted {
+			return nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"DELETE",
+		"/api/orgs/{orgName}/service-principals/{userLogin}/tokens/{tokenId}",
+		map[string]any{
+			"orgName":   orgName,
+			"userLogin": userLogin,
+			"tokenId":   tokenId,
+		},
+		nil,
 	)
 	if err != nil {
 		return err
@@ -7346,6 +7513,143 @@ func (p *CloudClient) ListSAMLOrganizationAdmins(
 	return &result, nil
 }
 
+type InterceptorForListServicePrincipalRoles struct {
+	OrgName      string
+	UserLogin    string
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) ListServicePrincipalRoles(
+	ctx context.Context,
+	orgName string,
+	userLogin string,
+	extraHeaders ...http.Header,
+) (*apitype.ListServicePrincipalRolesResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListServicePrincipalRoles{
+			OrgName:      orgName,
+			UserLogin:    userLogin,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListServicePrincipalRolesResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListServicePrincipalRoles: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/service-principals/{userLogin}/roles",
+		map[string]any{
+			"orgName":   orgName,
+			"userLogin": userLogin,
+		},
+		nil,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListServicePrincipalRolesResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForListServicePrincipalTokens struct {
+	OrgName           string
+	UserLogin         string
+	ContinuationToken *string
+	Filter            *string
+	MaxResults        *int
+	Search            *string
+	SortBy            *apitype.AccessTokenSortField
+	SortDirection     *apitype.SortDirection
+	ExtraHeaders      []http.Header
+}
+
+func (p *CloudClient) ListServicePrincipalTokens(
+	ctx context.Context,
+	orgName string,
+	userLogin string,
+	continuationToken *string,
+	filter *string,
+	maxResults *int,
+	search *string,
+	sortBy *apitype.AccessTokenSortField,
+	sortDirection *apitype.SortDirection,
+	extraHeaders ...http.Header,
+) (*apitype.ListAccessTokensResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForListServicePrincipalTokens{
+			OrgName:           orgName,
+			UserLogin:         userLogin,
+			ContinuationToken: continuationToken,
+			Filter:            filter,
+			MaxResults:        maxResults,
+			Search:            search,
+			SortBy:            sortBy,
+			SortDirection:     sortDirection,
+			ExtraHeaders:      extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListAccessTokensResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for ListServicePrincipalTokens: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequest(
+		ctx,
+		"GET",
+		"/api/orgs/{orgName}/service-principals/{userLogin}/tokens",
+		map[string]any{
+			"orgName":   orgName,
+			"userLogin": userLogin,
+		},
+		map[string]any{
+			"continuationToken": continuationToken,
+			"filter":            filter,
+			"maxResults":        maxResults,
+			"search":            search,
+			"sortBy":            sortBy,
+			"sortDirection":     sortDirection,
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListAccessTokensResponse
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 type InterceptorForListServices struct {
 	OrgName           string
 	ContinuationToken *string
@@ -10098,6 +10402,66 @@ func (p *CloudClient) UpdateService(
 		return nil, err
 	}
 	var result apitype.Service
+	err = json.Unmarshal(respBody, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
+type InterceptorForUpdateServicePrincipalRoles struct {
+	OrgName      string
+	UserLogin    string
+	Request      apitype.UpdateServicePrincipalRolesRequest
+	ExtraHeaders []http.Header
+}
+
+func (p *CloudClient) UpdateServicePrincipalRoles(
+	ctx context.Context,
+	orgName string,
+	userLogin string,
+	request apitype.UpdateServicePrincipalRolesRequest,
+	extraHeaders ...http.Header,
+) (*apitype.ListServicePrincipalRolesResponse, error) {
+	if p.Interceptor != nil {
+		argForInterceptor := InterceptorForUpdateServicePrincipalRoles{
+			OrgName:      orgName,
+			UserLogin:    userLogin,
+			Request:      request,
+			ExtraHeaders: extraHeaders,
+		}
+		resultFromInterceptor, intercepted, err := p.Interceptor(ctx, &argForInterceptor)
+		if err != nil {
+			return nil, err
+		}
+		if intercepted {
+			typedResultFromInterceptor, castFromInterceptor := resultFromInterceptor.(apitype.ListServicePrincipalRolesResponse)
+			if !castFromInterceptor {
+				return nil, fmt.Errorf("unexpected type returned from interceptor for UpdateServicePrincipalRoles: %T", resultFromInterceptor)
+			}
+			return &typedResultFromInterceptor, nil
+		}
+	}
+
+	req, err := p.createRequestWithBody(
+		ctx,
+		"PUT",
+		"/api/orgs/{orgName}/service-principals/{userLogin}/roles",
+		map[string]any{
+			"orgName":   orgName,
+			"userLogin": userLogin,
+		},
+		nil,
+		request,
+	)
+	if err != nil {
+		return nil, err
+	}
+	respBody, err := p.invokeWithResponse(req, extraHeaders)
+	if err != nil {
+		return nil, err
+	}
+	var result apitype.ListServicePrincipalRolesResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

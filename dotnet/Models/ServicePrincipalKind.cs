@@ -10,15 +10,27 @@ using Newtonsoft.Json.Converters;
 namespace Pulumi.Cloud.Sdk.Models {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ServicePrincipalKind {
+        /// <summary>
+        /// The service principal of a team, which the team's access tokens authenticate as.
+        /// </summary>
         [EnumMember(Value = "team")]
         Team,
 
+        /// <summary>
+        /// A service principal created by a member of the organization, with its own roles, entity access and access tokens.
+        /// </summary>
         [EnumMember(Value = "user-defined")]
         UserDefined,
 
+        /// <summary>
+        /// The service principal of a custom Neo agent, which gets its access from the agent's settings.
+        /// </summary>
         [EnumMember(Value = "custom-agent-definition")]
         CustomAgentDefinition,
 
+        /// <summary>
+        /// The service principal Pulumi Delivery creates for a pipeline that names no identity of its own.
+        /// </summary>
         [EnumMember(Value = "delivery")]
         Delivery,
     }

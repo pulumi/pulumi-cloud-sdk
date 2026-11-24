@@ -1434,6 +1434,114 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def create_service_principal(
+        self,
+        org_name: 'str',
+        request: 'CreateServicePrincipalRequest',
+        _request_timeout: int = None,
+    ) -> 'OrganizationMember':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `create_service_principal`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `create_service_principal`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/service-principals/create'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='OrganizationMember',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def create_service_principal_token(
+        self,
+        org_name: 'str',
+        user_login: 'str',
+        request: 'CreateServicePrincipalTokenRequest',
+        _request_timeout: int = None,
+    ) -> 'CreateAccessTokenResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `create_service_principal_token`")
+        # verify the required parameter 'user_login' is set
+        if user_login is None:
+            raise ValueError("Missing the required parameter `user_login` when calling `create_service_principal_token`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `create_service_principal_token`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/service-principals/{userLogin}/tokens'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if user_login is not None:
+            path_params['userLogin'] = user_login
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CreateAccessTokenResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def create_stack(
         self,
         org_name: 'str',
@@ -2209,6 +2317,63 @@ class OrganizationsApi(object):
         query_params = {}
         if force is not None:
             query_params['force'] = force
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def delete_service_principal_token(
+        self,
+        org_name: 'str',
+        user_login: 'str',
+        token_id: 'str',
+        _request_timeout: int = None,
+    ) -> None:
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `delete_service_principal_token`")
+        # verify the required parameter 'user_login' is set
+        if user_login is None:
+            raise ValueError("Missing the required parameter `user_login` when calling `delete_service_principal_token`")
+        # verify the required parameter 'token_id' is set
+        if token_id is None:
+            raise ValueError("Missing the required parameter `token_id` when calling `delete_service_principal_token`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/service-principals/{userLogin}/tokens/{tokenId}'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if user_login is not None:
+            path_params['userLogin'] = user_login
+        if token_id is not None:
+            path_params['tokenId'] = token_id
+
+        query_params = {}
 
         header_params = {}
 
@@ -6798,6 +6963,126 @@ class OrganizationsApi(object):
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)
 
+    def list_service_principal_roles(
+        self,
+        org_name: 'str',
+        user_login: 'str',
+        _request_timeout: int = None,
+    ) -> 'ListServicePrincipalRolesResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_service_principal_roles`")
+        # verify the required parameter 'user_login' is set
+        if user_login is None:
+            raise ValueError("Missing the required parameter `user_login` when calling `list_service_principal_roles`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/service-principals/{userLogin}/roles'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if user_login is not None:
+            path_params['userLogin'] = user_login
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListServicePrincipalRolesResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def list_service_principal_tokens(
+        self,
+        org_name: 'str',
+        user_login: 'str',
+        continuation_token: 'str' = None,
+        filter: 'str' = None,
+        max_results: 'int' = None,
+        search: 'str' = None,
+        sort_by: 'AccessTokenSortField' = None,
+        sort_direction: 'SortDirection' = None,
+        _request_timeout: int = None,
+    ) -> 'ListAccessTokensResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `list_service_principal_tokens`")
+        # verify the required parameter 'user_login' is set
+        if user_login is None:
+            raise ValueError("Missing the required parameter `user_login` when calling `list_service_principal_tokens`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/service-principals/{userLogin}/tokens'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if user_login is not None:
+            path_params['userLogin'] = user_login
+
+        query_params = {}
+        if continuation_token is not None:
+            query_params['continuationToken'] = continuation_token
+        if filter is not None:
+            query_params['filter'] = filter
+        if max_results is not None:
+            query_params['maxResults'] = max_results
+        if search is not None:
+            query_params['search'] = search
+        if sort_by is not None:
+            query_params['sortBy'] = sort_by
+        if sort_direction is not None:
+            query_params['sortDirection'] = sort_direction
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListAccessTokensResponse',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
     def list_services(
         self,
         org_name: 'str',
@@ -9470,6 +9755,63 @@ class OrganizationsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='Service',
+            auth_settings=auth_settings,
+            _request_timeout=_request_timeout,
+            collection_formats=collection_formats)
+
+    def update_service_principal_roles(
+        self,
+        org_name: 'str',
+        user_login: 'str',
+        request: 'UpdateServicePrincipalRolesRequest',
+        _request_timeout: int = None,
+    ) -> 'ListServicePrincipalRolesResponse':
+        # verify the required parameter 'org_name' is set
+        if org_name is None:
+            raise ValueError("Missing the required parameter `org_name` when calling `update_service_principal_roles`")
+        # verify the required parameter 'user_login' is set
+        if user_login is None:
+            raise ValueError("Missing the required parameter `user_login` when calling `update_service_principal_roles`")
+        # verify the required parameter 'request' is set
+        if request is None:
+            raise ValueError("Missing the required parameter `request` when calling `update_service_principal_roles`")
+
+        collection_formats = {}
+        resource_path = '/api/orgs/{orgName}/service-principals/{userLogin}/roles'
+        path_params = {}
+        if org_name is not None:
+            path_params['orgName'] = org_name
+        if user_login is not None:
+            path_params['userLogin'] = user_login
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if request is not None:
+            body_params = request
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['auth_token']
+
+        return self.api_client.call_api(resource_path, 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListServicePrincipalRolesResponse',
             auth_settings=auth_settings,
             _request_timeout=_request_timeout,
             collection_formats=collection_formats)

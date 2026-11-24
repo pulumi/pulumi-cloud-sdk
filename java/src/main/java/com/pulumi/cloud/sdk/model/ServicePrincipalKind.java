@@ -8,9 +8,13 @@ import com.fasterxml.jackson.annotation.*;
 
 @javax.annotation.processing.Generated("pulumi-codegen")
 public enum ServicePrincipalKind {
+    // The service principal of a team, which the team's access tokens authenticate as.
     Team("team"),
+    // A service principal created by a member of the organization, with its own roles, entity access and access tokens.
     UserDefined("user-defined"),
+    // The service principal of a custom Neo agent, which gets its access from the agent's settings.
     CustomAgentDefinition("custom-agent-definition"),
+    // The service principal Pulumi Delivery creates for a pipeline that names no identity of its own.
     Delivery("delivery");
 
     private final String value;

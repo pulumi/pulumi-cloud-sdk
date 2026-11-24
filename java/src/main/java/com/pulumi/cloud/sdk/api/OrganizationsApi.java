@@ -455,6 +455,40 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<Service>() {});
     }
 
+    public OrganizationMember createServicePrincipal(String orgName, CreateServicePrincipalRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createServicePrincipal");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createServicePrincipal");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/service-principals/create");
+        $request.pathParam("orgName", orgName);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<OrganizationMember>() {});
+    }
+
+    public CreateAccessTokenResponse createServicePrincipalToken(String orgName, String userLogin, CreateServicePrincipalTokenRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createServicePrincipalToken");
+        }
+        if (userLogin == null) {
+            throw new IllegalArgumentException("Missing required parameter 'userLogin' when calling createServicePrincipalToken");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling createServicePrincipalToken");
+        }
+        ApiRequest $request = new ApiRequest("POST", "/api/orgs/{orgName}/service-principals/{userLogin}/tokens");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("userLogin", userLogin);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<CreateAccessTokenResponse>() {});
+    }
+
     public AppCreateStackResponse createStack(String orgName, String projectName, AppCreateStackRequest request) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling createStack");
@@ -676,6 +710,23 @@ public final class OrganizationsApi {
         $request.pathParam("ownerName", ownerName);
         $request.pathParam("serviceName", serviceName);
         $request.queryParam("force", force);
+        this.client.call($request);
+    }
+
+    public void deleteServicePrincipalToken(String orgName, String userLogin, String tokenId) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling deleteServicePrincipalToken");
+        }
+        if (userLogin == null) {
+            throw new IllegalArgumentException("Missing required parameter 'userLogin' when calling deleteServicePrincipalToken");
+        }
+        if (tokenId == null) {
+            throw new IllegalArgumentException("Missing required parameter 'tokenId' when calling deleteServicePrincipalToken");
+        }
+        ApiRequest $request = new ApiRequest("DELETE", "/api/orgs/{orgName}/service-principals/{userLogin}/tokens/{tokenId}");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("userLogin", userLogin);
+        $request.pathParam("tokenId", tokenId);
         this.client.call($request);
     }
 
@@ -1879,6 +1930,40 @@ public final class OrganizationsApi {
         return this.client.call($request, new TypeReference<ListSAMLOrganizationAdminsResponse>() {});
     }
 
+    public ListServicePrincipalRolesResponse listServicePrincipalRoles(String orgName, String userLogin) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listServicePrincipalRoles");
+        }
+        if (userLogin == null) {
+            throw new IllegalArgumentException("Missing required parameter 'userLogin' when calling listServicePrincipalRoles");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/service-principals/{userLogin}/roles");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("userLogin", userLogin);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListServicePrincipalRolesResponse>() {});
+    }
+
+    public ListAccessTokensResponse listServicePrincipalTokens(String orgName, String userLogin, String continuationToken, String filter, Long maxResults, String search, AccessTokenSortField sortBy, SortDirection sortDirection) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listServicePrincipalTokens");
+        }
+        if (userLogin == null) {
+            throw new IllegalArgumentException("Missing required parameter 'userLogin' when calling listServicePrincipalTokens");
+        }
+        ApiRequest $request = new ApiRequest("GET", "/api/orgs/{orgName}/service-principals/{userLogin}/tokens");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("userLogin", userLogin);
+        $request.queryParam("continuationToken", continuationToken);
+        $request.queryParam("filter", filter);
+        $request.queryParam("maxResults", maxResults);
+        $request.queryParam("search", search);
+        $request.queryParam("sortBy", sortBy);
+        $request.queryParam("sortDirection", sortDirection);
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListAccessTokensResponse>() {});
+    }
+
     public ListServicesResponse listServices(String orgName, String continuationToken, Long maxResults) {
         if (orgName == null) {
             throw new IllegalArgumentException("Missing required parameter 'orgName' when calling listServices");
@@ -2676,6 +2761,25 @@ public final class OrganizationsApi {
         $request.consumes("application/json");
         $request.produces("application/json");
         return this.client.call($request, new TypeReference<Service>() {});
+    }
+
+    public ListServicePrincipalRolesResponse updateServicePrincipalRoles(String orgName, String userLogin, UpdateServicePrincipalRolesRequest request) {
+        if (orgName == null) {
+            throw new IllegalArgumentException("Missing required parameter 'orgName' when calling updateServicePrincipalRoles");
+        }
+        if (userLogin == null) {
+            throw new IllegalArgumentException("Missing required parameter 'userLogin' when calling updateServicePrincipalRoles");
+        }
+        if (request == null) {
+            throw new IllegalArgumentException("Missing required parameter 'request' when calling updateServicePrincipalRoles");
+        }
+        ApiRequest $request = new ApiRequest("PUT", "/api/orgs/{orgName}/service-principals/{userLogin}/roles");
+        $request.pathParam("orgName", orgName);
+        $request.pathParam("userLogin", userLogin);
+        $request.body(request);
+        $request.consumes("application/json");
+        $request.produces("application/json");
+        return this.client.call($request, new TypeReference<ListServicePrincipalRolesResponse>() {});
     }
 
     public void updateTeam(String orgName, String teamName, UpdateTeamRequest request) {
