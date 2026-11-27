@@ -19,44 +19,52 @@ class TokenInfo(PulumiAutoModelEncoder):
     :var name: str - declared
     :var organization: str - declared
     :var team: str - declared
+    :var service_principal: str - declared
     """
     __swagger_types__ = {  # The key is attribute name and the value is attribute type.
         'name': 'str',
         'organization': 'str',
         'team': 'str',
+        'service_principal': 'str',
     }
 
     __attribute_map__ = {  # The key is attribute name and the value is json key in definition.
         'name': 'name',
         'organization': 'organization',
         'team': 'team',
+        'service_principal': 'servicePrincipal',
     }
 
     FIELDS_name = 'name'
     FIELDS_organization = 'organization'
     FIELDS_team = 'team'
+    FIELDS_service_principal = 'servicePrincipal'
 
     _name: 'str'
     _organization: 'str'
     _team: 'str'
+    _service_principal: 'str'
 
     def __init__(
         self,
         name: 'str',
         organization: 'str',
         team: 'str',
+        service_principal: 'str',
     ) -> None:
         super().__init__()
 
         self.name = name
         self.organization = organization
         self.team = team
+        self.service_principal = service_principal
 
     def copy_common_fields(self, source: Any, /) -> None:
         if isinstance(source, TokenInfo):
             self._name = source._name
             self._organization = source._organization
             self._team = source._team
+            self._service_principal = source._service_principal
 
     @property
     def name(self) -> 'str':
@@ -90,6 +98,17 @@ class TokenInfo(PulumiAutoModelEncoder):
             raise ValueError("Invalid value for `team`, must not be `None`")
 
         self._team = team
+
+    @property
+    def service_principal(self) -> 'str':
+        return self._service_principal
+
+    @service_principal.setter
+    def service_principal(self, service_principal: 'str'):
+        if service_principal is None:
+            raise ValueError("Invalid value for `service_principal`, must not be `None`")
+
+        self._service_principal = service_principal
 
     def __eq__(self, other: Any) -> bool:
         if not isinstance(other, TokenInfo):

@@ -71,7 +71,7 @@ namespace Pulumi.Cloud.Sdk.Models {
         public bool? RegistryAdmin { get; set; }
 
         /// <summary>
-        /// TokenInfo is contains metadata, set only for machine tokens &amp; to be used only in the CLI
+        /// Describes the organization, team or service principal token the request was made with, in display names. Absent for personal access tokens and console sessions.
         /// </summary>
         [JsonProperty("tokenInfo")]
         public TokenInfo TokenInfo { get; set; }

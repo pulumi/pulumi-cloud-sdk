@@ -4,12 +4,19 @@
 
 package apitype
 
-// TokenInfo contains metadata about an access token.
+// TokenInfo describes the machine access token (an organization, team or service principal token) a request was made with. Its
+// organization, team and service principal values are display names, meant for showing to people; they are not identifiers, so do not use
+// them in API paths or stack references.
 type TokenInfo struct {
 	// The name of the access token.
 	Name string `json:"name" yaml:"name"`
-	// The organization the token is scoped to, if any.
+	// The display name of the organization the token belongs to, meant for showing to people and not an identifier to use in API paths or
+	// stack references. Set for organization, team and service principal tokens.
 	Organization *string `json:"organization" yaml:"organization"`
-	// The team the token is scoped to, if any.
+	// The display name of the team the token belongs to, meant for showing to people and not an identifier to use in API paths. Set only for
+	// team tokens; null otherwise.
 	Team *string `json:"team" yaml:"team"`
+	// The display name of the service principal the token belongs to, meant for showing to people and not an identifier to use in API paths.
+	// Set only for service principal tokens; null otherwise.
+	ServicePrincipal *string `json:"servicePrincipal" yaml:"servicePrincipal"`
 }

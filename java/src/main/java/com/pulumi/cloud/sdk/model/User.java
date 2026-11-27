@@ -41,7 +41,7 @@ public class User {
     // RegistryAdmin is whether or not the user is a registry administrator.
     public Boolean registryAdmin;
 
-    // TokenInfo is contains metadata, set only for machine tokens & to be used only in the CLI
+    // Describes the organization, team or service principal token the request was made with, in display names. Absent for personal access tokens and console sessions.
     public TokenInfo tokenInfo;
 
     // Whether the user has multi-factor authentication enabled.

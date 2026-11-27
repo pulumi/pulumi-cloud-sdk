@@ -27,7 +27,8 @@ type User struct {
 	SiteAdmin *bool `json:"siteAdmin,omitzero" yaml:"siteAdmin,omitempty"`
 	// RegistryAdmin is whether or not the user is a registry administrator.
 	RegistryAdmin *bool `json:"registryAdmin,omitzero" yaml:"registryAdmin,omitempty"`
-	// TokenInfo is contains metadata, set only for machine tokens & to be used only in the CLI
+	// Describes the organization, team or service principal token the request was made with, in display names. Absent for personal access
+	// tokens and console sessions.
 	TokenInfo *TokenInfo `json:"tokenInfo,omitempty" yaml:"tokenInfo,omitempty"`
 	// Whether the user has multi-factor authentication enabled.
 	HasMFA bool `json:"hasMFA" yaml:"hasMFA"`

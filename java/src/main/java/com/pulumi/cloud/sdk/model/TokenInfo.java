@@ -14,9 +14,12 @@ public class TokenInfo {
     // The name of the access token.
     public String name;
 
-    // The organization the token is scoped to, if any.
+    // The display name of the organization the token belongs to, meant for showing to people and not an identifier to use in API paths or stack references. Set for organization, team and service principal tokens.
     public String organization;
 
-    // The team the token is scoped to, if any.
+    // The display name of the team the token belongs to, meant for showing to people and not an identifier to use in API paths. Set only for team tokens; null otherwise.
     public String team;
+
+    // The display name of the service principal the token belongs to, meant for showing to people and not an identifier to use in API paths. Set only for service principal tokens; null otherwise.
+    public String servicePrincipal;
 }

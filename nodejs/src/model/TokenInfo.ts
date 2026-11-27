@@ -17,6 +17,7 @@ export class TokenInfo {
     name: string;
     organization: string;
     team: string;
+    servicePrincipal: string;
 
     getFixupPrototypeFunction() {
         return TokenInfo.fixupPrototype;

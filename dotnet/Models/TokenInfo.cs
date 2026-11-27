@@ -17,15 +17,21 @@ namespace Pulumi.Cloud.Sdk.Models {
         public string Name { get; set; }
 
         /// <summary>
-        /// The organization the token is scoped to, if any.
+        /// The display name of the organization the token belongs to, meant for showing to people and not an identifier to use in API paths or stack references. Set for organization, team and service principal tokens.
         /// </summary>
         [JsonProperty("organization")]
         public string Organization { get; set; }
 
         /// <summary>
-        /// The team the token is scoped to, if any.
+        /// The display name of the team the token belongs to, meant for showing to people and not an identifier to use in API paths. Set only for team tokens; null otherwise.
         /// </summary>
         [JsonProperty("team")]
         public string Team { get; set; }
+
+        /// <summary>
+        /// The display name of the service principal the token belongs to, meant for showing to people and not an identifier to use in API paths. Set only for service principal tokens; null otherwise.
+        /// </summary>
+        [JsonProperty("servicePrincipal")]
+        public string ServicePrincipal { get; set; }
     }
 }
